@@ -28,7 +28,7 @@ if install('packer', fn.stdpath('config')..'/pack/packer/opt/packer.nvim', 'http
 end
 
 --------------------------------------------------------------------------------
---sync packer if plugins.lua changes
+-- sync packer if plugins.lua changes
 --------------------------------------------------------------------------------
 vim.cmd([[
   augroup packer_plugins
