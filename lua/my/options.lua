@@ -1,7 +1,10 @@
+local g  = vim.g
+local fn = vim.fn
+local set  = vim.opt
 
-
-
-
+local has = function(x)
+  return fn.has(x) == 1
+end
 
 --------------------------------------------------------------------------------
 -- nvim1 options
@@ -57,13 +60,13 @@
 -- vim.opt.signcolumn = "yes" -- enable signcolumn
 -- vim.opt.clipboard = "unnamedplus" -- enable universal clipboard
 -- vim.opt.scrolloff = 3 -- leave 3 lines up/down while scrolling
-vim.o.scrolloff = 4 -- leave 4 lines up/down while scrolling
+set.scrolloff = 4 -- leave 4 lines up/down while scrolling
 -- vim.opt.tabstop = 4 -- tabs should be 4 "space" wide
 -- vim.opt.shiftwidth = 4 -- tabs should be 4 "space" wide
 -- vim.opt.lazyredraw = true -- usefull for regexes with large files
-vim.o.lazyredraw = true
+set.lazyredraw = true
 -- vim.opt.linebreak = true -- clean linebreaks
-vim.o.linebreak = true -- clean linebreaks (during wrap)
+set.linebreak = true -- clean linebreaks (during wrap)
 -- vim.opt.number = false -- disable numbers
 -- vim.opt.numberwidth = 2 -- two wide number column
 -- vim.opt.shortmess:append "casI" -- disable intro
@@ -74,50 +77,50 @@ vim.o.linebreak = true -- clean linebreaks (during wrap)
 --------------------------------------------------------------------------------
 -- vim0 options
 --------------------------------------------------------------------------------
-vim.o.number = true
+set.number = true
 -- set numberwidth=3        -- number of culumns for line numbers
 -- set textwidth=0          -- Do not wrap words (insert)
-vim.o.wrap = false
+set.wrap = false
 -- set showcmd              -- Show (partial) command in status line.
-vim.o.showmatch = true     -- Show matching brackets.
-vim.o.visualbell = true     -- use visual bell instead of beeping
-vim.o.listchars = 'tab:→⋅,trail:·,nbsp:+'
+set.showmatch = true     -- Show matching brackets.
+set.visualbell = true     -- use visual bell instead of beeping
+set.listchars = 'tab:→⋅,trail:·,nbsp:+'
 -- set list
-vim.o.list = true
+set.list = true
 
 -- " highlight spell errors
 -- hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
 
-vim.o.wildignore = '*.o,*.a,*.so,*.swp,.git,.hg,.svn,CVS,RCS,*~,*.pyc'
+set.wildignore = '*.o,*.a,*.so,*.swp,.git,.hg,.svn,CVS,RCS,*~,*.pyc'
 -- set shell=/bin/bash              -- use bash for shell commands
-vim.o.autowriteall = true                 -- Automatically save before commands like :next and :make
-vim.o.hidden = true                       -- enable multiple modified buffers
+set.autowriteall = true                 -- Automatically save before commands like :next and :make
+set.hidden = true                       -- enable multiple modified buffers
 -- set guioptions-=T                -- disable toolbar"
 -- set completeopt=menuone,preview,noinsert
 -- let bash_is_sh=1                 -- syntax shell files as bash scripts
-vim.o.cinoptions = ':0,(s,u0,U1,g0,t0' -- some indentation options ':h cinoptions' for details
+set.cinoptions = ':0,(s,u0,U1,g0,t0' -- some indentation options ':h cinoptions' for details
 -- set modelines=5                  -- number of lines to check for vim: directives at the start/end of file
 -- "set fixdel                      -- fix terminal code for delete (if delete is broken but backspace works)
 
-vim.o.ts = 4
-vim.o.sw = 3
-vim.o.et = true
+set.ts = 4
+set.sw = 4
+set.et = true
 
 -- set ttimeoutlen=50       -- fast Esc to normal mode
-vim.o.updatetime = 1000
+set.updatetime = 1000
 
--- let g:mapleader = " "
--- let g:maplocalleader = ","
+g.mapleader = ' '
+g.maplocalleader = ','
 -- set timeoutlen=5000      -- give 5s to complete mapping sequence
 
 -- mouse settings
-if 1 == vim.fn.has('mouse') then
-  vim.o.mouse = 'a'
+if has('mouse') then
+  set.mouse = 'a'
 end
 
 -- set hlsearch             -- Highlight search match
-vim.o.ignorecase = true
-vim.o.smartcase = true
+set.ignorecase = true
+set.smartcase = true
 
 --  -- directory settings
 -- call system('mkdir -p ~/.backup/undo/ > /dev/null 2>&1')
@@ -125,12 +128,12 @@ vim.o.smartcase = true
 -- set directory=~/.backup,~/tmp,.        -- list of directory names for the swap file
 -- set nobackup                           -- do not write backup files
 -- set backupskip+=~/tmp/*,/private/tmp/* -- skip backups on OSX temp dir, for crontab -e to properly work
-vim.o.swapfile = false -- disable swap
+set.swapfile = false -- disable swap
 -- set undodir=~/.backup/undo/,~/tmp,.
-vim.o.undofile = true -- enable persistent undo
+set.undofile = true -- enable persistent undo
 
 -- set foldcolumn=0         -- columns for folding
-vim.o.foldmethod = 'syntax'
+set.foldmethod = 'syntax'
 -- set foldlevel=9
 -- set nofoldenable         -- dont fold by default "
 -- set eol
@@ -139,12 +142,12 @@ vim.o.foldmethod = 'syntax'
 -- " set t_AB=^[[48;5;%dm
 -- " set t_AF=^[[38;5;%dm
 -- " set notermguicolors
-if vim.fn.has('termguicolors') == 1 then
-  vim.o.termguicolors = true
+if has('termguicolors') then
+  set.termguicolors = true
 end
 
-vim.o.cursorline = true
-vim.o.cursorcolumn = true
+set.cursorline = true
+set.cursorcolumn = true
 
 -- set foldcolumn=2
 -- set concealcursor=n
@@ -166,5 +169,5 @@ vim.o.cursorcolumn = true
 -- command -nargs=* -complete=file E e <args>
 
 -- autoload local project .vimrc files
-vim.o.exrc = true
-vim.o.secure = true
+set.exrc = true
+set.secure = true

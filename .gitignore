@@ -1,2 +1,5 @@
 /pack/
 /plugin/packer_compiled.lua
+/.config/
+.envrc
+/tmp/
