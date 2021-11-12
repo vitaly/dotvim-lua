@@ -16,7 +16,7 @@ local M = {}
 M.use = packer.use
 
 function M.plugin(name)
-  require(name)(packer.use)
+  REQUIRE(name)(packer.use)
 end
 
 function M.compile()

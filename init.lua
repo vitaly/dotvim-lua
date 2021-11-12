@@ -1,6 +1,7 @@
 print "vimx/init"
 
 require 'my.packer.install'
+require 'my.globals'
 require 'my.builtins'
 require 'my.options'
 

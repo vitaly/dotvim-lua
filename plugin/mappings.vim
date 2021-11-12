@@ -9,6 +9,7 @@ nmap              <leader>ap<cr>          <plug>packer(Sync)
 
 nnoremap                                  <plug>packer(Compile)                         <cmd>PackerCompile<cr>
 nmap              <leader>apc             <plug>packer(Compile)
+nmap              <leader>ap<space>       <plug>packer(Compile)
 
 nnoremap                                  <plug>packer(Install)                         <cmd>PackerInstall<cr>
 nmap              <leader>api             <plug>packer(Install)
@@ -146,3 +147,8 @@ nmap              <leader>w<Bslash>       <plug>(Window/VSplit)
 
 noremap                                   <plug>(Window/Only)                           <C-w>o
 nmap              <leader>wo              <plug>(Window/Only)
+
+
+
+
+

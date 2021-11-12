@@ -1,3 +1,4 @@
+command X x
 command Q q
 command Qa qa
 command QA qa

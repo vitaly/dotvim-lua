@@ -25,6 +25,19 @@ clean: ## clean generated files
 .PHONY: clean
 
 vim: ## run vim
+	vim lua/my/plugins/which-key.lua
 	# vim lua/my/plugins.lua
-	vim init.lua
+	# vim init.lua
 .PHONY: vim
+
+
+
+
+
+#
+#
+#
+#
+#
+#
+##

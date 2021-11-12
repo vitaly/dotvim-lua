@@ -2,15 +2,12 @@
 return function (use)
   use {
     'liuchengxu/vim-which-key',
-    config = function()
+    setup = function ()
+      print 'which key setup'
+      -- TODO: convert to lua
       vim.cmd [[
         let g:WhichKeyFormatFunc = function('my#keymap#format')
-
-        augroup RegisterKeyMap
-          autocmd!
-          autocmd   User    vim-which-key     call which_key#register(g:mapleader, 'g:my#keymap#leader#map')
-          autocmd   User    vim-which-key     call which_key#register(g:maplocalleader, 'g:my#keymap#localleader#map')
-        augroup END
+        let g:which_key_sep = "|"
 
         nnoremap <silent>     <leader>                                    <CMD>WhichKey ' '<CR>
         nnoremap <silent>     <localleader>                               <CMD>WhichKey ','<CR>
@@ -18,12 +15,15 @@ return function (use)
         xnoremap <silent>     <leader>                                    <CMD>WhichKeyVisual ' '<CR>
         xnoremap <silent>     <localleader>                               <CMD>WhichKeyVisual ','<CR>
 
+        call my#keymap#leader('s', '+Search')
         noremap                                 <plug>(Search/Keys)       <CMD>WhichKey ''<CR>
         nmap                  <leader>sk        <plug>(Search/Keys)
-
-        let g:which_key_sep = "|"
       ]]
-      print "which key loaded"
+      print 'vim-which-key setup done!'
+    end,
+    config = function()
+      vim.fn['which_key#register'](vim.g.mapleader, 'g:my#keymap#leader#map')
+      vim.fn['which_key#register'](vim.g.maplocalleader, 'g:my#keymap#localleader#map')
     end,
   }
 end

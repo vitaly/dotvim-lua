@@ -1,6 +1,5 @@
 local fn = vim.fn
 
-pcall(require, 'impatient')
 
 --------------------------------------------------------------------------------
 -- ensure package is installed at the given location
@@ -21,6 +20,9 @@ local function install(name, path, repo)
   return true
 end
 
+install('impatient', fn.stdpath('config')..'/pack/packer/start/impatient.nvim', 'https://github.com/lewis6991/impatient.nvim.git')
+require('impatient')
+
 install('vimpeccable', fn.stdpath('config')..'/pack/packer/start/vimpeccable', 'https://github.com/svermeulen/vimpeccable')
 
 if install('packer', fn.stdpath('config')..'/pack/packer/opt/packer.nvim', 'https://github.com/wbthomason/packer.nvim') then
@@ -33,16 +35,17 @@ end
 vim.cmd([[
   augroup packer_plugins
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost */my/plugins.lua PackerCompile
+    autocmd BufWritePost */my/plugins/*.lua PackerCompile
   augroup end
 ]])
 
 --------------------------------------------------------------------------------
 -- setup packer commands
 --------------------------------------------------------------------------------
-vim.cmd "command! PackerCompile lua require('my.plugins').compile()"
-vim.cmd "command! PackerInstall lua require('my.plugins').install()"
-vim.cmd "command! PackerStatus  lua require('my.plugins').status()"
-vim.cmd "command! PackerSync    lua require('my.plugins').sync()"
-vim.cmd "command! PackerUpdate  lua require('my.plugins').update()"
-vim.cmd "command! PackerClean   lua require('my.plugins').clean()"
+vim.cmd "command! PackerCompile lua REQUIRE('my.plugins').compile()"
+vim.cmd "command! PackerInstall lua REQUIRE('my.plugins').install()"
+vim.cmd "command! PackerStatus  lua REQUIRE('my.plugins').status()"
+vim.cmd "command! PackerSync    lua REQUIRE('my.plugins').sync()"
+vim.cmd "command! PackerUpdate  lua REQUIRE('my.plugins').update()"
+vim.cmd "command! PackerClean   lua REQUIRE('my.plugins').clean()"
