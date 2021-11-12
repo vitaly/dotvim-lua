@@ -10,20 +10,22 @@ if packer == nil then
   }
 end
 
-local use = packer.use
 packer.reset()
 
-use 'tjdevries/astronauta.nvim'
+local use = packer.use
+local function plugin(name)
+  require(name)(use)
+end
+
 use { 'wbthomason/packer.nvim', opt = true }
-use 'lewis6991/impatient.nvim'
+use { 'tjdevries/astronauta.nvim' }
+use { 'lewis6991/impatient.nvim' }
 
-use {
-    'liuchengxu/vim-which-key',
-    config = function()
-      require 'my.plugins.which-key'
-    end,
-}
+plugin('my.plugins.which-key')
 
+--------------------------------------------------------------------------------
+--'forward' packer actions
+--------------------------------------------------------------------------------
 local M = {}
 
 function M.compile()
