@@ -3,23 +3,27 @@ local fn = vim.fn
 pcall(require, 'impatient')
 
 --------------------------------------------------------------------------------
--- install astronauta if needed
+-- ensure package is installed at the given location
+-- @param { string } name - package name
+-- @param { string } path - path to install
+-- @param { string } repo - git repository
+-- @returns { boolean } true if was just installed
 --------------------------------------------------------------------------------
-local astro_path = fn.stdpath('config')..'/pack/packer/start/astronauta.nvim'
-if fn.empty(fn.glob(astro_path)) > 0 then
-  print "installing astronauta.."
-  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/tjdevries/astronauta.nvim.git', astro_path})
-  print('astronauta installed at ' .. astro_path)
+local function install(name, path, repo)
+  if 0 == fn.empty(fn.glob(path)) then
+    return false
+  end
+
+  print("installing " .. name .. "...")
+  fn.system({'git', 'clone', '--depth', '1', repo, path})
+  print(name .. ' installed at ' .. path)
+
+  return true
 end
 
---------------------------------------------------------------------------------
---install packer if needed
---------------------------------------------------------------------------------
-local packer_path = fn.stdpath('config')..'/pack/packer/opt/packer.nvim'
-if fn.empty(fn.glob(packer_path)) > 0 then
-  print "installing packer.."
-  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', packer_path})
-  print('packer installed at ' .. packer_path)
+install('astronauta', fn.stdpath('config')..'/pack/packer/start/astronauta.nvim', 'https://github.com/tjdevries/astronauta.nvim.git')
+
+if install('packer', fn.stdpath('config')..'/pack/packer/opt/packer.nvim', 'https://github.com/wbthomason/packer.nvim') then
   require('my.plugins').sync()
 end
 
