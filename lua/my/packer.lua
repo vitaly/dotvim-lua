@@ -8,6 +8,9 @@ vim.cmd "command! PackerStatus  lua require('my.plugins').status()"
 vim.cmd "command! PackerSync    lua require('my.plugins').sync()"
 vim.cmd "command! PackerUpdate  lua require('my.plugins').update()"
 
+--------------------------------------------------------------------------------
+--install packer if needed
+--------------------------------------------------------------------------------
 local fn = vim.fn
 local install_path = fn.stdpath('config')..'/pack/packer/opt/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -17,6 +20,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
   require('my.plugins').sync()
 end
 
+--------------------------------------------------------------------------------
+--sync packer if plugins.lua changes
+--------------------------------------------------------------------------------
 vim.cmd([[
   augroup packer_plugins
     autocmd!

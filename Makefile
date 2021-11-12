@@ -1,4 +1,4 @@
-DEFAULT ?= clean vim
+DEFAULT ?= help
 default: ${DEFAULT}
 .PHONY: default
 
