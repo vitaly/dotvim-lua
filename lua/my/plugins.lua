@@ -18,7 +18,7 @@ local function plugin(name)
 end
 
 use { 'wbthomason/packer.nvim', opt = true }
-use { 'tjdevries/astronauta.nvim' }
+use { 'svermeulen/vimpeccable' }
 use { 'lewis6991/impatient.nvim' }
 
 plugin('my.plugins.which-key')

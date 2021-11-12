@@ -21,16 +21,11 @@ local function install(name, path, repo)
   return true
 end
 
-install('astronauta', fn.stdpath('config')..'/pack/packer/start/astronauta.nvim', 'https://github.com/tjdevries/astronauta.nvim.git')
+install('vimpeccable', fn.stdpath('config')..'/pack/packer/start/vimpeccable', 'https://github.com/svermeulen/vimpeccable')
 
 if install('packer', fn.stdpath('config')..'/pack/packer/opt/packer.nvim', 'https://github.com/wbthomason/packer.nvim') then
   require('my.plugins').sync()
 end
-
---------------------------------------------------------------------------------
--- pre-load astronauta
---------------------------------------------------------------------------------
-vim.cmd [[runtime plugin/astronauta.vim]]
 
 --------------------------------------------------------------------------------
 --sync packer if plugins.lua changes
