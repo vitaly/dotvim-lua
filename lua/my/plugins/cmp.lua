@@ -2,7 +2,7 @@ return function (use)
   use {
     {},
     {
-      'hrsh7th/nvim-cmp',
+      'hrsh7th/nvim-cmp', -- https://github.com/hrsh7th/nvim-cmp
       requires = {
         'L3MON4D3/LuaSnip',
         { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
@@ -10,6 +10,10 @@ return function (use)
         { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
         { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+        {
+          'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs
+          -- after = 'nvim-cmp',
+        },
       },
 
       config = function ()
@@ -74,7 +78,7 @@ return function (use)
           with_text = true,
           preset = 'default',
           symbol_map = kind_symbols,
-      }
+        }
 
         cmp.setup {
           completion = { completeopt = 'menu,menuone,noinsert.noselect,preview' },
@@ -107,11 +111,19 @@ return function (use)
         }
 
 
+        require('nvim-autopairs').setup {
+          disable_filetype = { "TelescopePrompt" , "vim" },
+        }
+        cmp.event:on('confirm_done',
+          require('nvim-autopairs.completion.cmp').on_confirm_done({  map_char = { tex = '' } }))
+
+
       end,
 
       event = 'InsertEnter *',
 
     },
+
 
   }
 
