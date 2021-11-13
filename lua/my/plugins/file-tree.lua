@@ -11,11 +11,18 @@ return function (use)
       local nmap = vimp.nmap
       nmap('<leader>,', '<plug>File-Tree(toggle)')
       nmap('<leader>0', '<plug>File-Tree(reveal)')
+
+      vim.g.nvim_tree_git_hl = 1
+      vim.g.nvim_tree_indent_markers = 1
+      vim.g.nvim_tree_create_in_closed_folder = 1
+      vim.g.nvim_tree_disable_window_picker = 1
+
+      vim.g.nvim_tree_icons = {
+      default = '',
+      symlink =  '',
+      }
     end,
     config = function()
-      vim.g.nvim_tree_icons = {
-        symlink =  '',
-      }
       require'nvim-tree'.setup {
         update_cwd = true,
         update_focused_file = { enable = true, },

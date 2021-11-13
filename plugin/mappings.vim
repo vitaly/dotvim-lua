@@ -104,10 +104,10 @@ nmap              <leader>felb            <plug>(File/Edit/Local/Bindings)
 call my#keymap#leader('q', '+Quit')
 
 noremap                                   <plug>(Quit-All)                              <cmd>qa<cr>
-nmap              <leader>Q               <plug>(Quit-All)
+nmap              <leader>q               <plug>(Quit-All)
 
 noremap                                   <plug>(Quit-Window)                           <cmd>q<cr>
-nmap              <leader>q               <plug>(Quit-Window)
+nmap              <leader>x               <plug>(Quit-Window)
 
 call my#keymap#leader('w', '+Window' )
 
@@ -224,3 +224,10 @@ nmap         <silent> <leader>vc            <plug>(Vim/Update-Colors)
 if !exists('g:skip_vimrc_background')
   call s:load_vimrc_background()
 endif
+
+
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+xnoremap <C-j> :m '>+1<CR>gv=gv
+xnoremap <C-k> :m '<-2<CR>gv=gv
+

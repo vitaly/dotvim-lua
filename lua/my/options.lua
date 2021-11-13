@@ -111,8 +111,8 @@ set.cinoptions = ':0,(s,u0,U1,g0,t0' -- some indentation options ':h cinoptions'
 -- set modelines=5                  -- number of lines to check for vim: directives at the start/end of file
 -- "set fixdel                      -- fix terminal code for delete (if delete is broken but backspace works)
 
-set.ts = 4
-set.sw = 4
+set.ts = 2
+set.sw = 2
 set.et = true
 
 -- set ttimeoutlen=50       -- fast Esc to normal mode
