@@ -148,7 +148,8 @@ nmap              <leader>w<Bslash>       <plug>(Window/VSplit)
 noremap                                   <plug>(Window/Only)                           <C-w>o
 nmap              <leader>wo              <plug>(Window/Only)
 
-
+" Don't use Ex mode, use Q for formatting
+map Q gq
 
 
 

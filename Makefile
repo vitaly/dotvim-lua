@@ -24,10 +24,12 @@ clean: ## clean generated files
 vim: ## run vim
 	#vim lua/my/plugins/which-key.lua
 	# vim lua/my/plugins.lua
-	vim init.lua
+	#vim init.lua
 	# vim lua/**/*.lua
+	vim foo.ts
 
 sync: ## sync packer config
+	rm -f plugin/packer_compiled.lua
 	nvim --headless -c 'autocmd User PackerComplete qa!' -c 'silent PackerSync'
 	@echo
 

@@ -104,6 +104,8 @@ set.autowriteall = true                 -- Automatically save before commands li
 set.hidden = true                       -- enable multiple modified buffers
 -- set guioptions-=T                -- disable toolbar"
 -- set completeopt=menuone,preview,noinsert
+set.completeopt = 'menuone,preview,noinsert,noselect'
+
 -- let bash_is_sh=1                 -- syntax shell files as bash scripts
 set.cinoptions = ':0,(s,u0,U1,g0,t0' -- some indentation options ':h cinoptions' for details
 -- set modelines=5                  -- number of lines to check for vim: directives at the start/end of file
@@ -114,7 +116,7 @@ set.sw = 4
 set.et = true
 
 -- set ttimeoutlen=50       -- fast Esc to normal mode
-set.updatetime = 1000
+set.updatetime = 300 -- CursorHold delay
 
 g.mapleader = ' '
 g.maplocalleader = ','
@@ -143,15 +145,16 @@ set.undofile = true -- enable persistent undo
 set.foldmethod = 'syntax'
 -- set foldlevel=9
 -- set nofoldenable         -- dont fold by default "
+set.foldenable = false      -- dont fold by default "
 -- set eol
 -- set nobinary
 -- " set t_Co=256
 -- " set t_AB=^[[48;5;%dm
 -- " set t_AF=^[[38;5;%dm
 -- " set notermguicolors
-if has('termguicolors') then
-  set.termguicolors = true
-end
+-- if has('termguicolors') then
+--   set.termguicolors = true
+-- end
 
 set.cursorline = true
 set.cursorcolumn = true
