@@ -1,47 +1,46 @@
 return function (use)
   use {
-    {
-      'onsails/lspkind-nvim', -- https://github.com/onsails/lspkind-nvim
-    },
-
 
     {
       'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
+
+      requires = {
+        {
+          'onsails/lspkind-nvim', -- https://github.com/onsails/lspkind-nvim
+        },
+
+
+        {
+          'williamboman/nvim-lsp-installer', -- https://github.com/williamboman/nvim-lsp-installer
+        },
+
+        {
+          'glepnir/lspsaga.nvim', -- https://github.com/glepnir/lspsaga.nvim
+        },
+      },
 
       config = function ()
 
         local vimp = require('vimp')
         local noremap = vimp.noremap
-        local nmap = vimp.nmap
-
-
-        local buffer = { 'silent', 'buffer' }
-
         noremap('<plug>Goto(declaration)',     '<cmd>lua vim.lsp.buf.declaration()<cr>')
-        noremap('<plug>Goto(definitions)',     '<cmd>lua require"telescope.builtin".lsp_definitions()<cr>')
+        noremap('<plug>Goto(definitions)',     '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>')
         noremap('<plug>Hover()',               '<cmd>lua vim.lsp.buf.hover()<CR>')
-        noremap('<plug>Goto(implementations)', '<cmd>lua require"telescope.builtin".lsp_implementations()<CR>')
+        noremap('<plug>Goto(implementations)', '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>')
         noremap('<plug>Help(signature)',       '<cmd>lua vim.lsp.buf.signature_help()<CR>')
         noremap('<plug>Goto(type)',            '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-        noremap('<plug>Refactor(rename)',      '<cmd>lua vim.lsp.buf.rename()<CR>')
-        noremap('<plug>Goto(references)',      '<cmd>lua require"telescope.builtin".lsp_references()<CR>')
-        noremap('<plug>Code(actions)',         '<cmd>lua require"telescope.builtin".lsp_code_actions()<CR>')
+
+        -- noremap('<plug>Refactor(rename)',      '<cmd>lua vim.lsp.buf.rename()<CR>')
+        noremap('<plug>Refactor(rename)',      '<cmd>lua require("lspsaga.rename").rename()<CR>')
+
+        noremap('<plug>Goto(references)',      '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
+        noremap('<plug>Code(actions)',         '<cmd>lua require("telescope.builtin").lsp_code_actions()<CR>')
         noremap('<plug>Goto(first)',           '<cmd>normal gg<cr><cmd>lua vim.lsp.diagnostic.goto_next()<cr>')
         noremap('<plug>Goto(next)',            '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>')
         noremap('<plug>Goto(previous)',        '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>')
 
 
 
-        nmap(buffer, '<localleader>gd', '<plug>Goto(definitions)')
-        nmap(buffer, '<localleader>gD', '<plug>Goto(declaration)')
-        nmap(buffer, '<localleader>gr', '<plug>Goto(references)')
-        nmap(buffer, '<localleader>gT', '<plug>Goto(type)')
-        nmap(buffer, '<localleader>rr', '<plug>Refactor(rename)')
-        nmap(buffer, '<localleader>ga', '<plug>Code(actions)')
-        nmap(buffer, 'K',               '<plug>Hover()')
-        nmap(buffer, '<localleader>1', '<plug>Goto(first)')
-        nmap(buffer, '<localleader>n', '<plug>Goto(next)')
-        nmap(buffer, '<localleader>p', '<plug>Goto(previous)')
 
 
         -- buf_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
@@ -137,6 +136,20 @@ return function (use)
             augroup END
           ]]
 
+          local vimp = require('vimp')
+          local nmap = vimp.nmap
+          local buffer = { 'silent', 'buffer' }
+          nmap(buffer, '<localleader>gd', '<plug>Goto(definitions)')
+          nmap(buffer, '<localleader>gD', '<plug>Goto(declaration)')
+          nmap(buffer, '<localleader>gr', '<plug>Goto(references)')
+          nmap(buffer, '<localleader>gT', '<plug>Goto(type)')
+          nmap(buffer, '<localleader>rr', '<plug>Refactor(rename)')
+          nmap(buffer, '<localleader>a', '<plug>Code(actions)')
+          nmap(buffer, 'K',               '<plug>Hover()')
+          nmap(buffer, '<localleader>1', '<plug>Goto(first)')
+          nmap(buffer, '<localleader>n', '<plug>Goto(next)')
+          nmap(buffer, '<localleader>p', '<plug>Goto(previous)')
+
         end
 
         local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -148,10 +161,24 @@ return function (use)
           }
         }
 
-        local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
-        for _, server in ipairs(servers) do
-          lspconfig[server].setup(opts)
-        end
+        -- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+        -- for _, server in ipairs(servers) do
+        --   lspconfig[server].setup(opts)
+        -- end
+
+        -- Register a handler that will be called for all installed servers.
+        -- Alternatively, you may also register handlers on specific server instances instead (see example below).
+        require("nvim-lsp-installer").on_server_ready(function(server)
+
+          -- (optional) Customize the options passed to the server
+          -- if server.name == "tsserver" then
+          --     opts.root_dir = function() ... end
+          -- end
+
+          -- This setup() function is exactly the same as lspconfig's setup function.
+          -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+          server:setup(opts)
+        end)
 
         -- print "lsp-config loaded"
       end,
