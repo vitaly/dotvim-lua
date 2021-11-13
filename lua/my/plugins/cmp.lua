@@ -111,9 +111,14 @@ return function (use)
         }
 
 
-        require('nvim-autopairs').setup {
+        local autopairs = require('nvim-autopairs')
+        autopairs.setup {
           disable_filetype = { "TelescopePrompt" , "vim" },
         }
+        -- XXX do this only for ruby
+        autopairs.add_rules(require('nvim-autopairs.rules.endwise-ruby'))
+        autopairs.add_rules(require('nvim-autopairs.rules.endwise-lua'))
+
         cmp.event:on('confirm_done',
           require('nvim-autopairs.completion.cmp').on_confirm_done({  map_char = { tex = '' } }))
 
