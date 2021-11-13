@@ -17,6 +17,7 @@ plugin('my.plugins.undo-tree')
 plugin('my.plugins.treesitter')
 plugin('my.plugins.neogen')
 plugin('my.plugins.file-tree')
+plugin('my.plugins.git')
 
 puts 'my.plugins loaded'
 return plugins
