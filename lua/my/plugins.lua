@@ -7,6 +7,7 @@ use { 'lewis6991/impatient.nvim' }
 use { 'nvim-lua/plenary.nvim' }
 use { 'svermeulen/vimpeccable' } -- https://github.com/svermeulen/vimpeccable
 use { 'chriskempson/base16-vim' }
+use { 'tpope/vim-surround' } -- https://github.com/tpope/vim-surround
 
 plugin('my.plugins.which-key')
 plugin('my.plugins.fuzzy')
