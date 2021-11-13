@@ -28,7 +28,7 @@ return function (use)
       end,
       config = function ()
         local telescope = require 'telescope'
-        -- telescope.setup {
+        telescope.setup {
         --   defaults = {
         --   },
         --   extensions = {
@@ -39,7 +39,9 @@ return function (use)
         --       case_mode = 'smart_case',
         --     },
         --   },
-        --   pickers = {
+          pickers = {
+            git_files = { theme = 'dropdown' },
+            find_files = { theme = 'dropdown' },
         --     lsp_references = { theme = 'dropdown' },
         --     lsp_code_actions = { theme = 'dropdown' },
         --     lsp_definitions = { theme = 'dropdown' },
@@ -48,8 +50,9 @@ return function (use)
         --       sort_lastused = true,
         --       previewer = false,
         --     },
-        --   },
-        -- }
+          },
+        }
+
         telescope.load_extension 'fzf'
 
         -- puts 'telescop configured'
