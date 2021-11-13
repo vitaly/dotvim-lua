@@ -17,20 +17,36 @@ return function (use)
       },
 
       setup = function ()
-        -- print 'telescope setup'
-
-        local nnoremap = require('vimp').nnoremap
+        local vimp = require('vimp')
+        local noremap = vimp.noremap
+        local nmap = vimp.nmap
         local silent = { silent = true }
 
-        nnoremap(silent, '<localleader>,', [[<cmd>Telescope find_files<cr>]])
+        noremap('<plug>Find(file)', function ()
+          return pcall(require'telescope.builtin'.git_files) or require'telescope.builtin'.find_files()
+        end)
+        noremap('<plug>Find(buffer)', '<cmd>Telescope buffers<cr>')
+        noremap('<plug>Search(live)', '<cmd>Telescope live_grep<cr>')
+        noremap('<plug>Help()', '<cmd>Telescope help_tags<cr>')
+        noremap('<plug>Find(command)', '<cmd>Telescope commands<cr>')
+
+
+        nmap('<localleader><localleader>', '<plug>Find(file)')
+        nmap('<leader>bb', '<plug>Find(buffer)')
+        nmap('<leader>/', '<plug>Search(live)')
+        nmap('<leader>H', '<plug>Help()')
+        nmap('<leader><cr>', '<plug>Find(command)')
 
         print 'telescope setup complete'
       end,
+
       config = function ()
         local telescope = require 'telescope'
         telescope.setup {
-        --   defaults = {
-        --   },
+          defaults = {
+            layout_strategy = 'flex',
+            scroll_strategy = 'cycle',
+          },
         --   extensions = {
         --     fzf = {
         --       fuzzy = true,
@@ -40,22 +56,27 @@ return function (use)
         --     },
         --   },
           pickers = {
+            help_tags = { theme = 'ivy' },
             git_files = { theme = 'dropdown' },
             find_files = { theme = 'dropdown' },
-        --     lsp_references = { theme = 'dropdown' },
-        --     lsp_code_actions = { theme = 'dropdown' },
-        --     lsp_definitions = { theme = 'dropdown' },
-        --     lsp_implementations = { theme = 'dropdown' },
-        --     buffers = {
-        --       sort_lastused = true,
-        --       previewer = false,
-        --     },
+            commands = {
+              theme = 'dropdown',
+              previewer = false,
+            },
+            buffers = {
+              theme = 'dropdown',
+              sort_lastused = true,
+            },
+            lsp_references = { theme = 'dropdown' },
+            lsp_code_actions = { theme = 'dropdown' },
+            lsp_definitions = { theme = 'dropdown' },
+            lsp_implementations = { theme = 'dropdown' },
           },
         }
 
         telescope.load_extension 'fzf'
 
-        -- puts 'telescop configured'
+        -- puts 'telescope configured'
       end,
       cmd = 'Telescope',
       module = 'telescope',
