@@ -26,7 +26,8 @@ vim: ## run vim
 	# vim lua/my/plugins.lua
 	#vim init.lua
 	# vim lua/**/*.lua
-	vim foo.ts
+	# vim foo.ts
+	vim lua/my/plugins/git.lua
 
 sync: ## sync packer config
 	rm -f plugin/packer_compiled.lua
