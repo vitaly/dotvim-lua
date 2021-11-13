@@ -20,7 +20,7 @@ function m.plugin(name)
 end
 
 
-for _,f in ipairs({ 'compile', 'install', 'sync', 'update' }) do
+for _,f in ipairs({ 'compile', 'sync' }) do
   m[f] = function()
     require('vimp').unmap_all()
     packer[f]()
@@ -28,7 +28,7 @@ for _,f in ipairs({ 'compile', 'install', 'sync', 'update' }) do
   end
 end
 
-for _,f in ipairs({ 'status', 'clean' }) do
+for _,f in ipairs({ 'status', 'install', 'update', 'clean' }) do
   m[f] = function()
     packer[f]()
     return m
