@@ -210,12 +210,10 @@ inoremap <C-L> <Right>
 cnoremap <C-K> <Up>
 cnoremap <C-J> <Down>
 
-
-
 function! s:load_vimrc_background()
   if filereadable(expand("~/.vimrc_background"))
     let base16colorspace=256
-    source ~/.vimrc_background
+    try | source ~/.vimrc_background | catch | echo "colorscheme load error" | endtry
   endif
 endfunction
 

@@ -27,6 +27,7 @@ return function (use)
         noremap('<plug>Refactor(rename)',      '<cmd>lua vim.lsp.buf.rename()<CR>')
         noremap('<plug>Goto(references)',      '<cmd>lua require"telescope.builtin".lsp_references()<CR>')
         noremap('<plug>Code(actions)',         '<cmd>lua require"telescope.builtin".lsp_code_actions()<CR>')
+        noremap('<plug>Goto(first)',           '<cmd>normal gg<cr><cmd>lua vim.lsp.diagnostic.goto_next()<cr>')
         noremap('<plug>Goto(next)',            '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>')
         noremap('<plug>Goto(previous)',        '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>')
 
@@ -37,8 +38,11 @@ return function (use)
         nmap(buffer, '<localleader>gr', '<plug>Goto(references)')
         nmap(buffer, '<localleader>gT', '<plug>Goto(type)')
         nmap(buffer, '<localleader>rr', '<plug>Refactor(rename)')
-        nmap(buffer, '<localleader>gA', '<plug>Code(actions)')
+        nmap(buffer, '<localleader>ga', '<plug>Code(actions)')
         nmap(buffer, 'K',               '<plug>Hover()')
+        nmap(buffer, '<localleader>1', '<plug>Goto(first)')
+        nmap(buffer, '<localleader>n', '<plug>Goto(next)')
+        nmap(buffer, '<localleader>p', '<plug>Goto(previous)')
 
 
         -- buf_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
@@ -118,6 +122,7 @@ return function (use)
             hi LspReferenceRead cterm=inverse gui=inverse
             hi LspReferenceWrite cterm=inverse gui=inverse
           ]]
+
           if client.resolved_capabilities.document_highlight == true then
             vim.cmd [[
               augroup lsp_highlight

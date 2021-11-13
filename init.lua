@@ -5,6 +5,7 @@ require 'my.packer.install'
 require 'my.builtins'
 require 'my.options'
 
+
 -- local g = vim.g
 -- local cmd = vim.cmd
 -- local o, wo, bo = vim.o, vim.wo, vim.bo

@@ -170,6 +170,7 @@ set.cursorcolumn = true
 -- nmap ,Q :qa<cr>
 
 -- set virtualedit=all
+set.virtualedit = 'all'
 -- set diffopt-=internal
 -- " driving me insane this thing
 -- command Q q
