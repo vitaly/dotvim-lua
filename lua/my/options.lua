@@ -60,6 +60,8 @@ end
 -- vim.opt.mouse = "a" -- enable mouse
 -- vim.opt.signcolumn = "yes" -- enable signcolumn
 -- vim.opt.clipboard = "unnamedplus" -- enable universal clipboard
+set.clipboard = "unnamedplus" -- enable universal clipboard
+
 -- vim.opt.scrolloff = 3 -- leave 3 lines up/down while scrolling
 set.scrolloff = 4 -- leave 4 lines up/down while scrolling
 -- vim.opt.tabstop = 4 -- tabs should be 4 "space" wide
