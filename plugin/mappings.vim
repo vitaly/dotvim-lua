@@ -10,6 +10,7 @@ nmap              <leader>ap<cr>          <plug>packer(Sync)
 nnoremap                                  <plug>packer(Compile)                         <cmd>PackerCompile<cr>
 nmap              <leader>apc             <plug>packer(Compile)
 nmap              <leader>ap<space>       <plug>packer(Compile)
+nmap              <leader>R               <plug>packer(Compile)
 
 nnoremap                                  <plug>packer(Install)                         <cmd>PackerInstall<cr>
 nmap              <leader>api             <plug>packer(Install)

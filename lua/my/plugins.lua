@@ -16,6 +16,7 @@ plugin('my.plugins.tmux-navigator')
 plugin('my.plugins.undo-tree')
 plugin('my.plugins.treesitter')
 plugin('my.plugins.neogen')
+plugin('my.plugins.file-tree')
 
 puts 'my.plugins loaded'
 return plugins
