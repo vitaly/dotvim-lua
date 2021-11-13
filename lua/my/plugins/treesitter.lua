@@ -1,13 +1,10 @@
 return function (use)
   use {
-    -- https://github.com/nvim-treesitter/nvim-treesitter
-    'nvim-treesitter/nvim-treesitter',
+    'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
     requires = {
-      -- https://github.com/nvim-treesitter/nvim-treesitter-refactor
-      -- 'nvim-treesitter/nvim-treesitter-refactor',
+      -- 'nvim-treesitter/nvim-treesitter-refactor', https://github.com/nvim-treesitter/nvim-treesitter-refactor
 
-      -- -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-      'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/nvim-treesitter-textobjects', -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     },
     run = ':TSUpdate',
     config = function ()

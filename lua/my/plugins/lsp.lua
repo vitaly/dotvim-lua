@@ -1,13 +1,12 @@
 return function (use)
   use {
-    {},
-    -- https://github.com/onsails/lspkind-nvim
-    { 'onsails/lspkind-nvim' },
-
-
-    -- https://github.com/neovim/nvim-lspconfig
     {
-      'neovim/nvim-lspconfig',
+      'onsails/lspkind-nvim', -- https://github.com/onsails/lspkind-nvim
+    },
+
+
+    {
+      'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
 
       config = function ()
 
@@ -158,11 +157,10 @@ return function (use)
       end,
     },
 
-    -- 'nvim-lua/lsp-status.nvim',
+    -- 'nvim-lua/lsp-status.nvim', -- https://github.com/nvim-lua/lsp-status.nvim
 
-    -- https://github.com/folke/trouble.nvim
     {
-      "folke/trouble.nvim",
+      "folke/trouble.nvim", -- https://github.com/folke/trouble.nvim
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require("trouble").setup {
@@ -172,9 +170,8 @@ return function (use)
 
 
 
-    -- https://github.com/ray-x/lsp_signature.nvim
     {
-      'ray-x/lsp_signature.nvim',
+      'ray-x/lsp_signature.nvim', -- https://github.com/ray-x/lsp_signature.nvim
       config = function ()
         require('lsp_signature').setup {
           bind = true,
@@ -185,10 +182,9 @@ return function (use)
         }
       end
     },
-    --
-    -- https://github.com/kosayoda/nvim-lightbulb
+
     {
-      'kosayoda/nvim-lightbulb',
+      'kosayoda/nvim-lightbulb', -- https://github.com/kosayoda/nvim-lightbulb
       config = function ()
         vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
       end

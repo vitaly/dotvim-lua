@@ -1,7 +1,10 @@
 return function (use)
   use {
-    -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
-    {'nvim-telescope/telescope-fzf-native.nvim', run = 'make', opt = true },
+    {
+      'nvim-telescope/telescope-fzf-native.nvim', -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
+      run = 'make',
+      opt = true,
+    },
     {
       'nvim-telescope/telescope.nvim',
       requires = {
