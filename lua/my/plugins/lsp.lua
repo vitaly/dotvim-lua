@@ -20,9 +20,7 @@ return function (use)
       },
 
       config = function ()
-
-        local vimp = require('vimp')
-        local noremap = vimp.noremap
+        local noremap = require('vimp').noremap
         noremap('<plug>Goto(declaration)',     '<cmd>lua vim.lsp.buf.declaration()<cr>')
         noremap('<plug>Goto(definitions)',     '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>')
         noremap('<plug>Hover()',               '<cmd>lua vim.lsp.buf.hover()<CR>')
@@ -38,8 +36,6 @@ return function (use)
         noremap('<plug>Goto(first)',           '<cmd>normal gg<cr><cmd>lua vim.lsp.diagnostic.goto_next()<cr>')
         noremap('<plug>Goto(next)',            '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>')
         noremap('<plug>Goto(previous)',        '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>')
-
-
 
 
 
@@ -136,8 +132,7 @@ return function (use)
             augroup END
           ]]
 
-          local vimp = require('vimp')
-          local nmap = vimp.nmap
+          local nmap = require('vimp').nmap
           local buffer = { 'silent', 'buffer' }
           nmap(buffer, '<localleader>gd', '<plug>Goto(definitions)')
           nmap(buffer, '<localleader>gD', '<plug>Goto(declaration)')

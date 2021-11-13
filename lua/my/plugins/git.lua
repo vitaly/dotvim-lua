@@ -10,7 +10,7 @@ return function (use)
       vim.fn['my#keymap#leader']('g', '+Git')
 
       noremap('<plug>(Git/Diff)',                   [[<cmd>Gdiff<cr>]])
-      noremap('<plug>(Git/Grep)',                   [[<cmd>silent Ggrep<space>]])
+      noremap('<plug>(Git/Grep)',                   [[:<c-u>silent Ggrep<space>]])
       noremap('<plug>(Git/Grep-Selection)',         [[y<cmd>let @/=escape(@", '\\[]$^*.')<cr><cmd>set hls<cr><cmd>silent Ggrep -F "<C-R>=escape(@", '\\"#')<cr>"<cr><cmd>ccl<cr><cmd>cw<cr><cr>]])
       noremap('<plug>(Git/Grep-Word-Under-Cursor)', [[<cmd>let @/="\\<<C-R><C-W>\\>"<cr><cmd>set hls<cr><cmd>silent Ggrep -w "<C-R><C-W>"<cr><cmd>ccl<cr><cmd>cw<cr><cr>]])
       noremap('<plug>(Git/Only-Status)',            [[<cmd>G<cr><c-W>o]])
