@@ -152,9 +152,9 @@ set.foldenable = false      -- dont fold by default "
 -- " set t_AB=^[[48;5;%dm
 -- " set t_AF=^[[38;5;%dm
 -- " set notermguicolors
--- if has('termguicolors') then
---   set.termguicolors = true
--- end
+if has('termguicolors') then
+  set.termguicolors = true
+end
 
 set.cursorline = true
 set.cursorcolumn = true

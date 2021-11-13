@@ -209,3 +209,19 @@ inoremap <C-L> <Right>
 
 cnoremap <C-K> <Up>
 cnoremap <C-J> <Down>
+
+
+
+function! s:load_vimrc_background()
+  if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+  endif
+endfunction
+
+nnoremap                                    <plug>(Vim/Update-Colors)       :call <SID>load_vimrc_background()<CR>
+nmap         <silent> <leader>vc            <plug>(Vim/Update-Colors)
+
+if !exists('g:skip_vimrc_background')
+  call s:load_vimrc_background()
+endif

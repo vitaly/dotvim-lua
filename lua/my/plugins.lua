@@ -58,6 +58,8 @@ use {
   end
 }
 
+use { 'chriskempson/base16-vim' }
+
 
 puts 'my.plugins loaded'
 
