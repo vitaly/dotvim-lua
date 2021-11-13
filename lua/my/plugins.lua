@@ -19,6 +19,7 @@ plugin('my.plugins.treesitter')
 plugin('my.plugins.neogen')
 plugin('my.plugins.file-tree')
 plugin('my.plugins.git')
+plugin('my.plugins.comments')
 
 puts 'my.plugins loaded'
 return plugins
