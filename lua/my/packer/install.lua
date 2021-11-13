@@ -8,7 +8,8 @@ local fn = vim.fn
 -- @param { string } repo - git repository
 -- @returns { boolean } true if was just installed
 --------------------------------------------------------------------------------
-local function install(name, path, repo)
+local function install(name, repo, dir)
+  local path = fn.stdpath('config')..'/pack/packer/'..(dir or 'start')..'/'..name
   if 0 == fn.empty(fn.glob(path)) then
     return false
   end
@@ -20,12 +21,16 @@ local function install(name, path, repo)
   return true
 end
 
-install('impatient', fn.stdpath('config')..'/pack/packer/start/impatient.nvim', 'https://github.com/lewis6991/impatient.nvim.git')
+install('impatient.nvim', 'https://github.com/lewis6991/impatient.nvim.git')
+vim.cmd [[packadd impatient.nvim]]
 require('impatient')
 
-install('vimpeccable', fn.stdpath('config')..'/pack/packer/start/vimpeccable', 'https://github.com/svermeulen/vimpeccable')
+install('plenary.nvim', 'https://github.com/nvim-lua/plenary.nvim.git')
 
-if install('packer', fn.stdpath('config')..'/pack/packer/opt/packer.nvim', 'https://github.com/wbthomason/packer.nvim') then
+
+install('vimpeccable', 'https://github.com/svermeulen/vimpeccable')
+
+if install('packer.nvim', 'https://github.com/wbthomason/packer.nvim', 'opt') then
   require('my.plugins').sync()
 end
 

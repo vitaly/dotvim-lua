@@ -20,13 +20,20 @@ function m.plugin(name)
 end
 
 
-for _,f in ipairs({ 'compile', 'install', 'status', 'sync', 'update', 'clean' }) do
+for _,f in ipairs({ 'compile', 'install', 'sync', 'update' }) do
   m[f] = function()
-    -- print('removing all mappings')
     require('vimp').unmap_all()
-    packer.compile()
+    packer[f]()
     return m
   end
 end
+
+for _,f in ipairs({ 'status', 'clean' }) do
+  m[f] = function()
+    packer[f]()
+    return m
+  end
+end
+
 
 return m
