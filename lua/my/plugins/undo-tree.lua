@@ -1,0 +1,17 @@
+return function (use)
+  use {
+    'mbbill/undotree',
+    config = function ()
+      vim.cmd [[
+      noremap             <plug>(Toggle/Unfo-Tree) :UndotreeToggle<CR>
+      nmap    <leader>Tu  <plug>(Toggle/Unfo-Tree)
+
+      " alias for quick access
+      map                 <plug>(Toggle-Unfo-Tree) <plug>(Toggle/Unfo-Tree)
+      nmap <leader>u      <plug>(Toggle-Unfo-Tree)
+
+      nmap g= :later<cr>
+   ]]
+    end
+  }
+end
