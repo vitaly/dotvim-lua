@@ -42,10 +42,18 @@ return function (use)
 
       config = function ()
         local telescope = require 'telescope'
+        local actions = require('telescope.actions')
         telescope.setup {
           defaults = {
             layout_strategy = 'flex',
             scroll_strategy = 'cycle',
+            mappings = {
+              i = {
+                ["<esc>"] = actions.close,
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous,
+              },
+            }
           },
         --   extensions = {
         --     fzf = {
