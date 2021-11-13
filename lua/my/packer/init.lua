@@ -11,42 +11,22 @@ end
 
 packer.reset()
 
-local M = {}
+local m = {}
 
-M.use = packer.use
+m.use = packer.use
 
-function M.plugin(name)
+function m.plugin(name)
   REQUIRE(name)(packer.use)
 end
 
-function M.compile()
-  packer.compile()
-  return M
+
+for _,f in ipairs({ 'compile', 'install', 'status', 'sync', 'update', 'clean' }) do
+  m[f] = function()
+    -- print('removing all mappings')
+    require('vimp').unmap_all()
+    packer.compile()
+    return m
+  end
 end
 
-function M.install()
-  packer.install()
-  return M
-end
-
-function M.status()
-  packer.status()
-  return M
-end
-
-function M.sync()
-  packer.sync()
-  return M
-end
-
-function M.update()
-  packer.update()
-  return M
-end
-
-function M.clean()
-  packer.clean()
-  return M
-end
-
-return M
+return m

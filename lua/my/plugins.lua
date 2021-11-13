@@ -1,5 +1,3 @@
-print 'loading my.plugins'
-
 local plugins = require('my.packer.init')
 local use = plugins.use
 local plugin = plugins.plugin
@@ -12,6 +10,6 @@ use { 'svermeulen/vimpeccable' }
 plugin('my.plugins.which-key')
 plugin('my.plugins.fuzzy')
 
-print 'my.plugins loaded'
+puts 'my.plugins loaded'
 
 return plugins

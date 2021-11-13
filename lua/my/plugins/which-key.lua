@@ -3,7 +3,6 @@ return function (use)
   use {
     'liuchengxu/vim-which-key',
     setup = function ()
-      print 'which key setup'
       -- TODO: convert to lua
       vim.cmd [[
         let g:WhichKeyFormatFunc = function('my#keymap#format')
@@ -19,7 +18,7 @@ return function (use)
         noremap                                 <plug>(Search/Keys)       <CMD>WhichKey ''<CR>
         nmap                  <leader>sk        <plug>(Search/Keys)
       ]]
-      print 'vim-which-key setup done!'
+      -- puts 'vim-which-key setup done!'
     end,
     config = function()
       vim.fn['which_key#register'](vim.g.mapleader, 'g:my#keymap#leader#map')

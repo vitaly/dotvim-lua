@@ -1,6 +1,7 @@
 local g  = vim.g
 local fn = vim.fn
 local set  = vim.opt
+local opt  = vim.opt
 
 local has = function(x)
   return fn.has(x) == 1
@@ -73,6 +74,10 @@ set.linebreak = true -- clean linebreaks (during wrap)
 -- vim.opt.whichwrap:append "<>hl" -- clean aligned wraps
 -- vim.opt.guifont = "Liga SFMono Nerd Font:h14" -- set guifont for neovide
 
+set.shortmess = opt.shortmess
+  + 's' -- don't give "search hit BOTTOM, continuing at TOP" etc.
+  + 'I' -- no intro message
+  + 'F' -- no info messages when loading file
 
 --------------------------------------------------------------------------------
 -- vim0 options

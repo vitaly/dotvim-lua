@@ -1,6 +1,5 @@
-DEFAULT ?= help
+DEFAULT ?= sync
 default: ${DEFAULT}
-.PHONY: default
 
 none    = \033[0m
 bold    = \033[1m
@@ -15,20 +14,22 @@ white   = \033[1m\033[37m
 
 help:: ## This Target
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n\n  make ${cyan}<target>${none}\n\n"}  /^[a-zA-Z_\/%$${}.-]+:.*?##/ { printf "\n  ${cyan}%-15s${none}%s\n", $$1, $$2 } /^## / { printf "  %-15s%s\n", "", substr($$0, 3) } /^##@/ { printf "\n${white}%s${none}\n\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
-.PHONY: help
 
 
 ##@ section A
 
 clean: ## clean generated files
 	rm -rf pack plugin/packer_compiled.lua
-.PHONY: clean
 
 vim: ## run vim
 	vim lua/my/plugins/which-key.lua
 	# vim lua/my/plugins.lua
 	# vim init.lua
-.PHONY: vim
+
+sync: ## sync packer config
+	nvim --headless -c 'autocmd User PackerComplete qa!' -c 'silent PackerSync'
+	@echo
+
 
 
 
@@ -41,3 +42,4 @@ vim: ## run vim
 #
 #
 ##
+.PHONY: default help clean vim sync

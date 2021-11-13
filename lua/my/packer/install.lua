@@ -35,8 +35,8 @@ end
 vim.cmd([[
   augroup packer_plugins
     autocmd!
-    autocmd BufWritePost */my/plugins.lua PackerCompile
-    autocmd BufWritePost */my/plugins/*.lua PackerCompile
+    autocmd BufWritePost */my/plugins.lua silent PackerCompile
+    autocmd BufWritePost */my/plugins/*.lua silent PackerCompile
   augroup end
 ]])
 
