@@ -2,4 +2,8 @@
 /plugin/packer_compiled.lua
 /.config/
 .envrc
+/tmp
 /tmp/
+/.xdg/
+/log
+/parser/

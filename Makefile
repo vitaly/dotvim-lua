@@ -19,6 +19,7 @@ help:: ## This Target
 ##@ section A
 
 clean: ## clean generated files
+	rm -rf .xdg/data/nvim
 	rm -rf pack plugin/packer_compiled.lua
 
 vim: ## run vim
