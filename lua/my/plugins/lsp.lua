@@ -20,7 +20,10 @@ return function (use)
       },
 
       config = function ()
-        local noremap = require('vimp').noremap
+        local vimp = require('vimp')
+        local noremap = vimp.noremap
+        local nmap = vimp.nmap
+
         noremap('<plug>Goto(declaration)',     '<cmd>lua vim.lsp.buf.declaration()<cr>')
         noremap('<plug>Goto(definitions)',     '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>')
         noremap('<plug>Hover()',               '<cmd>lua vim.lsp.buf.hover()<CR>')
@@ -132,18 +135,16 @@ return function (use)
             augroup END
           ]]
 
-          local nmap = require('vimp').nmap
-          local buffer = { 'silent', 'buffer' }
-          nmap(buffer, '<localleader>gd', '<plug>Goto(definitions)')
-          nmap(buffer, '<localleader>gD', '<plug>Goto(declaration)')
-          nmap(buffer, '<localleader>gr', '<plug>Goto(references)')
-          nmap(buffer, '<localleader>gT', '<plug>Goto(type)')
-          nmap(buffer, '<localleader>rr', '<plug>Refactor(rename)')
-          nmap(buffer, '<localleader>a', '<plug>Code(actions)')
-          nmap(buffer, 'K',               '<plug>Hover()')
-          nmap(buffer, '<localleader>1', '<plug>Goto(first)')
-          nmap(buffer, '<localleader>n', '<plug>Goto(next)')
-          nmap(buffer, '<localleader>p', '<plug>Goto(previous)')
+          nmap({ 'buffer' },  '<localleader>gd', '<plug>Goto(definitions)')
+          nmap({ 'buffer' },  '<localleader>gD', '<plug>Goto(declaration)')
+          nmap({ 'buffer' },  '<localleader>gr', '<plug>Goto(references)')
+          nmap({ 'buffer' },  '<localleader>gT', '<plug>Goto(type)')
+          nmap({ 'buffer' },  '<localleader>rr', '<plug>Refactor(rename)')
+          nmap({ 'buffer' },  '<localleader>a', '<plug>Code(actions)')
+          nmap({ 'buffer' },  'K',               '<plug>Hover()')
+          nmap({ 'buffer' },  '<localleader>1', '<plug>Goto(first)')
+          nmap({ 'buffer' },  '<localleader>n', '<plug>Goto(next)')
+          nmap({ 'buffer' },  '<localleader>p', '<plug>Goto(previous)')
 
         end
 
