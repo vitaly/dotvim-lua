@@ -239,3 +239,9 @@ noremap                                   <plug>Clear(Messages)                 
 
 nmap              <leader>m               <plug>Messages()
 nmap              <leader>M               <plug>Clear(Messages)
+
+noremap                                   <plug>(Next)                                  <c,d>cn<cr>
+nmap              <leader>n               <plug>(Next)
+
+noremap                                   <plug>(Prev)                                  <cmd>cp<cr>
+nmap              <leader>p               <plug>(Prev)
