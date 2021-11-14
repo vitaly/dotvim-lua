@@ -59,7 +59,6 @@ return function (use)
         nmap('<leader>altr', '<plug>LSP(Refresh-Trouble)')
 
 
-
         -- buf_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
         -- buf_keymap(0, 'n', 'gi', '<cmd>lua require"telescope.builtin".lsp_implementations()<CR>', keymap_opts)
         -- buf_keymap(0, 'n', 'gS', '<cmd>lua vim.lsp.buf.signature_help()<CR>', keymap_opts)
@@ -186,8 +185,16 @@ return function (use)
             opts.settings = {
               Lua = {
                 diagnostics = { globals = { 'vim', 'noremap', 'nmap', 'xmap', 'cmap' } },
+                -- runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
+                -- workspace = {
+                --   library = {
+                --     [vim.fn.expand '$VIMRUNTIME/lua'] = true,
+                --     [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
+                --   },
+                -- },
               },
             }
+              -- opts.root_dir = function() ... end
           end
 
           -- This setup() function is exactly the same as lspconfig's setup function.
@@ -232,5 +239,4 @@ return function (use)
       end
     },
   }
-
 end

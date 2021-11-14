@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: different-requires
 local packer_init = require('my.packer.init')
 local use = packer_init.use
 local plugin = packer_init.plugin
