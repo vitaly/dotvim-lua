@@ -37,6 +37,28 @@ return function (use)
         noremap('<plug>Goto(previous)',        '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>')
 
 
+        noremap('<plug>LSP(Info)', '<cmd>LspInfo<cr>')
+        noremap('<plug>LSP(Installed)', '<cmd>LspInstallInfo<cr>')
+        noremap('<plug>LSP(Start)', '<cmd>LspStart<cr>')
+        noremap('<plug>LSP(Stop)', '<cmd>LspStop<cr>')
+        noremap('<plug>LSP(Restart)', '<cmd>LspRestart<cr>')
+        noremap('<plug>LSP(Trouble)', '<cmd>LspTroubleToggle<cr>')
+        noremap('<plug>LSP(Workspace-Trouble)', '<cmd>LspTroubleWorkspaceToggle<cr>')
+        noremap('<plug>LSP(Refresh-Trouble)', '<cmd>LspTroubleRefresh<cr>')
+
+        vim.fn['my#keymap#leader']('al', '+LSP')
+        nmap('<leader>ali', '<plug>LSP(Info)')
+        nmap('<leader>alI', '<plug>LSP(Installed)')
+        nmap('<leader>als', '<plug>LSP(Start)')
+        nmap('<leader>alS', '<plug>LSP(Stop)')
+        nmap('<leader>alR', '<plug>LSP(Restart)')
+
+        vim.fn['my#keymap#leader']('alt', '+Trouble')
+        nmap('<leader>altt', '<plug>LSP(Trouble)')
+        nmap('<leader>altw', '<plug>LSP(Workspace-Trouble)')
+        nmap('<leader>altr', '<plug>LSP(Refresh-Trouble)')
+
+
 
         -- buf_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
         -- buf_keymap(0, 'n', 'gi', '<cmd>lua require"telescope.builtin".lsp_implementations()<CR>', keymap_opts)
