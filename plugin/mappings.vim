@@ -101,17 +101,14 @@ nmap              <leader>felp            <plug>(File/Edit/Local/Plugins)
 noremap                                   <plug>(File/Edit/Local/Bindings)              <cmd>e ~/.vim/local/vimrc.bindings<cr>
 nmap              <leader>felb            <plug>(File/Edit/Local/Bindings)
 
-call my#keymap#leader('q', '+Quit')
-
 noremap                                   <plug>(Quit-All)                              <cmd>qa<cr>
 nmap              <leader>q               <plug>(Quit-All)
 
-noremap                                   <plug>Window(Quit)                           <cmd>q<cr>
-nmap              <leader>x               <plug>Window(Quit)
-
 call my#keymap#leader('w', '+Window' )
 
+noremap                                   <plug>Window(Quit)                           <cmd>q<cr>
 nmap              <leader>wq              <plug>Window(Quit)
+nmap              <leader>x               <plug>Window(Quit)
 
 noremap                                   <plug>(Window/Max-Width)                      <C-w><bar>
 nmap              <leader>w<bar>          <plug>(Window/Max-Width)
