@@ -79,13 +79,6 @@ return function (use)
 
 
 
-        local lspconfig = require('lspconfig')
-
-
-
-
-
-
         vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
             virtual_text = false,
             signs = true,
@@ -145,13 +138,6 @@ return function (use)
         end
 
         local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-        local opts = {
-          on_attach = on_attach,
-          capabilities = capabilities,
-          flags = {
-            debounce_text_changes = 150,
-          }
-        }
 
         -- local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
         -- for _, server in ipairs(servers) do
@@ -162,10 +148,25 @@ return function (use)
         -- Alternatively, you may also register handlers on specific server instances instead (see example below).
         require("nvim-lsp-installer").on_server_ready(function(server)
 
+          local opts = {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            flags = {
+              debounce_text_changes = 150,
+            }
+          }
+
           -- (optional) Customize the options passed to the server
           -- if server.name == "tsserver" then
           --     opts.root_dir = function() ... end
           -- end
+          if server.name == "sumneko_lua" then
+            opts.settings = {
+              Lua = {
+                diagnostics = { globals = { 'vim', 'noremap', 'nmap', 'xmap', 'cmap' } },
+              },
+            }
+          end
 
           -- This setup() function is exactly the same as lspconfig's setup function.
           -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md

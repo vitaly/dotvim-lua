@@ -2,7 +2,7 @@ vim.cmd "packadd packer.nvim"
 
 local packer = nil
 if packer == nil then
-  packer = require 'packer'
+  packer = require('packer')
   packer.init {
     package_root = vim.fn.stdpath('config') .. '/pack',
     disable_commands = true
