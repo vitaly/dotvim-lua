@@ -1,7 +1,9 @@
----@diagnostic disable-next-line: different-requires
-local packer_init = require('my.packer.init')
-local use = packer_init.use
-local plugin = packer_init.plugin
+local pinit = REQUIRE('my.packer.init')
+local use = pinit.use
+
+local function plugin(name)
+  REQUIRE(name)(use)
+end
 
 use { 'wbthomason/packer.nvim', opt = true }
 use { 'lewis6991/impatient.nvim' }
@@ -24,4 +26,4 @@ plugin('my.plugins.comments')
 plugin('my.plugins.zoom')
 
 puts 'my.plugins loaded'
-return packer_init
+return pinit

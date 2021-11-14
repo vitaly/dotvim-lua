@@ -15,11 +15,6 @@ local m = {}
 
 m.use = packer.use
 
-function m.plugin(name)
-  REQUIRE(name)(packer.use)
-end
-
-
 for _,f in ipairs({ 'compile', 'sync' }) do
   m[f] = function()
     require('vimp').unmap_all()
