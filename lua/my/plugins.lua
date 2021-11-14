@@ -21,6 +21,7 @@ plugin('my.plugins.neogen')
 plugin('my.plugins.file-tree')
 plugin('my.plugins.git')
 plugin('my.plugins.comments')
+plugin('my.plugins.zoom')
 
 puts 'my.plugins loaded'
 return packer_init
