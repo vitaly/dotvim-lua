@@ -7,7 +7,6 @@ return function (use)
       },
       config = function()
         require('gitsigns').setup()
-        puts 'config gitsigns'
       end,
     },
     {
