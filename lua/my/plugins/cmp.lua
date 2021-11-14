@@ -75,7 +75,9 @@ return function (use)
           },
 
 
-          ["<Tab>"] = cmp.mapping(function (fallback)
+          ["<Tab>"] = cmp.mapping {
+
+            i = function (fallback)
               if cmp.visible() then
                 cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
               -- elseif require("luasnip").expand_or_jumpable() then
@@ -85,7 +87,17 @@ return function (use)
               else
                 fallback()
               end
-            end, { 'i', 's' }),
+            end,
+
+            s = function (fallback)
+              if cmp.visible() then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+              else
+                fallback()
+              end
+            end,
+
+          },
 
           ["<S-Tab>"] = cmp.mapping(function (fallback)
               if cmp.visible() then

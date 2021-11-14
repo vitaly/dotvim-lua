@@ -184,7 +184,7 @@ return function (use)
           if server.name == "sumneko_lua" then
             opts.settings = {
               Lua = {
-                diagnostics = { globals = { 'vim', 'map', 'noremap', 'nmap', 'nnoremap', 'xmap', 'xnoremap', 'cmap', 'cnoremap' } },
+                diagnostics = { globals = { 'vim', 'map', 'noremap', 'nmap', 'nnoremap', 'xmap', 'xnoremap', 'cmap', 'cnoremap', 'imap', 'inoremap' } },
                 -- runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
                 -- workspace = {
                 --   library = {
