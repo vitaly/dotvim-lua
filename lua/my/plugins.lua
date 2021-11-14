@@ -10,6 +10,7 @@ use { 'lewis6991/impatient.nvim' }
 use { 'nvim-lua/plenary.nvim' }
 use { 'svermeulen/vimpeccable' } -- https://github.com/svermeulen/vimpeccable
 use { 'chriskempson/base16-vim' }
+use { 'tpope/vim-repeat' } -- '.' replacement with support for plugins
 use { 'tpope/vim-surround' } -- https://github.com/tpope/vim-surround
 use { 'editorconfig/editorconfig-vim' }
 
