@@ -11,6 +11,7 @@ use { 'nvim-lua/plenary.nvim' }
 use { 'svermeulen/vimpeccable' } -- https://github.com/svermeulen/vimpeccable
 use { 'chriskempson/base16-vim' }
 use { 'tpope/vim-surround' } -- https://github.com/tpope/vim-surround
+use { 'editorconfig/editorconfig-vim' }
 
 plugin('my.plugins.which-key')
 plugin('my.plugins.fuzzy')
