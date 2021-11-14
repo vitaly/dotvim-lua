@@ -1,16 +1,4 @@
-function _G.PRINT (v)
-  print(vim.inspect(v))
-  return v
-end
-
-function _G.RELOAD(...)
-  return require("plenary.reload").reload_module(...)
-end
-
-function _G.REQUIRE(name)
-  RELOAD(name)
-  return require(name)
-end
+_G.VERBOSE = false
 
 function _G.puts(...)
   local objects = {}
@@ -30,6 +18,26 @@ function _G.inspect(...)
     table.insert(objects, vim.inspect(v))
   end
 
-  print(table.concat(objects, '\n'))
-  return ...
+  return table.concat(objects, '\n')
+end
+
+function _G.PRINT (v)
+  print(vim.inspect(v))
+  return v
+end
+
+function _G.RELOAD(name)
+  if VERBOSE then
+    puts("reload(" .. name .. ")")
+  end
+  return require("plenary.reload").reload_module(name)
+end
+
+function _G.REQUIRE(name)
+  RELOAD(name)
+
+  if VERBOSE then
+    puts("require(" .. name .. ")")
+  end
+  return require(name)
 end
