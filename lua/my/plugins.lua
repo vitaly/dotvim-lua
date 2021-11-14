@@ -16,12 +16,10 @@ use 'tpope/vim-surround'            -- https://github.com/tpope/vim-surround
 use 'editorconfig/editorconfig-vim'
 use {
   'github/copilot.vim',
-
   setup = function ()
     vim.g.copilot_no_tab_map = 1
     vim.g.copilot_assume_mapped = 1
-
-    imap({'nowait', 'expr'}, '<C-Space>', [[copilot#Accept()]])
+    imap({'nowait', 'expr'}, '<C-Space>', [[copilot#Accept('')]])
   end,
 
 }

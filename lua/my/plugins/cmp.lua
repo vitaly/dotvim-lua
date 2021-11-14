@@ -28,7 +28,6 @@ return function (use)
     },
 
     config = function ()
-
       local cmp = require 'cmp'
 
       local lspkind = require 'lspkind'
@@ -48,7 +47,7 @@ return function (use)
 
         experimental = {
           native_menu = false,
-          ghost_text = true,
+          ghost_text = false,
         },
 
         snippet = {
@@ -74,30 +73,20 @@ return function (use)
             c = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), -- for some reason 'Select' doesn't work in command line completion
           },
 
+          ["<Tab>"] = cmp.mapping(function (fallback)
+            if cmp.visible() then
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
 
-          ["<Tab>"] = cmp.mapping {
-
-            i = function (fallback)
-              if cmp.visible() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
               -- elseif require("luasnip").expand_or_jumpable() then
-              elseif vim.fn['vsnip#jumpable'](1) then
-                -- vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true), "")
-              else
-                fallback()
-              end
-            end,
+            elseif vim.fn['vsnip#jumpable'](1) > 0 then
+              -- vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+              vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true), "")
+            else
+              -- fallback()
+              vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-Space>", true, true, true), "")
 
-            s = function (fallback)
-              if cmp.visible() then
-                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-              else
-                fallback()
-              end
-            end,
-
-          },
+            end
+          end, { 'i', 's'}),
 
           ["<S-Tab>"] = cmp.mapping(function (fallback)
               if cmp.visible() then
@@ -114,6 +103,7 @@ return function (use)
           ["<C-f>"]   = cmp.mapping.scroll_docs(5),
 
           ["<C-e>"]   = cmp.mapping.close(),
+          ["<esc>"]   = cmp.mapping.close(),
         },
 
         formatting = {
