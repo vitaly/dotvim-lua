@@ -9,11 +9,18 @@ use { 'wbthomason/packer.nvim', opt = true }
 
 use 'lewis6991/impatient.nvim'
 use 'nvim-lua/plenary.nvim'
-use 'svermeulen/vimpeccable' -- https://github.com/svermeulen/vimpeccable
+use 'svermeulen/vimpeccable'        -- https://github.com/svermeulen/vimpeccable
 use 'chriskempson/base16-vim'
-use 'tpope/vim-repeat' -- '.' replacement with support for plugins
-use 'tpope/vim-surround' -- https://github.com/tpope/vim-surround
+use 'tpope/vim-repeat'              -- '.' replacement with support for plugins
+use 'tpope/vim-surround'            -- https://github.com/tpope/vim-surround
 use 'editorconfig/editorconfig-vim'
+
+use {
+  'junegunn/vim-easy-align', -- https://github.com/junegunn/vim-easy-align
+  config = function()
+    xmap('<Enter>', '<Plug>(LiveEasyAlign)')
+  end
+}
 
 plugin('my.plugins.which-key')
 plugin('my.plugins.fuzzy')
