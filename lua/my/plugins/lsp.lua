@@ -53,10 +53,9 @@ return function (use)
         nmap('<leader>alS', '<plug>LSP(Stop)')
         nmap('<leader>alR', '<plug>LSP(Restart)')
 
-        vim.fn['my#keymap#leader']('alt', '+Trouble')
-        nmap('<leader>altt', '<plug>LSP(Trouble)')
-        nmap('<leader>altw', '<plug>LSP(Workspace-Trouble)')
-        nmap('<leader>altr', '<plug>LSP(Refresh-Trouble)')
+        nmap('<leader>alt', '<plug>LSP(Trouble)')
+        nmap('<leader>alw', '<plug>LSP(Workspace-Trouble)')
+        nmap('<leader>alr', '<plug>LSP(Refresh-Trouble)')
 
 
         -- buf_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
@@ -145,10 +144,11 @@ return function (use)
             augroup END
           ]]
 
-          nmap({ 'buffer' },  '<localleader>gd', '<plug>Goto(definitions)')
-          nmap({ 'buffer' },  '<localleader>gD', '<plug>Goto(declaration)')
-          nmap({ 'buffer' },  '<localleader>gr', '<plug>Goto(references)')
-          nmap({ 'buffer' },  '<localleader>gT', '<plug>Goto(type)')
+          nmap({ 'buffer' },  'gd', '<plug>Goto(definitions)')
+          nmap({ 'buffer' },  'gD', '<plug>Goto(declaration)')
+          nmap({ 'buffer' },  'gr', '<plug>Goto(references)')
+          nmap({ 'buffer' },  'gT', '<plug>Goto(type)')
+
           nmap({ 'buffer' },  '<localleader>rr', '<plug>Refactor(rename)')
           nmap({ 'buffer' },  '<localleader>a', '<plug>Code(actions)')
           nmap({ 'buffer' },  'K',               '<plug>Hover()')
@@ -184,7 +184,7 @@ return function (use)
           if server.name == "sumneko_lua" then
             opts.settings = {
               Lua = {
-                diagnostics = { globals = { 'vim', 'noremap', 'nmap', 'xmap', 'cmap' } },
+                diagnostics = { globals = { 'vim', 'map', 'noremap', 'nmap', 'nnoremap', 'xmap', 'xnoremap', 'cmap', 'cnoremap' } },
                 -- runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
                 -- workspace = {
                 --   library = {
