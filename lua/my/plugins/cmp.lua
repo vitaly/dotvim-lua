@@ -27,54 +27,7 @@ return function (use)
 
       local lspkind = require 'lspkind'
 
-      local kind_symbols = {
-        -- Text = '',
-        Method = 'Ƒ',
-        Function = 'ƒ',
-        -- Constructor = '',
-        -- Variable = '',
-        -- Class = '',
-        -- Interface = 'ﰮ',
-        -- Module = '',
-        -- Property = '',
-        -- Unit = '',
-        -- Value = '',
-        -- Enum = '了',
-        -- Keyword = '',
-        -- Snippet = '﬌',
-        -- Color = '',
-        -- File = '',
-        -- Folder = '',
-        -- EnumMember = '',
-        -- Constant = '',
-        -- Struct = '',
-        --
-        -- Text = "",
-        -- Method = "",
-        -- Function = "",
-        -- Constructor = "",
-        -- Field = "ﰠ",
-        -- Variable = "",
-        -- Class = "ﴯ",
-        -- Interface = "",
-        -- Module = "",
-        -- Property = "ﰠ",
-        -- Unit = "塞",
-        -- Value = "",
-        -- Enum = "",
-        -- Keyword = "",
-        -- Snippet = "",
-        -- Color = "",
-        -- File = "",
-        -- Reference = "",
-        -- Folder = "",
-        -- EnumMember = "",
-        -- Constant = "",
-        -- Struct = "פּ",
-        -- Event = "",
-        -- Operator = "",
-        -- TypeParameter = "",
-      }
+      local kind_symbols = require('my.config.icons').nvimtree
 
       -- lspkind.init { symbol_map = kind_symbols }
 
