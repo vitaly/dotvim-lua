@@ -28,5 +28,5 @@ plugin('my.plugins.git')
 plugin('my.plugins.comments')
 plugin('my.plugins.zoom')
 
-puts 'my.plugins loaded'
+-- puts 'my.plugins loaded'
 return pinit
