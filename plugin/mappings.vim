@@ -207,8 +207,6 @@ inoremap          <C-J>                                                         
 inoremap          <C-H>                                                                 <Left>
 inoremap          <C-L>                                                                 <Right>
 
-cnoremap          <C-K>                                                                 <Up>
-cnoremap          <C-J>                                                                 <Down>
 
 function! s:load_vimrc_background()
   if filereadable(expand("~/.vimrc_background"))
@@ -237,7 +235,7 @@ noremap                                   <plug>Clear(Messages)                 
 nmap              <leader>m               <plug>Messages()
 nmap              <leader>M               <plug>Clear(Messages)
 
-noremap                                   <plug>(Next)                                  <c,d>cn<cr>
+noremap                                   <plug>(Next)                                  <cmd>cn<cr>
 nmap              <leader>n               <plug>(Next)
 
 noremap                                   <plug>(Prev)                                  <cmd>cp<cr>
