@@ -20,10 +20,6 @@ return function (use)
       },
 
       config = function ()
-        local vimp = require('vimp')
-        local noremap = vimp.noremap
-        local nmap = vimp.nmap
-
         noremap('<plug>Goto(declaration)',     '<cmd>lua vim.lsp.buf.declaration()<cr>')
         noremap('<plug>Goto(definitions)',     '<cmd>lua require("telescope.builtin").lsp_definitions()<cr>')
         noremap('<plug>Hover()',               '<cmd>lua vim.lsp.buf.hover()<CR>')

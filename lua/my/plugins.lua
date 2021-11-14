@@ -1,6 +1,6 @@
-local plugins = require('my.packer.init')
-local use = plugins.use
-local plugin = plugins.plugin
+local packer_init = require('my.packer.init')
+local use = packer_init.use
+local plugin = packer_init.plugin
 
 use { 'wbthomason/packer.nvim', opt = true }
 use { 'lewis6991/impatient.nvim' }
@@ -22,4 +22,4 @@ plugin('my.plugins.git')
 plugin('my.plugins.comments')
 
 puts 'my.plugins loaded'
-return plugins
+return packer_init

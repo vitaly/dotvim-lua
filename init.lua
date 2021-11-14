@@ -2,6 +2,7 @@
 
 require 'my.globals'
 require 'my.packer.install'
+require 'my.utils'
 require 'my.builtins'
 require 'my.options'
 
