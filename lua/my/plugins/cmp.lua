@@ -3,10 +3,16 @@ return function (use)
     'hrsh7th/nvim-cmp', -- https://github.com/hrsh7th/nvim-cmp
     requires = {
 
-      'honza/vim-snippets',
+      -- 'honza/vim-snippets',
+      {
+        'rafamadriz/friendly-snippets',
+        event = "InsertEnter",
+      },
 
-      'L3MON4D3/LuaSnip', -- https://github.com/L3MON4D3/LuaSnip
-      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+      'hrsh7th/vim-vsnip', -- https://github.com/hrsh7th/vim-vsnip
+      'hrsh7th/cmp-vsnip',
+      -- 'L3MON4D3/LuaSnip', -- https://github.com/L3MON4D3/LuaSnip
+      -- { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
 
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
       'hrsh7th/cmp-nvim-lsp',
@@ -29,15 +35,13 @@ return function (use)
 
       local kind_symbols = require('my.config.icons').nvimtree
 
-      -- lspkind.init { symbol_map = kind_symbols }
-
       lspkind.init {
         with_text = true,
         preset = 'default',
         symbol_map = kind_symbols,
       }
 
-      local luasnip = require 'luasnip'
+      -- local luasnip = require 'luasnip'
 
       cmp.setup {
         completion = { completeopt = 'menuone,noinsert,noselect,preview' },
@@ -49,7 +53,8 @@ return function (use)
 
         snippet = {
           expand = function(args)
-            luasnip.lsp_expand(args.body)
+            vim.fn["vsnip#anonymous"](args.body)
+            -- luasnip.lsp_expand(args.body)
           end,
         },
 
@@ -73,8 +78,10 @@ return function (use)
           ["<Tab>"] = cmp.mapping(function (fallback)
               if cmp.visible() then
                 cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-              elseif require("luasnip").expand_or_jumpable() then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+              -- elseif require("luasnip").expand_or_jumpable() then
+              elseif vim.fn['vsnip#jumpable'](1) then
+                -- vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true), "")
               else
                 fallback()
               end
@@ -83,8 +90,9 @@ return function (use)
           ["<S-Tab>"] = cmp.mapping(function (fallback)
               if cmp.visible() then
                 cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-              elseif require("luasnip").jumpable() then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+              -- elseif require("luasnip").jumpable() then
+              elseif vim.fn['vsnip#jumpable'](-1) then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump-prev)", true, true, true), "")
               else
                 fallback()
               end
@@ -105,7 +113,8 @@ return function (use)
           { name = 'nvim_lsp' },
           { name = 'nvim_lua' },
           { name = 'path' },
-          { name = 'luasnip' },
+          -- { name = 'luasnip' },
+          { name = 'vsnip' },
         },
       }
 
