@@ -13,7 +13,7 @@ return function (use)
 
         highlight = { enable = true, use_languagetree = true },
 
-        indent = { enable = true },
+        indent = { enable = false },
 
 
         incremental_selection = {

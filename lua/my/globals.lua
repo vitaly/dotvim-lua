@@ -21,9 +21,9 @@ function _G.inspect(...)
   return table.concat(objects, '\n')
 end
 
-function _G.PRINT (v)
-  print(vim.inspect(v))
-  return v
+function _G.PRINT (...)
+  print(inspect(...))
+  return ...
 end
 
 function _G.RELOAD(name)
