@@ -23,6 +23,7 @@ return function (use)
     config = function()
       vim.fn['which_key#register'](vim.g.mapleader, 'g:my#keymap#leader#map')
       vim.fn['which_key#register'](vim.g.maplocalleader, 'g:my#keymap#localleader#map')
+      vim.opt.timeoutlen = 500      -- 0.5s before keymap menu
     end,
   }
 end
