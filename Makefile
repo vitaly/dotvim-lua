@@ -24,10 +24,10 @@ clean: ## clean generated files
 vim: ## run vim
 	#vim lua/my/plugins/which-key.lua
 	# vim lua/my/plugins.lua
-	#vim init.lua
+	# #vim init.lua
 	# vim lua/**/*.lua
-	# vim foo.ts
-	vim lua/my/plugins/git.lua
+	vim foo.ts
+	# vim lua/my/plugins/git.lua
 
 sync: ## sync packer config
 	rm -f plugin/packer_compiled.lua

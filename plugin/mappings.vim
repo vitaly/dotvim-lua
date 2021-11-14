@@ -158,58 +158,58 @@ noremap                                   <plug>(Last-Buffer) <cmd>b#<cr>
 nmap              <leader><Tab>           <plug>(Last-Buffer)
 
 " keep selection after in/outdent
-xnoremap < <gv
-xnoremap > >gv
+xnoremap          < <gv
+xnoremap          > >gv
 
 " better navigation of wrapped lines
-nnoremap j gj
-nnoremap k gk
+nnoremap          j gj
+nnoremap          k gk
 
 " easier increment/decrement
-nnoremap + <C-a>
-nnoremap - <C-x>
+nnoremap          + <C-a>
+nnoremap          - <C-x>
 
 " center display after searching
-nnoremap n   nzz
-nnoremap N   Nzz
-nnoremap *   *zz
-nnoremap #   #zz
-nnoremap g*  g*zz
-nnoremap g#  g#z
+nnoremap          n   nzz
+nnoremap          N   Nzz
+nnoremap          *   *zz
+nnoremap          #   #zz
+nnoremap          g*  g*zz
+nnoremap          g#  g#z
 
 " disable paste mode when leaving Insert Mode
 au InsertLeave * set nopaste
 
 " fast expand current file's directory in command mode
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-cnoremap %^ <C-R>=expand('%:p:h').'/'<cr>
+cnoremap          %% <C-R>=expand('%:h').'/'<cr>
+cnoremap          %^ <C-R>=expand('%:p:h').'/'<cr>
 
 
 call my#keymap#leader('Y', '+Yank')
 
-noremap                     <plug>(Yank/File-Path)            :let @*=expand("%")<cr>:echo "Copied file path to clipboard"<cr>
-nmap     <leader>Yp         <plug>(Yank/File-Path)
+noremap                                   <plug>(Yank/File-Path)                        :let @*=expand("%")<cr>:echo "Copied file path to clipboard"<cr>
+nmap              <leader>Yp              <plug>(Yank/File-Path)
 
-noremap                     <plug>(Yank/File-Name)            :let @*=expand("%:t")<cr>:echo "Copied file name to clipboard"<cr>
-nmap     <leader>Yf         <plug>(Yank/File-Name)
+noremap                                   <plug>(Yank/File-Name)                        :let @*=expand("%:t")<cr>:echo "Copied file name to clipboard"<cr>
+nmap              <leader>Yf              <plug>(Yank/File-Name)
 
-noremap                     <plug>(Yank/File-Directory)       :let @*=expand("%:h")<cr>:echo "Copied file directory to clipboard"<cr>
-nmap     <leader>Yd         <plug>(Yank/File-Directory)
+noremap                                   <plug>(Yank/File-Directory)                   :let @*=expand("%:h")<cr>:echo "Copied file directory to clipboard"<cr>
+nmap              <leader>Yd              <plug>(Yank/File-Directory)
 
-noremap  <silent>           <plug>(Yank/Current-Directory)    :let @*=getcwd()<cr>:echo @*<cr>
-nmap     <leader>Y.         <plug>(Yank/Current-Directory)
-
-
+noremap           <silent>                <plug>(Yank/Current-Directory)                :let @*=getcwd()<cr>:echo @*<cr>
+nmap              <leader>Y.              <plug>(Yank/Current-Directory)
 
 
-inoremap <C-K> <Up>
-inoremap <C-J> <Down>
 
-inoremap <C-H> <Left>
-inoremap <C-L> <Right>
 
-cnoremap <C-K> <Up>
-cnoremap <C-J> <Down>
+inoremap          <C-K>                                                                 <Up>
+inoremap          <C-J>                                                                 <Down>
+
+inoremap          <C-H>                                                                 <Left>
+inoremap          <C-L>                                                                 <Right>
+
+cnoremap          <C-K>                                                                 <Up>
+cnoremap          <C-J>                                                                 <Down>
 
 function! s:load_vimrc_background()
   if filereadable(expand("~/.vimrc_background"))
@@ -218,16 +218,22 @@ function! s:load_vimrc_background()
   endif
 endfunction
 
-nnoremap                                    <plug>(Vim/Update-Colors)       :call <SID>load_vimrc_background()<CR>
-nmap         <silent> <leader>vc            <plug>(Vim/Update-Colors)
+nnoremap                                  <plug>(Vim/Update-Colors)                     :call <SID>load_vimrc_background()<CR>
+nmap     <silent> <leader>vc              <plug>(Vim/Update-Colors)
 
 if !exists('g:skip_vimrc_background')
   call s:load_vimrc_background()
 endif
 
 
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-xnoremap <C-j> :m '>+1<CR>gv=gv
-xnoremap <C-k> :m '<-2<CR>gv=gv
+nnoremap          <C-j>                                                                 :m .+1<CR>==
+nnoremap          <C-k>                                                                 :m .-2<CR>==
+xnoremap          <C-j>                                                                 :m '>+1<CR>gv=gv
+xnoremap          <C-k>                                                                 :m '<-2<CR>gv=gv
 
+
+noremap                                   <plug>Messages()                              <cmd>messages<cr>
+noremap                                   <plug>Clear(Messages)                         <cmd>messages clear<cr>
+
+nmap              <leader>m               <plug>Messages()
+nmap              <leader>M               <plug>Clear(Messages)
