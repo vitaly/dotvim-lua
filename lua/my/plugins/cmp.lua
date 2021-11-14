@@ -3,6 +3,8 @@ return function (use)
     'hrsh7th/nvim-cmp', -- https://github.com/hrsh7th/nvim-cmp
     requires = {
 
+      'honza/vim-snippets',
+
       'L3MON4D3/LuaSnip', -- https://github.com/L3MON4D3/LuaSnip
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
 
@@ -13,6 +15,9 @@ return function (use)
       {
         'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs
         -- after = 'nvim-cmp',
+      },
+      {
+        'onsails/lspkind-nvim', -- https://github.com/onsails/lspkind-nvim
       },
     },
 
@@ -80,8 +85,14 @@ return function (use)
       }
 
       local luasnip = require 'luasnip'
+
       cmp.setup {
-        completion = { completeopt = 'menu,menuone,noinsert.noselect,preview' },
+        completion = { completeopt = 'menuone,noinsert,noselect,preview' },
+
+        experimental = {
+          native_menu = false,
+          ghost_text = true,
+        },
 
         snippet = {
           expand = function(args)
@@ -89,17 +100,52 @@ return function (use)
           end,
         },
 
+        mapping = {
+          ['<CR>']    = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }), -- XXX: WTF is ConfirmBehavior.Replace
+          -- ['<CR>']    = cmp.mapping.confirm({ select = true }),
+
+          ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), { 'i', 'c' }),
+          ["<C-j>"]   =  cmp.mapping {
+              i = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+              c = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), -- for some reason 'Select' doesn't work in command line completion
+          },
+
+          ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), { 'i', 'c' }),
+          ["<C-k>"] = cmp.mapping {
+            i = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+            c = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), -- for some reason 'Select' doesn't work in command line completion
+          },
+
+
+          ["<Tab>"] = cmp.mapping(function (fallback)
+              if cmp.visible() then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+              elseif require("luasnip").expand_or_jumpable() then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+              else
+                fallback()
+              end
+            end, { 'i', 's' }),
+
+          ["<S-Tab>"] = cmp.mapping(function (fallback)
+              if cmp.visible() then
+                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+              elseif require("luasnip").jumpable() then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+              else
+                fallback()
+              end
+            end, { 'i', 's' }),
+
+          ["<C-b>"]   = cmp.mapping.scroll_docs(-5),
+          ["<C-f>"]   = cmp.mapping.scroll_docs(5),
+
+          ["<C-e>"]   = cmp.mapping.close(),
+        },
+
         formatting = {
           format = lspkind.cmp_format({maxwidth = 50})
         },
-
-
-        -- formatting = {
-        --   format = function(_, vim_item)
-        --     vim_item.kind = lspkind.presets.default[vim_item.kind] .. ' ' .. vim_item.kind
-        --     return vim_item
-        --   end,
-        -- },
 
         sources = {
           { name = 'buffer' },
@@ -125,7 +171,7 @@ return function (use)
 
     end,
 
-    event = 'InsertEnter *',
+    event = { 'InsertEnter', 'CmdlineEnter' },
 
   }
 end
