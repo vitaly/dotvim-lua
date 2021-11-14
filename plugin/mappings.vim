@@ -106,10 +106,12 @@ call my#keymap#leader('q', '+Quit')
 noremap                                   <plug>(Quit-All)                              <cmd>qa<cr>
 nmap              <leader>q               <plug>(Quit-All)
 
-noremap                                   <plug>(Quit-Window)                           <cmd>q<cr>
-nmap              <leader>x               <plug>(Quit-Window)
+noremap                                   <plug>Window(Quit)                           <cmd>q<cr>
+nmap              <leader>x               <plug>Window(Quit)
 
 call my#keymap#leader('w', '+Window' )
+
+nmap              <leader>wq              <plug>Window(Quit)
 
 noremap                                   <plug>(Window/Max-Width)                      <C-w><bar>
 nmap              <leader>w<bar>          <plug>(Window/Max-Width)
