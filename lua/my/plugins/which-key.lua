@@ -59,7 +59,11 @@ return function (use)
       which_key.register({
         g = {
           c = 'Toggle Comment',
-        }
+        },
+        ['<leader>'] = {
+          [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
+
+        },
       }, { mode = 'x' })
 
     end
