@@ -5,6 +5,7 @@ return function (use)
       -- 'nvim-treesitter/nvim-treesitter-refactor', https://github.com/nvim-treesitter/nvim-treesitter-refactor
 
       'nvim-treesitter/nvim-treesitter-textobjects', -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+      'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
     },
     run = ':TSUpdate',
     config = function ()
@@ -15,6 +16,7 @@ return function (use)
 
         indent = { enable = false },
 
+        context_commentstring = { enable = true },
 
         incremental_selection = {
           enable = true,
@@ -85,8 +87,6 @@ return function (use)
               ["[]"] = "@class.outer",
             },
           },
-
-
         },
       }
     end

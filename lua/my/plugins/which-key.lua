@@ -2,19 +2,20 @@
 return function (use)
 
   use {
-    "folke/which-key.nvim", -- https://github.com/folke/which-key.nvim
+    'folke/which-key.nvim', -- https://github.com/folke/which-key.nvim
 
     config = function()
       vim.opt.timeoutlen = 100      -- 0.5s before keymap menu
 
-      local which_key = require("which-key")
+      local which_key = require('which-key')
       which_key.setup {
         hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ", '<Plug>'}, -- hide mapping boilerplate
       }
 
-      which_key.register {
+      which_key.register({
 
-        ["<leader>"] = {
+        ['<leader>'] = {
+          [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
           a = {
             name = 'App',
             l = { name = 'LSP', },
@@ -38,14 +39,28 @@ return function (use)
           T = { name = 'Toggle', },
         },
 
-        ["<localleader>"] = {
+        ['<localleader>'] = {
           e = {
-            name = "Eval"
+            name = 'Eval'
           }
 
         },
+      })
 
-      }
+      which_key.register({
+        g = {
+          c = {
+            name = 'Comment',
+            c = 'Toggle Comment',
+          }
+        }
+      }, { mode = 'n' })
+
+      which_key.register({
+        g = {
+          c = 'Toggle Comment',
+        }
+      }, { mode = 'x' })
 
     end
   }
