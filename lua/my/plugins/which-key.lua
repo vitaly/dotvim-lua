@@ -25,8 +25,6 @@ return function(use)
             name = 'File',
             e = {
               name = 'Edit',
-              l = { name = 'Local' },
-              v = { name = 'Vim' },
             },
             t = { name = 'Toggle' },
           },

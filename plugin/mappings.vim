@@ -66,22 +66,25 @@ nmap              <leader>fx              <plug>(File/Make-Executable)
 
 
 
-noremap                                   <plug>(File/Edit/scratch)                     <cmd>exe 'e '.g:MYVIMDIR.'/scratch.lua'<cr>
+noremap                                   <plug>(File/Edit/scratch)                     <cmd>exe 'e' g:MYVIMDIR.'/scratch.lua'<cr>
 nmap              <leader>fes             <plug>(File/Edit/scratch)
 
 
 
-noremap                                   <plug>(File/Edit/Init)                        <cmd>exe 'e '.g:MYVIMDIR.'/init.lua'<cr>
+noremap                                   <plug>(File/Edit/Init)                        <cmd>exe 'e' g:MYVIMDIR.'/init.lua'<cr>
 nmap              <leader>fei             <plug>(File/Edit/Init)
 
-noremap                                   <plug>(File/Edit/Plugins)                     <cmd>exe 'e '.g:MYVIMDIR.'/lua/my/plugins.lua'<cr>
+noremap                                   <plug>(File/Edit/Plugins)                     <cmd>exe 'e' g:MYVIMDIR.'/lua/my/plugins.lua'<cr>
 nmap              <leader>fep             <plug>(File/Edit/Plugins)
 
-noremap                                   <plug>(File/Edit/Mappings)                    <cmd>exe 'e '.g:MYVIMDIR.'/plugin/mappings.vim'<cr>
+noremap                                   <plug>(File/Edit/Mappings)                    <cmd>exe 'e' g:MYVIMDIR.'/plugin/mappings.vim'<cr>
 nmap              <leader>fem             <plug>(File/Edit/Mappings)
 
-noremap                                   <plug>(File/Edit/Notes)                       <cmd>exe 'e '.g:MYVIMDIR.'/NOTES.md'<cr>
+noremap                                   <plug>(File/Edit/Notes)                       <cmd>exe 'e' g:MYVIMDIR.'/NOTES.md'<cr>
 nmap              <leader>fen             <plug>(File/Edit/Notes)
+
+noremap                                   <plug>(File/Edit/Lsp-Log)                     <cmd>exe 'e' stdpath('cache').'/lsp.log'<cr>
+nmap              <leader>fel             <plug>(File/Edit/Lsp-Log)
 
 
 noremap                                   <plug>(Quit-All)                              <cmd>qa<cr>
