@@ -224,4 +224,4 @@ noremap                                   <plug>(Prev)                          
 nmap              <leader>p               <plug>(Prev)
 
 
-nmap              <silent><esc>           <smd>silent noh<cr>
+nmap              <silent><esc>           <cmd>silent noh<cr>

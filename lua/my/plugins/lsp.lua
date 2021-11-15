@@ -55,6 +55,9 @@ return function (use)
         nmap('<leader>alt', '<plug>LSP(Trouble)')
         nmap('<leader>alw', '<plug>LSP(Workspace-Trouble)')
         nmap('<leader>alr', '<plug>LSP(Refresh-Trouble)')
+        vim.cmd [[
+          command! Autoformat  lua vim.lsp.buf.formatting()
+        ]]
 
 
         -- buf_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
@@ -196,12 +199,49 @@ return function (use)
               -- opts.root_dir = function() ... end
           end
 
+          if server.name == 'tsserver' then
+            opts.on_attach = function (client, bufnr)
+              client.resolved_capabilities.document_formatting = false
+              client.resolved_capabilities.document_range_formatting = false
+              return on_attach(client, bufnr)
+            end
+          end
+
           -- This setup() function is exactly the same as lspconfig's setup function.
           -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
           server:setup(opts)
         end)
 
         -- print "lsp-config loaded"
+      end,
+    },
+
+
+    {
+      "jose-elias-alvarez/null-ls.nvim",
+
+      requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+
+      config = function ()
+
+        require("null-ls").config({
+          sources = {
+            require("null-ls").builtins.formatting.prettier,
+            require("null-ls").builtins.formatting.shfmt,
+            require("null-ls").builtins.formatting.stylua,
+            require("null-ls").builtins.formatting.trim_whitespace,
+            require("null-ls").builtins.diagnostics.shellcheck,
+            require("null-ls").builtins.completion.spell,
+          },
+        })
+
+        require("lspconfig")["null-ls"].setup({
+          on_attach = function (client, bufnr)
+            -- vim.g.null_client = client
+            -- vim.g.null_bufnr = bufnr
+          end
+        })
+
       end,
     },
 
