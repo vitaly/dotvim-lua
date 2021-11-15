@@ -5,17 +5,9 @@ return function(use)
       'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
 
       requires = {
-        {
-          'onsails/lspkind-nvim', -- https://github.com/onsails/lspkind-nvim
-        },
-
-        {
-          'williamboman/nvim-lsp-installer', -- https://github.com/williamboman/nvim-lsp-installer
-        },
-
-        {
-          'glepnir/lspsaga.nvim', -- https://github.com/glepnir/lspsaga.nvim
-        },
+        { 'onsails/lspkind-nvim' }, -- https://github.com/onsails/lspkind-nvim
+        { 'williamboman/nvim-lsp-installer' }, -- https://github.com/williamboman/nvim-lsp-installer
+        { 'glepnir/lspsaga.nvim' }, -- https://github.com/glepnir/lspsaga.nvim
       },
 
       config = function()
@@ -88,9 +80,6 @@ return function(use)
         -- buf_set_keymap("v", "<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 
         -- local lspkind = require('lspkind')
-
-        local trouble = require 'trouble'
-        trouble.setup()
 
         vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
           virtual_text = false,
@@ -231,15 +220,15 @@ return function(use)
         }
 
         require('lspconfig')['null-ls'].setup {
-          on_attach = function(client, bufnr)
-            -- vim.g.null_client = client
-            -- vim.g.null_bufnr = bufnr
-          end,
+          -- on_attach = function (client, bufnr)
+          --   -- vim.g.null_client = client
+          --   -- vim.g.null_bufnr = bufnr
+          -- end
         }
       end,
     },
 
-    'nvim-lua/lsp-status.nvim', -- https://github.com/nvim-lua/lsp-status.nvim
+    { 'nvim-lua/lsp-status.nvim' }, -- https://github.com/nvim-lua/lsp-status.nvim
 
     {
       'folke/trouble.nvim', -- https://github.com/folke/trouble.nvim
