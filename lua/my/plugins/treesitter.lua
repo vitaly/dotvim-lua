@@ -6,6 +6,7 @@ return function (use)
 
       'nvim-treesitter/nvim-treesitter-textobjects', -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
       'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+      'p00f/nvim-ts-rainbow', -- https://github.com/p00f/nvim-ts-rainbow
     },
     run = ':TSUpdate',
     config = function ()
@@ -17,6 +18,8 @@ return function (use)
         indent = { enable = false },
 
         context_commentstring = { enable = true },
+        rainbow = { enable = true },
+        autopairs = { enable = true },
 
         incremental_selection = {
           enable = true,

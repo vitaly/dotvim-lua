@@ -24,7 +24,6 @@ local disabled_built_ins = {
   'gzip',
   'man',
   'matchit',
-  'matchparen',
   'netrwPlugin',
   'shada_plugin',
   'tar',
