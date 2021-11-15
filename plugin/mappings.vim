@@ -66,40 +66,26 @@ nmap              <leader>fx              <plug>(File/Make-Executable)
 
 
 
-noremap                                   <plug>(File/Edit/scratch.vim)                 <cmd>e ~/.vim/scratch.vim<cr>
-nmap              <leader>fes             <plug>(File/Edit/scratch.vim)
+noremap                                   <plug>(File/Edit/scratch)                     <cmd>exe 'e '.g:MYVIMDIR.'/scratch.lua'<cr>
+nmap              <leader>fes             <plug>(File/Edit/scratch)
 
 
 
-noremap                                   <plug>(File/Edit/Vim/Directory)               <cmd>e ~/.vim/<cr>
-nmap              <leader>fevd            <plug>(File/Edit/Vim/Directory)
+noremap                                   <plug>(File/Edit/Init)                        <cmd>exe 'e '.g:MYVIMDIR.'/init.lua'<cr>
+nmap              <leader>fei             <plug>(File/Edit/Init)
 
-noremap                                   <plug>(File/Edit/Vim/After)                   <cmd>e ~/.vim/vimrc.after<cr>
-nmap              <leader>feva            <plug>(File/Edit/Vim/After)
+noremap                                   <plug>(File/Edit/Plugins)                     <cmd>exe 'e '.g:MYVIMDIR.'/lua/my/plugins.lua'<cr>
+nmap              <leader>fep             <plug>(File/Edit/Plugins)
 
-noremap                                   <plug>(File/Edit/Vim/Plugins)                 <cmd>e ~/.vim/vimrc.plugins<cr>
-nmap              <leader>fevp            <plug>(File/Edit/Vim/Plugins)
+noremap                                   <plug>(File/Edit/Mappings)                    <cmd>exe 'e '.g:MYVIMDIR.'/plugin/mappings.vim'<cr>
+nmap              <leader>fem             <plug>(File/Edit/Mappings)
 
-noremap                                   <plug>(File/Edit/Vim/Bindings)                <cmd>e ~/.vim/vimrc.bindings<cr>
-nmap              <leader>fevb            <plug>(File/Edit/Vim/Bindings)
+noremap                                   <plug>(File/Edit/Notes)                       <cmd>exe 'e '.g:MYVIMDIR.'/NOTES.md'<cr>
+nmap              <leader>fen             <plug>(File/Edit/Notes)
 
-
-
-noremap                                   <plug>(File/Edit/Local/Directory)             <cmd>e ~/.vim/local<cr>
-nmap              <leader>feld            <plug>(File/Edit/Local/Directory)
-
-noremap                                   <plug>(File/Edit/Local/After)                 <cmd>e ~/.vim/local/vimrc.after<cr>
-nmap              <leader>fela            <plug>(File/Edit/Local/After)
-
-noremap                                   <plug>(File/Edit/Local/Plugins)               <cmd>e ~/.vim/local/vimrc.plugins<cr>
-nmap              <leader>felp            <plug>(File/Edit/Local/Plugins)
-
-noremap                                   <plug>(File/Edit/Local/Bindings)              <cmd>e ~/.vim/local/vimrc.bindings<cr>
-nmap              <leader>felb            <plug>(File/Edit/Local/Bindings)
 
 noremap                                   <plug>(Quit-All)                              <cmd>qa<cr>
 nmap              <leader>q               <plug>(Quit-All)
-
 
 
 noremap                                   <plug>Window(Quit)                           <cmd>q<cr>

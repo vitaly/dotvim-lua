@@ -1,5 +1,6 @@
 -- print "vimx/init"
 
+vim.g.MYVIMDIR = vim.fn.expand("%:p:h")
 require 'my.globals'
 require 'my.packer.install'
 require 'my.utils'

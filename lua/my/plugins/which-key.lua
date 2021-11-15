@@ -2,7 +2,7 @@
 return function (use)
 
   use {
-    "folke/which-key.nvim",
+    "folke/which-key.nvim", -- https://github.com/folke/which-key.nvim
 
     config = function()
       vim.opt.timeoutlen = 100      -- 0.5s before keymap menu
