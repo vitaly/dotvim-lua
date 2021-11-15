@@ -230,7 +230,7 @@ return function (use)
             require("null-ls").builtins.formatting.shfmt,
             require("null-ls").builtins.formatting.stylua,
             require("null-ls").builtins.formatting.trim_whitespace,
-            require("null-ls").builtins.diagnostics.shellcheck,
+            -- require("null-ls").builtins.diagnostics.shellcheck,
             require("null-ls").builtins.completion.spell,
           },
         })

@@ -12,14 +12,19 @@ return function (use)
         hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ", '<Plug>'}, -- hide mapping boilerplate
       }
 
-      which_key.register({
-          a = { name = 'App',
+      which_key.register {
+
+        ["<leader>"] = {
+          a = {
+            name = 'App',
             l = { name = 'LSP', },
             p = { name = 'Packer', },
           },
           b = { name = 'Buffer', },
-          f = { name = 'File',
-            e = { name = 'Edit',
+          f = {
+            name = 'File',
+            e = {
+              name = 'Edit',
               l = { name = 'Local', },
               v = { name = 'Vim', },
             },
@@ -31,7 +36,16 @@ return function (use)
           w = { name = 'Window', },
           Y = { name = 'Yank', },
           T = { name = 'Toggle', },
-        }, { prefix = '<leader>' })
+        },
+
+        ["<localleader>"] = {
+          e = {
+            name = "Eval"
+          }
+
+        },
+
+      }
 
     end
   }
