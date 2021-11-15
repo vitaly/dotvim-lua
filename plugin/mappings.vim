@@ -1,9 +1,5 @@
 nnoremap <leader><space>        :
 
-call my#keymap#leader('a', '+App')
-
-call my#keymap#leader('ap', '+Packer')
-
 nnoremap                                  <plug>packer(Sync)                            <cmd>PackerSync<cr>
 nmap              <leader>ap<cr>          <plug>packer(Sync)
 
@@ -26,13 +22,13 @@ nmap              <leader>apC             <plug>packer(Clean)
 
 
 
-call my#keymap#leader('v', '+Vim')
+
 
 noremap                                   <plug>(Vim/Redraw)                            <cmd>redraw!<cr>
 nmap              <leader>vr              <plug>(Vim/Redraw)
 
 
-call my#keymap#leader('t', '+Tab')
+
 
 noremap                                   <plug>(Tab/New)                               <cmd>tabnew<cr>
 nmap              <leader>tn              <plug>(Tab/New)
@@ -41,7 +37,7 @@ map                                       <plug>(Tab/New-File)                  
 nmap              <leader>tf              <plug>(Tab/New-File)
 
 
-call my#keymap#leader('b', '+Buffer')
+
 
 noremap                                   <plug>(Buffer/Next)                           <cmd>bn<cr>
 nmap              <leader>bn              <plug>(Buffer/Next)
@@ -53,7 +49,7 @@ noremap                                   <plug>(Buffer/Delete)                 
 nmap              <leader>bd              <plug>(Buffer/Delete)
 
 
-call my#keymap#leader('f', '+File')
+
 
 noremap                                   <plug>(File/Save)                             <cmd>w<cr>
 nmap              <leader>fs              <plug>(File/Save)
@@ -67,13 +63,13 @@ noremap                                   <plug>(File/Make-Executable)          
 nmap              <leader>fx              <plug>(File/Make-Executable)
 
 
-call my#keymap#leader('ft', '+Toggle')
-call my#keymap#leader('fe', '+Edit')
+
+
 
 noremap                                   <plug>(File/Edit/scratch.vim)                 <cmd>e ~/.vim/scratch.vim<cr>
 nmap              <leader>fes             <plug>(File/Edit/scratch.vim)
 
-call my#keymap#leader('fev', '+Vim')
+
 
 noremap                                   <plug>(File/Edit/Vim/Directory)               <cmd>e ~/.vim/<cr>
 nmap              <leader>fevd            <plug>(File/Edit/Vim/Directory)
@@ -87,7 +83,7 @@ nmap              <leader>fevp            <plug>(File/Edit/Vim/Plugins)
 noremap                                   <plug>(File/Edit/Vim/Bindings)                <cmd>e ~/.vim/vimrc.bindings<cr>
 nmap              <leader>fevb            <plug>(File/Edit/Vim/Bindings)
 
-call my#keymap#leader('fel', '+Local')
+
 
 noremap                                   <plug>(File/Edit/Local/Directory)             <cmd>e ~/.vim/local<cr>
 nmap              <leader>feld            <plug>(File/Edit/Local/Directory)
@@ -104,7 +100,7 @@ nmap              <leader>felb            <plug>(File/Edit/Local/Bindings)
 noremap                                   <plug>(Quit-All)                              <cmd>qa<cr>
 nmap              <leader>q               <plug>(Quit-All)
 
-call my#keymap#leader('w', '+Window' )
+
 
 noremap                                   <plug>Window(Quit)                           <cmd>q<cr>
 nmap              <leader>wq              <plug>Window(Quit)
@@ -184,7 +180,7 @@ cnoremap          %% <C-R>=expand('%:h').'/'<cr>
 cnoremap          %^ <C-R>=expand('%:p:h').'/'<cr>
 
 
-call my#keymap#leader('Y', '+Yank')
+
 
 noremap                                   <plug>(Yank/File-Path)                        :let @*=expand("%")<cr>:echo "Copied file path to clipboard"<cr>
 nmap              <leader>Yp              <plug>(Yank/File-Path)
@@ -240,3 +236,6 @@ nmap              <leader>n               <plug>(Next)
 
 noremap                                   <plug>(Prev)                                  <cmd>cp<cr>
 nmap              <leader>p               <plug>(Prev)
+
+
+nmap              <silent><esc>           <smd>silent noh<cr>

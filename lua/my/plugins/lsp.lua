@@ -46,7 +46,6 @@ return function (use)
         noremap('<plug>LSP(Workspace-Trouble)', '<cmd>LspTroubleWorkspaceToggle<cr>')
         noremap('<plug>LSP(Refresh-Trouble)', '<cmd>LspTroubleRefresh<cr>')
 
-        vim.fn['my#keymap#leader']('al', '+LSP')
         nmap('<leader>ali', '<plug>LSP(Info)')
         nmap('<leader>alI', '<plug>LSP(Installed)')
         nmap('<leader>als', '<plug>LSP(Start)')

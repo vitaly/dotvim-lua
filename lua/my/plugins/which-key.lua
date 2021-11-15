@@ -1,29 +1,37 @@
 -- TODO: switch to lua, use g:leader and g:localleader
 return function (use)
+
   use {
-    'liuchengxu/vim-which-key',
-    setup = function ()
-      -- TODO: convert to lua
-      vim.cmd [[
-        let g:WhichKeyFormatFunc = function('my#keymap#format')
-        let g:which_key_sep = "|"
+    "folke/which-key.nvim",
 
-        nnoremap <silent>     <leader>                                    <CMD>WhichKey ' '<CR>
-        nnoremap <silent>     <localleader>                               <CMD>WhichKey ','<CR>
-
-        xnoremap <silent>     <leader>                                    <CMD>WhichKeyVisual ' '<CR>
-        xnoremap <silent>     <localleader>                               <CMD>WhichKeyVisual ','<CR>
-
-        call my#keymap#leader('s', '+Search')
-        noremap                                 <plug>(Search/Keys)       <CMD>WhichKey ''<CR>
-        nmap                  <leader>sk        <plug>(Search/Keys)
-      ]]
-      -- puts 'vim-which-key setup done!'
-    end,
     config = function()
-      vim.fn['which_key#register'](vim.g.mapleader, 'g:my#keymap#leader#map')
-      vim.fn['which_key#register'](vim.g.maplocalleader, 'g:my#keymap#localleader#map')
-      vim.opt.timeoutlen = 500      -- 0.5s before keymap menu
-    end,
+      vim.opt.timeoutlen = 100      -- 0.5s before keymap menu
+
+      local which_key = require("which-key")
+      which_key.setup {
+        hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ ", '<Plug>'}, -- hide mapping boilerplate
+      }
+
+      which_key.register({
+          a = { name = 'App',
+            l = { name = 'LSP', },
+            p = { name = 'Packer', },
+          },
+          b = { name = 'Buffer', },
+          f = { name = 'File',
+            e = { name = 'Edit',
+              l = { name = 'Local', },
+              v = { name = 'Vim', },
+            },
+            t = { name = 'Toggle', },
+          },
+          g = { name = 'Git', },
+          t = { name = 'Tab', },
+          v = { name = 'Vim', },
+          w = { name = 'Window', },
+          Y = { name = 'Yank', },
+        }, { prefix = '<leader>' })
+
+    end
   }
 end

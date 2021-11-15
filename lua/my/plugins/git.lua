@@ -17,8 +17,6 @@ return function (use)
         local nmap = vimp.nmap
         local xmap = vimp.xmap
 
-        vim.fn['my#keymap#leader']('g', '+Git')
-
         noremap('<plug>(Git/Diff)',                   [[<cmd>Gdiff<cr>]])
         noremap('<plug>(Git/Grep)',                   [[:<c-u>silent Ggrep<space>]])
         noremap('<plug>(Git/Grep-Selection)',         [[y<cmd>let @/=escape(@", '\\[]$^*.')<cr><cmd>set hls<cr><cmd>silent Ggrep -F "<C-R>=escape(@", '\\"#')<cr>"<cr><cmd>ccl<cr><cmd>cw<cr><cr>]])

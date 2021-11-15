@@ -182,3 +182,5 @@ set.virtualedit = 'all'
 -- autoload local project .vimrc files
 set.exrc = true
 set.secure = true
+
+set.showmode = false
