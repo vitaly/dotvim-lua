@@ -40,8 +40,9 @@ end
 vim.cmd([[
   augroup packer_plugins
     autocmd!
-    autocmd BufWritePost */my/plugins.lua PackerCompile
-    autocmd BufWritePost */my/plugins/*.lua PackerCompile
+    autocmd BufWritePost */my/plugins.lua PackerInstall
+    autocmd BufWritePost */my/plugins/*.lua PackerInstall
+    autocmd User PackerComplete PackerCompile
     autocmd User PackerCompileDone checktime
   augroup end
 ]])
