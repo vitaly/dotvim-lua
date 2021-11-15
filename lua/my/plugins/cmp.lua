@@ -43,7 +43,7 @@ return function(use)
       -- local luasnip = require 'luasnip'
 
       cmp.setup {
-        completion = { completeopt = 'menuone,noinsert,noselect,preview' },
+        completion = { completeopt = 'menu,noselect,preview' },
 
         experimental = {
           native_menu = false,

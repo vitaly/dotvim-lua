@@ -102,7 +102,7 @@ set.autowriteall = true -- Automatically save before commands like :next and :ma
 set.hidden = true -- enable multiple modified buffers
 -- set guioptions-=T                -- disable toolbar"
 -- set completeopt=menuone,preview,noinsert
-set.completeopt = 'menuone,preview,noinsert,noselect'
+-- set.completeopt = 'menuone,preview,noinsert,noselect'
 
 -- let bash_is_sh=1                 -- syntax shell files as bash scripts
 set.cinoptions = ':0,(s,u0,U1,g0,t0' -- some indentation options ':h cinoptions' for details
