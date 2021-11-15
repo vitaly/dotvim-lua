@@ -30,6 +30,7 @@ return function (use)
           v = { name = 'Vim', },
           w = { name = 'Window', },
           Y = { name = 'Yank', },
+          T = { name = 'Toggle', },
         }, { prefix = '<leader>' })
 
     end

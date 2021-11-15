@@ -52,6 +52,8 @@ plugin('my.plugins.git')
 plugin('my.plugins.comments')
 plugin('my.plugins.zoom')
 plugin('my.plugins.statusline')
+plugin('my.plugins.tags')
+
 
 -- puts 'my.plugins loaded'
 return pinit
