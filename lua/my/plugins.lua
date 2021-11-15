@@ -51,6 +51,7 @@ plugin('my.plugins.file-tree')
 plugin('my.plugins.git')
 plugin('my.plugins.comments')
 plugin('my.plugins.zoom')
+plugin('my.plugins.statusline')
 
 -- puts 'my.plugins loaded'
 return pinit

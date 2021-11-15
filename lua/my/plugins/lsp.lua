@@ -245,7 +245,7 @@ return function (use)
       end,
     },
 
-    -- 'nvim-lua/lsp-status.nvim', -- https://github.com/nvim-lua/lsp-status.nvim
+    'nvim-lua/lsp-status.nvim', -- https://github.com/nvim-lua/lsp-status.nvim
 
     {
       "folke/trouble.nvim", -- https://github.com/folke/trouble.nvim
