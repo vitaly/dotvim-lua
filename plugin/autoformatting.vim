@@ -1,5 +1,5 @@
 
-command! AutoFormatOn   let b:autoformat = 1| augroup  AuAutoFormat | exe "au! * <buffer>" | exe "au BufWritePre <buffer> undojoin | Autoformat" | augroup END
+command! AutoFormatOn   let b:autoformat = 1| augroup  AuAutoFormat | exe "au! * <buffer>" | exe "au BufWritePre <buffer> undojoin | AutoformatSync" | augroup END
 command! AutoFormatOff  let b:autoformat = 0| au! AuAutoFormat * <buffer>
 
 fun! ToggleAutoFormat()
@@ -14,3 +14,5 @@ endf
 
 map                                    <plug>(Toggle/AutoFormat)       :call ToggleAutoFormat()<CR>
 nmap    <silent> <leader>Ta            <plug>(Toggle/AutoFormat)
+
+nmap    <leader>ff    <cmd>AutoformatSync<cr>
