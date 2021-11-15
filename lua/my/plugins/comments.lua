@@ -1,5 +1,4 @@
 return function (use)
-  -- XXX: TODO: TBD: lazy load
   use {
     'terrortylor/nvim-comment', -- https://github.com/terrortylor/nvim-comment
     config = function ()
@@ -8,7 +7,19 @@ return function (use)
       noremap('<plug>Comment(toggle)', '<cmd>CommentToggle<cr>')
 
       nmap('<leader>;', '<plug>Comment(toggle)')
-      xmap('<leader>;', ':CommentToggle<cr>')
+      xmap('<leader>;', '<plug>Comment(toggle)')
+    end,
+    disable = true,
+  }
+
+
+  use {
+    'tomtom/tcomment_vim', -- https://github.com/tomtom/tcomment_vim
+
+    config = function ()
+      map({'silent'}, '<plug>Comment(toggle)', '<Plug>TComment_gcc')
+      nmap('<leader>;', '<plug>Comment(toggle)')
+      xmap('<leader>;', '<plug>Comment(toggle)')
     end
   }
 end
