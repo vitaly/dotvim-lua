@@ -74,7 +74,7 @@ return function (use)
             c = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), -- for some reason 'Select' doesn't work in command line completion
           },
 
-          ["<Tab>"] = cmp.mapping(function (fallback)
+          ["<Tab>"] = cmp.mapping(function (--[[ fallback --]])
             if cmp.visible() then
               cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
 
