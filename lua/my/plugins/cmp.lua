@@ -58,7 +58,8 @@ return function (use)
         },
 
         mapping = {
-          ['<CR>']    = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }), -- XXX: WTF is ConfirmBehavior.Replace
+          -- select = false is esential, otherwise it will interfere with normal ENTER when there's a popup open
+          ['<CR>']    = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }), -- XXX: WTF is ConfirmBehavior.Replace
           -- ['<CR>']    = cmp.mapping.confirm({ select = true }),
 
           ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), { 'i', 'c' }),
@@ -103,7 +104,7 @@ return function (use)
           ["<C-f>"]   = cmp.mapping.scroll_docs(5),
 
           ["<C-e>"]   = cmp.mapping.close(),
-          ["<esc>"]   = cmp.mapping.close(),
+          -- ["<esc>"]   = cmp.mapping.close(),
         },
 
         formatting = {
