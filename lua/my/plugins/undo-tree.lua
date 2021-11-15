@@ -1,7 +1,7 @@
-return function (use)
+return function(use)
   use {
     'mbbill/undotree',
-    config = function ()
+    config = function()
       vim.g.undotree_SetFocusWhenToggle = 1
       vim.cmd [[
       noremap             <plug>(Toggle/Unfo-Tree) :UndotreeToggle<CR>
@@ -13,6 +13,6 @@ return function (use)
 
       nmap g= :later<cr>
    ]]
-    end
+    end,
   }
 end

@@ -1,6 +1,5 @@
 local fn = vim.fn
 
-
 --------------------------------------------------------------------------------
 -- ensure package is installed at the given location
 -- @param { string } name - package name
@@ -9,13 +8,13 @@ local fn = vim.fn
 -- @returns { boolean } true if was just installed
 --------------------------------------------------------------------------------
 local function install(name, repo, dir)
-  local path = fn.stdpath('config')..'/pack/packer/'..(dir or 'start')..'/'..name
+  local path = fn.stdpath 'config' .. '/pack/packer/' .. (dir or 'start') .. '/' .. name
   if 0 == fn.empty(fn.glob(path)) then
     return false
   end
 
-  print("installing " .. name .. "...")
-  fn.system({'git', 'clone', '--depth', '1', repo, path})
+  print('installing ' .. name .. '...')
+  fn.system { 'git', 'clone', '--depth', '1', repo, path }
   print(name .. ' installed at ' .. path)
 
   return true
@@ -23,10 +22,9 @@ end
 
 install('impatient.nvim', 'https://github.com/lewis6991/impatient.nvim.git')
 vim.cmd [[packadd impatient.nvim]]
-require('impatient')
+require 'impatient'
 
 install('plenary.nvim', 'https://github.com/nvim-lua/plenary.nvim.git')
-
 
 install('vimpeccable', 'https://github.com/svermeulen/vimpeccable')
 
@@ -37,7 +35,7 @@ end
 --------------------------------------------------------------------------------
 -- sync packer if plugins.lua changes
 --------------------------------------------------------------------------------
-vim.cmd([[
+vim.cmd [[
   augroup packer_plugins
     autocmd!
     autocmd BufWritePost */my/plugins.lua PackerInstall
@@ -45,7 +43,7 @@ vim.cmd([[
     autocmd User PackerComplete PackerCompile
     autocmd User PackerCompileDone checktime
   augroup end
-]])
+]]
 
 --------------------------------------------------------------------------------
 -- setup packer commands

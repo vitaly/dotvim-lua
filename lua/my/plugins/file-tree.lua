@@ -1,12 +1,12 @@
-return function (use)
+return function(use)
   use {
     'kyazdani42/nvim-tree.lua', -- https://github.com/kyazdani42/nvim-tree.lua
     requires = 'kyazdani42/nvim-web-devicons',
-    setup = function ()
-      local vimp = require('vimp')
+    setup = function()
+      local vimp = require 'vimp'
       local noremap = vimp.noremap
-      noremap('<plug>File-Tree(toggle)',     '<cmd>NvimTreeToggle<cr>')
-      noremap('<plug>File-Tree(reveal)',     '<cmd>lua require"nvim-tree".find_file(true)<cr>')
+      noremap('<plug>File-Tree(toggle)', '<cmd>NvimTreeToggle<cr>')
+      noremap('<plug>File-Tree(reveal)', '<cmd>lua require"nvim-tree".find_file(true)<cr>')
 
       local nmap = vimp.nmap
       nmap('<leader>,', '<plug>File-Tree(toggle)')
@@ -18,23 +18,20 @@ return function (use)
       vim.g.nvim_tree_disable_window_picker = 1
 
       vim.g.nvim_tree_icons = {
-      default = '',
-      symlink =  '',
+        default = '',
+        symlink = '',
       }
     end,
     config = function()
-      require'nvim-tree'.setup {
+      require('nvim-tree').setup {
         update_cwd = true,
-        update_focused_file = { enable = true, },
+        update_focused_file = { enable = true },
       }
     end,
     -- cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     -- keys = { '<leader>,' },
   }
 end
-
-
-
 
 -- local present, nvimtree = pcall(require, "nvim-tree")
 
@@ -164,13 +161,11 @@ end
 --   " highlight NvimTreeFolderIcon guifg=yellow
 -- endfunction
 
-
 -- nnoremap  <silent>  <plug>(LuaTree/Toggle)      :NvimTreeToggle<CR>
 -- nmap                \]                          <plug>(LuaTree/Toggle)
 
 -- nnoremap  <silent>  <plug>(LuaTree/Find-File)   :lua require'nvim-tree'.find_file(true)<CR>
 -- nmap                \0                          <plug>(LuaTree/Find-File)
-
 
 -- let g:nvim_tree_width_allow_resize = 0
 -- let g:nvim_tree_width_max = 80

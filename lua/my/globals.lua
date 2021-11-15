@@ -21,23 +21,23 @@ function _G.inspect(...)
   return table.concat(objects, '\n')
 end
 
-function _G.PRINT (...)
+function _G.PRINT(...)
   print(inspect(...))
   return ...
 end
 
 function _G.RELOAD(name)
   if VERBOSE then
-    puts("reload(" .. name .. ")")
+    puts('reload(' .. name .. ')')
   end
-  return require("plenary.reload").reload_module(name)
+  return require('plenary.reload').reload_module(name)
 end
 
 function _G.REQUIRE(name)
   RELOAD(name)
 
   if VERBOSE then
-    puts("require(" .. name .. ")")
+    puts('require(' .. name .. ')')
   end
   return require(name)
 end

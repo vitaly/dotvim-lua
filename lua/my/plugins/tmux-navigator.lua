@@ -1,8 +1,7 @@
-return function (use)
-
+return function(use)
   use {
     'vitaly/vim-tmux-navigator',
-    config = function ()
+    config = function()
       vim.cmd [[
       noremap <silent> <plug>(Window/Up)    :TmuxNavigateUp<CR>
       noremap <silent> <plug>(Window/Down)  :TmuxNavigateDown<CR>
@@ -24,7 +23,6 @@ return function (use)
       tmap <m-h> <C-\><C-n><plug>(Window/Left)
       tmap <m-l> <C-\><C-n><plug>(Window/Right)
     ]]
-    end
-
+    end,
   }
 end

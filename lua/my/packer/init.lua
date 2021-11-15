@@ -1,11 +1,11 @@
-vim.cmd "packadd packer.nvim"
+vim.cmd 'packadd packer.nvim'
 
 local packer = nil
 if packer == nil then
-  packer = require('packer')
+  packer = require 'packer'
   packer.init {
-    package_root = vim.fn.stdpath('config') .. '/pack',
-    disable_commands = true
+    package_root = vim.fn.stdpath 'config' .. '/pack',
+    disable_commands = true,
   }
 end
 
@@ -15,7 +15,7 @@ local m = {}
 
 m.use = packer.use
 
-for _,f in ipairs({ 'compile', 'sync' }) do
+for _, f in ipairs { 'compile', 'sync' } do
   m[f] = function()
     require('vimp').unmap_all()
     packer[f]()
@@ -23,12 +23,11 @@ for _,f in ipairs({ 'compile', 'sync' }) do
   end
 end
 
-for _,f in ipairs({ 'status', 'install', 'update', 'clean' }) do
+for _, f in ipairs { 'status', 'install', 'update', 'clean' } do
   m[f] = function()
     packer[f]()
     return m
   end
 end
-
 
 return m

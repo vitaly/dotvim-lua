@@ -1,7 +1,7 @@
-local g  = vim.g
+local g = vim.g
 local fn = vim.fn
-local set  = vim.opt
-local opt  = vim.opt
+local set = vim.opt
+local opt = vim.opt
 
 local has = function(x)
   return fn.has(x) == 1
@@ -47,8 +47,6 @@ end
 -- opt('termguicolors', true)
 -- opt('background', 'dark')
 
-
-
 --------------------------------------------------------------------------------
 -- nvim2 options
 --------------------------------------------------------------------------------
@@ -60,7 +58,7 @@ end
 -- vim.opt.mouse = "a" -- enable mouse
 -- vim.opt.signcolumn = "yes" -- enable signcolumn
 -- vim.opt.clipboard = "unnamedplus" -- enable universal clipboard
-set.clipboard = "unnamedplus" -- enable universal clipboard
+set.clipboard = 'unnamedplus' -- enable universal clipboard
 
 -- vim.opt.scrolloff = 3 -- leave 3 lines up/down while scrolling
 set.scrolloff = 4 -- leave 4 lines up/down while scrolling
@@ -89,8 +87,8 @@ set.number = true
 -- set textwidth=0          -- Do not wrap words (insert)
 set.wrap = false
 -- set showcmd              -- Show (partial) command in status line.
-set.showmatch = true     -- Show matching brackets.
-set.visualbell = true     -- use visual bell instead of beeping
+set.showmatch = true -- Show matching brackets.
+set.visualbell = true -- use visual bell instead of beeping
 set.listchars = 'tab:→⋅,trail:·,nbsp:+'
 -- set list
 set.list = true
@@ -100,8 +98,8 @@ set.list = true
 
 set.wildignore = '*.o,*.a,*.so,*.swp,.git,.hg,.svn,CVS,RCS,*~,*.pyc'
 -- set shell=/bin/bash              -- use bash for shell commands
-set.autowriteall = true                 -- Automatically save before commands like :next and :make
-set.hidden = true                       -- enable multiple modified buffers
+set.autowriteall = true -- Automatically save before commands like :next and :make
+set.hidden = true -- enable multiple modified buffers
 -- set guioptions-=T                -- disable toolbar"
 -- set completeopt=menuone,preview,noinsert
 set.completeopt = 'menuone,preview,noinsert,noselect'
@@ -123,7 +121,7 @@ g.maplocalleader = ','
 -- set timeoutlen=5000      -- give 5s to complete mapping sequence
 
 -- mouse settings
-if has('mouse') then
+if has 'mouse' then
   set.mouse = 'a'
 end
 
@@ -145,14 +143,14 @@ set.undofile = true -- enable persistent undo
 set.foldmethod = 'syntax'
 -- set foldlevel=9
 -- set nofoldenable         -- dont fold by default "
-set.foldenable = false      -- dont fold by default "
+set.foldenable = false -- dont fold by default "
 -- set eol
 -- set nobinary
 -- " set t_Co=256
 -- " set t_AB=^[[48;5;%dm
 -- " set t_AF=^[[38;5;%dm
 -- " set notermguicolors
-if has('termguicolors') then
+if has 'termguicolors' then
   set.termguicolors = true
 end
 

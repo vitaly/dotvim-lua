@@ -1,20 +1,16 @@
 -- print "vimx/init"
 
-vim.g.MYVIMDIR = vim.fn.expand("%:p:h")
+vim.g.MYVIMDIR = vim.fn.expand '%:p:h'
 require 'my.globals'
 require 'my.packer.install'
 require 'my.utils'
 require 'my.builtins'
 require 'my.options'
 
-
 -- local g = vim.g
 -- local cmd = vim.cmd
 -- local o, wo, bo = vim.o, vim.wo, vim.bo
 -- local fn = vim.fn
-
-
-
 
 -- lua/my/options.lua
 -- lua/my/plugins.lua

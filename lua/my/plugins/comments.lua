@@ -1,9 +1,9 @@
-return function (use)
+return function(use)
   use {
     'tpope/vim-commentary', -- https://github.com/tpope/vim-commentary/
-    config = function ()
+    config = function()
       nmap('<plug>Toggle(comment)', 'gcc')
       xmap('<plug>Toggle(comment)', 'gc')
-    end
+    end,
   }
 end

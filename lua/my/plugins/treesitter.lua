@@ -1,4 +1,4 @@
-return function (use)
+return function(use)
   use {
     'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
     requires = {
@@ -9,8 +9,8 @@ return function (use)
       'p00f/nvim-ts-rainbow', -- https://github.com/p00f/nvim-ts-rainbow
     },
     run = ':TSUpdate',
-    config = function ()
-      require("nvim-treesitter.configs").setup {
+    config = function()
+      require('nvim-treesitter.configs').setup {
         ensure_installed = 'maintained',
 
         highlight = { enable = true, use_languagetree = true },
@@ -36,7 +36,6 @@ return function (use)
         --   highlight_definitions = { enable = false },
         --   highlight_current_scope = { enable = false }
         -- },
-
 
         textobjects = {
           select = {
@@ -69,29 +68,28 @@ return function (use)
             },
           },
 
-
           move = {
             enable = true,
             set_jumps = true, -- whether to set jumps in the jumplist
             goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = "@class.outer",
+              [']m'] = '@function.outer',
+              [']]'] = '@class.outer',
             },
             goto_next_end = {
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer",
+              [']M'] = '@function.outer',
+              [']['] = '@class.outer',
             },
             goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
+              ['[m'] = '@function.outer',
+              ['[['] = '@class.outer',
             },
             goto_previous_end = {
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer",
+              ['[M'] = '@function.outer',
+              ['[]'] = '@class.outer',
             },
           },
         },
       }
-    end
+    end,
   }
 end

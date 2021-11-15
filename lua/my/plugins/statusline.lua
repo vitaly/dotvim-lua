@@ -1,4 +1,4 @@
-return function (use)
+return function(use)
   -- use {
   --   "NTBBloodbath/galaxyline.nvim",
   --   -- your statusline
@@ -13,15 +13,14 @@ return function (use)
 
   use {
     'nvim-lualine/lualine.nvim', -- https://github.com/nvim-lualine/lualine.nvim
-    requires = { "kyazdani42/nvim-web-devicons" },
+    requires = { 'kyazdani42/nvim-web-devicons' },
 
-    config = function ()
-      require('lualine').setup({
+    config = function()
+      require('lualine').setup {
         options = {
           -- theme = vim.g.colors_name or 'auto',
-
         },
-      })
-    end
+      }
+    end,
   }
 end
