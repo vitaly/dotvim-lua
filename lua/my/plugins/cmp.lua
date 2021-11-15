@@ -114,11 +114,11 @@ return function(use)
         },
 
         sources = {
+          { name = 'vsnip' },
           { name = 'nvim_lsp' },
           { name = 'nvim_lua' },
           { name = 'path' },
           -- { name = 'luasnip' },
-          { name = 'vsnip' },
           { name = 'buffer' },
         },
       }
