@@ -228,6 +228,13 @@ return function(use)
       end,
     },
 
+    {
+      'folke/lsp-colors.nvim', -- https://github.com/folke/lsp-colors.nvim
+      config = function()
+        require('lsp-colors').setup()
+      end,
+    },
+
     { 'nvim-lua/lsp-status.nvim' }, -- https://github.com/nvim-lua/lsp-status.nvim
 
     {
