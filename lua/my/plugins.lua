@@ -71,6 +71,13 @@ use {
   end,
 }
 
+use {
+  'norcalli/nvim-colorizer.lua', -- https://github.com/norcalli/nvim-colorizer.lua
+  config = function ()
+    require('colorizer').setup()
+  end
+}
+
 
 -- puts 'my.plugins loaded'
 return pinit
