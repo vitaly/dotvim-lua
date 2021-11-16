@@ -33,8 +33,8 @@ nmap('<leader>alt', '<plug>LSP(Trouble)')
 nmap('<leader>alw', '<plug>LSP(Workspace-Trouble)')
 nmap('<leader>alr', '<plug>LSP(Refresh-Trouble)')
 vim.cmd [[
-command! Autoformat     call luaeval('vim.lsp.buf.formatting()')      | retab
-command! AutoformatSync call luaeval('vim.lsp.buf.formatting_sync()') | retab
+  command! Autoformat     call luaeval('vim.lsp.buf.formatting()')      | retab
+  command! AutoformatSync call luaeval('vim.lsp.buf.formatting_sync()') | retab
 ]]
 
 -- buf_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
