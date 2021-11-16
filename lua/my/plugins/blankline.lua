@@ -10,6 +10,7 @@ return function(use)
       vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
       require('indent_blankline').setup {
         char = '▏',
+        buftype_exclude = { 'terminal' },
         use_treesitter = true,
         -- space_char_blankline = " ",
         show_current_context = true,

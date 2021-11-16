@@ -142,8 +142,10 @@ set.undofile = true -- enable persistent undo
 -- set foldcolumn=0         -- columns for folding
 set.foldmethod = 'syntax'
 -- set foldlevel=9
+set.foldlevel = 9
 -- set nofoldenable         -- dont fold by default "
 set.foldenable = false -- dont fold by default "
+set.foldcolumn = 'auto'
 -- set eol
 -- set nobinary
 -- " set t_Co=256
@@ -157,7 +159,6 @@ end
 set.cursorline = true
 set.cursorcolumn = true
 
--- set foldcolumn=2
 -- set concealcursor=n
 -- set conceallevel=2
 

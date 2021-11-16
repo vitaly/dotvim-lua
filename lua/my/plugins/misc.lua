@@ -3,6 +3,7 @@ return function(use)
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'editorconfig/editorconfig-vim'
+  use 'jrudess/vim-foldtext'
   use {
     'norcalli/nvim-colorizer.lua', -- https://github.com/norcalli/nvim-colorizer.lua
     config = function()

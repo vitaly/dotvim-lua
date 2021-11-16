@@ -77,6 +77,9 @@ nmap              <leader>fei             <plug>(File/Edit/Init)
 noremap                                   <plug>(File/Edit/Plugins)                     <cmd>exe 'e' g:MYVIMDIR.'/lua/my/plugins.lua'<cr>
 nmap              <leader>fep             <plug>(File/Edit/Plugins)
 
+noremap                                   <plug>(File/Edit/Options)                     <cmd>exe 'e' g:MYVIMDIR.'/lua/my/options.lua'<cr>
+nmap              <leader>feo             <plug>(File/Edit/Options)
+
 noremap                                   <plug>(File/Edit/Mappings)                    <cmd>exe 'e' g:MYVIMDIR.'/plugin/mappings.vim'<cr>
 nmap              <leader>fem             <plug>(File/Edit/Mappings)
 
