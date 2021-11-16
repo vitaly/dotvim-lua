@@ -25,6 +25,9 @@ return function(use)
           'IndentBlanklineIndent6',
         },
       }
+
+      map('<plug>Toggle(blankline)', '<cmd>IndentBlanklineToggle!<cr>')
+      nmap('<leader>TB', '<plug>Toggle(blankline)')
     end,
   }
 end
