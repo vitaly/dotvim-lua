@@ -140,12 +140,13 @@ set.swapfile = false -- disable swap
 set.undofile = true -- enable persistent undo
 
 -- set foldcolumn=0         -- columns for folding
-set.foldmethod = 'syntax'
+-- set.foldmethod = 'syntax'
 -- set foldlevel=9
 set.foldlevel = 9
 -- set nofoldenable         -- dont fold by default "
-set.foldenable = false -- dont fold by default "
-set.foldcolumn = 'auto'
+-- set.foldenable = false -- dont fold by default "
+set.foldcolumn = 'auto:5'
+set.signcolumn = 'auto:9'
 -- set eol
 -- set nobinary
 -- " set t_Co=256

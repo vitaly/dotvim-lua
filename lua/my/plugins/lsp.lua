@@ -5,9 +5,13 @@ return function(use)
       'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
 
       requires = {
-        { 'onsails/lspkind-nvim' }, -- https://github.com/onsails/lspkind-nvim
-        { 'williamboman/nvim-lsp-installer' }, -- https://github.com/williamboman/nvim-lsp-installer
-        { 'glepnir/lspsaga.nvim' }, -- https://github.com/glepnir/lspsaga.nvim
+        'onsails/lspkind-nvim', -- https://github.com/onsails/lspkind-nvim
+        'williamboman/nvim-lsp-installer', -- https://github.com/williamboman/nvim-lsp-installer
+        'glepnir/lspsaga.nvim', -- https://github.com/glepnir/lspsaga.nvim
+        {
+          'pierreglaser/folding-nvim', -- https://github.com/pierreglaser/folding-nvim
+          branch = 'nvim-nightly',
+        },
       },
 
       config = function()
@@ -98,6 +102,7 @@ return function(use)
           buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
           require('lsp_signature').on_attach()
+          require('folding').on_attach()
 
           vim.cmd [[
             hi LspReferenceText cterm=inverse gui=inverse
