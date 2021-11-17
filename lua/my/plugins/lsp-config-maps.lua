@@ -22,12 +22,20 @@ noremap('<plug>LSP(Restart)', '<cmd>LspRestart<cr>')
 noremap('<plug>LSP(Trouble)', '<cmd>LspTroubleToggle<cr>')
 noremap('<plug>LSP(Workspace-Trouble)', '<cmd>LspTroubleWorkspaceToggle<cr>')
 noremap('<plug>LSP(Refresh-Trouble)', '<cmd>LspTroubleRefresh<cr>')
+noremap('<plug>LSP(Debug-Log)', function ()
+  vim.lsp.set_log_level 'trace'
+  require('vim.lsp.log').set_format_func(vim.inspect)
+  vim.cmd('e'..vim.lsp.get_log_path())
+end)
+
+require('which-key').register { ['<leader>al'] = { name = 'LSP' } }
 
 nmap('<leader>ali', '<plug>LSP(Info)')
 nmap('<leader>alI', '<plug>LSP(Installed)')
 nmap('<leader>als', '<plug>LSP(Start)')
 nmap('<leader>alS', '<plug>LSP(Stop)')
 nmap('<leader>alR', '<plug>LSP(Restart)')
+nmap('<leader>alD', '<plug>LSP(Debug-Log)')
 
 nmap('<leader>alt', '<plug>LSP(Trouble)')
 nmap('<leader>alw', '<plug>LSP(Workspace-Trouble)')

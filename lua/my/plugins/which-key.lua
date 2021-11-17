@@ -17,7 +17,6 @@ return function(use)
           [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
           a = {
             name = 'App',
-            l = { name = 'LSP' },
             p = { name = 'Packer' },
           },
           b = { name = 'Buffer' },
