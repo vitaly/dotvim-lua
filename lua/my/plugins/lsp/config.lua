@@ -11,7 +11,7 @@ local on_attach = REQUIRE 'my.plugins.lsp.on-attach'
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-require('nvim-lsp-installer').on_server_ready(function(server)
+local configure_server = function(server)
   local opts = {
     on_attach = on_attach,
     flags = { debounce_text_changes = 150 },
@@ -22,19 +22,8 @@ require('nvim-lsp-installer').on_server_ready(function(server)
     opts.settings = {
       Lua = {
         diagnostics = {
-          globals = {
-            'vim',
-            'map',
-            'noremap',
-            'nmap',
-            'nnoremap',
-            'xmap',
-            'xnoremap',
-            'cmap',
-            'cnoremap',
-            'imap',
-            'inoremap',
-          },
+          -- stylua: ignore
+          globals = { 'vim', 'map', 'noremap', 'nmap', 'nnoremap', 'xmap', 'xnoremap', 'cmap', 'cnoremap', 'imap', 'inoremap', },
         },
         -- runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
         -- workspace = {
@@ -69,6 +58,8 @@ require('nvim-lsp-installer').on_server_ready(function(server)
   -- This setup() function is exactly the same as lspconfig's setup function.
   -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
   server:setup(opts)
-end)
+end
+
+require('nvim-lsp-installer').on_server_ready(configure_server)
 
 -- print "lsp-config loaded"
