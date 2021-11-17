@@ -10,6 +10,7 @@ return {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
       'telescope-fzf-native.nvim',
+      'nvim-telescope/telescope-fzy-native.nvim',
     },
 
     wants = {
@@ -58,14 +59,18 @@ return {
             },
           },
         },
-        --   extensions = {
-        --     fzf = {
-        --       fuzzy = true,
-        --       override_generic_sorter = true,
-        --       override_file_sorter = true,
-        --       case_mode = 'smart_case',
-        --     },
-        --   },
+        extensions = {
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = 'smart_case',
+          },
+          fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
+        }
+        },
         pickers = {
           help_tags = { theme = 'ivy' },
           git_files = { theme = 'dropdown' },
@@ -86,6 +91,7 @@ return {
       }
 
       telescope.load_extension 'fzf'
+      telescope.load_extension 'fzy_native'
 
       -- puts 'telescope configured'
     end,
