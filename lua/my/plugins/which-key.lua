@@ -27,6 +27,7 @@ return {
           t = { name = 'Toggle' },
         },
         g = { name = 'Git' },
+        s = { name = 'Search' },
         t = { name = 'Tab' },
         v = { name = 'Vim' },
         w = { name = 'Window' },
