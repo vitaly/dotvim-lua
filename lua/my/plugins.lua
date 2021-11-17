@@ -2,7 +2,7 @@ local pinit = REQUIRE 'my.packer.init'
 local use = pinit.use
 
 local function plugin(name)
-  use(REQUIRE(name))
+  use(REQUIRE('my.plugins.' .. name))
 end
 
 use { 'wbthomason/packer.nvim', opt = true }
@@ -11,24 +11,24 @@ use 'lewis6991/impatient.nvim'
 use 'nvim-lua/plenary.nvim'
 use 'svermeulen/vimpeccable'
 
-plugin 'my.plugins.which-key'
-plugin 'my.plugins.fuzzy'
-plugin 'my.plugins.lsp'
-plugin 'my.plugins.cmp'
-plugin 'my.plugins.tmux-navigator'
-plugin 'my.plugins.undo-tree'
-plugin 'my.plugins.treesitter'
--- plugin('my.plugins.neogen')
-plugin 'my.plugins.file-tree'
-plugin 'my.plugins.git'
-plugin 'my.plugins.comments'
-plugin 'my.plugins.zoom'
-plugin 'my.plugins.statusline'
-plugin 'my.plugins.tags'
-plugin 'my.plugins.blankline'
-plugin 'my.plugins.diminactive'
-plugin 'my.plugins.words'
-plugin 'my.plugins.misc'
+plugin 'which-key'
+plugin 'fuzzy'
+plugin 'lsp'
+plugin 'cmp'
+plugin 'tmux-navigator'
+plugin 'undo-tree'
+plugin 'treesitter'
+plugin 'file-tree'
+plugin 'git'
+plugin 'comments'
+plugin 'zoom'
+plugin 'statusline'
+plugin 'tags'
+plugin 'blankline'
+plugin 'diminactive'
+plugin 'words'
+plugin 'misc'
+-- plugin 'neogen'
 
 -- puts 'my.plugins loaded'
 return pinit
