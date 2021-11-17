@@ -22,9 +22,21 @@ return {
     }
   end,
   config = function()
+    local tree_cb = require('nvim-tree.config').nvim_tree_callback
     require('nvim-tree').setup {
       update_cwd = true,
       update_focused_file = { enable = true },
+      view = {
+        mappings = {
+          list = {
+            { key = { '<CR>' }, cb = tree_cb 'edit' },
+            { key = { 'o' }, cb = tree_cb 'cd' },
+            { key = { 'U' }, cb = tree_cb 'dir_up' },
+            { key = { 'v' }, cb = tree_cb 'vsplit' },
+            { key = { 's', 'i' }, cb = tree_cb 'split' },
+          },
+        },
+      },
     }
   end,
   -- cmd = { "NvimTreeToggle", "NvimTreeFocus" },
