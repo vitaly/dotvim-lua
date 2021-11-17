@@ -34,7 +34,7 @@ return {
           require('null-ls').builtins.formatting.stylua,
           require('null-ls').builtins.formatting.trim_whitespace,
           -- require("null-ls").builtins.diagnostics.shellcheck,
-          require('null-ls').builtins.completion.spell,
+          -- require('null-ls').builtins.completion.spell,
         },
       }
 
