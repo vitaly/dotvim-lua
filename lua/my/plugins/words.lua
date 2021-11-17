@@ -24,5 +24,11 @@ return function(use)
       }
       -- vim.g.interestingWordsRandomiseColors = 1
     end,
+    config = function()
+      vim.cmd [[
+        nnoremap <silent> n <cmd>call WordNavigation(1)<cr><cmd>set hls<cr>zz
+        nnoremap <silent> N <cmd>call WordNavigation(0)<cr><cmd>set hls<cr>zz
+      ]]
+    end,
   }
 end

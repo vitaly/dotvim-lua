@@ -17,8 +17,8 @@ return function(use)
       },
 
       config = function()
-        require 'my.plugins.lsp-config'
-        require 'my.plugins.lsp-config-maps'
+        REQUIRE 'my.plugins.lsp.config'
+        REQUIRE 'my.plugins.lsp.maps'
       end,
     },
 
