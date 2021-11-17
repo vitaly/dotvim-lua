@@ -11,6 +11,7 @@ return {
       'nvim-lua/plenary.nvim',
       'telescope-fzf-native.nvim',
       'nvim-telescope/telescope-fzy-native.nvim',
+      'nvim-telescope/telescope-symbols.nvim',
     },
 
     wants = {
@@ -72,7 +73,7 @@ return {
           fzy_native = {
             override_generic_sorter = false,
             override_file_sorter = true,
-        }
+          },
         },
         pickers = {
           help_tags = { theme = 'ivy' },
