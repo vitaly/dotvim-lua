@@ -28,6 +28,7 @@ plugin 'blankline'
 plugin 'diminactive'
 plugin 'words'
 plugin 'misc'
+plugin 'neorg'
 -- plugin 'neogen'
 
 -- puts 'my.plugins loaded'
