@@ -22,10 +22,10 @@ noremap('<plug>LSP(Restart)', '<cmd>LspRestart<cr>')
 noremap('<plug>LSP(Trouble)', '<cmd>LspTroubleToggle<cr>')
 noremap('<plug>LSP(Workspace-Trouble)', '<cmd>LspTroubleWorkspaceToggle<cr>')
 noremap('<plug>LSP(Refresh-Trouble)', '<cmd>LspTroubleRefresh<cr>')
-noremap('<plug>LSP(Debug-Log)', function ()
+noremap('<plug>LSP(Debug-Log)', function()
   vim.lsp.set_log_level 'trace'
   require('vim.lsp.log').set_format_func(vim.inspect)
-  vim.cmd('e'..vim.lsp.get_log_path())
+  vim.cmd('e' .. vim.lsp.get_log_path())
 end)
 
 require('which-key').register { ['<leader>al'] = { name = 'LSP' } }
@@ -41,6 +41,6 @@ nmap('<leader>alt', '<plug>LSP(Trouble)')
 nmap('<leader>alw', '<plug>LSP(Workspace-Trouble)')
 nmap('<leader>alr', '<plug>LSP(Refresh-Trouble)')
 vim.cmd [[
-  command! Autoformat     call luaeval('vim.lsp.buf.formatting()')      | retab
-  command! AutoformatSync call luaeval('vim.lsp.buf.formatting_sync()') | retab
+  command! LspFormat     call luaeval('vim.lsp.buf.formatting()')
+  command! LspFormatSync call luaeval('vim.lsp.buf.formatting_sync()')
 ]]

@@ -1,3 +1,4 @@
+let b:format_with_lsp = 1
 " AutoFormat
 
 " call my#keymap#leader('fer', '+Rails')

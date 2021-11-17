@@ -11,6 +11,19 @@ local on_attach = REQUIRE 'my.plugins.lsp.on-attach'
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+require('lspconfig').solargraph.setup {
+  cmd = { 'binx', 'solargraph', 'stdio' },
+  settings = {
+    solargraph = {
+      useBundler = true,
+      trace = {
+        server = 'verbose',
+      },
+      logLevel = 'debug',
+    },
+  },
+}
+
 local configure_server = function(server)
   local opts = {
     on_attach = on_attach,
@@ -19,10 +32,10 @@ local configure_server = function(server)
   }
 
   if server.name == 'sumneko_lua' then
+    -- stylua: ignore
     opts.settings = {
       Lua = {
         diagnostics = {
-          -- stylua: ignore
           globals = { 'vim', 'map', 'noremap', 'nmap', 'nnoremap', 'xmap', 'xnoremap', 'cmap', 'cnoremap', 'imap', 'inoremap', },
         },
         -- runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
@@ -44,8 +57,11 @@ local configure_server = function(server)
     end
   elseif server.name == 'solargraph' then
     opts.settings = {
+      useBundler = true,
+      cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
+      cmd_env = {},
       solargraph = {
-        useBundler = false,
+        useBundler = true,
         trace = {
           server = 'verbose',
         },

@@ -29,6 +29,7 @@ plugin 'diminactive'
 plugin 'words'
 plugin 'misc'
 plugin 'neorg'
+plugin 'autoformat'
 -- plugin 'neogen'
 
 -- puts 'my.plugins loaded'

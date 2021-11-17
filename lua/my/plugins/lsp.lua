@@ -21,31 +21,31 @@ return {
     end,
   },
 
-  {
-    'jose-elias-alvarez/null-ls.nvim',
+  -- {
+  --   'jose-elias-alvarez/null-ls.nvim',
 
-    requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  --   requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
 
-    config = function()
-      require('null-ls').config {
-        sources = {
-          require('null-ls').builtins.formatting.prettier,
-          require('null-ls').builtins.formatting.shfmt,
-          require('null-ls').builtins.formatting.stylua,
-          require('null-ls').builtins.formatting.trim_whitespace,
-          -- require("null-ls").builtins.diagnostics.shellcheck,
-          -- require('null-ls').builtins.completion.spell,
-        },
-      }
+  --   config = function()
+  --     require('null-ls').config {
+  --       sources = {
+  --         require('null-ls').builtins.formatting.prettier,
+  --         require('null-ls').builtins.formatting.shfmt,
+  --         require('null-ls').builtins.formatting.stylua,
+  --         require('null-ls').builtins.formatting.trim_whitespace,
+  --         -- require("null-ls").builtins.diagnostics.shellcheck,
+  --         -- require('null-ls').builtins.completion.spell,
+  --       },
+  --     }
 
-      require('lspconfig')['null-ls'].setup {
-        -- on_attach = function (client, bufnr)
-        --   -- vim.g.null_client = client
-        --   -- vim.g.null_bufnr = bufnr
-        -- end
-      }
-    end,
-  },
+  --     require('lspconfig')['null-ls'].setup {
+  --       -- on_attach = function (client, bufnr)
+  --       --   -- vim.g.null_client = client
+  --       --   -- vim.g.null_bufnr = bufnr
+  --       -- end
+  --     }
+  --   end,
+  -- },
 
   -- https://github.com/folke/lsp-colors.nvim
   {
