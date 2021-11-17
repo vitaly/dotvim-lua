@@ -1,64 +1,62 @@
 -- TODO: switch to lua, use g:leader and g:localleader
-return function(use)
-  use {
-    'folke/which-key.nvim', -- https://github.com/folke/which-key.nvim
+return {
+  'folke/which-key.nvim', -- https://github.com/folke/which-key.nvim
 
-    config = function()
-      vim.opt.timeoutlen = 100 -- 0.5s before keymap menu
+  config = function()
+    vim.opt.timeoutlen = 100 -- 0.5s before keymap menu
 
-      local which_key = require 'which-key'
-      which_key.setup {
-        hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', 'call', 'lua', '^:', '^ ', '<Plug>' }, -- hide mapping boilerplate
-      }
+    local which_key = require 'which-key'
+    which_key.setup {
+      hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', 'call', 'lua', '^:', '^ ', '<Plug>' }, -- hide mapping boilerplate
+    }
 
-      which_key.register {
+    which_key.register {
 
-        ['<leader>'] = {
-          [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
-          a = {
-            name = 'App',
-            p = { name = 'Packer' },
-          },
-          b = { name = 'Buffer' },
-          f = {
-            name = 'File',
-            e = {
-              name = 'Edit',
-            },
-            t = { name = 'Toggle' },
-          },
-          g = { name = 'Git' },
-          t = { name = 'Tab' },
-          v = { name = 'Vim' },
-          w = { name = 'Window' },
-          Y = { name = 'Yank' },
-          T = { name = 'Toggle' },
+      ['<leader>'] = {
+        [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
+        a = {
+          name = 'App',
+          p = { name = 'Packer' },
         },
-
-        ['<localleader>'] = {
+        b = { name = 'Buffer' },
+        f = {
+          name = 'File',
           e = {
-            name = 'Eval',
+            name = 'Edit',
           },
+          t = { name = 'Toggle' },
         },
-      }
+        g = { name = 'Git' },
+        t = { name = 'Tab' },
+        v = { name = 'Vim' },
+        w = { name = 'Window' },
+        Y = { name = 'Yank' },
+        T = { name = 'Toggle' },
+      },
 
-      which_key.register({
-        g = {
-          c = {
-            name = 'Comment',
-            c = 'Toggle Comment',
-          },
+      ['<localleader>'] = {
+        e = {
+          name = 'Eval',
         },
-      }, { mode = 'n' })
+      },
+    }
 
-      which_key.register({
-        g = {
+    which_key.register({
+      g = {
+        c = {
+          name = 'Comment',
           c = 'Toggle Comment',
         },
-        ['<leader>'] = {
-          [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
-        },
-      }, { mode = 'x' })
-    end,
-  }
-end
+      },
+    }, { mode = 'n' })
+
+    which_key.register({
+      g = {
+        c = 'Toggle Comment',
+      },
+      ['<leader>'] = {
+        [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
+      },
+    }, { mode = 'x' })
+  end,
+}

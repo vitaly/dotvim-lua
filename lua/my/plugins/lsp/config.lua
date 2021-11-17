@@ -57,6 +57,10 @@ require('nvim-lsp-installer').on_server_ready(function(server)
     opts.settings = {
       solargraph = {
         useBundler = false,
+        trace = {
+          server = 'verbose',
+        },
+        logLevel = 'debug',
       },
     }
   end

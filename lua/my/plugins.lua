@@ -2,7 +2,7 @@ local pinit = REQUIRE 'my.packer.init'
 local use = pinit.use
 
 local function plugin(name)
-  REQUIRE(name)(use)
+  use(REQUIRE(name))
 end
 
 use { 'wbthomason/packer.nvim', opt = true }

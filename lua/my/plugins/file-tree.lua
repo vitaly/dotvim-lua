@@ -1,37 +1,35 @@
-return function(use)
-  use {
-    'kyazdani42/nvim-tree.lua', -- https://github.com/kyazdani42/nvim-tree.lua
-    requires = 'kyazdani42/nvim-web-devicons',
-    setup = function()
-      local vimp = require 'vimp'
-      local noremap = vimp.noremap
-      noremap('<plug>File-Tree(toggle)', '<cmd>NvimTreeToggle<cr>')
-      noremap('<plug>File-Tree(reveal)', '<cmd>lua require"nvim-tree".find_file(true)<cr>')
+return {
+  'kyazdani42/nvim-tree.lua', -- https://github.com/kyazdani42/nvim-tree.lua
+  requires = 'kyazdani42/nvim-web-devicons',
+  setup = function()
+    local vimp = require 'vimp'
+    local noremap = vimp.noremap
+    noremap('<plug>File-Tree(toggle)', '<cmd>NvimTreeToggle<cr>')
+    noremap('<plug>File-Tree(reveal)', '<cmd>lua require"nvim-tree".find_file(true)<cr>')
 
-      local nmap = vimp.nmap
-      nmap('<leader>,', '<plug>File-Tree(toggle)')
-      nmap('<leader>0', '<plug>File-Tree(reveal)')
+    local nmap = vimp.nmap
+    nmap('<leader>,', '<plug>File-Tree(toggle)')
+    nmap('<leader>0', '<plug>File-Tree(reveal)')
 
-      vim.g.nvim_tree_git_hl = 1
-      vim.g.nvim_tree_indent_markers = 1
-      vim.g.nvim_tree_create_in_closed_folder = 1
-      vim.g.nvim_tree_disable_window_picker = 1
+    vim.g.nvim_tree_git_hl = 1
+    vim.g.nvim_tree_indent_markers = 1
+    vim.g.nvim_tree_create_in_closed_folder = 1
+    vim.g.nvim_tree_disable_window_picker = 1
 
-      vim.g.nvim_tree_icons = {
-        default = '',
-        symlink = '',
-      }
-    end,
-    config = function()
-      require('nvim-tree').setup {
-        update_cwd = true,
-        update_focused_file = { enable = true },
-      }
-    end,
-    -- cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    -- keys = { '<leader>,' },
-  }
-end
+    vim.g.nvim_tree_icons = {
+      default = '',
+      symlink = '',
+    }
+  end,
+  config = function()
+    require('nvim-tree').setup {
+      update_cwd = true,
+      update_focused_file = { enable = true },
+    }
+  end,
+  -- cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+  -- keys = { '<leader>,' },
+}
 
 -- local present, nvimtree = pcall(require, "nvim-tree")
 
