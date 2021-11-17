@@ -11,10 +11,6 @@ use 'lewis6991/impatient.nvim'
 use 'nvim-lua/plenary.nvim'
 use 'svermeulen/vimpeccable'
 
-
-
-
-
 plugin 'my.plugins.which-key'
 plugin 'my.plugins.fuzzy'
 plugin 'my.plugins.lsp'
@@ -33,9 +29,6 @@ plugin 'my.plugins.blankline'
 plugin 'my.plugins.diminactive'
 plugin 'my.plugins.words'
 plugin 'my.plugins.misc'
-
-
-
 
 -- puts 'my.plugins loaded'
 return pinit

@@ -17,7 +17,6 @@ m.use = packer.use
 
 for _, f in ipairs { 'compile', 'sync' } do
   m[f] = function()
-    require('vimp').unmap_all()
     packer[f]()
     return m
   end
