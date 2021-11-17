@@ -21,31 +21,7 @@ return {
     },
 
     setup = function()
-      local vimp = require 'vimp'
-      local noremap = vimp.noremap
-      local nmap = vimp.nmap
-      -- local silent = { silent = true }
-
-      noremap('<plug>Find(file)', function()
-        return pcall(require('telescope.builtin').git_files) or require('telescope.builtin').find_files()
-      end)
-      noremap('<plug>Find(buffer)', '<cmd>Telescope buffers<cr>')
-      noremap('<plug>Search(live)', '<cmd>Telescope live_grep<cr>')
-      noremap('<plug>Search(grep)', '<cmd>Telescope grep_string<cr>')
-      noremap('<plug>Help()', '<cmd>Telescope help_tags<cr>')
-      noremap('<plug>Find(command)', '<cmd>Telescope commands<cr>')
-      noremap('<plug>Find(key)', '<cmd>Telescope keymaps<cr>')
-
-      nmap('<localleader><localleader>', '<plug>Find(file)')
-      nmap('<leader>bb', '<plug>Find(buffer)')
-      nmap('<leader>/', '<plug>Search(grep)')
-      nmap('<leader>sg', '<plug>Search(grep)')
-      nmap('<leader>sl', '<plug>Search(live)')
-      nmap('<leader>H', '<plug>Help()')
-      nmap('<leader><cr>', '<plug>Find(command)')
-      nmap('<leader>?', '<plug>Find(key)')
-
-      -- print 'telescope setup complete'
+      REQUIRE 'my.plugins.fuzzy.maps'
     end,
 
     config = function()
