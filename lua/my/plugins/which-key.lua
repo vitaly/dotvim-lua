@@ -3,14 +3,14 @@ return {
   'folke/which-key.nvim', -- https://github.com/folke/which-key.nvim
 
   config = function()
-    vim.opt.timeoutlen = 100 -- 0.5s before keymap menu
+    vim.opt.timeoutlen = 500 -- 0.5s before keymap menu
 
     local which_key = require 'which-key'
     which_key.setup {
       hidden = { '<silent>', '<cmd>', '<Cmd>', '<cr>', '<CR>', 'call ', 'lua ', '<C-U>', '^:', '^ ', '<Plug>' }, -- hide mapping boilerplate
     }
 
-    which_key.register {
+    which_key.register({
 
       ['<leader>'] = {
         [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
@@ -40,9 +40,7 @@ return {
           name = 'Eval',
         },
       },
-    }
 
-    which_key.register({
       g = {
         c = {
           name = 'Comment',
