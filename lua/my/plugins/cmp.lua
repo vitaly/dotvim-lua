@@ -41,12 +41,10 @@ return {
 
     -- local luasnip = require 'luasnip'
 
-
-    local goup = function (fallback)
+    local goup = function(fallback)
       print 'go up'
-      return cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert })(fallback)
+      return cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }(fallback)
     end
-
 
     local down = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { 'i', 'c' })
     local up = cmp.mapping(goup, { 'i', 'c' })
@@ -64,8 +62,6 @@ return {
           -- luasnip.lsp_expand(args.body)
         end,
       },
-
-
 
       mapping = {
         -- select = false is esential, otherwise it will interfere with normal ENTER when there's a popup open
@@ -131,6 +127,7 @@ return {
         { name = 'vsnip' },
         { name = 'nvim_lsp' },
         { name = 'nvim_lua' },
+        { name = 'neorg' },
         { name = 'path' },
         -- { name = 'luasnip' },
         { name = 'buffer' },

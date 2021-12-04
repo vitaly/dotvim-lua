@@ -7,7 +7,7 @@ return {
 
     local which_key = require 'which-key'
     which_key.setup {
-      hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', 'call', 'lua', '^:', '^ ', '<Plug>' }, -- hide mapping boilerplate
+      hidden = { '<silent>', '<cmd>', '<Cmd>', '<cr>', '<CR>', 'call ', 'lua ', '<C-U>', '^:', '^ ', '<Plug>' }, -- hide mapping boilerplate
     }
 
     which_key.register {
