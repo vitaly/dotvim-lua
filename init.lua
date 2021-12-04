@@ -2,7 +2,7 @@
 
 vim.g.MYVIMDIR = vim.fn.expand '%:p:h'
 require 'my.globals'
-require 'my.packer.install'
+require 'my.core.install'
 require 'my.utils'
 require 'my.builtins'
 require 'my.options'

@@ -28,6 +28,8 @@ install('plenary.nvim', 'https://github.com/nvim-lua/plenary.nvim.git')
 
 install('vimpeccable', 'https://github.com/svermeulen/vimpeccable')
 
+install('which-key.nvim', 'https://github.com/folke/which-key.nvim')
+
 if install('packer.nvim', 'https://github.com/wbthomason/packer.nvim', 'opt') then
   require('my.plugins').sync()
 end
