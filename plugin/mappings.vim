@@ -93,6 +93,9 @@ nmap              <leader>fel             <plug>(File/Edit/Lsp-Log)
 noremap                                   <plug>(Quit-All)                              <cmd>qa<cr>
 nmap              <leader>q               <plug>(Quit-All)
 
+noremap                                   <plug>(Quit-All!)                             <cmd>qa!<cr>
+nmap              <leader>Q               <plug>(Quit-All!)
+
 
 noremap                                   <plug>Window(Quit)                           <cmd>q<cr>
 nmap              <leader>wq              <plug>Window(Quit)
