@@ -41,6 +41,15 @@ return {
 
     -- local luasnip = require 'luasnip'
 
+
+    local goup = function (fallback)
+      print 'go up'
+      return cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert })(fallback)
+    end
+
+
+    local down = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { 'i', 'c' })
+    local up = cmp.mapping(goup, { 'i', 'c' })
     cmp.setup {
       completion = { completeopt = 'menu,noselect,preview' },
 
@@ -56,25 +65,31 @@ return {
         end,
       },
 
+
+
       mapping = {
         -- select = false is esential, otherwise it will interfere with normal ENTER when there's a popup open
         ['<CR>'] = cmp.mapping.confirm { select = false, behavior = cmp.ConfirmBehavior.Replace }, -- XXX: WTF is ConfirmBehavior.Replace
         -- ['<CR>']    = cmp.mapping.confirm({ select = true }),
 
-        ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, {
-          'i',
-          'c',
-        }),
-        ['<C-j>'] = cmp.mapping {
-          i = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
-          c = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, -- for some reason 'Select' doesn't work in command line completion
-        },
+        ['<Down>'] = down,
+        ['<C-j>'] = down,
 
-        ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { 'i', 'c' }),
-        ['<C-k>'] = cmp.mapping {
-          i = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
-          c = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, -- for some reason 'Select' doesn't work in command line completion
-        },
+        -- ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { 'i', 'c' }),
+        -- ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { 'i', 'c' }),
+        -- ['<C-j>'] = cmp.mapping {
+        --   i = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+        --   c = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, -- for some reason 'Select' doesn't work in command line completion
+        -- },
+
+        ['<Up>'] = up,
+        ['<C-k>'] = up,
+        -- ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { 'i', 'c' }),
+        -- ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { 'i', 'c' }),
+        -- ['<C-k>'] = cmp.mapping {
+        --   i = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+        --   c = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, -- for some reason 'Select' doesn't work in command line completion
+        -- },
 
         ['<Tab>'] = cmp.mapping(function(--[[ fallback --]])
           if cmp.visible() then

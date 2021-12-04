@@ -6,11 +6,11 @@ for type, icon in pairs(signs) do
 end
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  -- virtual_text = false,
-  virtual_text = {
-    prefix = '',
-    spacing = 5,
-  },
+  virtual_text = false,
+  -- virtual_text = {
+  --   prefix = '',
+  --   spacing = 5,
+  -- },
   signs = true,
   underline = true,
   update_in_insert = false,
@@ -31,6 +31,9 @@ require('lspconfig').solargraph.setup {
       logLevel = 'debug',
     },
   },
+  on_attach = on_attach,
+  flags = { debounce_text_changes = 150 },
+  capabilities = capabilities,
 }
 
 local configure_server = function(server)
