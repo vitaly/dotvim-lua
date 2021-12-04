@@ -9,8 +9,31 @@ return {
   },
   run = ':TSUpdate',
   config = function()
+    local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+
     require('nvim-treesitter.configs').setup {
-      ensure_installed = 'maintained',
+      ensure_installed = {
+        'bash',
+        'c',
+        'comment',
+        'cpp',
+        'css',
+        'elixir',
+        'go',
+        'html',
+        'javascript',
+        'jsdoc',
+        'lua',
+        'python',
+        'ruby',
+        'rust',
+        'scala',
+        'scss',
+        'toml',
+        'typescript',
+        'vim',
+        'yaml',
+      },
 
       highlight = { enable = true, use_languagetree = true },
 
@@ -87,6 +110,17 @@ return {
             ['[]'] = '@class.outer',
           },
         },
+      },
+    }
+
+    require('which-key').register {
+      ['<leader>at'] = {
+        name = 'Tree Sitter',
+
+        i = { ':<C-U>TSInstall<space>', 'Install ...' },
+        u = { ':<C-U>TSUpdate<space>', 'Update ...' },
+        M = { '<cmd>TSModuleInfo<cr>', 'Module Info' },
+        C = { '<cmd>TSConfigInfo<cr>', 'Config Info' },
       },
     }
   end,
