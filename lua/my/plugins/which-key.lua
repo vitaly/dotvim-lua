@@ -4,5 +4,6 @@ return {
 
   config = function()
     REQUIRE 'my.plugins.which-key.config'
+    REQUIRE 'my.plugins.which-key.toggle'
   end,
 }
