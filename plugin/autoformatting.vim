@@ -1,3 +1,4 @@
+" TODO: move to autoformat.lua
 
 command! AutoFormatOn   let b:autoformat = 1| augroup  AuAutoFormat | exe "au! * <buffer>" | exe "au BufWritePost <buffer> Autoformat" | augroup END
 command! AutoFormatOff  let b:autoformat = 0| au! AuAutoFormat * <buffer>

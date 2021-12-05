@@ -1,7 +1,5 @@
 local which_key = require 'which-key'
 
-print 'key toggle'
-
 local function toggle_concealcursor()
   if vim.o.concealcursor == 'n' then
     vim.o.concealcursor = ''
