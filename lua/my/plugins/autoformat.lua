@@ -23,5 +23,22 @@ return {
         { cmd = { 'npx prettier -w' } },
       },
     }
+
+    vim.g.format_debug = false
+    local function toggle_format_debug()
+      if vim.o.format_debug then
+        vim.o.format_debug = false
+      else
+        vim.o.format_debug = true
+      end
+    end
+
+    local which_key = require 'which-key'
+
+    which_key.register {
+      ['<leader>T'] = {
+        F = { toggle_format_debug, 'Format debug' },
+      },
+    }
   end,
 }
