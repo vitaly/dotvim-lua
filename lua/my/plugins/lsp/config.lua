@@ -44,6 +44,7 @@ local configure_server = function(server)
   }
 
   if server.name == 'sumneko_lua' then
+
     -- stylua: ignore
     opts.settings = {
       Lua = {
@@ -59,14 +60,12 @@ local configure_server = function(server)
         -- },
       },
     }
-  end
-
-  if server.name == 'tsserver' then
-    opts.on_attach = function(client, bufnr)
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-      return on_attach(client, bufnr)
-    end
+    -- elseif server.name == 'tsserver' then
+    --   opts.on_attach = function(client, bufnr)
+    --     client.resolved_capabilities.document_formatting = false
+    --     client.resolved_capabilities.document_range_formatting = false
+    --     return on_attach(client, bufnr)
+    --   end
   elseif server.name == 'solargraph' then
     opts.settings = {
       useBundler = true,
