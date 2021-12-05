@@ -12,10 +12,15 @@ endfu
 fu! BDumpVars(match) abort
   call DumpVarsEx('b:', b:, a:match)
 endfu
+fu! VDumpVars(match) abort
+  call DumpVarsEx('v:', v:, a:match)
+endfu
 fu! DumpVars(match) abort
   call GDumpVars(a:match)
   call BDumpVars(a:match)
+  call VDumpVars(a:match)
 endfu
 command! -nargs=1 GDumpVars call GDumpVars('<args>')
 command! -nargs=1 BDumpVars call BDumpVars('<args>')
+command! -nargs=1 VDumpVars call VDumpVars('<args>')
 command! -nargs=1 DumpVars  call DumpVars('<args>')
