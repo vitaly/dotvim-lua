@@ -9,6 +9,7 @@ return function(client, bufnr)
 
   require('lsp_signature').on_attach()
   require('folding').on_attach()
+  -- require('lsp-status').on_attach(client)
 
   vim.cmd [[
     hi LspReferenceText cterm=inverse gui=inverse

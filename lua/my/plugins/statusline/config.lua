@@ -3,8 +3,8 @@
 -- require 'galaxyline.themes.spaceline'
 
 -- LUALINE
-local lsp_clients = function(msg)
-  msg = msg or 'No Active Lsp'
+local lsp_clients = function()
+  local msg = ''
   local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
   local clients = vim.lsp.get_active_clients()
   if next(clients) == nil then
@@ -20,43 +20,36 @@ local lsp_clients = function(msg)
   return msg
 end
 
+-- local lsp_status = function()
+--   if #vim.lsp.buf_get_clients() > 0 then
+--     return require('lsp-status').status()
+--   end
+--   return ''
+-- end
+
 local theme = {
   light = {
     normal = {
       a = { fg = '#005f00', bg = '#afdf00', gui = 'bold' },
-      b = { fg = '#262626', bg = '#606060' },
-      c = { fg = '#9e9e9e', bg = '#303030' },
+      -- b = { fg = '#262626', bg = '#606060' },
+      b = { fg = '#005f5f', bg = '#97efff' },
+      -- c = { fg = '#9e9e9e', bg = '#303030' },
+      c = { fg = '#ffffff', bg = '#005f87' },
     },
-    insert = {
-      a = { fg = '#005f5f', bg = '#ffffff', gui = 'bold' },
-      b = { fg = '#005f5f', bg = '#87dfff' },
-      c = { fg = '#87dfff', bg = '#005f87' },
-    },
+    -- insert = {
+    --   a = { fg = '#005f5f', bg = '#ffffff', gui = 'bold' },
+    --   b = { fg = '#005f5f', bg = '#87dfff' },
+    --   -- c = { fg = '#87dfff', bg = '#005f87' },
+    --   c = { fg = '#ffffff', bg = '#005f87' },
+    -- },
+    insert = { a = { fg = '#005f5f', bg = '#87dfff', gui = 'bold' } },
     visual = { a = { fg = '#870000', bg = '#ff8700', gui = 'bold' } },
     replace = { a = { fg = '#ffffff', bg = '#df0000', gui = 'bold' } },
+
     inactive = {
       a = { fg = '#262626', bg = '#606060', gui = 'bold' },
       b = { fg = '#262626', bg = '#606060' },
-      c = { bg = '#262626', fg = '#606060' },
-    },
-  },
-  dark = {
-    normal = {
-      a = { fg = '#005f00', bg = '#afdf00', gui = 'bold' },
-      b = { fg = '#262626', bg = '#606060' },
-      c = { fg = '#9e9e9e', bg = '#303030' },
-    },
-    insert = {
-      a = { fg = '#005f5f', bg = '#ffffff', gui = 'bold' },
-      b = { fg = '#005f5f', bg = '#87dfff' },
-      c = { fg = '#87dfff', bg = '#005f87' },
-    },
-    visual = { a = { fg = '#870000', bg = '#ff8700', gui = 'bold' } },
-    replace = { a = { fg = '#ffffff', bg = '#df0000', gui = 'bold' } },
-    inactive = {
-      a = { fg = '#262626', bg = '#606060', gui = 'bold' },
-      b = { fg = '#262626', bg = '#606060' },
-      c = { bg = '#262626', fg = '#606060' },
+      c = { bg = '#262626', fg = '#a0a0a0' },
     },
   },
 }
@@ -72,11 +65,13 @@ require('lualine').setup {
     -- theme = 'dracula',
     -- theme = 'powerline',
     -- theme = 'powerline_dark',
-    theme = theme[vim.o.background],
+    theme = theme.light,
   },
 
   sections = {
-    lualine_c = { { 'filename', path = 1 }, { lsp_clients } },
+    lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_lsp' } } },
+    lualine_c = { { 'filename', path = 1 } },
+    lualine_x = { 'encoding', 'fileformat', 'filetype', { lsp_clients } },
   },
 
   inactive_sections = {

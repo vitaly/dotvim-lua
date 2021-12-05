@@ -46,6 +46,8 @@ end
 -- -- Colorscheme
 -- opt('termguicolors', true)
 -- opt('background', 'dark')
+-- set.background = 'light'
+-- set.background = 'dark'
 
 --------------------------------------------------------------------------------
 -- nvim2 options

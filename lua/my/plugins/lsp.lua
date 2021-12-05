@@ -56,7 +56,12 @@ return {
   },
 
   -- https://github.com/nvim-lua/lsp-status.nvim
-  { 'nvim-lua/lsp-status.nvim' },
+  -- {
+  --   'nvim-lua/lsp-status.nvim',
+  --   config = function()
+  --     require('lsp-status').register_progress()
+  --   end,
+  -- },
 
   -- https://github.com/folke/trouble.nvim
   {
