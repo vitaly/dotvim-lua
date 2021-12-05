@@ -15,8 +15,12 @@ return {
 
       lua = {
         {
-          cmd = { 'stylua', '--search-parent-directoried' },
+          cmd = { 'stylua --search-parent-directories' },
         },
+      },
+
+      javascript = {
+        { cmd = { 'npx prettier -w' } },
       },
     }
   end,
