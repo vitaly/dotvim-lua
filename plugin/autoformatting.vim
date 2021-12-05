@@ -1,5 +1,5 @@
 
-command! AutoFormatOn   let b:autoformat = 1| augroup  AuAutoFormat | exe "au! * <buffer>" | exe "au BufWritePost <buffer> undojoin | Autoformat" | augroup END
+command! AutoFormatOn   let b:autoformat = 1| augroup  AuAutoFormat | exe "au! * <buffer>" | exe "au BufWritePost <buffer> Autoformat" | augroup END
 command! AutoFormatOff  let b:autoformat = 0| au! AuAutoFormat * <buffer>
 
 fun! ToggleAutoFormat()
