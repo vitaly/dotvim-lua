@@ -28,6 +28,7 @@ which_key.register({
     w = { name = 'Window' },
     Y = { name = 'Yank' },
     T = { name = 'Toggle' },
+    d = { name = 'Debug' },
   },
 
   ['<localleader>'] = {

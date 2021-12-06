@@ -30,6 +30,7 @@ plugin 'words'
 plugin 'misc'
 plugin 'neorg'
 plugin 'autoformat'
+plugin 'debug'
 -- plugin 'neogen'
 
 -- puts 'my.plugins loaded'
