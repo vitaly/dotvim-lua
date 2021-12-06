@@ -10,6 +10,18 @@ vim.fn.sign_define('DapStopped', { text = '➡️', texthl = '', linehl = '', nu
 
 dap.set_log_level 'TRACE'
 
+dap.listeners.after.event_initialized['dapui-open'] = function()
+  dapui.open()
+end
+
+dap.listeners.before.event_terminated['dapui-open'] = function()
+  dapui.close()
+end
+
+dap.listeners.before.event_exited['dapui-open'] = function()
+  dapui.close()
+end
+
 dap.adapters.ruby = {
   type = 'executable',
   command = 'bundle',

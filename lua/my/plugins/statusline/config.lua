@@ -2,7 +2,7 @@
 -- require 'galaxyline.themes.neonline'
 -- require 'galaxyline.themes.spaceline'
 
--- LUALINE
+-- LUALINE: https://github.com/nvim-lualine/lualine.nvim
 local lsp_clients = function()
   local msg = ''
   local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
@@ -18,6 +18,10 @@ local lsp_clients = function()
     end
   end
   return msg
+end
+
+local dap_status = function()
+  return require('dap').status()
 end
 
 -- local lsp_status = function()
@@ -58,19 +62,12 @@ require('lualine').setup {
 
   options = {
     disabled_filetypes = { 'NvimTree', 'vista', 'dbui', 'packer' },
-    -- theme = 'auto',
-    -- theme = 'solarized',
-    -- theme = 'Tomorrow',
-    -- theme = 'PaperColor',
-    -- theme = 'dracula',
-    -- theme = 'powerline',
-    -- theme = 'powerline_dark',
     theme = theme.light,
   },
 
   sections = {
     lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_lsp' } } },
-    lualine_c = { { 'filename', path = 1 } },
+    lualine_c = { { 'filename', path = 1 }, { dap_status, color = { bg = '#ff0000' } } },
     lualine_x = { 'encoding', 'fileformat', 'filetype', { lsp_clients } },
   },
 
