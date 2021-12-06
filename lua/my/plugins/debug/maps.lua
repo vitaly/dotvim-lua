@@ -1,88 +1,52 @@
-local toggle_breakpoint = function()
-  require('dap').toggle_breakpoint()
-end
+local dap = require 'dap'
 
-local debug_continue = function()
-  require('dap').continue()
-end
-
-local debug_step_over = function()
-  require('dap').step_over()
-end
-
-local debug_step_into = function()
-  require('dap').step_into()
-end
-
-local debug_step_out = function()
-  require('dap').step_out()
-end
-
-local debug_run_last = function()
-  require('dap').run_last()
-end
-
--- local debug_repl_open = function()
---   require('dap').repl.open()
--- end
-
--- local debug_repl_close = function()
---   require('dap').repl.close()
--- end
-
-local debug_repl_toggle = function()
-  require('dap').repl.toggle()
-end
-
-local debug_run_to_cursor = function()
-  require('dap').run_to_cursor()
-end
-
-local debug_run = function()
-  require('dap').run()
-end
-
-local debug_terminate = function()
-  require('dap').terminate()
-end
-
-local debug_list_breakpoints = function()
-  require('dap').list_breakpoints()
+local open_log = function()
+  vim.cmd('e ' .. vim.fn.stdpath 'cache' .. '/dap.log')
 end
 
 local which_key = require 'which-key'
 which_key.register {
-  ['<leader>d'] = {
-    b = { toggle_breakpoint, 'Toggle Breakpoint' },
-    ['<space>'] = { toggle_breakpoint, 'Toggle Breakpoint' },
-    ['<cr>'] = { debug_continue, 'Continue' },
-    L = { debug_list_breakpoints, 'List Breakpoints' },
+  ['<F8>'] = { dap.continue, 'Continue' },
+  ['<F10>'] = { dap.step_over, 'Step Over' },
+  ['<F11>'] = { dap.step_into, 'Step Into' },
+  ['<S-F11>'] = { dap.step_out, 'Step Out' },
 
-    o = { debug_step_over, 'Step Over' },
-    [';'] = { debug_step_over, 'Step Over' },
-    ['<right>'] = { debug_step_over, 'Step Over' },
+  ['<localleader>'] = {
+    b = { dap.toggle_breakpoint, 'Toggle Breakpoint' },
 
-    i = { debug_step_into, 'Step Into' },
-    [':'] = { debug_step_into, 'Step Into' },
-    ['<down>'] = { debug_step_into, 'Step Into' },
-
-    O = { debug_step_out, 'Step Out' },
-    ['<up>'] = { debug_step_out, 'Step Out' },
-
-    l = { debug_run_last, 'Run Last' },
-
-    R = { debug_repl_toggle, 'Toggle REPL' },
-
-    x = { debug_terminate, 'Terminate' },
-    ['<esc>'] = { debug_terminate, 'Terminate' },
-
-    r = { debug_run, 'Run' },
-
-    ['.'] = { debug_run_to_cursor, 'Run to Cursor' },
+    ['@'] = { dap.run_last, 'Run Last' },
+    ['<cr>'] = { dap.continue, 'Continue' },
+    [';'] = { dap.step_over, 'Step Over' },
+    [':'] = { dap.step_into, 'Step Into' },
+    ['.'] = { dap.run_to_cursor, 'Run to Cursor' },
+    ['<up>'] = { dap.up, 'Up Frame' },
+    ['<down>'] = { dap.down, 'Down Frame' },
   },
-  ['<leader>'] = {
-    ['<right>'] = { debug_step_over, 'Step Over' },
-    ['<down>'] = { debug_step_into, 'Step Into' },
-    ['<up>'] = { debug_step_out, 'Step Out' },
+
+  ['<leader>d'] = {
+
+    b = { dap.toggle_breakpoint, 'Toggle Breakpoint' },
+
+    ['@'] = { dap.run_last, 'Run Last' },
+    ['<cr>'] = { dap.continue, 'Continue' },
+    [';'] = { dap.step_over, 'Step Over' },
+    [':'] = { dap.step_into, 'Step Into' },
+    ['.'] = { dap.run_to_cursor, 'Run to Cursor' },
+    ['<up>'] = { dap.up, 'Up Frame' },
+    ['<down>'] = { dap.down, 'Down Frame' },
+
+    r = { dap.run, 'Run' },
+    x = { dap.terminate, 'Terminate' },
+
+    L = { open_log, 'Open Log' },
+
+    l = {
+      name = 'List',
+      c = { '<cmd>Telescope dap commands<cr>', 'Commands' },
+      C = { '<cmd>Telescope dap configurations<cr>', 'Configurations' },
+      v = { '<cmd>Telescope dap variables<cr>', 'Variables' },
+      f = { '<cmd>Telescope dap frames<cr>', 'Frames' },
+      b = { '<cmd>Telescope dap list_breakpoints<cr>', 'Breakpoints' },
+    },
   },
 }

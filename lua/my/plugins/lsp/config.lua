@@ -1,7 +1,9 @@
 local signs = { Error = '✖', Warn = '', Hint = '', Info = '' }
 
+local sign_bg = vim.fn.synIDattr(vim.fn.hlID 'SignColumn', 'bg')
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
+  vim.cmd('hi Diagnostic' .. type .. ' guibg=' .. sign_bg)
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 

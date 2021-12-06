@@ -12,6 +12,7 @@ return {
       'telescope-fzf-native.nvim',
       'nvim-telescope/telescope-fzy-native.nvim',
       'nvim-telescope/telescope-symbols.nvim',
+      'nvim-telescope/telescope-dap.nvim', -- https://github.com/nvim-telescope/telescope-dap.nvim
     },
 
     wants = {
@@ -72,6 +73,7 @@ return {
 
       telescope.load_extension 'fzf'
       telescope.load_extension 'fzy_native'
+      telescope.load_extension 'dap'
 
       -- puts 'telescope configured'
     end,
