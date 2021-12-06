@@ -27,4 +27,12 @@ return {
       xmap('<Enter>', '<Plug>(LiveEasyAlign)')
     end,
   },
+
+  {
+    'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
+
+    setup = function()
+      vim.g.switch_mapping = '`'
+    end,
+  },
 }
