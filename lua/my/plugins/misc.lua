@@ -31,7 +31,7 @@ return {
   {
     'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
 
-    setup = function()
+    config = function()
       vim.g.switch_mapping = '`'
     end,
   },
