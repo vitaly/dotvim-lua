@@ -27,6 +27,13 @@ vim.fn.sign_define('DapStopped', { text = '', linehl = 'DapStopLine' })
 
 dap.set_log_level 'TRACE'
 
+vim.cmd [[
+  augroup DapRepl
+    au!
+    au FileType dap-repl lua require('dap.ext.autocompl').attach()
+  augroup END
+]]
+
 dap.listeners.after.event_initialized['dapui-open'] = function()
   dapui.open()
 end
