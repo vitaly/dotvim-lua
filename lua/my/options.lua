@@ -163,7 +163,9 @@ set.cursorline = true
 set.cursorcolumn = true
 
 -- set concealcursor=n
+set.concealcursor = ''
 -- set conceallevel=2
+set.conceallevel = 2
 
 -- " set relativenumber!
 -- set modeline
