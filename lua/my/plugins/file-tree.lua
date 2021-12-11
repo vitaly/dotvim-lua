@@ -29,7 +29,7 @@ return {
       open_on_tab = true,
       update_cwd = true,
       hijack_cursor = true,
-      diagnostics = { enable = true },
+      diagnostics = { enable = false },
       update_focused_file = { enable = true, update_cwd = true },
       update_to_buf_dir = { enable = true },
       view = {
