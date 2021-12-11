@@ -15,6 +15,7 @@ return {
     vim.g.nvim_tree_indent_markers = 1
     vim.g.nvim_tree_create_in_closed_folder = 1
     vim.g.nvim_tree_disable_window_picker = 1
+    vim.g.nvim_tree_quit_on_open = 1
 
     vim.g.nvim_tree_icons = {
       default = '',
@@ -24,8 +25,13 @@ return {
   config = function()
     local tree_cb = require('nvim-tree.config').nvim_tree_callback
     require('nvim-tree').setup {
+      auto_close = true,
+      open_on_tab = true,
       update_cwd = true,
-      update_focused_file = { enable = true },
+      hijack_cursor = true,
+      diagnostics = { enable = true },
+      update_focused_file = { enable = true, update_cwd = true },
+      update_to_buf_dir = { enable = true },
       view = {
         mappings = {
           list = {
