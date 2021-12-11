@@ -24,6 +24,14 @@ local dap_status = function()
   return require('dap').status()
 end
 
+local format_writing = function()
+  if vim.g.format_writing then
+    return 'W!'
+  else
+    return ''
+  end
+end
+
 -- local lsp_status = function()
 --   if #vim.lsp.buf_get_clients() > 0 then
 --     return require('lsp-status').status()
@@ -67,7 +75,7 @@ require('lualine').setup {
 
   sections = {
     lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_diagnostic' } } },
-    lualine_c = { { 'filename', path = 1 }, { dap_status, color = { bg = '#ff0000' } } },
+    lualine_c = { { 'filename', path = 1 }, { format_writing }, { dap_status, color = { bg = '#ff0000' } } },
     lualine_x = { 'encoding', 'fileformat', 'filetype', { lsp_clients } },
   },
 
