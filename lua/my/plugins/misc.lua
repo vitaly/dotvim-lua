@@ -35,4 +35,6 @@ return {
       vim.g.switch_mapping = '`'
     end,
   },
+
+  { 'wfxr/minimap.vim' }, -- https://github.com/wfxr/minimap.vim
 }
