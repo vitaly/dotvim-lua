@@ -29,4 +29,12 @@ for _, f in ipairs { 'status', 'install', 'update', 'clean' } do
   end
 end
 
+m.refresh = function()
+  if vim.b.packer_ignore then
+    vim.b.packer_ignore = false
+  else
+    packer.install()
+  end
+end
+
 return m

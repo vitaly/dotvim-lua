@@ -40,8 +40,8 @@ end
 vim.cmd [[
   augroup packer_plugins
     autocmd!
-    autocmd BufWritePost */my/plugins.lua PackerInstall
-    autocmd BufWritePost */my/plugins/*.lua PackerInstall
+    autocmd BufWritePost */my/plugins.lua PackerRefresh
+    autocmd BufWritePost */my/plugins/*.lua PackerRefresh
     autocmd User PackerComplete PackerCompile
     autocmd User PackerCompileDone checktime
   augroup end
@@ -56,3 +56,4 @@ vim.cmd "command! PackerStatus  lua REQUIRE('my.plugins').status()"
 vim.cmd "command! PackerSync    lua REQUIRE('my.plugins').sync()"
 vim.cmd "command! PackerUpdate  lua REQUIRE('my.plugins').update()"
 vim.cmd "command! PackerClean   lua REQUIRE('my.plugins').clean()"
+vim.cmd "command! PackerRefresh lua REQUIRE('my.plugins').refresh()"

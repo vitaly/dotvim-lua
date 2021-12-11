@@ -20,6 +20,9 @@ nmap    <leader>ff    <cmd>Autoformat<cr>
 
 
 fun! AutoFormat()
+  if ! get(g:, 'format_writing', 0)
+    let b:packer_ignore = 1
+  endif
   if get(b:, 'format_with_lsp', 0)
     LspFormat
   else
