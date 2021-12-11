@@ -9,7 +9,7 @@ return {
     },
 
     'hrsh7th/vim-vsnip', -- https://github.com/hrsh7th/vim-vsnip
-    'hrsh7th/cmp-vsnip',
+    { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
     -- 'L3MON4D3/LuaSnip', -- https://github.com/L3MON4D3/LuaSnip
     -- { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
 
