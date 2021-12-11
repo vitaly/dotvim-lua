@@ -192,11 +192,12 @@ nmap              <leader>Y.              <plug>(Yank/Current-Directory)
 
 
 
-inoremap          <C-K>                                                                 <Up>
-inoremap          <C-J>                                                                 <Down>
-
-inoremap          <C-H>                                                                 <Left>
-inoremap          <C-L>                                                                 <Right>
+cmap          <C-K>                                                                 <Up>
+cmap          <C-J>                                                                 <Down>
+imap          <C-K>                                                                 <Up>
+imap          <C-J>                                                                 <Down>
+imap          <C-H>                                                                 <Left>
+imap          <C-L>                                                                 <Right>
 
 
 function! s:load_vimrc_background()
