@@ -15,7 +15,7 @@ return function(client, bufnr)
     hi LspReferenceText cterm=inverse gui=inverse
     hi LspReferenceRead cterm=inverse gui=inverse
     hi LspReferenceWrite cterm=inverse gui=inverse
-    ]]
+  ]]
 
   if client.resolved_capabilities.document_highlight == true then
     vim.cmd [[
@@ -23,14 +23,16 @@ return function(client, bufnr)
       au CursorHold <buffer> lua vim.lsp.buf.document_highlight()
       au CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-      ]]
+    ]]
+  else
+    print 'no highlight support'
   end
 
   vim.cmd [[
     augroup lsp_bulb
     au CursorHold,CursorHoldI <buffer> lua require"nvim-lightbulb".update_lightbulb {sign = {enabled = false}, virtual_text = {enabled = true, text = ""}, float = {enabled = false, text = "", win_opts = {winblend = 100, anchor = "NE"}}}
     augroup END
-    ]]
+  ]]
 
   nmap({ 'buffer' }, 'gd', '<plug>Goto(definitions)')
   nmap({ 'buffer' }, 'gD', '<plug>Goto(declaration)')

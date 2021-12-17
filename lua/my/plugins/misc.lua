@@ -36,5 +36,13 @@ return {
     end,
   },
 
-  { 'wfxr/minimap.vim' }, -- https://github.com/wfxr/minimap.vim
+  {
+    'wfxr/minimap.vim', -- https://github.com/wfxr/minimap.vim
+    config = function()
+      -- vim.g.minimap_auto_start = 1
+      -- vim.g.minimap_auto_start_win_ente = 1
+      map('<plug>Toggle(Minimap)', '<cmd>MinimapToggle<cr>')
+      nmap('<leader>TM', '<plug>Toggle(Minimap)')
+    end,
+  },
 }

@@ -1,7 +1,8 @@
 return {
   'liuchengxu/vista.vim',
   config = function()
-    map('<plug>Toggle(tagbar)', '<cmd>Vista!!<cr>')
-    nmap('<leader>TT', '<plug>Toggle(tagbar)')
+    vim.g.vista_default_executive = 'nvim_lsp'
+    map('<plug>Toggle(Tagbar)', '<cmd>Vista!!<cr>')
+    nmap('<leader>TT', '<plug>Toggle(Tagbar)')
   end,
 }

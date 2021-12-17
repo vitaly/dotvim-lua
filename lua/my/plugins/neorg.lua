@@ -83,7 +83,7 @@ return {
         },
 
         i = {
-          { '<C-l>', 'core.integrations.telescope.insert_link' },
+          { '<C-s>', 'core.integrations.telescope.insert_link' },
         },
 
         o = {
