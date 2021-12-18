@@ -30,15 +30,16 @@ return {
 
   {
     'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
-
-    config = function()
+    keys = { '`' },
+    setup = function()
       vim.g.switch_mapping = '`'
     end,
   },
 
   {
     'wfxr/minimap.vim', -- https://github.com/wfxr/minimap.vim
-    config = function()
+    cmd = { 'Minimap', 'MinimapClose', 'MinimapToggle', 'MinimapRefresh', 'MinimapUpdateHighlight' },
+    setup = function()
       -- vim.g.minimap_auto_start = 1
       -- vim.g.minimap_auto_start_win_ente = 1
       map('<plug>Toggle(Minimap)', '<cmd>MinimapToggle<cr>')
