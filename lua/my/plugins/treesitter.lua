@@ -32,6 +32,8 @@ return {
         'javascript',
         'jsdoc',
         'lua',
+        -- brew install gcc
+        -- CC=gcc-11 vim -c "TSInstall norg"
         'norg',
         'python',
         'ruby',
@@ -122,15 +124,20 @@ return {
       },
     }
 
-    require('which-key').register {
+    nnoremap('<leader>ati', ':<C-U>TSInstall ')
+    nnoremap('<leader>atu', ':<C-U>TSUpdate ')
+
+    require('which-key').register({
       ['<leader>at'] = {
         name = 'Tree Sitter',
 
-        i = { ':<C-U>TSInstall<space>', 'Install ...' },
-        u = { ':<C-U>TSUpdate<space>', 'Update ...' },
+        i = { 'Install ...' },
+        u = { 'Update ...' },
+
+        I = { '<cmd>TSInstallInfo<cr>', 'Install Info ...' },
         M = { '<cmd>TSModuleInfo<cr>', 'Module Info' },
         C = { '<cmd>TSConfigInfo<cr>', 'Config Info' },
       },
-    }
+    }, { silent = true })
   end,
 }
