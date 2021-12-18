@@ -2,8 +2,8 @@ return function(client, bufnr)
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
-  -- local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
+  -- local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -27,12 +27,6 @@ return function(client, bufnr)
   else
     print 'no highlight support'
   end
-
-  vim.cmd [[
-    augroup lsp_bulb
-    au CursorHold,CursorHoldI <buffer> lua require"nvim-lightbulb".update_lightbulb {sign = {enabled = false}, virtual_text = {enabled = true, text = ""}, float = {enabled = false, text = "", win_opts = {winblend = 100, anchor = "NE"}}}
-    augroup END
-  ]]
 
   nmap({ 'buffer' }, 'gd', '<plug>Goto(definitions)')
   nmap({ 'buffer' }, 'gD', '<plug>Goto(declaration)')
