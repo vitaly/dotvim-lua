@@ -1,39 +1,53 @@
--- Capture real implementation of function that sets signs
-if not vim.g.orig_set_signs then
-  vim.g.orig_set_signs = vim.lsp.diagnostic.set_signs
+-- Create a namespace. This won't be used to add any diagnostics,
+-- only to display them.
+local ns = vim.api.nvim_create_namespace 'filtered_diagnostics'
+
+if not vim.g.orig_show then
+  vim.fn.orig_show = vim.diagnostic.show
+  vim.g.orig_show = true
 end
-return function(diagnostics, bufnr, client_id, sign_ns, opts)
-  PRINT { diagnostics = diagnostics, bufnr = bufnr, client_id = client_id, sign_ns = sign_ns, opts = opts }
-  -- original func runs some checks, which I think is worth doing
-  -- but maybe overkill
-  -- if not diagnostics then
-  --   diagnostics = diagnostic_cache[bufnr][client_id]
-  -- end
 
-  -- early escape
-  if not diagnostics then
-    return
-  end
+local function set_signs(bufnr)
+  -- Get all diagnostics from the current buffer
+  local diagnostics = vim.diagnostic.get(bufnr)
 
-  -- Work out max severity diagnostic per line
+  -- Find the "worst" diagnostic per line
   local max_severity_per_line = {}
   for _, d in pairs(diagnostics) do
-    if max_severity_per_line[d.range.start.line] then
-      local current_d = max_severity_per_line[d.range.start.line]
-      if d.severity < current_d.severity then
-        max_severity_per_line[d.range.start.line] = d
-      end
-    else
-      max_severity_per_line[d.range.start.line] = d
+    local m = max_severity_per_line[d.lnum]
+    if not m or d.severity < m.severity then
+      max_severity_per_line[d.lnum] = d
     end
   end
 
-  -- map to list
-  local filtered_diagnostics = {}
-  for i, v in pairs(max_severity_per_line) do
-    table.insert(filtered_diagnostics, v)
-  end
-
-  -- call original function
-  vim.g.orig_set_signs(filtered_diagnostics, bufnr, client_id, sign_ns, opts)
+  -- Show the filtered diagnostics using the custom namespace. Use the
+  -- reference to the original function to avoid a loop.
+  local filtered_diagnostics = vim.tbl_values(max_severity_per_line)
+  vim.fn.orig_show(ns, bufnr, filtered_diagnostics, {
+    virtual_text = false,
+    underline = false,
+    signs = true,
+    severity_sort = true,
+  })
 end
+
+function vim.diagnostic.show(namespace, bufnr, ...)
+  vim.fn.orig_show(namespace, bufnr, ...)
+  if bufnr then
+    set_signs(bufnr)
+  end
+end
+
+local config = {
+  virtual_text = false,
+  -- virtual_text = { prefix = '', spacing = 5 },
+  signs = false, -- disable original signs handler, we are going to add signs ourselves
+  underline = true,
+  update_in_insert = false,
+}
+
+-- we can override diagnostics settings per invocation
+-- vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, config)
+
+-- or globally
+vim.diagnostic.config(config)
