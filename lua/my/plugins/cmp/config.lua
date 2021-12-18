@@ -63,6 +63,7 @@ cmp.setup {
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(vsnip-expand-or-jump)', true, true, true), '')
       else
         -- fallback()
+        -- this will fire Copilot's Accept with fallback of <tab>
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-Space>', true, true, true), '')
       end
     end, { 'i', 's' }),
