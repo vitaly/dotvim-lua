@@ -69,8 +69,12 @@ local theme = {
 require('lualine').setup {
 
   options = {
-    disabled_filetypes = { 'NvimTree', 'vista', 'dbui', 'packer' },
+    disabled_filetypes = { 'dbui', 'packer' },
     theme = theme.light,
+  },
+
+  tabline = {
+    lualine_a = { { 'tabs', mode = 1 } },
   },
 
   sections = {
@@ -84,5 +88,13 @@ require('lualine').setup {
 
     lualine_x = {},
     lualine_z = { 'location' },
+  },
+
+  extensions = {
+    'chadtree',
+    'fugitive',
+    'nvim-tree',
+    'quickfix',
+    'symbols-outline',
   },
 }
