@@ -25,7 +25,7 @@ return {
   config = function()
     local tree_cb = require('nvim-tree.config').nvim_tree_callback
     require('nvim-tree').setup {
-      auto_close = true,
+      auto_close = false,
       open_on_tab = true,
       update_cwd = true,
       hijack_cursor = true,
@@ -117,10 +117,6 @@ return {
 --       width = 30,
 --    },
 -- }
---
---
---
---
 --
 --
 --
