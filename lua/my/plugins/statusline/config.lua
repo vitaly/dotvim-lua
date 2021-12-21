@@ -78,9 +78,13 @@ require('lualine').setup {
   },
 
   sections = {
+    lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_diagnostic' } } },
     lualine_c = { { 'filename', path = 1 }, { format_writing }, { dap_status, color = { bg = '#ff0000' } } },
     lualine_x = { 'encoding', 'fileformat', 'filetype', { lsp_clients } },
+    -- lualine_y = {'progress'},
+    lualine_y = { '%02B' },
+    lualine_z = { 'progress', 'location' },
   },
 
   inactive_sections = {
