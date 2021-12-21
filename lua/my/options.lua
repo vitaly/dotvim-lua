@@ -147,8 +147,8 @@ set.undofile = true -- enable persistent undo
 set.foldlevel = 9
 -- set nofoldenable         -- dont fold by default "
 -- set.foldenable = false -- dont fold by default "
-set.foldcolumn = 'auto:5'
-set.signcolumn = 'auto:9'
+set.foldcolumn = 'auto:4'
+set.signcolumn = 'auto:4'
 -- set eol
 -- set nobinary
 -- " set t_Co=256

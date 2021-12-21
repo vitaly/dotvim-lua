@@ -21,7 +21,7 @@ return {
       auto_preview = false,
       show_numbers = false,
       -- show_relative_numbers = true,
-      width = 30,
+      width = 40,
       keymaps = {
         close = { 'q' },
       },
