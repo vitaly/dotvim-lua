@@ -4,6 +4,7 @@ return {
   'tpope/vim-surround',
   'editorconfig/editorconfig-vim',
   'jrudess/vim-foldtext',
+  'vim-scripts/greplace.vim', -- https://github.com/vim-scripts/greplace.vim
 
   {
     'norcalli/nvim-colorizer.lua', -- https://github.com/norcalli/nvim-colorizer.lua
