@@ -10,9 +10,9 @@ noremap('<plug>Refactor(rename)', '<cmd>lua require("lspsaga.rename").rename()<C
 
 noremap('<plug>Goto(references)', '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
 noremap('<plug>Code(actions)', '<cmd>lua require("telescope.builtin").lsp_code_actions()<CR>')
-noremap('<plug>Goto(first)', '<cmd>normal gg<cr><cmd>lua vim.lsp.diagnostic.goto_next()<cr>')
-noremap('<plug>Goto(next)', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>')
-noremap('<plug>Goto(previous)', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>')
+noremap('<plug>Goto(first)', '<cmd>normal gg<cr><cmd>lua vim.diagnostic.goto_next()<cr>')
+noremap('<plug>Goto(next)', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+noremap('<plug>Goto(previous)', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 
 noremap('<plug>LSP(Info)', '<cmd>LspInfo<cr>')
 noremap('<plug>LSP(Installed)', '<cmd>LspInstallInfo<cr>')
