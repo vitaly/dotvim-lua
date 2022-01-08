@@ -1,8 +1,12 @@
 -- print "vimx/init"
 
 vim.g.my_vim_dir = vim.fn.expand '<sfile>:p:h'
+-- global helper functions like PRINT and REQUIRE
 require 'my.globals'
+-- ensure core packages are installed
+-- define packer commands
 require 'my.core.install'
+-- import vimp binding funcs into global
 require 'my.utils'
 require 'my.builtins'
 require 'my.options'
