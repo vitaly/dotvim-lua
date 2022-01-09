@@ -19,19 +19,19 @@ local m = {}
 
 m.use = packer.use
 
-for _, f in ipairs { 'compile', 'sync' } do
-  m[f] = function()
-    packer[f]()
-    return m
-  end
-end
+-- for _, f in ipairs { 'compile', 'sync', 'install', 'update' } do
+--   m[f] = function(...)
+--     packer[f](...)
+--     return m
+--   end
+-- end
 
-for _, f in ipairs { 'status', 'install', 'update', 'clean' } do
-  m[f] = function()
-    packer[f]()
-    return m
-  end
-end
+-- for _, f in ipairs { 'status', 'clean' } do
+--   m[f] = function()
+--     packer[f]()
+--     return m
+--   end
+-- end
 
 m.refresh = function()
   if vim.b.packer_ignore then

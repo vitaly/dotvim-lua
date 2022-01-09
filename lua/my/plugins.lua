@@ -1,4 +1,4 @@
-local pinit = REQUIRE 'my.packer.init'
+local pinit = REQUIRE 'my.packer.load'
 local use = pinit.use
 
 local function plugin(name)
