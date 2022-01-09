@@ -34,6 +34,8 @@ return {
 
             c = { '<cmd>Neorg gtd capture<cr>', 'Capture' },
             v = { '<cmd>Neorg gtd views<cr>', 'Views' },
+
+            t = { '<cmd>Neorg keybind all core.norg.concealer.toggle-markup<cr>', 'Toggle Markup' },
           }, -- /<leader>o
         } -- /register
 
