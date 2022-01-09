@@ -1,5 +1,20 @@
-local pinit = REQUIRE 'my.packer.load'
-local use = pinit.use
+vim.cmd 'packadd packer.nvim'
+
+local packer = nil
+if packer == nil then
+  packer = require 'packer'
+  packer.init {
+    package_root = vim.fn.stdpath 'config' .. '/pack',
+    disable_commands = true,
+    -- profile = {
+    --   enable = true,
+    --   threshold = 1,
+    -- },
+  }
+end
+
+packer.reset()
+local use = packer.use
 
 local function plugin(name)
   use(REQUIRE('my.plugins.' .. name))
@@ -35,5 +50,12 @@ plugin 'autoformat'
 plugin 'debug'
 -- plugin 'neogen'
 
--- puts 'my.plugins loaded'
-return pinit
+local m = {}
+m.refresh = function()
+  if vim.b.packer_ignore then
+    vim.b.packer_ignore = false
+  else
+    packer.install()
+  end
+end
+return m
