@@ -13,7 +13,6 @@ lspkind.init {
 -- local luasnip = require 'luasnip'
 
 local goup = function(fallback)
-  print 'go up'
   return cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }(fallback)
 end
 
