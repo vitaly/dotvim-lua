@@ -27,9 +27,8 @@ return {
     'junegunn/vim-easy-align', -- https://github.com/junegunn/vim-easy-align
     config = function()
       xmap('<Enter>', '<Plug>(LiveEasyAlign)')
-      local which_key = require 'which-key'
 
-      which_key.register({
+      require('which-key').register({
         ['<leader>a'] = {
           name = 'align',
 

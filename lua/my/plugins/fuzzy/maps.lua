@@ -1,5 +1,3 @@
-local which_key = require 'which-key'
-
 local find_file = {
   function()
     return pcall(require('telescope.builtin').git_files) or require('telescope.builtin').find_files()
@@ -22,7 +20,7 @@ local find_workspace_dynamic_symbol = {
   'Find workspace dynamic symbol',
 }
 
-which_key.register {
+require('which-key').register {
 
   ['<leader>'] = {
     ['<cr>'] = find_command,

@@ -9,9 +9,7 @@ local function toggle_format_debug()
   end
 end
 
-local which_key = require 'which-key'
-
-which_key.register {
+require('which-key').register {
   ['<leader>T'] = {
     F = { toggle_format_debug, 'Format debug' },
   },

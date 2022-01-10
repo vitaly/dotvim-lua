@@ -4,8 +4,7 @@ local open_log = function()
   vim.cmd('e ' .. vim.fn.stdpath 'cache' .. '/dap.log')
 end
 
-local which_key = require 'which-key'
-which_key.register {
+require('which-key').register {
   ['<F8>'] = { dap.continue, 'Continue' },
   ['<F10>'] = { dap.step_over, 'Step Over' },
   ['<F11>'] = { dap.step_into, 'Step Into' },

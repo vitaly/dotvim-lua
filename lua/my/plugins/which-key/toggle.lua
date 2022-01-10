@@ -1,5 +1,3 @@
-local which_key = require 'which-key'
-
 local function toggle_concealcursor()
   if vim.o.concealcursor == 'n' then
     vim.o.concealcursor = ''
@@ -40,9 +38,7 @@ local function toggle_verboselog()
   vim.cmd [[redraw]]
 end
 
-local which_key = require 'which-key'
-
-which_key.register {
+require('which-key').register {
   ['<leader>T'] = {
     c = {
       name = 'Conceal',
