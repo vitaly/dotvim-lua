@@ -8,6 +8,8 @@ which_key.setup {
 which_key.register({
 
   ['<leader>'] = {
+    name = 'SPC',
+
     [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
     a = {
       name = 'App',
@@ -22,7 +24,6 @@ which_key.register({
       t = { name = 'Toggle' },
     },
     g = { name = 'Git' },
-    s = { name = 'Search' },
     t = { name = 'Tab' },
     v = { name = 'Vim' },
     w = { name = 'Window' },
@@ -32,6 +33,8 @@ which_key.register({
   },
 
   ['<localleader>'] = {
+    name = ',',
+
     e = {
       name = 'Eval',
     },
