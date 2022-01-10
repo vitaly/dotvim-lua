@@ -32,6 +32,18 @@ local format_writing = function()
   end
 end
 
+local autoformat = function()
+  if vim.b.autoformat and vim.b.autoformat ~= 0 then
+    if vim.b.format_with_lsp and vim.b.format_with_lsp ~= 0 then
+      return 'L'
+    else
+      return 'F'
+    end
+  else
+    return ''
+  end
+end
+
 -- local lsp_status = function()
 --   if #vim.lsp.buf_get_clients() > 0 then
 --     return require('lsp-status').status()
@@ -80,7 +92,12 @@ require('lualine').setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_diagnostic' } } },
-    lualine_c = { { 'filename', path = 1 }, { format_writing }, { dap_status, color = { bg = '#ff0000' } } },
+    lualine_c = {
+      { 'filename', path = 1 },
+      { autoformat },
+      { format_writing, color = { fg = 'red' } },
+      { dap_status, color = { bg = '#ff0000' } },
+    },
     lualine_x = { 'encoding', 'fileformat', 'filetype', { lsp_clients } },
     -- lualine_y = {'progress'},
     lualine_y = { '%02B' },
