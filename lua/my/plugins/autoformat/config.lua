@@ -14,7 +14,15 @@ require('format').setup {
     },
   },
 
+  json = {
+    { cmd = { 'npx prettier --write' } },
+  },
+
   javascript = {
-    { cmd = { 'npx prettier -w' } },
+    { cmd = { 'npx prettier --write' } },
+  },
+
+  typescript = {
+    { cmd = { 'npx prettier --write' } },
   },
 }
