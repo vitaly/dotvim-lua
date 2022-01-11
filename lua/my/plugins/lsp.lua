@@ -47,34 +47,30 @@ return {
   --   end,
   -- },
 
-  -- https://github.com/folke/lsp-colors.nvim
   {
-    'folke/lsp-colors.nvim',
+    'folke/lsp-colors.nvim', -- https://github.com/folke/lsp-colors.nvim
     config = function()
       require('lsp-colors').setup()
     end,
   },
 
-  -- https://github.com/nvim-lua/lsp-status.nvim
   -- {
-  --   'nvim-lua/lsp-status.nvim',
+  --   'nvim-lua/lsp-status.nvim', -- https://github.com/nvim-lua/lsp-status.nvim
   --   config = function()
   --     require('lsp-status').register_progress()
   --   end,
   -- },
 
-  -- https://github.com/folke/trouble.nvim
   {
-    'folke/trouble.nvim',
+    'folke/trouble.nvim', -- https://github.com/folke/trouble.nvim
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
       require('trouble').setup {}
     end,
   },
 
-  -- https://github.com/ray-x/lsp_signature.nvim
   {
-    'ray-x/lsp_signature.nvim',
+    'ray-x/lsp_signature.nvim', -- https://github.com/ray-x/lsp_signature.nvim
     config = function()
       require('lsp_signature').setup {
         bind = true,
