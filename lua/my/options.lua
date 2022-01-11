@@ -168,6 +168,7 @@ set.concealcursor = ''
 set.conceallevel = 2
 
 -- " set relativenumber!
+set.relativenumber = true
 -- set modeline
 -- " highlight column after textwidth
 -- set cc=+1
@@ -188,3 +189,5 @@ set.exrc = true
 set.secure = true
 
 set.showmode = false
+
+-- lua REQUIRE 'my.options'
