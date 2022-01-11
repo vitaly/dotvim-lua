@@ -35,7 +35,10 @@ use 'svermeulen/vimpeccable'
 
 plugin 'which-key'
 plugin 'fuzzy'
+
 plugin 'lsp'
+-- plugin 'navigator'
+
 plugin 'cmp'
 plugin 'tmux-navigator'
 plugin 'undo-tree'
