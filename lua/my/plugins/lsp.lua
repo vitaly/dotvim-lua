@@ -18,8 +18,6 @@ return {
 
     config = function()
       REQUIRE 'my.plugins.lsp.config'
-      REQUIRE 'my.plugins.lsp.diagnostics'
-      REQUIRE 'my.plugins.lsp.maps'
     end,
   },
 
