@@ -19,6 +19,11 @@ local on_attach = REQUIRE 'my.plugins.lsp.on-attach'
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- capabilities = vim.tbl_extend('keep', capabilities, require('lsp-status').capabilities)
 
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  -- Use a sharp border with `FloatBorder` highlights
+  border = 'single shadow',
+})
+
 require('lspconfig').solargraph.setup {
   cmd = { 'binx', 'solargraph', 'stdio' },
   settings = {
