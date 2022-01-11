@@ -19,10 +19,19 @@ nmap    <silent> <leader>Ta            <plug>(Toggle/AutoFormat)
 nmap    <leader>ff    <cmd>Autoformat<cr>
 
 
+fun! s:disable_packer_refresh()
+  let b:packer_refresh = 0
+  echo 'disable'
+endf
+
+fun! s:enable_packer_refresh()
+  let b:packer_refresh = 1
+  echo 'enable'
+endf
+
 fun! AutoFormat()
-  if ! get(g:, 'format_writing', 0)
-    let b:packer_ignore = 1
-  endif
+  call s:disable_packer_refresh()
+  call timer_start(500, s:enable_packer_refresh())
   if get(b:, 'format_with_lsp', 1)
     LspFormat
   else

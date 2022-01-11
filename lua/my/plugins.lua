@@ -62,10 +62,11 @@ plugin 'debug'
 
 local m = {}
 m.refresh = function()
-  if vim.b.packer_ignore then
-    vim.b.packer_ignore = false
-  else
+  if vim.b.packer_refresh ~= 0 then
+    -- vim.cmd [[echo 'installing']]
     packer.install()
+    -- else
+    --   vim.cmd [[echo 'ignoring']]
   end
 end
 return m
