@@ -9,8 +9,9 @@ return {
       { 'onsails/lspkind-nvim' },
       -- https://github.com/williamboman/nvim-lsp-installer
       { 'williamboman/nvim-lsp-installer' },
-      -- https://github.com/glepnir/lspsaga.nvim
-      { 'glepnir/lspsaga.nvim' },
+
+      -- { 'glepnir/lspsaga.nvim' }, -- https://github.com/glepnir/lspsaga.nvim
+
       -- https://github.com/pierreglaser/folding-nvim
       { 'pierreglaser/folding-nvim', branch = 'nvim-nightly' },
     },
