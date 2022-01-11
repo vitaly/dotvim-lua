@@ -30,8 +30,10 @@ return {
 
       require('which-key').register({
         ['<leader>a'] = {
-          name = 'align',
+          name = 'EasyAlign',
 
+          ['='] = { ':EasyAlign /}/<cr>', '=' },
+          ['-'] = { ':EasyAlign /}/<cr>', '-' },
           ['{'] = { ':EasyAlign /}/<cr>', '{' },
           ['}'] = { ':EasyAlign /}/<cr>', '}' },
         },
