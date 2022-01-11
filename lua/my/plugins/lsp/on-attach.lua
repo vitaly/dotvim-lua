@@ -25,7 +25,8 @@ return function(client, bufnr)
       augroup END
     ]]
   else
-    print 'no highlight support'
+    -- print 'no highlight support'
+    -- PRINT(client.name)
   end
 
   nmap({ 'buffer' }, 'gd', '<plug>Goto(definitions)')

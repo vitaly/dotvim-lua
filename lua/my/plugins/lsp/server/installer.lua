@@ -6,22 +6,41 @@ return {
       })
 
       if server.name == 'sumneko_lua' then
+        opts.settings = {
+          Lua = {
+            diagnostics = {
+              globals = {
+                'vim',
+                'map',
+                'noremap',
+                'nmap',
+                'nnoremap',
+                'xmap',
+                'xnoremap',
+                'cmap',
+                'cnoremap',
+                'imap',
+                'inoremap',
+              },
+            },
+            workspace = {
+              -- Make the server aware of Neovim runtime files
+              library = {
+                [vim.fn.expand '$VIMRUNTIME/lua'] = true,
+                [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
+              },
+            },
 
-    -- stylua: ignore
-    opts.settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim', 'map', 'noremap', 'nmap', 'nnoremap', 'xmap', 'xnoremap', 'cmap', 'cnoremap', 'imap', 'inoremap', },
-        },
-        -- runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
-        -- workspace = {
-        --   library = {
-        --     [vim.fn.expand '$VIMRUNTIME/lua'] = true,
-        --     [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
-        --   },
-        -- },
-      },
-    }
+            telemetry = { enable = false },
+            -- runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
+            -- workspace = {
+            --   library = {
+            --     [vim.fn.expand '$VIMRUNTIME/lua'] = true,
+            --     [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
+            --   },
+            -- },
+          },
+        }
         -- elseif server.name == 'tsserver' then
         --   opts.on_attach = function(client, bufnr)
         --     client.resolved_capabilities.document_formatting = false
@@ -38,12 +57,37 @@ return {
             trace = {
               server = 'verbose',
             },
-            logLevel = 'debug',
+            logLevel = 9,
           },
         }
+      elseif server.name == 'efm' then
+        -- opts.cmd = { 'efm-langserver', '-logfile', '/tmp/efmlangserver.log', '-loglevel', '10' }
+
+        opts.init_options = { documentFormatting = true }
+
+        -- local luafmt = { formatCommand = 'luafmt -i 2 --stdin', formatStdin = true }
+        local stylua = {
+          formatCommand = 'stylua --search-parent-directories --stdin-filepath ${INPUT} -',
+          formatStdin = true,
+        }
+
+        local prettier = { formatCommand = 'prettier --stdin-filepath ${INPUT}', formatStdin = true }
+
+        opts.settings = {
+          rootMarkers = { '.git/' },
+          languages = {
+            lua = { stylua },
+            -- lua = { stylua, luafmt },
+            -- lua = { luafmt, stylua },
+            json = { prettier },
+          },
+        }
+        opts.filetypes = { 'lua', 'json' }
+        -- PRINT { server.name .. '.settings', opts.settings }
+        -- PRINT { server.name .. '._default_options', server._default_options }
+        -- PRINT { server.name .. '.filetypes', opts.filetypes }
       end
 
-      -- PRINT(server.name, opts.settings)
       -- This setup() function is exactly the same as lspconfig's setup function.
       -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
       server:setup(opts)

@@ -1,3 +1,5 @@
+let b:format_with_lsp = 0
+
 noremap <buffer> <silent>        <plug>(Eval/Line)      yy:@"<CR>
 nmap    <buffer> <localleader>ee <plug>(Eval/Line)
 
