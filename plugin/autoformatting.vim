@@ -21,12 +21,12 @@ nmap    <leader>ff    <cmd>Autoformat<cr>
 
 fun! s:disable_packer_refresh()
   let b:packer_refresh = 0
-  echo 'disable'
+  " echo 'disable'
 endf
 
 fun! s:enable_packer_refresh()
   let b:packer_refresh = 1
-  echo 'enable'
+  " echo 'enable'
 endf
 
 fun! AutoFormat()
