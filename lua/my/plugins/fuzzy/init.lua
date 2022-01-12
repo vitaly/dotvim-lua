@@ -54,20 +54,20 @@ return {
         },
         pickers = {
           help_tags = { theme = 'ivy' },
-          git_files = { theme = 'dropdown' },
-          find_files = { theme = 'dropdown' },
+          git_files = { theme = 'ivy' },
+          find_files = { theme = 'ivy' },
           commands = {
             theme = 'dropdown',
             previewer = false,
           },
           buffers = {
-            theme = 'dropdown',
+            theme = 'ivy',
             sort_lastused = true,
           },
-          lsp_references = { theme = 'dropdown' },
+          lsp_references = { theme = 'ivy' },
           lsp_code_actions = { theme = 'dropdown' },
-          lsp_definitions = { theme = 'dropdown' },
-          lsp_implementations = { theme = 'dropdown' },
+          lsp_definitions = { theme = 'ivy' },
+          lsp_implementations = { theme = 'ivy' },
         },
       }
 
