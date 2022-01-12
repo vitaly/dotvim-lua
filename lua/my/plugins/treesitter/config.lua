@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------
+-- PARSERS ---------------------------------------------------------------------
 local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 
 parser_configs.norg = {
@@ -25,7 +25,7 @@ parser_configs.norg_table = {
   },
 }
 
---------------------------------------------------------------------------------
+-- TREESITTER config -----------------------------------------------------------
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
     'bash',
@@ -152,10 +152,9 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
+-- KEYMAPS ---------------------------------------------------------------------
 nnoremap('<leader>ati', ':<C-U>TSInstall ')
 nnoremap('<leader>atu', ':<C-U>TSUpdate ')
-
---------------------------------------------------------------------------------
 require('which-key').register({
   ['<leader>at'] = {
     name = 'Tree Sitter',
