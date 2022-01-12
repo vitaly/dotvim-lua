@@ -30,15 +30,14 @@ telescope.setup {
     git_files = { theme = 'ivy' },
     find_files = { theme = 'ivy' },
     commands = {
-      theme = 'dropdown',
-      previewer = false,
+      theme = 'ivy',
     },
     buffers = {
       theme = 'ivy',
       sort_lastused = true,
     },
+    lsp_code_actions = { theme = 'cursor' },
     lsp_references = { theme = 'ivy' },
-    lsp_code_actions = { theme = 'dropdown' },
     lsp_definitions = { theme = 'ivy' },
     lsp_implementations = { theme = 'ivy' },
   },
