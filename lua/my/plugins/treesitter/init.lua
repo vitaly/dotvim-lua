@@ -24,7 +24,7 @@ return {
     'folke/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config = function()
-      require 'my.plugins.treesitter.todo-comments'
+      require 'my.plugins.treesitter.todo'
     end,
   },
 }
