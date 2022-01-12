@@ -32,8 +32,7 @@ require('which-key').register {
 
       ['/'] = fuzzy_grep,
       k = find_key,
-      g = fuzzy_grep,
-      l = live_grep,
+      g = live_grep,
       c = find_character,
       b = find_buffer,
       h = find_help_tag,
