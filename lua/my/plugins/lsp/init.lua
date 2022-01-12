@@ -13,7 +13,8 @@ return {
       -- { 'glepnir/lspsaga.nvim' }, -- https://github.com/glepnir/lspsaga.nvim
 
       -- https://github.com/pierreglaser/folding-nvim
-      { 'pierreglaser/folding-nvim', branch = 'nvim-nightly' },
+      -- { 'pierreglaser/folding-nvim', branch = 'nvim-nightly' },
+      { 'vitaly/folding-nvim' },
     },
 
     config = function()
