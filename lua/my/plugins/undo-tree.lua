@@ -2,15 +2,13 @@ return {
   'mbbill/undotree',
   config = function()
     vim.g.undotree_SetFocusWhenToggle = 1
-    vim.cmd [[
-      noremap             <plug>(Toggle/Unfo-Tree) :UndotreeToggle<CR>
-      nmap    <leader>Tu  <plug>(Toggle/Unfo-Tree)
 
-      " alias for quick access
-      map                 <plug>(Toggle-Unfo-Tree) <plug>(Toggle/Unfo-Tree)
-      nmap <leader>u      <plug>(Toggle-Unfo-Tree)
+    require('which-key').register {
+      ['g='] = { '<cmd>later<cr>', 'Go to newer text state' },
 
-      nmap g= :later<cr>
-   ]]
+      ['\\'] = {
+        u = { '<cmd>UndotreeToggle<cr>', 'Undo Tree' },
+      },
+    }
   end,
 }

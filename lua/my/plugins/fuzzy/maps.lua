@@ -10,7 +10,7 @@ local find_help_tag = { '<cmd>Telescope help_tags<cr>', 'Search for help tags' }
 local find_key = { '<cmd>Telescope keymaps<cr>', 'Search key' }
 local live_grep = { '<cmd>Telescope live_grep<cr>', 'Live Grep' }
 local fuzzy_grep = { '<cmd>Telescope grep_string search=<cr>', 'Fuzzy Grep' }
-local find_character = { '<cmd>Telescope symbols<cr>', 'Find symbol' }
+local find_character = { '<cmd>Telescope symbols<cr>', 'Find Character Symbol' }
 local find_manpage = { '<cmd>Telescope man_pages<cr>', 'Find manpage' }
 
 local find_document_symbol = { '<cmd>Telescope lsp_document_symbols<cr>', 'Find document symbol' }

@@ -36,7 +36,10 @@ return {
       hi! FocusedSymbol gui=bold guifg=red
     ]]
 
-    map('<plug>Toggle(Tagbar)', '<cmd>SymbolsOutline<cr>')
-    nmap('<leader>TT', '<plug>Toggle(Tagbar)')
+    require('which-key').register {
+      ['\\'] = {
+        t = { '<cmd>SymbolsOutline<cr>', 'Toggle TagBar' },
+      },
+    }
   end,
 }

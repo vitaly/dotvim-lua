@@ -25,8 +25,11 @@ return {
       -- },
     }
 
-    map('<plug>Toggle(blankline)', '<cmd>IndentBlanklineToggle!<cr>')
-    nmap('<leader>TB', '<plug>Toggle(blankline)')
+    require('which-key').register {
+      ['\\'] = {
+        b = { '<cmd>IndentBlanklineToggle!<cr>', 'Blankline' },
+      },
+    }
 
     -- require("indent_blankline.commands").disable(true)
     vim.g.indent_blankline_enabled = false

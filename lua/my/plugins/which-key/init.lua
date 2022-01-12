@@ -3,7 +3,6 @@ return {
   'folke/which-key.nvim', -- https://github.com/folke/which-key.nvim
 
   config = function()
-    REQUIRE 'my.plugins.which-key.config'
-    REQUIRE 'my.plugins.which-key.toggle'
+    require 'my.plugins.which-key.config'
   end,
 }

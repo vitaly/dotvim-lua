@@ -51,8 +51,8 @@ end
 
 -- keymaps ---------------------------------------------------------------------
 require('which-key').register {
-  ['<leader>T'] = {
-    a = { toggle_autoformat, 'Toggle Autoformat' },
-    F = { toggle_format_debug, 'Toggle Format debug' },
+  ['\\'] = {
+    a = { toggle_autoformat, 'Autoformat' },
+    da = { toggle_format_debug, 'Autoformat' },
   },
 }

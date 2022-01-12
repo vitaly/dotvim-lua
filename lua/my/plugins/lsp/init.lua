@@ -75,7 +75,9 @@ return {
     config = function()
       require('lsp_signature').setup {
         bind = true,
-        hint_enable = false,
+        floating_window = true,
+        hint_enable = true,
+        hint_prefix = 'ℹ️',
         handler_opts = {
           border = 'rounded',
         },
