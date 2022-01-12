@@ -50,6 +50,6 @@ require('zen-mode').setup {
 -- keymaps ---------------------------------------------------------------------
 require('which-key').register {
   ['\\'] = {
-    z = { '<cmd>ZenMode<cr>', 'ZenMode' },
+    ['\\'] = { '<cmd>ZenMode<cr>', 'ZenMode' },
   },
 }

@@ -1,2 +1,0 @@
-
-require('which-key').register {}
