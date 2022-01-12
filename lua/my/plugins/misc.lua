@@ -49,4 +49,7 @@ return {
     end,
     cmd = { 'Switch' },
   },
+
+  -- TBD: finish config
+  { 'stevearc/dressing.nvim' }, -- https://github.com/stevearc/dressing.nvim
 }
