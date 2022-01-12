@@ -3,7 +3,6 @@ return {
   'lukas-reineke/format.nvim',
 
   config = function()
-    REQUIRE 'my.plugins.autoformat.config'
-    REQUIRE 'my.plugins.autoformat.maps'
+    require 'my.plugins.autoformat.config'
   end,
 }

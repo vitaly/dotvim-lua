@@ -3,22 +3,6 @@
 command! AutoFormatOn   let b:autoformat = 1| augroup  AuAutoFormat | exe "au! * <buffer>" | exe "au BufWritePost <buffer> Autoformat" | augroup END
 command! AutoFormatOff  let b:autoformat = 0| au! AuAutoFormat * <buffer>
 
-fun! ToggleAutoFormat()
-  if get(b:, 'autoformat', 0)
-    echo "autoformat off"
-    AutoFormatOff
-  else
-    echo "autoformat on"
-    AutoFormatOn
-  endif
-endf
-
-map                                    <plug>(Toggle/AutoFormat)       :call ToggleAutoFormat()<CR>
-nmap    <silent> <leader>Ta            <plug>(Toggle/AutoFormat)
-
-nmap    <leader>ff    <cmd>Autoformat<cr>
-
-
 fun! s:disable_packer_refresh()
   let b:packer_refresh = 0
   " echo 'disable'
@@ -38,6 +22,5 @@ fun! AutoFormat()
     FormatWrite
   end
 endf
-
 command! Autoformat call AutoFormat()
-
+nmap    <leader>ff    <cmd>Autoformat<cr>
