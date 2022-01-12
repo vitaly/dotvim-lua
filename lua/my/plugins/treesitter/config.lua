@@ -1,3 +1,4 @@
+--------------------------------------------------------------------------------
 local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 
 parser_configs.norg = {
@@ -24,6 +25,7 @@ parser_configs.norg_table = {
   },
 }
 
+--------------------------------------------------------------------------------
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
     'bash',
@@ -129,11 +131,31 @@ require('nvim-treesitter.configs').setup {
       },
     },
   },
+
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  },
 }
 
 nnoremap('<leader>ati', ':<C-U>TSInstall ')
 nnoremap('<leader>atu', ':<C-U>TSUpdate ')
 
+--------------------------------------------------------------------------------
 require('which-key').register({
   ['<leader>at'] = {
     name = 'Tree Sitter',
@@ -144,6 +166,10 @@ require('which-key').register({
     I = { '<cmd>TSInstallInfo<cr>', 'Install Info ...' },
     M = { '<cmd>TSModuleInfo<cr>', 'Module Info' },
     C = { '<cmd>TSConfigInfo<cr>', 'Config Info' },
+  },
+
+  ['\\'] = {
+    p = { '<cmd>TSPlaygroundToggle<cr>', 'Playground' },
   },
 }, { silent = true })
 

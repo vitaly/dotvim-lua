@@ -76,7 +76,7 @@ require('which-key').register {
   ['<leader>'] = {
     ['<cr>'] = find_command,
     bb = find_buffer,
-    H = find_help_tag,
+    h = find_help_tag,
 
     ['/'] = {
       name = 'Search',
