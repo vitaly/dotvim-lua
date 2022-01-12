@@ -1,3 +1,4 @@
+-- config ----------------------------------------------------------------------
 require('twilight').setup {
   dimming = {
     --   alpha = 0.25, -- amount of dimming
@@ -19,4 +20,11 @@ require('twilight').setup {
   --   'if_statement',
   -- },
   -- exclude = {}, -- exclude these filetypes
+}
+
+-- keymaps ---------------------------------------------------------------------
+require('which-key').register {
+  ['\\'] = {
+    f = { '<cmd>Twilight<cr>', 'Focus (Twilight)' },
+  },
 }
