@@ -1,5 +1,6 @@
 -- print "vimx/init"
 
+-- vim.lsp.set_log_level(0)
 vim.g.my_vim_dir = vim.fn.expand '<sfile>:p:h'
 -- global helper functions like PRINT and REQUIRE
 require 'my.globals'
