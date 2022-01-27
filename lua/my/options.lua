@@ -79,7 +79,7 @@ set.linebreak = true -- clean linebreaks (during wrap)
 set.shortmess = opt.shortmess
   + 's' -- don't give "search hit BOTTOM, continuing at TOP" etc.
   + 'I' -- no intro message
-  + 'F' -- no info messages when loading file
+  - 'F' -- no info messages when loading file
 
 --------------------------------------------------------------------------------
 -- vim0 options

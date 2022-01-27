@@ -5,8 +5,8 @@ noremap('<plug>Goto(implementations)', '<cmd>lua require("telescope.builtin").ls
 noremap('<plug>Help(signature)', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 noremap('<plug>Goto(type)', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
 
--- noremap('<plug>Refactor(rename)', '<cmd>lua vim.lsp.buf.rename()<CR>')
-noremap('<plug>Refactor(rename)', '<cmd>lua require("lspsaga.rename").rename()<CR>')
+noremap('<plug>Refactor(rename)', '<cmd>lua vim.lsp.buf.rename()<CR>')
+-- noremap('<plug>Refactor(rename)', '<cmd>lua require("lspsaga.rename").rename()<CR>')
 
 noremap('<plug>Goto(references)', '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
 noremap('<plug>Code(actions)', '<cmd>lua require("telescope.builtin").lsp_code_actions()<CR>')

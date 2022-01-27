@@ -2,7 +2,12 @@ return {
   'chriskempson/base16-vim',
   'tpope/vim-repeat',
   'tpope/vim-surround',
-  'editorconfig/editorconfig-vim',
+  {
+    'editorconfig/editorconfig-vim',
+    -- config = function()
+    --   vim.g.EditorConfig_verbose = 1
+    -- end,
+  },
   'jrudess/vim-foldtext',
   'vim-scripts/greplace.vim', -- https://github.com/vim-scripts/greplace.vim
 

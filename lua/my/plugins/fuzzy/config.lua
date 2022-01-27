@@ -82,13 +82,14 @@ require('which-key').register {
       name = 'Search',
 
       ['/'] = fuzzy_grep,
+      ['.'] = find_document_symbol,
+
       k = find_key,
       g = live_grep,
       c = find_character,
       b = find_buffer,
       h = find_help_tag,
       m = find_manpage,
-      s = find_document_symbol,
 
       w = {
         name = 'Workspace',
