@@ -24,6 +24,7 @@ return {
       width = 40,
       keymaps = {
         close = { 'q' },
+        goto_location = { '<Cr>', '<2-LeftMouse>' },
       },
     }
 
