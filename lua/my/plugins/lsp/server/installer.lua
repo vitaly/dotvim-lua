@@ -71,7 +71,7 @@ return {
           formatStdin = true,
         }
 
-        local prettier = { formatCommand = 'prettier --stdin-filepath ${INPUT}', formatStdin = true }
+        -- local prettier = { formatCommand = 'npx prettier --stdin-filepath ${INPUT}', formatStdin = true }
 
         opts.settings = {
           rootMarkers = { '.git/' },
@@ -79,13 +79,21 @@ return {
             lua = { stylua },
             -- lua = { stylua, luafmt },
             -- lua = { luafmt, stylua },
-            json = { prettier },
+            -- json = { prettier },
           },
         }
-        opts.filetypes = { 'lua', 'json' }
+        opts.filetypes = { 'lua' }
+        -- opts.filetypes = { 'lua', 'json' }
         -- PRINT { server.name .. '.settings', opts.settings }
         -- PRINT { server.name .. '._default_options', server._default_options }
         -- PRINT { server.name .. '.filetypes', opts.filetypes }
+      elseif server.name == 'jsonls' then
+        opts.settings = {
+          json = {
+            schemas = require('schemastore').json.schemas(),
+          },
+        }
+        -- PRINT { server.name .. '.settings', opts.settings }
       end
 
       -- This setup() function is exactly the same as lspconfig's setup function.

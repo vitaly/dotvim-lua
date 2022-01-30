@@ -103,7 +103,7 @@ cmp.setup {
 
 local autopairs = require 'nvim-autopairs'
 autopairs.setup {
-  disable_filetype = { 'TelescopePrompt', 'vim' },
+  disable_filetype = { 'TelescopePrompt', 'vim', 'json' },
 }
 -- XXX do this only for ruby
 autopairs.add_rules(require 'nvim-autopairs.rules.endwise-ruby')

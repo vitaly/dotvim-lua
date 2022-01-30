@@ -7,8 +7,12 @@ return {
     requires = {
       -- https://github.com/onsails/lspkind-nvim
       { 'onsails/lspkind-nvim' },
-      -- https://github.com/williamboman/nvim-lsp-installer
-      { 'williamboman/nvim-lsp-installer' },
+      {
+        'williamboman/nvim-lsp-installer', -- https://github.com/williamboman/nvim-lsp-installer
+        requires = {
+          'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
+        },
+      },
 
       -- { 'glepnir/lspsaga.nvim' }, -- https://github.com/glepnir/lspsaga.nvim
 
