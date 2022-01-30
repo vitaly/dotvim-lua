@@ -66,7 +66,7 @@ return {
     'folke/trouble.nvim', -- https://github.com/folke/trouble.nvim
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      require('trouble').setup {}
+      require 'my.plugins.lsp.trouble-config'
     end,
   },
 

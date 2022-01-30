@@ -49,10 +49,10 @@ return {
   {
     'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
     setup = function()
-      vim.g.switch_mapping = ''
-      nmap('`', '<cmd>Switch<cr>')
+      vim.g.switch_mapping = '`'
+      -- nmap('`', '<cmd>Switch<cr>')
     end,
-    cmd = { 'Switch' },
+    -- cmd = { 'Switch' },
   },
 
   -- TBD: finish config

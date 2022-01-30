@@ -1,2 +1,2 @@
-" AutoFormatOn
-let b:format_with_lsp = 1
+AutoFormatOn
+let b:format_with_lsp = 0

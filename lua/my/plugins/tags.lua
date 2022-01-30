@@ -18,6 +18,7 @@ return {
 
   setup = function()
     vim.g.symbols_outline = {
+      position = 'left',
       auto_preview = false,
       show_numbers = false,
       -- show_relative_numbers = true,
@@ -28,14 +29,14 @@ return {
       },
     }
 
-    vim.cmd [[
-      augroup outline_setup
-      autocmd!
-      autocmd FileType Outline set foldcolumn=0 | set signcolumn=auto
-      augroup end
-      hi! clear FocusedSymbol
-      hi! FocusedSymbol gui=bold guifg=red
-    ]]
+    -- vim.cmd [[
+    --   augroup outline_setup
+    --   autocmd!
+    --   autocmd FileType Outline set foldcolumn=0 | set signcolumn=auto
+    --   augroup end
+    --   hi! clear FocusedSymbol
+    --   hi! FocusedSymbol gui=bold guifg=red
+    -- ]]
 
     require('which-key').register {
       ['\\'] = {
@@ -44,3 +45,32 @@ return {
     }
   end,
 }
+
+-- return {
+--   'sidebar-nvim/sidebar.nvim', -- https://github.com/sidebar-nvim/sidebar.nvim
+
+--   config = function()
+--     require('sidebar-nvim').setup {
+--       -- disable_default_keybindings = 0,
+--       -- bindings = nil,
+--       -- open = false,
+--       open = true,
+--       -- side = 'left',
+--       -- initial_width = 35,
+--       -- hide_statusline = false,
+--       hide_statusline = true,
+--       -- update_interval = 1000,
+--       -- sections = { 'datetime', 'git', 'diagnostics' },
+--       sections = { 'symbols', 'git', 'todos', 'buffers', 'diagnostics' },
+--       -- section_separator = { '', '-----', '' },
+--       -- containers = {
+--       --   attach_shell = '/bin/sh',
+--       --   show_all = true,
+--       --   interval = 5000,
+--       -- },
+--       -- datetime = { format = '%a %b %d, %H:%M', clocks = { { name = 'local' } } },
+--       -- todos = { ignored_paths = { '~' } },
+--       -- disable_closing_prompt = false,
+--     }
+--   end,
+-- }
