@@ -164,8 +164,7 @@ set.cursorcolumn = true
 
 -- set concealcursor=n
 set.concealcursor = ''
--- set conceallevel=2
-set.conceallevel = 2
+set.conceallevel = 1 -- - replace by one space. prevents text from jumping in most of the cases
 
 -- " set relativenumber!
 set.relativenumber = true
