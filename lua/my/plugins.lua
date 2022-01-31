@@ -7,10 +7,10 @@ if packer == nil then
   packer.init {
     package_root = vim.fn.stdpath 'config' .. '/pack',
     disable_commands = true,
-    -- profile = {
-    --   enable = true,
-    --   threshold = 1,
-    -- },
+    profile = {
+      enable = true,
+      threshold = 1,
+    },
     display = {
       open_fn = function()
         return require('packer.util').float { border = border }
