@@ -59,6 +59,7 @@ plugin 'minimap'
 plugin 'neorg'
 plugin 'autoformat'
 plugin 'debug'
+plugin 'cursors'
 -- plugin 'neogen'
 
 local m = {}

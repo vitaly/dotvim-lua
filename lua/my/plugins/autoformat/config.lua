@@ -49,10 +49,22 @@ local function toggle_autoformat()
   end
 end
 
+local function toggle_autoformat_method()
+  if vim.b.format_with_lsp == 1 then
+    vim.b.format_with_lsp = 0
+  else
+    vim.b.format_with_lsp = 1
+  end
+end
+
 -- keymaps ---------------------------------------------------------------------
 require('which-key').register {
   ['\\'] = {
-    a = { toggle_autoformat, 'Autoformat' },
-    da = { toggle_format_debug, 'Autoformat' },
+    a = {
+      name = 'AutoFormat',
+      a = { toggle_autoformat, 'Autoformat' },
+      m = { toggle_autoformat_method, 'Method' },
+      d = { toggle_format_debug, 'Debug' },
+    }
   },
 }

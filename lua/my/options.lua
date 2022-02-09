@@ -167,7 +167,7 @@ set.concealcursor = ''
 set.conceallevel = 1 -- - replace by one space. prevents text from jumping in most of the cases
 
 -- " set relativenumber!
-set.relativenumber = true
+set.relativenumber = false
 -- set modeline
 -- " highlight column after textwidth
 -- set cc=+1
