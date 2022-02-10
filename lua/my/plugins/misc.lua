@@ -60,4 +60,18 @@ return {
 
   -- from https://alpha2phi.medium.com/neovim-plugins-for-a-better-coding-experience-part-3-d4c2df085677
   -- { 'nathom/filetype.nvim' }, -- https://github.com/nathom/filetype.nvim
+
+  -- bookmarks
+  {
+    'MattesGroeger/vim-bookmarks', -- https://github.com/MattesGroeger/vim-bookmarks
+    config = function()
+      local sign_bg = vim.fn.synIDattr(vim.fn.hlID 'SignColumn', 'bg')
+      vim.cmd('hi BookmarkSign guifg=magenta guibg=' .. sign_bg)
+      vim.cmd('hi BookmarkAnnotationSign guifg=magenta guibg=' .. sign_bg)
+      vim.g.bookmark_highlight_lines = 1
+      vim.g.bookmark_center = 1
+      vim.g.bookmark_display_annotation = 1
+      vim.g.bookmark_auto_close = 1
+    end,
+  },
 }
