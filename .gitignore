@@ -7,4 +7,7 @@
 /.xdg/
 /log
 /parser/
-/scratch.lua
+/scratch.*
+/foo.*
+/bar.*
+/qwe.*

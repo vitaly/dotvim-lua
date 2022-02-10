@@ -30,7 +30,7 @@ return function(client, bufnr)
   end
 
   nmap({ 'buffer' }, 'gd', '<plug>Goto(definitions)')
-  nmap({ 'buffer' }, '<2-LeftMouse>', '<plug>Goto(definitions)')
+  nmap({ 'buffer' }, '<C-LeftMouse>', '<LeftMouse><plug>Goto(definitions)')
   nmap({ 'buffer' }, 'gD', '<plug>Goto(declaration)')
   nmap({ 'buffer' }, 'gr', '<plug>Goto(references)')
   nmap({ 'buffer' }, 'gp', '<plug>Goto(type)')

@@ -65,6 +65,6 @@ require('which-key').register {
       a = { toggle_autoformat, 'Autoformat' },
       m = { toggle_autoformat_method, 'Method' },
       d = { toggle_format_debug, 'Debug' },
-    }
+    },
   },
 }
