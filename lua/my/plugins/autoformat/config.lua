@@ -55,6 +55,9 @@ local function toggle_autoformat_method()
   else
     vim.b.format_with_lsp = 1
   end
+
+  vim.cmd [[AutoFormatOn]]
+  vim.cmd [[w]]
 end
 
 -- keymaps ---------------------------------------------------------------------
@@ -63,8 +66,8 @@ require('which-key').register {
     a = {
       name = 'AutoFormat',
       a = { toggle_autoformat, 'Autoformat' },
-      m = { toggle_autoformat_method, 'Method' },
       d = { toggle_format_debug, 'Debug' },
+      ['\\'] = { toggle_autoformat_method, 'Method' },
     },
   },
 }
