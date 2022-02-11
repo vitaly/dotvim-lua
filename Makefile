@@ -1,4 +1,4 @@
-DEFAULT ?= sync
+DEFAULT ?= recompile
 default: ${DEFAULT}
 
 none    = \033[0m
@@ -18,33 +18,22 @@ help:: ## This Target
 
 ##@ section A
 
-clean: ## clean generated files
-	rm -rf .xdg/data/nvim
-	rm -rf pack plugin/packer_compiled.lua
 
-vim: ## run vim
-	#vim lua/my/plugins/which-key.lua
-	# vim lua/my/plugins.lua
-	# #vim init.lua
-	# vim lua/**/*.lua
-	vim foo.ts
-	# vim lua/my/plugins/git.lua
+clean: ## clean compiled config
+	rm -rf plugin/packer_compiled.lua
+.PHONY: clean
 
-sync: ## sync packer config
-	rm -f plugin/packer_compiled.lua
+reset: clean ## remove all generated files
+	rm -rf pack .xdg/data/nvim
+.PHONY: reset
+
+sync: clean ## sync packer config
 	nvim --headless -c 'autocmd User PackerComplete qa!' -c 'silent PackerSync'
 	@echo
 
+compile: clean ## compile packer config
+	nvim --headless -c 'autocmd User PackerCompileDone qa!' -c 'silent PackerCompile'
+	@echo
+.PHONY: recompile
 
-
-
-
-
-#
-#
-#
-#
-#
-#
-##
 .PHONY: default help clean vim sync
