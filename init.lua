@@ -6,6 +6,7 @@ vim.g.my_vim_dir = vim.fn.expand '<sfile>:p:h'
 require 'my.globals'
 -- ensure core packages are installed
 -- define packer commands
+vim.env.CC = 'gcc-11'
 require 'my.core.install'
 -- import vimp binding funcs into global
 require 'my.utils'

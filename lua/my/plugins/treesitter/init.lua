@@ -11,7 +11,6 @@ return {
     },
     run = ':TSUpdate',
     config = function()
-      vim.env.CC = 'gcc-11'
       require 'my.plugins.treesitter.config'
     end,
   },

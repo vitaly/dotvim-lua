@@ -31,7 +31,7 @@ install('vimpeccable', 'https://github.com/svermeulen/vimpeccable')
 install('which-key.nvim', 'https://github.com/folke/which-key.nvim')
 
 if install('packer.nvim', 'https://github.com/wbthomason/packer.nvim', 'opt') then
-  require('my.plugins').sync()
+  require('my.packer').sync()
 end
 
 --------------------------------------------------------------------------------

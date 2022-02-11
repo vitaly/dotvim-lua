@@ -24,7 +24,7 @@ clean: ## clean compiled config
 .PHONY: clean
 
 reset: clean ## remove all generated files
-	rm -rf pack .xdg/data/nvim
+	rm -rf pack .xdg/data/nvim .xdg/cache/nvim
 .PHONY: reset
 
 sync: clean ## sync packer config

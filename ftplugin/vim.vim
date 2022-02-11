@@ -8,5 +8,3 @@ nmap    <buffer> <localleader>ef <plug>(Eval/File)
 
 noremap <buffer>                 <plug>(Eval/Selection) y:@"<cr>
 xmap    <buffer> <localleader>e  <plug>(Eval/Selection)
-
-echo 123
