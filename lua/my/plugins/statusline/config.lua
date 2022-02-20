@@ -34,10 +34,11 @@ end
 
 local autoformat = function()
   if vim.b.autoformat and vim.b.autoformat ~= 0 then
-    if vim.b.format_with_lsp and vim.b.format_with_lsp ~= 0 then
+    local lsp = vim.b.format_with_lsp or 1 -- default is 1
+    if lsp and lsp ~= 0 then
       return 'L'
     else
-      return 'F'
+      return vim.g.format_debug and 'FD' or 'F'
     end
   else
     return ''

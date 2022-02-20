@@ -75,44 +75,24 @@ which_key.setup {
 }
 
 -- toggle ----------------------------------------------------------------------
-local function toggle_concealcursor()
-  if vim.o.concealcursor == 'n' then
-    vim.o.concealcursor = ''
-  else
-    vim.o.concealcursor = 'n'
-  end
-  vim.cmd [[redraw]]
-end
 
-local function toggle_conceallevel()
-  if vim.o.conceallevel == 0 then
-    vim.o.conceallevel = 2
-  else
-    vim.o.conceallevel = 0
-  end
-  vim.cmd [[redraw]]
-end
+require 'my.toggle'
 
-local function toggle_clipboard()
-  if vim.o.clipboard == 'unnamedplus' then
-    vim.o.clipboard = ''
-  else
-    vim.o.clipboard = 'unnamedplus'
-  end
-  print('set clipboard to "' .. vim.o.clipboard .. '"')
-  vim.cmd [[redraw]]
-end
+local toggle_concealcursor = MAKE_TOGGLE { states = { 'n', '' }, o = 'concealcursor', set = REDRAW }
+local toggle_conceallevel = MAKE_TOGGLE { states = { 0, 1, 2 }, o = 'conceallevel', set = REDRAW }
+local toggle_clipboard = MAKE_TOGGLE { states = { 'unnamedplus', '' }, o = 'clipboard', set = REDRAW }
 
 local function toggle_verboselog()
   if vim.o.verbose == 0 then
     vim.o.verbose = 9
     vim.o.verbosefile = './vim.log'
+    print('verbose on into "' .. vim.o.verbosefile .. '"')
   else
     vim.o.verbose = 0
     vim.o.verbosefile = ''
+    print 'verbose off'
   end
-  print('set verbosefile to "' .. vim.o.verbosefile .. '"')
-  vim.cmd [[redraw]]
+  REDRAW()
 end
 
 -- n keymap --------------------------------------------------------------------
@@ -168,7 +148,7 @@ which_key.register({
     n = {
       name = 'Conceal',
       c = { toggle_concealcursor, 'Cursor' },
-      l = { toggle_conceallevel, 'Level' },
+      n = { toggle_conceallevel, 'Level' },
     },
 
     l = { toggle_verboselog, 'Verbose Log' },
@@ -183,6 +163,7 @@ which_key.register({
 -- x keymap --------------------------------------------------------------------
 which_key.register({
   g = {
+    -- XXX: this doesn't work. it adds a duplicate in the menu
     c = 'Toggle Comment',
   },
 
