@@ -13,7 +13,7 @@ local configs = {
     cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose' },
 
     setup = function()
-      require 'my.plugins.tags.symbols-autline-setup'
+      require 'my.plugins.tags.symbols-outline-setup'
     end,
   },
 
