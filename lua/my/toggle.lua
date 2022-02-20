@@ -49,7 +49,7 @@ function _G.MAKE_TOGGLE(opts)
 
   local p = opts.p or print
   if opts.silent then
-    p = function(...) end
+    p = function(_) end
   end
 
   if opts.o then
@@ -98,6 +98,7 @@ function _G.MAKE_TOGGLE(opts)
   end
 
   if not get then
+    local states = _states(opts)
     local state = states[#states]
 
     -- PRINT { 'default get state', state }
@@ -115,11 +116,11 @@ function _G.MAKE_TOGGLE(opts)
   end
 
   return function()
-    PRINT 'toggle'
+    -- PRINT 'toggle'
     local state = get()
-    PRINT { 'current', state }
+    -- PRINT { 'current', state }
     state = next(state)
-    PRINT { 'next', state }
+    -- PRINT { 'next', state }
     set(state)
   end
 end
