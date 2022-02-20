@@ -5,7 +5,7 @@ local lspkind = require 'lspkind'
 local kind_symbols = require('my.config.icons').nvimtree
 
 lspkind.init {
-  with_text = true,
+  mode = 'symbol_text',
   preset = 'default',
   symbol_map = kind_symbols,
 }
