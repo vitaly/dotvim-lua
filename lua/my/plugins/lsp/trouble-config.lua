@@ -1,5 +1,26 @@
+require 'my.toggle'
+
+local config
+
+configure_trouble = function()
+  require('trouble').setup(config())
+end
+
+local autoopen = MakeSwitch {
+  name = 'Trouble autoopen',
+  g = 'trouble_autoopen',
+  on = configure_trouble,
+}
+
+local mode = MakeSwitch {
+  name = 'Trouble mode',
+  g = 'trouble_mode',
+  states = { 'document_diagnostics', 'workspace_diagnostics', 'quickfix', 'lsp_references', 'loclist' },
+  on = configure_trouble,
+}
+
 -- https://github.com/folke/trouble.nvim
-local config = function()
+config = function()
   return {
     -- position = 'bottom', -- position of the list can be: bottom, top, left, right
     -- height = 10, -- height of the trouble list when position is top or bottom
@@ -7,7 +28,7 @@ local config = function()
     -- icons = true, -- use devicons for filenames
 
     -- mode = 'workspace_diagnostics', -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
-    mode = 'workspace_diagnostics', -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+    mode = mode:current_state(),
     -- fold_open = '', -- icon used for open folds
     -- fold_closed = '', -- icon used for closed folds
     -- group = true, -- group results by file
@@ -35,7 +56,7 @@ local config = function()
     -- },
     -- indent_lines = true, -- add an indent guide below the fold icons
     -- auto_open = false, -- automatically open the list when you have diagnostics
-    auto_open = vim.g.trouble_autoopen or false, -- automatically open the list when you have diagnostics
+    auto_open = autoopen:current_state(),
     -- auto_close = false, -- automatically close the list when you have no diagnostics
     auto_close = true,
     -- auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
@@ -54,19 +75,12 @@ local config = function()
   }
 end
 
-vim.g.trouble_autoopen = vim.g.trouble_autoopen == nil and true or vim.g.trouble_autoopen
-require('trouble').setup(config())
+configure_trouble()
 
-require 'my.toggle'
-
-local toggle_trouble_autoopen = MAKE_TOGGLE {
-  g = 'trouble_autoopen',
-  set = function()
-    require('trouble').setup(config())
-  end,
-}
 require('which-key').register {
-  ['\\'] = {
-    T = { toggle_trouble_autoopen, 'Trouble autoopen' },
+  ['\\T'] = {
+    name = 'Trouble',
+    T = { autoopen.toggler, 'autoopen' },
+    ['\\'] = { mode.toggler, 'mode' },
   },
 }

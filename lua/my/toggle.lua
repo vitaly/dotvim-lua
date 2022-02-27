@@ -1,7 +1,3 @@
-local function _states(opts)
-  return opts.states or { true, false }
-end
-
 local function _def(val, default)
   if val == nil then
     return default
@@ -10,119 +6,165 @@ local function _def(val, default)
   end
 end
 
-local function _default(opts)
-  return _def(opts.default, _states(opts)[1])
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+local Switch = {
+  states = { false, true },
+  silent = true,
+
+  p = function(self, msg)
+    print(msg)
+  end,
+}
+
+function Switch:dump()
+  PRINT(self)
 end
 
-function _G.MAKE_TOGGLE(opts)
-  opts = opts or {}
+function Switch:first_state()
+  return self.states[1]
+end
 
-  local next = opts.next
+function Switch:transitions()
+  local t = {}
+  local states = self.states
+  for i, v in ipairs(states) do
+    local j = i % #states + 1
+    t[v] = states[j]
+  end
+  return t
+end
 
-  if type(next) ~= 'function' then
-    if not next then
-      -- 'next' not given
-      next = {}
-      local states = _states(opts)
-      for i, v in ipairs(states) do
-        local j = i % #states + 1
-        next[v] = states[j]
-      end
-    else
-      -- a statemap 'next' is given
-      if not opts.default then
-        error 'statemap requires default'
-      end
-    end
-    -- PRINT(next)
+function Switch:var()
+  if self.o then
+    return 'o:' .. self.o
+  elseif self.g then
+    return 'g:' .. self.g
+  elseif self.b then
+    return 'b:' .. self.b
+  else
+    return 'self:state'
+  end
+end
 
-    -- must be a state map
-    local state_map = next
-    local default = _default(opts)
-    next = function(state)
-      return _def(state_map[state], default)
+function Switch:get()
+  local val
+  if self.o then
+    val = vim.o[self.o]
+  elseif self.g then
+    val = vim.g[self.g]
+  elseif self.b then
+    val = vim.b[self.b]
+  else
+    val = self.state
+  end
+
+  self.p(self:var() .. ' is "' .. vim.inspect(val) .. '"')
+  return val
+end
+
+function Switch:notify(val)
+  if self.name then
+    print(self.name .. '  is ' .. vim.inspect(val))
+  end
+end
+
+function Switch:on(val)
+  self.p(self:var() .. ' on: changed to' .. val)
+end
+
+function Switch:set(val)
+  if self.o then
+    vim.o[self.o] = val
+  elseif self.g then
+    vim.g[self.g] = val
+  elseif self.b then
+    vim.b[self.b] = val
+  end
+
+  self.state = val
+
+  self:notify(val)
+  self:on(val)
+
+  if not self.silent then
+    print(self:var() .. ' = "' .. vim.inspect(val) .. '"')
+  end
+end
+
+function Switch:current_state()
+  return _def(self:get(), self.default)
+end
+
+function Switch:next_state(state) ----------------- default next ----------------------------
+  return _def(self.next[state], self.default)
+end
+
+function Switch:toggle() ---------------------------------------------------- toggle ----
+  self:p('toggle ' .. self:var())
+  local state
+  -- self:p('toggle')
+  state = self:current_state()
+  -- PRINT { 'current', state }
+  state = self:next_state(state)
+  -- PRINT { 'next', state }
+  return self:set(state)
+end
+
+-- if the 'get' value is null, run the toggle to initialize the value ot the default
+function Switch:clean_state()
+  local val = self:get()
+  local state = _def(val, self.default)
+  if val ~= state then
+    -- print 'setting default'
+    self:set(state)
+  end
+end
+
+function Switch:init()
+  if not self.name then
+    if self.o then
+      self.name = self.o
+    elseif self.g then
+      self.name = self.g
+    elseif self.b then
+      self.name = self.b
     end
   end
 
-  local set = opts.set
-  local get = opts.get
-
-  local p = opts.p or print
-  if opts.silent then
-    p = function(_) end
+  self.default = _def(self.default, self:first_state())
+  self.next = self.next or self:transitions()
+  if self.verbose then
+    self.silent = false
+  end
+  if self.silent then
+    self.p = function(_) end
+  end
+  if self.clean then
+    self:clean_state()
   end
 
-  if opts.o then
-    get = function()
-      local val = vim.o[opts.o]
-      -- print(opts.o .. ' is "' .. vim.inspect(val) .. '"')
-      return val
-    end
-    set = function(val)
-      p(opts.o .. ' = "' .. vim.inspect(val) .. '"')
-      vim.o[opts.o] = val
-      if opts.set then
-        opts.set(val)
-      end
-    end
-  elseif opts.g then
-    get = function()
-      local val = vim.g[opts.g]
-      -- print('g:' .. opts.g .. ' is "' .. vim.inspect(val) .. '"')
-      return val
-    end
-    set = function(val)
-      p('g:' .. opts.g .. ' = "' .. vim.inspect(val) .. '"')
-      vim.g[opts.g] = val
-      if opts.set then
-        opts.set(val)
-      end
-    end
-  elseif opts.b then
-    get = function()
-      local val = vim.b[opts.b]
-      -- print('b:' .. opts.b .. ' is "' .. vim.inspect(val) .. '"')
-      return val
-    end
-    set = function(val)
-      p('b:' .. opts.b .. ' = "' .. vim.inspect(val) .. '"')
-      vim.b[opts.b] = val
-      if opts.set then
-        opts.set(val)
-      end
-    end
+  local swtich = self
+  self.toggler = function()
+    swtich:toggle()
   end
+end
 
-  if not set then
-    error 'set is required'
-  end
+---------------------------------
+function Switch:new(o)
+  o = o or {}
+  setmetatable(o, self)
+  self.__index = self
+  o:init()
+  return o
+end
 
-  if not get then
-    local states = _states(opts)
-    local state = states[#states]
-
-    -- PRINT { 'default get state', state }
-
-    get = function()
-      -- PRINT { 'default get', state }
-      return state
-    end
-
-    set = function(val)
-      state = val
-      -- PRINT { 'default set', state }
-      opts.set(state)
-    end
-  end
-
-  return function()
-    -- PRINT 'toggle'
-    local state = get()
-    -- PRINT { 'current', state }
-    state = next(state)
-    -- PRINT { 'next', state }
-    set(state)
-  end
+---------------------------------
+---------------------------------
+---------------------------------
+---------------------------------
+function _G.MakeSwitch(opts)
+  return Switch:new(opts)
 end
 
 function _G.REDRAW()

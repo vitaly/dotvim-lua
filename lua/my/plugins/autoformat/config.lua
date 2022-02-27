@@ -27,40 +27,43 @@ require('format').setup {
   },
 }
 
--- toggle ----------------------------------------------------------------------
-local function toggle_autoformat()
-    if vim.b.autoformat == 1 then
-        print 'autoformat off'
-        vim.cmd [[AutoFormatOff]]
-    else
-        print 'autoformat on'
-        vim.cmd [[AutoFormatOn]]
-    end
-end
-
 require 'my.toggle'
 
-local toggle_format_debug = MAKE_TOGGLE {
-  silent = true,
-  g = 'format_debug',
-  set = function(val)
-      if val then
-          vim.b.format_with_lsp = false
-          vim.cmd [[AutoFormatOn]]
-          vim.cmd [[w]]
-      end
-  end,
-}
+-- toggle ----------------------------------------------------------------------
+local function toggle_autoformat()
+  if vim.b.autoformat == 1 then
+    print 'autoformat off'
+    vim.cmd [[AutoFormatOff]]
+  else
+    print 'autoformat on'
+    vim.cmd [[AutoFormatOn]]
+  end
+end
 
-local toggle_autoformat_method = MAKE_TOGGLE {
-  b = 'format_with_lsp',
-  silent = true,
-  states = { 0, 1 }, -- empty is treated as 1, so we default to 0 on toggle
-  set = function(val)
+local format_debug = MakeSwitch {
+  g = 'format_debug',
+  on = function(self, val)
+    if val then
+      vim.b.format_with_lsp = false
       vim.cmd [[AutoFormatOn]]
       vim.cmd [[w]]
+    end
   end,
+  silent = true,
 }
+
+local toggle_format_debug = format_debug.toggler
+
+local format_method = MakeSwitch {
+  b = 'format_with_lsp',
+  states = { 0, 1 }, -- empty is treated as 1, so we default to 0 on toggle
+  on = function(self, val)
+    vim.cmd [[AutoFormatOn]]
+    vim.cmd [[w]]
+  end,
+  silent = true,
+}
+local toggle_autoformat_method = format_method.toggler
 
 -- keymaps ---------------------------------------------------------------------
 require('which-key').register {

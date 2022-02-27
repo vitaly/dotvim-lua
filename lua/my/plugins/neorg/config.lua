@@ -2,7 +2,7 @@
 require('which-key').register {
   ['<leader>o'] = {
     function()
-      vim.cmd [[
+        vim.cmd [[
           unmap <leader>o
           silent! NeorgStart
         ]]
@@ -70,15 +70,15 @@ require('neorg').setup {
     ['core.keybinds'] = {
       config = {
         hook = function(keybinds)
-          -- here Neorg already started
-          -- so we can remove the start mapping and replace it with GLOBAL neorg menu
-          vim.cmd 'silent! unmap <leader>o'
+            -- here Neorg already started
+            -- so we can remove the start mapping and replace it with GLOBAL neorg menu
+            vim.cmd 'silent! unmap <leader>o'
 
-          keybinds.unmap('norg', 'i', '<C-s>')
-          keybinds.remap_key('norg', 'i', '<C-l>', '<C-s>')
+            keybinds.unmap('norg', 'i', '<C-s>')
+            keybinds.remap_key('norg', 'i', '<C-l>', '<C-s>')
 
-          -- this is GLOBAL
-          require('which-key').register {
+            -- this is GLOBAL
+            require('which-key').register {
             ['<leader>o'] = {
               name = 'NeOrg',
 
@@ -86,9 +86,9 @@ require('neorg').setup {
               v = { '<cmd>Neorg keybind all core.gtd.base.views<cr>', 'Views' },
               n = { '<cmd>Neorg keybind all core.norg.dirman.new.note<cr>', 'New Note' },
             }, -- /<leader>o
-          } -- /register global
+            } -- /register global
 
-          require('which-key').register({
+            require('which-key').register({
             gt = {
               name = 'TODO',
 
@@ -101,10 +101,18 @@ require('neorg').setup {
               d = { 'Done' },
             },
 
+            ['<localleader>t'] = {
+              name = 'GTD',
+
+              c = { 'Capture' },
+              e = { 'Edit' },
+              v = { 'Views' }
+            },
+
             ['<localleader>m'] = {
               name = 'Neorg Mode',
             },
-          }, { buffer = 0 }) -- /register buffer
+            }, { buffer = 0 }) -- /register buffer
         end,
       },
     },

@@ -78,21 +78,21 @@ which_key.setup {
 
 require 'my.toggle'
 
-local toggle_concealcursor = MAKE_TOGGLE { states = { 'n', '' }, o = 'concealcursor', set = REDRAW }
-local toggle_conceallevel = MAKE_TOGGLE { states = { 0, 1, 2 }, o = 'conceallevel', set = REDRAW }
-local toggle_clipboard = MAKE_TOGGLE { states = { 'unnamedplus', '' }, o = 'clipboard', set = REDRAW }
+local toggle_concealcursor = MakeSwitch({ states = { 'n', '' }, o = 'concealcursor', on = REDRAW }).toggler
+local toggle_conceallevel = MakeSwitch({ states = { 0, 1, 2 }, o = 'conceallevel', on = REDRAW }).toggler
+local toggle_clipboard = MakeSwitch({ states = { 'unnamedplus', '' }, o = 'clipboard', on = REDRAW }).toggler
 
 local function toggle_verboselog()
-  if vim.o.verbose == 0 then
-    vim.o.verbose = 9
-    vim.o.verbosefile = './vim.log'
-    print('verbose on into "' .. vim.o.verbosefile .. '"')
-  else
-    vim.o.verbose = 0
-    vim.o.verbosefile = ''
-    print 'verbose off'
-  end
-  REDRAW()
+    if vim.o.verbose == 0 then
+        vim.o.verbose = 9
+        vim.o.verbosefile = './vim.log'
+        print('verbose on into "' .. vim.o.verbosefile .. '"')
+    else
+        vim.o.verbose = 0
+        vim.o.verbosefile = ''
+        print 'verbose off'
+    end
+    REDRAW()
 end
 
 -- n keymap --------------------------------------------------------------------
