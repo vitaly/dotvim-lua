@@ -1,12 +1,21 @@
+require 'my.toggle'
 return {
   'chriskempson/base16-vim',
   'tpope/vim-repeat',
   'tpope/vim-surround',
   {
     'editorconfig/editorconfig-vim',
-    -- config = function()
-    --   vim.g.EditorConfig_verbose = 1
-    -- end,
+    config = function()
+      local editorconfig_verbose_toggle = MakeSwitch({
+        g = 'EditorConfig_verbose',
+        states = { 0, 1 },
+      }).toggler
+      require('which-key').register {
+        ['\\'] = {
+          de = { editorconfig_verbose_toggle, 'Editorconfig' },
+        },
+      }
+    end,
   },
   'jrudess/vim-foldtext',
   'vim-scripts/greplace.vim', -- https://github.com/vim-scripts/greplace.vim

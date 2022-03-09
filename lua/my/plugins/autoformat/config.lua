@@ -74,5 +74,6 @@ require('which-key').register {
       d = { toggle_format_debug, 'Debug' },
       ['\\'] = { toggle_autoformat_method, 'Method' },
     },
+    da = { toggle_format_debug, 'Autoformat' },
   },
 }
