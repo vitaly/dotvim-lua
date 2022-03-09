@@ -92,14 +92,18 @@ nmap              <leader>fel             <plug>(File/Edit/Lsp-Log)
 
 noremap                                   <plug>(Quit-All)                              <cmd>qa<cr>
 nmap              <leader>q               <plug>(Quit-All)
+xmap              <leader>q               <plug>(Quit-All)
 
 noremap                                   <plug>(Quit-All!)                             <cmd>qa!<cr>
 nmap              <leader>Q               <plug>(Quit-All!)
+xmap              <leader>Q               <plug>(Quit-All!)
 
 
 noremap                                   <plug>Window(Quit)                           <cmd>q<cr>
 nmap              <leader>wq              <plug>Window(Quit)
+xmap              <leader>wq              <plug>Window(Quit)
 nmap              <leader>x               <plug>Window(Quit)
+xmap              <leader>x               <plug>Window(Quit)
 
 noremap                                   <plug>(Window/Max-Width)                      <C-w><bar>
 nmap              <leader>w<bar>          <plug>(Window/Max-Width)
@@ -235,3 +239,5 @@ nmap              <leader>p               <plug>(Prev)
 
 
 nmap              <silent><esc>           <cmd>silent noh<cr>
+
+" nmap              <S-LeftMouse>           <LeftMouse>*
