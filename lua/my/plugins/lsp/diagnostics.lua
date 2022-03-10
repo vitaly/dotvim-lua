@@ -2,9 +2,11 @@
 -- only to display them.
 local ns = vim.api.nvim_create_namespace 'filtered_diagnostics'
 
-if not vim.g.orig_show then
-  vim.fn.orig_show = vim.diagnostic.show
-  vim.g.orig_show = true
+if not _G.OriginalDiagnosticShow then
+  -- print 'saving diagnostics show'
+  _G.OriginalDiagnosticShow = vim.diagnostic.show
+  -- else
+  -- print 'already set diagnostics show'
 end
 
 local function set_signs(bufnr)
@@ -23,7 +25,7 @@ local function set_signs(bufnr)
   -- Show the filtered diagnostics using the custom namespace. Use the
   -- reference to the original function to avoid a loop.
   local filtered_diagnostics = vim.tbl_values(max_severity_per_line)
-  vim.fn.orig_show(ns, bufnr, filtered_diagnostics, {
+  OriginalDiagnosticShow(ns, bufnr, filtered_diagnostics, {
     virtual_text = false,
     underline = false,
     signs = true,
@@ -32,7 +34,7 @@ local function set_signs(bufnr)
 end
 
 function vim.diagnostic.show(namespace, bufnr, ...)
-  vim.fn.orig_show(namespace, bufnr, ...)
+  OriginalDiagnosticShow(namespace, bufnr, ...)
   if bufnr then
     set_signs(bufnr)
   end

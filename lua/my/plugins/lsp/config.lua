@@ -1,5 +1,6 @@
 require 'my.plugins.lsp.config.style'
 require 'my.plugins.lsp.config.hover'
+require 'my.plugins.lsp.config.formatting'
 require 'my.plugins.lsp.diagnostics'
 require 'my.plugins.lsp.maps'
 

@@ -16,6 +16,8 @@ local goup = function(fallback)
   return cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }(fallback)
 end
 
+vim.g.vsnip_snippet_dir = vim.g.my_vim_dir .. '/snippets'
+
 cmp.setup {
   completion = { completeopt = 'menu,noselect,preview' },
 
@@ -24,6 +26,7 @@ cmp.setup {
     ghost_text = false,
   },
 
+  -- https://github.com/hrsh7th/vim-vsnip
   snippet = {
     expand = function(args)
       vim.fn['vsnip#anonymous'](args.body)

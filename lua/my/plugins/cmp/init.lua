@@ -20,7 +20,7 @@ return {
   },
 
   config = function()
-    REQUIRE 'my.plugins.cmp.config'
+    require 'my.plugins.cmp.config'
   end,
 
   event = { 'InsertEnter', 'CmdlineEnter' },

@@ -36,7 +36,7 @@ local autoformat = function()
   if vim.b.autoformat and vim.b.autoformat ~= 0 then
     local lsp = vim.b.format_with_lsp or 1 -- default is 1
     if lsp and lsp ~= 0 then
-      return 'L'
+      return vim.g.format_debug and 'LD' or 'L'
     else
       return vim.g.format_debug and 'FD' or 'F'
     end

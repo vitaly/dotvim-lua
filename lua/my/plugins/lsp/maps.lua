@@ -54,8 +54,3 @@ nmap('<leader>als', '<plug>LSP(Start)')
 nmap('<leader>alS', '<plug>LSP(Stop)')
 nmap('<leader>alR', '<plug>LSP(Restart)')
 nmap('<leader>alD', '<plug>LSP(Debug-Log)')
-
-vim.cmd [[
-  command! LspFormat     call luaeval('vim.lsp.buf.formatting()')
-  command! LspFormatSync call luaeval('vim.lsp.buf.formatting_sync()')
-]]
