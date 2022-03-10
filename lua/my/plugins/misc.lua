@@ -1,4 +1,3 @@
-require 'my.toggle'
 return {
   'chriskempson/base16-vim',
   'tpope/vim-repeat',
@@ -6,6 +5,7 @@ return {
   {
     'editorconfig/editorconfig-vim',
     config = function()
+      require 'my.toggle'
       local editorconfig_verbose_toggle = MakeSwitch({
         g = 'EditorConfig_verbose',
         states = { 0, 1 },
