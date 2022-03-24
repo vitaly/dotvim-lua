@@ -69,6 +69,7 @@ require('which-key').register {
   ['<localleader>'] = {
     F = { '<cmd>FormatWrite<cr>', 'Format' },
     L = { '<cmd>LspFormatSync<cr>', 'Lsp Format' },
+    ['='] = { '<cmd>AutoFormat<cr>', 'Auto Format' },
   },
   ['\\'] = {
     a = {
