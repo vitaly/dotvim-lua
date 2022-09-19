@@ -8,4 +8,3 @@ vim.env.CC = 'gcc-11'
 require 'init.tools'
 require 'init.bootstrap'
 require 'init.packer'
-

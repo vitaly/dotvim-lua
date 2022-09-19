@@ -20,14 +20,22 @@ help:: ## print help
 
 ##@ development
 
-clean:
-	rm -rf pack plugin/packer_compiled.lua
+clean: ## clean compiled config
+	rm -r plugin/packer_compiled.lua
 .PHONY: clean
 
+sync: clean ## sync packer config
+	nvim --headless -c 'autocmd User PackerComplete qa!' -c 'silent PackerSync'
+	@echo
+
+compile: clean ## compile packer config
+	nvim --headless -c 'autocmd User PackerCompileDone qa!' -c 'silent PackerCompile'
+	@echo
+
 reset: clean ## reset  .xdg directory
+	rm -rf pack 
 	rm -rf .xdg/cache
 	rm -rf .xdg/data
-
 reset_loop: ## loop of reset and loading init.lua
 	 while true; do sleep 0.5; ${MAKE} reset; vim; done
 .PHONY: reset_loop
