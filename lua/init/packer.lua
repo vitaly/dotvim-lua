@@ -23,12 +23,12 @@ packer.init({
 
 packer.reset()
 
-REQUIRE('plugins')
+require('plugins').load()
 
 local compiled_path = fn.stdpath('config') .. '/plugin/packer_compiled.lua'
 local compiled = 0 == fn.empty(fn.glob(compiled_path))
 
-print(vim.inspect(_my))
+-- print(vim.inspect(_my))
 
 if _my.packer.updated then
   print "packer sync"

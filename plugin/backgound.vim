@@ -1,4 +1,4 @@
-echom 'plugin/background'
+" echom 'plugin/background'
 " source ~/.vimrc_background
 " function! s:load_vimrc_background()
 "   if filereadable(expand("~/.vimrc_background"))

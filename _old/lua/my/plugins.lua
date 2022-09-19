@@ -1,27 +1,3 @@
-vim.cmd 'packadd packer.nvim'
-
-local border = 'rounded'
-local packer = nil
-if packer == nil then
-  packer = require 'packer'
-  packer.init {
-    package_root = vim.fn.stdpath 'config' .. '/pack',
-    disable_commands = true,
-    profile = {
-      enable = true,
-      threshold = 1,
-    },
-    display = {
-      open_fn = function()
-        return require('packer.util').float { border = border }
-      end,
-      prompt_border = border,
-    },
-  }
-end
-
-packer.reset()
-local use = packer.use
 
 local function plugin(name)
   use(REQUIRE('my.plugins.' .. name))
