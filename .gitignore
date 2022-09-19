@@ -1,0 +1,13 @@
+/pack/
+/plugin/packer_compiled.lua
+/.config/
+.envrc
+/tmp
+/tmp/
+/.xdg/
+/log
+/parser/
+/scratch.*
+/foo.*
+/bar.*
+/qwe.*
