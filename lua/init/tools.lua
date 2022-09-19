@@ -1,6 +1,8 @@
+--------------------------------------------------------------------------------
 _G.VERBOSE = false
 
-function _G.puts(...)
+--------------------------------------------------------------------------------
+function _G.PUTS(...)
   local objects = {}
   for i = 1, select('#', ...) do
     local v = select(i, ...)
@@ -11,7 +13,8 @@ function _G.puts(...)
   return ...
 end
 
-function _G.inspect(...)
+--------------------------------------------------------------------------------
+local function inspect(...)
   local objects = {}
   for i = 1, select('#', ...) do
     local v = select(i, ...)
@@ -21,11 +24,14 @@ function _G.inspect(...)
   return table.concat(objects, '\n')
 end
 
+--------------------------------------------------------------------------------
 function _G.PRINT(...)
   print(inspect(...))
   return ...
 end
 
+--------------------------------------------------------------------------------
+-- do not call this before `plenary` is loaded
 function _G.RELOAD(name)
   if VERBOSE then
     puts('reload(' .. name .. ')')
@@ -33,6 +39,7 @@ function _G.RELOAD(name)
   return require('plenary.reload').reload_module(name)
 end
 
+--------------------------------------------------------------------------------
 function _G.REQUIRE(name)
   RELOAD(name)
 
