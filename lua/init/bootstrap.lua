@@ -53,3 +53,7 @@ _G._my.packer.updated = install('packer.nvim', 'https://github.com/wbthomason/pa
 -- TBD:
 -- install('vimpeccable', 'https://github.com/svermeulen/vimpeccable')
 -- install('which-key.nvim', 'https://github.com/folke/which-key.nvim')
+
+
+-- TODO: detect packer config changes
+-- TODO: clear impatiant cache before reloading?
