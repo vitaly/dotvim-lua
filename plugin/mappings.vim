@@ -150,7 +150,7 @@ map Q gq
 
 
 noremap                                   <plug>(Last-Buffer) <cmd>b#<cr>
-nmap              <leader><Tab>           <plug>(Last-Buffer)
+nmap              <leader><tab>           <plug>(Last-Buffer)
 
 " keep selection after in/outdent
 xnoremap          < <gv

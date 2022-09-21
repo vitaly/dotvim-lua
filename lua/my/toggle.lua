@@ -163,10 +163,7 @@ end
 ---------------------------------
 ---------------------------------
 ---------------------------------
-function _G.MakeSwitch(opts)
+return function(opts)
   return Switch:new(opts)
 end
-
-function _G.REDRAW()
-  vim.cmd [[redraw]]
-end
+-- return Switch:new
