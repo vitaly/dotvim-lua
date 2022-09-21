@@ -16,7 +16,7 @@ local goup = function(fallback)
   return cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }(fallback)
 end
 
-vim.g.vsnip_snippet_dir = vim.g.my_vim_dir .. '/snippets'
+vim.g.vsnip_snippet_dir = vim.g.my_ROOT .. '/snippets'
 
 cmp.setup {
   completion = { completeopt = 'menu,noselect,preview' },

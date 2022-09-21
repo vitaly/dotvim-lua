@@ -1,4 +1,4 @@
-nnoremap <leader><space>        :
+nnoremap          <leader><space>        :
 
 nnoremap                                  <plug>packer(Sync)                            <cmd>PackerSync<cr>
 nmap              <leader>ap<cr>          <plug>packer(Sync)
@@ -66,24 +66,24 @@ nmap              <leader>fx              <plug>(File/Make-Executable)
 
 
 
-noremap                                   <plug>(File/Edit/scratch)                     <cmd>exe 'e' g:my_vim_dir.'/scratch.lua'<cr>
+noremap                                   <plug>(File/Edit/scratch)                     <cmd>exe 'e' g:my_ROOT.'/scratch.lua'<cr>
 nmap              <leader>fes             <plug>(File/Edit/scratch)
 
 
 
-noremap                                   <plug>(File/Edit/Init)                        <cmd>exe 'e' g:my_vim_dir.'/init.lua'<cr>
+noremap                                   <plug>(File/Edit/Init)                        <cmd>exe 'e' g:my_ROOT.'/init.lua'<cr>
 nmap              <leader>fei             <plug>(File/Edit/Init)
 
-noremap                                   <plug>(File/Edit/Plugins)                     <cmd>exe 'e' g:my_vim_dir.'/lua/my/plugins.lua'<cr>
+noremap                                   <plug>(File/Edit/Plugins)                     <cmd>exe 'e' g:my_ROOT.'/lua/plugins.lua'<cr>
 nmap              <leader>fep             <plug>(File/Edit/Plugins)
 
-noremap                                   <plug>(File/Edit/Options)                     <cmd>exe 'e' g:my_vim_dir.'/lua/my/options.lua'<cr>
+noremap                                   <plug>(File/Edit/Options)                     <cmd>exe 'e' g:my_ROOT.'/lua/init/options.lua'<cr>
 nmap              <leader>feo             <plug>(File/Edit/Options)
 
-noremap                                   <plug>(File/Edit/Mappings)                    <cmd>exe 'e' g:my_vim_dir.'/plugin/mappings.vim'<cr>
+noremap                                   <plug>(File/Edit/Mappings)                    <cmd>exe 'e' g:my_ROOT.'/plugin/mappings.vim'<cr>
 nmap              <leader>fem             <plug>(File/Edit/Mappings)
 
-noremap                                   <plug>(File/Edit/Notes)                       <cmd>exe 'e' g:my_vim_dir.'/NOTES.md'<cr>
+noremap                                   <plug>(File/Edit/Notes)                       <cmd>exe 'e' g:my_ROOT.'/NOTES.md'<cr>
 nmap              <leader>fen             <plug>(File/Edit/Notes)
 
 noremap                                   <plug>(File/Edit/Lsp-Log)                     <cmd>exe 'e' stdpath('cache').'/lsp.log'<cr>
@@ -99,7 +99,7 @@ nmap              <leader>Q               <plug>(Quit-All!)
 xmap              <leader>Q               <plug>(Quit-All!)
 
 
-noremap                                   <plug>Window(Quit)                           <cmd>q<cr>
+noremap                                   <plug>Window(Quit)                            <cmd>q<cr>
 nmap              <leader>wq              <plug>Window(Quit)
 xmap              <leader>wq              <plug>Window(Quit)
 nmap              <leader>x               <plug>Window(Quit)
@@ -196,12 +196,12 @@ nmap              <leader>Y.              <plug>(Yank/Current-Directory)
 
 
 
-cmap          <C-K>                                                                 <Up>
-cmap          <C-J>                                                                 <Down>
-imap          <C-K>                                                                 <Up>
-imap          <C-J>                                                                 <Down>
-imap          <C-H>                                                                 <Left>
-imap          <C-L>                                                                 <Right>
+cmap              <C-K>                                                                 <Up>
+cmap              <C-J>                                                                 <Down>
+imap              <C-K>                                                                 <Up>
+imap              <C-J>                                                                 <Down>
+imap              <C-H>                                                                 <Left>
+imap              <C-L>                                                                 <Right>
 
 
 
@@ -226,4 +226,4 @@ nmap              <leader>p               <plug>(Prev)
 
 nmap              <silent><esc>           <cmd>silent noh<cr>
 
-" nmap              <S-LeftMouse>           <LeftMouse>*
+nmap              <M-LeftMouse>           <LeftMouse>*
