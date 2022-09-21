@@ -46,13 +46,16 @@ install('plenary.nvim', 'https://github.com/nvim-lua/plenary.nvim.git')
 vim.cmd [[packadd plenary.nvim]]
 
 --------------------------------------------------------------------------------
+-- MAPX.NVIM
+-- used to define keymaps all over the place
+-- install('which-key.nvim', 'https://github.com/folke/which-key.nvim')
+install('mapx.nvim', 'https://github.com/b0o/mapx.nvim')
+
+
+--------------------------------------------------------------------------------
 -- PACKER.NVIM
 -- we note if we just installed it, so that we can sync the config later in the process
 _G._my.packer.updated = install('packer.nvim', 'https://github.com/wbthomason/packer.nvim', 'opt')
-
--- TBD:
--- install('vimpeccable', 'https://github.com/svermeulen/vimpeccable')
--- install('which-key.nvim', 'https://github.com/folke/which-key.nvim')
 
 
 -- TODO: detect packer config changes

@@ -4,6 +4,8 @@ vim.cmd [[packadd packer.nvim]]
 
 local packer = require 'packer'
 
+-------------------------------------------------------------------------------------------------
+-- PACKER INIT ----------------------------------------------------------------------------------
 local border = 'rounded'
 packer.init({
   -- TODO: place the compiled file inside 'lua' so that it's cached by 'impatient'. be sure to profile the result difference
@@ -28,9 +30,20 @@ packer.reset()
 
 local use = packer.use
 
-use { 'wbthomason/packer.nvim', opt = true }
-use 'lewis6991/impatient.nvim' -- https://github.com/lewis6991/impatient.nvim
-use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
-use 'folke/which-key.nvim' -- https://github.com/folke/which-key.nvim
+
+-- those are the basic plugins installed during bootstrap
+use { 'wbthomason/packer.nvim', opt = true } -- https://github.com/wbthomason/packer.nvim
+use 'lewis6991/impatient.nvim'               -- https://github.com/lewis6991/impatient.nvim
+use 'nvim-lua/plenary.nvim'                  -- https://github.com/nvim-lua/plenary.nvim
+-- use {
+--   'folke/which-key.nvim',                    -- https://github.com/folke/which-key.nvim
+-- }
+use {
+  'b0o/mapx.nvim',                           -- https://github.com/b0o/mapx.nvim
+
+  config = function()
+    require('mapx').setup { global = true }
+  end,
+}
 
 return packer
