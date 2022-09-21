@@ -2,9 +2,9 @@
 local fn = vim.fn
 
 --------------------------------------------------------------------------------
--- global state for _my configuration
-_G._my = _G._my or {}
-_G._my.packer = _G._my.packer or {}
+_my.packer = _my.packer or {}
+_my.packer.ROOT =  _my.ROOT .. '/pack'
+_my.packer.COMPILED = _my.ROOT .. '/plugin/packer_compiled.lua'
 
 --------------------------------------------------------------------------------
 -- ensure package is installed at the given location
@@ -14,7 +14,7 @@ _G._my.packer = _G._my.packer or {}
 -- @returns { boolean } true if was just installed
 --------------------------------------------------------------------------------
 local function install(name, repo, dir)
-  local path = fn.stdpath('config') .. '/pack/packer/' .. (dir or 'start') .. '/' .. name
+  local path = _my.ROOT .. '/pack/packer/' .. (dir or 'start') .. '/' .. name
   -- local path = fn.stdpath('data') .. '/site/pack/packer/' .. (dir or 'start') .. '/' .. name
   -- print(path)
   if 0 == fn.empty(fn.glob(path)) then
@@ -43,5 +43,9 @@ vim.cmd [[packadd plenary.nvim]]
 
 --------------------------------------------------------------------------------
 -- PACKER.NVIM
+-- we note if we just installed it, so that we can sync the config later in the process
 _G._my.packer.updated = install('packer.nvim', 'https://github.com/wbthomason/packer.nvim', 'opt')
 
+-- TBD:
+-- install('vimpeccable', 'https://github.com/svermeulen/vimpeccable')
+-- install('which-key.nvim', 'https://github.com/folke/which-key.nvim')

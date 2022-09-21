@@ -3,6 +3,7 @@
 command! AutoFormatOn   let b:autoformat = 1| augroup  AuAutoFormat | exe "au! * <buffer>" | exe "au BufWritePost <buffer> Autoformat" | augroup END
 command! AutoFormatOff  let b:autoformat = 0| au! AuAutoFormat * <buffer>
 
+" FIXME: this is wrong direction for dependency. autoformat should not know about packer specifics. packer should account for autoformatting
 fun! s:disable_packer_refresh()
   if get(g:, 'format_debug', 0) | echo "disable packer refresh" | end
 

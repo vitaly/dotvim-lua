@@ -1,13 +1,36 @@
 print 'loading plugins'
-return {
-  load = function ()
-    print 'list plugins'
 
-    local use = require('packer').use
+vim.cmd [[packadd packer.nvim]]
 
-    use { 'wbthomason/packer.nvim', opt = true }
-    use 'lewis6991/impatient.nvim' -- https://github.com/lewis6991/impatient.nvim
-    use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
-    use 'folke/which-key.nvim' -- https://github.com/folke/which-key.nvim
-  end
-}
+local packer = require 'packer'
+
+local border = 'rounded'
+packer.init({
+  -- TODO: place the compiled file inside 'lua' so that it's cached by 'impatient'. be sure to profile the result difference
+  package_root = _my.packer.ROOT,
+
+  disable_commands = true,
+
+  profile = {
+    enable = true,
+    threshold = 0,
+  },
+
+  display = {
+    open_fn = function()
+      return require('packer.util').float { border = border }
+    end,
+    prompt_border = border,
+  },
+})
+
+packer.reset()
+
+local use = packer.use
+
+use { 'wbthomason/packer.nvim', opt = true }
+use 'lewis6991/impatient.nvim' -- https://github.com/lewis6991/impatient.nvim
+use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
+use 'folke/which-key.nvim' -- https://github.com/folke/which-key.nvim
+
+return packer
