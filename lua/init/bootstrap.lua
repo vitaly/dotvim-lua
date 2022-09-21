@@ -33,7 +33,11 @@ end
 -- caching for bertter performance
 install('impatient.nvim', 'https://github.com/lewis6991/impatient.nvim.git')
 vim.cmd [[packadd impatient.nvim]]
-require 'impatient'
+if  _my.config.profile_impatient then
+  require('impatient').enable_profile()
+else
+  require('impatient')
+end
 
 --------------------------------------------------------------------------------
 -- PLENARY.NVIM: https://github.com/nvim-lua/plenary.nvim

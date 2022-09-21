@@ -8,6 +8,12 @@ _G._my = _G._my or {}
 _my.ROOT = vim.fn.expand '<sfile>:p:h'
 vim.g.my_ROOT = _my.ROOT
 
+_my.config = _my.config or {}
+
+-- 'impatient' is used to cache the compiled lua files
+-- use `:LuaCacheClear` to clear the cache
+_my.config.profile_impatient = true
+
 require 'init.builtins' -- disable unnecessary features
 require 'init.options'
 require 'init.tools'
