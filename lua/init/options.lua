@@ -78,8 +78,8 @@ set.linebreak = true -- clean linebreaks (during wrap)
 
 set.shortmess = opt.shortmess
   + 's' -- don't give "search hit BOTTOM, continuing at TOP" etc.
-  + 'I' -- no intro message
   - 'F' -- no info messages when loading file
+--  + 'I' -- no intro message
 
 --------------------------------------------------------------------------------
 -- vim0 options
@@ -120,7 +120,6 @@ set.updatetime = 300 -- CursorHold delay
 
 g.mapleader = ' '
 g.maplocalleader = ','
--- set timeoutlen=5000      -- give 5s to complete mapping sequence
 
 -- mouse settings
 if has 'mouse' then
@@ -155,6 +154,7 @@ set.signcolumn = 'auto:4'
 -- " set t_AB=^[[48;5;%dm
 -- " set t_AF=^[[38;5;%dm
 -- " set notermguicolors
+-- TODO: make a toggle
 if has 'termguicolors' then
   set.termguicolors = true
 end
@@ -171,22 +171,14 @@ set.relativenumber = false
 -- set modeline
 -- " highlight column after textwidth
 -- set cc=+1
--- nmap ,Q :qa<cr>
 
 -- set virtualedit=all
 set.virtualedit = 'all'
 -- set diffopt-=internal
 -- " driving me insane this thing
--- command Q q
--- command Qa qa
--- command QA qa
--- command -nargs=* -complete=file W w <args>
--- command -nargs=* -complete=file E e <args>
 
 -- autoload local project .vimrc files
 set.exrc = true
 set.secure = true
 
 set.showmode = false
-
--- lua REQUIRE 'my.options'

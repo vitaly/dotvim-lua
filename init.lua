@@ -9,6 +9,8 @@ _my.ROOT = vim.fn.stdpath('config')
 -- TODO: check if needed, or if the above is enough / better
 vim.g.my_vim_dir = vim.fn.expand '<sfile>:p:h'
 
+require 'init.builtins' -- disable unnecessary features
+require 'init.options'
 require 'init.tools'
 require 'init.bootstrap'
 require 'init.packer'
