@@ -21,7 +21,7 @@ help:: ## print help
 ##@ development
 
 clean: ## clean compiled config
-	rm -r plugin/packer_compiled.lua
+	rm -f plugin/packer_compiled.lua
 .PHONY: clean
 
 sync: clean ## sync packer config
