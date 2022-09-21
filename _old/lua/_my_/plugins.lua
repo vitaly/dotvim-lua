@@ -38,6 +38,7 @@ plugin 'debug'
 plugin 'cursors'
 -- plugin 'neogen'
 
+-- FIXME: move this out of here
 local m = {}
 m.refresh = function()
   if vim.b.packer_refresh ~= 0 then
