@@ -45,7 +45,3 @@ vim.cmd [[packadd plenary.nvim]]
 -- PACKER.NVIM
 _G._my.packer.updated = install('packer.nvim', 'https://github.com/wbthomason/packer.nvim', 'opt')
 
---------------------------------------------------------------------------------
--- initial compile
--- TODO: move to where we are handling file changes
-_G._my.packer.compiled = 0 == fn.empty(fn.glob(fn.stdpath('config') .. '/plugin/packer_compiled.lua'))

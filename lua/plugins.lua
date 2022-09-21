@@ -1,5 +1,7 @@
+print 'loading plugins'
 return {
   load = function ()
+    print 'list plugins'
 
     local use = require('packer').use
 
@@ -7,4 +9,5 @@ return {
     use 'lewis6991/impatient.nvim' -- https://github.com/lewis6991/impatient.nvim
     use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
     use 'folke/which-key.nvim' -- https://github.com/folke/which-key.nvim
+  end
 }
