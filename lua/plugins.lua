@@ -28,22 +28,24 @@ packer.init({
 
 packer.reset()
 
+
+-------------------------------------------------------------------------------------------------
+-- PACKER PLUGINS -------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+-- some plugins are combined into 'bundles' called layers.
+
 local use = packer.use
 
+local function layer(name)
+  use(REQUIRE('layers.' .. name))
+end
 
 -- those are the basic plugins installed during bootstrap
 use { 'wbthomason/packer.nvim', opt = true } -- https://github.com/wbthomason/packer.nvim
 use 'lewis6991/impatient.nvim'               -- https://github.com/lewis6991/impatient.nvim
 use 'nvim-lua/plenary.nvim'                  -- https://github.com/nvim-lua/plenary.nvim
--- use {
---   'folke/which-key.nvim',                    -- https://github.com/folke/which-key.nvim
--- }
-use {
-  'b0o/mapx.nvim',                           -- https://github.com/b0o/mapx.nvim
 
-  config = function()
-    require('mapx').setup { global = true }
-  end,
-}
+layer 'base/keymaps'
+layer 'base/colors'
 
 return packer

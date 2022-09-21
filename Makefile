@@ -27,13 +27,20 @@ clean: ## clean compiled config
 sync: clean ## sync packer config
 	nvim --headless -c 'autocmd User PackerComplete qa!' -c 'silent PackerSync'
 	@echo
+.PHONY: sync
+
+install: clean ## sync packer config
+	nvim --headless -c 'autocmd User PackerComplete qa!' -c 'silent PackerInstall'
+	@echo
+.PHONY: install
 
 compile: clean ## compile packer config
 	nvim --headless -c 'autocmd User PackerCompileDone qa!' -c 'silent PackerCompile'
 	@echo
+.PHONY: compile
 
 reset: clean ## reset  .xdg directory
-	rm -rf pack 
+	rm -rf pack
 	rm -rf .xdg/cache
 	rm -rf .xdg/data
 reset_loop: ## loop of reset and loading init.lua
@@ -43,4 +50,3 @@ reset_loop: ## loop of reset and loading init.lua
 loop: ## loop of loading init.lua
 	 while true; do sleep 0.5; vim; done
 .PHONY: loop
-

@@ -3,8 +3,8 @@
 ## TODO
 
 - [x] basic maps
-- [ ] basic mapping support for lua
-- [ ] colors
+- [x] basic mapping support for lua
+- [x] colors
 - [ ] autoformating setup
 - [ ] which-key setup
 - [ ] filer

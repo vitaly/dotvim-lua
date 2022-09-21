@@ -1,8 +1,4 @@
 
-local function plugin(name)
-  use(REQUIRE('my.plugins.' .. name))
-end
-
 use { 'wbthomason/packer.nvim', opt = true }
 
 use 'lewis6991/impatient.nvim'
