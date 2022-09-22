@@ -171,7 +171,7 @@ return {
 
               s = { [[<cmd>exe 'e' g:my_ROOT.'/scratch.lua'<cr>]], 'Scratch' },
               i = { [[<cmd>exe 'e' g:my_ROOT.'/init.lua'<cr>]], 'Init' },
-              p = { [[<cmd>exe 'e' g:my_ROOT.'/lua/plugins.lua'<cr>]], 'Plugins' },
+              p = { [[<cmd>exe 'e' g:my_ROOT.'/lua/init/plugins.lua'<cr>]], 'Plugins' },
               o = { [[<cmd>exe 'e' g:my_ROOT.'/lua/init/options.lua'<cr>]], 'Options' },
               n = { [[<cmd>exe 'e' g:my_ROOT.'/NOTES.md'<cr>]], 'Notes' },
               k = { [[<cmd>exe 'e' g:my_ROOT.'/lua/layers/base/keymaps.lua'<cr>]], 'Keymaps' },
