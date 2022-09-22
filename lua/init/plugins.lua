@@ -46,11 +46,15 @@ use 'nvim-lua/plenary.nvim'                  -- https://github.com/nvim-lua/plen
 layer 'base/utils'
 layer 'base/keymaps'
 layer 'base/colors'
+
+-- layer 'filer/nvimtree'
+layer 'filer/neotree'
+
 layer 'fuzzy'
 layer 'terminal/tmux'
 layer 'dev/git'
 
--- layer 'filer/nvimtree'
-layer 'filer/neotree'
+layer 'lsp'
+
 
 return packer

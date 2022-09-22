@@ -1,12 +1,4 @@
 
-use { 'wbthomason/packer.nvim', opt = true }
-
-use 'lewis6991/impatient.nvim'
-use 'nvim-lua/plenary.nvim'
-use 'svermeulen/vimpeccable'
-
-plugin 'which-key'
-plugin 'fuzzy'
 
 plugin 'lsp'
 -- plugin 'navigator'
@@ -17,8 +9,6 @@ plugin 'undo-tree'
 plugin 'treesitter'
 plugin 'languages'
 -- plugin 'filer/chad-tree'
-plugin 'filer/nvim-tree'
-plugin 'git'
 plugin 'comments'
 plugin 'zoom'
 plugin 'statusline'

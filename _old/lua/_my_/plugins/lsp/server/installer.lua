@@ -5,49 +5,7 @@ return {
         flags = { debounce_text_changes = 150 },
       })
 
-      if server.name == 'sumneko_lua' then
-        opts.settings = {
-          Lua = {
-            diagnostics = {
-              globals = {
-                'vim',
-                'map',
-                'noremap',
-                'nmap',
-                'nnoremap',
-                'xmap',
-                'xnoremap',
-                'cmap',
-                'cnoremap',
-                'imap',
-                'inoremap',
-              },
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = {
-                [vim.fn.expand '$VIMRUNTIME/lua'] = true,
-                [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
-              },
-            },
-
-            telemetry = { enable = false },
-            -- runtime = { version = 'LuaJIT', path = vim.split(package.path, ';') },
-            -- workspace = {
-            --   library = {
-            --     [vim.fn.expand '$VIMRUNTIME/lua'] = true,
-            --     [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
-            --   },
-            -- },
-          },
-        }
-        -- elseif server.name == 'tsserver' then
-        --   opts.on_attach = function(client, bufnr)
-        --     client.resolved_capabilities.document_formatting = false
-        --     client.resolved_capabilities.document_range_formatting = false
-        --     return on_attach(client, bufnr)
-        --   end
-      elseif server.name == 'solargraph' then
+      if server.name == 'solargraph' then
         opts.settings = {
           useBundler = true,
           cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
