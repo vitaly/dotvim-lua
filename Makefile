@@ -1,4 +1,4 @@
-DEFAULT ?= recompile
+DEFAULT ?= help
 default: ${DEFAULT}
 
 none    = \033[0m
@@ -12,7 +12,7 @@ magenta = \033[1m\033[35m
 cyan    = \033[1m\033[36m
 white   = \033[1m\033[37m
 
-help:: ## This Target
+help:: ## print help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n\n  make ${cyan}<target>${none}\n\n"}  /^[a-zA-Z_\/%$${}.-]+:.*?##/ { printf "\n  ${cyan}%-15s${none}%s\n", $$1, $$2 } /^## / { printf "  %-15s%s\n", "", substr($$0, 3) } /^##@/ { printf "\n${white}%s${none}\n\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 
@@ -34,6 +34,6 @@ sync: clean ## sync packer config
 compile: clean ## compile packer config
 	nvim --headless -c 'autocmd User PackerCompileDone qa!' -c 'silent PackerCompile'
 	@echo
-.PHONY: recompile
+.PHONY: compile
 
 .PHONY: default help clean vim sync
