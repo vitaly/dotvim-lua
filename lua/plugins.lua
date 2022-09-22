@@ -45,6 +45,7 @@ use { 'wbthomason/packer.nvim', opt = true } -- https://github.com/wbthomason/pa
 use 'lewis6991/impatient.nvim'               -- https://github.com/lewis6991/impatient.nvim
 use 'nvim-lua/plenary.nvim'                  -- https://github.com/nvim-lua/plenary.nvim
 
+layer 'base/utils'
 layer 'base/keymaps'
 layer 'base/colors'
 layer 'fuzzy'
