@@ -47,5 +47,6 @@ use 'nvim-lua/plenary.nvim'                  -- https://github.com/nvim-lua/plen
 
 layer 'base/keymaps'
 layer 'base/colors'
+layer 'fuzzy'
 
 return packer

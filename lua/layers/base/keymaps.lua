@@ -1,3 +1,4 @@
+-- TODO: finish commented parts
 return {
   {
     'folke/which-key.nvim',                    -- https://github.com/folke/which-key.nvim
@@ -135,9 +136,9 @@ return {
         ['<localleader>'] = {
           name = ',',
 
-      --     e = {
-      --       name = 'Eval',
-      --     },
+          e = {
+            name = 'Eval',
+          },
         },
 
         --   FIXME: move to comment

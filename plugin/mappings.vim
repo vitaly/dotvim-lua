@@ -33,13 +33,6 @@ nmap              <leader>vr              <plug>(Vim/Redraw)
 noremap                                   <plug>(Tab/New)                               <cmd>tabnew<cr>
 nmap              <leader>tn              <plug>(Tab/New)
 
-" FIXME: move to fuzzy
-map                                       <plug>(Tab/New-File)                          <plug>(Tab/New)<plug>(File/Fuzzy-Find)
-nmap              <leader>tf              <plug>(Tab/New-File)
-
-
-
-
 noremap                                   <plug>(Buffer/Next)                           <cmd>bn<cr>
 nmap              <leader>bn              <plug>(Buffer/Next)
 
