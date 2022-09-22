@@ -44,8 +44,10 @@ plugin 'tmux-navigator'
 plugin 'undo-tree'
 plugin 'treesitter'
 plugin 'languages'
--- plugin 'filer/chad-tree'
-plugin 'filer/nvim-tree'
+
+-- plugin 'filer/nvimtree'
+plugin 'filer/neotree'
+
 plugin 'git'
 plugin 'comments'
 plugin 'zoom'

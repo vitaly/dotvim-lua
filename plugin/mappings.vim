@@ -33,8 +33,6 @@ nmap              <leader>vr              <plug>(Vim/Redraw)
 noremap                                   <plug>(Tab/New)                               <cmd>tabnew<cr>
 nmap              <leader>tn              <plug>(Tab/New)
 
-map                                       <plug>(Tab/New-File)                          <plug>(Tab/New)<plug>(File/Fuzzy-Find)
-nmap              <leader>tf              <plug>(Tab/New-File)
 
 
 

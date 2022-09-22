@@ -1,53 +1,136 @@
 return {
-  'kyazdani42/nvim-tree.lua', -- https://github.com/kyazdani42/nvim-tree.lua
-  requires = 'kyazdani42/nvim-web-devicons',
+  'kyazdani42/nvim-tree.lua',
+  tag = 'nightly',
+
+  requires = {
+    'kyazdani42/nvim-web-devicons', -- optional, for file icons
+  },
+
   setup = function()
-    local vimp = require 'vimp'
-    local noremap = vimp.noremap
-    noremap('<plug>File-Tree(toggle)', '<cmd>NvimTreeToggle<cr>')
-    noremap('<plug>File-Tree(reveal)', '<cmd>lua require"nvim-tree".find_file(true)<cr>')
-
-    local nmap = vimp.nmap
-    nmap('<leader>,', '<plug>File-Tree(toggle)')
-    nmap('<leader>0', '<plug>File-Tree(reveal)')
-
-    vim.g.nvim_tree_git_hl = 1
-    vim.g.nvim_tree_indent_markers = 1
-    vim.g.nvim_tree_create_in_closed_folder = 1
-    vim.g.nvim_tree_disable_window_picker = 1
-    vim.g.nvim_tree_quit_on_open = 1
-
-    vim.g.nvim_tree_icons = {
-      default = '',
-      symlink = '',
-    }
+    nnoremap('<plug>File-Tree(toggle)', [[<cmd>NvimTreeToggle<cr>]])
+    nnoremap('<plug>File-Tree(reveal)', [[<cmd>lua require"nvim-tree".find_file(true)<cr>')]])
+    require('my.plugins.filer.base').setup()
   end,
+
   config = function()
-    local tree_cb = require('nvim-tree.config').nvim_tree_callback
-    require('nvim-tree').setup {
-      auto_close = false,
-      open_on_tab = true,
-      update_cwd = true,
+    require("nvim-tree").setup {
+      sort_by = "case_sensitive",
+
+      create_in_closed_folder = true,
       hijack_cursor = true,
-      diagnostics = { enable = false },
-      update_focused_file = { enable = true, update_cwd = true },
-      update_to_buf_dir = { enable = true },
+
       view = {
+        adaptive_size = true,
         mappings = {
           list = {
-            { key = { '<CR>' }, cb = tree_cb 'edit' },
-            { key = { 'o' }, cb = tree_cb 'cd' },
-            { key = { 'U' }, cb = tree_cb 'dir_up' },
-            { key = { 'v' }, cb = tree_cb 'vsplit' },
-            { key = { 's', 'i' }, cb = tree_cb 'split' },
+            { key = "u", action = "dir_up" },
           },
         },
       },
+      renderer = {
+        group_empty = true,
+        highlight_git = true,
+        indent_markers  = {
+          enable = true
+        },
+      },
+      filters = {
+        dotfiles = false,
+      },
+      actions = {
+        open_file = {
+          quit_on_open = false,
+          window_picker = {
+            enable = false,
+          },
+        },
+      },
+      update_focused_file = {
+        enable = true,
+        update_root = true,
+        ignore_list = {},
+      },
+      diagnostics = {
+        enable = true,
+      },
     }
-  end,
-  -- cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-  -- keys = { '<leader>,' },
+  end
 }
+-- return {
+--   'kyazdani42/nvim-tree.lua', -- https://github.com/kyazdani42/nvim-tree.lua
+--   requires = 'kyazdani42/nvim-web-devicons',
+--   setup = function()
+--     local vimp = require 'vimp'
+--     local noremap = vimp.noremap
+--     noremap('<plug>File-Tree(toggle)', '<cmd>NvimTreeToggle<cr>')
+--     noremap('<plug>File-Tree(reveal)', '<cmd>lua require"nvim-tree".find_file(true)<cr>')
+--
+--     local nmap = vimp.nmap
+--     nmap('<leader>,', '<plug>File-Tree(toggle)')
+--     nmap('<leader>0', '<plug>File-Tree(reveal)')
+--
+--     -- vim.g.nvim_tree_git_hl = 1
+--     -- vim.g.nvim_tree_indent_markers = 1
+--     -- vim.g.nvim_tree_create_in_closed_folder = 1
+--     -- vim.g.nvim_tree_disable_window_picker = 1
+--     -- vim.g.nvim_tree_quit_on_open = 1
+--
+--     -- vim.g.nvim_tree_icons = {
+--     --   default = '',
+--     --   symlink = '',
+--     -- }
+--   end,
+--   config = function()
+--     local tree_cb = require('nvim-tree.config').nvim_tree_callback
+--     require('nvim-tree').setup {
+--       -- auto_close = false,
+--       open_on_tab = true,
+--       update_cwd = true,
+--       hijack_cursor = true,
+--       diagnostics = { enable = false },
+--       update_focused_file = { enable = true, update_cwd = true },
+--       -- update_to_buf_dir = { enable = true },
+--       create_in_closed_folder = true,
+--       actions = {
+--         open_file = {
+--           quit_on_open = false,
+--           window_picker = {
+--             enable = false,
+--           },
+--         },
+--       },
+--       view = {
+--         mappings = {
+--           list = {
+--             { key = { '<CR>' }, cb = tree_cb 'edit' },
+--             { key = { 'o' }, cb = tree_cb 'cd' },
+--             { key = { 'U' }, cb = tree_cb 'dir_up' },
+--             { key = { 'v' }, cb = tree_cb 'vsplit' },
+--             { key = { 's', 'i' }, cb = tree_cb 'split' },
+--           },
+--         },
+--       },
+--       renderer = {
+--         highlight_git = true,
+--
+--         indent_markers = {
+--           enable = true,
+--
+--         },
+--
+--         icons = {
+--           glyphs = {
+--             default = '',
+--             symlink = '',
+--           },
+--         },
+--
+--       },
+--     }
+--   end,
+--   -- cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+--   -- keys = { '<leader>,' },
+-- }
 
 -- local present, nvimtree = pcall(require, "nvim-tree")
 
