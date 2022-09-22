@@ -46,6 +46,15 @@ install('plenary.nvim', 'https://github.com/nvim-lua/plenary.nvim.git')
 vim.cmd [[packadd plenary.nvim]]
 
 --------------------------------------------------------------------------------
+-- MAPX.NVIM
+-- used to define keymaps all over the place
+install('which-key.nvim', 'https://github.com/folke/which-key.nvim')
+install('mapx.nvim', 'https://github.com/b0o/mapx.nvim')
+vim.cmd[[packadd which-key.nvim]]
+vim.cmd[[packadd mapx.nvim]]
+require('mapx').setup { global = 'force', whichkey = true }
+
+--------------------------------------------------------------------------------
 -- PACKER.NVIM
 -- we note if we just installed it, so that we can sync the config later in the process
 _G._my.packer.updated = install('packer.nvim', 'https://github.com/wbthomason/packer.nvim', 'opt')

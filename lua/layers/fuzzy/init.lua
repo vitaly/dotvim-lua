@@ -10,7 +10,7 @@ return {
 
     requires = {
       'nvim-lua/plenary.nvim',
-      'telescope-fzf-native.nvim',
+      'nvim-telescope/telescope-fzf-native.nvim',
     },
 
     after = 'keymaps',

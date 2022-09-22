@@ -50,4 +50,7 @@ layer 'base/keymaps'
 layer 'base/colors'
 layer 'fuzzy'
 
+-- layer 'filer/nvimtree'
+layer 'filer/neotree'
+
 return packer

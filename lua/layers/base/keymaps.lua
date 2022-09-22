@@ -4,7 +4,6 @@ return {
     'folke/which-key.nvim',                    -- https://github.com/folke/which-key.nvim
 
     config = function()
-
       vim.opt.timeoutlen = 500 -- 0.5s before keymap menu
       local which_key = require 'which-key'
 
@@ -81,7 +80,6 @@ return {
           filetypes = { "TelescopePrompt" },
         },
       }
-
 
       local function redraw()
         vim.cmd [[redraw]]
@@ -302,8 +300,5 @@ return {
 
     as = 'keymaps', -- so that we can change the plugin that provides globals for nnoremap etc.
     after = 'which-key.nvim',
-    config = function()
-      require('mapx').setup { global = 'force', whichkey = true }
-    end,
   },
 }
