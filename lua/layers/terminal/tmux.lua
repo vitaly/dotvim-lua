@@ -1,26 +1,26 @@
 return {
   'vitaly/vim-tmux-navigator',
+
   config = function()
-    vim.cmd [[
-      noremap <silent> <plug>(Window/Up)    :TmuxNavigateUp<CR>
-      noremap <silent> <plug>(Window/Down)  :TmuxNavigateDown<CR>
-      noremap <silent> <plug>(Window/Left)  :TmuxNavigateLeft<CR>
-      noremap <silent> <plug>(Window/Right) :TmuxNavigateRight<CR>
 
-      nmap <leader>wk <plug>(Window/Up)
-      nmap <leader>wj <plug>(Window/Down)
-      nmap <leader>wh <plug>(Window/Left)
-      nmap <leader>wl <plug>(Window/Right)
+    local up    = '<cmd>TmuxNavigateUp<cr>'
+    local down  = '<cmd>TmuxNavigateDown<cr>'
+    local left  = '<cmd>TmuxNavigateLeft<cr>'
+    local right = '<cmd>TmuxNavigateRight<cr>'
 
-      cmap <silent> <m-k> :<C-U>TmuxNavigateUp<CR>
-      cmap <silent> <m-j> :<C-U>TmuxNavigateDown<CR>
-      cmap <silent> <m-h> :<C-U>TmuxNavigateLeft<CR>
-      cmap <silent> <m-l> :<C-U>TmuxNavigateRight<CR>
+    nmap('<leader>wk', up, 'silent',    'Navigate Up')
+    nmap('<leader>wj', down, 'silent',  'Navigate Down')
+    nmap('<leader>wh', left, 'silent',  'Navigate Left')
+    nmap('<leader>wl', right, 'silent', 'Navigate Right')
 
-      tmap <m-k> <C-\><C-n><plug>(Window/Up)
-      tmap <m-j> <C-\><C-n><plug>(Window/Down)
-      tmap <m-h> <C-\><C-n><plug>(Window/Left)
-      tmap <m-l> <C-\><C-n><plug>(Window/Right)
-    ]]
+    tmap('<m-k>', '<c-\\><c-n>' .. up, 'silent')
+    tmap('<m-j>', '<c-\\><c-n>' .. down, 'silent')
+    tmap('<m-h>', '<c-\\><c-n>' .. left, 'silent')
+    tmap('<m-l>', '<c-\\><c-n>' .. right, 'silent')
+
+    cmap('<m-k>', up, 'silent')
+    cmap('<m-j>', down, 'silent')
+    cmap('<m-h>', left, 'silent')
+    cmap('<m-l>', right, 'silent')
   end,
 }
