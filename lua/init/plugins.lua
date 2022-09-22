@@ -1,5 +1,3 @@
-print 'loading plugins'
-
 vim.cmd [[packadd packer.nvim]]
 
 local packer = require 'packer'

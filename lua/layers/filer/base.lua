@@ -1,6 +1,5 @@
 return {
   setup = function()
-    print "nvim-tree base setup"
     local which_key = require 'which-key'
 
     local toggle_tree = '<plug>File-Tree(toggle)'
