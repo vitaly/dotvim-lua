@@ -231,9 +231,6 @@ return {
             ['.'] = { [[<cmd>let @*=getcwd()<cr>:echo @*<cr>]], 'Current Directory' },
           },
 
-
-
-      --     g = { name = 'Git' },
       --     d = { name = 'Debug' },
         },
 
