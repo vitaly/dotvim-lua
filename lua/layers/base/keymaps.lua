@@ -112,29 +112,134 @@ return {
         ['<leader>'] = {
           name = 'SPC',
 
-      --     [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
+          q = { '<cmd>qa<cr>', 'quit all' },
+          Q = { '<cmd>qa!<cr>', 'quit all!' },
+          x = { '<cmd>q<cr>', 'close window' },
+
+          m = { '<cmd>messages<cr>', 'Messages' },
+          M = { '<cmd>messages<cr>', 'Clear Messages' },
+
+          n = { '<cmd>cn<cr>', 'Next' },
+          p = { '<cmd>cp<cr>', 'Prev' },
+
+
+
+          R = { '<cmd>PackerCompile<cr>', 'Recompile configuration' },
+
+          -- FIXME: move to comment
+          --     [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
+
           a = {
             name = 'App',
-            p = { name = 'Packer' },
+            p = {
+              name = 'Packer',
+
+              s = { '<cmd>PackerStatus<cr>', 'Status' },
+              c = { '<cmd>PackerCompile<cr>', 'Compile' },
+              i = { '<cmd>PackerInstall<cr>', 'Install' },
+              u = { '<cmd>PackerUpdate<cr>', 'Update' },
+
+              S = { '<cmd>PackerSync<cr>', 'Sync' },
+              C = { '<cmd>PackerClean<cr>', 'Clean' },
+
+
+
+            },
           },
-          b = { name = 'Buffer' },
-      --     f = {
-      --       name = 'File',
-      --       e = {
-      --         name = 'Edit',
-      --       },
-      --       t = { name = 'Toggle' },
-      --     },
+
+          b = {
+            name = 'Buffer',
+
+            n = { '<cmd>bn<cr>', 'Next' },
+            p = { '<cmd>bp<cr>', 'Prev' },
+            d = { '<cmd>bd<cr>', 'Delete' },
+
+          },
+
+
+          f = {
+            name = 'File',
+
+            s = { '<cmd>w<cr>', 'Save' },
+            a = { '<cmd>wa<cr>', 'Save All' },
+
+            x = { [[<cmd>!chmod +x %<cr>]], 'Make executable' },
+
+            e = {
+              name = 'Edit',
+
+              s = { [[<cmd>exe 'e' g:my_ROOT.'/scratch.lua'<cr>]], 'Scratch' },
+              i = { [[<cmd>exe 'e' g:my_ROOT.'/init.lua'<cr>]], 'Init' },
+              p = { [[<cmd>exe 'e' g:my_ROOT.'/lua/plugins.lua'<cr>]], 'Plugins' },
+              o = { [[<cmd>exe 'e' g:my_ROOT.'/lua/init/options.lua'<cr>]], 'Options' },
+              n = { [[<cmd>exe 'e' g:my_ROOT.'/NOTES.md'<cr>]], 'Notes' },
+              k = { [[<cmd>exe 'e' g:my_ROOT.'/lua/layers/base/keymaps.lua'<cr>]], 'Keymaps' },
+              L = { [[<cmd>exe 'e' stdpath('cache').'/lsp.log'<cr>]], 'LSP log'}
+            },
+          },
+
+
+          w = {
+            name = 'Window',
+
+            q = { '<cmd>q<cr>', 'Close' },
+
+            ['<bar>'] = { [[<c-w><bar>]], 'Max Width' },
+            ['_'] = { [[<c-w>_]], 'Max Height' },
+            ['='] = { [[<c-w>=]], 'Rebalance'} ,
+
+            x = { [[<c-w>x]], 'Swap' },
+
+            K = { [[<c-w>K]], 'Move Up' },
+            J = { [[<c-w>J]], 'Move Down' },
+            H = { [[<c-w>H]], 'Move Left' },
+            L = { [[<c-w>L]], 'Move Right' },
+
+            t = { [[<c-w>T]], 'Move to new Tab' },
+
+            s = { [[<cmd>split<cr><c-w>j]], 'Split' },
+            ['-'] = { [[<cmd>split<cr><c-w>j]], 'Split' },
+
+            v = { [[<cmd>vsplit<cr><c-w>l]], 'VSplit' },
+            ['<bslash>'] = { [[<cmd>vsplit<cr><c-w>l]], 'VSplit' },
+
+            o = { [[<c-w>o]], 'Only' },
+          },
+
+
+          t = {
+            name = 'Tab',
+
+            n = { [[<cmd>tabnew<cr>]], 'New' },
+          },
+
+
+          v = {
+            name = 'Vim',
+
+            r = { [[<cmd>redraw!<cr>]], 'Redraw' },
+          },
+
+
+          Y = {
+            name = 'Yank',
+
+            p = { [[<cmd>let @*=expand("%")<cr>:echo "Copied file path to clipboard"<cr>]], 'File Path' },
+            n = { [[<cmd>let @*=expand("%:t")<cr>:echo "Copied file name to clipboard"<cr>]], 'File Name' },
+            d = { [[<cmd>let @*=expand("%:h")<cr>:echo "Copied file directory to clipboard"<cr>]], 'File Directory' },
+            ['.'] = { [[<cmd>let @*=getcwd()<cr>:echo @*<cr>]], 'Current Directory' },
+          },
+
+
+
       --     g = { name = 'Git' },
-      --     t = { name = 'Tab' },
-      --     v = { name = 'Vim' },
-      --     w = { name = 'Window' },
-      --     Y = { name = 'Yank' },
       --     d = { name = 'Debug' },
         },
 
         ['<localleader>'] = {
           name = ',',
+
+          ['<leader>'] = { '<cmd>w<cr>', 'Save' },
 
           e = {
             name = 'Eval',
@@ -174,16 +279,20 @@ return {
       }, { mode = 'n' })
 
       -- -- x keymap --------------------------------------------------------------------
-      -- which_key.register({
+      which_key.register({
       --   g = {
       --     -- XXX: this doesn't work. it adds a duplicate in the menu
       --     c = 'Toggle Comment',
       --   },
 
-      --   ['<leader>'] = {
+        ['<leader>'] = {
+
+          q = { '<cmd>qa<cr>', 'quit all' },
+          Q = { '<cmd>qa!<cr>', 'quit all!' },
+          x = { '<cmd>q<cr>', 'close window' },
       --     [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
-      --   },
-      -- }, { mode = 'x' })
+        },
+      }, { mode = 'x' })
 
     end,
   },
