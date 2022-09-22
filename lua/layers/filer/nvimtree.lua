@@ -6,12 +6,10 @@ return {
     'kyazdani42/nvim-web-devicons', -- optional, for file icons
   },
 
-  after = "keymaps",
-
   setup = function()
-    require('layers.filer.base').setup()
     nnoremap('<plug>File-Tree(toggle)', [[<cmd>NvimTreeToggle<cr>]])
     nnoremap('<plug>File-Tree(reveal)', [[<cmd>lua require"nvim-tree".find_file(true)<cr>')]])
+    require('layers.filer.base').setup()
   end,
 
   config = function()

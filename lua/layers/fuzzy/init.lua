@@ -13,8 +13,6 @@ return {
       'nvim-telescope/telescope-fzf-native.nvim',
     },
 
-    after = 'keymaps',
-
     wants = {
       'nvim-web-devicons',
     },

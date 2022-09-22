@@ -1,6 +1,9 @@
 -- TODO: finish commented parts
 return {
   {
+    'b0o/mapx.nvim',                           -- https://github.com/b0o/mapx.nvim
+  },
+  {
     'folke/which-key.nvim',                    -- https://github.com/folke/which-key.nvim
 
     config = function()
@@ -293,12 +296,5 @@ return {
       }, { mode = 'x' })
 
     end,
-  },
-
-  {
-    'b0o/mapx.nvim',                           -- https://github.com/b0o/mapx.nvim
-
-    as = 'keymaps', -- so that we can change the plugin that provides globals for nnoremap etc.
-    after = 'which-key.nvim',
   },
 }

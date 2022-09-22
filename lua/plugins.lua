@@ -49,6 +49,7 @@ layer 'base/utils'
 layer 'base/keymaps'
 layer 'base/colors'
 layer 'fuzzy'
+layer 'terminal/tmux'
 
 -- layer 'filer/nvimtree'
 layer 'filer/neotree'

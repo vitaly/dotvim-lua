@@ -41,6 +41,7 @@ telescope.setup {
 
 -- -- extensions ------------------------------------------------------------------
 telescope.load_extension 'fzf'
+-- TODO: dap extension
 -- telescope.load_extension 'dap'
 
 -- keymaps ---------------------------------------------------------------------
@@ -50,6 +51,7 @@ end
 
 local find_command = '<cmd>Telescope commands<cr>'
 
+local find_telescope = '<cmd>Telescope<cr>'
 local find_buffer = '<cmd>Telescope buffers<cr>'
 local find_help_tag = '<cmd>Telescope help_tags<cr>'
 local find_key = '<cmd>Telescope keymaps<cr>'
@@ -74,6 +76,7 @@ require('which-key').register {
 
       ['/'] = { fuzzy_grep, 'Fuzzy Grep' },
 
+      t = { find_telescope, 'Telescope' },
       b = { find_buffer, 'Buffer' },
       c = { find_character, 'Character Symbol' },
       g = { live_grep, 'Live Grep' },

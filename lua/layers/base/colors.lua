@@ -1,7 +1,6 @@
 return  {
   'chriskempson/base16-vim', -- https://github.com/chriskempson/base16-vim
 
-  after = 'keymaps',
   config = function()
     cmdbang('LoadVimrcBackground', function()
       vim.cmd[[
