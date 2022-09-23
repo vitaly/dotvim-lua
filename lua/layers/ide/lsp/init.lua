@@ -35,7 +35,9 @@ return {
         hi LspReferenceWrite cterm=inverse gui=inverse
       ]]
 
+
       vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("lspconfig_attach", { clear = true }),
         callback = require('layers.ide.lsp.on_attach')
       })
     end
@@ -158,7 +160,24 @@ return {
       }
 
       vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("lsp_signature_attach", { clear = true }),
         callback = require('lsp_signature').on_attach
+      })
+    end,
+  },
+
+
+  --------------------------------------------------------------------------
+  -- FOLDING
+  -- { 'vitaly/folding-nvim' },
+  {
+    'pierreglaser/folding-nvim', -- https://github.com/pierreglaser/folding-nvim
+    branch = 'nvim-nightly',
+
+    config = function()
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("lsp_signature_attach", { clear = true }),
+        callback = require('folding').on_attach
       })
     end,
   },
