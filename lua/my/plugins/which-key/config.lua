@@ -101,7 +101,6 @@ which_key.register({
   ['<leader>'] = {
     name = 'SPC',
 
-    [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
     a = {
       name = 'App',
       p = { name = 'Packer' },
@@ -130,13 +129,6 @@ which_key.register({
     },
   },
 
-  g = {
-    c = {
-      name = 'Comment',
-      c = 'Toggle Comment',
-    },
-  },
-
   -- toggles
   ['\\'] = {
     name = 'Toggle',
@@ -159,15 +151,3 @@ which_key.register({
     c = { toggle_clipboard, 'clipboard' },
   },
 }, { mode = 'n' })
-
--- x keymap --------------------------------------------------------------------
-which_key.register({
-  g = {
-    -- XXX: this doesn't work. it adds a duplicate in the menu
-    c = 'Toggle Comment',
-  },
-
-  ['<leader>'] = {
-    [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
-  },
-}, { mode = 'x' })
