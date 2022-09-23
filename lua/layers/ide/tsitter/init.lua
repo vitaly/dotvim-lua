@@ -27,7 +27,7 @@ return {
   {
     'romgrk/nvim-treesitter-context', -- https://github.com/romgrk/nvim-treesitter-context
     config = function()
-      require 'layers.ide.tsitter.context'
+      require('layers.ide.tsitter.context').setup()
     end,
   },
 
@@ -53,9 +53,5 @@ return {
 ----       'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
 ----       'p00f/nvim-ts-rainbow', -- https://github.com/p00f/nvim-ts-rainbow
 ----     },
-----
-----     config = function()
-----       require 'my.plugins.treesitter.config'
-----     end,
 ----   },
 ---- }

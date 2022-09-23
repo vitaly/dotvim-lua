@@ -43,6 +43,7 @@ return {
   end
 }
 
+-- TODO: review
 -- -- PARSERS ---------------------------------------------------------------------
 -- local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 
