@@ -143,8 +143,7 @@ return {
               S = { '<cmd>PackerSync<cr>', 'Sync' },
               C = { '<cmd>PackerClean<cr>', 'Clean' },
 
-
-
+              l = { '<cmd>PackerLog<cr>', 'Log' },
             },
           },
 

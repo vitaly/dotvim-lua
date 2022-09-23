@@ -5,7 +5,7 @@
 vim.env.CC = 'gcc-11'
 _G._my = _G._my or {}
 
-_my.ROOT = vim.fn.expand '<sfile>:p:h'
+_my.ROOT = vim.fn.expand '<sfile>:p:h' -- use fn.stdpath('config')?
 vim.g.my_ROOT = _my.ROOT
 
 _my.config = _my.config or {}

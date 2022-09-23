@@ -13,6 +13,7 @@ vim.cmd [[command! -nargs=*                                                     
 vim.cmd [[command!                                                                                                      PackerStatus            lua REQUIRE('init.plugins').status()                          ]]
 vim.cmd [[command!                                                                                                      PackerProfile           lua REQUIRE('init.plugins').profile_output()                  ]]
 vim.cmd [[command! -bang -nargs=+ -complete=customlist,v:lua.require'init.packer.complete'.loader_complete              PackerLoad              lua REQUIRE('init.plugins').loader(<f-args>, '<bang>' == '!') ]]
+vim.cmd [[command!                                                                                                      PackerLog               exec 'e' stdpath('cache')  . '/packer.nvim.log'               ]]
 
 if _my.packer.updated then
   -- packer was just initially installed
