@@ -1,4 +1,5 @@
 return {
+
   setup = function()
     local setup_highlights = function()
       vim.cmd[[
@@ -28,6 +29,9 @@ return {
 
     setup_highlights()
 
+    local feedkey = function(key, mode)
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+    end
 
     local cmp = require 'cmp'
     cmp.setup({
@@ -62,6 +66,28 @@ return {
       },
 
       mapping = cmp.mapping.preset.insert({
+
+        ['<cr>'] = {
+          i = cmp.mapping.confirm(),
+        },
+        ['<tab>'] = {
+          i = function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif vim.fn["vsnip#available"](1) == 1 then
+              feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            else
+              local copilot_result = vim.fn['copilot#Accept']('')
+              if copilot_result ~= "" then
+                vim.api.nvim_feedkeys(copilot_result, "i", true)
+              else
+                fallback()
+              end
+
+            end
+          end,
+        },
+
       })
     })
 

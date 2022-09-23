@@ -127,9 +127,6 @@ return {
 
           R = { '<cmd>PackerInstall<cr>', 'Install and Recompile' },
 
-          -- FIXME: move to comment
-          --     [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
-
           a = {
             name = 'App',
             p = {
@@ -143,7 +140,7 @@ return {
               S = { '<cmd>PackerSync<cr>', 'Sync' },
               C = { '<cmd>PackerClean<cr>', 'Clean' },
 
-              l = { '<cmd>PackerLog<cr>', 'Log' },
+              L = { '<cmd>PackerLog<cr>', 'Log' },
             },
           },
 
@@ -243,14 +240,6 @@ return {
           },
         },
 
-        --   FIXME: move to comment
-      --   g = {
-      --     c = {
-      --       name = 'Comment',
-      --       c = 'Toggle Comment',
-      --     },
-      --   },
-
         -- toggles
         ['\\'] = {
           name = 'Toggle',
@@ -274,6 +263,7 @@ return {
           c = { toggle_clipboard, 'clipboard' },
         },
       }, { mode = 'n' })
+      nmap('<leader>apl', ':PackerLoad<space>', 'Load...')
 
       -- -- x keymap --------------------------------------------------------------------
       which_key.register({

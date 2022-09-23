@@ -149,9 +149,19 @@ return {
     'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs
 
     config = function()
-      require('nvim-autopairs').setup {
+      local autopairs = require 'nvim-autopairs'
+
+      autopairs.setup {
+        check_ts = true,
+        ts_config = {
+        },
         disable_filetype = { 'TelescopePrompt' }, -- vim , json
       }
+
+      -- -- XXX do this only for ruby
+      print 'adding ruby rule'
+      autopairs.add_rules(require 'nvim-autopairs.rules.endwise-ruby')
+      autopairs.add_rules(require 'nvim-autopairs.rules.endwise-lua')
     end,
   },
 

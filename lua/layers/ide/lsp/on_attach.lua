@@ -22,7 +22,7 @@ local function setup_lsp_keymaps()
 
     gd = { m.goto_definition, 'Definition'},
     gD = { m.goto_declaration, 'Declaration'},
-    gr = { m.goto_references, 'References'},
+    gr = { m.list_references, 'References'},
     -- gt = { m.goto_type_definition, 'Type'},
 
     K = { m.hover, 'Hover' },
@@ -38,6 +38,10 @@ local function setup_highlight(client)
 
   local client_id = client.data.client_id
   local clients = vim.lsp.buf_get_clients()
+
+  if not clients[client_id] then
+    return
+  end
   local caps = clients[client_id].server_capabilities
 
   if caps.documentHighlightProvider ~= true then
@@ -102,7 +106,6 @@ return on_lsp_client_attach
 --   -- Enable completion triggered by <c-x><c-o>
 --   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
---   require('lsp_signature').on_attach()
 --   require('folding').on_attach()
 --   -- require('lsp-status').on_attach(client)
 

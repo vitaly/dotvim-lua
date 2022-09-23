@@ -56,20 +56,6 @@ return {
   -- },
 
 
-  {
-    'ray-x/lsp_signature.nvim', -- https://github.com/ray-x/lsp_signature.nvim
-    config = function()
-      require('lsp_signature').setup {
-        bind = true,
-        floating_window = true,
-        hint_enable = true,
-        hint_prefix = 'ℹ️',
-        handler_opts = {
-          border = 'rounded',
-        },
-      }
-    end,
-  },
 
   {
     'kosayoda/nvim-lightbulb', -- https://github.com/kosayoda/nvim-lightbulb
