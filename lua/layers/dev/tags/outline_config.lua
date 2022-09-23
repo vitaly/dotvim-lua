@@ -4,7 +4,11 @@ return {
   -- cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose' },
 
   config = function()
-    require("symbols-outline").setup()
+    require("symbols-outline").setup({
+      keymaps = { 
+        goto_location = { '<Cr>', '<2-LeftMouse>' },
+      },
+    })
 
     require('which-key').register {
       ['\\'] = {
