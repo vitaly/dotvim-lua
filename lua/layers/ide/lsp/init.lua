@@ -127,4 +127,10 @@ return {
       require('layers.ide.lsp.trouble').setup()
     end,
   },
+
+
+  --------------------------------------------------------------------------
+  -- LSP Dressing (ui improvements)
+  -- { 'stevearc/dressing.nvim' }, -- https://github.com/stevearc/dressing.nvim
+
 }

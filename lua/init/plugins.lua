@@ -60,5 +60,7 @@ layer 'dev.tags'
 layer 'ide.lsp'
 layer 'ide.tsitter'
 
+layer 'editor'
+
 
 return packer
