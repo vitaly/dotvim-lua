@@ -61,6 +61,7 @@ layer 'ide.lsp'
 layer 'ide.tsitter'
 
 layer 'editor'
+layer 'focus'
 
 
 return packer
