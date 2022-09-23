@@ -56,7 +56,7 @@ layer 'terminal/tmux'
 layer 'dev/git'
 layer 'dev/tags'
 
-layer 'lsp'
+layer 'ide/lsp'
 
 
 return packer

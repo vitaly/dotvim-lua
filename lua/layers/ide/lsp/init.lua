@@ -25,7 +25,7 @@ return {
     'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
 
     config = function()
-      require('layers.lsp.maps')
+      require('layers.ide.lsp.maps')
 
       -- this is required for vim.lsp.buf.document_highlight() to work
       -- which is setup in on_attach.lua
@@ -36,7 +36,7 @@ return {
       ]]
 
       vim.api.nvim_create_autocmd("LspAttach", {
-        callback = require('layers.lsp.on_attach')
+        callback = require('layers.ide.lsp.on_attach')
       })
     end
   },
@@ -120,7 +120,7 @@ return {
     'folke/trouble.nvim', -- https://github.com/folke/trouble.nvim
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      require('layers.lsp.trouble').setup()
+      require('layers.ide.lsp.trouble').setup()
     end,
   },
 }
