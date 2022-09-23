@@ -18,7 +18,7 @@ return {
       },
 
       ['\\'] = {
-        [']'] =  { toggle_tree, 'Toggle File Tree' },
+        ['\\'] =  { toggle_tree, 'Toggle File Tree' },
       }
     })
   end

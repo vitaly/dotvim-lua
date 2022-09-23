@@ -42,9 +42,9 @@ return {
 
     require('which-key').register {
 
-      ['\\t'] = {
+      ['\\T'] = {
         name = 'Trouble',
-        t = { '<cmd>TroubleToggle<cr>', 'Trouble' },
+        T = { '<cmd>TroubleToggle<cr>', 'Trouble' },
         a = { auto_open.toggler, 'autoopen' },
         m = { mode.toggler, 'mode' },
       },

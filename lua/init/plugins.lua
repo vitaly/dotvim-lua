@@ -52,7 +52,9 @@ layer 'filer/neotree'
 
 layer 'fuzzy'
 layer 'terminal/tmux'
+
 layer 'dev/git'
+layer 'dev/tags'
 
 layer 'lsp'
 
