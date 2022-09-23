@@ -114,7 +114,7 @@ return {
 
   ----------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------
-  -- ZOOM
+  -- WINDOW ZOOM
   -- Toggle current window zoom
   {
     'troydm/zoomwintab.vim', -- https://github.com/troydm/zoomwintab.vim
@@ -124,10 +124,15 @@ return {
     end,
   },
 
+  ----------------------------------------------------------------------------------------------
+  -- SWITCH
   {
     'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
   },
 
+
+  ----------------------------------------------------------------------------------------------
+  -- COMMENTS
   {
     'tpope/vim-commentary', -- https://github.com/tpope/vim-commentary/
 
@@ -135,6 +140,18 @@ return {
       nmap('\\;', 'gcc', 'Comment')
       nmap('<leader>;', 'gcu', 'Uncomment Comment')
       xmap('\\;', 'gc', 'Comment')
+    end,
+  },
+
+  ----------------------------------------------------------------------------------------------
+  -- AUTO PAIRS
+  {
+    'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs
+
+    config = function()
+      require('nvim-autopairs').setup {
+        disable_filetype = { 'TelescopePrompt' }, -- vim , json
+      }
     end,
   },
 

@@ -57,8 +57,9 @@ layer 'terminal.tmux'
 layer 'dev.git'
 layer 'dev.tags'
 
-layer 'ide.lsp'
 layer 'ide.tsitter'
+layer 'ide.lsp'
+layer 'ide.cmp'
 
 layer 'editor'
 layer 'focus'

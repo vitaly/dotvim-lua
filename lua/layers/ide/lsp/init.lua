@@ -54,6 +54,7 @@ return {
       require("mason-lspconfig").setup_handlers({
         function (server_name) -- default handler (optional)
           lspconfig[server_name].setup {
+            capabilities = require('layers.ide.cmp.config').capabilities();
           }
         end,
 
@@ -61,6 +62,7 @@ return {
         -- SUMNEKO_LUA
         ["sumneko_lua"] = function()
           lspconfig.sumneko_lua.setup {
+            capabilities = require('layers.ide.cmp.config').capabilities();
 
             settings = {
               Lua = {
@@ -130,7 +132,24 @@ return {
 
 
   --------------------------------------------------------------------------
+  -- COLORS
+  -- add missing theme highlights
+  {
+    'folke/lsp-colors.nvim', -- https://github.com/folke/lsp-colors.nvim
+    config = function()
+      require('lsp-colors').setup()
+    end,
+  },
+
+
+
+  --------------------------------------------------------------------------
   -- LSP Dressing (ui improvements)
   -- { 'stevearc/dressing.nvim' }, -- https://github.com/stevearc/dressing.nvim
 
 }
+
+-- TODO: review
+-- https://github.com/pierreglaser/folding-nvim
+-- { 'pierreglaser/folding-nvim', branch = 'nvim-nightly' },
+-- { 'vitaly/folding-nvim' },

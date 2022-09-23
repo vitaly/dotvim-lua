@@ -15,9 +15,6 @@ return {
 
       -- { 'glepnir/lspsaga.nvim' }, -- https://github.com/glepnir/lspsaga.nvim
 
-      -- https://github.com/pierreglaser/folding-nvim
-      -- { 'pierreglaser/folding-nvim', branch = 'nvim-nightly' },
-      { 'vitaly/folding-nvim' },
     },
 
     config = function()
@@ -50,13 +47,6 @@ return {
   --     }
   --   end,
   -- },
-
-  {
-    'folke/lsp-colors.nvim', -- https://github.com/folke/lsp-colors.nvim
-    config = function()
-      require('lsp-colors').setup()
-    end,
-  },
 
   -- {
   --   'nvim-lua/lsp-status.nvim', -- https://github.com/nvim-lua/lsp-status.nvim
