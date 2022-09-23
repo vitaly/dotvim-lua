@@ -18,7 +18,7 @@ return {
     },
 
     config = function()
-      require 'layers.fuzzy.config'
+      require('layers.fuzzy.config').setup()
     end,
   },
 }
