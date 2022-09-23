@@ -27,20 +27,9 @@ return {
     config = function()
       require('layers.ide.lsp.maps')
 
-      -- this is required for vim.lsp.buf.document_highlight() to work
-      -- which is setup in on_attach.lua
-      vim.cmd [[
-        hi LspReferenceText cterm=inverse gui=inverse
-        hi LspReferenceRead cterm=inverse gui=inverse
-        hi LspReferenceWrite cterm=inverse gui=inverse
-      ]]
-
       require('layers.ide.lsp.style').setup()
 
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("lspconfig_attach", { clear = true }),
-        callback = require('layers.ide.lsp.on_attach')
-      })
+      require('my.tools').subscribe('lsp_attach', 'LspAttach', require('layers.ide.lsp.on_attach'))
     end
   },
 

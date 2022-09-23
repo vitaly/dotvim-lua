@@ -41,15 +41,5 @@ function vim.diagnostic.show(namespace, bufnr, ...)
 end
 
 local config = {
-  virtual_text = false,
-  -- virtual_text = { prefix = '', spacing = 5 },
   signs = false, -- disable original signs handler, we are going to add signs ourselves
-  underline = true,
-  update_in_insert = false,
 }
-
--- we can override diagnostics settings per invocation
--- vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, config)
-
--- or globally
-vim.diagnostic.config(config)
