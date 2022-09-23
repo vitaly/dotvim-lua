@@ -26,15 +26,6 @@ return {
     end,
   },
 
-  {
-    'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
-    setup = function()
-      vim.g.switch_mapping = '`'
-      -- nmap('`', '<cmd>Switch<cr>')
-    end,
-    -- cmd = { 'Switch' },
-  },
-
   -- from https://alpha2phi.medium.com/neovim-plugins-for-a-better-coding-experience-part-3-d4c2df085677
   -- { 'nathom/filetype.nvim' }, -- https://github.com/nathom/filetype.nvim
 

@@ -124,5 +124,8 @@ return {
     end,
   },
 
+  {
+    'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
+  },
 
 }
