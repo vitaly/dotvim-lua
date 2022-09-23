@@ -159,10 +159,7 @@ return {
         },
       }
 
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("lsp_signature_attach", { clear = true }),
-        callback = require('lsp_signature').on_attach
-      })
+      require('my.tools').subscribe('lsp_signature', 'LspAttach', require('lsp_signature').on_attach)
     end,
   },
 
@@ -175,10 +172,7 @@ return {
     branch = 'nvim-nightly',
 
     config = function()
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("lsp_signature_attach", { clear = true }),
-        callback = require('folding').on_attach
-      })
+      require('my.tools').subscribe('lsp_folding', 'LspAttach', require('folding').on_attach)
     end,
   },
 
@@ -189,9 +183,6 @@ return {
 }
 
 -- TODO: review
--- https://github.com/pierreglaser/folding-nvim
--- { 'pierreglaser/folding-nvim', branch = 'nvim-nightly' },
--- { 'vitaly/folding-nvim' },
 
 
 

@@ -1,7 +1,8 @@
 return {
 
   setup = function()
-    local setup_highlights = function()
+
+    local setup_cmp_menu_colors = function()
       vim.cmd[[
         " gray
         highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
@@ -22,12 +23,9 @@ return {
       ]]
     end
 
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      group = vim.api.nvim_create_augroup('cmp_colors_override', { clear = true }),
-      callback = setup_highlights,
-    })
+    require('my.tools').subscribe('cmp_colors_override', 'ColorScheme', setup_cmp_menu_colors);
 
-    setup_highlights()
+    setup_cmp_menu_colors()
 
     local feedkey = function(key, mode)
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
