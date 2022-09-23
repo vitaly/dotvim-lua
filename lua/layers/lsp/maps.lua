@@ -1,22 +1,4 @@
 
-  -- -- noremap('<plug>Refactor(rename)', '<cmd>lua require("lspsaga.rename").rename()<CR>')
-
--- require('which-key').register {
---   ['<leader>al'] = {
---     name = 'LSP',
-
---     t = {
---       name = 'Trouble',
-
---       d = { '<plug>LSP(Document-Trouble)', 'Document diagnostics' },
---       w = { '<plug>LSP(Workspace-Trouble)', 'Workspace diagnostics' },
---       l = { '<plug>LSP(Definitions-Trouble)', 'LSP definitions' },
---       r = { '<plug>LSP(References-Trouble)', 'LSP references' },
---       R = { '<plug>LSP(Refresh-Trouble)', 'Refresh' },
---     },
---   },
--- }
-
 local m = {
   lsp_info  = '<cmd>LspInfo<cr>',
   lsp_log = '<cmd>LspLog<cr>',
@@ -57,12 +39,6 @@ local m = {
   prev_diagnostic      = vim.diagnostic.goto_prev,
 
 
-  -- LSP(Refresh-Trouble)',     '<cmd>TroubleRefresh<cr>')
-  -- LSP(Document-Trouble)',    '<cmd>TroubleToggle document_diagnostics<cr>')
-  -- LSP(Workspace-Trouble)',   '<cmd>TroubleToggle workspace_diagnostics<cr>')
-  -- LSP(Definitions-Trouble)', '<cmd>TroubleToggle lsp_definitions<cr>')
-  -- LSP(References-Trouble)',  '<cmd>TroubleToggle lsp_references<cr>')
-
 }
 
 
@@ -80,3 +56,28 @@ require('which-key').register({
 
 
 return m
+
+-- TODO: cleanup
+-- LSP(Refresh-Trouble)',     '<cmd>TroubleRefresh<cr>')
+-- LSP(Document-Trouble)',    '<cmd>TroubleToggle document_diagnostics<cr>')
+-- LSP(Workspace-Trouble)',   '<cmd>TroubleToggle workspace_diagnostics<cr>')
+-- LSP(Definitions-Trouble)', '<cmd>TroubleToggle lsp_definitions<cr>')
+-- LSP(References-Trouble)',  '<cmd>TroubleToggle lsp_references<cr>')
+
+-- -- noremap('<plug>Refactor(rename)', '<cmd>lua require("lspsaga.rename").rename()<CR>')
+
+-- require('which-key').register {
+--   ['<leader>al'] = {
+--     name = 'LSP',
+
+--     t = {
+--       name = 'Trouble',
+
+--       d = { '<plug>LSP(Document-Trouble)', 'Document diagnostics' },
+--       w = { '<plug>LSP(Workspace-Trouble)', 'Workspace diagnostics' },
+--       l = { '<plug>LSP(Definitions-Trouble)', 'LSP definitions' },
+--       r = { '<plug>LSP(References-Trouble)', 'LSP references' },
+--       R = { '<plug>LSP(Refresh-Trouble)', 'Refresh' },
+--     },
+--   },
+-- }
