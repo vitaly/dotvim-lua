@@ -1,8 +1,7 @@
 return {
 
   {
-    -- https://github.com/neovim/nvim-lspconfig
-    'neovim/nvim-lspconfig',
+    'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
 
     requires = {
       -- https://github.com/onsails/lspkind-nvim

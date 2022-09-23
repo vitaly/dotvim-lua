@@ -54,4 +54,4 @@ xnoremap          <C-k>                                                         
 
 nmap              <silent><esc>           <cmd>silent noh<cr>
 
-nmap              <M-LeftMouse>           <LeftMouse>*
+" nmap              <M-LeftMouse>           <LeftMouse>*
