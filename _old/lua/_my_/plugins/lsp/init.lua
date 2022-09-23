@@ -65,13 +65,6 @@ return {
   --   end,
   -- },
 
-  {
-    'folke/trouble.nvim', -- https://github.com/folke/trouble.nvim
-    requires = 'kyazdani42/nvim-web-devicons',
-    config = function()
-      require 'my.plugins.lsp.trouble-config'
-    end,
-  },
 
   {
     'ray-x/lsp_signature.nvim', -- https://github.com/ray-x/lsp_signature.nvim

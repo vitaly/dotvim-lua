@@ -20,17 +20,6 @@ return {
 
 
   --------------------------------------------------------------------------
-  -- Simple progress widget for LSP
-  {
-    'j-hui/fidget.nvim', -- https://github.com/j-hui/fidget.nvim
-
-    config = function()
-      require("fidget").setup{
-      }
-    end
-  },
-
-  --------------------------------------------------------------------------
   -- LSP Config
   {
     'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
@@ -113,6 +102,29 @@ return {
 
       })
 
+    end,
+  },
+
+
+  --------------------------------------------------------------------------
+  -- Simple progress widget for LSP
+  {
+    'j-hui/fidget.nvim', -- https://github.com/j-hui/fidget.nvim
+
+    config = function()
+      require("fidget").setup{
+      }
+    end
+  },
+
+
+  --------------------------------------------------------------------------
+  -- LSP Trauble
+  {
+    'folke/trouble.nvim', -- https://github.com/folke/trouble.nvim
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('layers.lsp.trouble').setup()
     end,
   },
 }
