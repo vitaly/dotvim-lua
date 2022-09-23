@@ -36,7 +36,7 @@ cmp.setup {
 
   mapping = {
     -- select = false is esential, otherwise it will interfere with normal ENTER when there's a popup open
-    ['<CR>'] = cmp.mapping.confirm { select = false, behavior = cmp.ConfirmBehavior.Replace }, -- XXX: WTF is ConfirmBehavior.Replace
+    ['<CR>'] = cmp.mapping.confirm { select = false },
     -- ['<CR>']    = cmp.mapping.confirm({ select = true }),
 
     ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { 'i', 'c' }),
@@ -89,7 +89,16 @@ cmp.setup {
   },
 
   formatting = {
-    format = lspkind.cmp_format { maxwidth = 50 },
+    format = lspkind.cmp_format {
+      maxwidth = 50,
+      menu = ({
+        buffer = "[BUF]",
+        nvim_lsp = "[LSP]",
+        vsnip = "[SNIP]",
+        nvim_lua = "[LUA]",
+        path = "[PATH]"
+      }),
+    },
   },
 
   sources = {

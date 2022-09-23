@@ -1,7 +1,25 @@
+local function setup_highlight(client)
+  local caps = client.server_capabilities
+
+  if caps.documentHighlightProvider ~= true then
+    return
+  end
+
+  vim.cmd[[
+    augroup lsp_highlight
+    autocmd!
+    autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+    autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+  ]]
+end
+
 return function(client, bufnr)
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
+
 
   -- local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   -- Enable completion triggered by <c-x><c-o>
@@ -17,18 +35,7 @@ return function(client, bufnr)
     hi LspReferenceWrite cterm=inverse gui=inverse
   ]]
 
-  if client.resolved_capabilities.document_highlight == true then
-    vim.cmd [[
-      augroup lsp_highlight
-        au!
-        au CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        au CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]]
-  else
-    -- print 'no highlight support'
-    -- PRINT(client.name)
-  end
+  setup_highlight(client)
 
   nmap({ 'buffer' }, 'gd', '<plug>Goto(definitions)')
   nmap({ 'buffer' }, '<C-LeftMouse>', '<LeftMouse><plug>Goto(definitions)')
