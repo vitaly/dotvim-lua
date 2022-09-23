@@ -25,14 +25,19 @@ elseif "" == vim.fn.glob(_my.packer.COMPILED) then
 
 end
 
+cmdbang('PackerRefresh', function()
+  RELOAD("init.plugins")
+  RELOAD("layers")
+  require('init.plugins').install()
+end)
+
 --------------------------------------------------------------------------------
 -- sync packer if plugins.lua changes
 --------------------------------------------------------------------------------
 vim.cmd [[
   augroup packer_plugins
     autocmd!
-    autocmd BufWritePost */init/plugins.lua source <afile> | PackerInstall
-    autocmd BufWritePost */layers/*.lua     source <afile> | PackerInstall
+    autocmd BufWritePost */init/plugins.lua,*/layers/*.lua PackerRefresh
     autocmd User PackerComplete PackerCompile
     autocmd User PackerCompileDone checktime
     autocmd User PackerCompileDone echom "compiled"

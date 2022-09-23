@@ -44,21 +44,21 @@ use { 'wbthomason/packer.nvim', opt = true } -- https://github.com/wbthomason/pa
 use 'lewis6991/impatient.nvim'               -- https://github.com/lewis6991/impatient.nvim
 use 'nvim-lua/plenary.nvim'                  -- https://github.com/nvim-lua/plenary.nvim
 
-layer 'base/utils'
-layer 'base/keymaps'
-layer 'base/colors'
+layer 'base.utils'
+layer 'base.keymaps'
+layer 'base.colors'
 
-layer 'filer/nvimtree'
+layer 'filer.nvimtree'
 -- layer 'filer/neotree'
 
 layer 'fuzzy'
-layer 'terminal/tmux'
+layer 'terminal.tmux'
 
-layer 'dev/git'
-layer 'dev/tags'
+layer 'dev.git'
+layer 'dev.tags'
 
-layer 'ide/lsp'
-layer 'ide/tsitter'
+layer 'ide.lsp'
+layer 'ide.tsitter'
 
 
 return packer
