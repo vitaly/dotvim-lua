@@ -35,6 +35,7 @@ return {
         hi LspReferenceWrite cterm=inverse gui=inverse
       ]]
 
+      require('layers.ide.lsp.style').setup()
 
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("lspconfig_attach", { clear = true }),
@@ -181,12 +182,6 @@ return {
   -- { 'stevearc/dressing.nvim' }, -- https://github.com/stevearc/dressing.nvim
 
 }
-
--- TODO: review
-
-
-
-
 
 -- DEFAULT SIGNATURE CONFIG
 -- {
