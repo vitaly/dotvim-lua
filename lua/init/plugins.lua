@@ -22,7 +22,7 @@ packer.init({
     end,
     prompt_border = border,
   },
-  log = { level = 'info' },
+  log = { level = 'trace' },
 })
 
 packer.reset()
@@ -48,8 +48,8 @@ layer 'base/utils'
 layer 'base/keymaps'
 layer 'base/colors'
 
--- layer 'filer/nvimtree'
-layer 'filer/neotree'
+layer 'filer/nvimtree'
+-- layer 'filer/neotree'
 
 layer 'fuzzy'
 layer 'terminal/tmux'
@@ -58,6 +58,7 @@ layer 'dev/git'
 layer 'dev/tags'
 
 layer 'ide/lsp'
+-- layer 'ide/tsitter'
 
 
 return packer

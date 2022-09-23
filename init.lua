@@ -2,6 +2,9 @@
 
 -- vim.lsp.set_log_level(0)
 
+-- vim.o.verbose = 9
+-- vim.o.verbosefile = './vim.log'
+
 vim.env.CC = 'gcc-11'
 _G._my = _G._my or {}
 
