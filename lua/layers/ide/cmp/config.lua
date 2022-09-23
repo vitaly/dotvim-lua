@@ -30,7 +30,7 @@ return {
 
 
     local cmp = require 'cmp'
-    cmp.setup {
+    cmp.setup({
       completion = { completeopt = 'menu,noselect,preview' },
 
       snippet = {
@@ -42,22 +42,48 @@ return {
       },
 
       sources = cmp.config.sources(
-        {
-          { name = 'nvim_lsp' },
-          { name = 'vsnip' },
-        },
-        {
-          { name = 'buffer' },
-        }
+      { { name = 'nvim_lua' }, { name = 'nvim_lsp' }, { name = 'vsnip' }, },
+      { { name = 'path' }, { name = 'buffer' }, }
       ),
 
       formatting = {
         format = require('lspkind').cmp_format {
           mode = 'symbol_text',
           maxwidth = 50,
+          menu = ({
+            buffer = "[BUF]",
+            nvim_lsp = "[LSP]",
+            path = "[PATH]",
+            vsnip = "[SNIP]",
+            nvim_lua = "[LUA]",
+            cmdline = "[CMD]",
+          }),
         },
       },
-    }
+
+      mapping = cmp.mapping.preset.insert({
+      })
+    })
+
+    -- `/` cmdline setup.
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline({
+      }),
+      sources = {
+        { name = 'buffer' }
+      }
+    })
+
+    -- `:` cmdline setup.
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline({
+      }),
+      sources = cmp.config.sources({
+        { name = 'path' },
+      }, {
+        { name = 'cmdline' },
+      })
+    })
   end,
 
 -- TODO: check if we can do it on attach

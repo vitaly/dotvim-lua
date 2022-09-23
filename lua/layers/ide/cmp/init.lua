@@ -21,16 +21,18 @@ return {
     -- sources ------------------------
 
     -- LSP source
-    { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }, -- https://github.com/hrsh7th/cmp-nvim-lsp
+    { 'hrsh7th/cmp-nvim-lsp' }, -- https://github.com/hrsh7th/cmp-nvim-lsp
     -- buffer source
-    { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }, -- https://github.com/hrsh7th/cmp-buffer
+    { 'hrsh7th/cmp-buffer' }, -- https://github.com/hrsh7th/cmp-buffer
+    -- command line source
+    { 'hrsh7th/cmp-cmdline' }, -- https://github.com/hrsh7th/cmp-cmdline
     -- path source
-    { 'hrsh7th/cmp-path', after = 'nvim-cmp' }, -- https://github.com/hrsh7th/cmp-path
+    { 'hrsh7th/cmp-path' }, -- https://github.com/hrsh7th/cmp-path
     -- Nvim -- Lua API source
-    { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }, -- https://github.com/hrsh7th/cmp-nvim-lua
+    { 'hrsh7th/cmp-nvim-lua' }, -- https://github.com/hrsh7th/cmp-nvim-lua
 
     -- snippets source
-    { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-vsnip' },
 
   },
 
