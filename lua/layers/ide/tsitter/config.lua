@@ -11,6 +11,7 @@ return {
       -- 'norg', 'norg_metqa', 'norg_table',
 
       highlight = { enable = true },
+      context_commentstring = { enable = true },
 
       --   TODO: review
       playground = {

@@ -7,18 +7,9 @@ return {
 
 
     which_key.register({
-      ['<leader>'] = {
-        [','] =  { toggle_tree, 'Toggle File Tree' },
-        ['0'] = { reveal_file, 'Reveal file' },
-
-        f = {
-          r = { reveal_file, 'Reveal' },
-        },
-
-      },
-
       ['\\'] = {
         ['\\'] =  { toggle_tree, 'Toggle File Tree' },
+        ['['] = { reveal_file, 'Reveal file' },
       }
     })
   end

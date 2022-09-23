@@ -2,6 +2,11 @@
 
 
 return {
+  -------------------------------------------------------------------------------------------------------------
+  -------------------------------------------------------------------------------------------------------------
+  -- TREESITTER
+  -------------------------------------------------------------------------------------------------------------
+  -------------------------------------------------------------------------------------------------------------
   {
     'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
 
@@ -12,9 +17,8 @@ return {
 
     requires = {
       'nvim-treesitter/playground', -- https://github.com/nvim-treesitter/playground
+      'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
     },
-
-
 
     config = function()
       require('layers.ide.tsitter.config').setup()
@@ -23,6 +27,7 @@ return {
 
 
   -------------------------------------------------------------------------------------------------------------
+  -- CONTEXT
   -- this plugin shows a bit of context at the top of the file, e.g. what class / function we are currently in.
   {
     'romgrk/nvim-treesitter-context', -- https://github.com/romgrk/nvim-treesitter-context
@@ -33,14 +38,16 @@ return {
 
 
 
-   {
-     'folke/todo-comments.nvim', -- https://github.com/folke/todo-comments.nvim
-     -- 'vitaly/todo-comments.nvim',
-     requires = 'nvim-lua/plenary.nvim',
-     config = function()
-       require('layers.ide.tsitter.todo').setup()
-     end,
-   },
+  -------------------------------------------------------------------------------------------------------------
+  -- TODO
+  {
+    'folke/todo-comments.nvim', -- https://github.com/folke/todo-comments.nvim
+    -- 'vitaly/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('layers.ide.tsitter.todo').setup()
+    end,
+  },
 }
 
 ---- TODO: cleanup
@@ -50,7 +57,6 @@ return {
 ----       -- 'nvim-treesitter/nvim-treesitter-refactor', https://github.com/nvim-treesitter/nvim-treesitter-refactor
 
 ----       'nvim-treesitter/nvim-treesitter-textobjects', -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-----       'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
 ----       'p00f/nvim-ts-rainbow', -- https://github.com/p00f/nvim-ts-rainbow
 ----     },
 ----   },

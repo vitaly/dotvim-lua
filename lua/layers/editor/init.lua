@@ -128,4 +128,14 @@ return {
     'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
   },
 
+  {
+    'tpope/vim-commentary', -- https://github.com/tpope/vim-commentary/
+
+    config = function()
+      nmap('\\;', 'gcc', 'Comment')
+      nmap('<leader>;', 'gcu', 'Uncomment Comment')
+      xmap('\\;', 'gc', 'Comment')
+    end,
+  },
+
 }
