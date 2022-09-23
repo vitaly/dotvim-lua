@@ -20,8 +20,9 @@ return function(client, bufnr)
   if client.resolved_capabilities.document_highlight == true then
     vim.cmd [[
       augroup lsp_highlight
-      au CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-      au CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        au!
+        au CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        au CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
     ]]
   else

@@ -17,6 +17,7 @@ if packer == nil then
       end,
       prompt_border = border,
     },
+    log = { level = 'warn' },
   }
 end
 
@@ -30,7 +31,7 @@ end
 use { 'wbthomason/packer.nvim', opt = true }
 
 use 'lewis6991/impatient.nvim'
-use 'nvim-lua/plenary.nvim'
+use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
 use 'svermeulen/vimpeccable'
 
 plugin 'which-key'
@@ -45,8 +46,8 @@ plugin 'undo-tree'
 plugin 'treesitter'
 plugin 'languages'
 
--- plugin 'filer/nvimtree'
-plugin 'filer/neotree'
+plugin 'filer/nvimtree'
+-- plugin 'filer/neotree'
 
 plugin 'git'
 plugin 'comments'
@@ -59,7 +60,7 @@ plugin 'words'
 plugin 'misc'
 plugin 'minimap'
 plugin 'neorg'
-plugin 'autoformat'
+-- plugin 'autoformat'
 plugin 'debug'
 plugin 'cursors'
 -- plugin 'neogen'

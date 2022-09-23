@@ -8,23 +8,34 @@ return {
       if server.name == 'sumneko_lua' then
         opts.settings = {
           Lua = {
+            runtime = { version = 'LuaJIT' },
+
+            hint = {
+              enable = true,
+            },
+
             diagnostics = {
               globals = {
                 'vim',
-                'map',
-                'noremap',
-                'nmap',
-                'nnoremap',
-                'xmap',
-                'xnoremap',
-                'cmap',
-                'cnoremap',
-                'imap',
-                'inoremap',
+                'cmd', 'cmdbang',
+
+                'map', 'noremap',
+
+                'nmap', 'nnoremap',
+                'vmap', 'vnoremap',
+                'xmap', 'xnoremap',
+                'smap', 'snoremap',
+                'omap', 'onoremap',
+                'imap', 'inoremap',
+                'lmap', 'lnoremap',
+                'cmap', 'cnoremap',
+                'tmap', 'tnoremap',
               },
             },
+
             workspace = {
               -- Make the server aware of Neovim runtime files
+              -- library = vim.api.nvim_get_runtime_file("", true),
               library = {
                 [vim.fn.expand '$VIMRUNTIME/lua'] = true,
                 [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,

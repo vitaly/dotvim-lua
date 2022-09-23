@@ -2,7 +2,7 @@ require 'my.toggle'
 
 local config
 
-configure_trouble = function()
+local configure_trouble = function()
   require('trouble').setup(config())
 end
 
