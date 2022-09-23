@@ -118,14 +118,14 @@ return {
           x = { '<cmd>q<cr>', 'close window' },
 
           m = { '<cmd>messages<cr>', 'Messages' },
-          M = { '<cmd>messages<cr>', 'Clear Messages' },
+          M = { '<cmd>messages clear<cr>', 'Clear Messages' },
 
           n = { '<cmd>cn<cr>', 'Next' },
           p = { '<cmd>cp<cr>', 'Prev' },
 
 
 
-          R = { '<cmd>PackerCompile<cr>', 'Recompile configuration' },
+          R = { '<cmd>PackerInstall<cr>', 'Install and Recompile' },
 
           -- FIXME: move to comment
           --     [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },

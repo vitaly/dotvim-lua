@@ -32,6 +32,8 @@ vim.cmd [[
     autocmd!
     autocmd BufWritePost */init/plugins.lua source <afile> | PackerInstall
     autocmd BufWritePost */layers/*.lua     source <afile> | PackerInstall
+    autocmd User PackerComplete PackerCompile
     autocmd User PackerCompileDone checktime
+    autocmd User PackerCompileDone echom "compiled"
   augroup end
 ]]
