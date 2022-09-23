@@ -35,10 +35,22 @@ local function setup_lsp_keymaps()
   nmap({ 'buffer' }, '<A-LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.hover()<cr>')
 end
 
+local function setup_highlight()
+  vim.cmd[[
+    augroup lsp_highlight
+      autocmd!
+      autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+      autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+  ]]
+end
+
 ---------------------------------------------------------------------------
 -- ON_ATTACH
 local function on_lsp_client_attach(client, bufnr)
   setup_lsp_keymaps()
+  setup_highlight()
 end
 
 return on_lsp_client_attach
@@ -84,24 +96,6 @@ return on_lsp_client_attach
 --   require('lsp_signature').on_attach()
 --   require('folding').on_attach()
 --   -- require('lsp-status').on_attach(client)
-
---   vim.cmd [[
---     hi LspReferenceText cterm=inverse gui=inverse
---     hi LspReferenceRead cterm=inverse gui=inverse
---     hi LspReferenceWrite cterm=inverse gui=inverse
---   ]]
-
---   if client.resolved_capabilities.document_highlight == true then
---     vim.cmd [[
---       augroup lsp_highlight
---       au CursorHold <buffer> lua vim.lsp.buf.document_highlight()
---       au CursorMoved <buffer> lua vim.lsp.buf.clear_references()
---       augroup END
---     ]]
---   else
---     -- print 'no highlight support'
---     -- PRINT(client.name)
---   end
 
 -- end
 

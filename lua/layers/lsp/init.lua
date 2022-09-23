@@ -37,6 +37,18 @@ return {
 
     config = function()
       require('layers.lsp.maps')
+
+      -- this is required for vim.lsp.buf.document_highlight() to work
+      -- which is setup in on_attach.lua
+      vim.cmd [[
+        hi LspReferenceText cterm=inverse gui=inverse
+        hi LspReferenceRead cterm=inverse gui=inverse
+        hi LspReferenceWrite cterm=inverse gui=inverse
+      ]]
+
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = require('layers.lsp.on_attach')
+      })
     end
   },
 
@@ -53,7 +65,6 @@ return {
       require("mason-lspconfig").setup_handlers({
         function (server_name) -- default handler (optional)
           lspconfig[server_name].setup {
-            on_attach = require('layers.lsp.on_attach'),
           }
         end,
 
@@ -61,7 +72,6 @@ return {
         -- SUMNEKO_LUA
         ["sumneko_lua"] = function()
           lspconfig.sumneko_lua.setup {
-            on_attach = require('layers.lsp.on_attach'),
 
             settings = {
               Lua = {
