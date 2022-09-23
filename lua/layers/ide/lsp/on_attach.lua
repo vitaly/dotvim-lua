@@ -34,7 +34,16 @@ local function setup_lsp_keymaps()
   nmap({ 'buffer' }, '<A-LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.hover()<cr>')
 end
 
-local function setup_highlight()
+local function setup_highlight(client)
+
+  local client_id = client.data.client_id
+  local clients = vim.lsp.buf_get_clients()
+  local caps = clients[client_id].server_capabilities
+
+  if caps.documentHighlightProvider ~= true then
+    return
+  end
+
   vim.cmd[[
     augroup lsp_highlight
       autocmd!
@@ -49,7 +58,8 @@ end
 -- ON_ATTACH
 local function on_lsp_client_attach(client, bufnr)
   setup_lsp_keymaps()
-  setup_highlight()
+
+  setup_highlight(client)
 end
 
 return on_lsp_client_attach
