@@ -26,13 +26,16 @@ return {
             name = 'Git',
 
             d = { diff, 'Diff' },
-            g = { grep, 'Grep' },
+            -- g = { grep, 'Grep' },
             s = { status, 'Status' },
             o = { status_only, 'Status (only)' },
             w = { grep_word, 'Grep word' },
           }
         }
       })
+
+      -- for some reason this doesn't work via which_key
+      nnoremap('<space>gg', grep, 'Grep')
 
       which_key.register({
         ['<leader>'] = {
