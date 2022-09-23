@@ -1,11 +1,7 @@
 return {
   setup = function()
-
-    print "setup au for cmp"
-
     local setup_highlights = function()
       vim.cmd[[
-        echom "resetting colors"
         " gray
         highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
         " blue
