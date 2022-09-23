@@ -23,7 +23,7 @@ local function setup_lsp_keymaps()
     gd = { m.goto_definition, 'Definition'},
     gD = { m.goto_declaration, 'Declaration'},
     gr = { m.goto_references, 'References'},
-    gt = { m.goto_type_definition, 'Type'},
+    -- gt = { m.goto_type_definition, 'Type'},
 
     K = { m.hover, 'Hover' },
   }, {

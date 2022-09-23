@@ -58,7 +58,7 @@ layer 'dev/git'
 layer 'dev/tags'
 
 layer 'ide/lsp'
--- layer 'ide/tsitter'
+layer 'ide/tsitter'
 
 
 return packer

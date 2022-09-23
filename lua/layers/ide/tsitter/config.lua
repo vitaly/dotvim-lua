@@ -1,34 +1,30 @@
 return {
   setup = function()
+    --------------------------------------------------------------------------
+    -- SETUP
     require('nvim-treesitter.configs').setup {
-      ensure_installed = {
-       -- 'bash',
-       -- 'c',
-       -- 'comment',
-       -- 'cpp',
-       -- 'css',
-       -- 'elixir',
-       -- 'go',
-       -- 'html',
-       -- 'javascript',
-       -- 'jsdoc',
-       'lua',
-       -- -- brew install gcc
-       -- -- CC=gcc-11 vim -c "TSInstall norg"
-       -- 'norg',
-       -- 'norg_meta',
-       -- 'norg_table',
-       -- 'python',
-       -- 'ruby',
-       -- 'rust',
-       -- 'scala',
-       -- 'scss',
-       -- 'toml',
-       -- 'typescript',
-       'vim',
-       'yaml',
-      },
+      ensure_installed = { 'c', 'comment', 'css', 'elixir', 'go', 'html', 'javascript', 'jsdoc', 'lua', 'ruby', 'scss', 'toml', 'typescript', 'vim', 'yaml', },
+      -- 'bash', 'cpp', 'python', 'rust', 'scala',
+      -- -- brew install gcc
+      -- -- CC=gcc-11 vim -c "TSInstall norg"
+      -- 'norg', 'norg_meta', 'norg_table',
+
+      highlight = { enable = true },
     }
+
+    --------------------------------------------------------------------------
+    -- KEYMAPS
+    nnoremap('<leader>atI', ':<C-U>TSInstall ', 'Install...')
+    nnoremap('<leader>atU', ':<C-U>TSUpdate ', 'Update ...')
+    require('which-key').register({
+      ['<leader>at'] = {
+        name = 'Tree Sitter',
+
+        i = { '<cmd>TSInstallInfo<cr>', 'Install Info' },
+        m = { '<cmd>TSModuleInfo<cr>', 'Module Info' },
+        c = { '<cmd>TSConfigInfo<cr>', 'Config Info' },
+      },
+    }, { silent = true })
   end
 }
 
@@ -62,9 +58,6 @@ return {
 -- -- TREESITTER config -----------------------------------------------------------
 -- require('nvim-treesitter.configs').setup {
 
---   highlight = { enable = true, use_languagetree = true },
-
---   indent = { enable = false },
 
 --   context_commentstring = { enable = true },
 --   rainbow = { enable = true },
@@ -160,19 +153,7 @@ return {
 -- }
 
 -- -- KEYMAPS ---------------------------------------------------------------------
--- nnoremap('<leader>ati', ':<C-U>TSInstall ')
--- nnoremap('<leader>atu', ':<C-U>TSUpdate ')
 -- require('which-key').register({
---   ['<leader>at'] = {
---     name = 'Tree Sitter',
-
---     i = { 'Install ...' },
---     u = { 'Update ...' },
-
---     I = { '<cmd>TSInstallInfo<cr>', 'Install Info ...' },
---     M = { '<cmd>TSModuleInfo<cr>', 'Module Info' },
---     C = { '<cmd>TSConfigInfo<cr>', 'Config Info' },
---   },
 
 --   ['\\'] = {
 --     p = { '<cmd>TSPlaygroundToggle<cr>', 'Playground' },
