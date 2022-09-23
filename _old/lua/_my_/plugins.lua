@@ -2,12 +2,7 @@
 
 -- plugin 'navigator'
 
-plugin 'cmp'
 plugin 'languages'
-plugin 'comments'
-plugin 'statusline'
-plugin 'blankline'
-plugin 'words'
 plugin 'misc'
 plugin 'minimap'
 plugin 'neorg'

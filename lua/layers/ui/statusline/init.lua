@@ -13,6 +13,6 @@ return {
   requires = { 'kyazdani42/nvim-web-devicons' },
 
   config = function()
-    require('layers.statusline.config').setup()
+    require('layers.ui.statusline.config').setup()
   end,
 }

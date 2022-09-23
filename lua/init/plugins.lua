@@ -64,7 +64,8 @@ layer 'ide.cmp'
 layer 'editor'
 layer 'focus'
 
-layer 'statusline'
+layer 'ui.statusline'
+layer 'ui.blankline'
 
 
 return packer
