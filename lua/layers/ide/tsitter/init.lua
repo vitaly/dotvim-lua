@@ -9,6 +9,13 @@ return {
     -- the plugin/nvim-treesitter.lua is not being loaded for some reason
     -- run = ':TSUpdate',
 
+
+    requires = {
+      'nvim-treesitter/playground', -- https://github.com/nvim-treesitter/playground
+    },
+
+
+
     config = function()
       require('layers.ide.tsitter.config').setup()
     end,
@@ -45,7 +52,6 @@ return {
 ----       'nvim-treesitter/nvim-treesitter-textobjects', -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 ----       'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
 ----       'p00f/nvim-ts-rainbow', -- https://github.com/p00f/nvim-ts-rainbow
-----       'nvim-treesitter/playground', -- https://github.com/nvim-treesitter/playground
 ----     },
 ----
 ----     config = function()

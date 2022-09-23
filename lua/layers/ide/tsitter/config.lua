@@ -3,13 +3,22 @@ return {
     --------------------------------------------------------------------------
     -- SETUP
     require('nvim-treesitter.configs').setup {
-      ensure_installed = { 'c', 'comment', 'css', 'elixir', 'go', 'html', 'javascript', 'jsdoc', 'lua', 'ruby', 'scss', 'toml', 'typescript', 'vim', 'yaml', },
+      ensure_installed = { 'c', 'comment', 'css', 'elixir', 'go', 'html', 'javascript', 'jsdoc', 'lua', 'query', 'ruby', 'scss', 'toml', 'typescript', 'vim', 'yaml' },
+
       -- 'bash', 'cpp', 'python', 'rust', 'scala',
       -- -- brew install gcc
       -- -- CC=gcc-11 vim -c "TSInstall norg"
-      -- 'norg', 'norg_meta', 'norg_table',
+      -- 'norg', 'norg_metqa', 'norg_table',
 
       highlight = { enable = true },
+
+      --   TODO: review
+      playground = {
+        enable = true,
+        disable = {},
+        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+        persist_queries = false, -- Whether the query persists across vim sessions
+      },
     }
 
     --------------------------------------------------------------------------
@@ -17,6 +26,7 @@ return {
     nnoremap('<leader>atI', ':<C-U>TSInstall ', 'Install...')
     nnoremap('<leader>atU', ':<C-U>TSUpdate ', 'Update ...')
     require('which-key').register({
+
       ['<leader>at'] = {
         name = 'Tree Sitter',
 
@@ -24,6 +34,11 @@ return {
         m = { '<cmd>TSModuleInfo<cr>', 'Module Info' },
         c = { '<cmd>TSConfigInfo<cr>', 'Config Info' },
       },
+
+      ['\\'] = {
+        p = { '<cmd>TSPlaygroundToggle<cr>', 'Playground' },
+      },
+
     }, { silent = true })
   end
 }
@@ -132,33 +147,9 @@ return {
 --     },
 --   },
 
---   playground = {
---     enable = true,
---     disable = {},
---     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
---     persist_queries = false, -- Whether the query persists across vim sessions
---     keybindings = {
---       toggle_query_editor = 'o',
---       toggle_hl_groups = 'i',
---       toggle_injected_languages = 't',
---       toggle_anonymous_nodes = 'a',
---       toggle_language_display = 'I',
---       focus_language = 'f',
---       unfocus_language = 'F',
---       update = 'R',
---       goto_node = '<cr>',
---       show_help = '?',
---     },
---   },
 -- }
 
 -- -- KEYMAPS ---------------------------------------------------------------------
--- require('which-key').register({
-
---   ['\\'] = {
---     p = { '<cmd>TSPlaygroundToggle<cr>', 'Playground' },
---   },
--- }, { silent = true })
 
 -- require('which-key').register({
 --   i = {
