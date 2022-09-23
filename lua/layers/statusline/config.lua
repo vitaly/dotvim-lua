@@ -1,3 +1,5 @@
+local m = {}
+
 -- require 'galaxyline.themes.eviline'
 -- require 'galaxyline.themes.neonline'
 -- require 'galaxyline.themes.spaceline'
@@ -79,44 +81,48 @@ local theme = {
   },
 }
 
-require('lualine').setup {
+function m.setup()
+  require('lualine').setup {
 
-  options = {
-    disabled_filetypes = { 'dbui', 'packer' },
-    theme = theme.light,
-  },
-
-  tabline = {
-    lualine_a = { { 'tabs', mode = 1 } },
-  },
-
-  sections = {
-    lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_diagnostic' } } },
-    lualine_c = {
-      { 'filename', path = 1 },
-      { autoformat },
-      { format_writing, color = { fg = 'red' } },
-      { dap_status, color = { bg = '#ff0000' } },
+    options = {
+      disabled_filetypes = { 'dbui', 'packer' },
+      theme = theme.light,
     },
-    lualine_x = { 'encoding', 'fileformat', 'filetype', { lsp_clients } },
-    -- lualine_y = {'progress'},
-    lualine_y = { '%02B' },
-    lualine_z = { 'progress', 'location' },
-  },
 
-  inactive_sections = {
-    lualine_c = { { 'filename', path = 1 } },
+    tabline = {
+      lualine_a = { { 'tabs', mode = 1 } },
+    },
 
-    lualine_x = {},
-    lualine_z = { 'location' },
-  },
+    sections = {
+      lualine_a = { 'mode' },
+      lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_diagnostic' } } },
+      lualine_c = {
+        { 'filename', path = 1 },
+        { autoformat },
+        { format_writing, color = { fg = 'red' } },
+        { dap_status, color = { bg = '#ff0000' } },
+      },
+      lualine_x = { 'encoding', 'fileformat', 'filetype', { lsp_clients } },
+      -- lualine_y = {'progress'},
+      lualine_y = { '%02B' },
+      lualine_z = { 'progress', 'location' },
+    },
 
-  extensions = {
-    'chadtree',
-    'fugitive',
-    'nvim-tree',
-    'quickfix',
-    'symbols-outline',
-  },
-}
+    inactive_sections = {
+      lualine_c = { { 'filename', path = 1 } },
+
+      lualine_x = {},
+      lualine_z = { 'location' },
+    },
+
+    extensions = {
+      'chadtree',
+      'fugitive',
+      'nvim-tree',
+      'quickfix',
+      'symbols-outline',
+    },
+  }
+end
+
+return m
