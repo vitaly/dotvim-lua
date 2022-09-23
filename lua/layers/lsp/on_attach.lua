@@ -1,7 +1,6 @@
 ---------------------------------------------------------------------------
 -- Setup local buffer maps for LSP
 local function setup_lsp_keymaps()
-  print 'setup lsp keymaps'
   local m = require 'layers.lsp.maps'
 
   require('which-key').register({
