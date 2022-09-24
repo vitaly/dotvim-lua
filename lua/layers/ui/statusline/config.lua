@@ -116,7 +116,6 @@ function m.setup()
     },
 
     extensions = {
-      'chadtree',
       'fugitive',
       'nvim-tree',
       'quickfix',

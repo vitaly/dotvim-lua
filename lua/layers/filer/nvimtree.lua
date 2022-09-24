@@ -8,12 +8,17 @@ return {
 
   setup = function()
     require('layers.filer.base').setup({
-      toggle = require('nvim-tree').toggle,
+      toggle = function()
+        require('nvim-tree').toggle()
+      end,
       reveal = function()
         require('nvim-tree').find_file(true)
       end,
     })
   end,
+
+  module = 'nvim-tree',
+  cmd = { 'NvimTreeToggle', 'NvimTreeFindFile', 'NvimTreeFocus' },
 
   config = function()
     require("nvim-tree").setup {
