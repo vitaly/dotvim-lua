@@ -1,14 +1,18 @@
 return {
-  setup = function()
-    local which_key = require 'which-key'
+  setup = function(opts)
+    local function toggle_or_reveal()
+      if vim.o.buflisted and "" ~= vim.fn.expand('%:p') then
+        opts.reveal()
+      else
+        opts.toggle()
+      end
+    end
 
-    local toggle_tree = '<plug>File-Tree(toggle)'
-    local reveal_file = '<plug>File-Tree(reveal)'
-
-    which_key.register({
+    require('which-key').register({
       ['\\'] = {
-        ['\\'] =  { toggle_tree, 'Toggle File Tree' },
-        ['['] = { reveal_file, 'Reveal file' },
+        ['\\'] =  { toggle_or_reveal, 'Toggle / Reveal File' },
+
+        ['['] = { opts.toggle, 'Toggle File Tree' },
       }
     })
   end

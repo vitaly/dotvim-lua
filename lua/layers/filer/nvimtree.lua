@@ -7,9 +7,12 @@ return {
   },
 
   setup = function()
-    nnoremap('<plug>File-Tree(toggle)', [[<cmd>NvimTreeToggle<cr>]])
-    nnoremap('<plug>File-Tree(reveal)', [[<cmd>lua require"nvim-tree".find_file(true)<cr>')]])
-    require('layers.filer.base').setup()
+    require('layers.filer.base').setup({
+      toggle = require('nvim-tree').toggle,
+      reveal = function()
+        require('nvim-tree').find_file(true)
+      end,
+    })
   end,
 
   config = function()

@@ -10,10 +10,14 @@ return {
   },
 
   setup = function()
-    nnoremap('<plug>File-Tree(toggle)', [[<cmd>Neotree toggle left<cr>]])
-    nnoremap('<plug>File-Tree(reveal)', [[<cmd>Neotree reveal left<cr>]])
-
-    require('layers.filer.base').setup()
+    require('layers.filer.base').setup({
+      toggle = function()
+        vim.cmd [[NeoTreeFocusToggle]]
+      end,
+      reveal = function()
+        vim.cmd [[NeoTreeReveal]]
+      end,
+    })
   end,
 
   config = function()
