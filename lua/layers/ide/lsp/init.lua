@@ -9,7 +9,7 @@ return {
 
       require('layers.ide.lsp.style').setup()
 
-      require('my.tools').subscribe('lsp_attach', 'LspAttach', require('layers.ide.lsp.on_attach'))
+      require('my.tools').on_lsp_attach('lsp_attach', require('layers.ide.lsp.on_attach'))
     end
   },
 
@@ -151,7 +151,9 @@ return {
         },
       }
 
-      require('my.tools').subscribe('lsp_signature', 'LspAttach', require('lsp_signature').on_attach)
+      require('my.tools').on_lsp_attach('lsp_signature', function ()
+        require('lsp_signature').on_attach()
+      end)
     end,
   },
 
@@ -164,7 +166,7 @@ return {
     branch = 'nvim-nightly',
 
     config = function()
-      require('my.tools').subscribe('lsp_folding', 'LspAttach', require('folding').on_attach)
+      require('my.tools').on_lsp_attach('lsp_folding', require('folding').on_attach)
     end,
   },
 
@@ -191,7 +193,7 @@ return {
 --   max_height = 12, -- max height of signature floating_window
 --   max_width = 80, -- max_width of signature floating_window
 --   wrap = true, -- allow doc/signature text wrap inside floating_window, useful if your lsp return doc/sig is too long
-  
+
 --   floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
 
 --   floating_window_above_cur_line = true, -- try to place the floating above the current line when possible Note:

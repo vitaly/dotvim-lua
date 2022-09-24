@@ -35,16 +35,7 @@ local function setup_lsp_keymaps()
 end
 
 local function setup_highlight(client)
-
-  local client_id = client.data.client_id
-  local clients = vim.lsp.buf_get_clients()
-
-  if not clients[client_id] then
-    return
-  end
-  local caps = clients[client_id].server_capabilities
-
-  if caps.documentHighlightProvider ~= true then
+  if client.server_capabilities.documentHighlightProvider ~= true then
     return
   end
 
@@ -60,13 +51,12 @@ end
 
 ---------------------------------------------------------------------------
 -- ON_ATTACH
-local function on_lsp_client_attach(client, bufnr)
+local function on_attach(client, _)
   setup_lsp_keymaps()
-
   setup_highlight(client)
 end
 
-return on_lsp_client_attach
+return on_attach
 
 
 ---------------------------------------------------------------------------
