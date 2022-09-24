@@ -8,7 +8,38 @@ return {
     end
 
     local cmp = require 'cmp'
-    cmp.setup({
+    local function tab_completion(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif vim.fn['vsnip#available'](1) == 1 then
+        feedkey('<Plug>(vsnip-expand-or-jump)', '')
+      else
+        local copilot_result = vim.fn['copilot#Accept'] ''
+        if copilot_result ~= '' then
+          vim.api.nvim_feedkeys(copilot_result, 'i', true)
+        else
+          fallback()
+        end
+      end
+    end
+
+    local function next_item(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end
+
+    local function prev_item(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end
+
+    cmp.setup {
       completion = { completeopt = 'menu,noselect,preview' },
 
       snippet = {
@@ -20,84 +51,61 @@ return {
       },
 
       sources = cmp.config.sources(
-      { { name = 'nvim_lua' }, { name = 'nvim_lsp' }, { name = 'vsnip' }, },
-      { { name = 'path' }, { name = 'buffer' }, }
+        { { name = 'nvim_lua' }, { name = 'nvim_lsp' }, { name = 'vsnip' } },
+        { { name = 'path' }, { name = 'buffer' } }
       ),
 
       formatting = {
         format = require('lspkind').cmp_format {
           mode = 'symbol_text',
           maxwidth = 50,
-          menu = ({
-            buffer = "[BUF]",
-            nvim_lsp = "[LSP]",
-            path = "[PATH]",
-            vsnip = "[SNIP]",
-            nvim_lua = "[LUA]",
-            cmdline = "[CMD]",
-          }),
+          menu = {
+            buffer = '[BUF]',
+            nvim_lsp = '[LSP]',
+            path = '[PATH]',
+            vsnip = '[SNIP]',
+            nvim_lua = '[LUA]',
+            cmdline = '[CMD]',
+          },
         },
       },
 
-      mapping = cmp.mapping.preset.insert({
-
-        ['<cr>'] = {
-          i = cmp.mapping.confirm(),
-        },
-        ['<tab>'] = {
-          i = function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif vim.fn["vsnip#available"](1) == 1 then
-              feedkey("<Plug>(vsnip-expand-or-jump)", "")
-            else
-              local copilot_result = vim.fn['copilot#Accept']('')
-              if copilot_result ~= "" then
-                vim.api.nvim_feedkeys(copilot_result, "i", true)
-              else
-                fallback()
-              end
-
-            end
-          end,
-        },
-
-      })
-    })
+      mapping = cmp.mapping.preset.insert {
+        ['<cr>'] = { i = cmp.mapping.confirm() },
+        ['<tab>'] = { i = tab_completion },
+      },
+    }
 
     -- `/` cmdline setup.
     cmp.setup.cmdline('/', {
-      mapping = cmp.mapping.preset.cmdline({
-      }),
+      mapping = cmp.mapping.preset.cmdline {
+        ['<C-j>'] = { c = next_item },
+        ['<C-k>'] = { c = prev_item },
+      },
       sources = {
-        { name = 'buffer' }
-      }
+        { name = 'buffer' },
+      },
     })
 
     -- `:` cmdline setup.
     cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline({
-      }),
+      mapping = cmp.mapping.preset.cmdline {
+        ['<C-j>'] = { c = next_item },
+        ['<C-k>'] = { c = prev_item },
+      },
       sources = cmp.config.sources({
         { name = 'path' },
       }, {
         { name = 'cmdline' },
-      })
+      }),
     })
   end,
 
--- TODO: check if we can do it on attach
+  -- TODO: check if we can do it on attach
   capabilities = function()
     return require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   end,
 }
-
-
-
-
-
-
-
 
 -- -- local luasnip = require 'luasnip'
 
@@ -114,7 +122,6 @@ return {
 --     native_menu = false,
 --     ghost_text = false,
 --   },
-
 
 --   mapping = {
 --     -- select = false is esential, otherwise it will interfere with normal ENTER when there's a popup open
@@ -169,7 +176,6 @@ return {
 --     ['<C-e>'] = cmp.mapping.close(),
 --     -- ["<esc>"]   = cmp.mapping.close(),
 --   },
-
 
 --   sources = {
 --     { name = 'vsnip' },
