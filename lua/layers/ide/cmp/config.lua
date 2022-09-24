@@ -8,6 +8,7 @@ return {
     end
 
     local cmp = require 'cmp'
+
     local function tab_completion(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -45,8 +46,6 @@ return {
       snippet = {
         expand = function(args)
           vim.fn['vsnip#anonymous'](args.body)
-          -- TODO: check
-          -- luasnip.lsp_expand(args.body)
         end,
       },
 
@@ -73,6 +72,10 @@ return {
       mapping = cmp.mapping.preset.insert {
         ['<cr>'] = { i = cmp.mapping.confirm() },
         ['<tab>'] = { i = tab_completion },
+        ['<c-j>'] = { i = next_item },
+        ['<c-k>'] = { i = prev_item },
+
+        ['<esc>'] = { i = cmp.mapping.abort() },
       },
     }
 
