@@ -1,3 +1,5 @@
+-- lua/layers/ide/lsp/trouble.lua
+
 -- we want to be able to re-configure trouble when one of the toggles changes
 -- for scope and visibility reasons we need to separate the call to config and config data
 

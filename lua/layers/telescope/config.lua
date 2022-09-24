@@ -1,3 +1,5 @@
+-- lua/layers/telescope/config.lua
+
 local function setup()
   -- config ----------------------------------------------------------------------
   local telescope = require 'telescope'

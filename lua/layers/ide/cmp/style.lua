@@ -1,5 +1,7 @@
+-- lua/layers/ide/cmp/style.lua
+
 local function cmp_style()
-  vim.cmd[[
+  vim.cmd [[
     " gray
     highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
     " blue
@@ -23,5 +25,5 @@ return {
   setup = function()
     require('my.tools').subscribe('cmp_style', 'ColorScheme', cmp_style)
     cmp_style()
-  end
+  end,
 }

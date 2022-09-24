@@ -1,5 +1,4 @@
-
-
+-- lua/layers/ide/tsitter/init.lua
 
 return {
   -------------------------------------------------------------------------------------------------------------
@@ -14,7 +13,6 @@ return {
     -- the plugin/nvim-treesitter.lua is not being loaded for some reason
     -- run = ':TSUpdate',
 
-
     requires = {
       'nvim-treesitter/playground', -- https://github.com/nvim-treesitter/playground
       'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
@@ -25,7 +23,6 @@ return {
     end,
   },
 
-
   -------------------------------------------------------------------------------------------------------------
   -- CONTEXT
   -- this plugin shows a bit of context at the top of the file, e.g. what class / function we are currently in.
@@ -35,8 +32,6 @@ return {
       require('layers.ide.tsitter.context').setup()
     end,
   },
-
-
 
   -------------------------------------------------------------------------------------------------------------
   -- TODO

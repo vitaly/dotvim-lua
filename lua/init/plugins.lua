@@ -1,3 +1,5 @@
+-- lua/init/plugins.lua
+
 vim.cmd [[packadd packer.nvim]]
 
 local packer = require 'packer'

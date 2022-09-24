@@ -1,3 +1,5 @@
+-- lua/layers/ide/lsp/style.lua
+
 local function lsp_style()
   -- DiagnosticSignXXX highlights are linked to DiagnosticXXX
   -- problem with DiagnosticXXX is that their background differs from that of SignColumn
@@ -37,14 +39,13 @@ local function set_window_opts()
 end
 
 local function set_diagnostic_opts()
-  vim.diagnostic.config({
+  vim.diagnostic.config {
     virtual_text = false,
     -- virtual_text = { prefix = '', spacing = 5 },
     signs = true,
     underline = true,
     update_in_insert = false,
-  })
-
+  }
 end
 
 return {
@@ -53,5 +54,5 @@ return {
     lsp_style()
     set_window_opts()
     set_diagnostic_opts()
-  end
+  end,
 }

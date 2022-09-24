@@ -1,3 +1,5 @@
+-- lua/layers/filer/nvimtree.lua,
+
 return {
   'kyazdani42/nvim-tree.lua',
   tag = 'nightly',
@@ -7,22 +9,22 @@ return {
   },
 
   setup = function()
-    require('layers.filer.base').setup({
+    require('layers.filer.base').setup {
       toggle = function()
         require('nvim-tree').toggle()
       end,
       reveal = function()
         require('nvim-tree').find_file(true)
       end,
-    })
+    }
   end,
 
   module = 'nvim-tree',
   cmd = { 'NvimTreeToggle', 'NvimTreeFindFile', 'NvimTreeFocus' },
 
   config = function()
-    require("nvim-tree").setup {
-      sort_by = "case_sensitive",
+    require('nvim-tree').setup {
+      sort_by = 'case_sensitive',
 
       create_in_closed_folder = true,
       hijack_cursor = true,
@@ -31,15 +33,15 @@ return {
         adaptive_size = true,
         mappings = {
           list = {
-            { key = "u", action = "dir_up" },
+            { key = 'u', action = 'dir_up' },
           },
         },
       },
       renderer = {
         group_empty = true,
         highlight_git = true,
-        indent_markers  = {
-          enable = true
+        indent_markers = {
+          enable = true,
         },
       },
       filters = {
@@ -62,5 +64,5 @@ return {
         enable = true,
       },
     }
-  end
+  end,
 }

@@ -1,8 +1,10 @@
+-- lua/layers/ide/tsitter/todo.lua
+
 return {
   setup = function()
     require('todo-comments').setup {
       keywords = {
-        TODO = { icon = " ", color = "info", alt = { 'TBD' } },
+        TODO = { icon = ' ', color = 'info', alt = { 'TBD' } },
       },
     }
 

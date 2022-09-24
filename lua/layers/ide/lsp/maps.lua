@@ -1,3 +1,5 @@
+-- lua/layers/ide/lsp/maps.lua
+
 local m = {
   lsp_info = '<cmd>LspInfo<cr>',
   lsp_log = '<cmd>LspLog<cr>',

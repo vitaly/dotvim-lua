@@ -1,15 +1,17 @@
+-- lua/layers/dev/tags/outline_config.lua
+
 return {
   'simrat39/symbols-outline.nvim', -- https://github.com/simrat39/symbols-outline.nvim
 
   -- cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose' },
 
   config = function()
-    require("symbols-outline").setup({
+    require('symbols-outline').setup {
       autofold_depth = 1,
       keymaps = {
         goto_location = { '<Cr>', '<2-LeftMouse>' },
       },
-    })
+    }
 
     require('which-key').register {
       ['\\'] = {
@@ -105,5 +107,3 @@ return {
 -- --   hi! clear FocusedSymbol
 -- --   hi! FocusedSymbol gui=bold guifg=red
 -- -- ]]
-
-

@@ -1,3 +1,5 @@
+-- lua/layers/focus/init.lua
+
 -- local diminactive = require 'mu.plugins.focus.diminactive'
 return {
   {
@@ -23,7 +25,7 @@ return {
     --   "if_statement",
     -- },
     -- exclude = {}, -- exclude these filetypes
-  -- }
+    -- }
     config = function()
       require('twilight').setup {
         dimming = {
@@ -100,7 +102,7 @@ return {
         },
       }
 
-      nmap('\\<tab>', '<cmd>ZenMode<cr>', 'ZenMode' )
+      nmap('\\<tab>', '<cmd>ZenMode<cr>', 'ZenMode')
     end,
   },
 }

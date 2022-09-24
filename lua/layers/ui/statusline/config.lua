@@ -1,3 +1,5 @@
+-- lua/layers/ui/statusline/config.lua
+
 local m = {}
 
 -- require 'galaxyline.themes.eviline'

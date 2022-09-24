@@ -1,3 +1,4 @@
+-- lua/layers/ui/statusline/init.lua
 -- return {
 --   'NTBBloodbath/galaxyline.nvim',
 --   -- your statusline

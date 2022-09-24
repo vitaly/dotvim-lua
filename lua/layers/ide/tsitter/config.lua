@@ -1,9 +1,28 @@
+-- lua/layers/ide/tsitter/config.lua
+
 return {
   setup = function()
     --------------------------------------------------------------------------
     -- SETUP
     require('nvim-treesitter.configs').setup {
-      ensure_installed = { 'c', 'comment', 'css', 'elixir', 'go', 'html', 'javascript', 'jsdoc', 'lua', 'query', 'ruby', 'scss', 'toml', 'typescript', 'vim', 'yaml' },
+      ensure_installed = {
+        'c',
+        'comment',
+        'css',
+        'elixir',
+        'go',
+        'html',
+        'javascript',
+        'jsdoc',
+        'lua',
+        'query',
+        'ruby',
+        'scss',
+        'toml',
+        'typescript',
+        'vim',
+        'yaml',
+      },
 
       -- 'bash', 'cpp', 'python', 'rust', 'scala',
       -- -- brew install gcc
@@ -39,9 +58,8 @@ return {
       ['\\'] = {
         p = { '<cmd>TSPlaygroundToggle<cr>', 'Playground' },
       },
-
     }, { silent = true })
-  end
+  end,
 }
 
 -- TODO: review
@@ -74,7 +92,6 @@ return {
 
 -- -- TREESITTER config -----------------------------------------------------------
 -- require('nvim-treesitter.configs').setup {
-
 
 --   context_commentstring = { enable = true },
 --   rainbow = { enable = true },

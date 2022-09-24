@@ -1,3 +1,5 @@
+-- lua/layers/ide/cmp/config.lua
+
 return {
 
   setup = function()

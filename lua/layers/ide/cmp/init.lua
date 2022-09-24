@@ -1,3 +1,5 @@
+-- lua/layers/ide/cmp/init.lua
+
 return {
   {
     'hrsh7th/nvim-cmp', -- https://github.com/hrsh7th/nvim-cmp

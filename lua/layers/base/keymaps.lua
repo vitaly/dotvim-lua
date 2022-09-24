@@ -1,10 +1,12 @@
+-- lua/layers/base/keymaps.lua
+
 -- TODO: finish commented parts
 return {
   {
-    'b0o/mapx.nvim',                           -- https://github.com/b0o/mapx.nvim
+    'b0o/mapx.nvim', -- https://github.com/b0o/mapx.nvim
   },
   {
-    'folke/which-key.nvim',                    -- https://github.com/folke/which-key.nvim
+    'folke/which-key.nvim', -- https://github.com/folke/which-key.nvim
 
     config = function()
       vim.opt.timeoutlen = 500 -- 0.5s before keymap menu
@@ -80,7 +82,7 @@ return {
         -- -- Disabled by deafult for Telescope
         disable = {
           -- buftypes = {},
-          filetypes = { "TelescopePrompt" },
+          filetypes = { 'TelescopePrompt' },
         },
       }
 
@@ -123,7 +125,6 @@ return {
           n = { '<cmd>cn<cr>', 'Next' },
           p = { '<cmd>cp<cr>', 'Prev' },
 
-
           a = {
             name = 'App',
           },
@@ -134,9 +135,7 @@ return {
             n = { '<cmd>bn<cr>', 'Next' },
             p = { '<cmd>bp<cr>', 'Prev' },
             d = { '<cmd>bd<cr>', 'Delete' },
-
           },
-
 
           f = {
             name = 'File',
@@ -155,10 +154,9 @@ return {
               o = { [[<cmd>exe 'e' g:my_ROOT.'/lua/init/options.lua'<cr>]], 'Options' },
               n = { [[<cmd>exe 'e' g:my_ROOT.'/NOTES.md'<cr>]], 'Notes' },
               k = { [[<cmd>exe 'e' g:my_ROOT.'/lua/layers/base/keymaps.lua'<cr>]], 'Keymaps' },
-              L = { [[<cmd>exe 'e' stdpath('cache').'/lsp.log'<cr>]], 'LSP log'}
+              L = { [[<cmd>exe 'e' stdpath('cache').'/lsp.log'<cr>]], 'LSP log' },
             },
           },
-
 
           w = {
             name = 'Window',
@@ -167,7 +165,7 @@ return {
 
             ['<bar>'] = { [[<c-w><bar>]], 'Max Width' },
             ['_'] = { [[<c-w>_]], 'Max Height' },
-            ['='] = { [[<c-w>=]], 'Rebalance'} ,
+            ['='] = { [[<c-w>=]], 'Rebalance' },
 
             x = { [[<c-w>x]], 'Swap' },
 
@@ -187,20 +185,17 @@ return {
             o = { [[<c-w>o]], 'Only' },
           },
 
-
           t = {
             name = 'Tab',
 
             n = { [[<cmd>tabnew<cr>]], 'New' },
           },
 
-
           v = {
             name = 'Vim',
 
             r = { [[<cmd>redraw!<cr>]], 'Redraw' },
           },
-
 
           Y = {
             name = 'Yank',
@@ -255,7 +250,6 @@ return {
           x = { '<cmd>q<cr>', 'close window' },
         },
       }, { mode = 'x' })
-
     end,
   },
 }

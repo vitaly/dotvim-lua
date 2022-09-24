@@ -1,3 +1,5 @@
+-- lua/layers/focus/twilight-config.lua
+
 -- config ----------------------------------------------------------------------
 require('twilight').setup {
   dimming = {

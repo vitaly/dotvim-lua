@@ -1,3 +1,5 @@
+-- lua/init/packer.lua
+
 -- just copied those form the packer sources with the following changes:
 -- * we load 'plugins' instead of 'packer' so that it gets initialized
 -- * we load 'init/packer/complete' instead of 'packer' and 'packer.snapshot' for the same purpose
@@ -40,7 +42,7 @@ local refresh_toggle = require('my.toggle').create {
 
 cmdbang('PackerAutoRefresh', function()
   if vim.g.disable_packer_auto_refresh then
-    print 'refresh disabled'
+    -- print 'refresh disabled'
     return
   end
   if vim.b.format_saving then

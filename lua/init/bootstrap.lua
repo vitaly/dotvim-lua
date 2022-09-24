@@ -1,9 +1,11 @@
+-- lua/init/bootstrap.lua
+
 -- print 'bootstrap'
 local fn = vim.fn
 
 --------------------------------------------------------------------------------
 _my.packer = _my.packer or {}
-_my.packer.ROOT =  _my.ROOT .. '/pack'
+_my.packer.ROOT = _my.ROOT .. '/pack'
 _my.packer.COMPILED = _my.ROOT .. '/plugin/packer_compiled.lua'
 
 --------------------------------------------------------------------------------
@@ -33,10 +35,10 @@ end
 -- caching for bertter performance
 install('impatient.nvim', 'https://github.com/lewis6991/impatient.nvim.git')
 vim.cmd [[packadd impatient.nvim]]
-if  _my.config.profile_impatient then
+if _my.config.profile_impatient then
   require('impatient').enable_profile()
 else
-  require('impatient')
+  require 'impatient'
 end
 
 --------------------------------------------------------------------------------
@@ -50,15 +52,14 @@ vim.cmd [[packadd plenary.nvim]]
 -- used to define keymaps all over the place
 install('which-key.nvim', 'https://github.com/folke/which-key.nvim')
 install('mapx.nvim', 'https://github.com/b0o/mapx.nvim')
-vim.cmd[[packadd which-key.nvim]]
-vim.cmd[[packadd mapx.nvim]]
+vim.cmd [[packadd which-key.nvim]]
+vim.cmd [[packadd mapx.nvim]]
 require('mapx').setup { global = 'force', whichkey = true }
 
 --------------------------------------------------------------------------------
 -- PACKER.NVIM
 -- we note if we just installed it, so that we can sync the config later in the process
 _G._my.packer.updated = install('packer.nvim', 'https://github.com/wbthomason/packer.nvim', 'opt')
-
 
 -- TODO: detect packer config changes
 -- TODO: clear impatiant cache before reloading?

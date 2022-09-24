@@ -1,3 +1,5 @@
+-- lua/layers/telescope/maps.lua
+
 local m = {
   find_file = function()
     return pcall(require('telescope.builtin').git_files) or require('telescope.builtin').find_files()

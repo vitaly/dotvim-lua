@@ -1,3 +1,5 @@
+-- lua/layers/terminal/tmux.lua
+
 return {
   'vitaly/vim-tmux-navigator',
 
@@ -8,9 +10,9 @@ return {
     local left  = '<cmd>TmuxNavigateLeft<cr>'
     local right = '<cmd>TmuxNavigateRight<cr>'
 
-    nmap('<leader>wk', up, 'silent',    'Navigate Up')
-    nmap('<leader>wj', down, 'silent',  'Navigate Down')
-    nmap('<leader>wh', left, 'silent',  'Navigate Left')
+    nmap('<leader>wk', up, 'silent', 'Navigate Up')
+    nmap('<leader>wj', down, 'silent', 'Navigate Down')
+    nmap('<leader>wh', left, 'silent', 'Navigate Left')
     nmap('<leader>wl', right, 'silent', 'Navigate Right')
 
     tmap('<m-k>', '<c-\\><c-n>' .. up, 'silent')

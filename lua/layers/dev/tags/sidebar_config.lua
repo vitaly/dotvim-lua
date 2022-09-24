@@ -1,3 +1,5 @@
+-- lua/layers/dev/tags/sidebar_config.lua
+
 return {
   'sidebar-nvim/sidebar.nvim', -- https://github.com/sidebar-nvim/sidebar.nvim
 
@@ -7,11 +9,9 @@ return {
       sections = { 'symbols', 'git', 'todos', 'buffers', 'diagnostics' },
     }
 
-    require('which-key').register({
-      ['\\t'] = { require("sidebar-nvim").toggle, 'Sidebar' },
-
-    })
-
+    require('which-key').register {
+      ['\\t'] = { require('sidebar-nvim').toggle, 'Sidebar' },
+    }
   end,
 }
 

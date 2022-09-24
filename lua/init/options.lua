@@ -1,3 +1,5 @@
+-- lua/init/options.lua
+
 local g = vim.g
 local fn = vim.fn
 local set = vim.opt
@@ -77,8 +79,8 @@ set.linebreak = true -- clean linebreaks (during wrap)
 -- vim.opt.guifont = "Liga SFMono Nerd Font:h14" -- set guifont for neovide
 
 set.shortmess = opt.shortmess
-    + 's' -- don't give "search hit BOTTOM, continuing at TOP" etc.
-    + 'F' -- no info messages when loading file
+  + 's' -- don't give "search hit BOTTOM, continuing at TOP" etc.
+  + 'F' -- no info messages when loading file
 --  + 'I' -- no intro message
 
 --------------------------------------------------------------------------------

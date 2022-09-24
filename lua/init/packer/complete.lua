@@ -1,3 +1,5 @@
+-- lua/init/packer/complete.lua
+
 -- first load and initialize packer module
 local packer = REQUIRE 'init.plugins'
 

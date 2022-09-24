@@ -1,3 +1,5 @@
+-- lua/my/tools.lua
+
 local m = {}
 
 function m.subscribe(group, event, callback, opts)
@@ -14,8 +16,7 @@ end
 function m.on_lsp_attach(group, callback, opts)
   return m.subscribe(group, 'LspAttach', function(args)
     callback(vim.lsp.get_client_by_id(args.data.client_id), args.buf)
-  end,
-  opts or {})
+  end, opts or {})
 end
 
 return m

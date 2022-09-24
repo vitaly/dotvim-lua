@@ -1,3 +1,5 @@
+-- lua/layers/focus/zenmode-config.lua
+
 -- config ----------------------------------------------------------------------
 require('zen-mode').setup {
   window = {

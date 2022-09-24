@@ -1,3 +1,5 @@
+-- lua/layers/dev/git.lua
+
 return {
   {
     'lewis6991/gitsigns.nvim',
@@ -10,7 +12,6 @@ return {
     'tpope/vim-fugitive', -- https://github.com/tpope/vim-fugitive
 
     setup = function()
-
       local diff = [[<cmd>Gdiff<cr>]]
       local grep = [[:<c-u>silent Ggrep<space>]]
       local grep_selection = [[y<cmd>let @/=escape(@", '\\[]$^*.')<cr><cmd>set hls<cr><cmd>silent Ggrep -F "<C-R>=escape(@", '\\"#')<cr>"<cr><cmd>ccl<cr><cmd>cw<cr><cr>]]
@@ -19,7 +20,7 @@ return {
       local status_only = [[<cmd>G<cr><c-W>o]]
 
       local which_key = require 'which-key'
-      which_key.register({
+      which_key.register {
 
         ['<leader>'] = {
           g = {
@@ -30,9 +31,9 @@ return {
             s = { status, 'Status' },
             o = { status_only, 'Status (only)' },
             w = { grep_word, 'Grep word' },
-          }
-        }
-      })
+          },
+        },
+      }
 
       -- for some reason this doesn't work via which_key
       nnoremap('<space>gg', grep, 'Grep')
@@ -42,7 +43,6 @@ return {
           g = { grep_selection, 'Grep selection' },
         },
       }, { mode = 'x' })
-
     end,
 
     cmd = { 'G', 'Git', 'Gdiff', 'Ggrep', 'Gedit', 'Gwrite', 'Gread' },
