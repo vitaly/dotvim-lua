@@ -56,7 +56,7 @@ return {
       },
 
       ['\\'] = {
-        p = { '<cmd>TSPlaygroundToggle<cr>', 'Playground' },
+        P = { '<cmd>TSPlaygroundToggle<cr>', 'Playground' },
       },
     }, { silent = true })
   end,

@@ -85,6 +85,6 @@ require('which-key').register {
   },
 
   ['\\'] = {
-    P = { refresh_toggle.toggler, 'Packer Refresh' },
+    p = { refresh_toggle.toggler, 'Packer Refresh' },
   },
 }
