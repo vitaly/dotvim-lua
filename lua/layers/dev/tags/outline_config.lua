@@ -5,7 +5,8 @@ return {
 
   config = function()
     require("symbols-outline").setup({
-      keymaps = { 
+      autofold_depth = 1,
+      keymaps = {
         goto_location = { '<Cr>', '<2-LeftMouse>' },
       },
     })

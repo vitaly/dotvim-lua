@@ -17,7 +17,6 @@ return {
         -- event = 'InsertEnter',
       },
 
-
       -----------------------------------
       -- sources ------------------------
 
@@ -34,9 +33,7 @@ return {
 
       -- snippets source
       { 'hrsh7th/cmp-vsnip' },
-
     },
-
 
     config = function()
       require('layers.ide.cmp.config').setup()
@@ -46,19 +43,15 @@ return {
   {
     'github/copilot.vim', -- https://github.com/github/copilot.vim
 
-    setup = function ()
+    setup = function()
       vim.g.copilot_no_tab_map = 1
       vim.g.copilot_assume_mapped = 1
     end,
   },
-
 }
-
-
 
 -- return {
 --   requires = {
-
 
 --
 --     { 'hrsh7th/cmp-calc', after = 'nvim-cmp' },
@@ -68,6 +61,4 @@ return {
 --     -- { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
 --   },
 
-
 -- }
-

@@ -1,5 +1,3 @@
-
-
 ## requirements
 
 - requires `gcc-11` to be installed

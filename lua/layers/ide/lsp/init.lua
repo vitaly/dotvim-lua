@@ -5,58 +5,60 @@ return {
     'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
 
     config = function()
-      require('layers.ide.lsp.maps')
+      require 'layers.ide.lsp.maps'
 
       require('layers.ide.lsp.style').setup()
 
-      require('my.tools').on_lsp_attach('lsp_attach', require('layers.ide.lsp.on_attach'))
-    end
+      require('my.tools').on_lsp_attach('lsp_attach', require 'layers.ide.lsp.on_attach')
+    end,
   },
 
   --------------------------------------------------------------------------
   -- MASON - Installer for nvim
   {
-    "williamboman/mason.nvim", -- https://github.com/williamboman/mason.nvim
+    'williamboman/mason.nvim', -- https://github.com/williamboman/mason.nvim
 
     -- can't lazy load becase mason-lspconfig.nvim is using it
     -- cmd = { 'Mason', 'MasonLog' },
 
     config = function()
-      require("mason").setup()
+      require('mason').setup()
 
-      require('which-key').register({
+      require('which-key').register {
         ['<leader>am'] = {
           name = 'Mason',
 
           m = { '<cmd>Mason<cr>', 'Mason' },
           l = { '<cmd>MasonLog<cr>', 'Log' },
-        }
-      })
-    end
+        },
+      }
+    end,
   },
 
   --------------------------------------------------------------------------
   -- LSP Install
   {
-    "williamboman/mason-lspconfig.nvim", -- https://github.com/williamboman/mason-lspconfig.nvim
+    'williamboman/mason-lspconfig.nvim', -- https://github.com/williamboman/mason-lspconfig.nvim
 
     config = function()
-      require("mason-lspconfig").setup()
+      require('mason-lspconfig').setup {
+        ensure_installed = { 'sumneko_lua' },
+      }
 
-      local lspconfig = require('lspconfig')
+      local lspconfig = require 'lspconfig'
 
-      require("mason-lspconfig").setup_handlers({
-        function (server_name) -- default handler (optional)
+      require('mason-lspconfig').setup_handlers {
+        function(server_name) -- default handler (optional)
           lspconfig[server_name].setup {
-            capabilities = require('layers.ide.cmp.config').capabilities();
+            capabilities = require('layers.ide.cmp.config').capabilities(),
           }
         end,
 
         --------------------------------------------------------------------
         -- SUMNEKO_LUA
-        ["sumneko_lua"] = function()
+        ['sumneko_lua'] = function()
           lspconfig.sumneko_lua.setup {
-            capabilities = require('layers.ide.cmp.config').capabilities();
+            capabilities = require('layers.ide.cmp.config').capabilities(),
 
             settings = {
               Lua = {
@@ -65,6 +67,7 @@ return {
                 hint = { enable = true },
 
                 diagnostics = {
+                  -- stylua: ignore
                   globals = {
                     'vim',
                     'cmd', 'cmdbang',
@@ -94,13 +97,9 @@ return {
             },
           }
         end, -- sumneko_lua
-
-
-      })
-
+      }
     end,
   },
-
 
   --------------------------------------------------------------------------
   -- Simple progress widget for LSP
@@ -108,11 +107,9 @@ return {
     'j-hui/fidget.nvim', -- https://github.com/j-hui/fidget.nvim
 
     config = function()
-      require("fidget").setup{
-      }
-    end
+      require('fidget').setup {}
+    end,
   },
-
 
   --------------------------------------------------------------------------
   -- LSP Trauble
@@ -124,7 +121,6 @@ return {
     end,
   },
 
-
   --------------------------------------------------------------------------
   -- COLORS
   -- add missing theme highlights
@@ -134,7 +130,6 @@ return {
       require('lsp-colors').setup()
     end,
   },
-
 
   --------------------------------------------------------------------------
   -- SIGNATURE
@@ -151,12 +146,11 @@ return {
         },
       }
 
-      require('my.tools').on_lsp_attach('lsp_signature', function ()
+      require('my.tools').on_lsp_attach('lsp_signature', function()
         require('lsp_signature').on_attach()
       end)
     end,
   },
-
 
   --------------------------------------------------------------------------
   -- FOLDING
@@ -173,7 +167,6 @@ return {
   --------------------------------------------------------------------------
   -- LSP Dressing (ui improvements)
   -- { 'stevearc/dressing.nvim' }, -- https://github.com/stevearc/dressing.nvim
-
 }
 
 -- DEFAULT SIGNATURE CONFIG

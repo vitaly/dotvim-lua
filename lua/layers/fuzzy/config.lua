@@ -35,9 +35,9 @@ local function setup()
         sort_lastused = true,
       },
       lsp_code_actions = { theme = 'cursor' },
-      lsp_references = { theme = 'ivy' },
-      lsp_definitions = { theme = 'ivy' },
-      lsp_implementations = { theme = 'ivy' },
+      lsp_references = { theme = 'cursor' },
+      lsp_definitions = { theme = 'cursor' },
+      lsp_implementations = { theme = 'cursor' },
     },
   }
 

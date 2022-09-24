@@ -5,7 +5,7 @@ local packer = require 'packer'
 -------------------------------------------------------------------------------------------------
 -- PACKER INIT ----------------------------------------------------------------------------------
 local border = 'rounded'
-packer.init({
+packer.init {
   -- TODO: place the compiled file inside 'lua' so that it's cached by 'impatient'. be sure to profile the result difference
   package_root = _my.packer.ROOT,
 
@@ -22,12 +22,11 @@ packer.init({
     end,
     prompt_border = border,
   },
-  log = { level = 'info' },
+  log = { level = 'warning' },
   -- log = { level = 'trace' },
-})
+}
 
 packer.reset()
-
 
 -------------------------------------------------------------------------------------------------
 -- PACKER PLUGINS -------------------------------------------------------------------------------
@@ -42,8 +41,8 @@ end
 
 -- those are the basic plugins installed during bootstrap
 use { 'wbthomason/packer.nvim', opt = true } -- https://github.com/wbthomason/packer.nvim
-use 'lewis6991/impatient.nvim'               -- https://github.com/lewis6991/impatient.nvim
-use 'nvim-lua/plenary.nvim'                  -- https://github.com/nvim-lua/plenary.nvim
+use 'lewis6991/impatient.nvim' -- https://github.com/lewis6991/impatient.nvim
+use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
 
 layer 'base.utils'
 layer 'base.keymaps'
@@ -55,18 +54,18 @@ layer 'filer.nvimtree'
 layer 'fuzzy'
 layer 'terminal.tmux'
 
-layer 'dev.git'
-layer 'dev.tags'
-
 layer 'ide.tsitter'
 layer 'ide.lsp'
 layer 'ide.cmp'
+layer 'ide.autoformat'
+
+layer 'dev.git'
+layer 'dev.tags'
 
 layer 'editor'
 layer 'focus'
 
 layer 'ui.statusline'
 layer 'ui.blankline'
-
 
 return packer

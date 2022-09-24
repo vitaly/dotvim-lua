@@ -5,12 +5,15 @@ local m = {}
 -- require 'galaxyline.themes.spaceline'
 
 -- LUALINE: https://github.com/nvim-lualine/lualine.nvim
-local lsp_clients = function()
-  local msg = ''
+
+-- cycle through buffer's lsp clients
+-- return the one which actually sypports the buffer's filetype
+-- return '' otherwise
+local lsp_client = function()
   local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
   local clients = vim.lsp.get_active_clients()
   if next(clients) == nil then
-    return msg
+    return ''
   end
 
   for _, client in ipairs(clients) do
@@ -19,15 +22,23 @@ local lsp_clients = function()
       return client.name
     end
   end
-  return msg
+  return ''
 end
 
 local dap_status = function()
   return require('dap').status()
 end
 
+local packer_refresh = function()
+  if vim.g.packer_refreshing then
+    return '!R!'
+  else
+    return ''
+  end
+end
+
 local format_writing = function()
-  if vim.g.format_writing then
+  if vim.b.format_saving then
     return 'W!'
   else
     return ''
@@ -35,16 +46,18 @@ local format_writing = function()
 end
 
 local autoformat = function()
-  if vim.b.autoformat and vim.b.autoformat ~= 0 then
-    local lsp = vim.b.format_with_lsp or 1 -- default is 1
-    if lsp and lsp ~= 0 then
-      return vim.g.format_debug and 'LD' or 'L'
-    else
-      return vim.g.format_debug and 'FD' or 'F'
-    end
-  else
-    return ''
+  local format = require 'lsp-format'
+
+  if format.disabled then
+    return 'D'
   end
+
+  local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+  if format.disabled_filetypes[buf_ft] then
+    return 'd'
+  end
+
+  return 'A'
 end
 
 -- local lsp_status = function()
@@ -99,10 +112,11 @@ function m.setup()
       lualine_c = {
         { 'filename', path = 1 },
         { autoformat },
+        { packer_refresh, color = { fg = 'red', bg = 'yellow' } },
         { format_writing, color = { fg = 'red' } },
         { dap_status, color = { bg = '#ff0000' } },
       },
-      lualine_x = { 'encoding', 'fileformat', 'filetype', { lsp_clients } },
+      lualine_x = { 'encoding', 'fileformat', 'filetype', { lsp_client } },
       -- lualine_y = {'progress'},
       lualine_y = { '%02B' },
       lualine_z = { 'progress', 'location' },

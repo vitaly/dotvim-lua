@@ -2,6 +2,7 @@
 -- * we load 'plugins' instead of 'packer' so that it gets initialized
 -- * we load 'init/packer/complete' instead of 'packer' and 'packer.snapshot' for the same purpose
 --   'init/packer/complete' loads 'plugins', and returns packer's completion functions and 'packer.snapshot' as a field to access snapshot completions as well
+-- stylua: ignore start
 vim.cmd [[command! -nargs=+       -complete=customlist,v:lua.require'init.packer.complete'.snapshot.completion.create   PackerSnapshot          lua REQUIRE('init.plugins').snapshot(<f-args>)                ]]
 vim.cmd [[command! -nargs=+       -complete=customlist,v:lua.require'init.packer.complete'.snapshot.completion.rollback PackerSnapshotRollback  lua REQUIRE('init.plugins').rollback(<f-args>)                ]]
 vim.cmd [[command! -nargs=+       -complete=customlist,v:lua.require'init.packer.complete'.snapshot.completion.snapshot PackerSnapshotDelete    lua REQUIRE('init.plugins.snapshot').delete(<f-args>)         ]]
@@ -14,34 +15,40 @@ vim.cmd [[command!                                                              
 vim.cmd [[command!                                                                                                      PackerProfile           lua REQUIRE('init.plugins').profile_output()                  ]]
 vim.cmd [[command! -bang -nargs=+ -complete=customlist,v:lua.require'init.packer.complete'.loader_complete              PackerLoad              lua REQUIRE('init.plugins').loader(<f-args>, '<bang>' == '!') ]]
 vim.cmd [[command!                                                                                                      PackerLog               exec 'e' stdpath('cache')  . '/packer.nvim.log'               ]]
+-- stylua: ignore end
 
 if _my.packer.updated then
   -- packer was just initially installed
   require('init.plugins').sync()
-
-elseif "" == vim.fn.glob(_my.packer.COMPILED) then
+elseif '' == vim.fn.glob(_my.packer.COMPILED) then
   -- can't find the compiled file
   require('init.plugins').compile()
-
 end
 
 cmdbang('PackerRefresh', function()
-  RELOAD("init.plugins")
-  RELOAD("layers")
+  RELOAD 'init.plugins'
+  RELOAD 'layers'
   require('init.plugins').install()
 end)
 
-local refresh_toggle = require('my.toggle').create({
-  name = "Toggle Packer Refresh",
+local refresh_toggle = require('my.toggle').create {
+  name = 'Disable Auto Refresh',
   g = 'disable_packer_auto_refresh',
-})
+}
 
 cmdbang('PackerAutoRefresh', function()
   if vim.g.disable_packer_auto_refresh then
-    print "NO AUTO REFRESH"
-  else
-    vim.cmd[[PackerRefresh]]
+    print 'refresh disabled'
+    return
   end
+  if vim.b.format_saving then
+    -- print 'no refresh while saving'
+    return
+  end
+
+  -- print 'refreshing...'
+  vim.g.packer_refreshing = true
+  vim.cmd [[PackerRefresh]]
 end)
 
 --------------------------------------------------------------------------------
@@ -53,11 +60,11 @@ vim.cmd [[
     autocmd BufWritePost */init/plugins.lua,*/layers/*.lua PackerAutoRefresh
     autocmd User PackerComplete PackerCompile
     autocmd User PackerCompileDone checktime
-    autocmd User PackerCompileDone echom "compiled"
+    autocmd User PackerCompileDone let g:packer_refreshing = v:false
   augroup end
 ]]
 
-require('which-key').register({
+require('which-key').register {
   ['<leader>'] = {
     R = { '<cmd>PackerRefresh<cr>', 'Refresh Packer' },
     ap = {
@@ -74,11 +81,9 @@ require('which-key').register({
 
       L = { '<cmd>PackerLog<cr>', 'Log!' },
     },
-
-
   },
 
-  ['\\'] = { 
+  ['\\'] = {
     P = { refresh_toggle.toggler, 'Packer Refresh' },
   },
-})
+}

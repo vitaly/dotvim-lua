@@ -20,7 +20,7 @@ local function setup_lsp_keymaps()
 
     },
 
-    gd = { m.goto_definition, 'Definition'},
+    gd = { m.list_definitions, 'Definition'},
     gD = { m.goto_declaration, 'Declaration'},
     gr = { m.list_references, 'References'},
     -- gt = { m.goto_type_definition, 'Type'},
