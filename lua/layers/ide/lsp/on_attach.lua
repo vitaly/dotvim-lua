@@ -1,34 +1,47 @@
 ---------------------------------------------------------------------------
 -- Setup local buffer maps for LSP
-local function setup_lsp_keymaps()
-  local m = require 'layers.ide.lsp.maps'
+local function setup_lsp_keymaps(bufnr)
+  local lsp = require 'layers.ide.lsp.maps'
+  local tele = require 'layers.telescope.maps'
 
   require('which-key').register({
 
-    ['<localleader>'] = {
+    gd = { tele.lsp.definition, 'Definition' },
+    gD = { tele.lsp.type_definition, 'Declaration' },
+    gi = { tele.lsp.implementation, 'Implementation' },
+    gr = { tele.lsp.references, 'References' },
 
+    K = { lsp.hover, 'Hover' },
+
+    ['<localleader>'] = {
       r = {
         name = 'Refactor',
-        r = { m.refactor_rename, 'Refactor(Rename)' },
+        r = { lsp.rename, 'Refactor(Rename)' },
       },
 
-      a = { m.code_action, 'Code Action' },
+      a = { lsp.code_action, 'Code Action' },
 
-      ['1'] = { m.first_diagnostic, 'First Problem' },
-      n = { m.next_diagnostic, 'Next Problem' },
-      p = { m.prev_diagnostic, 'Prev Problem' },
+      ['1'] = { lsp.first_diagnostic, 'First Problem' },
+      n = { lsp.next_diagnostic, 'Next Problem' },
+      p = { lsp.prev_diagnostic, 'Prev Problem' },
 
+      g = {
+        name = 'Go to',
+
+        d = { tele.lsp.definition, 'Definition' },
+        D = { tele.lsp.type_definition, 'Declaration' },
+        i = { tele.lsp.implementation, 'Implementation' },
+        r = { tele.lsp.references, 'References' },
+
+        n = { tele.lsp.incoming_calls, 'Incoming Calls' },
+        o = { tele.lsp.outgoing_calls, 'Outgoing Calls' },
+
+        s = { tele.lsp.document_symbol, 'Document Symbol' },
+        w = { tele.lsp.workspace_symbol, 'Workspace Symbol' },
+        W = { tele.lsp.dynamic_workspace_symbol, 'Dynamic Workspace Symbol' },
+      },
     },
-
-    gd = { m.list_definitions, 'Definition'},
-    gD = { m.goto_declaration, 'Declaration'},
-    gr = { m.list_references, 'References'},
-    -- gt = { m.goto_type_definition, 'Type'},
-
-    K = { m.hover, 'Hover' },
-  }, {
-    buffer = 0,
-  })
+  }, { buffer = bufnr })
 
   nmap({ 'buffer' }, '<C-LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<cr>')
   nmap({ 'buffer' }, '<A-LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.hover()<cr>')
@@ -39,7 +52,7 @@ local function setup_highlight(client)
     return
   end
 
-  vim.cmd[[
+  vim.cmd [[
     augroup lsp_highlight
       autocmd!
       autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
@@ -51,41 +64,40 @@ end
 
 ---------------------------------------------------------------------------
 -- ON_ATTACH
-local function on_attach(client, _)
-  setup_lsp_keymaps()
+local function on_attach(client, bufnr)
+  setup_lsp_keymaps(bufnr)
   setup_highlight(client)
 end
 
 return on_attach
 
-
 ---------------------------------------------------------------------------
 -- TODO: cleanup
 ---------------------------------------------------------------------------
-  -- ['<leader>'] = {
+-- ['<leader>'] = {
 
-  --   l = {
-  --     name = 'LSP',
+--   l = {
+--     name = 'LSP',
 
-  --     i = { m.lsp_info, 'Info' },
-  --     l = { m.lsp_log, 'Log' },
-  --     s = { m.lsp_stop, 'Stop' },
-  --     r = { m.lsp_restart, 'Restart' },
-  --     d = { m.lsp_debug_log, 'Debug Log' },
+--     i = { m.lsp_info, 'Info' },
+--     l = { m.lsp_log, 'Log' },
+--     s = { m.lsp_stop, 'Stop' },
+--     r = { m.lsp_restart, 'Restart' },
+--     d = { m.lsp_debug_log, 'Debug Log' },
 
-  --     t = {
-  --       name = 'Trouble',
+--     t = {
+--       name = 'Trouble',
 
-  --       d = { m.document_diagnostics, 'Document diagnostics' },
-  --       w = { m.workspace_diagnostics, 'Workspace diagnostics' },
-  --       l = { m.lsp_definitions, 'LSP definitions' },
-  --       r = { m.lsp_references, 'LSP references' },
-  --       R = { m.refresh_trouble, 'Refresh' },
-  --     },
+--       d = { m.document_diagnostics, 'Document diagnostics' },
+--       w = { m.workspace_diagnostics, 'Workspace diagnostics' },
+--       l = { m.lsp_definitions, 'LSP definitions' },
+--       r = { m.lsp_references, 'LSP references' },
+--       R = { m.refresh_trouble, 'Refresh' },
+--     },
 
-  --   },
+--   },
 
-  -- },
+-- },
 
 -- return function(client, bufnr)
 --   local function buf_set_option(...)

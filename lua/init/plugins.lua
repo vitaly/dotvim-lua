@@ -51,7 +51,7 @@ layer 'base.colors'
 layer 'filer.nvimtree'
 -- layer 'filer/neotree'
 
-layer 'fuzzy'
+layer 'telescope'
 layer 'terminal.tmux'
 
 layer 'ide.tsitter'

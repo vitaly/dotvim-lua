@@ -10,31 +10,30 @@ end
 
 ------------------------------------------
 -- toggle for diagnostics mode
-local mode = toggle.create({
+local mode = toggle.create {
   name = 'Trouble mode',
   g = 'trouble_mode',
   states = { 'document_diagnostics', 'workspace_diagnostics', 'quickfix', 'lsp_references', 'loclist' },
   changed = configure_trouble,
-})
+}
 
 ------------------------------------------
 -- toggle for autoopen
-local auto_open = toggle.create({
+local auto_open = toggle.create {
   name = 'Trouble autoopen',
   g = 'trouble_autoopen',
   changed = configure_trouble,
-})
+}
 
 config = function()
   return {
-      mode = mode:current_state(),
-      auto_open = auto_open:current_state(),
-      auto_close = true,
-      -- TODO:
-      -- use_diagnostic_signs = true,
-    }
+    mode = mode:current_state(),
+    auto_open = auto_open:current_state(),
+    auto_close = true,
+    -- TODO:
+    -- use_diagnostic_signs = true,
+  }
 end
-
 
 return {
   setup = function()
@@ -98,3 +97,28 @@ return {
 --   other = "﫠"
 -- },
 -- use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+
+-- TODO: cleanup
+-- LSP(Refresh-Trouble)',     '<cmd>TroubleRefresh<cr>')
+-- LSP(Document-Trouble)',    '<cmd>TroubleToggle document_diagnostics<cr>')
+-- LSP(Workspace-Trouble)',   '<cmd>TroubleToggle workspace_diagnostics<cr>')
+-- LSP(Definitions-Trouble)', '<cmd>TroubleToggle lsp_definitions<cr>')
+-- LSP(References-Trouble)',  '<cmd>TroubleToggle lsp_references<cr>')
+
+-- -- noremap('<plug>Refactor(rename)', '<cmd>lua require("lspsaga.rename").rename()<CR>')
+
+-- require('which-key').register {
+--   ['<leader>al'] = {
+--     name = 'LSP',
+
+--     t = {
+--       name = 'Trouble',
+
+--       d = { '<plug>LSP(Document-Trouble)', 'Document diagnostics' },
+--       w = { '<plug>LSP(Workspace-Trouble)', 'Workspace diagnostics' },
+--       l = { '<plug>LSP(Definitions-Trouble)', 'LSP definitions' },
+--       r = { '<plug>LSP(References-Trouble)', 'LSP references' },
+--       R = { '<plug>LSP(Refresh-Trouble)', 'Refresh' },
+--     },
+--   },
+-- }

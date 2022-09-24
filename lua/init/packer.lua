@@ -26,9 +26,11 @@ elseif '' == vim.fn.glob(_my.packer.COMPILED) then
 end
 
 cmdbang('PackerRefresh', function()
-  RELOAD 'init.plugins'
-  RELOAD 'layers'
-  require('init.plugins').install()
+  -- print 'refreshing...'
+  vim.g.packer_refreshing = true
+  RELOAD 'layers.'
+  REQUIRE 'init.packer'
+  REQUIRE('init.plugins').install()
 end)
 
 local refresh_toggle = require('my.toggle').create {
@@ -45,9 +47,6 @@ cmdbang('PackerAutoRefresh', function()
     -- print 'no refresh while saving'
     return
   end
-
-  -- print 'refreshing...'
-  vim.g.packer_refreshing = true
   vim.cmd [[PackerRefresh]]
 end)
 
@@ -66,7 +65,7 @@ vim.cmd [[
 
 require('which-key').register {
   ['<leader>'] = {
-    R = { '<cmd>PackerRefresh<cr>', 'Refresh Packer' },
+    r = { '<cmd>PackerRefresh<cr>', 'Refresh Packer' },
     ap = {
       name = 'Packer',
 

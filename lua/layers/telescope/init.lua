@@ -18,7 +18,7 @@ return {
     },
 
     config = function()
-      require('layers.fuzzy.config').setup()
+      require('layers.telescope.config').setup()
     end,
   },
 }

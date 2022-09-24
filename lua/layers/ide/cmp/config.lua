@@ -75,7 +75,7 @@ return {
         ['<c-j>'] = { i = next_item },
         ['<c-k>'] = { i = prev_item },
 
-        ['<esc>'] = { i = cmp.mapping.abort() },
+        -- ['<esc>'] = { i = cmp.mapping.abort() },
       },
     }
 
