@@ -166,9 +166,27 @@ return {
   },
 
 
-
   ----------------------------------------------------------------------------------------------
   -- FOLDLINE styling
   'jrudess/vim-foldtext', -- https://github.com/jrudess/vim-foldtext
+
+
+  ----------------------------------------------------------------------------------------------
+  -- EDITORCONFIG
+  {
+    'editorconfig/editorconfig-vim', -- https://github.com/gpanders/editorconfig.nvim
+    config = function()
+      local editorconfig_verbose_toggle = require('my.toggle').create({
+        name = 'Editor Config Verbose',
+        g = 'EditorConfig_verbose',
+        states = { 0, 1 },
+      }).toggler
+      require('which-key').register {
+        ['\\'] = {
+          de = { editorconfig_verbose_toggle, 'Editor Config' },
+        },
+      }
+    end,
+  }
 
 }

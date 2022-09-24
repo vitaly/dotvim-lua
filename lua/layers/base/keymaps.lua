@@ -210,8 +210,6 @@ return {
             d = { [[<cmd>let @*=expand("%:h")<cr>:echo "Copied file directory to clipboard"<cr>]], 'File Directory' },
             ['.'] = { [[<cmd>let @*=getcwd()<cr>:echo @*<cr>]], 'Current Directory' },
           },
-
-      --     d = { name = 'Debug' },
         },
 
         ['<localleader>'] = {
@@ -228,18 +226,17 @@ return {
         ['\\'] = {
           name = 'Toggle',
 
-        --   FIXME: move to debug
-      --     d = {
-      --       name = 'Debug',
-      --     },
-
           n = {
             name = 'Conceal',
             c = { toggle_concealcursor, 'Cursor' },
             n = { toggle_conceallevel, 'Level' },
           },
 
-          l = { toggle_verboselog, 'Verbose Log' },
+          d = {
+            name = 'Debug',
+            v = { toggle_verboselog, 'Vim Verbose Log' },
+          },
+
           w = { '<cmd>set nolist!<cr>', 'White Space' },
           r = { '<cmd>set relativenumber!<cr>', 'Relative Number' },
           s = { '<cmd>setlocal spell!<cr>', 'Spell Check' },
@@ -251,17 +248,11 @@ return {
 
       -- -- x keymap --------------------------------------------------------------------
       which_key.register({
-      --   g = {
-      --     -- XXX: this doesn't work. it adds a duplicate in the menu
-      --     c = 'Toggle Comment',
-      --   },
 
         ['<leader>'] = {
-
           q = { '<cmd>qa<cr>', 'quit all' },
           Q = { '<cmd>qa!<cr>', 'quit all!' },
           x = { '<cmd>q<cr>', 'close window' },
-      --     [';'] = { '<plug>Toggle(comment)', 'Toggle Comment' },
         },
       }, { mode = 'x' })
 
