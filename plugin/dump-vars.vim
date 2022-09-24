@@ -20,7 +20,7 @@ fu! DumpVars(match) abort
   call BDumpVars(a:match)
   call VDumpVars(a:match)
 endfu
-command! -nargs=1 GDumpVars call GDumpVars('<args>')
-command! -nargs=1 BDumpVars call BDumpVars('<args>')
-command! -nargs=1 VDumpVars call VDumpVars('<args>')
-command! -nargs=1 DumpVars  call DumpVars('<args>')
+command! -nargs=? GDumpVars call GDumpVars('<args>')
+command! -nargs=? BDumpVars call BDumpVars('<args>')
+command! -nargs=? VDumpVars call VDumpVars('<args>')
+command! -nargs=? DumpVars  call DumpVars('<args>')
