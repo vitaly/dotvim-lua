@@ -19,4 +19,5 @@ return {
   -- { 'nathom/filetype.nvim' }, -- https://github.com/nathom/filetype.nvim
 
   -- bookmarks
+
 }

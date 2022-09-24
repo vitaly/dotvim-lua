@@ -1,8 +1,25 @@
 return {
   --------------------------------------------------------------------------
+  -- LSP Config
+  {
+    'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
+
+    config = function()
+      require('layers.ide.lsp.maps')
+
+      require('layers.ide.lsp.style').setup()
+
+      require('my.tools').subscribe('lsp_attach', 'LspAttach', require('layers.ide.lsp.on_attach'))
+    end
+  },
+
+  --------------------------------------------------------------------------
   -- MASON - Installer for nvim
   {
     "williamboman/mason.nvim", -- https://github.com/williamboman/mason.nvim
+
+    -- can't lazy load becase mason-lspconfig.nvim is using it
+    -- cmd = { 'Mason', 'MasonLog' },
 
     config = function()
       require("mason").setup()
@@ -15,21 +32,6 @@ return {
           l = { '<cmd>MasonLog<cr>', 'Log' },
         }
       })
-    end
-  },
-
-
-  --------------------------------------------------------------------------
-  -- LSP Config
-  {
-    'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
-
-    config = function()
-      require('layers.ide.lsp.maps')
-
-      require('layers.ide.lsp.style').setup()
-
-      require('my.tools').subscribe('lsp_attach', 'LspAttach', require('layers.ide.lsp.on_attach'))
     end
   },
 

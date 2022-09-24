@@ -8,11 +8,22 @@ end
 
 -----------------------------------------------------------------------
 -----------------------------------------------------------------------
+-- Switch is an object that can cycle through states ------------------
+-----------------------------------------------------------------------
+-- Attributes: --------------------------------------------------------
+-- name: string, name of the switch ------------------------------------
+--  states: table of states -------------------------------------------
+--  state: string, current state ---------------------------------------
+--  silent: boolean, if true, don't echo the state --------------------
+--  o: option to set to the current state -----------------------------
+--  g: global variable to set to the current state --------------------
+--  b: buffer variable to set to the current state --------------------
+-----------------------------------------------------------------------
 local Switch = {
   states = { false, true },
   silent = true,
 
-  p = function(self, msg)
+  p = function(_, msg)
     print(msg)
   end,
 }
@@ -65,12 +76,12 @@ end
 
 function Switch:notify(val)
   if self.name then
-    print(self.name .. '  is ' .. vim.inspect(val))
+    print(self.name .. ' is ' .. vim.inspect(val))
   end
 end
 
-function Switch:on(val)
-  self.p(self:var() .. ' on: changed to' .. val)
+function Switch:changed(val)
+  self.p(self:var() .. ' changed to' .. vim.inspect(val))
 end
 
 function Switch:set(val)
@@ -85,7 +96,7 @@ function Switch:set(val)
   self.state = val
 
   self:notify(val)
-  self:on(val)
+  self:changed(val)
 
   if not self.silent then
     print(self:var() .. ' = "' .. vim.inspect(val) .. '"')
@@ -121,16 +132,12 @@ function Switch:clean_state()
   end
 end
 
+function Switch:_default_name()
+  return self.o or self.g or self.b or 'switch'
+end
+
 function Switch:init()
-  if not self.name then
-    if self.o then
-      self.name = self.o
-    elseif self.g then
-      self.name = self.g
-    elseif self.b then
-      self.name = self.b
-    end
-  end
+  self.name = self.name or self:_default_name()
 
   self.default = _def(self.default, self:first_state())
   self.next = self.next or self:transitions()
@@ -163,7 +170,8 @@ end
 ---------------------------------
 ---------------------------------
 ---------------------------------
-return function(opts)
-  return Switch:new(opts)
-end
--- return Switch:new
+return {
+  create = function(opts)
+    return Switch:new(opts)
+  end
+}

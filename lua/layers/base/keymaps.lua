@@ -90,9 +90,9 @@ return {
 
       local toggle = require 'my.toggle'
 
-      local toggle_concealcursor = toggle({ states = { 'n', '' }, o = 'concealcursor', on = redraw }).toggler
-      local toggle_conceallevel = toggle({ states = { 0, 1, 2 }, o = 'conceallevel', on = redraw }).toggler
-      local toggle_clipboard = toggle({ states = { 'unnamedplus', '' }, o = 'clipboard', on = redraw }).toggler
+      local toggle_concealcursor = toggle.create({ states = { 'n', '' }, o = 'concealcursor', change = redraw }).toggler
+      local toggle_conceallevel = toggle.create({ states = { 0, 1, 2 }, o = 'conceallevel', change = redraw }).toggler
+      local toggle_clipboard = toggle.create({ states = { 'unnamedplus', '' }, o = 'clipboard', change = redraw }).toggler
 
       local function toggle_verboselog()
         if vim.o.verbose == 0 then
@@ -124,24 +124,8 @@ return {
           p = { '<cmd>cp<cr>', 'Prev' },
 
 
-
-          R = { '<cmd>PackerInstall<cr>', 'Install and Recompile' },
-
           a = {
             name = 'App',
-            p = {
-              name = 'Packer',
-
-              s = { '<cmd>PackerStatus<cr>', 'Status' },
-              c = { '<cmd>PackerCompile<cr>', 'Compile' },
-              i = { '<cmd>PackerInstall<cr>', 'Install' },
-              u = { '<cmd>PackerUpdate<cr>', 'Update' },
-
-              S = { '<cmd>PackerSync<cr>', 'Sync' },
-              C = { '<cmd>PackerClean<cr>', 'Clean' },
-
-              L = { '<cmd>PackerLog<cr>', 'Log' },
-            },
           },
 
           b = {

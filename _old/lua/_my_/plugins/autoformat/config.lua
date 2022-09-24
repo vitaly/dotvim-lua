@@ -42,7 +42,7 @@ end
 
 local format_debug = MakeSwitch {
   g = 'format_debug',
-  on = function(self, val)
+  changed = function(_, val)
     if val then
       vim.cmd [[AutoFormatOn]]
       vim.cmd [[w]]
@@ -56,7 +56,7 @@ local toggle_format_debug = format_debug.toggler
 local format_method = MakeSwitch {
   b = 'format_with_lsp',
   states = { 0, 1 }, -- empty is treated as 1, so we default to 0 on toggle
-  on = function(self, val)
+  changed = function(self, val)
     vim.cmd [[AutoFormatOn]]
     vim.cmd [[w]]
   end,

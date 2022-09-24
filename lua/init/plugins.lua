@@ -22,7 +22,7 @@ packer.init({
     end,
     prompt_border = border,
   },
-  log = { level = 'trace' },
+  log = { level = 'info' },
 })
 
 packer.reset()

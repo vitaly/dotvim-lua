@@ -31,15 +31,54 @@ cmdbang('PackerRefresh', function()
   require('init.plugins').install()
 end)
 
+local refresh_toggle = require('my.toggle').create({
+  name = "Toggle Packer Refresh",
+  g = 'disable_packer_auto_refresh',
+})
+
+cmdbang('PackerAutoRefresh', function()
+  if vim.g.disable_packer_auto_refresh then
+    print "NO AUTO REFRESH"
+  else
+    vim.cmd[[PackerRefresh]]
+  end
+end)
+
 --------------------------------------------------------------------------------
 -- sync packer if plugins.lua changes
 --------------------------------------------------------------------------------
 vim.cmd [[
   augroup packer_plugins
     autocmd!
-    autocmd BufWritePost */init/plugins.lua,*/layers/*.lua PackerRefresh
+    autocmd BufWritePost */init/plugins.lua,*/layers/*.lua PackerAutoRefresh
     autocmd User PackerComplete PackerCompile
     autocmd User PackerCompileDone checktime
     autocmd User PackerCompileDone echom "compiled"
   augroup end
 ]]
+
+require('which-key').register({
+  ['<leader>'] = {
+    R = { '<cmd>PackerRefresh<cr>', 'Refresh Packer' },
+    ap = {
+      name = 'Packer',
+
+      s = { '<cmd>PackerStatus<cr>', 'Status' },
+      c = { '<cmd>PackerCompile<cr>', 'Compile' },
+      i = { '<cmd>PackerInstall<cr>', 'Install' },
+      u = { '<cmd>PackerUpdate<cr>', 'Update' },
+      p = { '<cmd>PackerProfile<cr>', 'Profile' },
+
+      S = { '<cmd>PackerSync<cr>', 'Sync' },
+      C = { '<cmd>PackerClean<cr>', 'Clean' },
+
+      L = { '<cmd>PackerLog<cr>', 'Log!' },
+    },
+
+
+  },
+
+  ['\\'] = { 
+    P = { refresh_toggle.toggler, 'Packer Refresh' },
+  },
+})

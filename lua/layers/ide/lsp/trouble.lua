@@ -10,19 +10,19 @@ end
 
 ------------------------------------------
 -- toggle for diagnostics mode
-local mode = toggle({
+local mode = toggle.create({
   name = 'Trouble mode',
   g = 'trouble_mode',
   states = { 'document_diagnostics', 'workspace_diagnostics', 'quickfix', 'lsp_references', 'loclist' },
-  on = configure_trouble,
+  changed = configure_trouble,
 })
 
 ------------------------------------------
 -- toggle for autoopen
-local auto_open = toggle({
+local auto_open = toggle.create({
   name = 'Trouble autoopen',
   g = 'trouble_autoopen',
-  on = configure_trouble,
+  changed = configure_trouble,
 })
 
 config = function()
