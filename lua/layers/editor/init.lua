@@ -165,4 +165,10 @@ return {
     end,
   },
 
+
+
+  ----------------------------------------------------------------------------------------------
+  -- FOLDLINE styling
+  'jrudess/vim-foldtext', -- https://github.com/jrudess/vim-foldtext
+
 }
