@@ -3,6 +3,7 @@
 return {
   {
     'jose-elias-alvarez/null-ls.nvim', -- https://github.com/jose-elias-alvarez/null-ls.nvim
+    -- disable = true,
 
     config = function()
       require('null-ls').setup {
@@ -11,14 +12,20 @@ return {
           require('null-ls').builtins.formatting.prettier,
 
           require('null-ls').builtins.formatting.stylua,
+          require('null-ls').builtins.formatting.rubocop,
 
           require('null-ls').builtins.formatting.shfmt,
+
+          require('null-ls').builtins.diagnostics.rubocop,
+
           require('null-ls').builtins.diagnostics.shellcheck,
 
           -- require('null-ls').builtins.completion.spell,
           -- require('null-ls').builtins.formatting.trim_whitespace,
         },
       }
+
+      require('my.tools.format').setup {}
     end,
   },
 
@@ -34,6 +41,7 @@ return {
 
   {
     'lukas-reineke/lsp-format.nvim', -- https://github.com/lukas-reineke/lsp-format.nvim
+    disable = true,
 
     config = function()
       require('lsp-format').setup {

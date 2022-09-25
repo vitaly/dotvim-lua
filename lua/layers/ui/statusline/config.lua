@@ -48,7 +48,7 @@ local format_writing = function()
 end
 
 local autoformat = function()
-  local format = require 'lsp-format'
+  local format = require 'my.tools.format'
 
   if format.disabled then
     return 'D'

@@ -2,6 +2,11 @@
 
 local m = {}
 
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-- generic aucmd handler setup
+-- creates a group and clears existing commands in it
+-- TBD: allow passing existing group
 function m.subscribe(group, event, callback, opts)
   opts = opts or {}
   opts.group = opts.group or vim.api.nvim_create_augroup(group, { clear = true })
@@ -10,6 +15,8 @@ function m.subscribe(group, event, callback, opts)
   return vim.api.nvim_create_autocmd(event, opts)
 end
 
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 -- usually 'on_attach' callbacks expect (client, bufnr)
 -- but LspAttach events sends it as { buf, data: { client_id }}
 -- this function wraps the callback and translates the data

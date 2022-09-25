@@ -67,7 +67,7 @@ layer 'dev.tags'
 layer 'editor'
 layer 'focus'
 
--- layer 'ui.statusline'
+layer 'ui.statusline'
 layer 'ui.blankline'
 
 return packer

@@ -62,6 +62,7 @@ return {
           lspconfig.sumneko_lua.setup {
             capabilities = require('layers.ide.cmp.config').capabilities(),
 
+            -- cmd = { 'lua-language-server', '--loglevel=trace' },
             settings = {
               Lua = {
                 runtime = { version = 'LuaJIT' },
@@ -85,6 +86,7 @@ return {
                     'tmap', 'tnoremap',
                   },
                 },
+
                 workspace = {
                   -- Make the server aware of Neovim runtime files
                   -- library = vim.api.nvim_get_runtime_file('', true),
