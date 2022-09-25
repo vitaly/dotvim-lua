@@ -1,5 +1,6 @@
 -- lua/layers/ide/autoformat.lua
 
+-- TODO: move to lsp.init
 return {
   {
     'jose-elias-alvarez/null-ls.nvim', -- https://github.com/jose-elias-alvarez/null-ls.nvim

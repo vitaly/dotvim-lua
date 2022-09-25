@@ -111,7 +111,7 @@ end
 function M.format()
   local bufnr = _buf()
   local tick = set_tick(bufnr)
-  M.PRINT { 'format', 'buf', bufnr, 'tick', tick }
+  PRINT { 'format', 'buf', bufnr, 'tick', tick }
   if vim.b.format_saving or M.disabled or M.disabled_filetypes[_filetype(bufnr)] then
     M.PRINT 'format skip'
     return
