@@ -1,15 +1,17 @@
 -- lua/layers/ide/lsp/config/style.lua
 
-local function lsp_style()
-  -- DiagnosticSignXXX highlights are linked to DiagnosticXXX
-  -- problem with DiagnosticXXX is that their background differs from that of SignColumn
-  -- so we fix it by extracting bg color from SignColumn ad updating DiagnosticXXX with it
+local M = {}
+
+function M.update()
   local signs = { Error = '✖', Warn = '', Hint = '', Info = '' }
-  local sign_bg = vim.fn.synIDattr(vim.fn.hlID 'SignColumn', 'bg')
   for type, icon in pairs(signs) do
     local hl = 'DiagnosticSign' .. type
-    vim.cmd('hi Diagnostic' .. type .. ' guibg=' .. sign_bg)
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+
+    -- DiagnosticSignXXX highlights are linked to DiagnosticXXX
+    -- problem with DiagnosticXXX is that their background differs from that of SignColumn
+    -- so we fix it by overwriting bg
+    _my.ui.sign_hi('Diagnostic' .. type)
   end
 
   -- and while we at it, I also want the hint to be yellow
@@ -49,11 +51,10 @@ local function set_diagnostic_opts()
   }
 end
 
-return {
-  setup = function()
-    require('my.tools').subscribe('lsp_style', 'ColorScheme', lsp_style)
-    lsp_style()
-    -- set_window_opts()
-    set_diagnostic_opts()
-  end,
-}
+function M.setup()
+  _my.au.callback('lsp.style', 'ColorScheme', M.update)
+  -- set_window_opts()
+  set_diagnostic_opts()
+end
+
+return M

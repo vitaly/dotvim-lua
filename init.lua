@@ -7,20 +7,24 @@
 -- vim.lsp.set_log_level 'trace'
 -- require('vim.lsp.log').set_format_func(vim.inspect)
 
+_G.VERBOSE = false
 vim.env.CC = 'gcc-11'
-_G._my = _G._my or {}
+
+-- global utilities
+require 'init.tools'
 
 _my.ROOT = vim.fn.expand '<sfile>:p:h' -- use fn.stdpath('config')?
 vim.g.my_ROOT = _my.ROOT
 
-_my.config = _my.config or {}
-
 -- 'impatient' is used to cache the compiled lua files
 -- use `:LuaCacheClear` to clear the cache
-_my.config.profile_impatient = true
+_my.config.impatient = { profile = true }
 
-require 'init.builtins' -- disable unnecessary features
+-- disable unnecessary features
+require 'init.builtins'
+-- set vim options
 require 'init.options'
-require 'init.tools'
+-- install core packages, e.g. packer itself
 require 'init.bootstrap'
+-- initialize packer
 require 'init.packer'
