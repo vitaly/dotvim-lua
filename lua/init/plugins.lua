@@ -37,7 +37,9 @@ packer.reset()
 
 local use = packer.use
 
-local function layer(name)
+local function layer(name, config)
+  config = config or {}
+  _my.config[name] = config
   use(REQUIRE('layers.' .. name))
 end
 
@@ -50,8 +52,8 @@ layer 'base.utils'
 layer 'base.keymaps'
 layer 'base.colors'
 
-layer 'filer.nvimtree'
--- layer 'filer/neotree'
+layer('filer', 'nvimtree')
+-- layer 'filer', 'neotree'
 
 layer 'telescope'
 layer 'terminal.tmux'

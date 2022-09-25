@@ -11,7 +11,7 @@ return {
   },
 
   setup = function()
-    require('layers.filer.base').setup {
+    require('layers.filer.maps').setup {
       toggle = function()
         vim.cmd [[NeoTreeFocusToggle]]
       end,

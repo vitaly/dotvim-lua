@@ -1,4 +1,4 @@
--- lua/layers/filer/base.lua
+-- lua/layers/filer/maps.lua
 
 return {
   setup = function(opts)
