@@ -43,6 +43,7 @@ return {
 
     require('which-key').register {
 
+      -- TODO: more trouble bindings
       ['\\T'] = {
         name = 'Trouble',
         T = { '<cmd>TroubleToggle<cr>', 'Trouble' },

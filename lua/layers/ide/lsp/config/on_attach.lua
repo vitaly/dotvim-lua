@@ -1,4 +1,4 @@
--- lua/layers/ide/lsp/on_attach.lua
+-- lua/layers/ide/lsp/config/on_attach.lua
 
 ---------------------------------------------------------------------------
 -- Setup local buffer maps for LSP
@@ -45,8 +45,8 @@ local function setup_lsp_keymaps(bufnr)
     },
   }, { buffer = bufnr })
 
-  nmap({ 'buffer' }, '<C-LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<cr>')
-  nmap({ 'buffer' }, '<A-LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.hover()<cr>')
+  nmap('<C-LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<cr>', 'buffer')
+  nmap('<A-LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.hover()<cr>', 'buffer')
 end
 
 local function setup_highlight(client)

@@ -3,8 +3,6 @@
 return {
 
   setup = function()
-    require('layers.ide.lsp.style').setup()
-
     local feedkey = function(key, mode)
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
     end
@@ -51,10 +49,19 @@ return {
         end,
       },
 
-      sources = cmp.config.sources(
-        { { name = 'nvim_lua' }, { name = 'nvim_lsp' }, { name = 'vsnip' } },
-        { { name = 'path' }, { name = 'buffer' } }
-      ),
+      sources = cmp.config.sources({
+        -- nvim lua api
+        { name = 'nvim_lua' },
+        -- lsp
+        { name = 'nvim_lsp' },
+        --snippets
+        { name = 'vsnip' },
+      }, {
+        -- filesystem
+        { name = 'path' },
+        -- buffer strings
+        { name = 'buffer' },
+      }),
 
       formatting = {
         format = require('lspkind').cmp_format {

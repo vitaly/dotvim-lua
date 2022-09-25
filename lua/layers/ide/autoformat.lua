@@ -27,35 +27,6 @@ return {
       }
 
       require('my.tools.format').setup {}
-    end,
-  },
-
-  {
-    'jayp0521/mason-null-ls.nvim', -- https://github.com/jayp0521/mason-null-ls.nvim
-
-    config = function()
-      require('mason-null-ls').setup {
-        ensure_installed = { 'stylua', 'jq', 'shfmt', 'shellcheck' },
-      }
-    end,
-  },
-
-  {
-    'lukas-reineke/lsp-format.nvim', -- https://github.com/lukas-reineke/lsp-format.nvim
-    disable = true,
-
-    config = function()
-      require('lsp-format').setup {
-        lua = {
-          -- exclude = { 'sumneko_lua' }, -- using stylua via null-ls
-        },
-        typescript = {
-          -- exclude = { 'null-ls' },
-        },
-      }
-      require('my.tools').on_lsp_attach('null_attach', function(client, _)
-        require('lsp-format').on_attach(client)
-      end)
 
       local function format_toggle()
         vim.cmd [[FormatToggle]]
@@ -77,6 +48,36 @@ return {
       }
     end,
   },
+
+  {
+    'jayp0521/mason-null-ls.nvim', -- https://github.com/jayp0521/mason-null-ls.nvim
+
+    config = function()
+      require('mason-null-ls').setup {
+        ensure_installed = { 'stylua', 'jq', 'shfmt', 'shellcheck' },
+      }
+    end,
+  },
+
+  -- {
+  --   'lukas-reineke/lsp-format.nvim', -- https://github.com/lukas-reineke/lsp-format.nvim
+  --   disable = true,
+
+  --   config = function()
+  --     require('lsp-format').setup {
+  --       lua = {
+  --         -- exclude = { 'sumneko_lua' }, -- using stylua via null-ls
+  --       },
+  --       typescript = {
+  --         -- exclude = { 'null-ls' },
+  --       },
+  --     }
+  --     require('my.tools').on_lsp_attach('null_attach', function(client, _)
+  --       require('lsp-format').on_attach(client)
+  --     end)
+
+  --   end,
+  -- },
 }
 
 -- TODO: clean

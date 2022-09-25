@@ -1,4 +1,4 @@
--- lua/layers/ide/lsp/style.lua
+-- lua/layers/ide/lsp/config/style.lua
 
 local function lsp_style()
   -- DiagnosticSignXXX highlights are linked to DiagnosticXXX
@@ -26,17 +26,18 @@ local function lsp_style()
   ]]
 end
 
-local function set_window_opts()
-  -- set double border by default
-  local win = require 'lspconfig.ui.windows'
-  local _default_opts = win.default_opts -- FIXME: store the defaults in a global variable
+-- TODO: check if needed
+-- local function set_window_opts()
+--   -- set double border by default
+--   local win = require 'lspconfig.ui.windows'
+--   local _default_opts = win.default_opts -- FIXME: store the defaults in a global variable
 
-  win.default_opts = function(options)
-    local opts = _default_opts(options)
-    opts.border = 'double'
-    return opts
-  end
-end
+--   win.default_opts = function(options)
+--     local opts = _default_opts(options)
+--     opts.border = 'double'
+--     return opts
+--   end
+-- end
 
 local function set_diagnostic_opts()
   vim.diagnostic.config {
@@ -52,7 +53,7 @@ return {
   setup = function()
     require('my.tools').subscribe('lsp_style', 'ColorScheme', lsp_style)
     lsp_style()
-    set_window_opts()
+    -- set_window_opts()
     set_diagnostic_opts()
   end,
 }

@@ -66,7 +66,7 @@ local function _buf()
 end
 
 local function _filetype(bufnr)
-  return vim.api.nvim_buf_get_option(bufnr or _buf(), 'filetype')
+  return vim.api.nvim_buf_get_option(bufnr, 'filetype')
 end
 
 local function _subscribe(group, event, callback, bufnr)
@@ -111,7 +111,7 @@ end
 function M.format()
   local bufnr = _buf()
   local tick = set_tick(bufnr)
-  PRINT { 'format', 'buf', bufnr, 'tick', tick }
+  M.PRINT { 'format', 'buf', bufnr, 'tick', tick }
   if vim.b.format_saving or M.disabled or M.disabled_filetypes[_filetype(bufnr)] then
     M.PRINT 'format skip'
     return
@@ -132,7 +132,7 @@ function M.format()
   --   format_options[key] = M._parse_value(key, value)
   -- end
 
-  local options = vim.deepcopy(M.config[_filetype(_buf())] or {})
+  local options = vim.deepcopy(M.config[_filetype(bufnr)] or {})
 
   M.PRINT { 'FORMAT', { async = not options.sync }, options }
   -- TODO: implement cient filtering
@@ -141,31 +141,31 @@ end
 
 -- local defaUlt_handlers = require 'vim.lsp.handlers'
 
-vim.lsp.handlers['textDocument/formatting'] = function(err, result, ctx, _)
-  -- M.PRINT { 'custom handler', err, result, ctx }
-  local client = vim.lsp.get_client_by_id(ctx.client_id)
-  local tick = vim.api.nvim_buf_get_var(ctx.bufnr, 'changedtick')
-  local format_tick = vim.api.nvim_buf_get_var(ctx.bufnr, 'format_changedtick')
-  M.PRINT { 'custom handler', client.name, err or 'OK', result and 'RES' or '', format_tick, tick }
-  if err then
-    vim.notify(string.format('[LSP][%s] %s', client.name, err), vim.log.levels.WARN)
-  end
-  if not result then
-    return
-  end
+-- vim.lsp.handlers['textDocument/formatting'] = function(err, result, ctx, _)
+--   -- M.PRINT { 'custom handler', err, result, ctx }
+--   local client = vim.lsp.get_client_by_id(ctx.client_id)
+--   local tick = vim.api.nvim_buf_get_var(ctx.bufnr, 'changedtick')
+--   local format_tick = vim.api.nvim_buf_get_var(ctx.bufnr, 'format_changedtick')
+--   M.PRINT { 'custom handler', client.name, err or 'OK', result and 'RES' or '', format_tick, tick }
+--   if err then
+--     vim.notify(string.format('[LSP][%s] %s', client.name, err), vim.log.levels.WARN)
+--   end
+--   if not result then
+--     return
+--   end
 
-  if format_tick == tick then
-    vim.lsp.util.apply_text_edits(result, ctx.bufnr, client.offset_encoding)
-    M.PRINT { 'saving', ctx.bufnr }
-    vim.api.nvim_buf_set_var(ctx.bufnr, 'format_saving', true)
-    vim.cmd [[update]]
-    vim.api.nvim_buf_set_var(ctx.bufnr, 'format_saving', false)
-    M.PRINT { 'done saving', ctx.bufnr }
-  else
-    vim.notify(string.format('[LSP][%s] buffer changed while formatting', client.name), vim.log.levels.INFO)
-  end
-  tick = set_tick(ctx.bufnr)
-  M.PRINT { 'update', 'tick', tick }
-end
+--   if format_tick == tick then
+--     vim.lsp.util.apply_text_edits(result, ctx.bufnr, client.offset_encoding)
+--     M.PRINT { 'saving', ctx.bufnr }
+--     vim.api.nvim_buf_set_var(ctx.bufnr, 'format_saving', true)
+--     vim.cmd [[update]]
+--     vim.api.nvim_buf_set_var(ctx.bufnr, 'format_saving', false)
+--     M.PRINT { 'done saving', ctx.bufnr }
+--   else
+--     vim.notify(string.format('[LSP][%s] buffer changed while formatting', client.name), vim.log.levels.INFO)
+--   end
+--   tick = set_tick(ctx.bufnr)
+--   M.PRINT { 'update', 'tick', tick }
+-- end
 
 return M
