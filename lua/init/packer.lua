@@ -41,12 +41,7 @@ local refresh_toggle = require('my.toggle').create {
 }
 
 cmdbang('PackerAutoRefresh', function()
-  if vim.g.disable_packer_auto_refresh then
-    -- print 'refresh disabled'
-    return
-  end
-  if vim.b.format_saving then
-    -- print 'no refresh while saving'
+  if vim.g.packer_refreshing or vim.g.disable_packer_auto_refresh or vim.b.format_saving then
     return
   end
   vim.cmd [[PackerRefresh]]
