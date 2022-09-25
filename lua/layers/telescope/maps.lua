@@ -1,9 +1,12 @@
 -- lua/layers/telescope/maps.lua
 
 local m = {
-  find_file = function()
+  files = function()
     return pcall(require('telescope.builtin').git_files) or require('telescope.builtin').find_files()
   end,
+
+  find_files = require('telescope.builtin').find_files,
+  git_files = require('telescope.builtin').git_files,
 
   commands = require('telescope.builtin').commands,
 
@@ -39,6 +42,10 @@ local m = {
 
 require('which-key').register {
 
+  ['<localleader>'] = {
+    ['<localleader>'] = { m.find_files, 'Find file' },
+  },
+
   ['<leader>'] = {
     ['<cr>'] = { m.commands, 'Find command' },
     bb = { m.buffers, 'Find buffer' },
@@ -56,32 +63,16 @@ require('which-key').register {
       k = { m.keymaps, 'Key' },
       m = { m.map_pages, 'Manpage' },
 
-      t = { m.tagstack, 'Tag Stack' },
+      s = { m.tagstack, 'Tag Stack' },
 
-      T = { m.telescope, 'Telescope' },
+      ['<space>'] = { m.telescope, 'Telescope' },
+      t = {
+        name = 'Telescope',
+
+        f = { m.find_files, 'Find Files' },
+        g = { m.git_files, 'Git Files' },
+      }
     },
-
-    -- l = {
-    --   name = 'LSP',
-
-    --   s = { m.lsp_document_symbol, 'Document symbol' },
-    --   d = { m.lsp_definitions, 'Definition' },
-    --   t = { m.lsp_type_definitions, 'Type definition' },
-    --   i = { m.lsp_implementations, 'Implementation' },
-    --   r = { m.lsp_references, 'References' },
-    --   a = { m.lsp_code_actions, 'Code actions' },
-
-    --   w = {
-    --     name = 'Workspace',
-
-    --     s = { m.lsp_workspace_symbol, 'Symbol' },
-    --     d = { m.lsp_dynamic_workspace_symbols, 'Dynamic symbol' },
-    --   },
-    -- },
-  },
-
-  ['<localleader>'] = {
-    ['<localleader>'] = { m.find_file, 'Find file' },
   },
 }
 
