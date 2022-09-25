@@ -52,7 +52,7 @@ local function set_diagnostic_opts()
 end
 
 function M.setup()
-  _my.au.callback('lsp.style', 'ColorScheme', M.update)
+  _my.au.on_colorscheme('lsp.style', M.update)
   -- set_window_opts()
   set_diagnostic_opts()
 end

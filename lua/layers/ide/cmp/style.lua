@@ -24,7 +24,7 @@ function M.update()
 end
 
 function M.setup()
-  _my.au.callback('cmp.style', 'ColorScheme', M.update)
+  _my.au.on_colorscheme('cmp.style', M.update)
 end
 
 return M

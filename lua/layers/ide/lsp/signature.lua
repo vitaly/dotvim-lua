@@ -3,14 +3,14 @@ return {
     require('lsp_signature').setup {
       bind = true,
       floating_window = true,
-      hint_enable = true,
-      hint_prefix = 'ℹ️',
+      hint_enable = false,
+      -- hint_prefix = 'ℹ️',
       handler_opts = {
         border = 'rounded',
       },
     }
 
-    require('my.tools').on_lsp_attach('lsp_signature', function()
+    _my.au.on_lsp_attach('lsp_signature', function()
       require('lsp_signature').on_attach()
     end)
   end,

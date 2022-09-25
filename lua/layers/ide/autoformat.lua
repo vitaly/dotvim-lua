@@ -72,7 +72,7 @@ return {
   --         -- exclude = { 'null-ls' },
   --       },
   --     }
-  --     require('my.tools').on_lsp_attach('null_attach', function(client, _)
+  --     _my.au.on_lsp_attach('null_attach', function(client, _)
   --       require('lsp-format').on_attach(client)
   --     end)
 

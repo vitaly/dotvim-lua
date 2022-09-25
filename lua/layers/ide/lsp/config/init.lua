@@ -6,7 +6,7 @@ return {
     -- fidget.nvim
     require('fidget').setup {}
     -- folding-nvim
-    require('my.tools').on_lsp_attach('lsp_folding', require('folding').on_attach)
+    _my.au.on_lsp_attach('lsp_folding', require('folding').on_attach)
     -- lsp-colors
     require('lsp-colors').setup()
 
@@ -16,8 +16,6 @@ return {
 
     require('layers.ide.lsp.config.style').setup()
 
-    local on_attach = require 'layers.ide.lsp.config.on_attach'
-
-    require('my.tools').on_lsp_attach('lsp_attach', on_attach)
+    _my.au.on_lsp_attach('lsp_attach', require 'layers.ide.lsp.config.on_attach')
   end,
 }

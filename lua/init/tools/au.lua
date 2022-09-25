@@ -16,11 +16,18 @@ function M.callback(group, event, callback, opts)
   opts.group = group
   opts.callback = callback
 
-  if 'ColorScheme' == event then
-    callback()
-  end
-
   return M.command(event, opts)
+end
+
+function M.on_colorscheme(group, callback, opts)
+  callback()
+  return M.callback(group, 'ColorScheme', callback, opts)
+end
+
+function M.on_lsp_attach(group, callback, opts)
+  return M.callback(group, 'LspAttach', function(args)
+    callback(vim.lsp.get_client_by_id(args.data.client_id), args.buf)
+  end, opts)
 end
 
 return M

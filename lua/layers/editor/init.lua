@@ -41,7 +41,7 @@ return {
       vim.g.bookmark_display_annotation = 1
       vim.g.bookmark_auto_close = 1
 
-      _my.au.callback('editor.style', 'ColorScheme', function()
+      _my.au.on_colorscheme('editor.style', function()
         _my.ui.sign_hi('BookmarkSign', 'guifg=magenta')
         _my.ui.sign_hi('BookmarkAnnotationSign', 'guifg=magenta')
       end)

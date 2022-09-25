@@ -27,7 +27,7 @@ function M.setup(format_options)
 
   nmap(',f', M.format, 'Format')
 
-  require('my.tools').on_lsp_attach('fmt_attach', M.on_attach)
+  _my.au.on_lsp_attach('fmt_attach', M.on_attach)
 end
 
 M.disable = function(options)
