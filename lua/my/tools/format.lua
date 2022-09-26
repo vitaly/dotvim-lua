@@ -91,9 +91,9 @@ function M.on_attach(client, bufnr)
   local filetype = _filetype(bufnr)
   local format_options = M.config[filetype] or {}
 
-  local event = 'BufWritePost'
-  if format_options.sync then
-    event = 'BufWritePre'
+  local event = 'BufWritePre'
+  if format_options.async then
+    event = 'BufWritePost'
   end
 
   _subscribe('Format', event, function(args)
@@ -134,9 +134,9 @@ function M.format()
 
   local options = vim.deepcopy(M.config[_filetype(bufnr)] or {})
 
-  M.PRINT { 'FORMAT', { async = not options.sync }, options }
+  M.PRINT { 'FORMAT', { async = options.async }, options }
   -- TODO: implement cient filtering
-  vim.lsp.buf.format { async = not options.sync, formatting_options = options }
+  vim.lsp.buf.format { async = options.async, formatting_options = options }
 end
 
 -- local defaUlt_handlers = require 'vim.lsp.handlers'
