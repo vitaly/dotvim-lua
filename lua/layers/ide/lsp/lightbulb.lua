@@ -5,7 +5,10 @@ return {
       float = { enabled = false },
       autocmd = { enabled = true },
       sign = { enabled = false },
-      virtual_text = { enabled = true },
+      virtual_text = {
+        enabled = true,
+        hl_mode = 'combine',
+      },
     }
   end,
 }
