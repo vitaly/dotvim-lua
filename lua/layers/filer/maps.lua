@@ -10,12 +10,20 @@ return {
       end
     end
 
-    require('which-key').register {
-      ['\\'] = {
+    if opts.popup then
+      require('which-key').register {
+        ['\\'] = {
+          ['\\'] = { opts.popup, 'Quick File Popup' },
+          [']'] = { toggle_or_reveal, 'Toggle / Reveal File' },
+          ['['] = { opts.toggle, 'Toggle File Tree' },
+        },
+      }
+    else
+      require('which-key').register {
         ['\\'] = { toggle_or_reveal, 'Toggle / Reveal File' },
 
         ['['] = { opts.toggle, 'Toggle File Tree' },
-      },
-    }
+      }
+    end
   end,
 }

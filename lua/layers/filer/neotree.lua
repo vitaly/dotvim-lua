@@ -1,12 +1,12 @@
 -- lua/layers/filer/neotree.lua
 
 return {
-  'nvim-neo-tree/neo-tree.nvim',
+  'nvim-neo-tree/neo-tree.nvim', -- https://github.com/nvim-neo-tree/neo-tree.nvim
   branch = 'v2.x',
 
   requires = {
     'nvim-lua/plenary.nvim',
-    'kyazdani42/nvim-web-devicons', -- not strictly required, but recommended
+    'kyazdani42/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
   },
 
@@ -18,6 +18,10 @@ return {
       reveal = function()
         vim.cmd [[NeoTreeReveal]]
       end,
+
+      popup = function()
+        vim.cmd [[Neotree filesystem reveal float]]
+      end,
     }
   end,
 
@@ -25,6 +29,10 @@ return {
     vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
     require('neo-tree').setup {
+      source_selector = {
+        winbar = true,
+      },
+
       close_if_last_window = true,
       sort_case_insensitive = true,
 

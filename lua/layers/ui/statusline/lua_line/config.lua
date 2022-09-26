@@ -32,7 +32,7 @@ local dap_status = function()
 end
 
 local packer_refresh = function()
-  if vim.g.packer_refreshing then
+  if vim.g.packer_refresh_in_progress then
     return '!R!'
   else
     return ''
@@ -40,7 +40,7 @@ local packer_refresh = function()
 end
 
 local format_writing = function()
-  if vim.b.format_saving then
+  if vim.b.format_in_progress then
     return 'W!'
   else
     return ''

@@ -29,19 +29,15 @@ end
 
 cmdbang('PackerRefresh', function()
   -- print 'refreshing...'
-  vim.g.packer_refreshing = true
+  vim.g.packer_refresh_in_progress = true
   RELOAD 'layers.'
+  REQUIRE 'init.config'
   REQUIRE 'init.packer'
   REQUIRE('init.plugins').install()
 end)
 
-local refresh_toggle = require('my.toggle').create {
-  name = 'Disable Auto Refresh',
-  g = 'disable_packer_auto_refresh',
-}
-
 cmdbang('PackerAutoRefresh', function()
-  if vim.g.packer_refreshing or vim.g.disable_packer_auto_refresh or vim.b.format_saving then
+  if vim.g.packer_refresh_in_progress or vim.g.packer_refresh_disabled or vim.b.format_in_progress then
     return
   end
   vim.cmd [[PackerRefresh]]
@@ -56,9 +52,18 @@ vim.cmd [[
     autocmd BufWritePost */init/plugins.lua,*/layers/*.lua PackerAutoRefresh
     autocmd User PackerComplete PackerCompile
     autocmd User PackerCompileDone checktime
-    autocmd User PackerCompileDone let g:packer_refreshing = v:false
+    autocmd User PackerCompileDone let g:packer_refresh_in_progress = v:false
   augroup end
 ]]
+
+--------------------------------------------------------------------------------
+-- KEYMAPS
+--------------------------------------------------------------------------------
+
+local refresh_toggle = require('my.toggle').create {
+  name = 'Disable Auto Refresh',
+  g = 'packer_refresh_disabled',
+}
 
 require('which-key').register {
   ['<leader>'] = {

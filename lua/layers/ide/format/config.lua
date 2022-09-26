@@ -133,7 +133,7 @@ function M.format_buffer(bufnr, options)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
 
   -- guard agains endless loop
-  if vim.b.format_saving then
+  if vim.b.format_in_progress then
     log 'format skip'
     return
   end
@@ -246,9 +246,9 @@ return M
 -- --   if format_tick == tick then
 -- --     vim.lsp.util.apply_text_edits(result, ctx.bufnr, client.offset_encoding)
 -- --     log { 'saving', ctx.bufnr }
--- --     vim.api.nvim_buf_set_var(ctx.bufnr, 'format_saving', true)
+-- --     vim.api.nvim_buf_set_var(ctx.bufnr, 'format_in_progress', true)
 -- --     vim.cmd [[update]]
--- --     vim.api.nvim_buf_set_var(ctx.bufnr, 'format_saving', false)
+-- --     vim.api.nvim_buf_set_var(ctx.bufnr, 'format_in_progress', false)
 -- --     log { 'done saving', ctx.bufnr }
 -- --   else
 -- --     vim.notify(string.format('[LSP][%s] buffer changed while formatting', client.name), vim.log.levels.INFO)

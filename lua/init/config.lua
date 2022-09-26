@@ -4,8 +4,9 @@
 _my.config = vim.tbl_deep_extend('keep', _my.config or {}, {
 
   filer = {
-    'nvimtree',
-    -- neotree
+    -- 'nvimtree',
+    'neotree',
+
     side = 'right',
   },
 
