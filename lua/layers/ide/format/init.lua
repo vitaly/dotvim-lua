@@ -39,40 +39,19 @@ return {
 
         ruby = {
           async = true,
-
         },
 
         lua = {
-
-          exclude = { 'sumneko_lua' },
-        }
-
-      }
+          cycle = {
+            'null-ls',
+            'sumneko_lua',
+          },
+        },
+      },
     }
     require('layers.ide.format.maps').setup()
   end,
 }
-
-
--- {
---   'lukas-reineke/lsp-format.nvim', -- https://github.com/lukas-reineke/lsp-format.nvim
---   disable = true,
-
---   config = function()
---     require('lsp-format').setup {
---       lua = {
---         -- exclude = { 'sumneko_lua' }, -- using stylua via null-ls
---       },
---       typescript = {
---         -- exclude = { 'null-ls' },
---       },
---     }
---     _my.au.on_lsp_attach('null_attach', function(client, _)
---       require('lsp-format').on_attach(client)
---     end)
-
---   end,
--- },
 
 -- TODO: clean
 -- config ----------------------------------------------------------------------
@@ -96,10 +75,10 @@ return {
 --   },
 
 --   javascript = {
-  --     { cmd = { 'npx prettier --write' } },
-  --   },
+--     { cmd = { 'npx prettier --write' } },
+--   },
 
-  --   typescript = {
-    --     { cmd = { 'npx prettier --write' } },
-    --   },
-    -- }
+--   typescript = {
+--     { cmd = { 'npx prettier --write' } },
+--   },
+-- }

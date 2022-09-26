@@ -7,11 +7,13 @@ local DEFAULTS = {
 
 local M = {}
 
+-------------------------------------------------------------------------------
+-- CONFIG
+-- keep M.config and _my.config.format in sync
 local function update_config(config)
   M.config = vim.tbl_deep_extend('force', M.config or {}, config)
   _my.config.format = M.config
 end
-
 update_config(vim.tbl_deep_extend('force', DEFAULTS, _my.config.format or {}))
 
 local function log(...)
@@ -20,54 +22,16 @@ local function log(...)
   end
 end
 
-M.disable = function(args)
-  if args.args == '' then
-    M.config.disabled = true
-  else
-    M.config.disabled_filetypes[args.args] = true
-  end
-end
+-------------------------------------------------------------------------------
+-- HELPERS
+-------------------------------------------------------------------------------
 
-M.enable = function(args)
-  if args.bang then
-    M.config.disabled_filetypes = {}
-    M.config.disabled = false
-  elseif args.args == '' then
-    M.config.disabled = false
-  else
-    M.config.disabled_filetypes[args.args] = false
-  end
-end
-
-M.toggle = function(args)
-  if args.args == '' then
-    M.config.disabled = not M.config.disabled
-  else
-    M.config.disabled_filetypes[args.args] = not M.config.disabled_filetypes[args.args]
-  end
-end
-
-function M.setup(config)
-  update_config(config)
-  log('format', M.config)
-
-  vim.api.nvim_create_user_command('Format', M.format, { nargs = '*', bar = true, force = true })
-  vim.api.nvim_create_user_command('FormatToggle', M.toggle,
-    { nargs = '?', bar = true, complete = 'filetype', force = true })
-  vim.api.nvim_create_user_command('FormatDisable', M.disable,
-    { nargs = '?', bar = true, complete = 'filetype', force = true })
-  vim.api.nvim_create_user_command('FormatEnable', M.enable,
-    { nargs = '?', bar = true, complete = 'filetype', force = true, bang = true })
-
-  -- _my.au.on_lsp_attach('fmt_attach', M.on_attach)
-  -- or M.config.disabled_filetypes[filetype(bufnr)] then
-  -- or M.config.disabled
-end
-
+-- return buffer's filetype
 local function filetype(bufnr)
   return vim.api.nvim_buf_get_option(bufnr, 'filetype')
 end
 
+-- parse value from command line
 local function _parse_value(value)
   if not value then
     return true
@@ -86,6 +50,66 @@ local function _parse_value(value)
   return value
 end
 
+-------------------------------------------------------------------------------
+-- SETUP
+-------------------------------------------------------------------------------
+-- * update config (merge provided into existing)
+-- * define user commands
+-- * TBD: subscribe to LSP on-attach to setup autoformating
+function M.setup(config)
+  update_config(config)
+  log('format', M.config)
+
+  vim.api.nvim_create_user_command('Format', M.format, { nargs = '*', bar = true, force = true })
+  vim.api.nvim_create_user_command('FormatToggle', M.toggle, { nargs = '?', bar = true, complete = 'filetype', force = true })
+  vim.api.nvim_create_user_command('FormatDisable', M.disable, { nargs = '?', bar = true, complete = 'filetype', force = true })
+  vim.api.nvim_create_user_command('FormatEnable', M.enable, { nargs = '?', bar = true, complete = 'filetype', force = true, bang = true })
+
+  _my.au.on_lsp_attach('format_attach', M.on_attach)
+end
+
+-------------------------------------------------------------------------------
+-- USER COMMANDS
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+-- DISABLE
+M.disable = function(args)
+  if args.args == '' then
+    M.config.disabled = true
+  else
+    M.config.disabled_filetypes[args.args] = true
+  end
+end
+
+-------------------------------------------------------------------------------
+-- ENABLE
+M.enable = function(args)
+  if args.bang then
+    M.config.disabled_filetypes = {}
+    M.config.disabled = false
+  elseif args.args == '' then
+    M.config.disabled = false
+  else
+    M.config.disabled_filetypes[args.args] = false
+  end
+end
+
+-------------------------------------------------------------------------------
+-- TOGGLE
+M.toggle = function(args)
+  if args.args == '' then
+    M.config.disabled = not M.config.disabled
+  else
+    M.config.disabled_filetypes[args.args] = not M.config.disabled_filetypes[args.args]
+  end
+end
+
+-------------------------------------------------------------------------------
+-- FORMAT
+-- parse command arguments. support foo=bar syntax
+-- merge options with defaults and filetype-specific settings
+-- call formatter
 function M.format(args)
   local bufnr = vim.api.nvim_get_current_buf()
 
@@ -98,15 +122,17 @@ function M.format(args)
 
   log { 'format', options }
 
-
-  -- log { 'FORMAT', { async = options.async }, options }
-  -- -- TODO: implement cient filtering
-  -- vim.lsp.buf.format { async = options.async, formatting_options = options }
   M.format_buffer(bufnr, options)
 end
 
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-- FORMATTER
 function M.format_buffer(bufnr, options)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
+
+  -- guard agains endless loop
   if vim.b.format_saving then
     log 'format skip'
     return
@@ -115,7 +141,10 @@ function M.format_buffer(bufnr, options)
   -- merge provided options with defaults
   options = vim.tbl_deep_extend('force', M.config.settings.default or {}, M.config.settings[filetype(bufnr)] or {}, options or {})
 
+  -- resolve dynamic options
   for key, val in pairs(options) do
+    -- TODO: may be it should go under options.formatting
+    -- no need to control e.g. 'async' from command line
     if type(val) == 'function' then
       options[key] = val()
     end
@@ -123,24 +152,69 @@ function M.format_buffer(bufnr, options)
 
   log { 'format_buffer', bufnr, options }
 
+  if options.cycle then
+    log('cycle: ' .. options.cycle[1])
+    options.only = { options.cycle[1] }
+  end
+
+  local filter
+  if options.only then
+    filter = function(client)
+      return vim.tbl_contains(options.only, client.name)
+    end
+  elseif options.exclude then
+    filter = function(client)
+      return not vim.tbl_contains(options.exclude, client.name)
+    end
+  end
+
+  local args = {
+    async = options.async,
+    bufnr = bufnr,
+    filter = filter,
+    formatting_options = options.formatting or {},
+  }
+
+  log(args)
+
+  if args.async then
+    error 'async not supported'
+  else
+    vim.api.nvim_buf_set_var(bufnr, 'formating', true)
+    vim.lsp.buf.format(args)
+    vim.api.nvim_buf_set_var(bufnr, 'formating', false)
+  end
+
+  -- -- TODO: implement cient filtering
   -- local tick = set_tick(bufnr)
-  -- log { 'format', 'buf', bufnr, 'tick', tick }
 end
 
+function M.on_attach(client, bufnr)
+  if not client.supports_method 'textDocument/formatting' then
+    return
+  end
+
+  log(string.format('formatting on_attach: %s on buffer %d', client.name, bufnr))
+
+  local options = vim.tbl_deep_extend('force', M.config.settings.default or {}, M.config.settings[filetype(bufnr)] or {})
+
+  local event = 'BufWritePre'
+  if options.async then
+    event = 'BufWritePost'
+  end
+
+  _my.au.buffer_callback(bufnr, 'autoformat', event, function()
+    if M.config.disabled or M.config.disabled_filetypes[filetype(bufnr)] then
+      log 'autoformat disabled'
+      return
+    end
+
+    log { 'autoformat', bufnr, filetype(bufnr) }
+    -- pass 'async' to make sure that request will match the event we subscribe to
+    M.format_buffer(bufnr, { async = options.async })
+  end, { desc = 'autoformat' })
+end
 return M
-
--- function M.on_attach(client, bufnr)
---   if not client.supports_method 'textDocument/formatting' then
---     return
---   end
-
---   local filetype = _filetype(bufnr)
---   local format_options = M.options[filetype] or {}
-
---   local event = 'BufWritePre'
---   if format_options.async then
---     event = 'BufWritePost'
---   end
 
 --   _subscribe('Format', event, function(args)
 --     log { event, 'buf', args.buf }

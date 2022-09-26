@@ -1,5 +1,13 @@
 return {
   setup = function(defaults)
+    local library = {
+      [vim.fn.expand '$VIMRUNTIME/lua'] = true,
+      [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
+    }
+    if _my.config.sumneko_lua.full_library then
+      library = vim.api.nvim_get_runtime_file('', true)
+    end
+
     require('lspconfig').sumneko_lua.setup(vim.tbl_deep_extend('force', defaults, {
 
       -- cmd = { 'lua-language-server', '--loglevel=trace' },
@@ -35,11 +43,7 @@ return {
 
           workspace = {
             -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file('', true),
-            -- library = {
-            --   [vim.fn.expand '$VIMRUNTIME/lua'] = true,
-            --   [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
-            -- },
+            library = library,
           },
 
           telemetry = { enable = false },
