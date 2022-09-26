@@ -24,8 +24,8 @@ packer.init {
     end,
     prompt_border = border,
   },
-  log = { level = 'warning' },
-  -- log = { level = 'trace' },
+  -- log = { level = 'warning' },
+  log = { level = 'trace' },
 }
 
 packer.reset()

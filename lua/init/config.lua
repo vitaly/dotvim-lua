@@ -16,6 +16,11 @@ _my.config = vim.tbl_deep_extend('keep', _my.config or {}, {
     side = 'left',
   },
 
+  statusline = {
+    'lua_line',
+    -- 'galaxy_line',
+  },
+
   sumneko_lua = {
     -- whether to pass whole runtime path to sumneko
     full_library = false,

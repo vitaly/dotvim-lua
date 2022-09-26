@@ -145,27 +145,6 @@ return {
   },
 
   ----------------------------------------------------------------------------------------------
-  -- AUTO PAIRS
-  {
-    'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs
-
-    config = function()
-      local autopairs = require 'nvim-autopairs'
-
-      autopairs.setup {
-        check_ts = true,
-        ts_config = {},
-        disable_filetype = { 'TelescopePrompt' }, -- vim , json
-      }
-
-      -- -- XXX do this only for ruby
-      print 'adding ruby rule'
-      autopairs.add_rules(require 'nvim-autopairs.rules.endwise-ruby')
-      autopairs.add_rules(require 'nvim-autopairs.rules.endwise-lua')
-    end,
-  },
-
-  ----------------------------------------------------------------------------------------------
   -- FOLDLINE styling
   'jrudess/vim-foldtext', -- https://github.com/jrudess/vim-foldtext
 

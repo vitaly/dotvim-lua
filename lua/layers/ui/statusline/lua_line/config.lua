@@ -1,4 +1,4 @@
--- lua/layers/ui/statusline/config.lua
+-- lua/layers/ui/statusline/lua_line/config.lua
 
 local m = {}
 

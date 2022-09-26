@@ -7,7 +7,7 @@
 -- require('vim.lsp.log').set_format_func(vim.inspect)
 
 _G.VERBOSE = false
-vim.env.CC = 'gcc-11'
+vim.env.CC = 'gcc-12'
 
 -- global utilities
 require 'init.tools'

@@ -21,7 +21,7 @@ _my.ui = require 'init.tools.ui'
 function _my.layer(module)
   local layer = module:match 'layers%.(.+)'
   if layer then
-    layer = layer:match(".*%.(.*)") or layer
+    layer = layer:match '.*%.(.*)' or layer
   end
   return layer or error(string.format('invalid layer module: %s', module))
 end
@@ -32,10 +32,10 @@ end
 -- and if you pass `variants`, the engine will be validated against it
 function _my.engine(module, variants)
   local layer = _my.layer(module)
-  local engine = _my.config[layer][1]
+  local config = _my.config[layer] or error(string.format('missing config for layer %s', layer), vim.log.levels.ERROR)
+  local engine = config[1] or error(string.format('missing engine for layer %s', layer), vim.log.levels.ERROR)
   if variants and not vim.tbl_contains(variants, engine) then
-    error(string.format("invalid engine '%s' for layer '%s'. valid engines: '%s'", engine, layer,
-      table.concat(variants, "', '")))
+    error(string.format("invalid engine '%s' for layer '%s'. valid engines: '%s'", engine, layer, table.concat(variants, "', '")))
   end
   return require(module .. '.' .. engine)
 end
