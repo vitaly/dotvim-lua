@@ -73,5 +73,8 @@ return {
   -- LSP Dressing (UI improvements)
   {
     'stevearc/dressing.nvim', -- https://github.com/stevearc/dressing.nvim
+    config = function()
+      require('layers.ide.lsp.dressing').setup()
+    end,
   },
 }
