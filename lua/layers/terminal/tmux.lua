@@ -4,10 +4,9 @@ return {
   'vitaly/vim-tmux-navigator',
 
   config = function()
-
-    local up    = '<cmd>TmuxNavigateUp<cr>'
-    local down  = '<cmd>TmuxNavigateDown<cr>'
-    local left  = '<cmd>TmuxNavigateLeft<cr>'
+    local up = '<cmd>TmuxNavigateUp<cr>'
+    local down = '<cmd>TmuxNavigateDown<cr>'
+    local left = '<cmd>TmuxNavigateLeft<cr>'
     local right = '<cmd>TmuxNavigateRight<cr>'
 
     nmap('<leader>wk', up, 'silent', 'Navigate Up')

@@ -71,7 +71,7 @@ require('which-key').register {
 
         f = { m.find_files, 'Find Files' },
         g = { m.git_files, 'Git Files' },
-      }
+      },
     },
   },
 }

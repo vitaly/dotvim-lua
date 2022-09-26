@@ -175,5 +175,5 @@ end
 return {
   create = function(opts)
     return Switch:new(opts)
-  end
+  end,
 }

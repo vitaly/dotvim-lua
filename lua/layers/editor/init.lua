@@ -35,7 +35,6 @@ return {
   {
     'MattesGroeger/vim-bookmarks', -- https://github.com/MattesGroeger/vim-bookmarks
     config = function()
-
       vim.g.bookmark_highlight_lines = 1
       vim.g.bookmark_center = 1
       vim.g.bookmark_display_annotation = 1
@@ -45,7 +44,6 @@ return {
         _my.ui.sign_hi('BookmarkSign', 'guifg=magenta')
         _my.ui.sign_hi('BookmarkAnnotationSign', 'guifg=magenta')
       end)
-
     end,
   },
 

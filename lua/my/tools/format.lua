@@ -18,12 +18,9 @@ function M.setup(format_options)
   M.config = vim.tbl_deep_extend('force', M.config, format_options or {})
 
   vim.api.nvim_create_user_command('Format', M.format, { nargs = '*', bar = true, force = true })
-  vim.api.nvim_create_user_command('FormatToggle', M.toggle,
-    { nargs = '?', bar = true, complete = 'filetype', force = true })
-  vim.api.nvim_create_user_command('FormatDisable', M.disable,
-    { nargs = '?', bar = true, complete = 'filetype', force = true })
-  vim.api.nvim_create_user_command('FormatEnable', M.enable,
-    { nargs = '?', bar = true, complete = 'filetype', force = true, bang = true })
+  vim.api.nvim_create_user_command('FormatToggle', M.toggle, { nargs = '?', bar = true, complete = 'filetype', force = true })
+  vim.api.nvim_create_user_command('FormatDisable', M.disable, { nargs = '?', bar = true, complete = 'filetype', force = true })
+  vim.api.nvim_create_user_command('FormatEnable', M.enable, { nargs = '?', bar = true, complete = 'filetype', force = true, bang = true })
 
   nmap(',f', M.format, 'Format')
 

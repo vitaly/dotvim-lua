@@ -1,5 +1,4 @@
-print "this is lua/foo.lua"
-
+print 'this is lua/foo.lua'
 
 -- vim.api.nvim_create_autocmd('BufWritePost', {
 --   group = vim.api.nvim_create_augroup('foo_test', { clear = true }),
@@ -9,18 +8,15 @@ print "this is lua/foo.lua"
 --   end,
 -- })
 
-
-
 local packer_refresh = vim.api.nvim_create_augroup('packer_refresh', { clear = true })
 
 vim.api.nvim_create_autocmd('BufWritePost', {
   group = packer_refresh,
-  pattern =  { '*/lua/init/plugins.lua', '*/lua/layers/*.lua' },
+  pattern = { '*/lua/init/plugins.lua', '*/lua/layers/*.lua' },
   -- pattern =  { '*/lua/init/foo.lua' },
   callback = function(args)
-    PRINT("packer refresh", args)
+    PRINT('packer refresh', args)
 
-    -- local path = string.sub(args.match. 
-
+    -- local path = string.sub(args.match.
   end,
 })
