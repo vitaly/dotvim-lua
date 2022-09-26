@@ -1,4 +1,4 @@
--- lua/layers/dev/tags/vista_config.lua
+-- lua/layers/ide/tagbar/vista.lua
 
 return {
   'liuchengxu/vista.vim', -- https://github.com/liuchengxu/vista.vim

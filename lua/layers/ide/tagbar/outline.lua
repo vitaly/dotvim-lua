@@ -1,4 +1,4 @@
--- lua/layers/dev/tags/outline_config.lua
+-- lua/layers/ide/tagbar/outline.lua
 
 return {
   'simrat39/symbols-outline.nvim', -- https://github.com/simrat39/symbols-outline.nvim
@@ -6,7 +6,10 @@ return {
   -- cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose' },
 
   config = function()
+    local side = _my.layers.tagbar.side or 'right'
+
     require('symbols-outline').setup {
+      position = side,
       autofold_depth = 1,
       keymaps = {
         goto_location = { '<Cr>', '<2-LeftMouse>' },

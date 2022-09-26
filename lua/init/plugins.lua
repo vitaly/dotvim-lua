@@ -37,9 +37,11 @@ packer.reset()
 
 local use = packer.use
 
-local function layer(name, config)
-  config = config or {}
-  _my.config[name] = config
+local function layer(name)
+  local config = _my.layers[name] or {}
+  if config.disable then
+    return
+  end
   use(REQUIRE('layers.' .. name))
 end
 
@@ -52,8 +54,7 @@ layer 'base.utils'
 layer 'base.keymaps'
 layer 'base.colors'
 
-layer('filer', 'nvimtree')
--- layer 'filer', 'neotree'
+layer 'filer'
 
 layer 'telescope'
 layer 'terminal.tmux'
@@ -62,9 +63,9 @@ layer 'ide.tsitter'
 layer 'ide.lsp'
 layer 'ide.cmp'
 layer 'ide.autoformat'
+layer 'ide.tagbar'
 
 layer 'dev.git'
-layer 'dev.tags'
 
 layer 'editor'
 layer 'focus'

@@ -1,4 +1,4 @@
--- lua/layers/dev/tags/sidebar_config.lua
+-- lua/layers/ide/tagbar/sidebar.lua
 
 return {
   'sidebar-nvim/sidebar.nvim', -- https://github.com/sidebar-nvim/sidebar.nvim
