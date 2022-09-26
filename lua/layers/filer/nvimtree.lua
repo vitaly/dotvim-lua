@@ -23,7 +23,7 @@ return {
   cmd = { 'NvimTreeToggle', 'NvimTreeFindFile', 'NvimTreeFocus' },
 
   config = function()
-    local side = _my.layers.filer.side or 'left'
+    local side = _my.config.filer.side or 'left'
     require('nvim-tree').setup {
       sort_by = 'case_sensitive',
 

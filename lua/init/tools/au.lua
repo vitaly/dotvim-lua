@@ -30,4 +30,19 @@ function M.on_lsp_attach(group, callback, opts)
   end, opts)
 end
 
+function M.buffer_callback(buffer, group, event, callback, opts)
+  opts = opts or {}
+  opts.buffer = buffer or error("missing buffer", 2)
+
+  opts.group = vim.api.nvim_create_augroup(group, { clear = false }) -- can't clear buffer only
+  vim.api.nvim_clear_autocmds {
+    buffer = opts.buffer,
+    group = opts.group,
+  }
+
+  opts.callback = callback
+
+  return M.command(event, opts)
+end
+
 return M

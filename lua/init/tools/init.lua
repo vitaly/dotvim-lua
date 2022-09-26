@@ -17,8 +17,7 @@ _my.ui = require 'init.tools.ui'
 
 --------------------------------------------------------------------------------
 -- LAYERS
--- layer config is in _my.layers[layer_name] where name is withouth the 'layers.' prefix
-_my.layers = _my.layers or {}
+-- layer config is in _my.config[layer_name] where name is withouth the 'layers.' prefix
 function _my.layer(module)
   local layer = module:match 'layers%.(.+)'
   if layer then
@@ -33,7 +32,7 @@ end
 -- and if you pass `variants`, the engine will be validated against it
 function _my.engine(module, variants)
   local layer = _my.layer(module)
-  local engine = _my.layers[layer][1]
+  local engine = _my.config[layer][1]
   if variants and not vim.tbl_contains(variants, engine) then
     error(string.format("invalid engine '%s' for layer '%s'. valid engines: '%s'", engine, layer,
       table.concat(variants, "', '")))

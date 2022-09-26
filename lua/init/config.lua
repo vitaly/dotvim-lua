@@ -1,12 +1,16 @@
-_my.layers.filer = {
-  'nvimtree',
-  -- neotree
-  side = 'right',
-}
+_my.config = {
 
-_my.layers.tagbar = {
-  'outline',
-  -- 'sidevar',
-  -- 'vista',
-  side = 'left',
+  filer = {
+    'nvimtree',
+    -- neotree
+    side = 'right',
+  },
+
+  tagbar = {
+    'outline',
+    -- 'sidevar',
+    -- 'vista',
+    side = 'left',
+  },
+
 }

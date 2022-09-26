@@ -6,7 +6,7 @@ return {
   -- cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose' },
 
   config = function()
-    local side = _my.layers.tagbar.side or 'right'
+    local side = _my.config.tagbar.side or 'right'
 
     require('symbols-outline').setup {
       position = side,

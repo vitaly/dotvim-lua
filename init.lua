@@ -12,6 +12,9 @@ vim.env.CC = 'gcc-11'
 -- global utilities
 require 'init.tools'
 
+-- load custom config
+require 'init.config'
+
 _my.ROOT = vim.fn.expand '<sfile>:p:h' -- use fn.stdpath('config')?
 vim.g.my_ROOT = _my.ROOT
 
@@ -27,9 +30,6 @@ require 'init.options'
 
 -- install core packages, e.g. packer itself
 require 'init.bootstrap'
-
--- load custom config
-require 'init.config'
 
 -- initialize packer
 require 'init.packer'

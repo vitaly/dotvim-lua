@@ -17,6 +17,7 @@ return {
       elseif vim.fn['vsnip#available'](1) == 1 then
         feedkey('<Plug>(vsnip-expand-or-jump)', '')
       else
+        -- TODO: switchable copilot
         local copilot_result = vim.fn['copilot#Accept'] ''
         if copilot_result ~= '' then
           vim.api.nvim_feedkeys(copilot_result, 'i', true)
@@ -44,6 +45,11 @@ return {
 
     cmp.setup {
       completion = { completeopt = 'menu,noselect,preview' },
+
+      experimental = {
+        native_menu = false,
+        ghost_text = true,
+      },
 
       snippet = {
         expand = function(args)

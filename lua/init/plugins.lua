@@ -38,7 +38,7 @@ packer.reset()
 local use = packer.use
 
 local function layer(name)
-  local config = _my.layers[name] or {}
+  local config = _my.config[name] or {}
   if config.disable then
     return
   end
@@ -62,7 +62,7 @@ layer 'terminal.tmux'
 layer 'ide.tsitter'
 layer 'ide.lsp'
 layer 'ide.cmp'
-layer 'ide.autoformat'
+layer 'ide.format'
 layer 'ide.tagbar'
 
 layer 'dev.git'

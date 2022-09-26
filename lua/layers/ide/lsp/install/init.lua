@@ -27,11 +27,6 @@ return {
       --------------------------------------------------------------------
       -- SUMNEKO_LUA
       ['sumneko_lua'] = server 'sumneko_lua',
-      -- ['sumneko_lua'] = function()
-      --   require('layers.ide.lsp.install.sunneko').setup {
-      --     capabilities = capabilities,
-      --   }
-      -- end,
     }
 
     require('which-key').register {

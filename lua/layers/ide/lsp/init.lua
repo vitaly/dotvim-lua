@@ -42,6 +42,7 @@ return {
 
     requires = {
       'williamboman/mason.nvim', -- https://github.com/williamboman/mason.nvim
+      'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
     },
 
     config = function()

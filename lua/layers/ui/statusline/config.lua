@@ -47,15 +47,15 @@ local format_writing = function()
   end
 end
 
-local autoformat = function()
-  local format = require 'my.tools.format'
+local format = function()
+  local config = _my.config.format
 
-  if format.disabled then
+  if config.disabled then
     return 'D'
   end
 
   local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-  if format.disabled_filetypes[buf_ft] then
+  if config.disabled_filetypes[buf_ft] then
     return 'd'
   end
 
@@ -113,7 +113,7 @@ function m.setup()
       lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_diagnostic' } } },
       lualine_c = {
         { 'filename', path = 1 },
-        { autoformat },
+        { format },
         { packer_refresh, color = { fg = 'red', bg = 'yellow' } },
         { format_writing, color = { fg = 'red' } },
         { dap_status, color = { bg = '#ff0000' } },
