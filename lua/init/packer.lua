@@ -77,6 +77,8 @@ require('which-key').register {
 
       L = { '<cmd>PackerLog<cr>', 'Log!' },
     },
+
+    ['sp'] = { '<cmd>PackerStatus<cr>', 'Packer' },
   },
 
   ['\\'] = {

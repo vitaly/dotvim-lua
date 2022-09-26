@@ -1,6 +1,5 @@
 return {
-  setup = function ()
-
+  setup = function()
     local function debug_toggle()
       _my.config.format.debug = not _my.config.format.debug
       print(string.format('formating debug %s', _my.config.format.debug and 'enabled' or 'disabled'))
@@ -27,9 +26,16 @@ return {
     end
 
     require('which-key').register {
+
+      ['<leader>sf'] = {
+        function()
+          PRINT(_my.config.format)
+        end,
+        'Format Config',
+      },
+
       ['<localleader>'] = {
         f = { require('layers.ide.format.config').format_buffer, 'Format' },
-        c = { function() PRINT(_my.config.format) end, 'Format Config'},
       },
 
       ['\\'] = {
@@ -37,15 +43,14 @@ return {
           name = 'AutoFormat',
           a = { format_toggle, 'Autoformat' },
           f = { format_toggle_filetype, 'Filetype' },
-          c = { format_cycle, 'Format Client'},
+          c = { format_cycle, 'Format Client' },
         },
 
         d = {
           name = 'Debug',
           f = { debug_toggle, 'Format' },
         },
-
       },
     }
-  end
+  end,
 }

@@ -1,4 +1,5 @@
---------------------------------------------------------------------------------
+-- init.tools.reload.lua
+
 -- do not call this before `plenary` is loaded
 function _my.reload(name)
   if VERBOSE then
@@ -7,7 +8,6 @@ function _my.reload(name)
   return require('plenary.reload').reload_module(name)
 end
 
---------------------------------------------------------------------------------
 function _my.require(name)
   RELOAD(name)
 

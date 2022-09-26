@@ -36,6 +36,7 @@ return {
         m = { '<cmd>Mason<cr>', 'Mason' },
         l = { '<cmd>MasonLog<cr>', 'Log' },
       },
+      ['<leader>sm'] = { '<cmd>Mason<cr>', 'Mason' },
     }
   end,
 }

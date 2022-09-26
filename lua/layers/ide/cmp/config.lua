@@ -119,7 +119,11 @@ return {
         { name = 'cmdline' },
       }),
     })
-  end,
+
+    require('which-key').register {
+      ['<leader>sc'] = { '<cmd>CmpStatus<cr>', 'CMP' },
+    }
+  end, -- setup
 
   -- TODO: check if we can do it on attach
   capabilities = function()

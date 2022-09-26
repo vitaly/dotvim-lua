@@ -29,6 +29,10 @@ return {
       },
     }
 
+    require('which-key').register {
+      ['<leader>sn'] = { '<cmd>NullLsInfo<cr>', 'Null LS' },
+    }
+
     require('mason-null-ls').setup {
       ensure_installed = { 'stylua', 'jq', 'shfmt', 'shellcheck' },
     }
