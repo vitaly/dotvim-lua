@@ -51,10 +51,18 @@ local function set_diagnostic_opts()
   }
 end
 
+local function set_hover_opts()
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+    -- Use a sharp border with `FloatBorder` highlights
+    border = 'rounded',
+  })
+end
+
 function M.setup()
   _my.au.on_colorscheme('lsp.style', M.update)
   -- set_window_opts()
   set_diagnostic_opts()
+  set_hover_opts()
 end
 
 return M

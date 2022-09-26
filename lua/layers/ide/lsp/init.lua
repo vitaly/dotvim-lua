@@ -78,4 +78,15 @@ return {
       require('layers.ide.lsp.dressing').setup()
     end,
   },
+
+  --------------------------------------------------------------------------
+  -- LIGHTBULB
+  -- shows a lightbulb in the gutter when there is an action to fix a diagnostic
+  {
+    'kosayoda/nvim-lightbulb', -- https://github.com/kosayoda/nvim-lightbulb
+    requires = 'antoinemadec/FixCursorHold.nvim', -- https://github.com/antoinemadec/FixCursorHold.nvim
+    config = function()
+      require('layers.ide.lsp.lightbulb').setup()
+    end,
+  },
 }

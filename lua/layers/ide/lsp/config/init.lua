@@ -14,6 +14,8 @@ return {
 
     require 'layers.ide.lsp.maps'
 
+    require 'layers.ide.lsp.config.diagnostics'
+
     require('layers.ide.lsp.config.style').setup()
 
     _my.au.on_lsp_attach('lsp_attach', require 'layers.ide.lsp.config.on_attach')
