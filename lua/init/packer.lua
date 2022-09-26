@@ -43,6 +43,18 @@ cmdbang('PackerAutoRefresh', function()
   vim.cmd [[PackerRefresh]]
 end)
 
+vim.api.nvim_create_user_command('Reconfigure', function(args)
+  PRINT { 'reconfigure', args.args }
+  _my.config[args.args] = {}
+end, {
+  nargs = 1,
+  bar = true,
+  force = true,
+  complete = function()
+    return vim.tbl_keys(_my.config)
+  end,
+})
+
 --------------------------------------------------------------------------------
 -- sync packer if plugins.lua changes
 --------------------------------------------------------------------------------
