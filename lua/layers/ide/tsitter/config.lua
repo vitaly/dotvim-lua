@@ -15,6 +15,8 @@ return {
         'javascript',
         'jsdoc',
         'lua',
+        'markdown',
+        'markdown_inline',
         'query',
         'ruby',
         'scss',
@@ -29,7 +31,7 @@ return {
       -- -- CC=gcc-11 vim -c "TSInstall norg"
       -- 'norg', 'norg_metqa', 'norg_table',
 
-      highlight = { enable = true },
+      highlight = { enable = true, additional_vim_regex_highlighting = { 'markdown' } },
       context_commentstring = { enable = true },
 
       --   TODO: review
