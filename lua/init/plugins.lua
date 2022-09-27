@@ -73,4 +73,8 @@ layer 'focus'
 layer 'ui.statusline'
 layer 'ui.blankline'
 
+layer 'obsidian'
+
+layer 'misc'
+
 return packer

@@ -77,7 +77,7 @@ return {
       require('colorizer').setup()
 
       require('which-key').register {
-        ['\\m'] = {
+        ["\\'"] = {
           c = { '<cmd>ColorizerToggle<cr>', 'Colorizer' },
         },
       }

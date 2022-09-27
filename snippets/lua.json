@@ -1,0 +1,29 @@
+{
+  "config function": {
+    "prefix": ["conf"],
+    "body": [
+      "config = function()",
+      "\t$0",
+      "end,"
+    ]
+  },
+  "setup function": {
+    "prefix": ["set"],
+    "body": [
+      "setup = function()",
+      "\t$0",
+      "end,"
+    ]
+  },
+
+  "wmap": {
+    "prefix": ["wmap"],
+    "body": [
+      "require('which-key').register {",
+      "\t['<leader>$0'] = {",
+      "\t\t$1 = { '$2', '$3' },",
+      "\t},",
+      "}"
+    ]
+  }
+}

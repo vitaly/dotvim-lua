@@ -157,7 +157,7 @@ return {
         o = { '<cmd>set ro!<cr>', 'Read Only' },
         c = { toggle_clipboard, 'clipboard' },
 
-        m = {
+        ["'"] = {
           name = 'Misc',
         },
       },
