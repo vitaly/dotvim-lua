@@ -11,8 +11,13 @@ return {
     require('symbols-outline').setup {
       position = side,
       autofold_depth = 1,
+      width = 40,
+      relative_width = false,
+      auto_preview = true,
+      winblend = 20,
       keymaps = {
         goto_location = { '<Cr>', '<2-LeftMouse>' },
+        close = { 'q' }, -- only 'q', <esc> should not close
       },
     }
 
@@ -24,6 +29,8 @@ return {
   end,
 }
 
+-- pack/packer/start/symbols-outline.nvim/lua/symbols-outline.lua
+-- pack/packer/start/symbols-outline.nvim/lua/symbols-outline/config.lua
 -- DEFAULTS:
 -- local opts = {
 --   highlight_hovered_item = true,
@@ -94,12 +101,6 @@ return {
 --   position = 'left',
 --   auto_preview = false,
 --   show_numbers = false,
---   -- show_relative_numbers = true,
---   width = 40,
---   keymaps = {
---     close = { 'q' },
---     goto_location = { '<Cr>', '<2-LeftMouse>' },
---   },
 -- }
 
 -- -- vim.cmd [[
