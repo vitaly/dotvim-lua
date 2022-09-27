@@ -13,7 +13,7 @@ return {
       autofold_depth = 1,
       width = 40,
       relative_width = false,
-      auto_preview = true,
+      auto_preview = false,
       winblend = 20,
       keymaps = {
         goto_location = { '<Cr>', '<2-LeftMouse>' },
