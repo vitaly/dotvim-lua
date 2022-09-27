@@ -1,5 +1,6 @@
 -- lua/layers/filer/neotree.lua
 
+-- defaults are in pack/packer/opt/neo-tree.nvim/lua/neo-tree/defaults.lua
 return {
   'nvim-neo-tree/neo-tree.nvim', -- https://github.com/nvim-neo-tree/neo-tree.nvim
   branch = 'v2.x',
@@ -29,10 +30,12 @@ return {
     vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
     require('neo-tree').setup {
+
       source_selector = {
         winbar = true,
       },
 
+      use_popups_for_input = false, -- If false, inputs will use vim.ui.input() instead of custom floats.
       close_if_last_window = true,
       sort_case_insensitive = true,
 
@@ -56,6 +59,14 @@ return {
           },
         },
       }, -- default_component_configs
+
+      window = {
+        mappings = {
+          ['r'] = { 'move', config = { show_path = 'relative' } }, -- no need not to allow to move for rename ;)
+          ['m'] = { 'move', config = { show_path = 'relative' } },
+          ['<esc>'] = 'close_window',
+        },
+      },
     } -- setup
   end,
 }
