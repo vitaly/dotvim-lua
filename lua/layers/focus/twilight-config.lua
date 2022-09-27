@@ -4,7 +4,7 @@ return {
   config = function()
     require('twilight').setup {
       dimming = {
-        alpha = 0.4,
+        alpha = 0.6,
         inactive = true,
       },
       context = 25,
