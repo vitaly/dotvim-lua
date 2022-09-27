@@ -4,11 +4,10 @@ return {
       vim.cmd [[redraw]]
     end
 
-    local toggle = require 'my.toggle'
-
-    local toggle_concealcursor = toggle.create({ states = { 'n', '' }, o = 'concealcursor', change = redraw }).toggler
-    local toggle_conceallevel = toggle.create({ states = { 0, 1, 2 }, o = 'conceallevel', change = redraw }).toggler
-    local toggle_clipboard = toggle.create({ states = { 'unnamedplus', '' }, o = 'clipboard', change = redraw }).toggler
+    local toggle = require 'lib.toggle'
+    local toggle_concealcursor = toggle.toggler('o:concealcursor', { 'n', '' }, redraw)
+    local toggle_conceallevel = toggle.toggler('o:conceallevel', { 0, 1, 2 }, redraw)
+    local toggle_clipboard = toggle.toggler('o:clipboard', { 'unnamedplus', '' }, redraw)
 
     local function toggle_verboselog()
       if vim.o.verbose == 0 then

@@ -72,10 +72,7 @@ vim.cmd [[
 -- KEYMAPS
 --------------------------------------------------------------------------------
 
-local refresh_toggle = require('my.toggle').create {
-  name = 'Disable Auto Refresh',
-  g = 'packer_refresh_disabled',
-}
+local refresh_toggle = require('lib.toggle').toggler 'g:packer_refresh_disabled'
 
 require('which-key').register {
   ['<leader>'] = {
@@ -99,6 +96,6 @@ require('which-key').register {
   },
 
   ['\\'] = {
-    p = { refresh_toggle.toggler, 'Packer Refresh' },
+    p = { refresh_toggle, 'Packer Refresh' },
   },
 }

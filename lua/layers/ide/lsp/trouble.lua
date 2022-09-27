@@ -3,34 +3,27 @@
 -- we want to be able to re-configure trouble when one of the toggles changes
 -- for scope and visibility reasons we need to separate the call to config and config data
 
-local toggle = require 'my.toggle'
+local toggle = require 'lib.toggle'
 
-local config
+local configure
 local configure_trouble = function()
-  require('trouble').setup(config())
+  local config = configure()
+  require('trouble').setup(config)
 end
 
 ------------------------------------------
 -- toggle for diagnostics mode
-local mode = toggle.create {
-  name = 'Trouble mode',
-  g = 'trouble_mode',
-  states = { 'document_diagnostics', 'workspace_diagnostics', 'quickfix', 'lsp_references', 'loclist' },
-  changed = configure_trouble,
-}
+vim.g.trouble_mode = vim.g.trouble_mode or 'document_diagnostics'
+local mode_toggle = toggle.toggler('g:trouble_mode', { 'document_diagnostics', 'workspace_diagnostics', 'quickfix', 'lsp_references', 'loclist' }, configure_trouble, { debug = true })
 
 ------------------------------------------
 -- toggle for autoopen
-local auto_open = toggle.create {
-  name = 'Trouble autoopen',
-  g = 'trouble_autoopen',
-  changed = configure_trouble,
-}
+local auto_open_toggle = toggle.toggler('g:trouble_autoopen', false, configure_trouble)
 
-config = function()
+configure = function()
   return {
-    mode = mode:current_state(),
-    auto_open = auto_open:current_state(),
+    mode = vim.g.trouble_mode,
+    auto_open = vim.g.trouble_autoopen,
     auto_close = true,
     -- TODO:
     -- use_diagnostic_signs = true,
@@ -47,8 +40,8 @@ return {
       ['\\T'] = {
         name = 'Trouble',
         T = { '<cmd>TroubleToggle<cr>', 'Trouble' },
-        a = { auto_open.toggler, 'autoopen' },
-        m = { mode.toggler, 'mode' },
+        a = { auto_open_toggle, 'Autoopen' },
+        m = { mode_toggle, 'mode' },
       },
     }
   end,
