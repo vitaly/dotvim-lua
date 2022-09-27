@@ -26,6 +26,18 @@ return {
     -- n keymap --------------------------------------------------------------------
     require('which-key').register({
 
+      ['<localleader>'] = {
+        name = ',',
+
+        ['<leader>'] = { '<cmd>w<cr>', 'Save' },
+
+        m = { '<cmd>messages<cr>', 'Messages' },
+
+        e = {
+          name = 'Eval',
+        },
+      },
+
       ['<leader>'] = {
         name = 'SPC',
 
@@ -33,8 +45,7 @@ return {
         Q = { '<cmd>qa!<cr>', 'quit all!' },
         x = { '<cmd>q<cr>', 'close window' },
 
-        m = { '<cmd>messages<cr>', 'Messages' },
-        M = { '<cmd>messages clear<cr>', 'Clear Messages' },
+        m = { '<cmd>messages clear<cr>', 'Clear Messages' },
 
         n = { '<cmd>cn<cr>', 'Next' },
         p = { '<cmd>cp<cr>', 'Prev' },
@@ -122,16 +133,6 @@ return {
           n = { [[<cmd>let @*=expand("%:t")<cr>:echo "Copied file name to clipboard"<cr>]], 'File Name' },
           d = { [[<cmd>let @*=expand("%:h")<cr>:echo "Copied file directory to clipboard"<cr>]], 'File Directory' },
           ['.'] = { [[<cmd>let @*=getcwd()<cr>:echo @*<cr>]], 'Current Directory' },
-        },
-      },
-
-      ['<localleader>'] = {
-        name = ',',
-
-        ['<leader>'] = { '<cmd>w<cr>', 'Save' },
-
-        e = {
-          name = 'Eval',
         },
       },
 
