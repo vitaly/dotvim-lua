@@ -1,5 +1,3 @@
-print 'misc'
-
 function foo()
   print 'find and edit this in layers/misc/config.lua'
 end
