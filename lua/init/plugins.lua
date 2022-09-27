@@ -67,6 +67,7 @@ layer 'ide.tagbar'
 layer 'ide.minimap'
 
 layer 'dev.git'
+layer 'dev.colors'
 
 layer 'editor'
 layer 'focus'
