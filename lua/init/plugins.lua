@@ -64,6 +64,7 @@ layer 'ide.lsp'
 layer 'ide.cmp'
 layer 'ide.format'
 layer 'ide.tagbar'
+layer 'ide.minimap'
 
 layer 'dev.git'
 
