@@ -59,19 +59,19 @@ return {
         end,
       },
 
-      sources = cmp.config.sources({
+      sources = cmp.config.sources {
         -- nvim lua api
         { name = 'nvim_lua' },
         -- lsp
         { name = 'nvim_lsp' },
         --snippets
         { name = 'vsnip' },
-      }, {
+        -- }, {
         -- filesystem
         { name = 'path' },
         -- buffer strings
         { name = 'buffer' },
-      }),
+      },
 
       formatting = {
         format = require('lspkind').cmp_format {

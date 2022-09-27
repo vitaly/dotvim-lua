@@ -25,6 +25,8 @@ function M.update()
     hi LspReferenceText cterm=inverse gui=inverse
     hi LspReferenceRead cterm=inverse gui=inverse
     hi LspReferenceWrite cterm=inverse gui=inverse
+
+    hi FloatBorder guifg=none
   ]]
 end
 
