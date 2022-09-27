@@ -1,5 +1,5 @@
 return {
-  setup = function()
+  config = function()
     -- require('galaxyline.themes.colors').gruvbox
     -- require 'galaxyline.themes.colors'
     require 'galaxyline.themes.eviline'

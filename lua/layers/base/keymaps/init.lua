@@ -9,7 +9,7 @@ return {
     'folke/which-key.nvim', -- https://github.com/folke/which-key.nvim
 
     config = function()
-      require('layers.base.keymaps.config').setup()
+      require('layers.base.keymaps.config').config()
       require('layers.base.keymaps.maps').setup()
     end,
   },

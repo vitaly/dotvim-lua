@@ -7,7 +7,7 @@ return {
   config = function()
     -- TODO: use  _my.config
     vim.g.blankline_spaces = true
-    vim.g.indent_blankline_enabled = false
+    vim.g.indent_blankline_enabled = true
 
     require('layers.ui.blankline.config').config()
 

@@ -4,6 +4,6 @@ return {
   requires = { 'kyazdani42/nvim-web-devicons' },
 
   config = function()
-    require('layers.ui.statusline.galaxy_line.config').setup()
+    require('layers.ui.statusline.galaxy_line.config').config()
   end,
 }

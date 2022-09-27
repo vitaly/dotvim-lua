@@ -19,7 +19,7 @@ return {
     },
 
     config = function()
-      require('layers.ide.tsitter.config').setup()
+      require('layers.ide.tsitter.config').config()
     end,
   },
 
@@ -29,7 +29,7 @@ return {
   {
     'romgrk/nvim-treesitter-context', -- https://github.com/romgrk/nvim-treesitter-context
     config = function()
-      require('layers.ide.tsitter.context').setup()
+      require('layers.ide.tsitter.context').config()
     end,
   },
 
@@ -40,7 +40,7 @@ return {
     -- 'vitaly/todo-comments.nvim',
     requires = 'nvim-lua/plenary.nvim',
     config = function()
-      require('layers.ide.tsitter.todo').setup()
+      require('layers.ide.tsitter.todo').config()
     end,
   },
 

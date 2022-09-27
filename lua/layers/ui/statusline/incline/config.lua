@@ -1,5 +1,5 @@
 return {
-  setup = function()
+  config = function()
     require('incline').setup {
       --
     }

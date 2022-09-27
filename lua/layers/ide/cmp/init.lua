@@ -38,7 +38,7 @@ return {
     },
 
     config = function()
-      require('layers.ide.cmp.config').setup()
+      require('layers.ide.cmp.config').config()
     end,
   },
 

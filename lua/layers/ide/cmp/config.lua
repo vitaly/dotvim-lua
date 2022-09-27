@@ -2,7 +2,7 @@
 
 return {
 
-  setup = function()
+  config = function()
     require('layers.ide.cmp.style').setup()
 
     local feedkey = function(key, mode)

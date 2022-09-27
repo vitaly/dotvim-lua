@@ -1,7 +1,7 @@
 -- /Users/vitaly/.config/nvimz/lua/layers/base/keymaps/config.lua
 
 return {
-  setup = function()
+  config = function()
     vim.opt.timeoutlen = 500 -- 0.5s before keymap menu
     require('which-key').setup {
       window = {

@@ -1,7 +1,7 @@
 -- lua/layers/ide/tsitter/config.lua
 
 return {
-  setup = function()
+  config = function()
     --------------------------------------------------------------------------
     -- SETUP
     require('nvim-treesitter.configs').setup {
