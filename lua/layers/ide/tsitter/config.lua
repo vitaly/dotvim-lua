@@ -10,10 +10,12 @@ return {
         'comment',
         'css',
         'elixir',
+        'make',
         'go',
         'html',
         'javascript',
         'jsdoc',
+        'json',
         'lua',
         'markdown',
         'markdown_inline',
@@ -35,11 +37,13 @@ return {
       context_commentstring = { enable = true },
 
       --   TODO: review
+      --   pack/packer/start/playground/lua/nvim-treesitter-playground.lua
       playground = {
         enable = true,
         disable = {},
         updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
         persist_queries = false, -- Whether the query persists across vim sessions
+        keybindings = {},
       },
     }
 
@@ -49,12 +53,22 @@ return {
     nnoremap('<leader>atU', ':<C-U>TSUpdate ', 'Update ...')
     require('which-key').register({
 
-      ['<leader>at'] = {
-        name = 'Tree Sitter',
+      ['<leader>'] = {
+        ['at'] = {
+          name = 'Tree Sitter',
 
-        i = { '<cmd>TSInstallInfo<cr>', 'Install Info' },
-        m = { '<cmd>TSModuleInfo<cr>', 'Module Info' },
-        c = { '<cmd>TSConfigInfo<cr>', 'Config Info' },
+          i = { '<cmd>TSInstallInfo<cr>', 'Install Info' },
+          m = { '<cmd>TSModuleInfo<cr>', 'Module Info' },
+          c = { '<cmd>TSConfigInfo<cr>', 'Config Info' },
+        },
+        s = {
+          t = {
+            name = 'Tree Sitter',
+
+            m = { '<cmd>TSModuleInfo<cr>', 'Modules' },
+            c = { '<cmd>TSConfigInfo<cr>', 'Config' },
+          },
+        },
       },
 
       ['\\'] = {
