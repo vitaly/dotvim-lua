@@ -155,6 +155,10 @@ return {
         s = { '<cmd>setlocal spell!<cr>', 'Spell Check' },
         o = { '<cmd>set ro!<cr>', 'Read Only' },
         c = { toggle_clipboard, 'clipboard' },
+
+        m = {
+          name = 'Misc',
+        },
       },
     }, { mode = 'n' })
     nmap('<leader>apl', ':PackerLoad<space>', 'Load...')

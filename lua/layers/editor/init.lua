@@ -71,9 +71,16 @@ return {
   -- highlights colors in the sources
   -- e.g. things like #ff00ff
   {
-    'norcalli/nvim-colorizer.lua', -- https://github.com/norcalli/nvim-colorizer.lua
+    -- 'norcalli/nvim-colorizer.lua', -- https://github.com/norcalli/nvim-colorizer.lua
+    'NvChad/nvim-colorizer.lua', -- https://github.com/NvChad/nvim-colorizer.lua
     config = function()
       require('colorizer').setup()
+
+      require('which-key').register {
+        ['\\m'] = {
+          c = { '<cmd>ColorizerToggle<cr>', 'Colorizer' },
+        },
+      }
     end,
   },
 
