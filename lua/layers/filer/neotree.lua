@@ -1,6 +1,5 @@
 -- lua/layers/filer/neotree.lua
 
--- defaults are in pack/packer/opt/neo-tree.nvim/lua/neo-tree/defaults.lua
 return {
   'nvim-neo-tree/neo-tree.nvim', -- https://github.com/nvim-neo-tree/neo-tree.nvim
   branch = 'v2.x',
@@ -29,6 +28,8 @@ return {
   config = function()
     vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
+    local side = _my.config.filer.side or 'left'
+    -- DEFAULTS: pack/packer/opt/neo-tree.nvim/lua/neo-tree/defaults.lua
     require('neo-tree').setup {
 
       source_selector = {
@@ -61,6 +62,7 @@ return {
       }, -- default_component_configs
 
       window = {
+        position = side,
         mappings = {
           ['r'] = { 'move', config = { show_path = 'relative' } }, -- no need not to allow to move for rename ;)
           ['m'] = { 'move', config = { show_path = 'relative' } },
