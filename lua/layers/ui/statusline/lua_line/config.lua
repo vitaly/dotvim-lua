@@ -33,7 +33,7 @@ end
 
 local packer_refresh = function()
   if vim.g.packer_refresh_in_progress then
-    return '!R!'
+    return '!RELOADING!'
   else
     return ''
   end

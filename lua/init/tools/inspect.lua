@@ -26,3 +26,12 @@ function _my.print(...)
   print(_my.inspect(...))
   return ...
 end
+
+--------------------------------------------------------------------------------
+function _my.keys(t, pat)
+  for k, _ in pairs(t) do
+    if not pat or k:match(pat) then
+      print(k)
+    end
+  end
+end

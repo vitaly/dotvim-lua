@@ -23,7 +23,7 @@ end
 -----------------------------------------------------------------------
 local Switch = {
   states = { false, true },
-  silent = true,
+  silent = false,
 
   p = function(_, msg)
     print(msg)

@@ -9,6 +9,8 @@ return {
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
     end
 
+    vim.g.vsnip_snippet_dir = _my.ROOT .. '/snippets'
+
     local cmp = require 'cmp'
 
     local function tab_completion(fallback)
