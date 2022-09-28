@@ -1,42 +1,46 @@
 -- lua/layers/ide/lsp/install/init.lua
 
+-- shared config defaults
+local defaults = {
+  capabilities = require('layers.ide.cmp.config').capabilities(),
+}
+
+-- load server config from a module
+local server = function(name)
+  return function()
+    require('layers.ide.lsp.install.' .. name).setup(defaults)
+  end
+end
+
+local function setup_install_handlers()
+  require('mason-lspconfig').setup_handlers {
+    function(server_name) -- default handler (optional)
+      require('lspconfig')[server_name].setup(defaults)
+    end,
+
+    ['sumneko_lua'] = server 'sumneko_lua',
+    ['jsonls'] = server 'jsonls',
+  }
+end
+
+local function setup_keymaps()
+  require('which-key').register {
+    ['<leader>am'] = {
+      name = 'Mason',
+
+      m = { '<cmd>Mason<cr>', 'Mason' },
+      l = { '<cmd>MasonLog<cr>', 'Log' },
+    },
+    ['<leader>sm'] = { '<cmd>Mason<cr>', 'Mason' },
+  }
+end
+
 return {
   setup = function()
     require('mason').setup()
+    require('mason-lspconfig').setup { ensure_installed = { 'sumneko_lua', 'jsonls' } }
 
-    require('mason-lspconfig').setup {
-      -- TODO: pass to layers as argument
-      ensure_installed = { 'sumneko_lua' },
-    }
-
-    local defaults = {
-      capabilities = require('layers.ide.cmp.config').capabilities(),
-    }
-
-    local server = function(name)
-      return function()
-        require('layers.ide.lsp.install.' .. name).setup(defaults)
-      end
-    end
-
-    require('mason-lspconfig').setup_handlers {
-      function(server_name) -- default handler (optional)
-        require('lspconfig')[server_name].setup(defaults)
-      end,
-
-      --------------------------------------------------------------------
-      -- SUMNEKO_LUA
-      ['sumneko_lua'] = server 'sumneko_lua',
-    }
-
-    require('which-key').register {
-      ['<leader>am'] = {
-        name = 'Mason',
-
-        m = { '<cmd>Mason<cr>', 'Mason' },
-        l = { '<cmd>MasonLog<cr>', 'Log' },
-      },
-      ['<leader>sm'] = { '<cmd>Mason<cr>', 'Mason' },
-    }
+    setup_install_handlers()
+    setup_keymaps()
   end,
 }
