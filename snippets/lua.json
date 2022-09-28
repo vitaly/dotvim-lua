@@ -7,12 +7,35 @@
       "end,"
     ]
   },
+
+  "return config object": {
+    "prefix": ["rconf"],
+    "body": [
+      "return {",
+      "\tconfig = function()",
+      "\t\t$0",
+      "\tend,",
+      "}"
+    ]
+  },
+
   "setup function": {
     "prefix": ["set"],
     "body": [
       "setup = function()",
       "\t$0",
       "end,"
+    ]
+  },
+
+  "return setup object": {
+    "prefix": ["rset"],
+    "body": [
+      "return {",
+      "\tsetup = function()",
+      "\t\t$0",
+      "\tend,",
+      "}"
     ]
   },
 
