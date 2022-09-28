@@ -79,4 +79,6 @@ layer 'obsidian'
 
 layer 'misc'
 
+layer 'neorg'
+
 return packer
