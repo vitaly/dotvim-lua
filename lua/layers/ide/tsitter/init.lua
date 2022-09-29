@@ -15,7 +15,9 @@ return {
 
     requires = {
       'nvim-treesitter/playground', -- https://github.com/nvim-treesitter/playground
+      -- setup commentstring based on contrext. even when syntax changes inside the file
       'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
+      'nvim-treesitter/nvim-treesitter-textobjects', -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     },
 
     config = function()
@@ -76,7 +78,6 @@ return {
 ----     requires = {
 ----       -- 'nvim-treesitter/nvim-treesitter-refactor', https://github.com/nvim-treesitter/nvim-treesitter-refactor
 
-----       'nvim-treesitter/nvim-treesitter-textobjects', -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 ----       'p00f/nvim-ts-rainbow', -- https://github.com/p00f/nvim-ts-rainbow
 ----     },
 ----   },

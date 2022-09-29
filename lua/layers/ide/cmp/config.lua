@@ -64,8 +64,10 @@ return {
         { name = 'nvim_lua' },
         -- lsp
         { name = 'nvim_lsp' },
-        --snippets
+        -- snippets
         { name = 'vsnip' },
+        -- Neorg
+        { name = 'neorg' },
         -- }, {
         -- filesystem
         { name = 'path' },

@@ -26,15 +26,70 @@ return {
         'typescript',
         'vim',
         'yaml',
+        -- 'bash', 'cpp', 'python', 'rust', 'scala',
+        -- -- brew install gcc
+        -- -- CC=gcc-11 vim -c "TSInstall norg"
+        -- 'norg', 'norg_metqa', 'norg_table',
       },
 
-      -- 'bash', 'cpp', 'python', 'rust', 'scala',
-      -- -- brew install gcc
-      -- -- CC=gcc-11 vim -c "TSInstall norg"
-      -- 'norg', 'norg_metqa', 'norg_table',
-
+      -- treesitter based syntax highlighting
       highlight = { enable = true, additional_vim_regex_highlighting = { 'markdown' } },
+
+      -- setup commentstring based on contrext. even when syntax changes inside the file
       context_commentstring = { enable = true },
+
+      textobjects = {
+        select = {
+          enable = true,
+          keymaps = {
+
+            -- or you use the queries from supported languages with textobjects.scm
+            ['af'] = '@function.outer',
+            ['if'] = '@function.inner',
+
+            ['ac'] = '@class.outer',
+            ['ic'] = '@class.inner',
+
+            ['ai'] = '@conditional.outer',
+            ['ii'] = '@conditional.inner',
+
+            ['ae'] = '@block.outer',
+            ['ie'] = '@block.inner',
+
+            ['al'] = '@loop.outer',
+            ['il'] = '@loop.inner',
+
+            ['as'] = '@statement.outer',
+            ['is'] = '@statement.inner',
+
+            ['a;'] = '@comment.outer',
+
+            ['am'] = '@call.outer',
+            ['im'] = '@call.inner',
+          },
+        },
+
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_next_start = {
+            [']m'] = '@function.outer',
+            [']]'] = '@class.outer',
+          },
+          goto_next_end = {
+            [']M'] = '@function.outer',
+            [']['] = '@class.outer',
+          },
+          goto_previous_start = {
+            ['[m'] = '@function.outer',
+            ['[['] = '@class.outer',
+          },
+          goto_previous_end = {
+            ['[M'] = '@function.outer',
+            ['[]'] = '@class.outer',
+          },
+        },
+      },
 
       --   TODO: review
       --   pack/packer/start/playground/lua/nvim-treesitter-playground.lua
@@ -45,7 +100,7 @@ return {
         persist_queries = false, -- Whether the query persists across vim sessions
         keybindings = {},
       },
-    }
+    } -- nvim-treesitter.configs setup
 
     --------------------------------------------------------------------------
     -- KEYMAPS
