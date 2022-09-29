@@ -16,11 +16,12 @@ return {
         vim.cmd [[NeoTreeFocusToggle]]
       end,
       reveal = function()
-        vim.cmd [[NeoTreeReveal]]
+        vim.cmd [[NeoTreeReveal!]]
+        vim.cmd [[Neotree filesystem reveal reveal_force_cwd]]
       end,
 
       popup = function()
-        vim.cmd [[Neotree filesystem reveal float]]
+        vim.cmd [[Neotree filesystem reveal float reveal_force_cwd]]
       end,
     }
   end,
