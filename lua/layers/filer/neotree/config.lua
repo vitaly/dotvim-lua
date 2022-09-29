@@ -14,9 +14,12 @@ return {
       close_if_last_window = true,
       sort_case_insensitive = true,
 
+      enable_refresh_on_write = false, -- requires use_libuv_file_watcher = true
+
       filesystem = {
         group_empty_dirs = true,
         follow_current_file = true,
+        use_libuv_file_watcher = true,
       },
 
       default_component_configs = {
