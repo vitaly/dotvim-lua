@@ -57,7 +57,7 @@ layer 'base.colors'
 layer 'filer'
 
 layer 'telescope'
-layer 'terminal.tmux'
+layer 'terminal'
 
 layer 'ide.tsitter'
 layer 'ide.lsp'

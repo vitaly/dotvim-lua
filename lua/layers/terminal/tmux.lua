@@ -1,8 +1,6 @@
 -- lua/layers/terminal/tmux.lua
 
 return {
-  'vitaly/vim-tmux-navigator',
-
   config = function()
     local up = '<cmd>TmuxNavigateUp<cr>'
     local down = '<cmd>TmuxNavigateDown<cr>'
