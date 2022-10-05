@@ -1,4 +1,7 @@
 -- lua/layers/base/colors.lua
+--
+-- NOTE: new base16 doesn't update .vimrc_background file
+-- instead we have a BASE16_HOOK doing it instead
 
 return {
   'chriskempson/base16-vim', -- https://github.com/chriskempson/base16-vim
