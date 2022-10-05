@@ -30,6 +30,7 @@ return {
       ['<leader>sf'] = {
         function()
           PRINT(_my.config.format)
+          vim.cmd [[messages]]
         end,
         'Format Config',
       },

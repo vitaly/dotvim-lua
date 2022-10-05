@@ -41,6 +41,15 @@ return {
       debug = false,
       settings = {
 
+        -- type = {
+        --   -- will set 'only' to cycle[1]
+        --   cycle = { 'option1', 'option2' },
+        --   -- this takes priority
+        --   only = { 'only' },
+        --   -- only used if cycle/only not present
+        --   exclude = { 'exclude' },
+        -- },
+
         ruby = {
           async = true,
         },
@@ -49,6 +58,13 @@ return {
           cycle = {
             'null-ls',
             'sumneko_lua',
+          },
+        },
+
+        typescript = {
+          cycle = {
+            'tsserver',
+            'null-ls',
           },
         },
       },

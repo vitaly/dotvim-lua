@@ -125,6 +125,12 @@ function M.format(args)
   M.format_buffer(bufnr, options)
 end
 
+function _get_clients(bufnr, filter)
+  return vim.tbl_filter(function(client)
+    return client.supports_method 'textDocument/formatting' and (not filter or filter(client))
+  end, vim.lsp.buf_get_clients(bufnr))
+end
+
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -176,6 +182,13 @@ function M.format_buffer(bufnr, options)
   }
 
   log(args)
+
+  if M.config.debug then
+    local clients = _get_clients(bufnr, filter)
+    for _, client in ipairs(clients) do
+      log('client: ' .. client.name)
+    end
+  end
 
   if args.async then
     error 'async not supported'
