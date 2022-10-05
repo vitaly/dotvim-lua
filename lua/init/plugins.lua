@@ -70,6 +70,7 @@ layer 'dev.git'
 layer 'dev.colors'
 
 layer 'editor'
+layer 'cursors'
 layer 'focus'
 
 layer 'ui.statusline'
