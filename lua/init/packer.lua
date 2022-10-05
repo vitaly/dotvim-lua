@@ -27,25 +27,28 @@ elseif '' == vim.fn.glob(_my.packer.COMPILED) then
   require('init.plugins').compile()
 end
 
-cmdbang('PackerRefresh', function()
+local function PackerRefresh()
   -- print 'refreshing...'
   vim.g.packer_refresh_in_progress = true
   RELOAD 'layers.'
   REQUIRE 'init.config'
   REQUIRE 'init.packer'
   REQUIRE('init.plugins').install()
-end)
+end
+
+cmdbang('PackerRefresh', PackerRefresh)
 
 cmdbang('PackerAutoRefresh', function()
   if vim.g.packer_refresh_in_progress or vim.g.packer_refresh_disabled or vim.b.format_in_progress then
     return
   end
-  vim.cmd [[PackerRefresh]]
+  PackerRefresh()
 end)
 
 vim.api.nvim_create_user_command('Reconfigure', function(args)
   PRINT { 'reconfigure', args.args }
   _my.config[args.args] = {}
+  PackerRefresh()
 end, {
   nargs = 1,
   bar = true,
