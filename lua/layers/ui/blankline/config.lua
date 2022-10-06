@@ -33,8 +33,8 @@ local common_options = {
 }
 
 local line_options = {
-  -- char = '▏',
-  char = '┊',
+  char = '▏',
+  -- char = '┊',
   char_highlight_list = {
     'IndentBlanklineIndent1',
     'IndentBlanklineIndent2',
