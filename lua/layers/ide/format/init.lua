@@ -63,8 +63,8 @@ return {
 
         typescript = {
           cycle = {
-            'tsserver',
             'null-ls',
+            'tsserver',
           },
         },
       },
