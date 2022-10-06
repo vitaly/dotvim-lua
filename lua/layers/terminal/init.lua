@@ -5,10 +5,6 @@ return {
     tag = '*',
 
     config = function()
-      require('toggleterm').setup {
-
-        open_mapping = [[<c-\>]],
-      }
       vim.cmd [[
         highlight TermCursor ctermfg=red guifg=red
 
@@ -22,16 +18,55 @@ return {
         augroup END
 
       ]]
-      -- au TermEnter term://*toggleterm#* tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 
       tnoremap('<A-[>', '<C-\\><C-n>')
+
+      require('toggleterm').setup {
+        open_mapping = [[<c-\>]],
+
+        size = function(term)
+          if term.direction == 'horizontal' then
+            return 25
+          elseif term.direction == 'vertical' then
+            return vim.o.columns * 0.4
+          end
+        end,
+      }
+
+      local function tig()
+        require('toggleterm.terminal').Terminal:new({ cmd = 'tig', direction = 'float' }):toggle()
+      end
+
+      require('which-key').register {
+        ['<leader>'] = {
+          gt = { tig, 'TIG' },
+        },
+      }
     end,
   },
   {
     'vitaly/vim-tmux-navigator', -- https://github.com/christoomey/vim-tmux-navigator
 
     config = function()
-      require('layers.terminal.tmux').config()
+      local up = '<cmd>TmuxNavigateUp<cr>'
+      local down = '<cmd>TmuxNavigateDown<cr>'
+      local left = '<cmd>TmuxNavigateLeft<cr>'
+      local right = '<cmd>TmuxNavigateRight<cr>'
+
+      nnoremap('<leader>wk', up, 'silent', 'Navigate Up')
+      nnoremap('<leader>wj', down, 'silent', 'Navigate Down')
+      nnoremap('<leader>wh', left, 'silent', 'Navigate Left')
+      nnoremap('<leader>wl', right, 'silent', 'Navigate Right')
+
+      tnoremap('<m-k>', '<c-\\><c-n>' .. up, 'silent')
+      tnoremap('<m-j>', '<c-\\><c-n>' .. down, 'silent')
+      tnoremap('<m-h>', '<c-\\><c-n>' .. left, 'silent')
+      tnoremap('<m-l>', '<c-\\><c-n>' .. right, 'silent')
+
+      cnoremap('<m-k>', up, 'silent')
+      cnoremap('<m-j>', down, 'silent')
+      cnoremap('<m-h>', left, 'silent')
+      cnoremap('<m-l>', right, 'silent')
     end,
   },
 }
