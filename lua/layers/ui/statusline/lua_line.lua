@@ -67,37 +67,37 @@ return {
     --   return ''
     -- end
 
-    local theme = {
-      light = {
-        normal = {
-          a = { fg = '#005f00', bg = '#afdf00', gui = 'bold' },
-          -- b = { fg = '#262626', bg = '#606060' },
-          b = { fg = '#005f5f', bg = '#97efff' },
-          -- c = { fg = '#9e9e9e', bg = '#303030' },
-          c = { fg = '#ffffff', bg = '#005f87' },
-        },
-        -- insert = {
-        --   a = { fg = '#005f5f', bg = '#ffffff', gui = 'bold' },
-        --   b = { fg = '#005f5f', bg = '#87dfff' },
-        --   -- c = { fg = '#87dfff', bg = '#005f87' },
-        --   c = { fg = '#ffffff', bg = '#005f87' },
-        -- },
-        insert = { a = { fg = '#005f5f', bg = '#87dfff', gui = 'bold' } },
-        visual = { a = { fg = '#870000', bg = '#ff8700', gui = 'bold' } },
-        replace = { a = { fg = '#ffffff', bg = '#df0000', gui = 'bold' } },
+    -- local theme = {
+    --   light = {
+    --     normal = {
+    --       a = { fg = '#005f00', bg = '#afdf00', gui = 'bold' },
+    --       -- b = { fg = '#262626', bg = '#606060' },
+    --       b = { fg = '#005f5f', bg = '#97efff' },
+    --       -- c = { fg = '#9e9e9e', bg = '#303030' },
+    --       c = { fg = '#ffffff', bg = '#005f87' },
+    --     },
+    --     -- insert = {
+    --     --   a = { fg = '#005f5f', bg = '#ffffff', gui = 'bold' },
+    --     --   b = { fg = '#005f5f', bg = '#87dfff' },
+    --     --   -- c = { fg = '#87dfff', bg = '#005f87' },
+    --     --   c = { fg = '#ffffff', bg = '#005f87' },
+    --     -- },
+    --     insert = { a = { fg = '#005f5f', bg = '#87dfff', gui = 'bold' } },
+    --     visual = { a = { fg = '#870000', bg = '#ff8700', gui = 'bold' } },
+    --     replace = { a = { fg = '#ffffff', bg = '#df0000', gui = 'bold' } },
 
-        inactive = {
-          a = { fg = '#262626', bg = '#606060', gui = 'bold' },
-          b = { fg = '#262626', bg = '#606060' },
-          c = { bg = '#262626', fg = '#a0a0a0' },
-        },
-      },
-    }
+    --     inactive = {
+    --       a = { fg = '#262626', bg = '#606060', gui = 'bold' },
+    --       b = { fg = '#262626', bg = '#606060' },
+    --       c = { bg = '#262626', fg = '#a0a0a0' },
+    --     },
+    --   },
+    -- }
     require('lualine').setup {
 
       options = {
         disabled_filetypes = { 'dbui', 'packer' },
-        theme = theme.light,
+        -- theme = theme.light,
       },
 
       tabline = {
