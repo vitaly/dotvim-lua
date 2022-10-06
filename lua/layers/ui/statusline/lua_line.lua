@@ -96,7 +96,7 @@ return {
     require('lualine').setup {
 
       options = {
-        disabled_filetypes = { 'dbui', 'packer' },
+        disabled_filetypes = { 'Outline', 'toggleterm' },
         -- theme = theme.light,
       },
 
