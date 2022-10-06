@@ -112,7 +112,7 @@ function m.setup()
       lualine_a = { 'mode' },
       lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'nvim_diagnostic' } } },
       lualine_c = {
-        { 'filename', path = 1 },
+        -- { 'filename', path = 1 },
         { format },
         { packer_refresh, color = { fg = 'red', bg = 'yellow' } },
         { format_writing, color = { fg = 'red' } },
