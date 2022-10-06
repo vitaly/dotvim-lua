@@ -42,7 +42,12 @@ local function layer(name)
   if config.disable then
     return
   end
-  use(REQUIRE('layers.' .. name))
+  local data = REQUIRE('layers.' .. name)
+  -- packer can't handle single wrapped plugin
+  if 'table' == type(data) and 1 == #data and 'table' == type(data[1]) then
+    data = data[1]
+  end
+  use(data)
 end
 
 -- those are the basic plugins installed during bootstrap
