@@ -4,13 +4,12 @@
 -- instead we have a BASE16_HOOK doing it instead
 
 return {
-  'chriskempson/base16-vim', -- https://github.com/chriskempson/base16-vim
+  'RRethy/nvim-base16', -- https://github.com/RRethy/nvim-base16
 
   config = function()
     cmdbang('LoadVimrcBackground', function()
       vim.cmd [[
         if filereadable(expand("~/.vimrc_background"))
-          let base16colorspace=256
           try | source ~/.vimrc_background | catch | echo "colorscheme load error" | endtry
         endif
       ]]

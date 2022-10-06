@@ -3,6 +3,9 @@
 return {
   'lukas-reineke/indent-blankline.nvim', -- https://github.com/lukas-reineke/indent-blankline.nvim
 
+  after = {
+    'nvim-base16',
+  },
   -- pack/packer/start/indent-blankline.nvim/lua/indent_blankline/init.lua
   config = function()
     -- TODO: use  _my.config
