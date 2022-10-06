@@ -9,21 +9,22 @@ return {
   {
     'fgheng/winbar.nvim', -- https://github.com/fgheng/winbar.nvim
 
+    after = {
+      'nvim-base16',
+    },
+
     config = function()
       _my.au.on_colorscheme('winbar.style', function()
-        local colors = {}
-        if vim.g.base16_gui00 then
-          colors = {
-            path = '#' .. vim.g.base16_gui0D,
-            file_name = '#' .. vim.g.base16_gui08,
-          }
-        end
+        local colors = require('base16-colorscheme').colors
         require('winbar').setup {
           enabled = true,
           show_file_path = true,
 
           -- for ref: pack/packer/start/base16-vim/colors/base16-ia-light.vim
-          colors = colors,
+          colors = {
+            path = colors.base0D,
+            file_name = colors.base08,
+          },
         }
       end)
     end,
