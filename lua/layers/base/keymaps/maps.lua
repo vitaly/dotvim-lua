@@ -161,7 +161,6 @@ return {
         },
       },
     }, { mode = 'n' })
-    nmap('<leader>apl', ':PackerLoad<space>', 'Load...')
 
     -- -- x keymap --------------------------------------------------------------------
     require('which-key').register({

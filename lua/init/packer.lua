@@ -85,8 +85,6 @@ require('which-key').register {
 
       s = { '<cmd>PackerStatus<cr>', 'Status' },
       c = { '<cmd>PackerCompile<cr>', 'Compile' },
-      i = { '<cmd>PackerInstall<cr>', 'Install' },
-      u = { '<cmd>PackerUpdate<cr>', 'Update' },
       p = { '<cmd>PackerProfile<cr>', 'Profile' },
 
       S = { '<cmd>PackerSync<cr>', 'Sync' },
@@ -102,3 +100,7 @@ require('which-key').register {
     p = { refresh_toggle, 'Packer Refresh' },
   },
 }
+
+nmap('<leader>apl', ':PackerLoad<space>', 'Load...')
+nmap('<leader>api', ':PackerInstall<space>', 'Install...')
+nmap('<leader>apu', ':PackerUpdate<space>', 'Update...')
