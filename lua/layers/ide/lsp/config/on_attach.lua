@@ -21,6 +21,8 @@ local function setup_lsp_keymaps(bufnr)
         r = { lsp.rename, 'Refactor(Rename)' },
       },
 
+      s = { tele.lsp.custom_document_symbol, 'Document Symbol' },
+
       a = { lsp.code_action, 'Code Action' },
 
       ['1'] = { lsp.first_diagnostic, 'First Problem' },
@@ -38,7 +40,7 @@ local function setup_lsp_keymaps(bufnr)
         n = { tele.lsp.incoming_calls, 'Incoming Calls' },
         o = { tele.lsp.outgoing_calls, 'Outgoing Calls' },
 
-        s = { tele.lsp.document_symbol, 'Document Symbol' },
+        s = { tele.lsp.document_symbol, 'Full Document Symbol' },
         w = { tele.lsp.workspace_symbol, 'Workspace Symbol' },
         W = { tele.lsp.dynamic_workspace_symbol, 'Dynamic Workspace Symbol' },
       },

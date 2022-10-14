@@ -8,9 +8,18 @@ return {
   config = function()
     local side = _my.config.tagbar.side or 'right'
 
+    vim.cmd [[
+      augroup outline_setup
+      autocmd!
+      autocmd FileType Outline set foldcolumn=0 | set signcolumn=auto
+      augroup end
+    ]]
+    --   hi! clear FocusedSymbol
+    --   hi! FocusedSymbol gui=bold guifg=red
+
     require('symbols-outline').setup {
       position = side,
-      autofold_depth = 1,
+      autofold_depth = 2,
       width = 40,
       relative_width = false,
       auto_preview = false,
@@ -102,12 +111,3 @@ return {
 --   auto_preview = false,
 --   show_numbers = false,
 -- }
-
--- -- vim.cmd [[
--- --   augroup outline_setup
--- --   autocmd!
--- --   autocmd FileType Outline set foldcolumn=0 | set signcolumn=auto
--- --   augroup end
--- --   hi! clear FocusedSymbol
--- --   hi! FocusedSymbol gui=bold guifg=red
--- -- ]]

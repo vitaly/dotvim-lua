@@ -20,6 +20,6 @@ return {
   },
 
   config = function()
-    require('layers.telescope.config').setup()
+    require('layers.telescope.config').config()
   end,
 }
