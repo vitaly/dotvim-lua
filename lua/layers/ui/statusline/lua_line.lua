@@ -101,7 +101,69 @@ return {
       },
 
       tabline = {
-        lualine_a = { { 'tabs', mode = 1 } },
+        lualine_a = {
+          --
+        },
+        lualine_b = {
+          { 'tabs', mode = 1 },
+          --
+        },
+        lualine_c = {
+          --
+        },
+        lualine_x = {
+          --
+        },
+        lualine_y = {
+          --
+        },
+        lualine_z = {
+          --
+        },
+      },
+
+      winbar = {
+        lualine_a = {
+          --
+          { 'filename', path = 1 },
+        },
+        lualine_b = {
+          --
+        },
+        lualine_c = {
+          --
+        },
+        lualine_x = {
+          --
+        },
+        lualine_y = {
+          --
+        },
+        lualine_z = {
+          --
+        },
+      },
+
+      inactive_winbar = {
+        lualine_a = {
+          --
+          { 'filename', path = 1 },
+        },
+        lualine_b = {
+          --
+        },
+        lualine_c = {
+          --
+        },
+        lualine_x = {
+          --
+        },
+        lualine_y = {
+          --
+        },
+        lualine_z = {
+          --
+        },
       },
 
       sections = {
@@ -121,7 +183,10 @@ return {
       },
 
       inactive_sections = {
-        lualine_c = { { 'filename', path = 1 } },
+        lualine_c = {
+          --
+          -- { 'filename', path = 1 },
+        },
 
         lualine_x = {},
         lualine_z = { 'location' },
