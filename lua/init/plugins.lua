@@ -1,4 +1,5 @@
 -- lua/init/plugins.lua
+---@diagnostic disable: different-requires
 
 vim.cmd [[packadd packer.nvim]]
 

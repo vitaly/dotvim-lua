@@ -120,11 +120,12 @@ return {
   ----------------------------------------------------------------------------------------------
   -- WINDOW ZOOM
   -- Toggle current window zoom
+  -- TODO: move to better place
   {
     'troydm/zoomwintab.vim', -- https://github.com/troydm/zoomwintab.vim
 
     config = function()
-      nmap('<leader>wz', '<cmd>ZoomWinTabToggle<cr>', 'Zoom')
+      nmap('\\z', '<cmd>ZoomWinTabToggle<cr>', 'Zoom')
     end,
   },
 

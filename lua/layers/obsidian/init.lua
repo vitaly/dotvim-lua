@@ -1,5 +1,5 @@
 return {
-  'vitaly/obsidian.nvim', -- https://github.com/epwalsh/obsidian.nvim
+  'epwalsh/obsidian.nvim', -- https://github.com/epwalsh/obsidian.nvim
 
   config = function()
     require('layers.obsidian.config').setup()
