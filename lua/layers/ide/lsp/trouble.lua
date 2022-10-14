@@ -21,10 +21,16 @@ local mode_toggle = toggle.toggler('g:trouble_mode', { 'document_diagnostics', '
 local auto_open_toggle = toggle.toggler('g:trouble_autoopen', false, configure_trouble)
 
 configure = function()
+  if nil == vim.g.trouble_autoopen then
+    vim.g.trouble_autoopen = true
+  end
   return {
     mode = vim.g.trouble_mode,
     auto_open = vim.g.trouble_autoopen,
     auto_close = true,
+    action_keys = {
+      jump = { '<cr>', '<tab>', '<2-LeftMouse>' },
+    },
     -- TODO:
     -- use_diagnostic_signs = true,
   }

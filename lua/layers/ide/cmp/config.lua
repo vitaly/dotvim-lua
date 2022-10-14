@@ -14,9 +14,10 @@ return {
     local cmp = require 'cmp'
 
     local function tab_completion(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif vim.fn['vsnip#available'](1) == 1 then
+      -- if cmp.visible() then
+      --   cmp.select_next_item()
+      -- else
+      if vim.fn['vsnip#available'](1) == 1 then
         feedkey('<Plug>(vsnip-expand-or-jump)', '')
       else
         -- TODO: switchable copilot

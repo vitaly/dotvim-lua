@@ -3,7 +3,7 @@
 local M = {}
 
 function M.update()
-  local signs = { Error = '✖', Warn = '', Hint = '', Info = '' }
+  local signs = { Error = '✖', Warn = '', Hint = '!', Info = '' }
   for type, icon in pairs(signs) do
     local hl = 'DiagnosticSign' .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -20,14 +20,14 @@ function M.update()
   -- this is required for vim.lsp.buf.document_highlight() to work
   -- which is setup in on_attach.lua
   vim.cmd [[
-    hi DiagnosticHint guifg=yellow
+    hi DiagnosticHint guifg=orange
 
     hi LspReferenceText cterm=inverse gui=inverse
     hi LspReferenceRead cterm=inverse gui=inverse
     hi LspReferenceWrite cterm=inverse gui=inverse
 
-    hi FloatBorder guifg=none
   ]]
+  -- hi FloatBorder guifg=none
 end
 
 -- TODO: check if needed
