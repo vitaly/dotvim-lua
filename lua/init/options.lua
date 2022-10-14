@@ -30,6 +30,7 @@ end
 -- opt('relativenumber', true, window)
 -- opt('smartindent', true, buffer)
 -- opt('laststatus', 2)
+set.laststatus = 3
 -- opt('showmode', false)
 -- opt('shada', [['20,<50,s10,h,/100]])
 -- opt('hidden', true)
@@ -148,7 +149,7 @@ set.undofile = true -- enable persistent undo
 set.foldlevel = 9
 -- set nofoldenable         -- dont fold by default "
 -- set.foldenable = false -- dont fold by default "
-set.foldcolumn = 'auto:4'
+set.foldcolumn = 'auto'
 set.signcolumn = 'auto:4'
 -- set eol
 -- set nobinary
