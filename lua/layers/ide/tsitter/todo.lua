@@ -1,6 +1,10 @@
 -- lua/layers/ide/tsitter/todo.lua
 
 return {
+  'vitaly/todo-comments.nvim', -- https://github.com/folke/todo-comments.nvim
+  -- 'vitaly/todo-comments.nvim',
+  requires = 'nvim-lua/plenary.nvim',
+
   config = function()
     require('todo-comments').setup {
       keywords = {
@@ -16,6 +20,17 @@ return {
     }
   end,
 }
+
+-- TEST: fix highlights
+-- hi def TodoBgTEST guibg=#cc342b guifg=#ffffff gui=BOLD                                                                                                                                         │        else else                     │││  ┃ 175     print("hi def TodoFg" .. kw .. " guibg=NONE guifg=" .. hex .. " gui=" .. fg_gui)
+-- hi def TodoFgTEST guibg=NONE guifg=#cc342b gui=NONE                                                                                                                                            │      ├  if if not hex then            │││    176     vim.cmd("hi def TodoFg" .. kw .. " guibg=NONE guifg=" .. hex .. " gui=" .. fg_gui)
+-- hi def TodoSignTEST guibg=#ffffff guifg=#cc342b gui=NONE
+--
+-- hi def TodoBgTEST guibg=#db2d20 guifg=#a5a2a2 gui=BOLD                                                                                                                                         │      ├  if if not hex then            │││    176     vim.cmd("hi def TodoFg" .. kw .. " guibg=NONE guifg=" .. hex .. " gui=" .. fg_gui)
+-- hi def TodoFgTEST guibg=NONE guifg=#db2d20 gui=NONE                                                                                                                                            │      └  fg                            │││  ┃ 177
+-- hi def TodoSignTEST guibg=#090300 guifg=#db2d20 gui=NONE
+
+-- lua require('layers/ide/tsitter/todo').config()
 
 -- DEFAULTS:
 -- {

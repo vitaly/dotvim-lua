@@ -36,16 +36,8 @@ return {
   },
 
   -------------------------------------------------------------------------------------------------------------
-  -- TODO
-  {
-    'folke/todo-comments.nvim', -- https://github.com/folke/todo-comments.nvim
-    -- 'vitaly/todo-comments.nvim',
-    requires = 'nvim-lua/plenary.nvim',
-    config = function()
-      require('layers.ide.tsitter.todo').config()
-    end,
-  },
-
+  -- https://github.com/folke/todo-comments.nvim
+  require 'layers.ide.tsitter.todo',
   ----------------------------------------------------------------------------------------------
   -- AUTO PAIRS
   -- not quite treesitter thing, but it uses treesitter, and fails if it's not installed
