@@ -36,10 +36,17 @@ local function setup_keymaps()
 end
 
 return {
-  setup = function()
+
+  'williamboman/mason-lspconfig.nvim', -- https://github.com/williamboman/mason-lspconfig.nvim
+
+  requires = {
+    'williamboman/mason.nvim', -- https://github.com/williamboman/mason.nvim
+    'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
+  },
+
+  _config = function()
     require('mason').setup()
     require('mason-lspconfig').setup { ensure_installed = { 'sumneko_lua', 'jsonls' } }
-
     setup_install_handlers()
     setup_keymaps()
   end,

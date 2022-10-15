@@ -31,24 +31,13 @@ return {
     },
 
     config = function()
-      require('layers.ide.lsp.config').setup()
+      require('layers.ide.lsp.config').config()
     end,
   },
 
   --------------------------------------------------------------------------
   -- MASIN/LSP server autoinstall
-  {
-    'williamboman/mason-lspconfig.nvim', -- https://github.com/williamboman/mason-lspconfig.nvim
-
-    requires = {
-      'williamboman/mason.nvim', -- https://github.com/williamboman/mason.nvim
-      'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
-    },
-
-    config = function()
-      require('layers.ide.lsp.install').setup()
-    end,
-  },
+  _my.plugin('ide.lsp.install', true),
 
   --------------------------------------------------------------------------
   -- LSP Trauble
@@ -56,10 +45,9 @@ return {
     'folke/trouble.nvim', -- https://github.com/folke/trouble.nvim
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
-      require('layers.ide.lsp.trouble').setup()
+      require('layers.ide.lsp.trouble').config()
     end,
   },
-
   --------------------------------------------------------------------------
   -- SIGNATURE
   {

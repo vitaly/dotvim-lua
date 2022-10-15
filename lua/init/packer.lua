@@ -30,10 +30,10 @@ end
 local function PackerRefresh()
   -- print 'refreshing...'
   vim.g.packer_refresh_in_progress = true
-  RELOAD 'layers.'
-  REQUIRE 'init.config'
-  REQUIRE 'init.packer'
-  REQUIRE('init.plugins').install()
+  RELOAD 'init.'
+  require 'init.config'
+  require 'init.packer'
+  require('init.plugins').install()
 end
 
 cmdbang('PackerRefresh', PackerRefresh)

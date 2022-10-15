@@ -39,17 +39,10 @@ packer.reset()
 local use = packer.use
 
 local function layer(name)
-  local config = _my.config[name] or {}
-  if config.disable then
-    return
-  end
-  local data = REQUIRE('layers.' .. name)
-  -- packer can't handle single wrapped plugin
-  if 'table' == type(data) and 1 == #data and 'table' == type(data[1]) then
-    data = data[1]
-  end
-  use(data)
+  use(_my.plugin(name))
 end
+
+RELOAD 'layers.'
 
 -- those are the basic plugins installed during bootstrap
 use { 'wbthomason/packer.nvim', opt = true } -- https://github.com/wbthomason/packer.nvim

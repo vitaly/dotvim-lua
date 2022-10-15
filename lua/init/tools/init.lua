@@ -32,10 +32,30 @@ end
 -- and if you pass `variants`, the engine will be validated against it
 function _my.engine(module, variants)
   local layer = _my.layer(module)
-  local config = _my.config[layer] or error(string.format('missing config for layer %s', layer), vim.log.levels.ERROR)
-  local engine = config[1] or error(string.format('missing engine for layer %s', layer), vim.log.levels.ERROR)
+  local config = _my.config[layer] or {}
+
+  local engine = config[1] or variants[1]
+  if not engine then
+    error 'need to either provide engine config or variants'
+  end
   if variants and not vim.tbl_contains(variants, engine) then
     error(string.format("invalid engine '%s' for layer '%s'. valid engines: '%s'", engine, layer, table.concat(variants, "', '")))
   end
   return require(module .. '.' .. engine)
+end
+
+function _my.plugin(name, reconfigure)
+  local module = string.format('layers.%s', name)
+  local plugin = require(module)
+
+  -- packer can't handle single wrapped plugin
+  if 'table' == type(plugin) and 1 == #plugin and 'table' == type(plugin[1]) then
+    plugin = plugin[1]
+  else
+    if plugin._config then
+      plugin.config = 'require("' .. module .. '")._config()'
+    end
+  end
+
+  return plugin
 end

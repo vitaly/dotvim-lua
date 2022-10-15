@@ -27,6 +27,7 @@ end
 
 local common_options = {
   buftype_exclude = { 'terminal' },
+  filetype_exclude = { 'mason' },
   use_treesitter = true,
   show_current_context = true,
   show_current_context_start = true,
@@ -89,9 +90,17 @@ local function setup_keymaps()
 end
 
 return {
+  -- pack/packer/opt/indent-blankline.nvim/lua/indent_blankline/init.lua
   config = function()
+    -- TODO: use  _my.config
+    vim.g.blankline_spaces = true
+    vim.g.indent_blankline_enabled = true
+
     _my.au.on_colorscheme('blankline_colors', setup_colors)
     configure_blankline()
     setup_keymaps()
+
+    -- require("indent_blankline.commands").disable(true)
+    -- vim.g.indent_blankline_enabled = false
   end,
 }

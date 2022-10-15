@@ -2,7 +2,7 @@
   "Spec Group": {
     "prefix": "desc",
     "body": [
-      "describe('${1:name}', { focused: false}, () => {",
+      "describe('${1:name}', { focus: false}, () => {",
       "\t$0",
       "});"
     ],
@@ -11,7 +11,7 @@
   "Spec Test": {
     "prefix": "it",
     "body": [
-      "it('should ${1:name}', () => {",
+      "it('should ${1:name}', ($2) => {",
       "\t$0",
       "});"
     ],

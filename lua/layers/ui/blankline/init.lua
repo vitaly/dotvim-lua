@@ -6,15 +6,7 @@ return {
   after = {
     'nvim-base16',
   },
-  -- pack/packer/start/indent-blankline.nvim/lua/indent_blankline/init.lua
   config = function()
-    -- TODO: use  _my.config
-    vim.g.blankline_spaces = true
-    vim.g.indent_blankline_enabled = true
-
     require('layers.ui.blankline.config').config()
-
-    -- require("indent_blankline.commands").disable(true)
-    -- vim.g.indent_blankline_enabled = false
   end,
 }

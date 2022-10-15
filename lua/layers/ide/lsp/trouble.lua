@@ -37,7 +37,10 @@ configure = function()
 end
 
 return {
-  setup = function()
+  'folke/trouble.nvim', -- https://github.com/folke/trouble.nvim
+  requires = 'kyazdani42/nvim-web-devicons',
+
+  config = function()
     configure_trouble()
 
     require('which-key').register {

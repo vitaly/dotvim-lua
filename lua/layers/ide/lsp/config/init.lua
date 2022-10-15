@@ -1,7 +1,7 @@
 -- lua/layers/ide/lsp/config/init.lua
 
 return {
-  setup = function()
+  config = function()
     -- requirements config -------------------------------------------
     -- fidget.nvim
     require('fidget').setup {}
