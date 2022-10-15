@@ -31,54 +31,49 @@ packer.init {
 
 packer.reset()
 
--------------------------------------------------------------------------------------------------
--- PACKER PLUGINS -------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------
--- some plugins are combined into 'bundles' called layers.
+local USE = packer.use
 
-local use = packer.use
+_my.reload 'layers.'
 
-local function layer(name)
-  use(_my.layer(name))
+local function LAYER(name)
+  USE(_my.layer(name))
 end
 
-RELOAD 'layers.'
-
 -- those are the basic plugins installed during bootstrap
-use { 'wbthomason/packer.nvim', opt = true } -- https://github.com/wbthomason/packer.nvim
-use 'lewis6991/impatient.nvim' -- https://github.com/lewis6991/impatient.nvim
-use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
+USE { 'wbthomason/packer.nvim', opt = true } -- https://github.com/wbthomason/packer.nvim
+USE 'lewis6991/impatient.nvim' -- https://github.com/lewis6991/impatient.nvim
+USE 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
 
-layer 'base.utils'
-layer 'base.keymaps'
-layer 'base.colors'
+LAYER 'base.utils'
+LAYER 'base.keymaps'
+LAYER 'base.colors'
 
-layer 'filer'
+LAYER 'filer'
 
-layer 'telescope'
-layer 'terminal'
+LAYER 'telescope'
+LAYER 'terminal'
 
-layer 'ide.tsitter'
-layer 'ide.lsp'
-layer 'ide.cmp'
-layer 'ide.format'
-layer 'ide.tagbar'
-layer 'ide.minimap'
+LAYER 'ide.tsitter'
+LAYER 'ide.lsp'
+LAYER 'ide.cmp'
+LAYER 'ide.format'
+LAYER 'ide.tagbar'
+LAYER 'ide.minimap'
 
-layer 'dev.git'
-layer 'dev.colors'
+LAYER 'dev.git'
+LAYER 'dev.colors'
 
-layer 'editor'
-layer 'cursors'
-layer 'focus'
+LAYER 'editor'
+LAYER 'cursors'
+LAYER 'focus'
 
-layer 'ui.statusline'
-layer 'ui.blankline'
+LAYER 'ui.statusline'
+LAYER 'ui.blankline'
 
-layer 'obsidian'
+LAYER 'obsidian'
 
-layer 'misc'
+LAYER 'misc'
 
-layer 'neorg'
+LAYER 'neorg'
 
 return packer
