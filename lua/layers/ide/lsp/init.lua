@@ -37,7 +37,7 @@ return {
 
   --------------------------------------------------------------------------
   -- MASIN/LSP server autoinstall
-  _my.plugin('ide.lsp.install', true),
+  _my.layer 'ide.lsp.install',
 
   --------------------------------------------------------------------------
   -- LSP Trauble

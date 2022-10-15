@@ -39,7 +39,7 @@ packer.reset()
 local use = packer.use
 
 local function layer(name)
-  use(_my.plugin(name))
+  use(_my.layer(name))
 end
 
 RELOAD 'layers.'

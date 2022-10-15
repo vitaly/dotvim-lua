@@ -16,14 +16,19 @@ _my.au = require 'init.tools.au'
 _my.ui = require 'init.tools.ui'
 
 --------------------------------------------------------------------------------
+-- layer name
+-- accepts both NAME and layers.NAME, then returns NAME
+function _my.layer_path(module)
+  return module:match '^layers%.(.+)' or module
+end
+
+--------------------------------------------------------------------------------
 -- LAYERS
--- layer config is in _my.config[layer_name] where name is withouth the 'layers.' prefix
-function _my.layer(module)
-  local layer = module:match 'layers%.(.+)'
-  if layer then
-    layer = layer:match '.*%.(.*)' or layer
-  end
-  return layer or error(string.format('invalid layer module: %s', module))
+
+-- return module name
+-- e.g. for foo.bar.baz will return baz
+function _my.module_name(module)
+  return module:match '.*%.(.*)' or module
 end
 
 -- by convention, for layers that support multiple 'engines', the
@@ -31,20 +36,20 @@ end
 -- this function retrieves it, given module name (from top of the module you can pass `...`)
 -- and if you pass `variants`, the engine will be validated against it
 function _my.engine(module, variants)
-  local layer = _my.layer(module)
-  local config = _my.config[layer] or {}
+  local name = _my.module_name(module)
+  local config = _my.config[name] or {}
 
   local engine = config[1] or variants[1]
   if not engine then
     error 'need to either provide engine config or variants'
   end
   if variants and not vim.tbl_contains(variants, engine) then
-    error(string.format("invalid engine '%s' for layer '%s'. valid engines: '%s'", engine, layer, table.concat(variants, "', '")))
+    error(string.format("invalid engine '%s' for layer '%s'. valid engines: '%s'", engine, name, table.concat(variants, "', '")))
   end
   return require(module .. '.' .. engine)
 end
 
-function _my.plugin(name, reconfigure)
+function _my.layer(name)
   local module = string.format('layers.%s', name)
   local plugin = require(module)
 
