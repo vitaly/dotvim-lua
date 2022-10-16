@@ -2,9 +2,13 @@
 
 -----------------------------------------------------------------------------------------
 -- TREESITTER-CONTEXT config ------------------------------------------------------------
+-- this plugin shows a bit of context at the top of the file,
+-- e.g. what class / function we are currently in.
 -----------------------------------------------------------------------------------------
--- TODO: review
 return {
+
+  'romgrk/nvim-treesitter-context', -- https://github.com/romgrk/nvim-treesitter-context
+
   config = function()
     require('treesitter-context').setup {
       enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
