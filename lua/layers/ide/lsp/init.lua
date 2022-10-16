@@ -13,4 +13,8 @@ return {
   -- LIGHTBULB
   -- shows a lightbulb in the gutter when there is an action to fix a diagnostic
   _my.layer 'ide.lsp.lightbulb',
+
+  -- use lsp for folding
+  -- NOTE: using tsitter folding instead
+  -- _my.layer 'ide.lsp.folding',
 }

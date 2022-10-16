@@ -16,13 +16,6 @@ return {
     'j-hui/fidget.nvim', -- https://github.com/j-hui/fidget.nvim
 
     --------------------------------------------------------------------------
-    -- FOLDING
-    { -- { 'vitaly/folding-nvim' },
-      'pierreglaser/folding-nvim', -- https://github.com/pierreglaser/folding-nvim
-      branch = 'nvim-nightly',
-    },
-
-    --------------------------------------------------------------------------
     -- COLORS
     -- add missing theme highlights
     'folke/lsp-colors.nvim', -- https://github.com/folke/lsp-colors.nvim
@@ -32,8 +25,6 @@ return {
     -- requirements config -------------------------------------------
     -- fidget.nvim
     require('fidget').setup {}
-    -- folding-nvim
-    _my.au.on_lsp_attach('lsp_folding', require('folding').on_attach)
     -- lsp-colors
     require('lsp-colors').setup()
 
