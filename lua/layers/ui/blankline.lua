@@ -1,3 +1,5 @@
+-- lua/layers/ui/blankline.lua
+
 -- delete all global blankline configuration so that
 -- this file can be reloaded
 -- otherwise lots of variables are getting set by blankline
@@ -27,7 +29,7 @@ end
 
 local common_options = {
   buftype_exclude = { 'terminal' },
-  filetype_exclude = { 'mason', 'packer', 'filetype=TelescopePrompt' },
+  filetype_exclude = { 'mason', 'packer', 'filetype=TelescopePrompt', 'help' },
   use_treesitter = true,
   show_current_context = true,
   show_current_context_start = true,
@@ -90,8 +92,14 @@ local function setup_keymaps()
 end
 
 return {
+  'lukas-reineke/indent-blankline.nvim', -- https://github.com/lukas-reineke/indent-blankline.nvim
+
+  after = {
+    'nvim-base16',
+  },
+
   -- pack/packer/opt/indent-blankline.nvim/lua/indent_blankline/init.lua
-  config = function()
+  _config = function()
     -- TODO: use  _my.config
     vim.g.blankline_spaces = true
     vim.g.indent_blankline_enabled = true
