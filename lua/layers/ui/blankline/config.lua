@@ -27,7 +27,7 @@ end
 
 local common_options = {
   buftype_exclude = { 'terminal' },
-  filetype_exclude = { 'mason' },
+  filetype_exclude = { 'mason', 'packer', 'filetype=TelescopePrompt' },
   use_treesitter = true,
   show_current_context = true,
   show_current_context_start = true,

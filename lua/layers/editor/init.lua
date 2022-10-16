@@ -149,7 +149,9 @@ return {
 
   ----------------------------------------------------------------------------------------------
   -- FOLDLINE styling
-  'jrudess/vim-foldtext', -- https://github.com/jrudess/vim-foldtext
+  -- FIXME: this thing breaks telescope popups somehow
+  -- TBD: check again in few versions of telescope/nvim
+  -- 'jrudess/vim-foldtext', -- https://github.com/jrudess/vim-foldtext
 
   ----------------------------------------------------------------------------------------------
   -- EDITORCONFIG

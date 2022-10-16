@@ -45,6 +45,12 @@ return {
           ['m'] = { 'move', config = { show_path = 'relative' } },
           ['<esc>'] = 'close_window',
         },
+        popup = {
+          size = {
+            width = '40',
+          },
+          position = '50%',
+        },
       },
     }
   end,
