@@ -9,8 +9,8 @@ return {
   -- SIGNATURE
   _my.layer 'ide.lsp.signature',
   -- LSP Dressing (UI improvements)
-  _my.layer 'ide.lsp.dressing', -- SIGNATURE
+  _my.layer 'ide.lsp.dressing',
   -- LIGHTBULB
   -- shows a lightbulb in the gutter when there is an action to fix a diagnostic
-  _my.layer 'ide.lsp.lightbulb', -- SIGNATURE
+  _my.layer 'ide.lsp.lightbulb',
 }

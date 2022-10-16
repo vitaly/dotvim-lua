@@ -2,7 +2,7 @@
 
 -- shared config defaults
 local defaults = {
-  capabilities = require('layers.ide.cmp.config').capabilities(),
+  capabilities = require('layers.ide.cmp.config').capabilities,
 }
 
 -- load server config from a module
