@@ -27,10 +27,26 @@ elseif '' == vim.fn.glob(_my.packer.COMPILED) then
   require('init.plugins').compile()
 end
 
-local function PackerRefresh()
-  -- print 'refreshing...'
-  vim.g.packer_refresh_in_progress = true
+local function PackerRefresh(path)
+  print 'refreshing...'
   RELOAD 'init.'
+  vim.g.packer_refresh_in_progress = true
+
+  if path and '' ~= path then
+    local rq = string.gsub(string.gsub(path, '%.lua$', '', 1), '/', '.')
+
+    local mod = require(rq)
+
+    PRINT { rq, vim.tbl_keys(mod) }
+
+    if mod.setuo then
+      mod.setup()
+    end
+    if mod.config then
+      mod.config()
+    end
+  end
+
   require 'init.config'
   require 'init.packer'
   require('init.plugins').install()
@@ -38,12 +54,16 @@ end
 
 cmdbang('PackerRefresh', PackerRefresh)
 
-cmdbang('PackerAutoRefresh', function()
+vim.api.nvim_create_user_command('PackerAutoRefresh', function(args)
   if vim.g.packer_refresh_in_progress or vim.g.packer_refresh_disabled or vim.b.format_in_progress then
     return
   end
-  PackerRefresh()
-end)
+
+  PackerRefresh(vim.fn.expand(args.args))
+end, {
+  nargs = '?',
+  force = true,
+})
 
 vim.api.nvim_create_user_command('Reconfigure', function(args)
   PRINT { 'reconfigure', args.args }
@@ -64,7 +84,7 @@ end, {
 vim.cmd [[
   augroup packer_plugins
     autocmd!
-    autocmd BufWritePost */init/plugins.lua,*/layers/*.lua PackerAutoRefresh
+    autocmd BufWritePost */init/plugins.lua,*/layers/*.lua PackerAutoRefresh <afile>
     autocmd User PackerComplete PackerCompile
     autocmd User PackerCompileDone checktime
     autocmd User PackerCompileDone let g:packer_refresh_in_progress = v:false
@@ -79,7 +99,7 @@ local refresh_toggle = require('lib.toggle').toggler 'g:packer_refresh_disabled'
 
 require('which-key').register {
   ['<leader>'] = {
-    r = { '<cmd>PackerRefresh<cr>', 'Refresh Packer' },
+    r = { PackerRefresh, 'Refresh Packer' },
     ap = {
       name = 'Packer',
 
