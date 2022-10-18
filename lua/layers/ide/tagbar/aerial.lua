@@ -9,7 +9,7 @@ return {
 
   config = function()
     -- local side = _my.config.tagbar.side or 'right'
-    local side = 'float'
+    local side = 'left'
 
     require('aerial').setup {
       layout = {

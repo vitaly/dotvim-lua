@@ -5,6 +5,7 @@ return {
     require('lsp_signature').setup {
       bind = true,
       floating_window = true,
+      floating_window_above_cur_line = false,
       hint_enable = false,
       -- hint_prefix = 'ℹ️',
       handler_opts = {

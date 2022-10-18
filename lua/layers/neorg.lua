@@ -1,4 +1,18 @@
+-- lua/layers/neorg.lua
+
 return {
+  'nvim-neorg/neorg', -- https://github.com/nvim-neorg/neorg
+  -- branch = 'unstable',
+  branch = 'main',
+
+  after = { 'nvim-treesitter', 'telescope.nvim' },
+
+  requires = {
+    'nvim-neorg/neorg-telescope',
+  },
+
+  run = ':Neorg sync-parsers',
+
   config = function()
     require('neorg').setup {
       lazy_loading = true,
@@ -20,7 +34,8 @@ return {
         -- CONCEALER
         ---------------------------------------------------------------------------------
         ['core.norg.concealer'] = {
-          config = { -- Note that this table is optional and doesn't need to be provided
+          config = {
+            -- icon_preset = 'diamond',
             icons = {
               todo = {
                 undone = {
@@ -56,6 +71,7 @@ return {
 
         ['core.keybinds'] = {
           config = {
+            ---@diagnostic disable-next-line: unused-local
             hook = function(keybinds)
               -- here Neorg already started
               -- so we can remove the start mapping and replace it with GLOBAL neorg menu

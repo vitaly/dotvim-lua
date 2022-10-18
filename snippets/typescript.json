@@ -2,7 +2,7 @@
   "Spec Group": {
     "prefix": "desc",
     "body": [
-      "describe('${1:name}', { focus: false}, () => {",
+      "describe('${1:name}', () => {",
       "\t$0",
       "});"
     ],
