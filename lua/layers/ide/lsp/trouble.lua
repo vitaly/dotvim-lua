@@ -11,10 +11,24 @@ local configure_trouble = function()
   require('trouble').setup(config)
 end
 
+local DOCUMENT = 'document_diagnostics'
+local WORKSPACE = 'workspace_diagnostics'
+local QUICKFIX = 'quickfix'
+local REFERENCES = 'lsp_references'
+local LOCLIST = 'loclist'
+
 ------------------------------------------
 -- toggle for diagnostics mode
 vim.g.trouble_mode = vim.g.trouble_mode or 'document_diagnostics'
-local mode_toggle = toggle.toggler('g:trouble_mode', { 'document_diagnostics', 'workspace_diagnostics', 'quickfix', 'lsp_references', 'loclist' }, configure_trouble, { debug = true })
+local mode_toggle = toggle.toggler('g:trouble_mode', { DOCUMENT, WORKSPACE, QUICKFIX, REFERENCES, LOCLIST }, configure_trouble, { debug = true })
+
+--- @param value string toggle value to set
+local function setter(value)
+  return function()
+    vim.g.trouble_mode = value
+    configure_trouble()
+  end
+end
 
 ------------------------------------------
 -- toggle for autoopen
@@ -50,7 +64,12 @@ return {
         name = 'Trouble',
         T = { '<cmd>TroubleToggle<cr>', 'Trouble' },
         a = { auto_open_toggle, 'Autoopen' },
-        m = { mode_toggle, 'mode' },
+        t = { mode_toggle, 'cycle mode' },
+        m = {
+          name = 'Mode',
+          d = { setter(DOCUMENT), 'Document Diagnostic' },
+          w = { setter(WORKSPACE), 'Workspace Diagnostic' },
+        },
       },
     }
   end,

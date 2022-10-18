@@ -37,13 +37,17 @@ local function PackerRefresh(path)
 
     local mod = require(rq)
 
-    PRINT { rq, vim.tbl_keys(mod) }
+    -- PRINT { rq, vim.tbl_keys(mod) }
 
-    if mod.setuo then
-      mod.setup()
+    local setup = mod.setup
+    if setuo then
+      print(rq .. '->setup')
+      setup()
     end
-    if mod.config then
-      mod.config()
+    local config = mod._config or mod.config
+    if config then
+      print(rq .. '->config')
+      config()
     end
   end
 

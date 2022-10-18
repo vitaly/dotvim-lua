@@ -70,6 +70,10 @@ local function set(opts, scope, key, state)
   end
 end
 
+---@param var string variable, e.g. 'g:foo', or 'b:bar'
+---@param states table list of states
+---@param cb function callback to call on state changes]
+---@param opts table options
 function M.toggle(var, states, cb_opts, opts)
   states = states or { false, true }
   local callback
@@ -105,6 +109,12 @@ function M.toggle(var, states, cb_opts, opts)
   return state
 end
 
+-- TODO: add setter from outside
+
+---@param var string variable, e.g. 'g:foo', or 'b:bar'
+---@param states table list of states
+---@param cb function callback to call on state changes]
+---@param opts table options
 function M.toggler(...)
   local args = { ... }
   return function()
