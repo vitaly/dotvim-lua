@@ -15,15 +15,11 @@ end
 
 local function setup_colors()
   local colors = require('base16-colorscheme').colors
-  for i, n in pairs { '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' } do
-    -- print(string.format([[hi IndentBlanklineIndent%d guibg=none guifg=%s gui=nocombine]], i, colors['base0' .. n]))
-    vim.cmd(string.format([[hi IndentBlanklineIndent%d guibg=none guifg=%s gui=nocombine]], i, colors['base0' .. n]))
-  end
-
-  -- for i, n in pairs { '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' } do
-  for i, n in pairs { '0', '1', '2', '3', '4', '5' } do
-    -- print(string.format([[hi IndentBlanklineSpace%d guibg=%s guifg=none gui=nocombine]], i, colors['base0' .. n]))
-    vim.cmd(string.format([[hi IndentBlanklineSpace%d guibg=%s guifg=none gui=nocombine]], i, colors['base0' .. n]))
+  for _, n in pairs { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' } do
+    -- print(string.format([[hi IndentBlanklineFg%s guibg=none guifg=%s gui=nocombine]], n, colors['base0' .. n]))
+    vim.cmd(string.format([[hi IndentBlanklineFg%s guibg=none guifg=%s gui=nocombine]], n, colors['base0' .. n]))
+    -- print(string.format([[hi IndentBlanklineBg%s guibg=%s guifg=none gui=nocombine]], n, colors['base0' .. n]))
+    vim.cmd(string.format([[hi IndentBlanklineBg%s guibg=%s guifg=none gui=nocombine]], n, colors['base0' .. n]))
   end
 end
 
@@ -39,14 +35,22 @@ local line_options = {
   char = '▏',
   -- char = '┊',
   char_highlight_list = {
-    'IndentBlanklineIndent1',
-    'IndentBlanklineIndent2',
-    'IndentBlanklineIndent3',
-    'IndentBlanklineIndent4',
-    'IndentBlanklineIndent5',
-    'IndentBlanklineIndent6',
-    'IndentBlanklineIndent7',
-    'IndentBlanklineIndent8',
+    -- 'IndentBlanklineFg0',
+    'IndentBlanklineFg1',
+    'IndentBlanklineFg2',
+    'IndentBlanklineFg3',
+    -- 'IndentBlanklineFg4',
+    -- 'IndentBlanklineFg5',
+    -- 'IndentBlanklineFg6',
+    -- 'IndentBlanklineFg7',
+    -- 'IndentBlanklineFg8',
+    -- 'IndentBlanklineFg9',
+    -- 'IndentBlanklineFgA',
+    -- 'IndentBlanklineFgB',
+    -- 'IndentBlanklineFgC',
+    -- 'IndentBlanklineFgD',
+    -- 'IndentBlanklineFgE',
+    -- 'IndentBlanklineFgF',
   },
   space_char_highlight_list = {},
 }
@@ -55,12 +59,22 @@ local space_options = {
   char = '',
   space_char_blankline = ' ',
   space_char_highlight_list = {
-    'IndentBlanklineSpace1',
-    'IndentBlanklineSpace2',
-    'IndentBlanklineSpace3',
-    -- 'IndentBlanklineSpace4',
-    -- 'IndentBlanklineSpace5',
-    -- 'IndentBlanklineSpace6',
+    -- 'IndentBlanklineBg0',
+    'IndentBlanklineBg1',
+    'IndentBlanklineBg2',
+    'IndentBlanklineBg3',
+    -- 'IndentBlanklineBg4',
+    -- 'IndentBlanklineBg5',
+    -- 'IndentBlanklineBg6',
+    -- 'IndentBlanklineBg7',
+    -- 'IndentBlanklineBg8',
+    -- 'IndentBlanklineBg9',
+    -- 'IndentBlanklineBgA',
+    -- 'IndentBlanklineBgB',
+    -- 'IndentBlanklineBgC',
+    -- 'IndentBlanklineBgD',
+    -- 'IndentBlanklineBgE',
+    -- 'IndentBlanklineBgF',
   },
 }
 
