@@ -15,6 +15,10 @@ end
 
 local function setup_colors()
   local colors = require('base16-colorscheme').colors
+  if not colors then
+    -- 'colors' only available when a base16 colorscheme is set in vim
+    return
+  end
   for _, n in pairs { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' } do
     -- print(string.format([[hi IndentBlanklineFg%s guibg=none guifg=%s gui=nocombine]], n, colors['base0' .. n]))
     vim.cmd(string.format([[hi IndentBlanklineFg%s guibg=none guifg=%s gui=nocombine]], n, colors['base0' .. n]))
