@@ -40,7 +40,7 @@ local function PackerRefresh(path)
     -- PRINT { rq, vim.tbl_keys(mod) }
 
     local setup = mod.setup
-    if setuo then
+    if setup then
       print(rq .. '->setup')
       setup()
     end

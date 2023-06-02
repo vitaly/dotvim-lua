@@ -1,6 +1,6 @@
 ## requirements
 
-- requires `gcc-11` to be installed
+- requires `gcc-12` to be installed
 
 ## packer
 

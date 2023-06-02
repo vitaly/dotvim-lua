@@ -16,7 +16,9 @@ return {
         default_direction = side,
       },
     }
-    _my.au.on_lsp_attach('aerial', require('aerial').on_attach)
+
+    -- FIXME: seems not to be needed on latest
+    -- _my.au.on_lsp_attach('aerial', require('aerial').on_attach)
 
     require('telescope').load_extension 'aerial'
 
