@@ -22,24 +22,25 @@ return {
         ---------------------------------------------------------------------------------
         -- SETUP WORKSPACE
         ---------------------------------------------------------------------------------
-        ['core.norg.dirman'] = {
+        ['core.dirman'] = {
           config = {
             workspaces = {
-              main = '~/Documents/neorg/gtd',
+              main = '~/Documents/neorg',
             },
+            default_workspace = 'main',
           },
         },
 
         ---------------------------------------------------------------------------------
         -- CONCEALER
         ---------------------------------------------------------------------------------
-        ['core.norg.concealer'] = {
+        ['core.concealer'] = {
           config = {
             -- icon_preset = 'diamond',
             icons = {
               todo = {
                 undone = {
-                  enabled = false,
+                  icon = ' ',
                 },
               },
             },
@@ -49,7 +50,7 @@ return {
         ---------------------------------------------------------------------------------
         -- COMPLETION
         ---------------------------------------------------------------------------------
-        ['core.norg.completion'] = {
+        ['core.completion'] = {
           config = { engine = 'nvim-cmp' },
         },
 
@@ -60,14 +61,14 @@ return {
         ---------------------------------------------------------------------------------
         -- GTD
         ---------------------------------------------------------------------------------
-        ['core.gtd.base'] = {
-          config = {
-            workspace = 'main',
-            default_lists = {
-              inbox = 'in.norg',
-            },
-          },
-        },
+        -- ['core.gtd.base'] = {
+        --   config = {
+        --     workspace = 'main',
+        --     default_lists = {
+        --       inbox = 'in.norg',
+        --     },
+        --   },
+        -- },
 
         ['core.keybinds'] = {
           config = {
@@ -75,7 +76,7 @@ return {
             hook = function(keybinds)
               -- here Neorg already started
               -- so we can remove the start mapping and replace it with GLOBAL neorg menu
-              vim.cmd 'silent! unmap <leader>o'
+              -- vim.cmd 'silent! unmap <leader>o'
 
               --            keybinds.unmap('norg', 'i', '<C-s>')
               --            keybinds.remap_key('norg', 'i', '<C-l>', '<C-s>')
@@ -87,7 +88,7 @@ return {
 
               --              c = { '<cmd>Neorg keybind all core.gtd.base.capture<cr>', 'Capture' },
               --              v = { '<cmd>Neorg keybind all core.gtd.base.views<cr>', 'Views' },
-              --              n = { '<cmd>Neorg keybind all core.norg.dirman.new.note<cr>', 'New Note' },
+              --              n = { '<cmd>Neorg keybind all core.dirman.new.note<cr>', 'New Note' },
               --            }, -- /<leader>o
               --            } -- /register global
 
@@ -125,10 +126,7 @@ return {
       require('which-key').register {
         ['<leader>o'] = {
           function()
-            vim.cmd [[
-              unmap <leader>o
-              NeorgStart
-            ]]
+            vim.cmd [[ e ~/Documents/neorg/index.norg ]]
           end,
           'Neorg Start',
         },
