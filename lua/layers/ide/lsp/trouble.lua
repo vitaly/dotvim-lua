@@ -54,6 +54,7 @@ return {
   'folke/trouble.nvim', -- https://github.com/folke/trouble.nvim
   requires = 'kyazdani42/nvim-web-devicons',
 
+  -- using `_config` becase we need `configure_trouble` from the scope
   _config = function()
     configure_trouble()
 

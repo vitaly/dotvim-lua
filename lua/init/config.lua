@@ -23,9 +23,9 @@ _my.config = vim.tbl_deep_extend('keep', _my.config or {}, {
     -- 'incline',
   },
 
-  sumneko_lua = {
+  lua = {
     -- whether to pass whole runtime path to sumneko
-    full_library = false,
+    ls_full_library = false,
   },
 
   obsidian = {

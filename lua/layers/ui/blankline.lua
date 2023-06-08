@@ -117,6 +117,8 @@ return {
   },
 
   -- pack/packer/opt/indent-blankline.nvim/lua/indent_blankline/init.lua
+
+  -- using `_config` becase we need `configure_blankline` from the scope
   _config = function()
     -- TODO: use  _my.config
     vim.g.blankline_spaces = true

@@ -57,6 +57,11 @@ function _my.layer(name)
   if 'table' == type(plugin) and 1 == #plugin and 'table' == type(plugin[1]) then
     plugin = plugin[1]
   else
+    -- if `config` uses anything from the file scope, it will fail
+    -- in packer, since packer will only serialize `config` as is.
+    -- if scope needs to be used, we can add `_config` instead
+    -- in which case we set `config = 'require(module)._config()'`
+    -- so that it will load the module and call `_config` which can use the scope
     if plugin._config then
       plugin.config = 'require("' .. module .. '")._config()'
     end

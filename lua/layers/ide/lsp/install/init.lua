@@ -18,7 +18,7 @@ local function setup_install_handlers()
       require('lspconfig')[server_name].setup(defaults)
     end,
 
-    ['sumneko_lua'] = server 'sumneko_lua',
+    ['lua_ls'] = server 'lua_ls',
     ['jsonls'] = server 'jsonls',
   }
 end
@@ -36,7 +36,6 @@ local function setup_keymaps()
 end
 
 return {
-
   'williamboman/mason-lspconfig.nvim', -- https://github.com/williamboman/mason-lspconfig.nvim
 
   requires = {
@@ -44,9 +43,10 @@ return {
     'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
   },
 
+  -- using `_config` becase we need `setup_install_handlers` from the scope
   _config = function()
     require('mason').setup()
-    require('mason-lspconfig').setup { ensure_installed = { 'sumneko_lua', 'jsonls' } }
+    require('mason-lspconfig').setup { ensure_installed = { 'lua_ls', 'jsonls' } }
     setup_install_handlers()
     setup_keymaps()
   end,

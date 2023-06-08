@@ -4,11 +4,12 @@ return {
       [vim.fn.expand '$VIMRUNTIME/lua'] = true,
       [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
     }
-    if _my.config.sumneko_lua.full_library then
+
+    if _my.config.lua.ls_full_library then
       library = vim.api.nvim_get_runtime_file('', true)
     end
 
-    require('lspconfig').sumneko_lua.setup(vim.tbl_deep_extend('force', defaults, {
+    require('lspconfig').lua_ls.setup(vim.tbl_deep_extend('force', defaults, {
 
       -- cmd = { 'lua-language-server', '--loglevel=trace' },
       settings = {
