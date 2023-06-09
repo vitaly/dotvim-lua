@@ -1,4 +1,3 @@
-<!-- lua/init/README.md -->
 
 ## requirements
 
@@ -12,9 +11,3 @@ which can be loaded next time without the packer.
 
 
 ## installation
-
-<!-- lua/layers/ide/lsp/README.md -->
-### LSP
-
-LSP servers are managed with Mason (`<leader>amm`)
-
