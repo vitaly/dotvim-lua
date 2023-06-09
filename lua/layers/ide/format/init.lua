@@ -50,8 +50,9 @@ return {
         --   exclude = { 'exclude' },
         -- },
 
+        -- TODO: move upstack. pass opts from top init.lua
         ruby = {
-          async = true,
+          async = false,
         },
 
         lua = {

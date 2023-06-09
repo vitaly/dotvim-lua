@@ -4,7 +4,7 @@ return {
   _my.layer 'ide.lsp.core',
   -- MASIN/LSP server autoinstall
   _my.layer 'ide.lsp.install',
-  -- LSP Trauble
+  -- LSP Trouble
   _my.layer 'ide.lsp.trouble',
   -- SIGNATURE
   _my.layer 'ide.lsp.signature',

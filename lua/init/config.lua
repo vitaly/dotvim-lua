@@ -3,6 +3,7 @@
 -- transient user changes
 _my.config = vim.tbl_deep_extend('keep', _my.config or {}, {
 
+  -- TODO: move upstack. pass opts from top init.lua
   filer = {
     -- 'nvimtree',
     'neotree',
