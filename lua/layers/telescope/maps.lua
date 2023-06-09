@@ -2,6 +2,8 @@
 
 local builtin = require 'telescope.builtin'
 
+-- which kinds to ignore when displaying document symbols
+-- this is a 'per filetype' setting
 local ignore_symbols = {
   lua = { 'variable', 'string', 'array' },
   typescript = { 'property' },

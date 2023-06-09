@@ -25,7 +25,7 @@ _my.config = vim.tbl_deep_extend('keep', _my.config or {}, {
   },
 
   lua = {
-    -- whether to pass whole runtime path to sumneko
+    -- whether to pass whole runtime path to lua_ls
     ls_full_library = false,
   },
 

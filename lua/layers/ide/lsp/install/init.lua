@@ -15,11 +15,13 @@ end
 local function setup_install_handlers()
   require('mason-lspconfig').setup_handlers {
     function(server_name) -- default handler (optional)
+      -- PRINT { 'MASON-LSP', server_name }
       require('lspconfig')[server_name].setup(defaults)
     end,
 
-    ['lua_ls'] = server 'lua_ls',
-    ['jsonls'] = server 'jsonls',
+    lua_ls = server 'lua_ls',
+    jsonls = server 'jsonls',
+    solargraph = server 'solargraph',
   }
 end
 
@@ -46,7 +48,7 @@ return {
   -- using `_config` becase we need `setup_install_handlers` from the scope
   _config = function()
     require('mason').setup()
-    require('mason-lspconfig').setup { ensure_installed = { 'lua_ls', 'jsonls' } }
+    require('mason-lspconfig').setup { ensure_installed = { 'lua_ls', 'jsonls', 'tsserver', 'solargraph' } }
     setup_install_handlers()
     setup_keymaps()
   end,

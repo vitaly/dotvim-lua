@@ -14,14 +14,10 @@ return {
       -- debug = true,
       sources = {
         require('null-ls').builtins.formatting.prettier,
-
         require('null-ls').builtins.formatting.stylua,
         require('null-ls').builtins.formatting.rubocop,
-
         require('null-ls').builtins.formatting.shfmt,
-
         require('null-ls').builtins.diagnostics.rubocop,
-
         require('null-ls').builtins.diagnostics.shellcheck,
 
         -- require('null-ls').builtins.completion.spell,
@@ -52,13 +48,13 @@ return {
 
         -- TODO: move upstack. pass opts from top init.lua
         ruby = {
-          async = false,
+          async = true,
         },
 
         lua = {
           cycle = {
             'null-ls',
-            'sumneko_lua',
+            'lua_ls',
           },
         },
 

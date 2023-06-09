@@ -44,7 +44,7 @@ return {
           name = 'AutoFormat',
           a = { format_toggle, 'Autoformat' },
           f = { format_toggle_filetype, 'Filetype' },
-          c = { format_cycle, 'Format Client' },
+          c = { format_cycle, 'Format Next Client' },
         },
 
         d = {

@@ -20,7 +20,7 @@ return {
 -- Showing defaults
 -- require('nvim-lightbulb').setup({
 --   -- LSP client names to ignore
---   -- Example: {"sumneko_lua", "null-ls"}
+--   -- Example: {"lua_ls", "null-ls"}
 --   ignore = {},
 --   sign = {
 --     enabled = true,

@@ -29,7 +29,11 @@ return {
     require('lsp-colors').setup()
 
     ------------------------------------------------------------------
+    -- servers config ------------------------------------------------
 
+    -- require('lspconfig').ruby_ls.setup{}
+
+    ------------------------------------------------------------------
     require 'layers.ide.lsp.maps'
 
     require 'layers.ide.lsp.core.diagnostics'
