@@ -122,7 +122,7 @@ return {
   _config = function()
     -- TODO: use  _my.config
     vim.g.blankline_spaces = true
-    vim.g.indent_blankline_enabled = true
+    vim.g.indent_blankline_enabled = false
 
     _my.au.on_colorscheme('blankline_colors', setup_colors)
     configure_blankline()
