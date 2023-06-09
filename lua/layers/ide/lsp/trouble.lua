@@ -36,7 +36,7 @@ local auto_open_toggle = toggle.toggler('g:trouble_autoopen', false, configure_t
 
 configure = function()
   if nil == vim.g.trouble_autoopen then
-    vim.g.trouble_autoopen = true
+    vim.g.trouble_autoopen = false -- TODO: get defaults from global config. make it filetype scpecific
   end
   return {
     mode = vim.g.trouble_mode,
