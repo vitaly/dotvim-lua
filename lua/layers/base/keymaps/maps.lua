@@ -22,6 +22,24 @@ return {
       redraw()
     end
 
+    -- add diffmode keymaps
+    local function diff_mode()
+      -- PRINT { 'DIFF MODE ', vim.o.diff }
+      vim.api.nvim_buf_set_keymap(0, 'n', ',dp', '<cmd>diffput<cr>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', ',dg', '<cmd>diffget<cr>', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', ',dn', ']c', { noremap = true, silent = true })
+      vim.api.nvim_buf_set_keymap(0, 'n', ',dN', '[c', { noremap = true, silent = true })
+      if not vim.o.diff then
+        vim.api.nvim_buf_del_keymap(0, 'n', ',dp')
+        vim.api.nvim_buf_del_keymap(0, 'n', ',dg')
+        vim.api.nvim_buf_del_keymap(0, 'n', ',dn')
+        vim.api.nvim_buf_del_keymap(0, 'n', ',dN')
+      end
+    end
+
+    _my.au.command('OptionSet', { group = 'diffmode_maps', pattern = 'diff', callback = diff_mode })
+    diff_mode() -- need to call it on startup becase OptionSet isn't called when vim starts in diffmode
+
     -- n keymap --------------------------------------------------------------------
     require('which-key').register({
 
