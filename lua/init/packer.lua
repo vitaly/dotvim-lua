@@ -27,8 +27,11 @@ elseif '' == vim.fn.glob(_my.packer.COMPILED) then
   require('init.plugins').compile()
 end
 
+local log = _my.log
+
 local function PackerRefresh(path)
-  print 'refreshing...'
+  log.info 'Refreshing...'
+
   RELOAD 'init.'
   vim.g.packer_refresh_in_progress = true
 
@@ -41,12 +44,12 @@ local function PackerRefresh(path)
 
     local setup = mod.setup
     if setup then
-      print(rq .. '->setup')
+      log.debug(rq .. '->setup')
       setup()
     end
     local config = mod._config or mod.config
     if config then
-      print(rq .. '->config')
+      log.debug(rq .. '->config')
       config()
     end
   end
