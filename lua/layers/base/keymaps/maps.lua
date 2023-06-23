@@ -48,8 +48,6 @@ return {
 
         ['<leader>'] = { '<cmd>w<cr>', 'Save' },
 
-        m = { '<cmd>messages<cr>', 'Messages' },
-
         e = {
           name = 'Eval',
         },
@@ -62,7 +60,8 @@ return {
         Q = { '<cmd>qa!<cr>', 'quit all!' },
         x = { '<cmd>q<cr>', 'close window' },
 
-        m = { '<cmd>messages clear<cr>', 'Clear Messages' },
+        m = { '<cmd>messages<cr>', 'Messages' },
+        M = { '<cmd>messages clear<cr>', 'Clear Messages' },
 
         n = { '<cmd>cn<cr>', 'Next' },
         p = { '<cmd>cp<cr>', 'Prev' },
@@ -128,7 +127,7 @@ return {
         },
 
         s = {
-          name = 'Show',
+          name = 'Status',
         },
 
         t = {
