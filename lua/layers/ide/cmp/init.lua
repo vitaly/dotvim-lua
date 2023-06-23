@@ -1,6 +1,7 @@
 -- lua/layers/ide/cmp/init.lua
 
 return {
+
   {
     'hrsh7th/nvim-cmp', -- https://github.com/hrsh7th/nvim-cmp
 
@@ -42,22 +43,7 @@ return {
     end,
   },
 
-  {
-    'github/copilot.vim', -- https://github.com/github/copilot.vim
-
-    setup = function()
-      vim.g.copilot_no_tab_map = 1
-      vim.g.copilot_assume_mapped = 1
-    end,
-
-    config = function()
-      require('which-key').register {
-        ['<leader>'] = {
-          sg = { '<cmd>Copilot status<cr>', 'Github Copilot' },
-        },
-      }
-    end,
-  },
+  _my.layer 'ide.cmp.copilot',
 }
 
 -- return {
