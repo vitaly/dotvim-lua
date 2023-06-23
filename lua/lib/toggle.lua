@@ -30,7 +30,7 @@ local function parse_var(var)
       return var, scope, key
     end
   end
-  return 'state'
+  error('invalid toggle variable: ' .. vim.inspect(var))
 end
 
 local function get(_, scope, key, var)
@@ -66,7 +66,7 @@ local function set(opts, scope, key, state)
   elseif 'o' == scope then
     vim.o[key] = state
   else
-    _debug(opts, 'internal state')
+    error('unexpected invalid toggle variable scope: ' .. vim.inspect(scope))
   end
 
   if not opts.silent then
@@ -118,33 +118,56 @@ end
 ---@param states table|nil list of states
 ---@param cb_opts function|table|nil optional callback to call on state changes or opts (see next param)
 ---@param opts table|nil options
-function M.toggler(...)
-  local args = { ... }
+function M.toggler(var, states, cb_opts, opts)
   return function()
-    M.toggle(unpack(args))
+    M.toggle(var, states, cb_opts, opts)
   end
 end
 
 function M._test()
+  -- TEST  that wrong current state is used
+  vim.g.toggle_test = 3
+  M.toggle('g:toggle_test', { 1, 2, 3 })
+  assert(vim.g.toggle_test == 1)
+
+  vim.g.toggle_test = 1
+  M.toggle('g:toggle_test', { 1, 2, 3 })
+  assert(vim.g.toggle_test == 2)
+
+  vim.g.toggle_test = 2
+  M.toggle('g:toggle_test', { 1, 2, 3 })
+  assert(vim.g.toggle_test == 3)
+
+  -- TEST  that missing state var is treated like first state
+  vim.g.toggle_test = nil
+  M.toggle('g:toggle_test', { 1, 2, 3 })
+  assert(vim.g.toggle_test == 2)
+
+  -- TEST that default states is { false, true}
+  vim.g.toggle_test = nil
+  M.toggle 'g:toggle_test'
+  assert(vim.g.toggle_test == true)
   vim.g.toggle_test = 7
-
   M.toggle 'g:toggle_test'
-  assert(true == vim.g.toggle_test)
-
+  assert(vim.g.toggle_test == true)
+  vim.g.toggle_test = false
   M.toggle 'g:toggle_test'
-  assert(false == vim.g.toggle_test)
+  assert(vim.g.toggle_test == true)
+  vim.g.toggle_test = true
+  M.toggle 'g:toggle_test'
+  assert(vim.g.toggle_test == false)
 
+  -- test that states can have mixed types
   vim.b.toggle_test = 1
   assert('bar' == M.toggle('b:toggle_test', { 'foo', 1, 'bar' }))
 
-  assert(2 == M.toggle(nil, { 1, 2, 3 }))
+  -- test that state is passed to callback
   local ret
-  M.toggle(3, { 1, 2, 3 }, function(res)
+  vim.g.toggle_test = 3
+  M.toggle('g:toggle_test', { 1, 2, 3 }, function(res)
     ret = res
-  end, { debug = false })
+  end)
   assert(1 == ret)
-
-  M.toggle(1, nil, { debug = false })
 
   log.info 'ok'
 end
