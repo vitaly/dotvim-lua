@@ -13,8 +13,6 @@ return {
     end,
   },
 
-  require 'layers.misc.foo',
-
   -- {
   --   'fgheng/winbar.nvim', -- https://github.com/fgheng/winbar.nvim
 
