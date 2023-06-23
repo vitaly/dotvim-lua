@@ -17,13 +17,11 @@ help:: ## print help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n\n  make ${cyan}<target>${none}\n\n"}  /^[a-zA-Z_\/%$${}.-]+:.*?##/ { printf "\n  ${cyan}%-15s${none}%s\n", $$1, $$2 } /^## / { printf "  %-15s%s\n", "", substr($$0, 3) } /^##@/ { printf "\n${white}%s${none}\n\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 .PHONY: help
 
-readme: README.md ## re-generate README.md
-.PHONY: readme
 
 README_FILES := $(shell find lua -name README.md)
-
-README.md: Makefile ${README_FILES}
-	@ls -d ${README_FILES} | sort | while read f; do echo '<!--' $$f '-->'; cat $$f; echo; done > $@
+readme: ## re-generate README.md
+	@ls -d ${README_FILES} | sort | while read f; do echo '<!--' $$f '-->'; cat $$f; echo; done > README.md
+.PHONY: readme
 
 
 ##@ development
