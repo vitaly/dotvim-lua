@@ -2,8 +2,6 @@
 
 local M = {}
 
-local inspect = vim.inspect
-
 local function validate(opts, states, callback)
   assert('table' == type(states), 'states must be a table')
   assert('table' == type(opts), 'opts must be a table')
@@ -12,6 +10,8 @@ local function validate(opts, states, callback)
   end
 end
 
+local log = _my.log
+
 local function _debug(opts, ...)
   if opts.debug then
     local args = {}
@@ -19,7 +19,7 @@ local function _debug(opts, ...)
       table.insert(args, 'string' == type(v) and v or vim.inspect(v))
     end
 
-    print(table.concat(args, ' '))
+    log.debug(table.concat(args, ' '))
   end
 end
 
@@ -34,7 +34,11 @@ local function parse_var(var)
 end
 
 local function get(_, scope, key, var)
-  return scope and vim[scope][key] or var
+  if scope then
+    return vim[scope][key]
+  else
+    return var
+  end
 end
 
 local function index(state, states)
@@ -47,7 +51,7 @@ end
 
 local function next_state(opts, state, states)
   local i = index(state, states) or 1
-  _debug(opts, 'i', i)
+  _debug(opts, 'i =', i)
   i = i % #states + 1
   _debug(opts, 'next', i)
   state = states[i]
@@ -66,14 +70,14 @@ local function set(opts, scope, key, state)
   end
 
   if not opts.silent then
-    print(string.format('%s is %s', opts.name, vim.inspect(state)))
+    log.info(string.format('%s is %s', opts.name, vim.inspect(state)))
   end
 end
 
 ---@param var string variable, e.g. 'g:foo', or 'b:bar'
----@param states table list of states
----@param cb function callback to call on state changes]
----@param opts table options
+---@param states table|nil list of states
+---@param cb_opts function|table|nil optional callback to call on state changes or opts (see next param)
+---@param opts table|nil options
 function M.toggle(var, states, cb_opts, opts)
   states = states or { false, true }
   local callback
@@ -84,18 +88,17 @@ function M.toggle(var, states, cb_opts, opts)
   end
   opts = opts or {}
   validate(opts, states, callback)
-  opts.debug = false
   local function debug(...)
     _debug(opts, ...)
   end
-  debug(var, 'opts=', opts, 'cb=', callback)
+  debug(var, 'states = ', states, 'opts =', opts, 'cb =', callback)
 
   local name, scope, key = parse_var(var)
   opts.name = opts.name or name
   debug(name, scope, key)
 
   local state = get(opts, scope, key, var)
-  debug(name, 'current state is', inspect(state))
+  debug(name, 'current state is', vim.inspect(state))
 
   state = next_state(opts, state, states)
   debug('next state is', state)
@@ -112,9 +115,9 @@ end
 -- TODO: add setter from outside
 
 ---@param var string variable, e.g. 'g:foo', or 'b:bar'
----@param states table list of states
----@param cb function callback to call on state changes]
----@param opts table options
+---@param states table|nil list of states
+---@param cb_opts function|table|nil optional callback to call on state changes or opts (see next param)
+---@param opts table|nil options
 function M.toggler(...)
   local args = { ... }
   return function()
@@ -124,9 +127,10 @@ end
 
 function M._test()
   vim.g.toggle_test = 7
-  M.toggle 'g:toggle_test'
 
+  M.toggle 'g:toggle_test'
   assert(true == vim.g.toggle_test)
+
   M.toggle 'g:toggle_test'
   assert(false == vim.g.toggle_test)
 
@@ -142,7 +146,7 @@ function M._test()
 
   M.toggle(1, nil, { debug = false })
 
-  print 'ok'
+  log.info 'ok'
 end
 
 function M.test()
