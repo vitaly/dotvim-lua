@@ -42,7 +42,7 @@ local function PackerRefresh(path)
 
     log.debug('require ' .. rq .. '...')
 
-    local mod = require(rq)
+    local mod = REQUIRE(rq)
 
     local t = type(mod)
     if 'table' ~= t then
