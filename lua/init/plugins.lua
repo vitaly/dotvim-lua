@@ -1,6 +1,9 @@
 -- lua/init/plugins.lua
 ---@diagnostic disable: different-requires
 
+local log = _my.log
+log.debug 'loading init.plugins'
+
 vim.cmd [[packadd packer.nvim]]
 
 local packer = require 'packer'
@@ -36,6 +39,8 @@ local USE = packer.use
 _my.reload 'layers.'
 
 local function LAYER(name)
+  -- log.debug('loading layer ' .. name)
+
   USE(_my.layer(name))
 end
 

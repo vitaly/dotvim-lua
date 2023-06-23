@@ -1,3 +1,4 @@
+-- _my.log.debug 'loading init.config'
 -- give priority to currently active config
 -- this is to that this file can be reloaded without loosing
 -- transient user changes

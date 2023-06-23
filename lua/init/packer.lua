@@ -1,5 +1,8 @@
 -- lua/init/packer.lua
 
+local log = _my.log
+-- log.debug 'loading init.packer'
+
 -- just copied those form the packer sources with the following changes:
 -- * we load 'plugins' instead of 'packer' so that it gets initialized
 -- * we load 'init/packer/complete' instead of 'packer' and 'packer.snapshot' for the same purpose
@@ -27,8 +30,7 @@ elseif '' == vim.fn.glob(_my.packer.COMPILED) then
   require('init.plugins').compile()
 end
 
-local log = _my.log
-
+-- TODO: make this global function. call it through reloaded module
 local function PackerRefresh(path)
   log.info 'Refreshing...'
 
@@ -38,7 +40,17 @@ local function PackerRefresh(path)
   if path and '' ~= path then
     local rq = string.gsub(string.gsub(path, '%.lua$', '', 1), '/', '.')
 
+    log.debug('require ' .. rq .. '...')
+
     local mod = require(rq)
+
+    local t = type(mod)
+    if 'table' ~= t then
+      log.warn('module ' .. rq .. ' is a ' .. t)
+      return
+    end
+
+    -- FIXME: only do thise if the module is currently loaded!!!
 
     -- PRINT { rq, vim.tbl_keys(mod) }
 
@@ -50,7 +62,12 @@ local function PackerRefresh(path)
     local config = mod._config or mod.config
     if config then
       log.debug(rq .. '->config')
-      config()
+      if 'function' == type(config) then
+        config()
+      else
+        log.debug('config is a ' .. type(config))
+        log.debug(config)
+      end
     end
   end
 
