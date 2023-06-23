@@ -13,6 +13,17 @@ which can be loaded next time without the packer.
 
 ## installation
 
+<!-- lua/layers/cursors/README.md -->
+# Multiple Cursors
+
+https://github.com/mg979/vim-visual-multi
+
+`ctrl-n` - to select words
+`n` - select next
+`q` - skip
+
+`tab` - toggle cursor and extend mode
+
 <!-- lua/layers/ide/format/README.md -->
 ## Formatting
 
