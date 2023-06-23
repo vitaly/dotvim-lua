@@ -1,8 +1,8 @@
 -- lua/layers/ui/statusline/lua_line/config.lua
 
 return {
-
   'nvim-lualine/lualine.nvim', -- https://github.com/nvim-lualine/lualine.nvim
+
   requires = { 'kyazdani42/nvim-web-devicons' },
 
   config = function()
@@ -24,6 +24,14 @@ return {
       end
       return ''
     end
+
+    local toggle_status = require('lib.toggle').toggler('g:_show_lualine', { true, false }, function(show)
+      require('lualine').hide { unhide = show }
+    end, { silent = true })
+
+    require('which-key').register {
+      ['\\S'] = { toggle_status, 'Status Line' },
+    }
 
     local dap_status = function()
       return require('dap').status()
