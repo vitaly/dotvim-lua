@@ -49,11 +49,13 @@ which can be loaded next time without the packer.
 
 https://github.com/mg979/vim-visual-multi
 
-`ctrl-n` - to select words
-`n` - select next
-`q` - skip
+- `ctrl-n` - to select words
+- `n` - select next
+- `q` - skip
 
-`tab` - toggle cursor and extend mode
+- `ctrl-down` - add vertical cursor
+
+- `tab` - toggle cursor and extend mode
 
 <!-- lua/layers/ide/cmp/copilot/README.md -->
 ## Github Copilot
