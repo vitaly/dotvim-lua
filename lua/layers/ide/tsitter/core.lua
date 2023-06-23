@@ -46,7 +46,7 @@ return {
       },
 
       -- treesitter based syntax highlighting
-      highlight = { enable = true, additional_vim_regex_highlighting = { 'markdown' } },
+      highlight = { enable = true, disable = { 'vimdoc' }, additional_vim_regex_highlighting = { 'markdown' } },
 
       -- setup commentstring based on contrext. even when syntax changes inside the file
       context_commentstring = { enable = true },
