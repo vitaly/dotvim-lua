@@ -156,10 +156,10 @@ return {
   {
     'editorconfig/editorconfig-vim', -- https://github.com/gpanders/editorconfig.nvim
     config = function()
-      local editorconfig_verbose_toggle = require('lib.toggle').toggler('g:EditorConfig_verbose', { 0, 1 })
+      local toggle_debug_editorconfig = require('lib.toggle').toggler('g:EditorConfig_verbose', { 0, 1 })
       require('which-key').register {
         ['\\'] = {
-          de = { editorconfig_verbose_toggle, 'Editor Config' },
+          de = { toggle_debug_editorconfig, 'Editor Config' },
         },
       }
     end,

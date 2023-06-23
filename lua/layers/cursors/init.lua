@@ -2,7 +2,9 @@ return {
   'mg979/vim-visual-multi', -- https://github.com/mg979/vim-visual-multi
 
   setup = function()
+    -- Visual Cursor maps go under `,v`
     vim.g.VM_leader = '<localleader>v'
+
     require('which-key').register {
       ['<localleader>v'] = {
         name = 'Visual Multi',

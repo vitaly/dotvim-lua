@@ -20,7 +20,7 @@ local LOCLIST = 'loclist'
 ------------------------------------------
 -- toggle for diagnostics mode
 vim.g.trouble_mode = vim.g.trouble_mode or 'document_diagnostics'
-local mode_toggle = toggle.toggler('g:trouble_mode', { DOCUMENT, WORKSPACE, QUICKFIX, REFERENCES, LOCLIST }, configure_trouble, { debug = true })
+local mode_toggle = toggle.toggler('g:trouble_mode', { DOCUMENT, WORKSPACE, QUICKFIX, REFERENCES, LOCLIST }, configure_trouble)
 
 --- @param value string toggle value to set
 local function setter(value)
