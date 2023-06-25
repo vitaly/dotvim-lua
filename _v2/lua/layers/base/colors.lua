@@ -23,7 +23,7 @@ return {
       end
     end
 
-    _my.au.on_colorscheme('diffmode.colors', diffmode_colors, { pattern = 'base16-*' })
+    my.au.on_colorscheme('diffmode.colors', diffmode_colors, { pattern = 'base16-*' })
 
     -- command to (re)load vim background from `~/.vimrc_background`
     cmdbang('LoadVimrcBackground', function()

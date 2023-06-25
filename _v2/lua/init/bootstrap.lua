@@ -4,9 +4,9 @@
 local fn = vim.fn
 
 --------------------------------------------------------------------------------
-_my.packer = _my.packer or {}
-_my.packer.ROOT = _my.ROOT .. '/pack'
-_my.packer.COMPILED = _my.ROOT .. '/plugin/packer_compiled.lua'
+my.packer = my.packer or {}
+my.packer.ROOT = my.ROOT .. '/pack'
+my.packer.COMPILED = my.ROOT .. '/plugin/packer_compiled.lua'
 
 --------------------------------------------------------------------------------
 -- ensure package is installed at the given location
@@ -16,7 +16,7 @@ _my.packer.COMPILED = _my.ROOT .. '/plugin/packer_compiled.lua'
 -- @returns { boolean } true if was just installed
 --------------------------------------------------------------------------------
 local function install(name, repo, dir)
-  local path = _my.ROOT .. '/pack/packer/' .. (dir or 'start') .. '/' .. name
+  local path = my.ROOT .. '/pack/packer/' .. (dir or 'start') .. '/' .. name
   -- local path = fn.stdpath('data') .. '/site/pack/packer/' .. (dir or 'start') .. '/' .. name
   -- print(path)
   if 0 == fn.empty(fn.glob(path)) then
@@ -35,7 +35,7 @@ end
 -- caching for bertter performance
 install('impatient.nvim', 'https://github.com/lewis6991/impatient.nvim.git')
 vim.cmd [[packadd impatient.nvim]]
-if _my.config.impatient.profile then
+if my.config.impatient.profile then
   require('impatient').enable_profile()
 else
   require 'impatient'
@@ -59,7 +59,7 @@ require('mapx').setup { global = 'force', whichkey = true }
 --------------------------------------------------------------------------------
 -- PACKER.NVIM
 -- we note if we just installed it, so that we can sync the config later in the process
-_G._my.packer.updated = install('packer.nvim', 'https://github.com/wbthomason/packer.nvim', 'opt')
+_G.my.packer.updated = install('packer.nvim', 'https://github.com/wbthomason/packer.nvim', 'opt')
 
 -- TODO: detect packer config changes
 -- TODO: clear impatiant cache before reloading?

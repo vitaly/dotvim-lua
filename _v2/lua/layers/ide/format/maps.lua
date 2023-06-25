@@ -1,8 +1,8 @@
 return {
   setup = function()
     local function debug_toggle()
-      _my.config.format.debug = not _my.config.format.debug
-      print(string.format('formating debug %s', _my.config.format.debug and 'enabled' or 'disabled'))
+      my.config.format.debug = not my.config.format.debug
+      print(string.format('formating debug %s', my.config.format.debug and 'enabled' or 'disabled'))
     end
 
     local function format_toggle()
@@ -16,7 +16,7 @@ return {
 
     local function format_cycle()
       local ft = vim.api.nvim_buf_get_option(0, 'filetype')
-      local config = _my.config.format.settings[ft] or {}
+      local config = my.config.format.settings[ft] or {}
       if config.cycle then
         table.insert(config.cycle, table.remove(config.cycle, 1))
         vim.notify(string.format('format cycle: %s', table.concat(config.cycle, ', ')))
@@ -29,7 +29,7 @@ return {
 
       ['<leader>sf'] = {
         function()
-          PRINT(_my.config.format)
+          PRINT(my.config.format)
           vim.cmd [[messages]]
         end,
         'Format Config',

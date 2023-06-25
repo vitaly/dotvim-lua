@@ -1,6 +1,6 @@
 -- lua/layers/ide/tsitter/init.lua
 
-local layer = _my.layer
+local layer = my.layer
 
 return {
   -------------------------------------------------------------------------------------------------------------

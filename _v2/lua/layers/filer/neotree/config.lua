@@ -2,7 +2,7 @@ return {
   config = function()
     vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
-    local side = _my.config.filer.side or 'left'
+    local side = my.config.filer.side or 'left'
     -- DEFAULTS: pack/packer/opt/neo-tree.nvim/lua/neo-tree/defaults.lua
     require('neo-tree').setup {
 

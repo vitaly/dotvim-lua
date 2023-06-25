@@ -54,7 +54,7 @@ return {
     end
 
     local format = function()
-      local config = _my.config.format
+      local config = my.config.format
 
       if config.disabled then
         return 'D'

@@ -10,7 +10,7 @@ local function validate(opts, states, callback)
   end
 end
 
-local log = _my.log
+local log = my.log
 
 local function _debug(opts, ...)
   if opts.debug then

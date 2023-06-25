@@ -6,7 +6,7 @@ return {
     branch = 'nvim-nightly',
 
     config = function()
-      _my.au.on_lsp_attach('lsp_folding', require('folding').on_attach)
+      my.au.on_lsp_attach('lsp_folding', require('folding').on_attach)
     end,
   },
 }

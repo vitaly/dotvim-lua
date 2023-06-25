@@ -24,7 +24,7 @@ return {
   },
 
   config = function()
-    local dir = (_my.config.obsidian or {}).dir or '~/vault'
+    local dir = (my.config.obsidian or {}).dir or '~/vault'
     -- print('obsidian dir = ' .. dir)
     require('obsidian').setup {
       -- dir = dir,

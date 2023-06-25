@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-function _my.puts(...)
+function my.puts(...)
   local objects = {}
   for i = 1, select('#', ...) do
     local v = select(i, ...)
@@ -11,7 +11,7 @@ function _my.puts(...)
 end
 
 --------------------------------------------------------------------------------
-function _my.inspect(...)
+function my.inspect(...)
   local objects = {}
   for i = 1, select('#', ...) do
     local v = select(i, ...)
@@ -22,13 +22,13 @@ function _my.inspect(...)
 end
 
 --------------------------------------------------------------------------------
-function _my.print(...)
-  print(_my.inspect(...))
+function my.print(...)
+  print(my.inspect(...))
   return ...
 end
 
 --------------------------------------------------------------------------------
-function _my.keys(t, pat)
+function my.keys(t, pat)
   for k, _ in pairs(t) do
     if not pat or k:match(pat) then
       print(k)

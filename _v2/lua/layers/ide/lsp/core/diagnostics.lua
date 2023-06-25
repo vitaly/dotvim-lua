@@ -7,9 +7,9 @@
 local ns = vim.api.nvim_create_namespace 'my_diagnostics'
 
 -- Get a reference to the original signs handler
-_my.config.diagnostics = _my.config.diagnostics or {}
-_my.config.diagnostics.orig_signs_handler = _my.config.diagnostics.orig_signs_handler or vim.diagnostic.handlers.signs
-local handler = _my.config.diagnostics.orig_signs_handler
+my.config.diagnostics = my.config.diagnostics or {}
+my.config.diagnostics.orig_signs_handler = my.config.diagnostics.orig_signs_handler or vim.diagnostic.handlers.signs
+local handler = my.config.diagnostics.orig_signs_handler
 
 -- Override the built-in signs handler
 vim.diagnostic.handlers.signs = {

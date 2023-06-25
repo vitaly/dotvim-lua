@@ -1,6 +1,6 @@
 -- lua/init/packer.lua
 
-local log = _my.log
+local log = my.log
 -- log.debug 'loading init.packer'
 
 -- just copied those form the packer sources with the following changes:
@@ -22,10 +22,10 @@ vim.cmd [[command! -bang -nargs=+ -complete=customlist,v:lua.require'init.packer
 vim.cmd [[command!                                                                                                      PackerLog               exec 'e' stdpath('cache')  . '/packer.nvim.log'               ]]
 -- stylua: ignore end
 
-if _my.packer.updated then
+if my.packer.updated then
   -- packer was just initially installed
   require('init.plugins').sync()
-elseif '' == vim.fn.glob(_my.packer.COMPILED) then
+elseif '' == vim.fn.glob(my.packer.COMPILED) then
   -- can't find the compiled file
   require('init.plugins').compile()
 end
@@ -91,14 +91,14 @@ end, {
 
 vim.api.nvim_create_user_command('Reconfigure', function(args)
   PRINT { 'reconfigure', args.args }
-  _my.config[args.args] = {}
+  my.config[args.args] = {}
   PackerRefresh()
 end, {
   nargs = 1,
   bar = true,
   force = true,
   complete = function()
-    return vim.tbl_keys(_my.config)
+    return vim.tbl_keys(my.config)
   end,
 })
 
@@ -126,7 +126,7 @@ local refresh_toggle = require('lib.toggle').toggler 'g:packer_refresh_disabled'
 local function packer_snapshot()
   local date = os.date '%Y-%m-%d_%H-%M-%S'
   local cmd = string.format('PackerSnapshot %s', date)
-  _my.log.debug(cmd)
+  my.log.debug(cmd)
   vim.cmd(cmd)
 end
 
