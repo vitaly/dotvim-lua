@@ -11,7 +11,7 @@ return {
   {
     'ziontee113/color-picker.nvim', -- https://github.com/ziontee113/color-picker.nvim
 
-    -- cmd = { 'PickColor', 'PickColorInsert' },
+    cmd = { 'PickColor', 'PickColorInsert' },
 
     config = function()
       require 'color-picker'

@@ -105,6 +105,7 @@ end, {
 --------------------------------------------------------------------------------
 -- sync packer if plugins.lua changes
 --------------------------------------------------------------------------------
+--- TODO: add auto REQIRE for init.packer
 vim.cmd [[
   augroup packer_plugins
     autocmd!
@@ -121,6 +122,14 @@ vim.cmd [[
 
 local refresh_toggle = require('lib.toggle').toggler 'g:packer_refresh_disabled'
 
+-- run `:PackerSnapshot yyy-mm-dd_hh-mm-ss` to create a snapshot
+local function packer_snapshot()
+  local date = os.date '%Y-%m-%d_%H-%M-%S'
+  local cmd = string.format('PackerSnapshot %s', date)
+  _my.log.debug(cmd)
+  vim.cmd(cmd)
+end
+
 require('which-key').register {
   ['<leader>'] = {
     r = { PackerRefresh, 'Refresh Packer' },
@@ -135,6 +144,8 @@ require('which-key').register {
       C = { '<cmd>PackerClean<cr>', 'Clean' },
 
       L = { '<cmd>PackerLog<cr>', 'Log!' },
+
+      t = { packer_snapshot, 'Snapshot' },
     },
 
     ['sp'] = { '<cmd>PackerStatus<cr>', 'Packer' },

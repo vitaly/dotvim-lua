@@ -31,6 +31,6 @@ _my.config = vim.tbl_deep_extend('keep', _my.config or {}, {
   },
 
   obsidian = {
-    dir = '~/Documents/Obsidian/Main',
+    dir = '~/Obsidian/Main',
   },
 })

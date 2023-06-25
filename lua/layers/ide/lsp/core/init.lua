@@ -13,7 +13,7 @@ return {
 
     --------------------------------------------------------------------------
     -- Simple progress widget for LSP
-    'j-hui/fidget.nvim', -- https://github.com/j-hui/fidget.nvim
+    { 'j-hui/fidget.nvim', branch = 'legacy' }, -- https://github.com/j-hui/fidget.nvim
 
     --------------------------------------------------------------------------
     -- COLORS
