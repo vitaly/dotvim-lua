@@ -1,6 +1,12 @@
 --------------------------------------------------------------------------------
 --- LOGGING
 
+-- vim.o.verbose = 9
+-- vim.o.verbosefile = './vim.log'
+
+-- vim.lsp.set_log_level 'trace'
+-- require('vim.lsp.log').set_format_func(vim.inspect)
+
 -- '_inspect' requires a delimiter and inspects all provided arguments.
 function my._inspect(delimiter, ...)
   local objects = {}

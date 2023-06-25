@@ -5,8 +5,8 @@ local fn = vim.fn
 
 --------------------------------------------------------------------------------
 my.packer = my.packer or {}
-my.packer.ROOT = my.ROOT .. '/pack'
-my.packer.COMPILED = my.ROOT .. '/plugin/packer_compiled.lua'
+my.packer.ROOT = my.root .. '/pack'
+my.packer.COMPILED = my.root .. '/plugin/packer_compiled.lua'
 
 --------------------------------------------------------------------------------
 -- ensure package is installed at the given location
@@ -16,7 +16,7 @@ my.packer.COMPILED = my.ROOT .. '/plugin/packer_compiled.lua'
 -- @returns { boolean } true if was just installed
 --------------------------------------------------------------------------------
 local function install(name, repo, dir)
-  local path = my.ROOT .. '/pack/packer/' .. (dir or 'start') .. '/' .. name
+  local path = my.root .. '/pack/packer/' .. (dir or 'start') .. '/' .. name
   -- local path = fn.stdpath('data') .. '/site/pack/packer/' .. (dir or 'start') .. '/' .. name
   -- print(path)
   if 0 == fn.empty(fn.glob(path)) then

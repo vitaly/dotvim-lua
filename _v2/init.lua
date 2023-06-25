@@ -8,9 +8,6 @@ require 'init.config'
 -- use `:LuaCacheClear` to clear the cache
 my.config.impatient = { profile = true }
 
--- disable unnecessary features
-require 'init.builtins'
-
 -- set vim options
 require 'init.options'
 

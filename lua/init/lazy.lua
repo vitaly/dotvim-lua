@@ -11,3 +11,38 @@ if not vim.uv.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
+
+require('lazy').setup('plugins', {
+  checker = { enabled = true }, -- automatically check for plugin updates
+  install = { colorscheme = { 'tokyonight', 'habamax' } },
+  performance = {
+    rtp = {
+      -- disable some rtp plugins
+      disabled_plugins = {
+        '2html_plugin',
+        'getscript',
+        'getscriptPlugin',
+        'gzip',
+        'logipat',
+        'man',
+        'matchit',
+        'matchparen',
+        'netrw',
+        'netrwFileHandlers',
+        'netrwPlugin',
+        'netrwSettings',
+        'rrhelper',
+        'shada_plugin',
+        'spellfile_plugin',
+        'tar',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'vimball',
+        'vimballPlugin',
+        'zip',
+        'zipPlugin',
+      },
+    },
+  },
+})

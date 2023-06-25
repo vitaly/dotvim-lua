@@ -4,10 +4,27 @@ local g = vim.g
 local fn = vim.fn
 local set = vim.opt
 local opt = vim.opt
+local env = vim.env
 
 local has = function(x)
   return fn.has(x) == 1
 end
+
+--------------------------------------------------------------------------------
+--- ENV VARS
+--------------------------------------------------------------------------------
+vim.env.CC = 'gcc-12'
+
+--------------------------------------------------------------------------------
+--- GLOBALS
+--------------------------------------------------------------------------------
+
+_G.my = _G.my or {}
+my.root = vim.uv.fs_realpath(vim.fn.stdpath 'config')
+g.MY_ROOT = my.root
+
+g.mapleader = [[ ]]
+g.maplocalleader = [[,]]
 
 --------------------------------------------------------------------------------
 -- nvim1 options
@@ -120,9 +137,6 @@ set.et = true
 
 -- set ttimeoutlen=50       -- fast Esc to normal mode
 set.updatetime = 300 -- CursorHold delay
-
-g.mapleader = ' '
-g.maplocalleader = ','
 
 -- mouse settings
 if has 'mouse' then
