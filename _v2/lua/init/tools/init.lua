@@ -2,11 +2,7 @@
 
 --------------------------------------------------------------------------------
 
-_G.my = _G.my or {}
 my.config = my.config or {}
-
-require 'init.tools.inspect'
-_G.PRINT = my.print
 
 require 'init.tools.reload'
 _G.REQUIRE = my.require
@@ -14,38 +10,6 @@ _G.RELOAD = my.reload
 
 my.au = require 'init.tools.au'
 my.ui = require 'init.tools.ui'
-
---------------------------------------------------------------------------------
---- LOGGING
-
-local function _log(level, ...)
-  local args = { ... }
-
-  if #args == 1 and type(args[1]) == 'string' then
-    vim.notify(args[1], level)
-  else
-    vim.notify(my.inspect(...), level)
-  end
-end
-
--- TODO: move to tools.log
-my.log = {
-  debug = vim.schedule_wrap(function(...)
-    _log(vim.log.levels.DEBUG, ...)
-  end),
-
-  info = vim.schedule_wrap(function(...)
-    _log(vim.log.levels.INFO, ...)
-  end),
-
-  warn = vim.schedule_wrap(function(...)
-    _log(vim.log.levels.WARN, ...)
-  end),
-
-  error = vim.schedule_wrap(function(...)
-    _log(vim.log.levels.ERROR, ...)
-  end),
-}
 
 --------------------------------------------------------------------------------
 -- layer name
