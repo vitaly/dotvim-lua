@@ -4,10 +4,6 @@ require 'init.tools'
 -- load custom config
 require 'init.config'
 
--- 'impatient' is used to cache the compiled lua files
--- use `:LuaCacheClear` to clear the cache
-my.config.impatient = { profile = true }
-
 -- set vim options
 require 'init.options'
 
