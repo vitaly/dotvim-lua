@@ -9,50 +9,43 @@ function AU.group(name, clear)
   return vim.api.nvim_create_augroup(name, { clear = clear })
 end
 
-function AU.command(event, opts)
-  opts.group = opts.group or error('au.command requires a group', 2)
-  opts.callback = opts.callback or error('au.command requires a callback', 2)
+-- Setup autocommand
+-- If the group is a string, then it will be created (and it's commands cleared)
+---@param group string|any
+---@param event string
+---@param callback fun(any)
+---@param opts? table
+function AU.command(group, event, callback, opts)
+  group = group or error('au.command requires a group', 2)
+  callback = callback or error('au.command requires a callback', 2)
 
-  if 'string' == type(opts.group) then
-    opts.group = AU.group(opts.group)
-  end
+  opts = opts or {}
+  opts.group = 'string' == type(group) and AU.group(group) or group
+  opts.callback = callback
 
   return vim.api.nvim_create_autocmd(event, opts)
 end
 
-function AU.callback(group, event, callback, opts)
-  opts = opts or {}
-  opts.group = group
-  opts.callback = callback
-
-  return AU.command(event, opts)
-end
-
 function AU.on_colorscheme(group, callback, opts)
   callback()
-  return AU.callback(group, 'ColorScheme', callback, opts)
+  return AU.command(group, 'ColorScheme', callback, opts)
 end
 
 function AU.on_lsp_attach(group, callback, opts)
   -- PRINT { 'on_lsp_attach', group, callback, opts }
-  return AU.callback(group, 'LspAttach', function(args)
+  return AU.command(group, 'LspAttach', function(args)
     callback(vim.lsp.get_client_by_id(args.data.client_id), args.buf)
   end, opts)
 end
 
-function AU.buffer_callback(buffer, group, event, callback, opts)
+function AU.buffer_command(buffer, group, event, callback, opts)
   opts = opts or {}
   opts.buffer = buffer or error('missing buffer', 2)
 
-  opts.group = vim.api.nvim_create_augroup(group, { clear = false }) -- can't clear buffer only
-  vim.api.nvim_clear_autocmds {
-    buffer = opts.buffer,
-    group = opts.group,
-  }
+  group = vim.api.nvim_create_augroup(group, { clear = false }) -- can't clear buffer only
+  vim.api.nvim_clear_autocmds { buffer = opts.buffer, group = group }
 
-  opts.callback = callback
-
-  return AU.command(event, opts)
+  return AU.command(group, event, callback, opts)
 end
 
 return AU
