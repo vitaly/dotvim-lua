@@ -37,7 +37,7 @@ return {
       end
     end
 
-    my.au.command('OptionSet', { group = 'diffmode_maps', pattern = 'diff', callback = diff_mode })
+    my.au.callback('diffmode_maps', 'OptionSet', diff_mode, { pattern = 'diff' })
     diff_mode() -- need to call it on startup becase OptionSet isn't called when vim starts in diffmode
 
     -- n keymap --------------------------------------------------------------------
