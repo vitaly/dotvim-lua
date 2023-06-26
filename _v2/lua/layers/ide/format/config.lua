@@ -216,7 +216,7 @@ function M.on_attach(client, bufnr)
     event = 'BufWritePost'
   end
 
-  my.au.buffer_callback(bufnr, 'autoformat', event, function()
+  my.au.buffer_command(bufnr, 'autoformat', event, function()
     if M.config.disabled or M.config.disabled_filetypes[filetype(bufnr)] then
       log 'autoformat disabled'
       return
