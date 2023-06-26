@@ -27,3 +27,4 @@
 /_old/qwe.*
 test/
 _envrc
+.luarc.json
