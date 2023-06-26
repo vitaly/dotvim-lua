@@ -49,6 +49,22 @@ USE { 'wbthomason/packer.nvim', opt = true } -- https://github.com/wbthomason/pa
 USE 'lewis6991/impatient.nvim' -- https://github.com/lewis6991/impatient.nvim
 USE 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
 
+USE {
+  'folke/tokyonight.nvim',
+
+  -- config = function()
+  --   require('tokyonight').setup {
+  --     style = 'moon',
+  --     -- styles = { comments = "italic" },
+  --     -- transparent = true,
+  --     -- dark_sidebar = true,
+  --     -- dark_float = true,
+  --     -- sidebars = { "qf", "vista_kind", "terminal", "packer" },
+  --     -- colors = { hint = "orange", error = "#ff0000" },
+  --   }
+  -- end,
+}
+
 LAYER 'base.utils'
 LAYER 'base.keymaps'
 LAYER 'base.colors'
