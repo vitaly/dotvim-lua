@@ -47,7 +47,6 @@ end
 -- those are the basic plugins installed during bootstrap
 USE { 'wbthomason/packer.nvim', opt = true } -- https://github.com/wbthomason/packer.nvim
 USE 'lewis6991/impatient.nvim' -- https://github.com/lewis6991/impatient.nvim
-USE 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
 
 LAYER 'base.utils'
 LAYER 'base.keymaps'
