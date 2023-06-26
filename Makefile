@@ -14,11 +14,18 @@ magenta = [1m[35m
 cyan    = [1m[36m
 white   = [1m[37m
 
+
 ##@ TARGETS
+
 
 help:: ## print help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n\n  make ${cyan}<target>${none}\n"}  /^[a-zA-Z_\/%$${}.-]+:.*?##/ { printf "\n  ${cyan}%-15s${none}%s\n", $$1, $$2 } /^## / { printf "  %-15s%s\n", "", substr($$0, 3) } /^##@/ { printf "\n${white}%s${none}\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 .PHONY: help
+
+README_FILES := $(shell find lua -name README.md)
+readme: ## re-generate README.md
+	@ls -d ${README_FILES} | sort | while read f; do echo '<!--' $$f '-->'; cat $$f; echo; done > README.md
+.PHONY: readme
 
 reset: ## remove and re-create .xdg
 	rm -rf .xdg
