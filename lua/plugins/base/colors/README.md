@@ -1,4 +1,4 @@
-### Color Schemes
+## Color Schemes
 
 Use config.colorschemes to define default colorscheme name
 

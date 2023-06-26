@@ -28,7 +28,7 @@ return {
     config = function()
       -- setup handler for adjusting base16 colors for diff-mode
       -- need to do this before we acrually change into the base16 colorscheme
-      require('plugins.base.colors..diff_mode').setup()
+      require('plugins.base.colors.diff_mode').setup()
 
       define_load_vimrc_background_command()
 
