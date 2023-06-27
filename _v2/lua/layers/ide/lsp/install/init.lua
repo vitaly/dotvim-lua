@@ -45,6 +45,8 @@ return {
     'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
   },
 
+  after = 'nvim-lspconfig',
+
   -- using `_config` becase we need `setup_install_handlers` from the scope
   _config = function()
     require('mason').setup()
