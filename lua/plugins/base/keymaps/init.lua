@@ -116,7 +116,7 @@ return {
       ['<leader>f'] = { name = 'File' },
       ['<leader>fe'] = { name = 'File Edit' },
       ['<leader>w'] = { name = 'Window' },
-      ['<leader>s'] = { name = 'Status' },
+      ['<leader>s'] = { name = 'Status / Show' },
       ['<leader>v'] = { name = 'Vim' },
       ['<leader>Y'] = { name = 'Yank' },
       ['<leader><tab>'] = { name = 'Tab' },

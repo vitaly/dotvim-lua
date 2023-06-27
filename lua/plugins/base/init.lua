@@ -14,6 +14,8 @@ return {
       { '<leader>azr', '<cmd>Lazy restore<cr>', desc = 'Restore' },
       { '<leader>azw', '<cmd>Lazy show<cr>', desc = 'Show' },
       { '<leader>azh', '<cmd>Lazy health<cr>', desc = 'Health' },
+
+      { '<leader>sz', '<cmd>Lazy Check<cr>', desc = 'Lazy' },
     },
   },
   {

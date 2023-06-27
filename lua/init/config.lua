@@ -9,4 +9,8 @@ my.config = vim.tbl_deep_extend('force', {
   -- OR '--load' to load colorscheme from ~/.vimrc_background
   -- colorscheme = 'tokyonight',
   colorscheme = '-load',
+
+  neotree = {
+    -- position = 'right',
+  },
 }, my.config or {})

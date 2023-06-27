@@ -2,5 +2,6 @@
 --
 return {
   { 'nvim-lua/plenary.nvim', lazy = true }, -- https://github.com/nvim-lua/plenary.nvim
-  { 'kyazdani42/nvim-web-devicons', lazy = true }, -- https://github.com/kyazdani42/nvim-web-devicons
+  { 'nvim-tree/nvim-web-devicons', lazy = true }, -- https://github.com/nvim-tree/nvim-web-devicons
+  { 'MunifTanjim/nui.nvim', lazy = true }, -- https://github.com/MunifTanjim/nui.nvim
 }
