@@ -94,7 +94,7 @@ return {
             p = { [[<cmd>exe 'e' g:my_ROOT.'/lua/init/plugins.lua'<cr>]], 'Plugins' },
             o = { [[<cmd>exe 'e' g:my_ROOT.'/lua/init/options.lua'<cr>]], 'Options' },
             n = { [[<cmd>exe 'e' g:my_ROOT.'/NOTES.md'<cr>]], 'Notes' },
-            k = { [[<cmd>exe 'e' g:my_ROOT.'/lua/layers/base/keymaps.lua'<cr>]], 'Keymaps' },
+            k = { [[<cmd>exe 'e' g:my_ROOT.'/lua/layers/base/keymaps/maps.lua'<cr>]], 'Keymaps' },
             L = { [[<cmd>exe 'e' stdpath('cache').'/lsp.log'<cr>]], 'LSP log' },
           },
         },
@@ -130,7 +130,7 @@ return {
           name = 'Status',
         },
 
-        t = {
+        ['<tab>'] = {
           name = 'Tab',
 
           n = { [[<cmd>tabnew<cr>]], 'New' },

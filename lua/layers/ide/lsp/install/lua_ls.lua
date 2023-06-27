@@ -43,6 +43,7 @@ return {
           },
 
           workspace = {
+            checkThirdParty = false,
             -- Make the server aware of Neovim runtime files
             library = library,
           },
