@@ -6,7 +6,7 @@ map Q gq
 
 
 noremap                                   <plug>(Last-Buffer) <cmd>b#<cr>
-nmap              <leader><tab>           <plug>(Last-Buffer)
+nmap              <leader>`               <plug>(Last-Buffer)
 
 " keep selection after in/outdent
 xnoremap          < <gv
