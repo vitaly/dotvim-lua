@@ -101,17 +101,12 @@ return {
     { '\\dv', toggle_verboselog, desc = 'Vim Verbose Log' },
   },
 
-  config = function()
-    require('plugins.base.keymaps.diff-mode').setup()
+  opts = {
+    window = { border = 'single' },
+    hidden = { '<silent>', '<cmd>', '<Cmd>', '<cr>', '<CR>', 'call ', 'lua ', '<C-U>', '^:', '^ ', '<Plug>' },
+    disable = { filetypes = { 'TelescopePrompt' } },
 
-    vim.opt.timeoutlen = 500 -- 0.5s before keymap menu
-    require('which-key').setup {
-      window = { border = 'single' },
-      hidden = { '<silent>', '<cmd>', '<Cmd>', '<cr>', '<CR>', 'call ', 'lua ', '<C-U>', '^:', '^ ', '<Plug>' },
-      disable = { filetypes = { 'TelescopePrompt' } },
-    }
-
-    require('which-key').register({
+    register = {
       ['<localleader>'] = { name = ',' },
       ['<localleader>e'] = { name = 'Eval' },
 
@@ -130,7 +125,15 @@ return {
       ['\\n'] = { name = 'Conceal' },
       ['\\d'] = { name = 'Debug' },
       ["\\'"] = { name = 'Misc' },
-    }, { mode = 'n' })
+    },
+  },
+
+  config = function(_, opts)
+    require('plugins.base.keymaps.diff-mode').setup()
+
+    vim.opt.timeoutlen = 500 -- 0.5s before keymap menu
+    require('which-key').setup(opts)
+    require('which-key').register(opts.register, { mode = { 'n', 'v' } })
   end,
 }
 
