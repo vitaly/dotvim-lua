@@ -5,6 +5,7 @@ return {
     local side = _my.config.filer.side or 'left'
     -- DEFAULTS: pack/packer/opt/neo-tree.nvim/lua/neo-tree/defaults.lua
     require('neo-tree').setup {
+      sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols' },
 
       source_selector = {
         winbar = true,
