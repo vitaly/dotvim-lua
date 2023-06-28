@@ -1,10 +1,9 @@
 ---------------------------------------------------------------------------------
 -- returns mapping for given key to edit file with given path
 ---------------------------------------------------------------------------------
-function edit_file_map(key, path, name)
+local function edit_file_map(key, path, name)
   return { key, "<cmd>exe 'e' '" .. my.root .. path .. "'<cr>", desc = 'Edit ' .. name }
 end
-
 
 ---------------------------------------------------------------------------------
 -- redraw
@@ -13,14 +12,12 @@ local function redraw()
   vim.cmd [[redraw]]
 end
 
-
 ---------------------------------------------------------------------------------
 -- toggles
 local toggle = require 'lib.toggle'
 local toggle_concealcursor = toggle.toggler('o:concealcursor', { 'n', '' }, redraw)
 local toggle_conceallevel = toggle.toggler('o:conceallevel', { 0, 1, 2 }, redraw)
 local toggle_clipboard = toggle.toggler('o:clipboard', { 'unnamedplus', '' }, redraw)
-
 
 ---------------------------------------------------------------------------------
 -- toggle verbose log
@@ -37,11 +34,9 @@ local function toggle_verboselog()
   redraw()
 end
 
-
 ---------------------------------------------------------------------------------
 -- find next line with equal (or lower) indent level
 ---------------------------------------------------------------------------------
-local debug = my.log.debug
 local function next_indent(exclusive, fwd, lowerlevel, skipblanks)
   local line = vim.fn.line '.'
   local column = vim.fn.col '.'
@@ -63,7 +58,6 @@ local function next_indent(exclusive, fwd, lowerlevel, skipblanks)
     end
   end
 end
-
 
 ---------------------------------------------------------------------------------
 -- PLUGIN CONFIG
