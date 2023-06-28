@@ -9,7 +9,7 @@ return {
   config = function()
     require('which-key').register {
       ['<leader>'] = {
-        sg = { '<cmd>Copilot status<cr>', 'Github Copilot' },
+        Sg = { '<cmd>Copilot status<cr>', 'Github Copilot' },
       },
     }
   end,

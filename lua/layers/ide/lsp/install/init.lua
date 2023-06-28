@@ -33,7 +33,7 @@ local function setup_keymaps()
       m = { '<cmd>Mason<cr>', 'Mason' },
       l = { '<cmd>MasonLog<cr>', 'Log' },
     },
-    ['<leader>sm'] = { '<cmd>Mason<cr>', 'Mason' },
+    ['<leader>Sm'] = { '<cmd>Mason<cr>', 'Mason' },
   }
 end
 

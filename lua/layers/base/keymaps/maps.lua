@@ -126,7 +126,7 @@ return {
           o = { [[<c-w>o]], 'Only' },
         },
 
-        s = {
+        S = {
           name = 'Status',
         },
 

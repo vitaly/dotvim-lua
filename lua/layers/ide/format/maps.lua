@@ -27,7 +27,7 @@ return {
 
     require('which-key').register {
 
-      ['<leader>sf'] = {
+      ['<leader>Sf'] = {
         function()
           PRINT(_my.config.format)
           vim.cmd [[messages]]

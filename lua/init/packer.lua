@@ -148,7 +148,7 @@ require('which-key').register {
       t = { packer_snapshot, 'Snapshot' },
     },
 
-    ['sp'] = { '<cmd>PackerStatus<cr>', 'Packer' },
+    ['Sp'] = { '<cmd>PackerStatus<cr>', 'Packer' },
   },
 
   ['\\'] = {

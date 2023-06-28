@@ -45,7 +45,7 @@ local m = {
 
 require('which-key').register {
 
-  ['<leader>sl'] = { m.lsp_info, 'LSP' },
+  ['<leader>Sl'] = { m.lsp_info, 'LSP' },
 
   ['<leader>al'] = {
     name = 'LSP',
