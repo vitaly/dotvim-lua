@@ -11,8 +11,10 @@ return {
       { '<leader>azl', '<cmd>Lazy log<cr>', desc = 'Log' },
       { '<leader>azC', '<cmd>Lazy clear<cr>', desc = 'Clear' },
       { '<leader>azd', '<cmd>Lazy debug<cr>', desc = 'Debug' },
-      { '<leader>azr', '<cmd>Lazy restore<cr>', desc = 'Restore' },
-      { '<leader>azw', '<cmd>Lazy show<cr>', desc = 'Show' },
+      { '<leader>azr', ':<c-u>Lazy reload ', desc = 'Reload...' },
+      { '<leader>azL', ':<c-u>Lazy load ', desc = 'Load...' },
+      { '<leader>azR', '<cmd>Lazy restore<cr>', desc = 'Restore' },
+      { '<leader>azp', '<cmd>Lazy profile<cr>', desc = 'Profile' },
       { '<leader>azh', '<cmd>Lazy health<cr>', desc = 'Health' },
 
       { '<leader>sz', '<cmd>Lazy Check<cr>', desc = 'Lazy' },
