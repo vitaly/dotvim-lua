@@ -72,28 +72,22 @@ require('which-key').register {
     bb = { m.buffers, 'Find buffer' },
     h = { m.help_tags, 'Help' },
 
-    ['/'] = {
-      name = 'Find',
-
-      ['/'] = { m.grep_string, 'Fuzzy Grep' },
-
+    ['/'] = { m.live_grep, 'Live Grep' },
+    ['s'] = {
+      name = 'Search/Find',
       b = { m.buffers, 'Buffer' },
-      c = { m.symbols, 'Character Symbol' },
-      g = { m.live_grep, 'Live Grep' },
+      g = { m.grep_string, 'Grep String' },
       h = { m.help_tags, 'Help' },
       k = { m.keymaps, 'Key' },
       l = { m.current_buffer_fuzzy_find, 'Lines' },
       m = { m.map_pages, 'Manpage' },
-
-      s = { m.tagstack, 'Tag Stack' },
-
-      ['<space>'] = { m.telescope, 'Telescope' },
-      t = {
-        name = 'Telescope',
-
-        f = { m.find_files, 'Find Files' },
-        g = { m.git_files, 'Git Files' },
-      },
+      s = { m.symbols, 'Character Symbol' },
+      t = { m.tagstack, 'Tag Stack' },
+      [':'] = { [[<cmd>Telescope command_history<cr>]], 'Command History' },
+    },
+    ['g'] = {
+      f = { m.git_files, 'Git Files' },
+      S = { [[<cmd>Telescope git_status<cr>]], 'Git Status' },
     },
   },
 }
