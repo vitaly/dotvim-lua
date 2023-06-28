@@ -221,7 +221,7 @@ return {
   },
 
   config = function(_, opts)
-    require('plugins.base.keymaps.diff-mode').setup()
+    require('plugins.base.keymaps.diff-mode-maps').setup()
 
     vim.opt.timeoutlen = 500 -- 0.5s before keymap menu
     require('which-key').setup(opts)
