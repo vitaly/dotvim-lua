@@ -20,13 +20,5 @@ return {
       { '<leader>sz', '<cmd>Lazy Check<cr>', desc = 'Lazy' },
     },
   },
-  {
-    'folke/which-key.nvim', -- plugins/base/keymaps/init.lua
-
-    opts = {
-      register = {
-        ['<leader>az'] = { name = 'Lazy' },
-      },
-    },
-  },
+  { 'folke/which-key.nvim', opts = { register = { ['<leader>az'] = { name = 'Lazy' } } } }, -- register menu group
 }
