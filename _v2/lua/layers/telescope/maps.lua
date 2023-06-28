@@ -11,7 +11,7 @@ local ignore_symbols = {
 
 local function custom_document_symbols()
   local bufnr = vim.api.nvim_get_current_buf()
-  local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+  local filetype = vim.api.nvim_get_option_value('filetype', { buf = bufnr or 0 })
   builtin.lsp_document_symbols {
     ignore_symbols = ignore_symbols[filetype] or {},
   }

@@ -28,7 +28,7 @@ end
 
 -- return buffer's filetype
 local function filetype(bufnr)
-  return vim.api.nvim_buf_get_option(bufnr, 'filetype')
+  return vim.api.nvim_get_option_value('filetype', { buf = bufnr })
 end
 
 -- parse value from command line

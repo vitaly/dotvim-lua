@@ -9,13 +9,17 @@ return {
       vim.cmd [[FormatToggle]]
     end
 
+    local function filetype(bufnr)
+      return vim.api.nvim_get_option_value('filetype', { buf = bufnr or 0 })
+    end
+
     local function format_toggle_filetype()
-      local ft = vim.api.nvim_buf_get_option(0, 'filetype')
+      local ft = filetype()
       vim.cmd('FormatToggle ' .. ft)
     end
 
     local function format_cycle()
-      local ft = vim.api.nvim_buf_get_option(0, 'filetype')
+      local ft = filetype()
       local config = my.config.format.settings[ft] or {}
       if config.cycle then
         table.insert(config.cycle, table.remove(config.cycle, 1))
