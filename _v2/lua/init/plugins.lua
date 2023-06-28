@@ -1,41 +1,6 @@
 -- lua/init/plugins.lua
 ---@diagnostic disable: different-requires
 
-local log = my.log
-log.debug 'loading init.plugins'
-
-vim.cmd [[packadd packer.nvim]]
-
-local packer = require 'packer'
-
--------------------------------------------------------------------------------------------------
--- PACKER INIT ----------------------------------------------------------------------------------
-local border = 'rounded'
-packer.init {
-  -- TODO: place the compiled file inside 'lua' so that it's cached by 'impatient'. be sure to profile the result difference
-  package_root = my.packer.ROOT,
-
-  disable_commands = true,
-
-  profile = {
-    enable = true,
-    threshold = 0,
-  },
-
-  display = {
-    open_fn = function()
-      return require('packer.util').float { border = border }
-    end,
-    prompt_border = border,
-  },
-  -- log = { level = 'warning' },
-  log = { level = 'trace' },
-}
-
-packer.reset()
-
-local USE = packer.use
-
 my.reload 'layers.'
 
 local function LAYER(name)
