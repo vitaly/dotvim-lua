@@ -50,7 +50,7 @@ return {
   -- using `_config` becase we need `setup_install_handlers` from the scope
   _config = function()
     require('mason').setup()
-    require('mason-lspconfig').setup { ensure_installed = { 'lua_ls', 'jsonls', 'tsserver', 'solargraph', 'pyright' } }
+    require('mason-lspconfig').setup { ensure_installed = { 'lua_ls', 'jsonls', 'tsserver', 'solargraph', 'pyright', 'vimls' } }
     setup_install_handlers()
     setup_keymaps()
   end,
