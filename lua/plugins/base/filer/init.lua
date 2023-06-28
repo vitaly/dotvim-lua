@@ -54,9 +54,8 @@ return {
   end,
 
   opts = {
-    source_selector = {
-      winbar = true,
-    },
+    source_selector = { winbar = true },
+    sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols' },
 
     use_popups_for_input = false, -- If false, inputs will use vim.ui.input() instead of custom floats.
     close_if_last_window = true,
