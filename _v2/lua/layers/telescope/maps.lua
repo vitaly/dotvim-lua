@@ -22,26 +22,7 @@ local m = {
     return pcall(builtin.git_files) or builtin.find_files()
   end,
 
-  find_files = builtin.find_files,
-  git_files = builtin.git_files,
-
-  commands = builtin.commands,
-
-  telescope = ':<cmd>Telescope<cr>',
-
-  tagstack = builtin.tagstack,
-
-  live_grep = builtin.live_grep,
-  grep_string = builtin.grep_string,
-
-  buffers = builtin.buffers,
-  help_tags = builtin.help_tags,
-  keymaps = builtin.keymaps,
-  symbols = builtin.symbols,
-  map_pages = builtin.man_pages,
-
   treesitter = builtin.treesitter,
-  current_buffer_fuzzy_find = builtin.current_buffer_fuzzy_find,
 
   lsp = {
     definition = builtin.lsp_definitions,
@@ -63,37 +44,12 @@ local m = {
 
 require('which-key').register {
 
-  ['<localleader>'] = {
-    ['<localleader>'] = { m.find_files, 'Find file' },
-  },
-
   ['<leader>'] = {
-    ['<cr>'] = { m.commands, 'Find command' },
-    bb = { m.buffers, 'Find buffer' },
-    h = { m.help_tags, 'Help' },
 
     ['/'] = {
       name = 'Find',
 
-      ['/'] = { m.grep_string, 'Fuzzy Grep' },
-
-      b = { m.buffers, 'Buffer' },
-      c = { m.symbols, 'Character Symbol' },
-      g = { m.live_grep, 'Live Grep' },
-      h = { m.help_tags, 'Help' },
-      k = { m.keymaps, 'Key' },
-      l = { m.current_buffer_fuzzy_find, 'Lines' },
-      m = { m.map_pages, 'Manpage' },
-
-      s = { m.tagstack, 'Tag Stack' },
-
-      ['<space>'] = { m.telescope, 'Telescope' },
-      t = {
-        name = 'Telescope',
-
-        f = { m.find_files, 'Find Files' },
-        g = { m.git_files, 'Git Files' },
-      },
+      ['<space>'] = { [[Telescope]], 'Telescope' },
     },
   },
 }
