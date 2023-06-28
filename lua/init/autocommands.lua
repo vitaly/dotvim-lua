@@ -2,7 +2,12 @@ local au = require 'lib.au'
 
 local setup_autocommands = function()
   -- restore cursor position when opening files
-  au.command('last.location', 'BufReadPost', function()
+  au.command('last-location', 'BufReadPost', function()
+    local ft = vim.api.nvim_get_option_value('filetype', { buf = 0 })
+    -- do not restore cursor for these filetypes
+    if ft == 'gitcommit' or ft == 'gitrebase' then
+      return
+    end
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local lcount = vim.api.nvim_buf_line_count(0)
     if mark[1] > 0 and mark[1] <= lcount then
