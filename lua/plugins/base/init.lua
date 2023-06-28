@@ -4,7 +4,7 @@ return {
     'folke/lazy.nvim',
     version = '*',
     keys = {
-      { '<leader>azz', '<cmd>Lazy home<cr>', desc = 'Home' },
+      { '<leader>azz', '<cmd>Lazy home<cr>', desc = 'La[z]y' },
       { '<leader>azs', '<cmd>Lazy sync<cr>', desc = 'Sync' },
       { '<leader>azb', '<cmd>Lazy build<cr>', desc = 'Build' },
       { '<leader>azk', '<cmd>Lazy check<cr>', desc = 'Check' },
@@ -20,5 +20,5 @@ return {
       { '<leader>sz', '<cmd>Lazy Check<cr>', desc = 'Lazy' },
     },
   },
-  { 'folke/which-key.nvim', opts = { register = { ['<leader>az'] = { name = 'Lazy' } } } }, -- register menu group
+  { 'folke/which-key.nvim', opts = { register = { ['<leader>az'] = { name = 'La[z]y' } } } }, -- register menu group
 }
