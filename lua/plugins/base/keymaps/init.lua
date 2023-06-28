@@ -88,6 +88,47 @@ return {
     { ']L', function() next_indent(false, true, true, true) end, desc = 'Next Lower Indent', },
     -- stylua: ignore end
 
+    { '<leader><space>', ':' },
+
+    { 'Q', 'gq', mode = { 'n', 'v', 'o' } },
+
+    { '<plug>(Last-Buffer)', '<cmd>b#<cr>', desc = 'Switch to last buffer' },
+    { '<leader>`', '<plug>(Last-Buffer)' },
+
+    { '<', '<gv', mode = 'x', desc = 'Keep selection after outdent' },
+    { '>', '>gv', mode = 'x', desc = 'Keep selection after indent' },
+
+    { 'j', 'gj' },
+    { 'k', 'gk' },
+
+    { '+', '<C-a>', desc = 'Increment' },
+    { '-', '<C-x>', desc = 'Decrement' },
+
+    { 'n', 'nzz', desc = 'Search Next and Center' },
+    { 'N', 'Nzz', desc = 'Search Prev and Center' },
+    { '*', '*zz', desc = 'Search Word and Center' },
+    { '#', '#zz', desc = 'Search Word Back and Center' },
+    { 'g*', 'g*zz', desc = 'Search and Center' },
+    { 'g#', 'g#zz', desc = 'Search Back and Center' },
+
+    -- fast expand current file's directory in command mode
+    { '%%', [[<C-R>=expand('%:h').'/'<cr>]], mode = 'c', desc = 'Expand current file directory' },
+    { '%^', [[<C-R>=expand('%:p:h').'/'<cr>]], mode = 'c', desc = 'Expand current absolute file directory' },
+
+    -- move lines up/down
+    { '<C-j>', ':m .+1<CR>==', desc = 'Move line down' },
+    { '<C-k>', ':m .-2<CR>==', desc = 'Move line up' },
+    { '<C-j>', ":m '>+1<CR>gv=gv", mode = 'x', desc = 'Move selected lines down' },
+    { '<C-k>', ":m '<-2<CR>gv=gv", mode = 'x', desc = 'Move selected lines up' },
+
+    { '<esc>', '<cmd>silent noh<cr>', silent = true, desc = 'Clear search highlight' },
+
+    -- c-ghjk navigation
+    { '<c-k>', '<up>', mode = { 'i', 'c' } },
+    { '<c-j>', '<down>', mode = { 'i', 'c' } },
+    { '<c-h>', '<left>', mode = { 'i' } },
+    { '<c-l>', '<right>', mode = { 'i' } },
+
     -- messages
     { '<leader>m', '<cmd>messages<cr>', desc = 'Messages' },
     { '<leader>M', '<cmd>messages clear<cr>', desc = 'Clear Messages' },
