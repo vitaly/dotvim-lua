@@ -9,15 +9,9 @@ local function LAYER(name)
   USE(my.layer(name))
 end
 
--- those are the basic plugins installed during bootstrap
-LAYER 'base.utils'
-LAYER 'base.keymaps'
-LAYER 'base.colors'
-
 LAYER 'filer'
 
 LAYER 'telescope'
-LAYER 'terminal'
 
 LAYER 'ide.tsitter'
 LAYER 'ide.lsp'

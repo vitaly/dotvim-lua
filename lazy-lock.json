@@ -5,6 +5,8 @@
   "nvim-base16": { "branch": "master", "commit": "4f3aa29f49b38edb6db1c52cea57e64ce3de2373" },
   "nvim-web-devicons": { "branch": "master", "commit": "9ab9b0b894b2388a9dbcdee5f00ce72e25d85bf9" },
   "plenary.nvim": { "branch": "master", "commit": "36aaceb6e93addd20b1b18f94d86aecc552f30c4" },
+  "toggleterm.nvim": { "branch": "main", "commit": "95204ece0f2a54c89c4395295432f9aeedca7b5f" },
   "tokyonight.nvim": { "branch": "main", "commit": "fd0a005fd8986ec0d98a1938dc570303e8d8444b" },
+  "vim-tmux-navigator": { "branch": "master", "commit": "ba7c119adf02f00705f8e64a0863e295083dcdf1" },
   "which-key.nvim": { "branch": "main", "commit": "d871f2b664afd5aed3dc1d1573bef2fb24ce0484" }
 }

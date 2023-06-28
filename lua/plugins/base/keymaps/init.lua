@@ -68,6 +68,8 @@ return {
   event = 'VeryLazy',
 
   keys = {
+
+    -- quiting
     { '<leader>q', '<cmd>qa<cr>', mode = { 'n', 'x' }, desc = 'Quit All' },
     { '<leader>Q', '<cmd>qa!<cr>', mode = { 'n', 'x' }, desc = 'Quit All!' },
     { '<leader>x', '<cmd>q<cr>', mode = { 'n', 'x' }, desc = 'Close Window' },
@@ -164,6 +166,12 @@ return {
 
     { '<leader>wt', [[<c-w>T]], desc = 'Move to new Tab' },
     { '<leader>wo', [[<c-w>o]], desc = 'Only' },
+
+    -- terminal
+
+    { '<a-[>', '<c-\\><c-n>', mode = 't', desc = 'Switch To Normal Mode ' },
+
+    -- misc
 
     { '<tab>n', [[<cmd>tabnew<cr>]], desc = 'New' },
 
