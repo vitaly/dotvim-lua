@@ -1,16 +1,8 @@
--- lua/layers/ide/tsitter/config.lua
-
 return {
-  'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
-
-  -- FIXME: this doesn't work for some reason
-  -- the plugin/nvim-treesitter.lua is not being loaded for some reason
-  -- run = ':TSUpdate',
 
   requires = {
     'nvim-treesitter/playground', -- https://github.com/nvim-treesitter/playground
     -- setup commentstring based on contrext. even when syntax changes inside the file
-    'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
     'nvim-treesitter/nvim-treesitter-textobjects', -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
@@ -18,38 +10,6 @@ return {
     --------------------------------------------------------------------------
     -- SETUP
     require('nvim-treesitter.configs').setup {
-      ensure_installed = {
-        'c',
-        'comment',
-        'css',
-        'elixir',
-        'make',
-        'go',
-        'html',
-        'javascript',
-        'jsdoc',
-        'json',
-        'lua',
-        'markdown',
-        'markdown_inline',
-        'query',
-        'ruby',
-        'scss',
-        'toml',
-        'typescript',
-        'vim',
-        'yaml',
-        -- 'bash', 'cpp', 'python', 'rust', 'scala',
-        -- -- brew install gcc
-        -- -- CC=gcc-11 vim -c "TSInstall norg"
-        -- 'norg', 'norg_metqa', 'norg_table',
-      },
-
-      -- treesitter based syntax highlighting
-      highlight = { enable = true, disable = { 'vimdoc' }, additional_vim_regex_highlighting = { 'markdown' } },
-
-      -- setup commentstring based on contrext. even when syntax changes inside the file
-      context_commentstring = { enable = true },
 
       textobjects = {
         select = {
@@ -115,10 +75,6 @@ return {
       },
     } -- nvim-treesitter.configs setup
 
-    -- setup folding using treesitter
-    vim.opt.foldmethod = 'expr'
-    vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-
     --------------------------------------------------------------------------
     -- KEYMAPS
     nnoremap('<leader>atI', ':<C-U>TSInstall ', 'Install...')
@@ -181,19 +137,8 @@ return {
 -- -- TREESITTER config -----------------------------------------------------------
 -- require('nvim-treesitter.configs').setup {
 
---   context_commentstring = { enable = true },
 --   rainbow = { enable = true },
 --   autopairs = { enable = true },
-
---   incremental_selection = {
---     enable = true,
---     keymaps = {
---       init_selection = 'gnn',
---       node_incremental = 'grn',
---       scope_incremental = 'grc',
---       node_decremental = 'grm',
---     },
---   },
 
 --   -- refactor = {
 --   --   smart_rename = { enable = false, keymaps = { smart_rename = 'grr' } },
