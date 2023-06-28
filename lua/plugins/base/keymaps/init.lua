@@ -1,16 +1,29 @@
+---------------------------------------------------------------------------------
+-- returns mapping for given key to edit file with given path
+---------------------------------------------------------------------------------
 function edit_file_map(key, path, name)
   return { key, "<cmd>exe 'e' '" .. my.root .. path .. "'<cr>", desc = 'Edit ' .. name }
 end
 
+
+---------------------------------------------------------------------------------
+-- redraw
+---------------------------------------------------------------------------------
 local function redraw()
   vim.cmd [[redraw]]
 end
 
+
+---------------------------------------------------------------------------------
+-- toggles
 local toggle = require 'lib.toggle'
 local toggle_concealcursor = toggle.toggler('o:concealcursor', { 'n', '' }, redraw)
 local toggle_conceallevel = toggle.toggler('o:conceallevel', { 0, 1, 2 }, redraw)
 local toggle_clipboard = toggle.toggler('o:clipboard', { 'unnamedplus', '' }, redraw)
 
+
+---------------------------------------------------------------------------------
+-- toggle verbose log
 local function toggle_verboselog()
   if vim.o.verbose == 0 then
     vim.o.verbose = 9
@@ -24,6 +37,37 @@ local function toggle_verboselog()
   redraw()
 end
 
+
+---------------------------------------------------------------------------------
+-- find next line with equal (or lower) indent level
+---------------------------------------------------------------------------------
+local debug = my.log.debug
+local function next_indent(exclusive, fwd, lowerlevel, skipblanks)
+  local line = vim.fn.line '.'
+  local column = vim.fn.col '.'
+  local lastline = vim.fn.line '$'
+  local indent = vim.fn.indent(line)
+  local stepvalue = fwd and 1 or -1
+  while line > 0 and line <= lastline do
+    line = line + stepvalue
+    if (not lowerlevel and vim.fn.indent(line) == indent) or (lowerlevel and vim.fn.indent(line) < indent) then
+      if not skipblanks or #vim.fn.getline(line) > 0 then
+        if exclusive then
+          line = line - stepvalue
+        end
+        vim.notify('line: ' .. line .. ' column: ' .. column)
+        vim.cmd('' .. line)
+        vim.cmd 'normal ^'
+        return
+      end
+    end
+  end
+end
+
+
+---------------------------------------------------------------------------------
+-- PLUGIN CONFIG
+---------------------------------------------------------------------------------
 return {
   'folke/which-key.nvim', -- https://github.com/folke/which-key.nvim
 
@@ -36,6 +80,13 @@ return {
     { '<leader>wq', '<cmd>q<cr>', mode = { 'n', 'x' }, desc = 'Close Window' },
 
     { '<localleader><leader>', '<cmd>w<cr>', desc = 'Save' },
+
+    -- stylua: ignore start
+    { '[l', function() next_indent(false, false, false, true) end, desc = 'Prev Indent', },
+    { ']l', function() next_indent(false, true, false, true) end, desc = 'Next Indent', },
+    { '[L', function() next_indent(false, false, true, true) end, desc = 'Prev Lower Indent', },
+    { ']L', function() next_indent(false, true, true, true) end, desc = 'Next Lower Indent', },
+    -- stylua: ignore end
 
     -- messages
     { '<leader>m', '<cmd>messages<cr>', desc = 'Messages' },
