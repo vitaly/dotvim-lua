@@ -148,10 +148,6 @@ return {
   },
 
   ----------------------------------------------------------------------------------------------
-  -- FOLDLINE styling
-  'jrudess/vim-foldtext', -- https://github.com/jrudess/vim-foldtext
-
-  ----------------------------------------------------------------------------------------------
   -- EDITORCONFIG
   {
     'editorconfig/editorconfig-vim', -- https://github.com/gpanders/editorconfig.nvim
