@@ -1,5 +1,11 @@
 return {
+  { 'folke/which-key.nvim', opts = { register = {
+    ['<leader>az'] = { name = 'Lazy' },
+  } } }, -- register menu group
+
+  -------------------------------------------------------------------------------
   -- manage lazy itself. use the latest STABLE version
+  -------------------------------------------------------------------------------
   {
     'folke/lazy.nvim',
     version = '*',
@@ -19,5 +25,4 @@ return {
       { '<leader>azh', '<cmd>Lazy health<cr>', desc = 'Health' },
     },
   },
-  { 'folke/which-key.nvim', opts = { register = { ['<leader>l'] = { name = 'Lazy' } } } }, -- register menu group
 }
