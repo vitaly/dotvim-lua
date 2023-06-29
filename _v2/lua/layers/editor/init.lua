@@ -3,8 +3,6 @@
 return {
   'tpope/vim-repeat', -- https://github.com/tpope/vim-repeat
 
-
-
   'vim-scripts/greplace.vim', -- https://github.com/vim-scripts/greplace.vim
 
   ----------------------------------------------------------------------------------------------
@@ -143,20 +141,6 @@ return {
     config = function()
       nmap('\\;', 'gcc', 'Comment')
       xmap('\\;', 'gc', 'Comment')
-    end,
-  },
-
-  ----------------------------------------------------------------------------------------------
-  -- EDITORCONFIG
-  {
-    'editorconfig/editorconfig-vim', -- https://github.com/gpanders/editorconfig.nvim
-    config = function()
-      local toggle_debug_editorconfig = require('lib.toggle').toggler('g:EditorConfig_verbose', { 0, 1 })
-      require('which-key').register {
-        ['\\'] = {
-          de = { toggle_debug_editorconfig, 'Editor Config' },
-        },
-      }
     end,
   },
 }
