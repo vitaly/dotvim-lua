@@ -1,11 +1,16 @@
 
 ## Basic Keymaps
 
+- `<SPACE>\`` - Last Tab
+- `<SPACE><tab><tab>` - Last Tab
+- `<SPACE><tab>n` - New Tab
+
 - `<SPACE>m` - show messages
 - `<SPACE>M` - clear messages
 
 - `<SPACE>x` - quite window
-- `<SPACE>q` - quite all
+- `<SPACE>qq` - quite all
+- `<SPACE>qQ` - quite all!
 - `<SPACE>Q` - quite all!
 
 - `<SPACE>n` - Next
