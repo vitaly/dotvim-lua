@@ -2,10 +2,6 @@ return {
   {
     'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
 
-    dependencies = {
-      'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
-    },
-
     build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile' },
 
@@ -36,9 +32,6 @@ return {
           node_decremental = '<bs>',
         },
       },
-
-      -- setup commentstring based on contrext. even when syntax changes inside the file
-      context_commentstring = { enable = true },
 
       ensure_installed = {
         'bash',

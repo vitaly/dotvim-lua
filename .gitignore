@@ -12,19 +12,6 @@
 /bar.*
 /qwe.*
 
-/_old/pack/
-/_old/plugin/packer_compiled.lua
-/_old/.config/
-/_old.envrc
-/_old/tmp
-/_old/tmp/
-/_old/.xdg/
-/_old/log
-/_old/parser/
-/_old/scratch.*
-/_old/foo.*
-/_old/bar.*
-/_old/qwe.*
 test/
 _envrc
 .luarc.json
