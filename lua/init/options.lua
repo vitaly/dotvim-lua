@@ -26,6 +26,7 @@ opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true
 opt.expandtab = true
+opt.foldlevel = 1
 opt.formatoptions = opt.formatoptions
 + "t" -- Auto-wrap text using 'textwidth'
 + "c" -- Auto-wrap comments using 'textwidth', inserting the current comment leader automatically.

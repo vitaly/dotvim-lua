@@ -144,7 +144,7 @@ return {
 
     { '<leader>feL', [[<cmd>exe 'e' stdpath('cache').'/lsp.log'<cr>]], 'LSP log' },
     edit_file_map('<leader>fei', '/init.lua', 'Init'),
-    edit_file_map('<leader>fek', '/lua/plugins/base/keymaps/keys.lua', 'Keymaps'),
+    edit_file_map('<leader>fek', '/lua/plugins/base/keymaps/init.lua', 'Keymaps'),
     edit_file_map('<leader>feo', '/lua/init/options.lua', 'Options'),
     edit_file_map('<leader>fep', '/lua/init/plugins.lua', 'Plugins'),
     edit_file_map('<leader>fer', '/README.md', 'README'),

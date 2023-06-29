@@ -12,12 +12,6 @@ return {
   -- CONTEXT
   -- this plugin shows a bit of context at the top of the file, e.g. what class / function we are currently in.
   layer 'ide.tsitter.context',
-
-  -------------------------------------------------------------------------------------------------------------
-  -- https://github.com/folke/todo-comments.nvim
-  layer 'ide.tsitter.todo',
-
-  layer 'ide.tsitter.autopairs',
 }
 
 ---- TODO: cleanup

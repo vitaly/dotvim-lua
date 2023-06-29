@@ -1,4 +1,3 @@
--- TODO: todo
 return {
   {
     'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
@@ -111,5 +110,19 @@ return {
         autopairs.add_rules(require 'nvim-autopairs.rules.endwise-ruby')
         autopairs.add_rules(require 'nvim-autopairs.rules.endwise-lua')
       end
-    },{},
+    },
+    {
+      "folke/todo-comments.nvim", -- https://github.com/folke/todo-comments.nvim
+      dependencies = { "nvim-lua/plenary.nvim" },
+      cmd = { "TodoTrouble", "TodoTelescope" },
+      event = { "BufReadPost", "BufNewFile" },
+      keys = {
+        { '<leader>st', vim.cmd.TodoTelescope, desc = 'Project TODOs'}
+      },
+      opts = {
+        keywords = {
+          TODO = { icon = ' ', color = 'info', alt = { 'TBD' } },
+        },
+      }
+    },
   }

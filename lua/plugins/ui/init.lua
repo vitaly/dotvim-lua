@@ -40,8 +40,8 @@ return {
       { [[<leader>sl]], telescope [[current_buffer_fuzzy_find]], desc = 'Current Buffer Lines' },
       { [[<leader>sm]], telescope [[man_pages]], desc = 'Manpages' },
       { [[<leader>so]], telescope [[oldfiles]], desc = 'Recent Files' },
-      { [[<leader>ss]], telescope [[symbols]], desc = 'Character Symbols' },
-      { [[<leader>st]], telescope [[tagstack]], desc = 'Tagstack' },
+      { [[<leader>sy]], telescope [[symbols]], desc = 'Character S[y]mbols' },
+      { [[<leader>ss]], telescope [[tagstack]], desc = 'Tag[s]tack' },
       { [[<leader>sv]], telescope [[vim_options]], desc = 'Vim Options' },
 
       { [[<leader>s']], telescope [[marks]], desc = 'Marks' },
