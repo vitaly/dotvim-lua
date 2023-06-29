@@ -1,9 +1,12 @@
+-- TODO: todo
 return {
   {
     'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
+
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
     },
+
     build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile' },
 
@@ -86,4 +89,27 @@ return {
       vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
     end,
   },
-}
+  {
+      'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs
+      event = 'InsertEnter',
+
+      opts = {
+        check_ts = true,
+        ts_config = {},
+        disable_filetype = { 'TelescopePrompt' },
+
+        enable_check_bracket_line = true,
+      },
+
+      -- TODO: map for cmp
+      config = function(_, opts)
+        local autopairs = require 'nvim-autopairs'
+
+        autopairs.setup(opts)
+
+        autopairs.add_rules(require 'nvim-autopairs.rules.endwise-elixir')
+        autopairs.add_rules(require 'nvim-autopairs.rules.endwise-ruby')
+        autopairs.add_rules(require 'nvim-autopairs.rules.endwise-lua')
+      end
+    },{},
+  }
