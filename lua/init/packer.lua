@@ -79,7 +79,7 @@ end
 cmdbang('PackerRefresh', PackerRefresh)
 
 vim.api.nvim_create_user_command('PackerAutoRefresh', function(args)
-  if vim.g.packer_refresh_in_progress or vim.g.packer_refresh_disabled or vim.b.format_in_progress then
+  if vim.g.packer_refresh_in_progress or not vim.g.packer_refresh_enabled or vim.b.format_in_progress then
     return
   end
 
@@ -120,7 +120,7 @@ vim.cmd [[
 -- KEYMAPS
 --------------------------------------------------------------------------------
 
-local refresh_toggle = require('lib.toggle').toggler 'g:packer_refresh_disabled'
+local refresh_toggle = require('lib.toggle').toggler 'g:packer_refresh_enabled'
 
 -- run `:PackerSnapshot yyy-mm-dd_hh-mm-ss` to create a snapshot
 local function packer_snapshot()
