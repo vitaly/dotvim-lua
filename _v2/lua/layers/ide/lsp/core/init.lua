@@ -2,21 +2,7 @@
 
 return {
 
-  'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
-
   requires = {
-
-    'folke/neodev.nvim',
-
-    --------------------------------------------------------------------------
-    --------------------------------------------------------------------------
-    -- config for those requirements is in the lsp.config module
-    --------------------------------------------------------------------------
-    --------------------------------------------------------------------------
-
-    --------------------------------------------------------------------------
-    -- Simple progress widget for LSP
-    { 'j-hui/fidget.nvim', branch = 'legacy' }, -- https://github.com/j-hui/fidget.nvim
 
     --------------------------------------------------------------------------
     -- COLORS
@@ -25,9 +11,6 @@ return {
   },
 
   config = function()
-    require('neodev').setup {
-      -- add any options here, or leave empty to use the default settings
-    }
     -- requirements config -------------------------------------------
     -- fidget.nvim
     require('fidget').setup {}

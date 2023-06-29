@@ -53,4 +53,5 @@ my.log = {
   end,
 }
 
-my.log.level = my.log.level or vim.log.levels.DEBUG
+-- TODO: add a toggle to go through info, debug, trace
+my.log.level = my.log.level or my.config.log.level or vim.log.levels.INFO

@@ -5,10 +5,14 @@ vim.g.MY_ROOT = my.root
 
 -- merge current my.config (if exists) over default config table
 my.config = vim.tbl_deep_extend('force', {
+  log = {
+    level = vim.log.levels.TRACE,
+  },
+
   -- colorscheme name
-  -- OR '--load' to load colorscheme from ~/.vimrc_background
+  -- OR '-load' to load colorscheme from ~/.vimrc_background
   -- colorscheme = 'tokyonight',
-  colorscheme = '-load',
+  colorscheme = '-load', -- FIXME: I don't like this magic value
 
   neotree = {
     -- position = 'right',

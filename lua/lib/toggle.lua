@@ -112,8 +112,6 @@ function M.toggle(var, states, cb_opts, opts)
   return state
 end
 
--- TODO: add setter from outside
-
 ---@param var string variable, e.g. 'g:foo', or 'b:bar'
 ---@param states table|nil list of states
 ---@param cb_opts function|table|nil optional callback to call on state changes or opts (see next param)

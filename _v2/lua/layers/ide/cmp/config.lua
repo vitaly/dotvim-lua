@@ -129,10 +129,6 @@ return {
       ['<leader>Sc'] = { '<cmd>CmpStatus<cr>', 'CMP' },
     }
   end, -- setup
-
-  -- include this in your capabiltiies when configuring lsp clients
-  -- FIXME: reference it from core, then others use core version, not this one.
-  capabilities = require('cmp_nvim_lsp').default_capabilities(),
 }
 
 -- -- local luasnip = require 'luasnip'
