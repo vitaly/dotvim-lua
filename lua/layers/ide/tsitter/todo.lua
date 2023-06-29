@@ -15,7 +15,7 @@ return {
     require('which-key').register {
       ['<leader>'] = {
         -- T = { '<cmd>TodoTrouble<cr>', 'TODO' },
-        T = { '<cmd>TodoTelescope theme=ivy<cr>', 'TODO' },
+        st = { '<cmd>TodoTelescope theme=ivy<cr>', 'TODO' },
       },
     }
   end,

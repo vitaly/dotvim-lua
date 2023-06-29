@@ -81,8 +81,8 @@ require('which-key').register {
       k = { m.keymaps, 'Key' },
       l = { m.current_buffer_fuzzy_find, 'Lines' },
       m = { m.map_pages, 'Manpage' },
-      s = { m.symbols, 'Character Symbol' },
-      t = { m.tagstack, 'Tag Stack' },
+      y = { m.symbols, 'Character S[y]mbol' },
+      s = { m.tagstack, 'Tag [S]tack' },
       [':'] = { [[<cmd>Telescope command_history<cr>]], 'Command History' },
     },
     ['g'] = {

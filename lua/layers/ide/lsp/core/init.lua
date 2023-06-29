@@ -5,7 +5,7 @@ return {
   'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
 
   requires = {
-
+    'folke/neoconf.nvim',
     'folke/neodev.nvim',
 
     --------------------------------------------------------------------------
@@ -25,9 +25,8 @@ return {
   },
 
   config = function()
-    require('neodev').setup {
-      -- add any options here, or leave empty to use the default settings
-    }
+    require('neoconf').setup {}
+    require('neodev').setup {}
     -- requirements config -------------------------------------------
     -- fidget.nvim
     require('fidget').setup {}
