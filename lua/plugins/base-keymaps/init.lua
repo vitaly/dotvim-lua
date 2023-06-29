@@ -186,8 +186,8 @@ return {
     { '<leader>wH', [[<c-w>H]], desc = 'Move Left' },
     { '<leader>wL', [[<c-w>L]], desc = 'Move Right' },
 
-    { '<leader>w-', [[<cmd>split<cr><c-w>j]], desc = 'Split' },
-    { '<leader>w<bslash>', [[<cmd>vsplit<cr><c-w>l]], desc = 'VSplit' },
+    { '<leader>w-', [[<cmd>split<cr>]], desc = 'Split' },
+    { '<leader>w<bslash>', [[<cmd>vsplit<cr>]], desc = 'VSplit' },
 
     { '<leader>wt', [[<c-w>T]], desc = 'Move to new Tab' },
     { '<leader>wo', [[<c-w>o]], desc = 'Only' },
