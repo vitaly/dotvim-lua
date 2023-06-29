@@ -6,5 +6,5 @@ return {
   },
 
   -- REMEMBER LAST FILE LOCATION
-  { 'ethanholz/nvim-lastplace', opts = {} } -- https://github.com/ethanholz/nvim-lastplace
+  { 'ethanholz/nvim-lastplace', opts = {} }, -- https://github.com/ethanholz/nvim-lastplace
 }
