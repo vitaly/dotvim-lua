@@ -1,11 +1,23 @@
 return {
 
+  -- menu groups
+  { 'folke/which-key.nvim', opts = { register = {
+    [ [[ <leader>g ]] ] = { name = 'Git' },
+    [ [[\g]] ] = { name = 'Git/Signs' },
+  } } }, -- register menu group
+
   -------------------------------------------------------------------------------
   --- Gitsigns
   -------------------------------------------------------------------------------
   ---TODO: add toggle for line blame
   {
     'lewis6991/gitsigns.nvim', -- https://github.com/lewis6991/gitsigns.nvim
+    event = { 'BufReadPre', 'BufNewFile' },
+    cmd = { 'Gitsigns' },
+    keys = {
+      { [[\gs]], [[<cmd>Gitsigns toggle_signs<cr>]], desc = 'Toggle Signs' },
+      { [[\gv]], [[<cmd>Gitsigns toggle_current_line_blame<cr>]], desc = 'Toggle Virtual Line Blame' },
+    },
     opts = {
       signs = {
         add = { text = '+' },
@@ -26,7 +38,6 @@ return {
   -------------------------------------------------------------------------------
   --- Fugitive
   -------------------------------------------------------------------------------
-  { 'folke/which-key.nvim', opts = { register = { ['<leader>g'] = { name = 'Git' } } } }, -- register menu group
   {
     'tpope/vim-fugitive', -- https://github.com/tpope/vim-fugitive
 
