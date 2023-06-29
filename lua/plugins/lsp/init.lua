@@ -13,6 +13,7 @@ return {
   {
     'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
     dependencies = {
+      'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
       -- `config=true` ensures it's setup before lspconfig
       { 'folke/neodev.nvim', config = true }, -- https://github.com/folke/neodev.nvim
       -- `config=true` ensures it's setup before lspconfig
@@ -21,7 +22,7 @@ return {
       'williamboman/mason-lspconfig.nvim', -- https://github.com/williamboman/mason-lspconfig.nvim
 
       -- Simple progress widget for LSP
-      { 'j-hui/fidget.nvim', branch = 'legacy', opts = {}, }, -- https://github.com/j-hui/fidget.nvim
+      { 'j-hui/fidget.nvim', branch = 'legacy', opts = {} }, -- https://github.com/j-hui/fidget.nvim
     },
     event = { 'BufReadPre', 'BufNewFile' },
     cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
@@ -37,7 +38,7 @@ return {
     },
 
     opts = {
-      ensure_installed = { 'jsonls', 'tsserver', 'solargraph', 'pyright' },
+      ensure_installed = { 'tsserver', 'pyright' },
 
       -- default LSP capabilities
       capabilities = {},
@@ -45,7 +46,10 @@ return {
       -- Lspconfig Server Settings
       ---@type table<string, lspconfig.options>
       servers = {
-        lua_ls = require 'plugins.lsp.config.lua_ls',
+        -- e.g.
+        -- lua_ls = {
+        --  ...
+        -- }
       },
 
       ---@type table<string, fun(name:string, config: lspconfig.options)>
@@ -117,4 +121,5 @@ return {
       require('mason-lspconfig').setup { ensure_installed = opts.ensure_installed, handlers = { setup_server } }
     end,
   },
+  { import = 'plugins.lsp.config' },
 }

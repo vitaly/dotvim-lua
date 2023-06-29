@@ -16,9 +16,7 @@ end
 
 return {
 
-  requires = {
-    'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
-  },
+  requires = {},
 
   after = 'nvim-lspconfig',
 
