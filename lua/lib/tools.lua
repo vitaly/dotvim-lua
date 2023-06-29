@@ -21,11 +21,11 @@ function tools.ensure_cloned(repo, path, ...)
 end
 
 --- Register the maps with 'which-key'. see lua/plugins/base-keymaps/init.lua - search for which-key
-function tools.register_keymap_groups(maps)
+function tools.register_keymap_groups(groups)
   return {
     'folke/which-key.nvim',
     opts = {
-      register = maps,
+      groups = groups,
     },
   }
 end
