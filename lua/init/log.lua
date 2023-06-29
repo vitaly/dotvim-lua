@@ -31,7 +31,6 @@ local _notify = vim.schedule_wrap(function(level, ...)
 end)
 
 my.log = {
-
   trace = function(...)
     _notify(vim.log.levels.TRACE, ...)
   end,
@@ -52,6 +51,8 @@ my.log = {
     _notify(vim.log.levels.ERROR, ...)
   end,
 }
+
+_G.PRINT = my.log.debug
 
 -- TODO: add a toggle to go through info, debug, trace
 my.log.level = my.log.level or my.config.log.level or vim.log.levels.INFO

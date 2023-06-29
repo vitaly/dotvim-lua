@@ -7,6 +7,7 @@ vim.g.MY_ROOT = my.root
 my.config = vim.tbl_deep_extend('force', {
   log = {
     level = vim.log.levels.DEBUG,
+    -- level = vim.log.levels.TRACE,
   },
 
   -- colorscheme name
