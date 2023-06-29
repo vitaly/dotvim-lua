@@ -225,7 +225,7 @@ return {
     hidden = { '<silent>', '<cmd>', '<Cmd>', '<cr>', '<CR>', 'call ', 'lua ', '<C-U>', '^:', '^ ', '<Plug>' },
     disable = { filetypes = { 'TelescopePrompt' } },
 
-    register = {
+    groups = {
       [ [[<localleader>]] ] = {
         name = ',',
 
@@ -262,7 +262,7 @@ return {
   config = function(_, opts)
     vim.opt.timeoutlen = 500 -- 0.5s before keymap menu
     require('which-key').setup(opts)
-    require('which-key').register(opts.register, { mode = { 'n', 'v' } })
+    require('which-key').register(opts.groups, { mode = { 'n', 'v' } })
 
     setup_diff_mode_maps()
   end,

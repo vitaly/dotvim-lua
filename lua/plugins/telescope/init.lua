@@ -5,9 +5,9 @@ return {
   -------------------------------------------------------------------------------
   -- Telescope
   -------------------------------------------------------------------------------
-  { 'folke/which-key.nvim', opts = { register = {
+  require('lib.tools').register_keymap_groups {
     ['<leader>s'] = { name = 'Search' },
-  } } }, -- register menu group
+  }, -- register menu group
   {
     'nvim-telescope/telescope.nvim', -- https://github.com/nvim-telescope/telescope.nvim
     dependencies = { 'nvim-lua/plenary.nvim' },

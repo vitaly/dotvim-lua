@@ -1,10 +1,10 @@
 return {
 
   -- menu groups
-  { 'folke/which-key.nvim', opts = { register = {
+  require('lib.tools').register_keymap_groups {
     [ [[ <leader>g ]] ] = { name = 'Git' },
     [ [[\g]] ] = { name = 'Git/Signs' },
-  } } }, -- register menu group
+  },
 
   -------------------------------------------------------------------------------
   --- Gitsigns

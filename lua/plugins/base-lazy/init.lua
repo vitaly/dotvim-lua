@@ -1,7 +1,8 @@
 return {
-  { 'folke/which-key.nvim', opts = { register = {
+  -- register menu group
+  require('lib.tools').register_keymap_groups {
     ['<leader>az'] = { name = 'Lazy' },
-  } } }, -- register menu group
+  },
 
   -------------------------------------------------------------------------------
   -- manage lazy itself. use the latest STABLE version
