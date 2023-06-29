@@ -28,8 +28,8 @@ local function setup_commands()
   cmd('Q', 'q')
   cmd('Qa', 'qa')
   cmd('QA', 'qa')
-  cmd('E', 'e', { nargs = '*', complete = 'file' })
-  cmd('W', 'w', { nargs = '*', complete = 'file' })
+  cmd('E', 'e <args>', { nargs = '*', complete = 'file' })
+  cmd('W', 'w <args>', { nargs = '*', complete = 'file' })
 
   cmd('DumpVars', function(args)
     if 1 == #args.fargs then
