@@ -2,37 +2,9 @@
 
 -- TODO: move to lsp.init
 return {
-  'jose-elias-alvarez/null-ls.nvim', -- https://github.com/jose-elias-alvarez/null-ls.nvim
   -- disable = true,
 
-  requires = {
-    'jayp0521/mason-null-ls.nvim', -- https://github.com/jayp0521/mason-null-ls.nvim
-  },
-
   config = function()
-    require('null-ls').setup {
-      -- debug = true,
-      sources = {
-        require('null-ls').builtins.formatting.prettier,
-        require('null-ls').builtins.formatting.stylua,
-        require('null-ls').builtins.formatting.rubocop,
-        require('null-ls').builtins.formatting.shfmt,
-        require('null-ls').builtins.diagnostics.rubocop,
-        require('null-ls').builtins.diagnostics.shellcheck,
-
-        -- require('null-ls').builtins.completion.spell,
-        -- require('null-ls').builtins.formatting.trim_whitespace,
-      },
-    }
-
-    require('which-key').register {
-      ['<leader>Sn'] = { '<cmd>NullLsInfo<cr>', 'Null LS' },
-    }
-
-    require('mason-null-ls').setup {
-      ensure_installed = { 'stylua', 'jq', 'shfmt', 'shellcheck' },
-    }
-
     require('layers.ide.format.config').setup {
       debug = false,
       settings = {

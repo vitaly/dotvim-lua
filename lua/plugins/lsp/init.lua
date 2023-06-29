@@ -5,6 +5,7 @@ return {
   -- register menu group
   require('lib.tools').register_keymap_groups {
     [ [[<leader>al]] ] = { name = 'Lspconfig' },
+    [ [[<leader>an]] ] = { name = 'Null Ls' },
   },
 
   -------------------------------------------------------------------------------
@@ -119,6 +120,57 @@ return {
 
       trace { 'ensure_installed', ensure_installed }
       require('mason-lspconfig').setup { ensure_installed = opts.ensure_installed, handlers = { setup_server } }
+    end,
+  },
+
+  -------------------------------------------------------------------------------
+  -- NULL_LS
+  -- generic LSP server used for things like linting, formatting, etc
+  -------------------------------------------------------------------------------
+  {
+    'jose-elias-alvarez/null-ls.nvim', -- https://github.com/jose-elias-alvarez/null-ls.nvim
+    dependencies = {
+      'jayp0521/mason-null-ls.nvim', -- https://github.com/jayp0521/mason-null-ls.nvim
+    },
+    event = { 'BufReadPre', 'BufNewFile' },
+
+    keys = {
+      { [[<leader>Sn]], vim.cmd.NullLsInfo, desc = 'Null LS Info' },
+      { [[<leader>ani]], vim.cmd.NullLsInfo, desc = 'Null LS Info' },
+      { [[<leader>anl]], vim.cmd.NullLsLog, desc = 'Null LS Log' },
+    },
+
+    opts = {},
+
+    opts = function()
+      local nls = require 'null-ls'
+      return {
+        null_ls = {
+          border = 'single',
+
+          -- root_dir = require('null-ls.utils').root_pattern('.null-ls-root', '.neoconf.json', 'Makefile', '.git'),
+          sources = {
+            nls.builtins.formatting.prettier,
+            nls.builtins.formatting.stylua,
+            nls.builtins.formatting.rubocop,
+            nls.builtins.formatting.shfmt,
+            nls.builtins.diagnostics.rubocop,
+            nls.builtins.diagnostics.shellcheck,
+            -- nls.builtins.completion.spell,
+            -- nls.builtins.formatting.trim_whitespace,
+          },
+        },
+
+        -- for mason-null-ls
+        ensure_installed = { 'stylua', 'jq', 'shfmt', 'shellcheck' },
+      }
+    end,
+
+    config = function(_, opts)
+      require('null-ls').setup(opts.null_ls)
+      require('mason-null-ls').setup {
+        ensure_installed = opts.ensure_installed,
+      }
     end,
   },
 }
