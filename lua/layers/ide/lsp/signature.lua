@@ -13,7 +13,7 @@ return {
       },
     }
 
-    _my.au.on_lsp_attach('lsp_signature', function()
+    my.au.on_lsp_attach('lsp_signature', function()
       require('lsp_signature').on_attach()
     end)
   end,

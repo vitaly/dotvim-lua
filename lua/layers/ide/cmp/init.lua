@@ -43,7 +43,7 @@ return {
     end,
   },
 
-  _my.layer 'ide.cmp.copilot',
+  my.layer 'ide.cmp.copilot',
 }
 
 -- return {

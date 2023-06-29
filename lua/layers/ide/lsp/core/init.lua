@@ -47,6 +47,6 @@ return {
 
     require('layers.ide.lsp.core.style').setup()
 
-    _my.au.on_lsp_attach('lsp_attach', require 'layers.ide.lsp.core.on_attach')
+    my.au.on_lsp_attach('lsp_attach', require 'layers.ide.lsp.core.on_attach')
   end,
 }

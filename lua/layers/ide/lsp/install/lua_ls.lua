@@ -5,7 +5,7 @@ return {
       [vim.fn.expand '$VIMRUNTIME/lua/vim/lsp'] = true,
     }
 
-    if _my.config.lua.ls_full_library then
+    if my.config.lua.ls_full_library then
       library = vim.api.nvim_get_runtime_file('', true)
     end
 

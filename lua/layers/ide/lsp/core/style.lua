@@ -11,7 +11,7 @@ function M.update()
     -- DiagnosticSignXXX highlights are linked to DiagnosticXXX
     -- problem with DiagnosticXXX is that their background differs from that of SignColumn
     -- so we fix it by overwriting bg
-    _my.ui.sign_hi('Diagnostic' .. type)
+    my.ui.sign_hi('Diagnostic' .. type)
   end
 
   -- and while we at it, I also want the hint to be yellow
@@ -61,7 +61,7 @@ local function set_hover_opts()
 end
 
 function M.setup()
-  _my.au.on_colorscheme('lsp.style', M.update)
+  my.au.on_colorscheme('lsp.style', M.update)
   -- set_window_opts()
   set_diagnostic_opts()
   set_hover_opts()

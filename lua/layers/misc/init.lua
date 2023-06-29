@@ -21,7 +21,7 @@ return {
   --   },
 
   --   config = function()
-  --     _my.au.on_colorscheme('winbar.style', function()
+  --     my.au.on_colorscheme('winbar.style', function()
   --       local colors = require('base16-colorscheme').colors
   --       require('winbar').setup {
   --         enabled = true,

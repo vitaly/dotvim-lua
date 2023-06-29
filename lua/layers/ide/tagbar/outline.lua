@@ -6,7 +6,7 @@ return {
   -- cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose' },
 
   config = function()
-    local side = _my.config.tagbar.side or 'right'
+    local side = my.config.tagbar.side or 'right'
 
     vim.cmd [[
       augroup outline_setup

@@ -1,7 +1,7 @@
 -- lua/init/plugins.lua
 ---@diagnostic disable: different-requires
 
-local log = _my.log
+local log = my.log
 log.debug 'loading init.plugins'
 
 vim.cmd [[packadd packer.nvim]]
@@ -13,7 +13,7 @@ local packer = require 'packer'
 local border = 'rounded'
 packer.init {
   -- TODO: place the compiled file inside 'lua' so that it's cached by 'impatient'. be sure to profile the result difference
-  package_root = _my.packer.ROOT,
+  package_root = my.packer.ROOT,
 
   disable_commands = true,
 
@@ -36,12 +36,12 @@ packer.reset()
 
 local USE = packer.use
 
-_my.reload 'layers.'
+my.reload 'layers.'
 
 local function LAYER(name)
   -- log.debug('loading layer ' .. name)
 
-  USE(_my.layer(name))
+  USE(my.layer(name))
 end
 
 -- those are the basic plugins installed during bootstrap

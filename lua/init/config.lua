@@ -1,8 +1,8 @@
--- _my.log.debug 'loading init.config'
+-- my.log.debug 'loading init.config'
 -- give priority to currently active config
 -- this is to that this file can be reloaded without loosing
 -- transient user changes
-_my.config = vim.tbl_deep_extend('keep', _my.config or {}, {
+my.config = vim.tbl_deep_extend('keep', my.config or {}, {
 
   -- TODO: move upstack. pass opts from top init.lua
   filer = {

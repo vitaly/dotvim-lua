@@ -9,4 +9,4 @@
 --   requires = { 'kyazdani42/nvim-web-devicons' },
 -- }
 
-return _my.engine(..., { 'lua_line', 'galaxy_line', 'incline' })
+return my.engine(..., { 'lua_line', 'galaxy_line', 'incline' })

@@ -9,12 +9,12 @@ local M = {}
 
 -------------------------------------------------------------------------------
 -- CONFIG
--- keep M.config and _my.config.format in sync
+-- keep M.config and my.config.format in sync
 local function update_config(config)
   M.config = vim.tbl_deep_extend('force', M.config or {}, config)
-  _my.config.format = M.config
+  my.config.format = M.config
 end
-update_config(vim.tbl_deep_extend('force', DEFAULTS, _my.config.format or {}))
+update_config(vim.tbl_deep_extend('force', DEFAULTS, my.config.format or {}))
 
 local function log(...)
   if M.config.debug then
@@ -65,7 +65,7 @@ function M.setup(config)
   vim.api.nvim_create_user_command('FormatDisable', M.disable, { nargs = '?', bar = true, complete = 'filetype', force = true })
   vim.api.nvim_create_user_command('FormatEnable', M.enable, { nargs = '?', bar = true, complete = 'filetype', force = true, bang = true })
 
-  _my.au.on_lsp_attach('format_attach', M.on_attach)
+  my.au.on_lsp_attach('format_attach', M.on_attach)
 end
 
 -------------------------------------------------------------------------------
@@ -216,7 +216,7 @@ function M.on_attach(client, bufnr)
     event = 'BufWritePost'
   end
 
-  _my.au.buffer_command(bufnr, 'autoformat', event, function()
+  my.au.buffer_command(bufnr, 'autoformat', event, function()
     if M.config.disabled or M.config.disabled_filetypes[filetype(bufnr)] then
       log 'autoformat disabled'
       return

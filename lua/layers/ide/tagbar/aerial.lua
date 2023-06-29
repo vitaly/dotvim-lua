@@ -8,7 +8,7 @@ return {
   after = { 'telescope.nvim' },
 
   config = function()
-    -- local side = _my.config.tagbar.side or 'right'
+    -- local side = my.config.tagbar.side or 'right'
     local side = 'left'
 
     require('aerial').setup {
@@ -18,7 +18,7 @@ return {
     }
 
     -- FIXME: seems not to be needed on latest
-    -- _my.au.on_lsp_attach('aerial', require('aerial').on_attach)
+    -- my.au.on_lsp_attach('aerial', require('aerial').on_attach)
 
     require('telescope').load_extension 'aerial'
 

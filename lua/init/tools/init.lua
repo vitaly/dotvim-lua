@@ -2,18 +2,18 @@
 
 --------------------------------------------------------------------------------
 
-_G._my = _G._my or {}
-_my.config = _my.config or {}
+_G.my = _G.my or {}
+my.config = my.config or {}
 
 require 'init.tools.inspect'
-_G.PRINT = _my.print
+_G.PRINT = my.print
 
 require 'init.tools.reload'
-_G.REQUIRE = _my.require
-_G.RELOAD = _my.reload
+_G.REQUIRE = my.require
+_G.RELOAD = my.reload
 
-_my.au = require 'init.tools.au'
-_my.ui = require 'init.tools.ui'
+my.au = require 'init.tools.au'
+my.ui = require 'init.tools.ui'
 
 --------------------------------------------------------------------------------
 --- LOGGING
@@ -24,12 +24,12 @@ local function _log(level, ...)
   if #args == 1 and type(args[1]) == 'string' then
     vim.notify(args[1], level)
   else
-    vim.notify(_my.inspect(...), level)
+    vim.notify(my.inspect(...), level)
   end
 end
 
 -- TODO: move to tools.log
-_my.log = {
+my.log = {
   debug = vim.schedule_wrap(function(...)
     _log(vim.log.levels.DEBUG, ...)
   end),
@@ -50,7 +50,7 @@ _my.log = {
 --------------------------------------------------------------------------------
 -- layer name
 -- accepts both NAME and layers.NAME, then returns NAME
-function _my.layer_path(module)
+function my.layer_path(module)
   return module:match '^layers%.(.+)' or module
 end
 
@@ -59,7 +59,7 @@ end
 
 -- return module name
 -- e.g. for foo.bar.baz will return baz
-function _my.module_name(module)
+function my.module_name(module)
   return module:match '.*%.(.*)' or module
 end
 
@@ -67,9 +67,9 @@ end
 -- current engine is stored in config[1]
 -- this function retrieves it, given module name (from top of the module you can pass `...`)
 -- and if you pass `variants`, the engine will be validated against it
-function _my.engine(module, variants)
-  local name = _my.module_name(module)
-  local config = _my.config[name] or {}
+function my.engine(module, variants)
+  local name = my.module_name(module)
+  local config = my.config[name] or {}
 
   local engine = config[1] or variants[1]
   if not engine then
@@ -81,7 +81,7 @@ function _my.engine(module, variants)
   return require(module .. '.' .. engine)
 end
 
-function _my.layer(name)
+function my.layer(name)
   local module = string.format('layers.%s', name)
   local plugin = require(module)
 

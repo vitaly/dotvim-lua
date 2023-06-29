@@ -120,11 +120,11 @@ return {
 
   -- using `_config` becase we need `configure_blankline` from the scope
   _config = function()
-    -- TODO: use  _my.config
+    -- TODO: use  my.config
     vim.g.blankline_spaces = true
     vim.g.indent_blankline_enabled = false
 
-    _my.au.on_colorscheme('blankline_colors', setup_colors)
+    my.au.on_colorscheme('blankline_colors', setup_colors)
     configure_blankline()
     setup_keymaps()
 

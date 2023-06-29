@@ -15,12 +15,12 @@ require 'init.tools'
 -- load custom config
 require 'init.config'
 
-_my.ROOT = vim.fn.expand '<sfile>:p:h' -- use fn.stdpath('config')?
-vim.g.my_ROOT = _my.ROOT
+my.ROOT = vim.fn.expand '<sfile>:p:h' -- use fn.stdpath('config')?
+vim.g.my_ROOT = my.ROOT
 
 -- 'impatient' is used to cache the compiled lua files
 -- use `:LuaCacheClear` to clear the cache
-_my.config.impatient = { profile = true }
+my.config.impatient = { profile = true }
 
 -- disable unnecessary features
 require 'init.builtins'

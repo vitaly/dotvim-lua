@@ -46,7 +46,7 @@ return {
       },
     }
 
-    _my.au.on_colorscheme('telescope-border', function()
+    my.au.on_colorscheme('telescope-border', function()
       vim.cmd [[
        hi! link TelescopeBorder FloatBorder
        hi! link TelescopePromptBorder FloatBorder
