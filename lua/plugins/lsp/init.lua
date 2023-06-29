@@ -20,7 +20,7 @@ return {
       'williamboman/mason-lspconfig.nvim', -- https://github.com/williamboman/mason-lspconfig.nvim
 
       -- Simple progress widget for LSP
-      { 'j-hui/fidget.nvim', branch = 'legacy' }, -- https://github.com/j-hui/fidget.nvim
+      { 'j-hui/fidget.nvim', branch = 'legacy', opts = {}, }, -- https://github.com/j-hui/fidget.nvim
     },
     event = { 'BufReadPre', 'BufNewFile' },
     cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
