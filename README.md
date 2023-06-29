@@ -69,7 +69,6 @@ Default mappings are changed slightly to be more like those of tpope's `vim-surr
 - `\\gs` - toggle gitsigns
 - `\\gs` - toggle virtual git blame for current line
 
-
 <!-- lua/plugins/session/README.md -->
 ## Sessions
 
