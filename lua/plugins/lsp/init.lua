@@ -17,6 +17,7 @@ return {
       { 'folke/neodev.nvim', config = true }, -- https://github.com/folke/neodev.nvim
       -- `config=true` ensures it's setup before lspconfig
       { 'folke/neoconf.nvim', cmd = 'Neoconf', config = true }, -- https://github.com/folke/neoconf.nvim
+
       'williamboman/mason-lspconfig.nvim', -- https://github.com/williamboman/mason-lspconfig.nvim
 
       -- Simple progress widget for LSP
@@ -61,6 +62,9 @@ return {
     },
 
     config = function(_, opts)
+      -- for some reason lspconfig popups do not have a border
+      require('lspconfig.ui.windows').default_options.border = 'single'
+
       local default_capabilities = vim.tbl_deep_extend(
         'force',
         {},

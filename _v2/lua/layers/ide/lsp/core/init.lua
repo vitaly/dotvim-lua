@@ -17,7 +17,6 @@ return {
     -- lsp-colors
     require('lsp-colors').setup()
 
-    require('lspconfig.ui.windows').default_options.border = 'single'
 
     ------------------------------------------------------------------
     -- servers config ------------------------------------------------
