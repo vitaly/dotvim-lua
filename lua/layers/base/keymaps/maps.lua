@@ -56,7 +56,11 @@ return {
       ['<leader>'] = {
         name = 'SPC',
 
-        q = { '<cmd>qa<cr>', 'quit all' },
+        q = {
+          name = 'Quit / Session',
+          q = { '<cmd>qa<cr>', 'quit all' },
+          Q = { '<cmd>qa!<cr>', 'quit all!' },
+        },
         Q = { '<cmd>qa!<cr>', 'quit all!' },
         x = { '<cmd>q<cr>', 'close window' },
 
@@ -134,6 +138,7 @@ return {
           name = 'Tab',
 
           n = { [[<cmd>tabnew<cr>]], 'New' },
+          [ [[<tab>]] ] = { [[<cmd>b#<cr>]], 'Last Buffer' },
         },
 
         v = {
@@ -183,7 +188,11 @@ return {
     require('which-key').register({
 
       ['<leader>'] = {
-        q = { '<cmd>qa<cr>', 'quit all' },
+        q = {
+          name = 'Quit / Session',
+          q = { '<cmd>qa<cr>', 'quit all' },
+          Q = { '<cmd>qa!<cr>', 'quit all!' },
+        },
         Q = { '<cmd>qa!<cr>', 'quit all!' },
         x = { '<cmd>q<cr>', 'close window' },
       },
