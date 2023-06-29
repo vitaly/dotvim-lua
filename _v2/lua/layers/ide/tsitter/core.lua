@@ -89,7 +89,7 @@ return {
           m = { '<cmd>TSModuleInfo<cr>', 'Module Info' },
           c = { '<cmd>TSConfigInfo<cr>', 'Config Info' },
         },
-        s = {
+        S = {
           t = {
             name = 'Tree Sitter',
 

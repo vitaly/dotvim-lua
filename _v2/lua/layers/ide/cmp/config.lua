@@ -126,7 +126,7 @@ return {
     })
 
     require('which-key').register {
-      ['<leader>sc'] = { '<cmd>CmpStatus<cr>', 'CMP' },
+      ['<leader>Sc'] = { '<cmd>CmpStatus<cr>', 'CMP' },
     }
   end, -- setup
 

@@ -7,7 +7,7 @@ return {
 
       require('which-key').register {
         ['<leader>'] = {
-          sx = { '<cmd>XtermColorTable<cr>', 'Xtem Color Table' },
+          Sx = { '<cmd>XtermColorTable<cr>', 'Xtem Color Table' },
         },
       }
     end,

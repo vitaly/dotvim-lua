@@ -23,7 +23,7 @@ return {
     require('telescope').load_extension 'aerial'
 
     require('which-key').register {
-      ['<leader>sa'] = { '<cmd>AerialInfo<cr>', 'AerialInfo' },
+      ['<leader>Sa'] = { '<cmd>AerialInfo<cr>', 'AerialInfo' },
 
       -- ['\\t'] = { '<cmd>AerialOpen<cr>', 'Aerial Outline' },
 

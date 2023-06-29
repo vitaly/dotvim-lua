@@ -26,7 +26,7 @@ return {
     }
 
     require('which-key').register {
-      ['<leader>sn'] = { '<cmd>NullLsInfo<cr>', 'Null LS' },
+      ['<leader>Sn'] = { '<cmd>NullLsInfo<cr>', 'Null LS' },
     }
 
     require('mason-null-ls').setup {
