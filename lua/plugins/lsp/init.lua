@@ -121,5 +121,4 @@ return {
       require('mason-lspconfig').setup { ensure_installed = opts.ensure_installed, handlers = { setup_server } }
     end,
   },
-  { import = 'plugins.lsp.config' },
 }
