@@ -30,7 +30,6 @@ return {
 
     keys = {
       { [[<leader>Sl]], vim.cmd.LspInfo, desc = 'LSP Info' },
-
       { [[<leader>ali]], vim.cmd.LspInfo, desc = 'LSP Info' },
       { [[<leader>all]], vim.cmd.LspLog, desc = 'LSP Log' },
       { [[<leader>als]], vim.cmd.LspStart, desc = 'LSP Start' },
@@ -139,8 +138,6 @@ return {
       { [[<leader>ani]], vim.cmd.NullLsInfo, desc = 'Null LS Info' },
       { [[<leader>anl]], vim.cmd.NullLsLog, desc = 'Null LS Log' },
     },
-
-    opts = {},
 
     opts = function()
       local nls = require 'null-ls'
