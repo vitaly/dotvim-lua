@@ -4,30 +4,11 @@
 -- transient user changes
 my.config = vim.tbl_deep_extend('keep', my.config or {}, {
 
-  -- TODO: move upstack. pass opts from top init.lua
-  filer = {
-    -- 'nvimtree',
-    'neotree',
-
-    side = 'right',
-  },
-
   tagbar = {
     'outline',
     -- 'sidevar',
     -- 'vista',
     side = 'left',
-  },
-
-  statusline = {
-    'lua_line',
-    -- 'galaxy_line',
-    -- 'incline',
-  },
-
-  lua = {
-    -- whether to pass whole runtime path to lua_ls
-    ls_full_library = false,
   },
 
   obsidian = {
