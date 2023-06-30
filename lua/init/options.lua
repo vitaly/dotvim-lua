@@ -20,27 +20,26 @@ local has = function(x)
 end
 
 opt.autowriteall = true -- Automatically save before commands like :next and :make
-opt.clipboard = "unnamedplus" -- Sync with system clipboard
-opt.completeopt = "menu,menuone,noselect"
+opt.clipboard = 'unnamedplus' -- Sync with system clipboard
+opt.completeopt = 'menu,menuone,noselect'
 opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true
 opt.expandtab = true
-opt.foldcolumn='auto'
+opt.foldcolumn = 'auto'
 opt.foldlevel = 2
 opt.formatoptions = opt.formatoptions
-+ "t" -- Auto-wrap text using 'textwidth'
-+ "c" -- Auto-wrap comments using 'textwidth', inserting the current comment leader automatically.
-+ "q" -- Allow formatting of comments with "gq".
-+ "j" -- Where it makes sense, remove a comment leader when joining lines.
+  + 't' -- Auto-wrap text using 'textwidth'
+  + 'c' -- Auto-wrap comments using 'textwidth', inserting the current comment leader automatically.
+  + 'q' -- Allow formatting of comments with "gq".
+  + 'j' -- Where it makes sense, remove a comment leader when joining lines.
+  + 'r' -- Automatically insert the current comment leader after hitting <Enter> in Insert mode.
+  + 'o' -- Automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
+  + 'l' -- Long lines are not broken in insert mode
+  + 'n' -- When formatting text, recognize numbered lists
 
-+ "r" -- Automatically insert the current comment leader after hitting <Enter> in Insert mode.
-+ "o" -- Automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
-+ "l" -- Long lines are not broken in insert mode
-+ "n" -- When formatting text, recognize numbered lists
-
-opt.grepformat = "%f:%l:%c:%m" -- rg includes column number
-opt.grepprg = "rg --vimgrep"
+opt.grepformat = '%f:%l:%c:%m' -- rg includes column number
+opt.grepprg = 'rg --vimgrep'
 
 opt.exrc = true
 opt.ignorecase = true
@@ -58,7 +57,7 @@ opt.pumheight = 10 -- Max items in a popup menu
 opt.relativenumber = false
 opt.scrolloff = 4 -- Scroll context lines
 opt.secure = true -- Everything is allowed in 'exrc' files since they must be explicitly marked trusted.
-opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+opt.sessionoptions = { 'buffers', 'curdir', 'tabpages', 'winsize' }
 opt.shiftround = true -- Round shift indent to shiftwidth multiples
 opt.shiftwidth = 2
 opt.shortmess = opt.shortmess
@@ -70,11 +69,11 @@ opt.shortmess = opt.shortmess
   + 'C' -- don't give messages while scanning for ins-completion
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8 -- Scroll lines of context
-opt.signcolumn = "yes"
+opt.signcolumn = 'yes'
 opt.smartcase = true
 opt.shiftwidth = 2
 opt.smartindent = true -- Insert indents automatically
-opt.spelllang = { "en" }
+opt.spelllang = { 'en' }
 opt.swapfile = false -- disable swap
 opt.splitbelow = true
 opt.splitright = true
@@ -86,6 +85,6 @@ opt.undolevels = 10000
 opt.updatetime = 300 -- CursorHold delay
 opt.virtualedit = 'all'
 opt.visualbell = true -- use visual bell instead of beeping
-opt.wildignore = '*.o,*.a,*.so,*.swp,.git,.hg,.svn,CVS,RCS,*~,*.pyc','*.zwc'
-opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.wildignore = '*.o,*.a,*.so,*.swp,.git,.hg,.svn,CVS,RCS,*~,*.pyc', '*.zwc'
+opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.wrap = false

@@ -82,40 +82,40 @@ return {
     end,
   },
   {
-      'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs
-      event = 'InsertEnter',
+    'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs
+    event = 'InsertEnter',
 
-      opts = {
-        check_ts = true,
-        ts_config = {},
-        disable_filetype = { 'TelescopePrompt' },
+    opts = {
+      check_ts = true,
+      ts_config = {},
+      disable_filetype = { 'TelescopePrompt' },
 
-        enable_check_bracket_line = true,
-      },
-
-      -- TODO: map for cmp
-      config = function(_, opts)
-        local autopairs = require 'nvim-autopairs'
-
-        autopairs.setup(opts)
-
-        autopairs.add_rules(require 'nvim-autopairs.rules.endwise-elixir')
-        autopairs.add_rules(require 'nvim-autopairs.rules.endwise-ruby')
-        autopairs.add_rules(require 'nvim-autopairs.rules.endwise-lua')
-      end
+      enable_check_bracket_line = true,
     },
-    {
-      "folke/todo-comments.nvim", -- https://github.com/folke/todo-comments.nvim
-      dependencies = { "nvim-lua/plenary.nvim" },
-      cmd = { "TodoTrouble", "TodoTelescope" },
-      event = { "BufReadPost", "BufNewFile" },
-      keys = {
-        { '<leader>st', vim.cmd.TodoTelescope, desc = 'Project TODOs'}
-      },
-      opts = {
-        keywords = {
-          TODO = { icon = ' ', color = 'info', alt = { 'TBD' } },
-        },
-      }
+
+    -- TODO: map for cmp
+    config = function(_, opts)
+      local autopairs = require 'nvim-autopairs'
+
+      autopairs.setup(opts)
+
+      autopairs.add_rules(require 'nvim-autopairs.rules.endwise-elixir')
+      autopairs.add_rules(require 'nvim-autopairs.rules.endwise-ruby')
+      autopairs.add_rules(require 'nvim-autopairs.rules.endwise-lua')
+    end,
+  },
+  {
+    'folke/todo-comments.nvim', -- https://github.com/folke/todo-comments.nvim
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    cmd = { 'TodoTrouble', 'TodoTelescope' },
+    event = { 'BufReadPost', 'BufNewFile' },
+    keys = {
+      { '<leader>st', vim.cmd.TodoTelescope, desc = 'Project TODOs' },
     },
-  }
+    opts = {
+      keywords = {
+        TODO = { icon = ' ', color = 'info', alt = { 'TBD' } },
+      },
+    },
+  },
+}
