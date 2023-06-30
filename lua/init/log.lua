@@ -25,12 +25,16 @@ end
 
 -- generic logging function
 local _notify = vim.schedule_wrap(function(level, ...)
-  if level >= my.log.level then
+  if level >= my.config.loglevel then
     vim.notify(my.inspect(...), level)
   end
 end)
 
 my.log = {
+  notify = function(level, ...)
+    _notify(level, ...)
+  end,
+
   trace = function(...)
     _notify(vim.log.levels.TRACE, ...)
   end,
@@ -55,4 +59,4 @@ my.log = {
 _G.PRINT = my.log.debug
 
 -- TODO: add a toggle to go through info, debug, trace
-my.log.level = my.log.level or my.config.log.level or vim.log.levels.INFO
+my.config.loglevel = my.config.loglevel or vim.log.levels.INFO
