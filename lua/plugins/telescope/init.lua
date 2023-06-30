@@ -28,6 +28,7 @@ return {
 
       { [[<leader>sT]], telescope [[]], desc = 'Telescope' },
       { [[<leader>sC]], telescope [[colorscheme enable_preview=true]], desc = 'Colorscheme +preview' },
+      { [[<leader>sH]], telescope [[highlights]], desc = 'Highlights' },
 
       { [[<leader>sD]], telescope [[diagnostics]], desc = 'Diagnostics' },
       { [[<leader>sa]], telescope [[autocommands]], desc = 'Autocommands' },

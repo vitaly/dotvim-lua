@@ -17,6 +17,7 @@ return {
     keys = {
       { [[\gs]], [[<cmd>Gitsigns toggle_signs<cr>]], desc = 'Toggle Signs' },
       { [[\gv]], [[<cmd>Gitsigns toggle_current_line_blame<cr>]], desc = 'Toggle Virtual Line Blame' },
+      { [[\gl]], [[<cmd>Gitsigns toggle_linehl<cr>]], desc = 'Toggle Line Highlight' },
     },
     opts = {
       signs = {
@@ -24,6 +25,7 @@ return {
         change = { text = '~' },
         changedelete = { text = '-' },
       },
+      word_diff = true,
 
       current_line_blame = true,
       current_line_blame_opts = {
