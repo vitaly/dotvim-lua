@@ -1,4 +1,5 @@
 -- TODO: Add support for Base16 and shell integration
+local debug = my.log.debug
 
 local function define_load_vimrc_background_command()
   vim.api.nvim_create_user_command('LoadVimrcBackground', function()
@@ -12,27 +13,69 @@ local function define_load_vimrc_background_command()
   })
 end
 
+local tools = require 'lib.tools'
+local get_hi_attr = tools.get_hi_attr
+local hi = tools.highlight
+
+local function get_colors()
+  if vim.g.colors_name and vim.startswith(vim.g.colors_name, 'base16-') then
+    local base16 = require 'base16-colorscheme'
+    local colors = base16.colors
+    if colors then -- 'colors' only available when a base16 colorscheme is set in vim
+      return {
+        bg = colors.base00,
+        fg = colors.base05,
+        green = colors.base0B,
+        red = colors.base08,
+        yellow = colors.base0A,
+        blue = colors.base0D,
+        purple = colors.base0E,
+        orange = colors.base09,
+        cyan = colors.base0C,
+        darkgray = colors.base01,
+        gray = colors.base02,
+        lightgray = colors.base03,
+      }
+    end
+  end
+
+  return {
+    bg = get_hi_attr('Normal', 'bg'),
+    fg = get_hi_attr('Normal', 'fg'),
+    green = '#198844',
+    red = '#cc342b',
+    yellow = '#fba922',
+    blue = '#3971ed',
+    purple = '#a36ac7',
+    cyan = '#b5e4f4',
+    darkgray = '#3a3432',
+    gray = '#4a4543',
+    lightgray = '#5c5855',
+  }
+end
+
+local function override_diff_colors(colors)
+  hi.DiffAdd = { guibg = colors.green, guifg = colors.bg, gui = nil, guisp = nil }
+  hi.DiffDelete = { guibg = colors.bg, guifg = colors.red, gui = nil, guisp = nil }
+  hi.DiffChange = { guibg = colors.yellow, guifg = colors.bg, gui = nil, guisp = nil }
+  hi.DiffText = { guibg = colors.green, guifg = colors.bg, gui = nil, guisp = nil }
+
+  hi.GitGutterAdd = { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil }
+  hi.GitGutterDelete = { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil }
+  hi.GitGutterChange = { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil }
+  hi.GitGutterChangeDelete = { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil }
+
+  hi.GitSignsAdd = 'GitGutterAdd'
+  hi.GitSignsChange = 'GitGutterChange'
+end
+
 -- I don't like the way base16 color schemes handle diff mode
 -- let's owerride some background to meke diffs
 -- more 'colorful'.
-local function setup_base16_colors_override()
-    local function diffmode_colors()
-      local base16 = require 'base16-colorscheme'
-      local colors = base16.colors
-      local hi = base16.highlight
-
-      -- 'colors' only available when a base16 colorscheme is set in vim
-      if not colors then
-        return
-      end
-
-      hi.DiffDelete = { guibg = colors.base00, guifg = colors.base08, gui = nil, guisp = nil }
-      hi.DiffAdd = { guibg = colors.base0B, guifg = colors.base00, gui = nil, guisp = nil }
-      hi.DiffChange = { guibg = colors.base0A, guifg = colors.base00, gui = nil, guisp = nil }
-      hi.DiffText = { guibg = colors.base0B, guifg = colors.base00, gui = nil, guisp = nil }
-    end
-
-    require('lib.au').on_colorscheme_changed('base16.diffmode.colors', diffmode_colors, { pattern = 'base16-*' })
+local function setup_colors_override()
+  require('lib.au').on_colorscheme_changed('base.colors.override', function()
+    override_diff_colors(get_colors())
+  end)
 end
 
 return {
@@ -51,7 +94,7 @@ return {
     config = function()
       -- setup handler for adjusting base16 colors for diff-mode
       -- need to do this before we acrually change into the base16 colorscheme
-      setup_base16_colors_override()
+      setup_colors_override()
 
       define_load_vimrc_background_command()
 
