@@ -142,20 +142,19 @@ return {
     opts = function()
       local nls = require 'null-ls'
       return {
-        null_ls = {
-          border = 'single',
+        border = 'single',
+        debug = true,
 
-          -- root_dir = require('null-ls.utils').root_pattern('.null-ls-root', '.neoconf.json', 'Makefile', '.git'),
-          sources = {
-            nls.builtins.formatting.prettier,
-            nls.builtins.formatting.stylua,
-            nls.builtins.formatting.rubocop,
-            nls.builtins.formatting.shfmt,
-            nls.builtins.diagnostics.rubocop,
-            nls.builtins.diagnostics.shellcheck,
-            -- nls.builtins.completion.spell,
-            -- nls.builtins.formatting.trim_whitespace,
-          },
+        -- root_dir = require('null-ls.utils').root_pattern('.null-ls-root', '.neoconf.json', 'Makefile', '.git'),
+        sources = {
+          nls.builtins.formatting.prettier,
+          nls.builtins.formatting.stylua,
+          nls.builtins.formatting.rubocop,
+          nls.builtins.formatting.shfmt,
+          nls.builtins.diagnostics.rubocop,
+          nls.builtins.diagnostics.shellcheck,
+          -- nls.builtins.completion.spell,
+          -- nls.builtins.formatting.trim_whitespace,
         },
 
         -- for mason-null-ls
@@ -164,7 +163,7 @@ return {
     end,
 
     config = function(_, opts)
-      require('null-ls').setup(opts.null_ls)
+      require('null-ls').setup(opts)
       require('mason-null-ls').setup {
         ensure_installed = opts.ensure_installed,
       }
