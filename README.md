@@ -48,6 +48,11 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 
 - `,d` - Show Diff Menu
 
+<!-- lua/plugins/development/README.md -->
+## Xterm Color Table
+
+- `SPACE-SX` or ``:XtermColorTable` to show the table
+
 <!-- lua/plugins/editor-colors/README.md -->
 ### Colorizer
 

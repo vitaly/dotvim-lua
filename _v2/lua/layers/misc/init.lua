@@ -1,18 +1,5 @@
 return {
 
-  {
-    'guns/xterm-color-table.vim', -- https://github.com/guns/xterm-color-table.vim
-    config = function()
-      vim.g.XtermColorTableDefaultOpen = 'edit'
-
-      require('which-key').register {
-        ['<leader>'] = {
-          Sx = { '<cmd>XtermColorTable<cr>', 'Xtem Color Table' },
-        },
-      }
-    end,
-  },
-
   -- {
   --   'fgheng/winbar.nvim', -- https://github.com/fgheng/winbar.nvim
 
