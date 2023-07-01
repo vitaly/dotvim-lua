@@ -33,3 +33,8 @@
 
 - `:Gsearch` - to search and open results in a buffer for edit
 - `:Greplace` - apply edits from the buffer into original files matched
+
+## ZEN MODE
+
+- `\F` - Focus ([twilight.nvim](https://github.com/folke/twilight.nvim)). Dimm everything except area around the cursor line
+- `\<tab>` - [Zen Mode](https://github.com/folke/zen-mode.nvim). Focus, but also zoom and center the window

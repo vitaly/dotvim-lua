@@ -82,4 +82,48 @@ return {
     'vim-scripts/greplace.vim', -- https://github.com/vim-scripts/greplace.vim
     cmd = { 'Gsearch', 'Gbuffersearch', 'Greplace' },
   },
+
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
+  ---ZEM MODE
+  {
+    'folke/twilight.nvim', -- https://github.com/folke/twilight.nvim
+
+    keys = {
+      { [[\F]], '<cmd>Twilight<cr>', desc = 'Focus' },
+    },
+
+    opts = {
+      dimming = {
+        alpha = 0.6,
+        inactive = true,
+      },
+      context = 25,
+    },
+  },
+  {
+    'folke/zen-mode.nvim', -- https://github.com/folke/zen-mode.nvim
+
+    keys = {
+      { [[\<tab>]], '<cmd>ZenMode<cr>', desc = 'ZenMode' },
+    },
+
+    opts = {
+      window = {
+        backdrop = 0.6,
+        width = 150, -- width of the Zen window
+        options = {
+          foldcolumn = '0', -- disable fold column
+          list = false, -- disable whitespace characters
+        },
+      },
+      plugins = {
+        -- tmux = { enabled = true },
+        -- kitty = {
+        --   enabled = true,
+        --   font = '+5',
+        -- },
+      },
+    },
+  },
 }
