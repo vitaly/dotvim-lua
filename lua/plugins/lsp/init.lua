@@ -1,5 +1,9 @@
 local debug = my.log.debug
 local trace = my.log.trace
+
+local map_keys = require('lib.tools').map_keys
+local maps = require 'plugins.lsp.maps'
+
 return {
 
   -- register menu group
@@ -29,12 +33,12 @@ return {
     cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
 
     keys = {
-      { [[<leader>Sl]], vim.cmd.LspInfo, desc = 'LSP Info' },
-      { [[<leader>ali]], vim.cmd.LspInfo, desc = 'LSP Info' },
-      { [[<leader>all]], vim.cmd.LspLog, desc = 'LSP Log' },
-      { [[<leader>als]], vim.cmd.LspStart, desc = 'LSP Start' },
-      { [[<leader>alS]], vim.cmd.LspStop, desc = 'LSP Stop' },
-      { [[<leader>alr]], vim.cmd.LspRestart, desc = 'LSP Restart' },
+      map_keys([[<leader>Sl]], maps.lsp_info),
+      map_keys([[<leader>ali]], maps.lsp_info),
+      map_keys([[<leader>all]], maps.lsp_log),
+      map_keys([[<leader>als]], maps.lsp_start),
+      map_keys([[<leader>alS]], maps.lsp_stop),
+      map_keys([[<leader>alr]], maps.lsp_restart),
     },
 
     opts = {
