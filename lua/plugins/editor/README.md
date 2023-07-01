@@ -20,3 +20,7 @@
 ## Zoom
 
 - `\z` - toggle panel zoom
+
+## Switch
+
+- `gs` - [switch.vim](https://github.com/AndrewRadev/switch.vim) to switch things. e.g. `true` <=> `false`, or `{ :a => a }` <=> `{ a: a }`

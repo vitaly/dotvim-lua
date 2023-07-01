@@ -59,4 +59,14 @@ return {
       { [[\z]], '<cmd>ZoomWinTabToggle<cr>', desc = 'Zoom' },
     },
   },
+
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
+  -- SWITCH
+  {
+    'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
+
+    keys = { 'gs' },
+    cmd = { 'Switch', 'SwitchExtend', 'SwitchRevers' },
+  },
 }

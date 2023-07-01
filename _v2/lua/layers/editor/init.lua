@@ -26,10 +26,4 @@ return {
       }, { mode = 'x' })
     end,
   },
-
-  ----------------------------------------------------------------------------------------------
-  -- SWITCH
-  {
-    'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
-  },
 }
