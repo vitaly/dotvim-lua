@@ -2,38 +2,39 @@ local function telescope(cmd)
   return '<cmd>Telescope ' .. cmd .. '<cr>'
 end
 
---- @type MapDef[]
-return {
-  find_files = { telescope [[find_files]], desc = 'Find File' },
+--- @type KeyDef[]
+local maps = {
+  find_files = { nil, telescope [[find_files]], desc = 'Find File' },
 
-  live_grep = { telescope [[live_grep]], desc = 'Live Grep' },
+  live_grep = { nil, telescope [[live_grep]], desc = 'Live Grep' },
 
-  commands = { telescope [[commands]], desc = 'Find Command' },
+  commands = { nil, telescope [[commands]], desc = 'Find Command' },
 
-  buffers = { telescope [[buffers]], desc = 'Find buffer' },
-  help_tags = { telescope [[help_tags]], desc = 'Help Tags' },
+  buffers = { nil, telescope [[buffers]], desc = 'Find buffer' },
+  help_tags = { nil, telescope [[help_tags]], desc = 'Help Tags' },
 
-  command_history = { telescope [[command_history]], desc = 'Command History' },
+  command_history = { nil, telescope [[command_history]], desc = 'Command History' },
 
-  telescope = { telescope [[]], desc = 'Telescope' },
-  colorschemes = { telescope [[colorscheme enable_preview=true]], desc = 'Colorscheme +preview' },
-  highlights = { telescope [[highlights]], desc = 'Highlights' },
+  telescope = { nil, telescope [[]], desc = 'Telescope' },
+  colorschemes = { nil, telescope [[colorscheme enable_preview=true]], desc = 'Colorscheme +preview' },
+  highlights = { nil, telescope [[highlights]], desc = 'Highlights' },
 
-  diagnostics = { telescope [[diagnostics]], desc = 'Diagnostics' },
-  autocommands = { telescope [[autocommands]], desc = 'Autocommands' },
-  buf_diagnostics = { telescope [[diagnostics buffnr=0]], desc = 'Document Diagnostics' },
-  grep_string = { telescope [[grep_string]], desc = 'Grep String' },
-  keymaps = { telescope [[keymaps]], desc = 'Keymaps' },
-  lines = { telescope [[current_buffer_fuzzy_find]], desc = 'Current Buffer Lines' },
-  man_pages = { telescope [[man_pages]], desc = 'Manpages' },
-  recent_fies = { telescope [[oldfiles]], desc = 'Recent Files' },
-  symbols = { telescope [[symbols]], desc = 'Character S[y]mbols' },
-  tagstack = { telescope [[tagstack]], desc = 'Tag[s]tack' },
-  vim_options = { telescope [[vim_options]], desc = 'Vim Options' },
+  diagnostics = { nil, telescope [[diagnostics]], desc = 'Diagnostics' },
+  autocommands = { nil, telescope [[autocommands]], desc = 'Autocommands' },
+  buf_diagnostics = { nil, telescope [[diagnostics buffnr=0]], desc = 'Document Diagnostics' },
+  grep_string = { nil, telescope [[grep_string]], desc = 'Grep String' },
+  keymaps = { nil, telescope [[keymaps]], desc = 'Keymaps' },
+  lines = { nil, telescope [[current_buffer_fuzzy_find]], desc = 'Current Buffer Lines' },
+  man_pages = { nil, telescope [[man_pages]], desc = 'Manpages' },
+  recent_fies = { nil, telescope [[oldfiles]], desc = 'Recent Files' },
+  symbols = { nil, telescope [[symbols]], desc = 'Character S[y]mbols' },
+  tagstack = { nil, telescope [[tagstack]], desc = 'Tag[s]tack' },
+  vim_options = { nil, telescope [[vim_options]], desc = 'Vim Options' },
 
-  marks = { telescope [[marks]], desc = 'Marks' },
+  marks = { nil, telescope [[marks]], desc = 'Marks' },
 
-  git_files = { telescope [[git_files]], desc = 'Git Files' },
-  git_commits = { telescope [[git_commits]], desc = 'Git Commits' },
-  git_status = { telescope [[git_status]], desc = 'Search Git Status' },
+  git_files = { nil, telescope [[git_files]], desc = 'Git Files' },
+  git_commits = { nil, telescope [[git_commits]], desc = 'Git Commits' },
+  git_status = { nil, telescope [[git_status]], desc = 'Search Git Status' },
 }
+return maps

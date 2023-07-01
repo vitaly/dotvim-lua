@@ -33,12 +33,13 @@ return {
     cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
 
     keys = {
-      map_keys([[<leader>Sl]], maps.lsp_info),
-      map_keys([[<leader>ali]], maps.lsp_info),
-      map_keys([[<leader>all]], maps.lsp_log),
-      map_keys([[<leader>als]], maps.lsp_start),
-      map_keys([[<leader>alS]], maps.lsp_stop),
-      map_keys([[<leader>alr]], maps.lsp_restart),
+      map_keys(maps.lsp_info, [[<leader>Sl]]),
+
+      map_keys(maps.lsp_info, [[<leader>ali]]),
+      map_keys(maps.lsp_log, [[<leader>all]]),
+      map_keys(maps.lsp_start, [[<leader>als]]),
+      map_keys(maps.lsp_stop, [[<leader>alS]]),
+      map_keys(maps.lsp_restart, [[<leader>alr]]),
     },
 
     opts = {
