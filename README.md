@@ -109,6 +109,28 @@ Default mappings are changed slightly to be more like those of tpope's `vim-surr
 
 - `gA` - start [mini.align](https://github.com/echasnovski/mini.align) in Preview mode
 
+## Global Search and Replace
+
+- `:Gsearch` - to search and open results in a buffer for edit
+- `:Greplace` - apply edits from the buffer into original files matched
+
+## ZEN MODE
+
+- `\F` - Focus ([twilight.nvim](https://github.com/folke/twilight.nvim)). Dimm everything except area around the cursor line
+- `\<tab>` - [Zen Mode](https://github.com/folke/zen-mode.nvim). Focus, but also zoom and center the window
+
+## Multiple Cursors
+
+[vim-visual-multi](https://github.com/mg979/vim-visual-multi)
+
+- `ctrl-n` - to select words
+- `n` - select next
+- `q` - skip
+
+- `ctrl-down` - add vertical cursor
+
+- `tab` - toggle cursor and extend mode
+
 <!-- lua/plugins/git/README.md -->
 ## GIT
 
