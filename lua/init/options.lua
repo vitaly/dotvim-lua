@@ -54,7 +54,7 @@ end
 opt.number = true -- Show line numbers
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Max items in a popup menu
-opt.relativenumber = false
+opt.relativenumber = true
 opt.scrolloff = 4 -- Scroll context lines
 opt.secure = true -- Everything is allowed in 'exrc' files since they must be explicitly marked trusted.
 opt.sessionoptions = { 'buffers', 'curdir', 'tabpages', 'winsize' }
@@ -69,7 +69,7 @@ opt.shortmess = opt.shortmess
   + 'C' -- don't give messages while scanning for ins-completion
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8 -- Scroll lines of context
-opt.signcolumn = 'yes'
+opt.signcolumn = 'yes:2'
 opt.smartcase = true
 opt.shiftwidth = 2
 opt.smartindent = true -- Insert indents automatically

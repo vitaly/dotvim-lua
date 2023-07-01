@@ -1,3 +1,4 @@
+local debug = my.log.debug
 return {
   {
     'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
@@ -75,10 +76,6 @@ return {
       opts.ensure_installed = ensure_installed
 
       require('nvim-treesitter.configs').setup(opts)
-
-      -- setup folding using treesitter
-      vim.opt.foldmethod = 'expr'
-      vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
     end,
   },
   {

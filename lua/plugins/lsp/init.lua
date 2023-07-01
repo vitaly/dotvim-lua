@@ -73,6 +73,14 @@ return {
         'force',
         {},
         vim.lsp.protocol.make_client_capabilities(),
+        {
+          textDocument = {
+            foldingRange = {
+              dynamicRegistration = false,
+              lineFoldingOnly = true,
+            },
+          },
+        },
         -- FIXME: uncomment once we have cmp setup
         -- require('cmp_nvim_lsp').default_capabilities(),
         opts.capabilities or {}
@@ -115,6 +123,7 @@ return {
           seen[name] = true
           return true
         end
+        return false
       end, ensure_installed)
 
       trace { 'ensure_installed', ensure_installed }
