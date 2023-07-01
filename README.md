@@ -105,6 +105,10 @@ Default mappings are changed slightly to be more like those of tpope's `vim-surr
 
 - `gs` - [switch.vim](https://github.com/AndrewRadev/switch.vim) to switch things. e.g. `true` <=> `false`, or `{ :a => a }` <=> `{ a: a }`
 
+## Align
+
+- `gA` - start [mini.align](https://github.com/echasnovski/mini.align) in Preview mode
+
 <!-- lua/plugins/git/README.md -->
 ## GIT
 

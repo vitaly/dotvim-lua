@@ -69,4 +69,9 @@ return {
     keys = { 'gs' },
     cmd = { 'Switch', 'SwitchExtend', 'SwitchRevers' },
   },
+
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
+  -- ALIGN
+  { 'echasnovski/mini.align', version = '*', opts = {} }, -- https://github.com/echasnovski/mini.align
 }
