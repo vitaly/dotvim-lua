@@ -41,6 +41,10 @@ return {
       -- default LSP capabilities
       capabilities = {},
 
+      icons = {
+        diagnostics = { Error = '✖', Warn = '', Hint = '!', Info = '' },
+      },
+
       ensure_installed = { 'tsserver', 'pyright' },
       -- Lspconfig Server Settings
       ---@type table<string, lspconfig.options>

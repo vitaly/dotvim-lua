@@ -16,4 +16,8 @@ my.config = vim.tbl_deep_extend('force', {
   neotree = {
     -- position = 'right',
   },
+
+  icons = {
+    diagnostics = { Error = '✖', Warn = '', Hint = '!', Info = '' },
+  },
 }, my.config or {})

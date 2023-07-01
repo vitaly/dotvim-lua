@@ -10,7 +10,10 @@ return {
   }, -- register menu group
   {
     'nvim-telescope/telescope.nvim', -- https://github.com/nvim-telescope/telescope.nvim
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-symbols.nvim',
+    },
     cmd = 'Telescope',
 
     keys = {
