@@ -48,6 +48,25 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 
 - `,d` - Show Diff Menu
 
+<!-- lua/plugins/editor-colors/README.md -->
+### Colorizer
+
+[nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) plugin parses color values
+in the text and displays the colors either as a virtual text, background, or foreground color of the value.
+
+- `\Cc` - toggle colorizer
+- `\Cm` - toggle colorizer mode
+- `\Cr` - reload colorizer
+
+### Interesting Words
+
+[vim-interestingwords](https://github.com/lfv89/vim-interestingwords) plugin colors words by request.
+
+- `SPACE-k` - toggle color for the word under cursor
+- `SPACE-K` - remove all word colors
+- `n` - when cursor is over a colored word, goes to the next occurence, otherwise next search result
+- `N` - when cursor is over a colored word, goes to the prev occurence, otherwise prev search result
+
 <!-- lua/plugins/editor-surround/README.md -->
 ## Surround
 
@@ -57,6 +76,34 @@ Default mappings are changed slightly to be more like those of tpope's `vim-surr
 - `ys` - add
 - `ds` - remove
 - `cs` - change
+
+<!-- lua/plugins/editor/README.md -->
+## Bookmarks
+
+[vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks)
+
+- `mm` - Toggle Bookmark
+- `mc` - Clear Bookmarks in Buffer
+- `mx` - Clear Bookmark in All Buffers
+- `mn` - Next Bookmark
+- `mp` - Prev Bookmark
+- `ma` - Show All Bookmarks
+- `mi` - Add Bookmark Annotation
+- `mkk` - Move Bookmark Up
+- `mjj` - Move Bookmark Down
+
+## Undo Tree
+
+- `\u` To Toggle [undotree](http://github.com/mbbill/undotree)
+- `g=` - to go to later version
+
+## Zoom
+
+- `\z` - toggle panel zoom
+
+## Switch
+
+- `gs` - [switch.vim](https://github.com/AndrewRadev/switch.vim) to switch things. e.g. `true` <=> `false`, or `{ :a => a }` <=> `{ a: a }`
 
 <!-- lua/plugins/git/README.md -->
 ## GIT
