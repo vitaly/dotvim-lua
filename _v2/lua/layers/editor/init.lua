@@ -28,25 +28,8 @@ return {
   },
 
   ----------------------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------------------
-  -- WINDOW ZOOM
-  -- Toggle current window zoom
-  -- TODO: move to better place
-  {
-    'troydm/zoomwintab.vim', -- https://github.com/troydm/zoomwintab.vim
-
-    config = function()
-      nmap('\\z', '<cmd>ZoomWinTabToggle<cr>', 'Zoom')
-    end,
-  },
-
-  ----------------------------------------------------------------------------------------------
   -- SWITCH
   {
     'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
   },
 }
-
--- TODO: review
--- from https://alpha2phi.medium.com/neovim-plugins-for-a-better-coding-experience-part-3-d4c2df085677
--- { 'nathom/filetype.nvim' }, -- https://github.com/nathom/filetype.nvim

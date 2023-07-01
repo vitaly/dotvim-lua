@@ -47,4 +47,16 @@ return {
       vim.g.undotree_SetFocusWhenToggle = 1
     end,
   },
+
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
+  -- WINDOW ZOOM
+  -- Toggle current window zoom
+  {
+    'troydm/zoomwintab.vim', -- https://github.com/troydm/zoomwintab.vim
+
+    keys = {
+      { [[\z]], '<cmd>ZoomWinTabToggle<cr>', desc = 'Zoom' },
+    },
+  },
 }

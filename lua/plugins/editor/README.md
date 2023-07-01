@@ -16,3 +16,7 @@
 
 - `\u` To Toggle [undotree](http://github.com/mbbill/undotree)
 - `g=` - to go to later version
+
+## Zoom
+
+- `\z` - toggle panel zoom

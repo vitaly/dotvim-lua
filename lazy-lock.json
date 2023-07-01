@@ -35,5 +35,6 @@
   "vim-fugitive": { "branch": "master", "commit": "43f18ab9155c853a84ded560c6104e6300ad41da" },
   "vim-interestingwords": { "branch": "master", "commit": "e59f97aca15c6180e6f3aceaf4f7b50ca04326ed" },
   "vim-tmux-navigator": { "branch": "master", "commit": "ba7c119adf02f00705f8e64a0863e295083dcdf1" },
-  "which-key.nvim": { "branch": "main", "commit": "d871f2b664afd5aed3dc1d1573bef2fb24ce0484" }
+  "which-key.nvim": { "branch": "main", "commit": "d871f2b664afd5aed3dc1d1573bef2fb24ce0484" },
+  "zoomwintab.vim": { "branch": "master", "commit": "7a354f3f0aa7807d822c03c8c24dc6c1cced9d3c" }
 }
