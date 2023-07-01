@@ -65,57 +65,6 @@ return {
 
   ----------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------
-  -- COLORIZ#E#R
-  -- highlights colors in the sources
-  -- e.g. things like #ff00ff
-  {
-    -- 'norcalli/nvim-colorizer.lua', -- https://github.com/norcalli/nvim-colorizer.lua
-    'NvChad/nvim-colorizer.lua', -- https://github.com/NvChad/nvim-colorizer.lua
-
-    config = function()
-      require('layers.editor.colorizer').config()
-    end,
-  },
-
-  ----------------------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------------------
-  -- Interesting Words
-  -- Highlight custom words in document
-  {
-    'lfv89/vim-interestingwords', -- https://github.com/lfv89/vim-interestingwords
-    setup = function()
-      vim.g.interestingWordsGUIColors = {
-        '#ff0000',
-        '#00ff00',
-        '#0000ff',
-        '#ffff00',
-        '#00ffff',
-        '#ff00ff',
-        '#888888',
-        '#880000',
-        '#008800',
-        '#000088',
-        '#888800',
-        '#008888',
-        '#880088',
-        '#8800ff',
-        '#88aaff',
-        '#ff8800',
-        '#ff4488',
-        '#ffffff',
-      }
-      -- vim.g.interestingWordsRandomiseColors = 1
-    end,
-    config = function()
-      vim.cmd [[
-        nnoremap <silent> n <cmd>call WordNavigation(1)<cr><cmd>set hls<cr>zz
-        nnoremap <silent> N <cmd>call WordNavigation(0)<cr><cmd>set hls<cr>zz
-      ]]
-    end,
-  },
-
-  ----------------------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------------------
   -- WINDOW ZOOM
   -- Toggle current window zoom
   -- TODO: move to better place
@@ -131,17 +80,6 @@ return {
   -- SWITCH
   {
     'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
-  },
-
-  ----------------------------------------------------------------------------------------------
-  -- COMMENTS
-  {
-    'tpope/vim-commentary', -- https://github.com/tpope/vim-commentary/
-
-    config = function()
-      nmap('\\;', 'gcc', 'Comment')
-      xmap('\\;', 'gc', 'Comment')
-    end,
   },
 }
 
