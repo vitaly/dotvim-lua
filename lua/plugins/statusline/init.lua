@@ -4,6 +4,16 @@ local toggle_statusline = require('lib.toggle').toggler('g:_show_statusline', { 
   require('lualine').hide { unhide = show }
 end, { silent = true })
 
+if false then
+  return {
+    'echasnovski/mini.statusline',
+    version = '*',
+    opts = {
+      set_vim_settings = false,
+    },
+  }
+end
+
 return {
   'nvim-lualine/lualine.nvim', -- https://github.com/nvim-lualine/lualine.nvim
   event = 'VeryLazy',
