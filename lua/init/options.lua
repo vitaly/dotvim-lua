@@ -69,7 +69,7 @@ opt.shortmess = opt.shortmess
   + 'C' -- don't give messages while scanning for ins-completion
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8 -- Scroll lines of context
-opt.signcolumn = 'yes:2'
+opt.signcolumn = 'auto:4'
 opt.smartcase = true
 opt.shiftwidth = 2
 opt.smartindent = true -- Insert indents automatically

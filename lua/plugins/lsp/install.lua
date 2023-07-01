@@ -3,7 +3,6 @@ local trace = my.log.trace
 return {
 
   setup = function(opts)
-    debug 'lsp/install'
     local default_capabilities = vim.tbl_deep_extend(
       'force',
       {},

@@ -18,6 +18,6 @@ my.config = vim.tbl_deep_extend('force', {
   },
 
   icons = {
-    diagnostics = { Error = '✖', Warn = '', Hint = '!', Info = '' },
+    diagnostics = { Error = ' ', Warn = ' ', Hint = '󰌶 ', Info = ' ' },
   },
 }, my.config or {})

@@ -41,11 +41,8 @@ return {
       -- default LSP capabilities
       capabilities = {},
 
-      icons = {
-        diagnostics = { Error = '✖', Warn = '', Hint = '!', Info = '' },
-      },
-
       ensure_installed = { 'tsserver', 'pyright' },
+
       -- Lspconfig Server Settings
       ---@type table<string, lspconfig.options>
       servers = {
@@ -71,6 +68,12 @@ return {
     config = function(_, opts)
       -- for some reason lspconfig popups do not have a border
       require('lspconfig.ui.windows').default_options.border = 'single'
+
+      local icons = my.config.icons.diagnostics
+      for type, icon in pairs(icons) do
+        local hl = 'DiagnosticSign' .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      end
 
       require('plugins.lsp.install').setup(opts)
     end,
