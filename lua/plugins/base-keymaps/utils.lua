@@ -19,6 +19,7 @@ local toggle = require 'lib.toggle'
 UTIL.toggle_concealcursor = toggle.toggler('o:concealcursor', { 'n', '' }, UTIL.redraw)
 UTIL.toggle_conceallevel = toggle.toggler('o:conceallevel', { 0, 1, 2 }, UTIL.redraw)
 UTIL.toggle_clipboard = toggle.toggler('o:clipboard', { 'unnamedplus', '' }, UTIL.redraw)
+UTIL.toggle_foldcolumn = toggle.toggler('o:foldcolumn', { 'auto', '0' }, UTIL.redraw)
 
 ---------------------------------------------------------------------------------
 -- toggle verbose log

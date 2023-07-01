@@ -159,6 +159,8 @@ return {
     { [[\nn]], util.toggle_conceallevel, desc = 'Level' },
 
     { [[\dv]], util.toggle_verboselog, desc = 'Vim Verbose Log' },
+
+    { [[\fc]], util.toggle_foldcolumn, desc = 'Toggle Fold Column' },
   },
 
   opts = {
@@ -192,8 +194,9 @@ return {
       [ [[\]] ] = {
         name = 'Toggle',
 
-        n = { name = 'Conceal' },
         d = { name = 'Debug' },
+        f = { name = 'Fold' },
+        n = { name = 'Conceal' },
 
         ["'"] = { name = 'Misc' },
       },
