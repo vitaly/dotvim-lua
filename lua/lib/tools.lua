@@ -69,4 +69,26 @@ TOOLS.highlight = setmetatable({}, {
   end,
 })
 
+---@class MapDef
+---@field [1] string|fun() rhs
+---@field desc? string
+---@field mode? string|string[]
+---@field noremap? boolean
+---@field remap? boolean
+---@field expr? boolean
+---@field id string
+---@field silent boolean
+
+-- This function combines mapping keys with mapping definition and possible extra attributes
+---@param keys string
+---@param mapdef MapDef
+---@param extra table<string, string | boolean | number> | nil
+---@return LazyKeys
+function TOOLS.map_keys(keys, mapdef, extra)
+  if not mapdef then
+    error("missing definition for map_keys '" .. keys .. "'")
+  end
+  return vim.tbl_extend('force', mapdef, extra or {}, { keys, mapdef[1] })
+end
+
 return TOOLS

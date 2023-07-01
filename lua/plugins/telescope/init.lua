@@ -1,6 +1,5 @@
-local function telescope(cmd)
-  return '<cmd>Telescope ' .. cmd .. '<cr>'
-end
+local map_keys = require('lib.tools').map_keys
+local maps = require 'plugins.telescope.maps'
 return {
   -------------------------------------------------------------------------------
   -- Telescope
@@ -17,42 +16,42 @@ return {
     cmd = 'Telescope',
 
     keys = {
-      { '<localleader><localleader>', telescope [[find_files]], desc = 'Find File' },
-      { '<leader>ff', telescope [[find_files]], desc = 'Find File' },
+      map_keys([[<localleader><localleader>]], maps.find_files),
+      map_keys([[<leader>ff]], maps.find_files),
 
-      { [[<leader>/]], telescope [[live_grep]], desc = 'Live Grep' },
+      map_keys([[<leader>/]], maps.live_grep),
 
-      { [[<leader><cr>]], telescope [[commands]], desc = 'Find Command' },
+      map_keys([[<leader><cr>]], maps.commands),
 
-      { [[<leader>bb]], telescope [[buffers]], desc = 'Find buffer' },
-      { [[<leader>h]], telescope [[help_tags]], desc = 'Help Tags' },
+      map_keys([[<leader>bb]], maps.buffers),
+      map_keys([[<leader>h]], maps.help_tags),
 
-      { [[<leader>s:]], telescope [[command_history]], desc = 'Command History' },
+      map_keys([[<leader>s:]], maps.command_history),
 
-      { [[<leader>sT]], telescope [[]], desc = 'Telescope' },
-      { [[<leader>sC]], telescope [[colorscheme enable_preview=true]], desc = 'Colorscheme +preview' },
-      { [[<leader>sH]], telescope [[highlights]], desc = 'Highlights' },
+      map_keys([[<leader>sT]], maps.telescope),
+      map_keys([[<leader>sC]], maps.colorschemes),
+      map_keys([[<leader>sH]], maps.highlights),
 
-      { [[<leader>sD]], telescope [[diagnostics]], desc = 'Diagnostics' },
-      { [[<leader>sa]], telescope [[autocommands]], desc = 'Autocommands' },
-      { [[<leader>sb]], telescope [[buffers]], desc = 'Find buffer' },
-      { [[<leader>sc]], telescope [[commands]], desc = 'Find Command' },
-      { [[<leader>sd]], telescope [[diagnostics buffnr=0]], desc = 'Document Diagnostics' },
-      { [[<leader>sg]], telescope [[grep_string]], desc = 'Grep String' },
-      { [[<leader>sh]], telescope [[help_tags]], desc = 'Help Tags' },
-      { [[<leader>sk]], telescope [[keymaps]], desc = 'Keymaps' },
-      { [[<leader>sl]], telescope [[current_buffer_fuzzy_find]], desc = 'Current Buffer Lines' },
-      { [[<leader>sm]], telescope [[man_pages]], desc = 'Manpages' },
-      { [[<leader>so]], telescope [[oldfiles]], desc = 'Recent Files' },
-      { [[<leader>sy]], telescope [[symbols]], desc = 'Character S[y]mbols' },
-      { [[<leader>ss]], telescope [[tagstack]], desc = 'Tag[s]tack' },
-      { [[<leader>sv]], telescope [[vim_options]], desc = 'Vim Options' },
+      map_keys([[<leader>sD]], maps.diagnostics),
+      map_keys([[<leader>sa]], maps.autocommands),
+      map_keys([[<leader>sb]], maps.buffers),
+      map_keys([[<leader>sc]], maps.commands),
+      map_keys([[<leader>sd]], maps.buf_diagnostics),
+      map_keys([[<leader>sg]], maps.grep_string),
+      map_keys([[<leader>sh]], maps.help_tags),
+      map_keys([[<leader>sk]], maps.keymaps),
+      map_keys([[<leader>sl]], maps.lines),
+      map_keys([[<leader>sm]], maps.man_pages),
+      map_keys([[<leader>so]], maps.recent_fies),
+      map_keys([[<leader>sy]], maps.symbols),
+      map_keys([[<leader>ss]], maps.tagstack),
+      map_keys([[<leader>sv]], maps.vim_options),
 
-      { [[<leader>s']], telescope [[marks]], desc = 'Marks' },
+      map_keys([[<leader>s']], maps.marks),
 
-      { [[<leader>gf]], telescope [[git_files]], desc = 'Git Files' },
-      { [[<leader>gc]], telescope [[git_commits]], desc = 'Git Commits' },
-      { [[<leader>gS]], telescope [[git_status]], desc = 'Search Git Status' },
+      map_keys([[<leader>gf]], maps.git_files),
+      map_keys([[<leader>gc]], maps.git_commits),
+      map_keys([[<leader>gS]], maps.git_status),
     },
 
     -- local actions = require 'telescope.actions'
