@@ -67,6 +67,11 @@ return {
   -- Highlight custom words in document
   {
     'lfv89/vim-interestingwords', -- https://github.com/lfv89/vim-interestingwords
+    event = { 'BufReadPost', 'BufNewFile' },
+    keys = {
+      { 'n', '<cmd>call WordNavigation(1)<cr><cmd>set hls<cr>zz', desc = 'Search Next' },
+      { 'N', '<cmd>call WordNavigation(0)<cr><cmd>set hls<cr>zz', desc = 'Search Next' },
+    },
     opts = {
       colors = {
         '#ff0000',
@@ -95,10 +100,6 @@ return {
       end
       -- vim.g.interestingWordsRandomiseColors = 1
     end,
-    keys = {
-      { 'n', '<cmd>call WordNavigation(1)<cr><cmd>set hls<cr>zz', desc = 'Search Next' },
-      { 'N', '<cmd>call WordNavigation(0)<cr><cmd>set hls<cr>zz', desc = 'Search Next' },
-    },
     config = function() end,
   },
 }
