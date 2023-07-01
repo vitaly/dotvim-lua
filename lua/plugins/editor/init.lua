@@ -1,10 +1,14 @@
 return {
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
   -- FOLDLINE styling
   {
     'jrudess/vim-foldtext', -- https://github.com/jrudess/vim-foldtext
     event = { 'BufReadPost', 'BufNewFile' },
   },
 
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
   -- REMEMBER LAST FILE LOCATION
   { 'ethanholz/nvim-lastplace', opts = {} }, -- https://github.com/ethanholz/nvim-lastplace
 
@@ -24,6 +28,23 @@ return {
       vim.g.bookmark_center = opts.bookmark_center and 1 or 0
       vim.g.bookmark_display_annotation = opts.bookmark_display_annotation and 1 or 0
       vim.g.bookmark_auto_close = opts.bookmark_auto_close and 1 or 0
+    end,
+  },
+
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
+  -- UndoTree
+  {
+    'mbbill/undotree', -- http://github.com/mbbill/undotree
+    event = { 'BufReadPost', 'BufNewFile' },
+
+    keys = {
+      { [[g=]], [[<cmd>later<cr>]], desc = 'Go to newer text state' },
+      { [[\u]], '<cmd>UndotreeToggle<cr>', desc = 'Undo Tree' },
+    },
+
+    init = function()
+      vim.g.undotree_SetFocusWhenToggle = 1
     end,
   },
 }

@@ -11,3 +11,8 @@
 - `mi` - Add Bookmark Annotation
 - `mkk` - Move Bookmark Up
 - `mjj` - Move Bookmark Down
+
+## Undo Tree
+
+- `\u` To Toggle [undotree](http://github.com/mbbill/undotree)
+- `g=` - to go to later version
