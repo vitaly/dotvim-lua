@@ -143,7 +143,7 @@ return {
       local nls = require 'null-ls'
       return {
         border = 'single',
-        debug = true,
+        debug = false,
 
         -- root_dir = require('null-ls.utils').root_pattern('.null-ls-root', '.neoconf.json', 'Makefile', '.git'),
         sources = {

@@ -6,6 +6,7 @@ return {
         -- cmd = { 'lua-language-server', '--loglevel=trace' },
         settings = {
           Lua = {
+            format = { enable = false },
             runtime = { version = 'LuaJIT' },
 
             completion = {
