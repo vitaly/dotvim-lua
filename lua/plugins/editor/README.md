@@ -28,3 +28,8 @@
 ## Align
 
 - `gA` - start [mini.align](https://github.com/echasnovski/mini.align) in Preview mode
+
+## Global Search and Replace
+
+- `:Gsearch` - to search and open results in a buffer for edit
+- `:Greplace` - apply edits from the buffer into original files matched

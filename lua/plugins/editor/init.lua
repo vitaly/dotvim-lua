@@ -74,4 +74,12 @@ return {
   ----------------------------------------------------------------------------------------------
   -- ALIGN
   { 'echasnovski/mini.align', version = '*', opts = {} }, -- https://github.com/echasnovski/mini.align
+
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
+  -- SEARCH AND REPLACE
+  {
+    'vim-scripts/greplace.vim', -- https://github.com/vim-scripts/greplace.vim
+    cmd = { 'Gsearch', 'Gbuffersearch', 'Greplace' },
+  },
 }

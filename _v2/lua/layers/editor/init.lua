@@ -3,7 +3,6 @@
 return {
   'tpope/vim-repeat', -- https://github.com/tpope/vim-repeat
 
-  'vim-scripts/greplace.vim', -- https://github.com/vim-scripts/greplace.vim
 
   ----------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------
