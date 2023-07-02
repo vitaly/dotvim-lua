@@ -79,11 +79,11 @@ return {
       local select_next_item = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }
       local select_prev_item = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }
       local tab_completion = function(fallback)
-        -- if luasnip.expand_or_jumpable() then
-        --   luasnip.expand_or_jump()
-        -- end
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        end
 
-        if cmp.confirm() then
+        if cmp.confirm { select = true } then
           return
         end
 
@@ -104,7 +104,7 @@ return {
         -- * noselect - do not select a match in the menu
         -- completion = { completeopt = 'menu,noselect,preview' },
         -- completion = { completeopt = 'menu,menuone,noinsert' },
-        completion = { completeopt = 'menu,menuone,preview' },
+        completion = { completeopt = 'menu,menuone,noselect,preview' },
         snippet = {
           expand = function(args)
             require('luasnip').lsp_expand(args.body)
@@ -122,7 +122,7 @@ return {
           ['<c-f>'] = { i = cmp.mapping.scroll_docs(4) },
 
           -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ['<cr>'] = { i = cmp.mapping.confirm { select = true } },
+          ['<cr>'] = { i = cmp.mapping.confirm { select = false } },
           -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
           ['<s-cr>'] = { i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true } },
         },
