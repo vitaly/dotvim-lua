@@ -162,4 +162,12 @@ return {
       }
     end,
   },
+
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
+  -- ILLUMINATE WORDS UNDER CURSOR
+  {
+    'RRethy/vim-illuminate', -- https://github.com/RRethy/vim-illuminate
+    event = { 'BufReadPost', 'BufNewFile' },
+  },
 }

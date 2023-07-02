@@ -50,3 +50,12 @@
 - `ctrl-down` - add vertical cursor
 
 - `tab` - toggle cursor and extend mode
+
+## Illuminate
+
+[vim-illuminate](https://github.com/RRethy/vim-illuminate) is used to automatically
+highlight other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+
+- `<m-i>` - textobject for the reference illuminated under the cursor
+- `<m-n>` - go to next occurance
+- `<m-p>` - go to prev occurance

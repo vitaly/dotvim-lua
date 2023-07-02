@@ -48,6 +48,9 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 
 - `,d` - Show Diff Menu
 
+<!-- lua/plugins/cmp/README.md -->
+## Completion
+
 <!-- lua/plugins/development/README.md -->
 ## Xterm Color Table
 
@@ -135,6 +138,15 @@ Default mappings are changed slightly to be more like those of tpope's `vim-surr
 - `ctrl-down` - add vertical cursor
 
 - `tab` - toggle cursor and extend mode
+
+## Illuminate
+
+[vim-illuminate](https://github.com/RRethy/vim-illuminate) is used to automatically
+highlight other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+
+- `<m-i>` - textobject for the reference illuminated under the cursor
+- `<m-n>` - go to next occurance
+- `<m-p>` - go to prev occurance
 
 <!-- lua/plugins/git/README.md -->
 ## GIT
