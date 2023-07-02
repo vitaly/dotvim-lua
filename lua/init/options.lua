@@ -67,16 +67,17 @@ opt.shortmess = opt.shortmess
   + 'W' -- don't give "written" or "[w]" when writing a file
   + 'c' -- don't give |ins-completion-menu| messages
   + 'C' -- don't give messages while scanning for ins-completion
+opt.shiftwidth = 2
+opt.showmatch = true -- Show matching brackets.
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8 -- Scroll lines of context
 opt.signcolumn = 'auto:4'
 opt.smartcase = true
-opt.shiftwidth = 2
 opt.smartindent = true -- Insert indents automatically
 opt.spelllang = { 'en' }
-opt.swapfile = false -- disable swap
 opt.splitbelow = true
 opt.splitright = true
+opt.swapfile = false -- disable swap
 opt.tabstop = 2
 opt.termguicolors = true -- True color support
 opt.timeoutlen = 300

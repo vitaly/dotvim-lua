@@ -17,7 +17,6 @@ require('lazy').setup('plugins', {
         'logipat',
         'man',
         'matchit',
-        'matchparen',
         'netrw',
         'netrwFileHandlers',
         'netrwPlugin',
