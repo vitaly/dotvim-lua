@@ -5,11 +5,14 @@ local keys_opts = require('lazy.core.handler.keys').opts
 
 ---@param client any
 ---@param buf number
----@param keys string | table
----@param def KeyDef
+---@param keys string|table
+---@param def KeyDef|fun()
 local function map(client, buf, keys, def)
-  if type(keys) == 'string' then
+  if type(keys) ~= 'table' then
     keys = { keys }
+  end
+  if type(def) ~= 'table' then
+    def = { def }
   end
   keys = vim.tbl_extend('keep', keys, def)
   if keys.has then
@@ -36,7 +39,7 @@ return {
     local tele = require 'plugins.telescope.maps'
     local lsp = require 'plugins.lsp.maps'
 
-    map(client, buf, 'gd', tele.lsp_definitions)
+    map(client, buf, 'gd', lsp.definition)
     map(client, buf, 'gD', lsp.declaration)
     map(client, buf, 'gr', tele.lsp_references)
     map(client, buf, 'gR', lsp.references)
@@ -45,6 +48,16 @@ return {
 
     map(client, buf, 'K', lsp.hover)
     map(client, buf, 'gK', lsp.signature_help)
+
+    if vim.lsp.buf.inlay_hint then
+      map('n', buf, '\\i', {
+        nil,
+        function()
+          vim.lsp.buf.inlay_hint(0, nil)
+        end,
+        desc = 'Toggle Inlay Hints',
+      })
+    end
 
     map(client, buf, '<localleader>rr', lsp.rename)
     map(client, buf, '<localleader>a', lsp.code_action)

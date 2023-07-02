@@ -86,7 +86,7 @@ TOOLS.highlight = setmetatable({}, {
 ---@param keys string | table<string, string | boolean | number> | nil
 ---@return LazyKeys
 function TOOLS.map_keys(def, keys)
-  if type(keys) == 'string' then
+  if type(keys) ~= 'table' then
     keys = { keys }
   end
   if not def then

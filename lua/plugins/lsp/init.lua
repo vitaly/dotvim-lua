@@ -3,6 +3,7 @@ local trace = my.log.trace
 
 local map_keys = require('lib.tools').map_keys
 local maps = require 'plugins.lsp.maps'
+local au = require 'lib.au'
 
 return {
 
@@ -46,6 +47,13 @@ return {
       -- default LSP capabilities
       capabilities = {},
 
+      -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
+      -- Be aware that you also will need to properly configure your LSP server to
+      -- provide the inlay hints.
+      inlay_hints = {
+        enabled = true,
+      },
+
       ensure_installed = { 'tsserver', 'pyright' },
 
       -- Lspconfig Server Settings
@@ -80,9 +88,39 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
 
+      if opts.inlay_hints.enabled and vim.lsp.buf.inlay_hint then
+        au.lsp_on_attach('inlay_hints', function(client, buffer)
+          if client.server_capabilities.inlayHintProvider then
+            debug { 'inlay_hints', client.name }
+            vim.lsp.buf.inlay_hint(buffer, true)
+          end
+        end)
+      end
+
       require('plugins.lsp.install').setup(opts)
 
-      require('lib.au').lsp_on_attach('lsp.init', require('plugins.lsp.on_attach').on_attach)
+      au.lsp_on_attach('lsp.init', require('plugins.lsp.on_attach').on_attach)
+    end,
+  },
+
+  {
+    'ray-x/lsp_signature.nvim', -- https://github.com/ray-x/lsp_signature.nvim
+
+    opts = {
+      bind = true,
+      floating_window = true,
+      floating_window_above_cur_line = false,
+      hint_enable = false,
+      -- hint_prefix = 'ℹ️',
+      handler_opts = {
+        border = 'rounded',
+      },
+    },
+
+    config = function(_, opts)
+      au.lsp_on_attach('lsp_signature', function()
+        require('lsp_signature').on_attach()
+      end)
     end,
   },
 }
