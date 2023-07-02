@@ -138,7 +138,8 @@ return {
 
     -- misc
 
-    { [[<tab>n]], [[<cmd>tabnew<cr>]], desc = 'New' },
+    { [[<tab>n]], [[<cmd>tabnew<cr>]], desc = 'New Tab' },
+    { [[<leader>tn]], [[<cmd>tabnew<cr>]], desc = 'New Tab' },
 
     { [[<leader>vr]], [[<cmd>redraw!<cr>]], desc = 'Redraw' },
 
