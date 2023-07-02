@@ -1,15 +1,18 @@
 {
   "config function": {
-    "prefix": ["conf"],
+    "prefix": [
+      "conf"
+    ],
     "body": [
-      "config = function()",
+      "config = function(_, opts)",
       "\t$0",
       "end,"
     ]
   },
-
   "return config object": {
-    "prefix": ["rconf"],
+    "prefix": [
+      "rconf"
+    ],
     "body": [
       "return {",
       "\tconfig = function()",
@@ -18,18 +21,20 @@
       "}"
     ]
   },
-
   "setup function": {
-    "prefix": ["set"],
+    "prefix": [
+      "set"
+    ],
     "body": [
       "setup = function()",
       "\t$0",
       "end,"
     ]
   },
-
   "return setup object": {
-    "prefix": ["rset"],
+    "prefix": [
+      "rset"
+    ],
     "body": [
       "return {",
       "\tsetup = function()",
@@ -38,9 +43,10 @@
       "}"
     ]
   },
-
   "wmap": {
-    "prefix": ["wmap"],
+    "prefix": [
+      "wmap"
+    ],
     "body": [
       "require('which-key').register {",
       "\t['<leader>$0'] = {",
