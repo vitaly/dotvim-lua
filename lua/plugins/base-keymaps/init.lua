@@ -108,6 +108,7 @@ return {
     { [[<leader>fx]], [[<cmd>!chmod +x %<cr>]], desc = 'Make Executable' },
 
     { [[<leader>feL]], [[<cmd>exe 'e' stdpath('cache').'/lsp.log'<cr>]], 'LSP log' },
+    util.edit_file_map([[<leader>fec]], '/lua/init/config.lua', 'Config'),
     util.edit_file_map([[<leader>fei]], '/init.lua', 'Init'),
     util.edit_file_map([[<leader>fek]], '/lua/plugins/base-keymaps/init.lua', 'Keymaps'),
     util.edit_file_map([[<leader>feo]], '/lua/init/options.lua', 'Options'),
