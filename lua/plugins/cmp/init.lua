@@ -1,7 +1,7 @@
 return {
 
   {
-    'L3MON4D3/LuaSnip', -- https://github.com/hrsh7th/vim-vsnip
+    'L3MON4D3/LuaSnip', -- https://github.com/L3MON4D3/LuaSnip
 
     dependencies = {
       'rafamadriz/friendly-snippets', -- https://github.com/rafamadriz/friendly-snippets
