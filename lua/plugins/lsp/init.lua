@@ -36,6 +36,9 @@ return {
       'williamboman/mason-lspconfig.nvim', -- https://github.com/williamboman/mason-lspconfig.nvim
 
       'hrsh7th/cmp-nvim-lsp',
+
+      -- lightbulb in signcolumn whenever code action is available
+      'kosayoda/nvim-lightbulb', -- https://github.com/kosayoda/nvim-lightbulb
     },
     event = { 'BufReadPre', 'BufNewFile' },
     cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
@@ -89,12 +92,14 @@ return {
       -- for some reason lspconfig popups do not have a border
       require('lspconfig.ui.windows').default_options.border = 'single'
 
+      -- configure diagsnostics icons
       local icons = my.config.icons.diagnostics
       for type, icon in pairs(icons) do
         local hl = 'DiagnosticSign' .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
 
+      -- configure inlay hints
       if opts.inlay_hints.enabled and vim.lsp.buf.inlay_hint then
         au.lsp_on_attach('inlay_hints', function(client, buffer)
           if client.server_capabilities.inlayHintProvider then
@@ -103,6 +108,17 @@ return {
           end
         end)
       end
+
+      -- configure lightbulb
+      require('nvim-lightbulb').setup {
+        float = { enabled = false },
+        autocmd = { enabled = true },
+        sign = { enabled = false },
+        virtual_text = {
+          enabled = true,
+          hl_mode = 'combine',
+        },
+      }
 
       require('plugins.lsp.install').setup(opts)
 

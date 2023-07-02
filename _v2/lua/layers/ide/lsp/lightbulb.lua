@@ -1,17 +1,7 @@
 return {
-  'kosayoda/nvim-lightbulb', -- https://github.com/kosayoda/nvim-lightbulb
 
   config = function()
     -- nvim-lightbulb
-    require('nvim-lightbulb').setup {
-      float = { enabled = false },
-      autocmd = { enabled = true },
-      sign = { enabled = false },
-      virtual_text = {
-        enabled = true,
-        hl_mode = 'combine',
-      },
-    }
   end,
 }
 -- DEFAULTS:
