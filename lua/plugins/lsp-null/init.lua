@@ -9,6 +9,10 @@ return {
   },
   event = { 'BufReadPre', 'BufNewFile' },
 
+  init = function()
+    require('lib.tools').keymap_group([[<leader>an]], 'Null Ls')
+  end,
+
   keys = {
     { [[<leader>Sn]], vim.cmd.NullLsInfo, desc = 'Null LS Info' },
     { [[<leader>ani]], vim.cmd.NullLsInfo, desc = 'Null LS Info' },

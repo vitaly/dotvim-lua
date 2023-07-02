@@ -13,10 +13,4 @@ return {
       { "<leader>Qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
     },
   },
-
-  -- menu groups
-  require('lib.tools').register_keymap_groups {
-    [ [[ <leader>g ]] ] = { name = 'Git' },
-    [ [[\g]] ] = { name = 'Git/Signs' },
-  },
 }

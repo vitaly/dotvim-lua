@@ -1,10 +1,5 @@
 return {
 
-  -- register menu group
-  require('lib.tools').register_keymap_groups {
-    [ [[<leader>am]] ] = { name = 'Mason' },
-  },
-
   -------------------------------------------------------------------------------
   -- MASON - generic installer
   {
@@ -12,6 +7,9 @@ return {
     lazy = true,
     build = ':MasonUpdate', -- :MasonUpdate updates registry contents
     cmd = { 'Mason', 'MasonLog', 'MasonUpdate', 'MasonInstall', 'MasonUninstall', 'MasonUninstallAll' },
+    init = function()
+      require('lib.tools').keymap_group([[<leader>am]], 'Mason')
+    end,
     keys = {
       { [[<leader>Sm]], vim.cmd.Mason, desc = 'Mason' }, -- Status
 

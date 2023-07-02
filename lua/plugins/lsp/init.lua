@@ -7,12 +7,6 @@ local au = require 'lib.au'
 
 return {
 
-  -- register menu group
-  require('lib.tools').register_keymap_groups {
-    [ [[<leader>al]] ] = { name = 'Lspconfig' },
-    [ [[<leader>an]] ] = { name = 'Null Ls' },
-  },
-
   -------------------------------------------------------------------------------
   -- lspconfig
   -------------------------------------------------------------------------------
@@ -42,6 +36,10 @@ return {
     },
     event = { 'BufReadPre', 'BufNewFile' },
     cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
+
+    init = function()
+      require('lib.tools').keymap_group([[<leader>al]], 'Lspconfig')
+    end,
 
     keys = {
       map_keys(maps.lsp_info, [[<leader>Sl]]),

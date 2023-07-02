@@ -1,9 +1,4 @@
 return {
-  -- register menu group
-  require('lib.tools').register_keymap_groups {
-    ['<leader>az'] = { name = 'Lazy' },
-  },
-
   -------------------------------------------------------------------------------
   -- manage lazy itself. use the latest STABLE version
   -------------------------------------------------------------------------------
@@ -25,5 +20,9 @@ return {
       { '<leader>azp', '<cmd>Lazy profile<cr>', desc = 'Profile' },
       { '<leader>azh', '<cmd>Lazy health<cr>', desc = 'Health' },
     },
+
+    init = function()
+      require('lib.tools').keymap_group([[<leader>az]], 'Lazy')
+    end,
   },
 }

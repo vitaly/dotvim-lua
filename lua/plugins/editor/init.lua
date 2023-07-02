@@ -131,9 +131,6 @@ return {
   ----------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------
   -- Multi Cursors
-  require('lib.tools').register_keymap_groups {
-    [ [[ <leader>v ]] ] = { name = 'Visual Multi' },
-  },
   {
     'mg979/vim-visual-multi', -- https://github.com/mg979/vim-visual-multi
 
@@ -141,6 +138,8 @@ return {
       -- Visual Cursor maps go under `,v`
       vim.g.VM_leader = '<localleader>v'
       vim.g.VM_highlight_matches = 'red'
+
+      require('lib.tools').keymap_group([[<localleader>v]], 'Visual Multi')
     end,
   },
 

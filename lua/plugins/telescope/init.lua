@@ -4,9 +4,6 @@ return {
   -------------------------------------------------------------------------------
   -- Telescope
   -------------------------------------------------------------------------------
-  require('lib.tools').register_keymap_groups {
-    ['<leader>s'] = { name = 'Search' },
-  }, -- register menu group
   {
     'nvim-telescope/telescope.nvim', -- https://github.com/nvim-telescope/telescope.nvim
     dependencies = {
@@ -14,6 +11,10 @@ return {
       'nvim-telescope/telescope-symbols.nvim',
     },
     cmd = 'Telescope',
+
+    init = function()
+      require('lib.tools').keymap_group([[<leader>s]], 'Search')
+    end,
 
     keys = {
       map_keys(maps.find_files, [[<localleader><localleader>]]),

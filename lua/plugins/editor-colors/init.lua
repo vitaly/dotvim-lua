@@ -45,13 +45,14 @@ return {
   -- COLORIZ#E#R
   -- highlights colors in the sources
   -- e.g. things like #ff00ff
-  require('lib.tools').register_keymap_groups {
-    [ [[\C]] ] = { name = 'Colorizer' },
-  }, -- register menu group
   {
     -- 'norcalli/nvim-colorizer.lua', -- https://github.com/norcalli/nvim-colorizer.lua
     'NvChad/nvim-colorizer.lua', -- https://github.com/NvChad/nvim-colorizer.lua
     event = { 'BufReadPost', 'BufNewFile' },
+
+    init = function()
+      require('lib.tools').keymap_group([[\C]], 'Colorizer')
+    end,
 
     keys = {
       { [[\Cc]], colorizer.toggle, desc = 'Toggle Colorizer' },

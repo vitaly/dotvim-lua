@@ -59,6 +59,7 @@ return {
       })
     end
 
+    require('lib.tools').keymap_group([[<localleader>r]], 'Refactor', { buffer = 0 })
     map(client, buf, '<localleader>rr', lsp.rename)
     map(client, buf, '<localleader>a', lsp.code_action)
 
@@ -66,6 +67,7 @@ return {
     map(client, buf, '<localleader>n', lsp.next_diagnostic)
     map(client, buf, '<localleader>p', lsp.prev_diagnostic)
 
+    require('lib.tools').keymap_group([[<localleader>g]], 'Goto', { buffer = 0 })
     map(client, buf, '<localleader>gd', tele.lsp_definitions)
     map(client, buf, '<localleader>gD', lsp.declaration) -- conditional on has textDocument/declaration
     map(client, buf, '<localleader>gr', tele.lsp_references)
@@ -75,6 +77,7 @@ return {
     map(client, buf, '<localleader>gci', tele.lsp_incoming_calls)
     map(client, buf, '<localleader>gco', tele.lsp_outgoing_calls)
 
+    require('lib.tools').keymap_group([[<localleader>s]], 'Search', { buffer = 0 })
     map(client, buf, '<localleader>sd', tele.lsp_document_symbols)
     map(client, buf, '<localleader>sw', tele.lsp_workspace_symbols)
     map(client, buf, '<localleader>sD', tele.lsp_dynamic_workspace_symbols)

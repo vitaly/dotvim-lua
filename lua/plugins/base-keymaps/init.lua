@@ -1,4 +1,6 @@
 local util = require 'plugins.base-keymaps.utils'
+local debug = my.log.debug
+local trace = my.log.trace
 
 ---------------------------------------------------------------------------------
 -- DIFF MODE MAPS
@@ -170,22 +172,17 @@ return {
     disable = { filetypes = { 'TelescopePrompt' } },
 
     groups = {
-      [ [[<localleader>]] ] = {
-        name = ',',
-
-        e = { name = 'Eval' },
-      },
-
       [ [[<leader>]] ] = {
         name = 'SPC',
 
+        Q = { name = 'Quit / Session' },
         S = { name = 'Status / Show' },
         Y = { name = 'Yank' },
         a = { name = 'App' },
         b = { name = 'Buffer' },
         f = { name = 'File' },
         fe = { name = 'File Edit' },
-        Q = { name = 'Quit / Session' },
+        t = { name = 'Tab' },
         v = { name = 'Vim' },
         w = { name = 'Window' },
 
@@ -210,5 +207,15 @@ return {
     require('which-key').register(opts.groups, { mode = { 'n', 'v' } })
 
     setup_diff_mode_maps()
+
+    require('lib.tools').keymap_group([[<localleader>]], ',')
+    require('lib.tools').keymap_group([[<localleader>e]], 'Eval')
+
+    for _, group in ipairs(vim.g.my_keymap_groups) do
+      debug('registering', group[1], group[2])
+      require('which-key').register({ [group[1]] = { name = group[2] } }, group[3])
+    end
+
+    vim.g.my_keymap_groups_loaded = true
   end,
 }

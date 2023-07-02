@@ -1,11 +1,5 @@
 return {
 
-  -- menu groups
-  require('lib.tools').register_keymap_groups {
-    [ [[ <leader>g ]] ] = { name = 'Git' },
-    [ [[\g]] ] = { name = 'Git/Signs' },
-  },
-
   -------------------------------------------------------------------------------
   --- Gitsigns
   -------------------------------------------------------------------------------
@@ -20,6 +14,11 @@ return {
       { [[\gl]], [[<cmd>Gitsigns toggle_linehl<cr>]], desc = 'Toggle Line Highlight' },
       { [[\gw]], [[<cmd>Gitsigns toggle_word_diff<cr>]], desc = 'Toggle Word Diff' },
     },
+    init = function()
+      require('lib.tools').keymap_group([[<leader>g]], 'Git')
+      require('lib.tools').keymap_group([[\g]], 'Git/Signs')
+    end,
+
     opts = {
       signs = {
         add = { text = '+' },

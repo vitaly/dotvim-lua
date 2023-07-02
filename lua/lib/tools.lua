@@ -1,3 +1,5 @@
+local debug = my.log.debug
+local trace = my.log.trace
 -- clone repository into given directory if it doesn't exist
 local TOOLS = {}
 
@@ -34,14 +36,26 @@ function TOOLS.get_hi_attr(name, attr)
   return value
 end
 
---- Register the maps with 'which-key'. see lua/plugins/base-keymaps/init.lua - search for which-key
-function TOOLS.register_keymap_groups(groups)
-  return {
-    'folke/which-key.nvim',
-    opts = {
-      groups = groups,
-    },
-  }
+--- stores the groups definitions in g:keymap_groups
+--- if g:my_keymap_groups_loaded is set, it will also call which-key.register
+---@param groups table<string, any>
+---@param opts? table<string, any>
+function TOOLS.keymap_group(keys, name, opts)
+  trace { 'declare keymap_group', keys, name, opts }
+
+  opts = opts or { mode = { 'n', 'v' } }
+  trace('g:my_keymap_groups', vim.g.my_keymap_groups)
+
+  local groups = vim.g.my_keymap_groups or {}
+  table.insert(groups, { keys, name, opts })
+  vim.g.my_keymap_groups = groups
+
+  trace('g:my_keymap_groups', vim.g.my_keymap_groups)
+
+  if vim.g.my_keymap_groups_loaded then
+    trace { 'register', keys, name, opts }
+    require('which-key').register({ [keys] = { name = name } }, opts)
+  end
 end
 
 TOOLS.highlight = setmetatable({}, {
