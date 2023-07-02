@@ -6,7 +6,7 @@ local reveal = function()
   vim.cmd([[Neotree filesystem ]] .. position() .. [[ reveal reveal_force_cwd]])
 end
 local popup = function()
-  vim.cmd([[Neotree filesystem ]] .. 'float' .. [[ reveal reveal_force_cwd]])
+  vim.cmd [[Neotree filesystem float reveal reveal_force_cwd]]
 end
 local toggle = function()
   vim.cmd([[Neotree filesystem ]] .. position() .. [[ focus toggle=true]])

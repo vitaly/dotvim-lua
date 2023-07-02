@@ -1,5 +1,6 @@
 return {
   'github/copilot.vim', -- https://github.com/github/copilot.vim
+  build = ':Copilot auth',
 
   setup = function()
     vim.g.copilot_no_tab_map = 1

@@ -3,20 +3,20 @@ local trace = my.log.trace
 return {
 
   setup = function(opts)
+    -- local folding_capabilities = {
+    --   textDocument = {
+    --     foldingRange = {
+    --       dynamicRegistration = false,
+    --       lineFoldingOnly = true,
+    --     },
+    --   },
+    -- }
     local default_capabilities = vim.tbl_deep_extend(
       'force',
       {},
       vim.lsp.protocol.make_client_capabilities(),
-      {
-        textDocument = {
-          foldingRange = {
-            dynamicRegistration = false,
-            lineFoldingOnly = true,
-          },
-        },
-      },
-      -- FIXME: uncomment once we have cmp setup
-      -- require('cmp_nvim_lsp').default_capabilities(),
+      -- folding_capabilities,
+      require('cmp_nvim_lsp').default_capabilities(),
       opts.capabilities or {}
     )
     local defaults = { capabilities = default_capabilities }

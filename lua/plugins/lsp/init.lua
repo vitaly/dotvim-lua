@@ -29,6 +29,8 @@ return {
 
       'williamboman/mason.nvim', -- https://github.com/williamboman/mason.nvim
       'williamboman/mason-lspconfig.nvim', -- https://github.com/williamboman/mason-lspconfig.nvim
+
+      'hrsh7th/cmp-nvim-lsp',
     },
     event = { 'BufReadPre', 'BufNewFile' },
     cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
@@ -51,7 +53,7 @@ return {
       -- Be aware that you also will need to properly configure your LSP server to
       -- provide the inlay hints.
       inlay_hints = {
-        enabled = true,
+        enabled = false,
       },
 
       ensure_installed = { 'tsserver', 'pyright' },

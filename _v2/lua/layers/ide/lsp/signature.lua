@@ -2,20 +2,8 @@ return {
   'ray-x/lsp_signature.nvim', -- https://github.com/ray-x/lsp_signature.nvim
 
   config = function()
-    require('lsp_signature').setup {
-      bind = true,
-      floating_window = true,
-      floating_window_above_cur_line = false,
-      hint_enable = false,
-      -- hint_prefix = 'ℹ️',
-      handler_opts = {
-        border = 'rounded',
-      },
-    }
+    require('lsp_signature').setup
 
-    my.au.on_lsp_attach('lsp_signature', function()
-      require('lsp_signature').on_attach()
-    end)
   end,
 }
 -- DEFAULT SIGNATURE CONFIG

@@ -9,8 +9,6 @@ return {
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
     end
 
-    vim.g.vsnip_snippet_dir = my.root .. '/snippets'
-
     local cmp = require 'cmp'
 
     local function tab_completion(fallback)
@@ -47,50 +45,6 @@ return {
     end
 
     cmp.setup {
-      completion = { completeopt = 'menu,noselect,preview' },
-
-      experimental = {
-        native_menu = false,
-        ghost_text = true,
-      },
-
-      snippet = {
-        expand = function(args)
-          vim.fn['vsnip#anonymous'](args.body)
-        end,
-      },
-
-      sources = cmp.config.sources {
-        -- nvim lua api
-        { name = 'nvim_lua' },
-        -- lsp
-        { name = 'nvim_lsp' },
-        -- snippets
-        { name = 'vsnip' },
-        -- Neorg
-        { name = 'neorg' },
-        -- }, {
-        -- filesystem
-        { name = 'path' },
-        -- buffer strings
-        { name = 'buffer' },
-      },
-
-      formatting = {
-        format = require('lspkind').cmp_format {
-          mode = 'symbol_text',
-          maxwidth = 50,
-          menu = {
-            buffer = '[BUF]',
-            nvim_lsp = '[LSP]',
-            path = '[PATH]',
-            vsnip = '[SNIP]',
-            nvim_lua = '[LUA]',
-            cmdline = '[CMD]',
-          },
-        },
-      },
-
       mapping = cmp.mapping.preset.insert {
         ['<cr>'] = { i = cmp.mapping.confirm() },
         ['<tab>'] = { i = tab_completion },
@@ -101,29 +55,6 @@ return {
       },
     }
 
-    -- `/` cmdline setup.
-    cmp.setup.cmdline('/', {
-      mapping = cmp.mapping.preset.cmdline {
-        ['<C-j>'] = { c = next_item },
-        ['<C-k>'] = { c = prev_item },
-      },
-      sources = {
-        { name = 'buffer' },
-      },
-    })
-
-    -- `:` cmdline setup.
-    cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline {
-        ['<C-j>'] = { c = next_item },
-        ['<C-k>'] = { c = prev_item },
-      },
-      sources = cmp.config.sources({
-        { name = 'path' },
-      }, {
-        { name = 'cmdline' },
-      }),
-    })
 
     require('which-key').register {
       ['<leader>Sc'] = { '<cmd>CmpStatus<cr>', 'CMP' },
