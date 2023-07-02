@@ -20,4 +20,8 @@ my.config = vim.tbl_deep_extend('force', {
   icons = {
     diagnostics = { Error = ' ', Warn = ' ', Hint = '󰌶 ', Info = ' ' },
   },
+
+  lua = {
+    add_plugins_to_workspace = false,
+  },
 }, my.config or {})

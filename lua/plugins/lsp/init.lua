@@ -20,8 +20,13 @@ return {
     'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
     dependencies = {
       'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
-      -- `config=true` ensures it's setup before lspconfig
-      { 'folke/neodev.nvim', config = true }, -- https://github.com/folke/neodev.nvim
+      {
+        'folke/neodev.nvim', -- https://github.com/folke/neodev.nvim
+        opts = {
+          -- control adding plugins in my.copnfig.lua
+          library = { plugins = (my.config.lua or {}).add_plugins_to_workspace },
+        },
+      },
       -- `config=true` ensures it's setup before lspconfig
       { 'folke/neoconf.nvim', cmd = 'Neoconf', config = true }, -- https://github.com/folke/neoconf.nvim
       -- Simple progress widget for LSP
