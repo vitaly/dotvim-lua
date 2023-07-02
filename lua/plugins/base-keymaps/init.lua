@@ -212,7 +212,7 @@ return {
     require('lib.tools').keymap_group([[<localleader>e]], 'Eval')
 
     for _, group in ipairs(vim.g.my_keymap_groups) do
-      debug('registering', group[1], group[2])
+      trace('registering', group[1], group[2])
       require('which-key').register({ [group[1]] = { name = group[2] } }, group[3])
     end
 
