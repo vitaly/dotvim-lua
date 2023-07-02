@@ -34,9 +34,8 @@ return {
   keys = {
 
     -- quiting
-    { [[<leader>qq]], '<cmd>qa<cr>', mode = { 'n', 'x' }, desc = 'Quit All' },
-    { [[<leader>qQ]], '<cmd>qa!<cr>', mode = { 'n', 'x' }, desc = 'Quit All!' },
-    { [[<leader>Q]], '<cmd>qa!<cr>', mode = { 'n', 'x' }, desc = 'Quit All!' },
+    { [[<leader>q]], '<cmd>qa<cr>', mode = { 'n', 'x' }, desc = 'Quit All' },
+    { [[<leader>QQ]], '<cmd>qa!<cr>', mode = { 'n', 'x' }, desc = 'Quit All!' },
     { [[<leader>x]], '<cmd>q<cr>', mode = { 'n', 'x' }, desc = 'Close Window' },
     { [[<leader>wq]], '<cmd>q<cr>', mode = { 'n', 'x' }, desc = 'Close Window' },
 
@@ -184,7 +183,7 @@ return {
         b = { name = 'Buffer' },
         f = { name = 'File' },
         fe = { name = 'File Edit' },
-        q = { name = 'Quit / Session' },
+        Q = { name = 'Quit / Session' },
         v = { name = 'Vim' },
         w = { name = 'Window' },
 

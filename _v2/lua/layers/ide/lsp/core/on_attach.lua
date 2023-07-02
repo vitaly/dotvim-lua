@@ -8,26 +8,12 @@ local function setup_lsp_keymaps(bufnr)
 
   require('which-key').register({
 
-    gd = { tele.lsp.definition, 'Definition' },
-    gD = { tele.lsp.type_definition, 'Declaration' },
-    gi = { tele.lsp.implementation, 'Implementation' },
-    gr = { tele.lsp.references, 'References' },
-
-    K = { lsp.hover, 'Hover' },
-
     ['<localleader>'] = {
       r = {
         name = 'Refactor',
-        r = { lsp.rename, 'Refactor(Rename)' },
       },
 
       s = { tele.lsp.custom_document_symbol, 'Document Symbol' },
-
-      a = { lsp.code_action, 'Code Action' },
-
-      ['1'] = { lsp.first_diagnostic, 'First Problem' },
-      n = { lsp.next_diagnostic, 'Next Problem' },
-      p = { lsp.prev_diagnostic, 'Prev Problem' },
 
       g = {
         name = 'Go to',

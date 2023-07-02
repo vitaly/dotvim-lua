@@ -11,25 +11,25 @@ local maps = {
   lsp_stop = { nil, cmd 'LspStop', desc = 'Lsp Stop' },
   lsp_restart = { nil, cmd 'LspRestart', desc = 'Lsp Restart' },
 
-  declaration = { nil, vim.lsp.buf.declaration, desc = '' },
+  definition = { nil, vim.lsp.buf.definition, desc = 'Definition', has = 'definition' },
+  declaration = { nil, vim.lsp.buf.declaration, desc = 'Declaration', has = 'declaration' },
 
-  definition = { nil, vim.lsp.buf.definition, desc = '' },
-  type_definition = { nil, vim.lsp.buf.type_definition, desc = '' },
-  implementation = { nil, vim.lsp.buf.implementation, desc = '' },
-  references = { nil, vim.lsp.buf.references, desc = '' },
+  type_definition = { nil, vim.lsp.buf.type_definition, desc = 'Type Definition', has = 'typeDefinition' },
+  implementation = { nil, vim.lsp.buf.implementation, desc = 'Implementation' },
+  references = { nil, vim.lsp.buf.references, desc = 'References', has = 'references' },
 
-  incoming_calls = { nil, vim.lsp.buf.incoming_calls, desc = '' },
-  outgoing_calls = { nil, vim.lsp.buf.outgoing_calls, desc = '' },
+  incoming_calls = { nil, vim.lsp.buf.incoming_calls, desc = 'Incoming Calls' },
+  outgoing_calls = { nil, vim.lsp.buf.outgoing_calls, desc = 'Outgoing Calls' },
 
-  document_symbol = { nil, vim.lsp.buf.document_symbol, desc = '' },
-  workspace_symbol = { nil, vim.lsp.buf.workspace_symbol, desc = '' },
+  document_symbol = { nil, vim.lsp.buf.document_symbol, desc = 'Document Symbol' },
+  workspace_symbol = { nil, vim.lsp.buf.workspace_symbol, desc = 'Workspace Symbol' },
 
-  code_action = { nil, vim.lsp.buf.code_action, desc = '' },
+  code_action = { nil, vim.lsp.buf.code_action, desc = 'Code Action', has = 'codeAction' },
 
-  signature_help = { nil, vim.lsp.buf.signature_help, desc = '' },
+  signature_help = { nil, vim.lsp.buf.signature_help, desc = 'Signature Help', has = 'signatureHelp' },
 
-  add_workspace_folder = { nil, vim.lsp.buf.add_workspace_folder, desc = '' },
-  remove_workspace_folder = { nil, vim.lsp.buf.remove_workspace_folder, desc = '' },
+  add_workspace_folder = { nil, vim.lsp.buf.add_workspace_folder, desc = 'Add Workspace Folder' },
+  remove_workspace_folder = { nil, vim.lsp.buf.remove_workspace_folder, desc = 'Remove Workspace Folder' },
 
   list_workspace_folders = {
     nil,

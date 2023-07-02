@@ -81,6 +81,8 @@ return {
       end
 
       require('plugins.lsp.install').setup(opts)
+
+      require('lib.au').lsp_on_attach('lsp.init', require('plugins.lsp.on_attach').on_attach)
     end,
   },
 }
