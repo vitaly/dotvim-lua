@@ -56,12 +56,11 @@ return {
       ['<leader>'] = {
         name = 'SPC',
 
-        q = {
+        q = { '<cmd>qa<cr>', 'Quit all' },
+        Q = {
           name = 'Quit / Session',
-          q = { '<cmd>qa<cr>', 'quit all' },
-          Q = { '<cmd>qa!<cr>', 'quit all!' },
+          Q = { '<cmd>qa!<cr>', 'Quit all!' },
         },
-        Q = { '<cmd>qa!<cr>', 'quit all!' },
         x = { '<cmd>q<cr>', 'close window' },
 
         m = { '<cmd>messages<cr>', 'Messages' },
