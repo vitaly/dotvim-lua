@@ -1,5 +1,6 @@
 return {
   'lukas-reineke/lsp-format.nvim', -- https://github.com/lukas-reineke/lsp-format.nvim
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     exclude = {},
     order = {},
