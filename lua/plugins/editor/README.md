@@ -59,3 +59,14 @@ highlight other uses of the word under the cursor using either LSP, Tree-sitter,
 - `<m-i>` - textobject for the reference illuminated under the cursor
 - `<m-n>` - go to next occurance
 - `<m-p>` - go to prev occurance
+
+## Yank Ring
+
+[yanky.nvim](https://github.com/gbprod/yanky.nvim) is used for 'yank ring' functionality
+
+after pasting:
+
+- `[y` - previous paste
+- `]y` - next paste
+
+- `<SPACE-Y-CR` - yank history picker

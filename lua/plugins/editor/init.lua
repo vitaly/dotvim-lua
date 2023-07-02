@@ -170,4 +170,26 @@ return {
     'RRethy/vim-illuminate', -- https://github.com/RRethy/vim-illuminate
     event = { 'BufReadPost', 'BufNewFile' },
   },
+
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
+  -- YANK RING
+  {
+    'gbprod/yanky.nvim', -- https://github.com/gbprod/yanky.nvim
+    opts = {},
+    lazy = false,
+    keys = {
+      { [[p]], '<Plug>(YankyPutAfter)', mode = { 'n', 'x' }, desc = 'Paste after' },
+      { [[P]], '<Plug>(YankyPutBefore)', mode = { 'n', 'x' }, desc = 'Paste before' },
+      { [[gp]], '<Plug>(YankyGPutAfter)', mode = { 'n', 'x' }, desc = 'Paste after' },
+      { [[gP]], '<Plug>(YankyGPutBefore)', mode = { 'n', 'x' }, desc = 'Paste before' },
+      { ']y', '<Plug>(YankyCycleBackward)', desc = 'Paste Cycle Back' },
+      { '[y', '<Plug>(YankyCycleForward)', desc = 'Paste Cycle Next' },
+      { [[<leader>Y<cr>]], vim.cmd.YankyRingHistory, desc = 'Yank History' },
+    },
+
+    config = function(_, opts)
+      require('yanky').setup {}
+    end,
+  },
 }
