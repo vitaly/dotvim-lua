@@ -14,7 +14,7 @@ my.config = vim.tbl_deep_extend('force', {
   -- colorscheme = '-load', -- FIXME: I don't like this magic value
 
   neotree = {
-    -- position = 'right',
+    position = 'left',
   },
 
   icons = {
@@ -23,5 +23,9 @@ my.config = vim.tbl_deep_extend('force', {
 
   lua = {
     add_plugins_to_workspace = false,
+  },
+
+  tagbar = {
+    position = 'right',
   },
 }, my.config or {})
