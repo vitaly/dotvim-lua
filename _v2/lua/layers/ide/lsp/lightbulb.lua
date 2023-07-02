@@ -1,8 +1,6 @@
 return {
   'kosayoda/nvim-lightbulb', -- https://github.com/kosayoda/nvim-lightbulb
 
-  requires = 'antoinemadec/FixCursorHold.nvim', -- https://github.com/antoinemadec/FixCursorHold.nvim
-
   config = function()
     -- nvim-lightbulb
     require('nvim-lightbulb').setup {

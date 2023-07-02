@@ -3,36 +3,6 @@
 ---------------------------------------------------------------------------
 -- Setup local buffer maps for LSP
 local function setup_lsp_keymaps(bufnr)
-  local lsp = require 'layers.ide.lsp.maps'
-  local tele = require 'layers.telescope.maps'
-
-  require('which-key').register({
-
-    ['<localleader>'] = {
-      r = {
-        name = 'Refactor',
-      },
-
-      s = { tele.lsp.custom_document_symbol, 'Document Symbol' },
-
-      g = {
-        name = 'Go to',
-
-        d = { tele.lsp.definition, 'Definition' },
-        D = { tele.lsp.type_definition, 'Declaration' },
-        i = { tele.lsp.implementation, 'Implementation' },
-        r = { tele.lsp.references, 'References' },
-
-        n = { tele.lsp.incoming_calls, 'Incoming Calls' },
-        o = { tele.lsp.outgoing_calls, 'Outgoing Calls' },
-
-        s = { tele.lsp.document_symbol, 'Full Document Symbol' },
-        w = { tele.lsp.workspace_symbol, 'Workspace Symbol' },
-        W = { tele.lsp.dynamic_workspace_symbol, 'Dynamic Workspace Symbol' },
-      },
-    },
-  }, { buffer = bufnr })
-
   nmap('<C-LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.definition()<cr>', 'buffer')
   nmap('<A-LeftMouse>', '<LeftMouse><cmd>lua vim.lsp.buf.hover()<cr>', 'buffer')
 end
