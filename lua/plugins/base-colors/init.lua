@@ -79,7 +79,19 @@ local function setup_colors_override()
 end
 
 return {
-  { 'folke/tokyonight.nvim', lazy = true, priority = 1000 }, -- https://github.com/folke/tokyonight.nvim
+  {
+    'folke/tokyonight.nvim',
+    lazy = true,
+    priority = 1000,
+
+    config = function(_, opts)
+      require('tokyonight').setup {
+        on_colors = function(colors)
+          colors.border = '#3a3a3a' -- lighter split separator
+        end,
+      }
+    end,
+  }, -- https://github.com/folke/tokyonight.nvim
 
   {
     'RRethy/nvim-base16', -- https://github.com/RRethy/nvim-base16
