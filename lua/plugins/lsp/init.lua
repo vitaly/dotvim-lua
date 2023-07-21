@@ -5,8 +5,13 @@ local map_keys = require('lib.tools').map_keys
 local maps = require 'plugins.lsp.maps'
 local au = require 'lib.au'
 
-return {
+local lib_plugins = (my.config.lua or {}).add_plugins_to_workspace or {}
 
+if true ~= lib_plugins then
+  table.insert(lib_plugins, 'nvim-dap-ui') -- TODO: configure this from within debugger layer
+end
+
+return {
   -------------------------------------------------------------------------------
   -- lspconfig
   -------------------------------------------------------------------------------
@@ -18,7 +23,7 @@ return {
         'folke/neodev.nvim', -- https://github.com/folke/neodev.nvim
         opts = {
           -- control adding plugins in my.copnfig.lua
-          library = { plugins = (my.config.lua or {}).add_plugins_to_workspace },
+          library = { plugins = lib_plugins },
         },
       },
       -- `config=true` ensures it's setup before lspconfig
