@@ -54,9 +54,7 @@ return {
 
     { [[Q]], 'gq', mode = { 'n', 'v', 'o' } },
 
-    { [[<plug>(Last-Buffer)]], '<cmd>b#<cr>', desc = 'Switch to last buffer' },
-    { [[<leader>`]], '<plug>(Last-Buffer)' },
-    { [[<leader><tab><tab>]], '<plug>(Last-Buffer)' },
+    { [[<tab><tab>]], '<cmd>b#<cr>', desc = 'Switch to last buffer' },
 
     { [[<]], '<gv', mode = 'x', desc = 'Keep selection after outdent' },
     { [[>]], '>gv', mode = 'x', desc = 'Keep selection after indent' },
@@ -142,7 +140,6 @@ return {
     -- misc
 
     { [[<tab>n]], [[<cmd>tabnew<cr>]], desc = 'New Tab' },
-    { [[<leader>tn]], [[<cmd>tabnew<cr>]], desc = 'New Tab' },
 
     { [[<leader>vr]], [[<cmd>redraw!<cr>]], desc = 'Redraw' },
 
@@ -182,11 +179,8 @@ return {
         b = { name = 'Buffer' },
         f = { name = 'File' },
         fe = { name = 'File Edit' },
-        t = { name = 'Tab' },
         v = { name = 'Vim' },
         w = { name = 'Window' },
-
-        [ [[<tab>]] ] = { name = 'Tab' },
       },
 
       [ [[\]] ] = {

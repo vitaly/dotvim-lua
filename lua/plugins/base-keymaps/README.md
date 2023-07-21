@@ -1,7 +1,5 @@
-
 ## Basic Keymaps
 
-- `<SPACE>\`` - Last Tab
 - `<SPACE><tab><tab>` - Last Tab
 - `<SPACE><tab>n` - New Tab
 
