@@ -4,7 +4,7 @@ return {
 
     cmd = { 'XtermColorTable' },
     keys = {
-      { [[<leader>SX]], '<cmd>XtermColorTable<cr>', desc = 'Xtem Color Table' },
+      { [[<leader>SX]], '<cmd>XtermColorTable<cr>', desc = 'Xterm Color Table' },
     },
 
     config = function()

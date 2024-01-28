@@ -17,10 +17,6 @@
 - `\u` To Toggle [undotree](http://github.com/mbbill/undotree)
 - `g=` - to go to later version
 
-## Zoom
-
-- `\z` - toggle panel zoom
-
 ## Switch
 
 - `gs` - [switch.vim](https://github.com/AndrewRadev/switch.vim) to switch things. e.g. `true` <=> `false`, or `{ :a => a }` <=> `{ a: a }`
@@ -29,12 +25,18 @@
 
 - `gA` - start [mini.align](https://github.com/echasnovski/mini.align) in Preview mode
 
+<!- TODO: expand help here -->
+
 ## Global Search and Replace
 
 - `:Gsearch` - to search and open results in a buffer for edit
 - `:Greplace` - apply edits from the buffer into original files matched
 
-## ZEN MODE
+## Zoom
+
+- `\z` - toggle panel zoom
+
+## Zen mode
 
 - `\F` - Focus ([twilight.nvim](https://github.com/folke/twilight.nvim)). Dimm everything except area around the cursor line
 - `\<tab>` - [Zen Mode](https://github.com/folke/zen-mode.nvim). Focus, but also zoom and center the window
