@@ -40,6 +40,7 @@ local outline = {
   end,
 }
 
+-- NOTE: we use Aerial through a Telescope popup
 local aerial = {
   'stevearc/aerial.nvim', -- https://github.com/stevearc/aerial.nvim
 
@@ -48,14 +49,15 @@ local aerial = {
   },
 
   keys = {
-    { [[<leader>Sa]], vim.cmd.AerialInfo, desc = 'AerialInfo' },
     { [[go]], '<cmd>Telescope aerial theme=cursor layout_config={height=20}<cr>', desc = 'Fuzzy Outline' },
     -- { [[\t]], vim.cmd.AerialOpen, desc = 'SymbolsOutline' },
   },
 
+  cmd = { 'AerialOpen', 'AerialOpenAll', 'AerialClose', 'AerialCloseAll', 'AerialInfo' },
+
   opts = {
     layout = {
-      default_direction = my.config.tagbar.side or 'right',
+      default_direction = my.config.tagbar.position or 'right',
     },
   },
 
