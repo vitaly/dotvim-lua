@@ -11,7 +11,20 @@ return {
     keys = {
       { '<c-space>', desc = 'Increment selection' },
       { '<bs>', desc = 'Decrement selection', mode = 'x' },
+
+      { '<leader>ati', '<cmd>TSInstallInfo<cr>', desc = 'Install Info' },
+      { '<leader>atm', '<cmd>TSModuleInfo<cr>', desc = 'Module Info' },
+      { '<leader>atc', '<cmd>TSConfigInfo<cr>', desc = 'Config Info' },
+      { '<leader>atu', '<cmd>TSUpdate<cr>', desc = 'Update' },
+
+      { '<leader>Stm', '<cmd>TSModuleInfo<cr>', desc = 'Modules' },
+      { '<leader>Stc', '<cmd>TSConfigInfo<cr>', desc = 'Config' },
     },
+
+    init = function()
+      require('lib.tools').keymap_group([[<leader>at]], 'Tree Sitter')
+      require('lib.tools').keymap_group([[<leader>St]], 'Tree Sitter')
+    end,
 
     opts = {
 
