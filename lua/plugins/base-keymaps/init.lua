@@ -161,6 +161,15 @@ return {
     { [[\dv]], util.toggle_verboselog, desc = 'Vim Verbose Log' },
 
     { [[\fc]], util.toggle_foldcolumn, desc = 'Toggle Fold Column' },
+
+    { [[\lt]], [[<cmd>lua my.config.loglevel = 0<cr>]], desc = 'Loglevel 0 - TRACE' },
+    { [[\ld]], [[<cmd>lua my.config.loglevel = 1<cr>]], desc = 'Loglevel 1 - DEBUG' },
+    { [[\li]], [[<cmd>lua my.config.loglevel = 2<cr>]], desc = 'Loglevel 2 - INFO' },
+    { [[\lw]], [[<cmd>lua my.config.loglevel = 3<cr>]], desc = 'Loglevel 3 - WARN' },
+    { [[\le]], [[<cmd>lua my.config.loglevel = 4<cr>]], desc = 'Loglevel 4 - ERROR' },
+    { [[\lo]], [[<cmd>lua my.config.loglevel = 5<cr>]], desc = 'Loglevel 5 - OFF' },
+
+    { [[\ll]], [[<cmd>lua print(my.config.loglevel)<cr>)]], desc = 'Loglevel 5 - OFF' },
   },
 
   opts = {
@@ -188,6 +197,7 @@ return {
 
         d = { name = 'Debug' },
         f = { name = 'Fold' },
+        l = { name = 'Log' },
         n = { name = 'Conceal' },
 
         ["'"] = { name = 'Misc' },
