@@ -34,6 +34,21 @@ return {
   event = 'VeryLazy',
 
   keys = {
+    -- lazy
+    { '<leader>l', '<cmd>Lazy home<cr>', desc = 'Lazy' },
+
+    { '<leader>azC', '<cmd>Lazy clear<cr>', desc = 'Clear' },
+    { '<leader>azL', ':<c-u>Lazy load ', desc = 'Load...' },
+    { '<leader>azR', '<cmd>Lazy restore<cr>', desc = 'Restore' },
+    { '<leader>azb', '<cmd>Lazy build<cr>', desc = 'Build' },
+    { '<leader>azd', '<cmd>Lazy debug<cr>', desc = 'Debug' },
+    { '<leader>azh', '<cmd>Lazy health<cr>', desc = 'Health' },
+    { '<leader>azk', '<cmd>Lazy check<cr>', desc = 'Check' },
+    { '<leader>azl', '<cmd>Lazy log<cr>', desc = 'Log' },
+    { '<leader>azp', '<cmd>Lazy profile<cr>', desc = 'Profile' },
+    { '<leader>azr', ':<c-u>Lazy reload ', desc = 'Reload...' },
+    { '<leader>azu', ':<c-u>Lazy update ', desc = 'Update...' },
+    { '<leader>azs', '<cmd>Lazy sync<cr>', desc = 'Sync' },
 
     -- quiting
     { [[<leader>q]], '<cmd>qa<cr>', mode = { 'n', 'x' }, desc = 'Quit All' },
