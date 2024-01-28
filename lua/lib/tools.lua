@@ -38,7 +38,8 @@ end
 
 --- stores the groups definitions in g:keymap_groups
 --- if g:my_keymap_groups_loaded is set, it will also call which-key.register
----@param groups table<string, any>
+---@param keys string
+---@param name string
 ---@param opts? table<string, any>
 function TOOLS.keymap_group(keys, name, opts)
   trace { 'declare keymap_group', keys, name, opts }
