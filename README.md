@@ -11,11 +11,33 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 
 `<leader>vc` - to call `LoadVimrcBackground`.
 
-<!-- lua/plugins/base-keymaps/README.md -->
+<!-- lua/plugins/base-filer/README.md -->
+## File Tree
 
+[neotree](https://github.com/nvim-neo-tree/neo-tree.nvim)
+
+### Config
+
+- `my.config.neotree.position` - left (default), or right
+
+## Maps
+
+- `\\\\` - Quick File Popup
+- `\\[` - Toggle File Tree
+- `\\[` - Toggle File Tree / Reveal File
+
+inside File TRee:
+
+- `?` - show help
+- `a` - add file / dir
+- `r` - rename file / dir
+- `m` - move file / dir
+- `d` - delete file / dir
+- `q` - close File Tree
+
+<!-- lua/plugins/base-keymaps/README.md -->
 ## Basic Keymaps
 
-- `<SPACE>\`` - Last Tab
 - `<SPACE><tab><tab>` - Last Tab
 - `<SPACE><tab>n` - New Tab
 
@@ -44,6 +66,14 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 
 - `\` - Show Toggle Menu
 
+- `\\l` - Show Log Menu
+- `\\lt` - Log TRACE
+- `\\ld` - Log DEBUG
+- `\\li` - Log INFO
+- `\\lw` - Log WARN
+- `\\le` - Log ERROR
+- `\\lo` - Log OFF
+
 ### in diff-mode
 
 - `,d` - Show Diff Menu
@@ -51,10 +81,36 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 <!-- lua/plugins/cmp/README.md -->
 ## Completion
 
+`<SPACE>Sg` - [GitHub Copilot](https://github.com/github/copilot.vim) Status
+`M-[` - Copilot Prev
+`M-]` - Copilot Next
+`M-\\` - Copilot Suggest
+
+<!-- lua/plugins/code-navigation/README.md -->
+## Symbols Outline
+
+> https://github.com/simrat39/symbols-outline.nvim
+
+### Config
+
+- `my.config.tagbar.position` - `left` / `right` (default)
+
+### Maps
+
+- `\t` - toggle Symbols Outline
+
+## Aerial
+
+> https://github.com/stevearc/aerial.nvim
+
+> NOTE: we use Aerial through a Telescope popup
+
+- `go` - show Fuzzy Outline
+
 <!-- lua/plugins/development/README.md -->
 ## Xterm Color Table
 
-- `SPACE-SX` or ``:XtermColorTable` to show the table
+- `<SPACE>SX` or `:XtermColorTable` to show the table
 
 <!-- lua/plugins/editor-colors/README.md -->
 ### Colorizer
@@ -74,6 +130,33 @@ in the text and displays the colors either as a virtual text, background, or for
 - `SPACE-K` - remove all word colors
 - `n` - when cursor is over a colored word, goes to the next occurence, otherwise next search result
 - `N` - when cursor is over a colored word, goes to the prev occurence, otherwise prev search result
+
+<!-- lua/plugins/editor-comments/README.md -->
+## Comments
+
+[mini.comment](https://github.com/echasnovski/mini.comment)
+
+- `gc` - Comments menu
+- `\\;` - Toggle Comments
+
+<!-- lua/plugins/editor-format/README.md -->
+## AutoFormat
+
+### maps
+
+- `<localleader>af` - Format
+- `<localleader>ae` - AutoFormat enable
+- `<localleader>aE` - AutoFormat enable all
+- `<localleader>ad` - AutoFormat disable
+- `<localleader>at` - AutoFormat toggle
+- `\\a` - AutoFormat toggle
+
+### commands
+
+`:Format`
+`:FormatEnable [filetype]`
+`:FormatDisable [filetype]`
+`:FormatToggle [filetype]`
 
 <!-- lua/plugins/editor-surround/README.md -->
 ## Surround
@@ -105,10 +188,6 @@ Default mappings are changed slightly to be more like those of tpope's `vim-surr
 - `\u` To Toggle [undotree](http://github.com/mbbill/undotree)
 - `g=` - to go to later version
 
-## Zoom
-
-- `\z` - toggle panel zoom
-
 ## Switch
 
 - `gs` - [switch.vim](https://github.com/AndrewRadev/switch.vim) to switch things. e.g. `true` <=> `false`, or `{ :a => a }` <=> `{ a: a }`
@@ -117,12 +196,18 @@ Default mappings are changed slightly to be more like those of tpope's `vim-surr
 
 - `gA` - start [mini.align](https://github.com/echasnovski/mini.align) in Preview mode
 
+<!- TODO: expand help here -->
+
 ## Global Search and Replace
 
 - `:Gsearch` - to search and open results in a buffer for edit
 - `:Greplace` - apply edits from the buffer into original files matched
 
-## ZEN MODE
+## Zoom
+
+- `\z` - toggle panel zoom
+
+## Zen mode
 
 - `\F` - Focus ([twilight.nvim](https://github.com/folke/twilight.nvim)). Dimm everything except area around the cursor line
 - `\<tab>` - [Zen Mode](https://github.com/folke/zen-mode.nvim). Focus, but also zoom and center the window
@@ -170,6 +255,33 @@ after pasting:
 - `\\gs` - toggle gitsigns
 - `\\gs` - toggle virtual git blame for current line
 
+## Git Status Mode
+
+- `g?` - help
+
+changes:
+
+- `-` - toggle stage / unstage of file or hunk
+- 'X' - discard file changes or hunk
+- `=` - toggle inline diff
+
+commit:
+
+- 'cc' - commit
+- 'ca' - amend commit
+- 'cf' rt- commit `--fixup` for file under cursor
+- 'cF' - commit `--fixup` for file under cursor and immediately rebase it
+
+rebase:
+
+- `ri` - interactive rebase from ancestore of commit under the cursor
+- `rr` - continue rebase
+- `rs` - skip the current commit and continue rebase
+- `ra` - abort rebase
+- `rw` - interactive rebase with the commit under the cursor set to `reword`.
+- `rm` - interactive rebase with the commit under the cursor set to `edit`.
+- `rd` - interactive rebase with the commit under the cursor set to `drop`.
+
 <!-- lua/plugins/lsp/README.md -->
 ## LSP
 
@@ -193,4 +305,9 @@ To show `null-ls` status: `<leader>Sn`
 ## Sessions
 
 - `SPACE-q` - to access Sessions menu
+
+<!-- lua/plugins/statusline/README.md -->
+## Status Line
+
+- `\\S` - toggle Status Line
 
