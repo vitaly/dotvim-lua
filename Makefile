@@ -23,8 +23,10 @@ help:: ## print help
 .PHONY: help
 
 README_FILES := $(shell find lua -name README.md)
+DEV_FILES := $(shell find lua -name DEV.md)
 readme: ## re-generate README.md
 	@ls -d ${README_FILES} | sort | while read f; do echo '<!--' $$f '-->'; cat $$f; echo; done > README.md
+	@ls -d ${DEV_FILES} | sort | while read f; do echo '<!--' $$f '-->'; cat $$f; echo; done > DEV.md
 .PHONY: readme
 
 reset: ## remove and re-create .xdg
