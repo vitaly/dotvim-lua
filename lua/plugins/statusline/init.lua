@@ -1,4 +1,5 @@
 local utils = require 'plugins.statusline.utils'
+local format = require 'plugins.statusline.format'
 
 local toggle_statusline = require('lib.toggle').toggler('g:_show_statusline', { true, false }, function(show)
   require('lualine').hide { unhide = show }
@@ -52,11 +53,11 @@ return {
           },
         },
         lualine_c = {
-          -- { format },
-          -- { format_writing, color = { fg = 'red' } },
+          { format.status },
+          -- { format.writing, color = { fg = 'red' } },
           -- { dap_status, color = { bg = '#ff0000' } },
         },
-        lualine_x = { 'encoding', 'fileformat', 'filetype', { utils.lsp_client } },
+        lualine_x = { 'encoding', 'fileformat', 'filetype', { utils.lsp_client_name } },
         lualine_y = { '%02B' },
         lualine_z = {
           -- 'progress',

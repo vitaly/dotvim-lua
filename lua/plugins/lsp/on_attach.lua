@@ -61,7 +61,7 @@ return {
 
     require('lib.tools').keymap_group([[<localleader>r]], 'Refactor', { buffer = 0 })
     map(client, buf, '<localleader>rr', lsp.rename)
-    map(client, buf, '<localleader>a', lsp.code_action)
+    map(client, buf, '<localleader>c', lsp.code_action)
 
     map(client, buf, '<localleader>1', lsp.first_diagnostic)
     map(client, buf, '<localleader>n', lsp.next_diagnostic)
