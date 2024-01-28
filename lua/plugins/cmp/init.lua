@@ -38,7 +38,7 @@ return {
     cmd = 'Copilot',
 
     keys = {
-      { [[<leader>Sg]], [[<cmd>Copilot<cr>]], desc = 'Girhub Copilot Status' },
+      { [[<leader>Sg]], [[<cmd>Copilot status<cr>]], desc = 'GitHub Copilot Status' },
     },
 
     init = function()
