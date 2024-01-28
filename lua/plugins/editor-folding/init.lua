@@ -1,3 +1,4 @@
+-- modern looking folding with arrows
 return {
   'kevinhwang91/nvim-ufo', -- https://github.com/kevinhwang91/nvim-ufo#installation
   dependencies = { 'kevinhwang91/promise-async', 'nvim-treesitter/nvim-treesitter' },
