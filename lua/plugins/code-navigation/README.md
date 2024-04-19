@@ -1,6 +1,6 @@
 ## Symbols Outline
 
-> https://github.com/simrat39/symbols-outline.nvim
+> [Symbols Outline](https://github.com/simrat39/symbols-outline.nvim)
 
 ### Config
 
@@ -12,8 +12,8 @@
 
 ## Aerial
 
-> https://github.com/stevearc/aerial.nvim
+> [Aerial](https://github.com/stevearc/aerial.nvim)
 
-> NOTE: we use Aerial through a Telescope popup
+> NOTE: Aerial is used through a Telescope popup
 
 - `go` - show Fuzzy Outline

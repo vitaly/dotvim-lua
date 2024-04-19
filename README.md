@@ -41,8 +41,8 @@ inside File TRee:
 
 ## Basic Keymaps
 
-- `<SPACE><tab><tab>` - Last Tab
-- `<SPACE><tab>n` - New Tab
+- `<tab><tab>` - Last Tab
+- `<tab>n` - New Tab
 
 - `<SPACE>m` - show messages
 - `<SPACE>M` - clear messages
@@ -86,15 +86,16 @@ inside File TRee:
 ## Completion
 
 `<SPACE>Sg` - [GitHub Copilot](https://github.com/github/copilot.vim) Status
-`M-[` - Copilot Prev
-`M-]` - Copilot Next
-`M-\` - Copilot Suggest
+
+- `M-[` - Copilot Prev
+- `M-]` - Copilot Next
+- `M-\` - Copilot Suggest
 
 <!-- lua/plugins/code-navigation/README.md -->
 
 ## Symbols Outline
 
-> https://github.com/simrat39/symbols-outline.nvim
+> [Symbols Outline](https://github.com/simrat39/symbols-outline.nvim)
 
 ### Config
 
@@ -106,9 +107,9 @@ inside File TRee:
 
 ## Aerial
 
-> https://github.com/stevearc/aerial.nvim
+> [Aerial](https://github.com/stevearc/aerial.nvim)
 
-> NOTE: we use Aerial through a Telescope popup
+> NOTE: Aerial is used through a Telescope popup
 
 - `go` - show Fuzzy Outline
 
@@ -162,17 +163,17 @@ in the text and displays the colors either as a virtual text, background, or for
 
 ### commands
 
-`:Format`
-`:FormatEnable [filetype]`
-`:FormatDisable [filetype]`
-`:FormatToggle [filetype]`
+- `:Format`
+- `:FormatEnable [filetype]`
+- `:FormatDisable [filetype]`
+- `:FormatToggle [filetype]`
 
 <!-- lua/plugins/editor-surround/README.md -->
 
 ## Surround
 
-We are using https://github.com/echasnovski/mini.surround for surround.
-Default mappings are changed slightly to be more like those of tpope's `vim-surround`: https://github.com/tpope/vim-surround
+We are using [mini.surround](https://github.com/echasnovski/mini.surround) for surround.
+Default mappings are changed slightly to be more like those of tpope's [vim-surround](https://github.com/tpope/vim-surround)
 
 - `ys` - add
 - `ds` - remove
@@ -299,15 +300,15 @@ rebase:
 ## LSP
 
 - `SPACE-Sl` - LSP Info
-- `SPACEali` - LSP Info
-- `SPACEall` - LSP Log
-- `SPACEals` - LSP Start
-- `SPACEalS` - LSP Stop
-- `SPACEalr` - LSP Restart
+- `SPACE-ali` - LSP Info
+- `SPACE-all` - LSP Log
+- `SPACE-als` - LSP Start
+- `SPACE-alS` - LSP Stop
+- `SPACE-alr` - LSP Restart
 
 ### Null LS
 
-https://github.com/jose-elias-alvarez/null-ls.nvim
+[null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
 
 NullLS is a generic LSP server that can use external tools to provide LSP
 'formatting' and 'diagnostic' capabilities.
@@ -325,3 +326,4 @@ To show `null-ls` status: `<leader>Sn`
 ## Status Line
 
 - `\S` - toggle Status Line
+

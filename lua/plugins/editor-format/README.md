@@ -11,7 +11,7 @@
 
 ### commands
 
-`:Format`
-`:FormatEnable [filetype]`
-`:FormatDisable [filetype]`
-`:FormatToggle [filetype]`
+- `:Format`
+- `:FormatEnable [filetype]`
+- `:FormatDisable [filetype]`
+- `:FormatToggle [filetype]`

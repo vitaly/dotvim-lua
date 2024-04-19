@@ -40,7 +40,7 @@ local outline = {
   end,
 }
 
--- NOTE: we use Aerial through a Telescope popup
+-- NOTE: Aerial is used through a Telescope popup
 local aerial = {
   'stevearc/aerial.nvim', -- https://github.com/stevearc/aerial.nvim
 

@@ -1,15 +1,15 @@
 ## LSP
 
 - `SPACE-Sl` - LSP Info
-- `SPACEali` - LSP Info
-- `SPACEall` - LSP Log
-- `SPACEals` - LSP Start
-- `SPACEalS` - LSP Stop
-- `SPACEalr` - LSP Restart
+- `SPACE-ali` - LSP Info
+- `SPACE-all` - LSP Log
+- `SPACE-als` - LSP Start
+- `SPACE-alS` - LSP Stop
+- `SPACE-alr` - LSP Restart
 
 ### Null LS
 
-https://github.com/jose-elias-alvarez/null-ls.nvim
+[null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
 
 NullLS is a generic LSP server that can use external tools to provide LSP
 'formatting' and 'diagnostic' capabilities.
