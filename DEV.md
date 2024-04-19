@@ -1,4 +1,5 @@
 <!-- lua/init/DEV.md -->
+
 ## Logging
 
 > `lua/init/log.lua`
@@ -26,6 +27,7 @@ Switch Log level via `<\\l>` map
 Display messages with `<SPACE>m`
 
 <!-- lua/plugins/statusline/DEV.md -->
+
 ## Status Line
 
 > `lua/plugins/statusline/init.lua`

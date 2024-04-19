@@ -1,4 +1,5 @@
 <!-- lua/plugins/base-colors/README.md -->
+
 ## Color Schemes
 
 Use `config.colorschemes` to define default colorscheme name.
@@ -12,6 +13,7 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 `<leader>vc` - to call `LoadVimrcBackground`.
 
 <!-- lua/plugins/base-filer/README.md -->
+
 ## File Tree
 
 [neotree](https://github.com/nvim-neo-tree/neo-tree.nvim)
@@ -36,6 +38,7 @@ inside File TRee:
 - `q` - close File Tree
 
 <!-- lua/plugins/base-keymaps/README.md -->
+
 ## Basic Keymaps
 
 - `<SPACE><tab><tab>` - Last Tab
@@ -79,6 +82,7 @@ inside File TRee:
 - `,d` - Show Diff Menu
 
 <!-- lua/plugins/cmp/README.md -->
+
 ## Completion
 
 `<SPACE>Sg` - [GitHub Copilot](https://github.com/github/copilot.vim) Status
@@ -87,6 +91,7 @@ inside File TRee:
 `M-\\` - Copilot Suggest
 
 <!-- lua/plugins/code-navigation/README.md -->
+
 ## Symbols Outline
 
 > https://github.com/simrat39/symbols-outline.nvim
@@ -108,11 +113,13 @@ inside File TRee:
 - `go` - show Fuzzy Outline
 
 <!-- lua/plugins/development/README.md -->
+
 ## Xterm Color Table
 
 - `<SPACE>SX` or `:XtermColorTable` to show the table
 
 <!-- lua/plugins/editor-colors/README.md -->
+
 ### Colorizer
 
 [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) plugin parses color values
@@ -132,6 +139,7 @@ in the text and displays the colors either as a virtual text, background, or for
 - `N` - when cursor is over a colored word, goes to the prev occurence, otherwise prev search result
 
 <!-- lua/plugins/editor-comments/README.md -->
+
 ## Comments
 
 [mini.comment](https://github.com/echasnovski/mini.comment)
@@ -140,6 +148,7 @@ in the text and displays the colors either as a virtual text, background, or for
 - `\\;` - Toggle Comments
 
 <!-- lua/plugins/editor-format/README.md -->
+
 ## AutoFormat
 
 ### maps
@@ -159,6 +168,7 @@ in the text and displays the colors either as a virtual text, background, or for
 `:FormatToggle [filetype]`
 
 <!-- lua/plugins/editor-surround/README.md -->
+
 ## Surround
 
 We are using https://github.com/echasnovski/mini.surround for surround.
@@ -169,6 +179,7 @@ Default mappings are changed slightly to be more like those of tpope's `vim-surr
 - `cs` - change
 
 <!-- lua/plugins/editor/README.md -->
+
 ## Bookmarks
 
 [vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks)
@@ -245,6 +256,7 @@ after pasting:
 - `<SPACE-Y-CR` - yank history picker
 
 <!-- lua/plugins/git/README.md -->
+
 ## GIT
 
 - `SPACE-gs` - show git status
@@ -283,6 +295,7 @@ rebase:
 - `rd` - interactive rebase with the commit under the cursor set to `drop`.
 
 <!-- lua/plugins/lsp/README.md -->
+
 ## LSP
 
 - `SPACE-Sl` - LSP Info
@@ -302,11 +315,13 @@ NullLS is a generic LSP server that can use external tools to provide LSP
 To show `null-ls` status: `<leader>Sn`
 
 <!-- lua/plugins/session/README.md -->
+
 ## Sessions
 
 - `SPACE-q` - to access Sessions menu
 
 <!-- lua/plugins/statusline/README.md -->
+
 ## Status Line
 
 - `\\S` - toggle Status Line
