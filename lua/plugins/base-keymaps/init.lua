@@ -67,7 +67,7 @@ return {
 
     { [[<leader><space>]], ':' },
 
-    { [[Q]], 'gq', mode = { 'n', 'v', 'o' } },
+    { [[Q]], 'gw', mode = { 'n', 'v', 'o' } },
 
     { [[<tab><tab>]], '<cmd>b#<cr>', desc = 'Switch to last buffer' },
 
