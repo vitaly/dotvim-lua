@@ -7,7 +7,7 @@
 - `<localleader>aE` - AutoFormat enable all
 - `<localleader>ad` - AutoFormat disable
 - `<localleader>at` - AutoFormat toggle
-- `\\a` - AutoFormat toggle
+- `\a` - AutoFormat toggle
 
 ### commands
 

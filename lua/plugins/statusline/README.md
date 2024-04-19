@@ -1,3 +1,3 @@
 ## Status Line
 
-- `\\S` - toggle Status Line
+- `\S` - toggle Status Line

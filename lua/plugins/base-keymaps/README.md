@@ -28,13 +28,13 @@
 
 - `\` - Show Toggle Menu
 
-- `\\l` - Show Log Menu
-- `\\lt` - Log TRACE
-- `\\ld` - Log DEBUG
-- `\\li` - Log INFO
-- `\\lw` - Log WARN
-- `\\le` - Log ERROR
-- `\\lo` - Log OFF
+- `\l` - Show Log Menu
+- `\lt` - Log TRACE
+- `\ld` - Log DEBUG
+- `\li` - Log INFO
+- `\lw` - Log WARN
+- `\le` - Log ERROR
+- `\lo` - Log OFF
 
 ### in diff-mode
 

@@ -24,9 +24,9 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 
 ## Maps
 
-- `\\\\` - Quick File Popup
-- `\\[` - Toggle File Tree
-- `\\[` - Toggle File Tree / Reveal File
+- `\\` - Quick File Popup
+- `\[` - Toggle File Tree
+- `\[` - Toggle File Tree / Reveal File
 
 inside File TRee:
 
@@ -69,13 +69,13 @@ inside File TRee:
 
 - `\` - Show Toggle Menu
 
-- `\\l` - Show Log Menu
-- `\\lt` - Log TRACE
-- `\\ld` - Log DEBUG
-- `\\li` - Log INFO
-- `\\lw` - Log WARN
-- `\\le` - Log ERROR
-- `\\lo` - Log OFF
+- `\l` - Show Log Menu
+- `\lt` - Log TRACE
+- `\ld` - Log DEBUG
+- `\li` - Log INFO
+- `\lw` - Log WARN
+- `\le` - Log ERROR
+- `\lo` - Log OFF
 
 ### in diff-mode
 
@@ -88,7 +88,7 @@ inside File TRee:
 `<SPACE>Sg` - [GitHub Copilot](https://github.com/github/copilot.vim) Status
 `M-[` - Copilot Prev
 `M-]` - Copilot Next
-`M-\\` - Copilot Suggest
+`M-\` - Copilot Suggest
 
 <!-- lua/plugins/code-navigation/README.md -->
 
@@ -145,7 +145,7 @@ in the text and displays the colors either as a virtual text, background, or for
 [mini.comment](https://github.com/echasnovski/mini.comment)
 
 - `gc` - Comments menu
-- `\\;` - Toggle Comments
+- `\;` - Toggle Comments
 
 <!-- lua/plugins/editor-format/README.md -->
 
@@ -158,7 +158,7 @@ in the text and displays the colors either as a virtual text, background, or for
 - `<localleader>aE` - AutoFormat enable all
 - `<localleader>ad` - AutoFormat disable
 - `<localleader>at` - AutoFormat toggle
-- `\\a` - AutoFormat toggle
+- `\a` - AutoFormat toggle
 
 ### commands
 
@@ -264,8 +264,8 @@ after pasting:
 - `<SPACE-gd` - git diff
 - `<SPACE-gg` - git grep
 - `<SPACE-gw` - git grep word under cursor
-- `\\gs` - toggle gitsigns
-- `\\gs` - toggle virtual git blame for current line
+- `\gs` - toggle gitsigns
+- `\gs` - toggle virtual git blame for current line
 
 ## Git Status Mode
 
@@ -324,5 +324,4 @@ To show `null-ls` status: `<leader>Sn`
 
 ## Status Line
 
-- `\\S` - toggle Status Line
-
+- `\S` - toggle Status Line

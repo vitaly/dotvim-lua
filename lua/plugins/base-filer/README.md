@@ -8,9 +8,9 @@
 
 ## Maps
 
-- `\\\\` - Quick File Popup
-- `\\[` - Toggle File Tree
-- `\\[` - Toggle File Tree / Reveal File
+- `\\` - Quick File Popup
+- `\[` - Toggle File Tree
+- `\[` - Toggle File Tree / Reveal File
 
 inside File TRee:
 
