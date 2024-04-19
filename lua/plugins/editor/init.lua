@@ -146,6 +146,7 @@ return {
   ----------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------
   -- STATUS COLUMN
+  -- NOTE: Folding config is in lua/plugins/editor-folding/init.lua
   {
     'luukvbaal/statuscol.nvim', -- https://github.com/luukvbaal/statuscol.nvim
     config = function()
