@@ -14,7 +14,6 @@ local function define_load_vimrc_background_command()
 end
 
 local tools = require 'lib.tools'
-local get_hi_attr = tools.get_hi_attr
 local hi = tools.highlight
 
 local function get_colors()
@@ -40,8 +39,8 @@ local function get_colors()
   end
 
   return {
-    bg = get_hi_attr('Normal', 'bg'),
-    fg = get_hi_attr('Normal', 'fg'),
+    bg = tools.get_hi_attr('Normal', 'bg'),
+    fg = tools.get_hi_attr('Normal', 'fg'),
     green = '#198844',
     red = '#cc342b',
     yellow = '#fba922',
