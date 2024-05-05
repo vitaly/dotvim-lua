@@ -21,10 +21,10 @@ my.config = vim.tbl_deep_extend('force', {
     diagnostics = { Error = ' ', Warn = ' ', Hint = '󰌶 ', Info = ' ' },
     dap = {
       Stopped = { '󰁕 ', 'DiagnosticWarn', 'DapStoppedLine' },
-      Breakpoint = ' ',
-      BreakpointCondition = '',
+      Breakpoint = { ' ' },
+      BreakpointCondition = { '' },
       BreakpointRejected = { '', 'DiagnosticError' },
-      LogPoint = '.>',
+      LogPoint = { '.>' },
     },
   },
 

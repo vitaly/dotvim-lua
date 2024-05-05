@@ -1,4 +1,4 @@
-local debug = my.log.debug
+-- local debug = my.log.debug
 return {
   {
     'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter

@@ -8,7 +8,7 @@ return {
   },
 
   config = function()
-    REQUIRE 'my.plugins.debug.config'
-    REQUIRE 'my.plugins.debug.maps'
+    require 'my.plugins.debug.config'
+    require 'my.plugins.debug.maps'
   end,
 }

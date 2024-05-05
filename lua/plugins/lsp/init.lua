@@ -1,5 +1,5 @@
-local debug = my.log.debug
-local trace = my.log.trace
+-- local debug = my.log.debug
+-- local trace = my.log.trace
 
 local map_keys = require('lib.tools').map_keys
 local maps = require 'plugins.lsp.maps'
@@ -106,7 +106,7 @@ return {
       if opts.inlay_hints.enabled and vim.lsp.buf.inlay_hint then
         au.lsp_on_attach('inlay_hints', function(client, buffer)
           if client.server_capabilities.inlayHintProvider then
-            debug { 'inlay_hints', client.name }
+            -- debug { 'inlay_hints', client.name }
             vim.lsp.buf.inlay_hint(buffer, true)
           end
         end)
@@ -144,7 +144,7 @@ return {
       },
     },
 
-    config = function(_, opts)
+    config = function()
       au.lsp_on_attach('lsp_signature', function()
         require('lsp_signature').on_attach()
       end)

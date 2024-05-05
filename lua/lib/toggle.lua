@@ -171,7 +171,8 @@ function M._test()
 end
 
 function M.test()
-  REQUIRE('lib.toggle')._test()
+  -- TODO: reload here
+  require('lib.toggle')._test()
 end
 
 return M

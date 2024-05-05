@@ -1,5 +1,5 @@
-local debug = my.log.debug
-local trace = my.log.trace
+-- local debug = my.log.debug
+-- local trace = my.log.trace
 return {
 
   setup = function(opts)
@@ -27,14 +27,14 @@ return {
     -- can owerride via opts.setup[name] or opts.setup['*']
     -- handler is called with defaults merged with opts.servers[name]
     local function default_setup_handler(name, config)
-      trace { 'lspconfig', name, vim.tbl_keys(config) }
+      -- trace { 'lspconfig', name, vim.tbl_keys(config) }
       require('lspconfig')[name].setup(config)
     end
     local function setup_server(name)
-      trace { 'setup_server', name }
+      -- trace { 'setup_server', name }
       local setup_handler = opts.setup and (opts.setup[name] or opts.setup['*']) or default_setup_handler
       local config = vim.tbl_deep_extend('force', vim.deepcopy(defaults), servers[name] or {})
-      trace { 'setup_handler', name, vim.tbl_keys(config) }
+      -- trace { 'setup_handler', name, vim.tbl_keys(config) }
       setup_handler(name, config)
     end
 
@@ -60,7 +60,7 @@ return {
       return false
     end, ensure_installed)
 
-    trace { 'ensure_installed', ensure_installed }
+    -- trace { 'ensure_installed', ensure_installed }
     require('mason-lspconfig').setup { ensure_installed = opts.ensure_installed, handlers = { setup_server } }
   end,
 }

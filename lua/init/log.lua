@@ -7,52 +7,45 @@
 -- vim.lsp.set_log_level 'trace'
 -- require('vim.lsp.log').set_format_func(vim.inspect)
 
--- '_inspect' requires a delimiter and inspects all provided arguments.
-function my._inspect(delimiter, ...)
+-- 'inspect' all provided arguments using ',' as separator
+function my.inspect(...)
   local objects = {}
 
   for i, v in ipairs { ... } do
     objects[i] = type(v) == 'string' and v or vim.inspect(v)
   end
 
-  return table.concat(objects, delimiter)
-end
-
--- 'inspect' uses a default delimiter (', ') and inspects all provided arguments.
-function my.inspect(...)
-  return my._inspect(', ', ...)
+  return table.concat(objects, ', ')
 end
 
 -- generic logging function
-local _notify = vim.schedule_wrap(function(level, ...)
+local notify = vim.schedule_wrap(function(level, ...)
   if level >= my.config.loglevel then
     vim.notify(my.inspect(...), level)
   end
 end)
 
 my.log = {
-  notify = function(level, ...)
-    _notify(level, ...)
-  end,
+  notify = notify,
 
   trace = function(...)
-    _notify(vim.log.levels.TRACE, ...)
+    notify(vim.log.levels.TRACE, ...)
   end,
 
   debug = function(...)
-    _notify(vim.log.levels.DEBUG, ...)
+    notify(vim.log.levels.DEBUG, ...)
   end,
 
   info = function(...)
-    _notify(vim.log.levels.INFO, ...)
+    notify(vim.log.levels.INFO, ...)
   end,
 
   warn = function(...)
-    _notify(vim.log.levels.WARN, ...)
+    notify(vim.log.levels.WARN, ...)
   end,
 
   error = function(...)
-    _notify(vim.log.levels.ERROR, ...)
+    notify(vim.log.levels.ERROR, ...)
   end,
 }
 

@@ -99,7 +99,6 @@ TOOLS.highlight = setmetatable({}, {
 -- This function combines mapping keys with mapping definition and possible extra attributes
 ---@param def KeyDef
 ---@param keys string | table<string, string | boolean | number> | nil
----@return LazyKeys
 function TOOLS.map_keys(def, keys)
   if type(keys) ~= 'table' then
     keys = { keys }

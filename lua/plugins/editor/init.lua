@@ -1,4 +1,4 @@
-local debug = my.log.debug
+-- local debug = my.log.debug
 return {
   ----------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------
@@ -189,8 +189,6 @@ return {
       { [[<leader>Y<cr>]], vim.cmd.YankyRingHistory, desc = 'Yank History' },
     },
 
-    config = function(_, opts)
-      require('yanky').setup {}
-    end,
+    config = true,
   },
 }

@@ -71,7 +71,7 @@ return {
       'saadparwaiz1/cmp_luasnip', -- https://github.com/saadparwaiz1/cmp_luasnip
     },
 
-    config = function(_, opts)
+    config = function()
       vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'

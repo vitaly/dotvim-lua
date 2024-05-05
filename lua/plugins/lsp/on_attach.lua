@@ -1,6 +1,5 @@
-local verbose = false
-local trace = my.log.trace
-local debug = my.log.debug
+-- local trace = my.log.trace
+-- local debug = my.log.debug
 local keys_opts = require('lazy.core.handler.keys').opts
 
 ---@param client any
@@ -18,10 +17,10 @@ local function map(client, buf, keys, def)
   if keys.has then
     -- if key requires capability check the client
     if not client.server_capabilities[keys.has .. 'Provider'] then
-      if client.name ~= 'null-ls' then
-        trace { '!provider', client.name, keys.has, keys }
-        trace(client.server_capabilities)
-      end
+      -- if client.name ~= 'null-ls' then
+      --   trace { '!provider', client.name, keys.has, keys }
+      --   trace(client.server_capabilities)
+      -- end
       return
     end
   end
@@ -34,7 +33,7 @@ local function map(client, buf, keys, def)
 end
 return {
   on_attach = function(client, buf)
-    trace { 'on_attach', client.name, buf = buf, id = client.id, cap = client.server_capabilities }
+    -- trace { 'on_attach', client.name, buf = buf, id = client.id, cap = client.server_capabilities }
 
     local tele = require 'plugins.telescope.maps'
     local lsp = require 'plugins.lsp.maps'

@@ -86,6 +86,6 @@ opt.undolevels = 10000
 opt.updatetime = 300 -- CursorHold delay
 opt.virtualedit = 'all'
 opt.visualbell = true -- use visual bell instead of beeping
-opt.wildignore = '*.o,*.a,*.so,*.swp,.git,.hg,.svn,CVS,RCS,*~,*.pyc', '*.zwc'
+opt.wildignore = '*.o,*.a,*.so,*.swp,.git,.hg,.svn,CVS,RCS,*~,*.pyc,*.zwc'
 opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.wrap = false

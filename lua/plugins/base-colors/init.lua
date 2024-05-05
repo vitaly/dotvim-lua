@@ -1,5 +1,4 @@
 -- TODO: Add support for Base16 and shell integration
-local debug = my.log.debug
 
 local function define_load_vimrc_background_command()
   vim.api.nvim_create_user_command('LoadVimrcBackground', function()
@@ -83,7 +82,7 @@ return {
     lazy = true,
     priority = 1000,
 
-    config = function(_, opts)
+    config = function()
       require('tokyonight').setup {
         on_colors = function(colors)
           colors.border = '#3a3a3a' -- lighter split separator
