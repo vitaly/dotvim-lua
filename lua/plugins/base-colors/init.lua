@@ -109,10 +109,10 @@ return {
 
       define_load_vimrc_background_command()
 
-      if my.config.colorscheme == '-load' then
-        vim.cmd.LoadVimrcBackground()
-      else
+      if my.config.colorscheme then
         vim.cmd('colorscheme ' .. my.config.colorscheme)
+      else
+        vim.cmd.LoadVimrcBackground()
       end
     end,
   },

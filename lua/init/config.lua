@@ -1,5 +1,6 @@
 _G.my = _G.my or {}
 
+---@diagnostic disable-next-line: param-type-mismatch
 my.root = vim.uv.fs_realpath(vim.fn.stdpath 'config')
 vim.g.MY_ROOT = my.root
 
@@ -9,9 +10,8 @@ my.config = vim.tbl_deep_extend('force', {
   -- loglevel = vim.log.levels.TRACE,
 
   -- colorscheme name
-  -- OR '-load' to load colorscheme from ~/.vimrc_background
+  -- OR nil to load colorscheme from ~/.vimrc_background
   colorscheme = 'tokyonight-night',
-  -- colorscheme = '-load', -- FIXME: I don't like this magic value
 
   neotree = {
     position = 'left',
