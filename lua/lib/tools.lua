@@ -7,7 +7,7 @@ local TOOLS = {}
 --- Note: if directory exists, no other checks are performed
 ---@param repo string
 ---@param path string
-function TOOLS.ensure_cloned(repo, path, ...)
+function TOOLS.git_clone(repo, path, ...)
   if vim.uv.fs_stat(path) then
     return
   end

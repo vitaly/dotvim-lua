@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-require('lib.tools').ensure_cloned('https://github.com/folke/lazy.nvim.git', lazypath, '--branch=stable')
+require('lib.tools').git_clone('https://github.com/folke/lazy.nvim.git', lazypath, '--branch=stable')
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins', {
