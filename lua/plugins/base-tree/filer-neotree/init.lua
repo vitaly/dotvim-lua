@@ -1,5 +1,6 @@
+local config = my.config.tree or {}
 local position = function()
-  return (my.config.neotree or {}).position or 'left'
+  return config.position or 'left'
 end
 
 local reveal = function()
@@ -28,6 +29,8 @@ return {
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
   },
+
+  lazy = false, -- so that opening a directory will work
 
   cmd = 'Neotree',
 
@@ -105,6 +108,7 @@ return {
   },
 
   config = function(_, opts)
+    -- my.log.debug 'neotree'
     opts.window.position = position()
     require('neo-tree').setup(opts)
     require('lib.au').command('neotree.termclose', 'TermClose', function()

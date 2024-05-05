@@ -13,7 +13,8 @@ my.config = vim.tbl_deep_extend('force', {
   -- OR nil to load colorscheme from ~/.vimrc_background
   colorscheme = 'tokyonight-night',
 
-  neotree = {
+  tree = {
+    -- plugin = 'nvimtree', -- default is neotree
     position = 'left',
   },
 
