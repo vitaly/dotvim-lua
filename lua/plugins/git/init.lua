@@ -15,8 +15,10 @@ return {
       { [[\gw]], [[<cmd>Gitsigns toggle_word_diff<cr>]], desc = 'Toggle Word Diff' },
     },
     init = function()
-      require('lib.tools').keymap_group([[<leader>g]], 'Git')
-      require('lib.tools').keymap_group([[\g]], 'Git/Signs')
+      require('lib.tools').add_keys {
+        { [[<leader>g]], group = 'Git' },
+        { [[\g]], group = 'Git/Signs' },
+      }
     end,
 
     opts = {

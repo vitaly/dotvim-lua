@@ -36,27 +36,23 @@ function TOOLS.get_hi_attr(name, attr)
   return value
 end
 
---- stores the groups definitions in g:keymap_groups
---- if g:my_keymap_groups_loaded is set, it will also call which-key.register
----@param keys string
----@param name string
----@param opts? table<string, any>
-function TOOLS.keymap_group(keys, name, opts)
-  trace { 'declare keymap_group', keys, name, opts }
+--- stores the groups definitions in g:my_keymaps
+--- if g:my_keymaps_loaded is set, which_ley.add is called
+--- otherwise keys are stored in my.keymaps and will be used when which_key loads
+---@param keys any[]
+function TOOLS.add_keys(keys)
+  -- trace { 'add_keys', keys }
 
-  opts = opts or { mode = { 'n', 'v' } }
-  trace('g:my_keymap_groups', vim.g.my_keymap_groups)
-
-  local groups = vim.g.my_keymap_groups or {}
-  table.insert(groups, { keys, name, opts })
-  vim.g.my_keymap_groups = groups
-
-  trace('g:my_keymap_groups', vim.g.my_keymap_groups)
-
-  if vim.g.my_keymap_groups_loaded then
-    trace { 'register', keys, name, opts }
-    require('which-key').register({ [keys] = { name = name } }, opts)
+  if vim.g.my_keymaps_loaded then
+    -- trace { 'keymaps', keys }
+    require('which-key').add { mode = 'nv', keys }
+    return
   end
+
+  -- trace('my.keymaps', my.keymaps)
+  my.keymaps = my.keymaps or {}
+  table.insert(my.keymaps, keys)
+  -- trace('my.keymaps', my.keymaps)
 end
 
 TOOLS.highlight = setmetatable({}, {

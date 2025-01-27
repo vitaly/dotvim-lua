@@ -7,9 +7,5 @@ return {
     version = '*',
 
     -- keys are in lua/plugins/base-keymaps/init.lua
-
-    init = function()
-      require('lib.tools').keymap_group([[<leader>az]], 'Lazy')
-    end,
   },
 }

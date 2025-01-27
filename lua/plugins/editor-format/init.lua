@@ -18,7 +18,7 @@ return {
   },
 
   config = function(_, opts)
-    require('lib.tools').keymap_group([[<localleader>a]], 'Autoformat')
+    require('lib.tools').add_keys { [[<localleader>a]], group = 'Autoformat' }
     require('lsp-format').setup(opts)
     require('lib.au').lsp_on_attach('editor.format', require('lsp-format').on_attach)
   end,

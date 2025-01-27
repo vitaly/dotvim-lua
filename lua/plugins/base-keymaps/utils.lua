@@ -1,10 +1,4 @@
 local UTIL = {}
----------------------------------------------------------------------------------
--- returns mapping for given key to edit file with given path
----------------------------------------------------------------------------------
-function UTIL.edit_file_map(key, path, name)
-  return { key, "<cmd>exe 'e' '" .. my.root .. path .. "'<cr>", desc = 'Edit ' .. name }
-end
 
 ---------------------------------------------------------------------------------
 -- redraw

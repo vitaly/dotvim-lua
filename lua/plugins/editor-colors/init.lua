@@ -51,7 +51,7 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
 
     init = function()
-      require('lib.tools').keymap_group([[\C]], 'Colorizer')
+      require('lib.tools').add_keys { [[\C]], group = 'Colorizer' }
     end,
 
     keys = {

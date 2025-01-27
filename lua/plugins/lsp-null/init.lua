@@ -10,7 +10,7 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
 
   init = function()
-    require('lib.tools').keymap_group([[<leader>an]], 'Null Ls')
+    require('lib.tools').add_keys { [[<leader>an]], group = 'Null Ls' }
   end,
 
   keys = {

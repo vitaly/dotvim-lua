@@ -14,8 +14,10 @@ return {
         },
 
         init = function()
-          require('lib.tools').keymap_group([[<leader>d]], 'debug')
-          require('lib.tools').keymap_group([[<leader>da]], 'adapters')
+          require('lib.tools').add_keys {
+            { [[<leader>d]], group = 'Debug' },
+            { [[<leader>da]], group = 'Adapters' },
+          }
         end,
 
         opts = {},

@@ -13,7 +13,7 @@ return {
     cmd = 'Telescope',
 
     init = function()
-      require('lib.tools').keymap_group([[<leader>s]], 'Search')
+      require('lib.tools').add_keys { [[<leader>s]], group = 'Search' }
     end,
 
     keys = {

@@ -43,7 +43,7 @@ return {
     cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
 
     init = function()
-      require('lib.tools').keymap_group([[<leader>al]], 'Lspconfig')
+      require('lib.tools').add_keys { [[<leader>al]], group = 'Lspconfig' }
     end,
 
     keys = {

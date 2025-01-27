@@ -22,8 +22,10 @@ return {
     },
 
     init = function()
-      require('lib.tools').keymap_group([[<leader>at]], 'Tree Sitter')
-      require('lib.tools').keymap_group([[<leader>St]], 'Tree Sitter')
+      require('lib.tools').add_keys {
+        { [[<leader>at]], group = 'Tree Sitter' },
+        { [[<leader>St]], group = 'Tree Sitter' },
+      }
     end,
 
     opts = {

@@ -8,7 +8,7 @@ return {
     build = ':MasonUpdate', -- :MasonUpdate updates registry contents
     cmd = { 'Mason', 'MasonLog', 'MasonUpdate', 'MasonInstall', 'MasonUninstall', 'MasonUninstallAll' },
     init = function()
-      require('lib.tools').keymap_group([[<leader>am]], 'Mason')
+      require('lib.tools').add_keys { [[<leader>am]], group = 'Mason' }
     end,
     keys = {
       { [[<leader>Sm]], vim.cmd.Mason, desc = 'Mason' }, -- Status
