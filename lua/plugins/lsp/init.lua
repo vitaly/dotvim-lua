@@ -67,7 +67,7 @@ return {
         enabled = false,
       },
 
-      ensure_installed = { 'tsserver', 'pyright' },
+      ensure_installed = { 'ts_ls', 'pyright' },
 
       -- Lspconfig Server Settings
       ---@type table<string, lspconfig.options>
