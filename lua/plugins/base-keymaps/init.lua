@@ -93,6 +93,7 @@ return {
         { '<leader>l', '<cmd>Lazy home<cr>', desc = 'Lazy' },
 
         { '<leader>az', group = 'Lazy' },
+        { '<leader>azz', '<cmd>Lazy<cr>', desc = 'Lazy' },
         { '<leader>azC', '<cmd>Lazy clear<cr>', desc = 'Clear' },
         { '<leader>azL', ':<c-u>Lazy load ', desc = 'Load...' },
         { '<leader>azR', '<cmd>Lazy restore<cr>', desc = 'Restore' },
