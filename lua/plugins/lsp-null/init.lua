@@ -3,7 +3,8 @@
 -- generic LSP server used for things like linting, formatting, etc
 ---------------------------------------------------------------------------------
 return {
-  'jose-elias-alvarez/null-ls.nvim', -- https://github.com/jose-elias-alvarez/null-ls.nvim
+  -- 'jose-elias-alvarez/null-ls.nvim', -- https://github.com/jose-elias-alvarez/null-ls.nvim
+  'nvimtools/none-ls.nvim', -- https://github.com/nvimtools/none-ls.nvim
   dependencies = {
     'jayp0521/mason-null-ls.nvim', -- https://github.com/jayp0521/mason-null-ls.nvim
   },
