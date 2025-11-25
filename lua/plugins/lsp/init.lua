@@ -55,6 +55,7 @@ return {
       tools.map_keys('<leader>als', maps.lsp_start),
       tools.map_keys('<leader>alS', maps.lsp_stop),
       tools.map_keys('<leader>alr', maps.lsp_restart),
+      tools.map_keys('<leader>alw', maps.list_workspace_folders),
     },
 
     opts = {
