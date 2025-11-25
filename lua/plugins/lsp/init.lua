@@ -47,13 +47,14 @@ return {
     end,
 
     keys = {
-      tools.map_keys([[<leader>Sl]], maps.lsp_info),
+      tools.map_keys('<leader>Sl', maps.lsp_info),
 
-      tools.map_keys([[<leader>ali]], maps.lsp_info),
-      tools.map_keys([[<leader>all]], maps.lsp_log),
-      tools.map_keys([[<leader>als]], maps.lsp_start),
-      tools.map_keys([[<leader>alS]], maps.lsp_stop),
-      tools.map_keys([[<leader>alr]], maps.lsp_restart),
+      tools.map_keys('<leader>alh', maps.lsp_health),
+      tools.map_keys('<leader>ali', maps.lsp_info),
+      tools.map_keys('<leader>all', maps.lsp_log),
+      tools.map_keys('<leader>als', maps.lsp_start),
+      tools.map_keys('<leader>alS', maps.lsp_stop),
+      tools.map_keys('<leader>alr', maps.lsp_restart),
     },
 
     opts = {

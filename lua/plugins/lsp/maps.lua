@@ -6,6 +6,7 @@ end
 
 --- @type KeyDef[]
 local maps = {
+  lsp_health = { rhs = cmd 'checkhealth lsp', desc = 'Lsp Health' },
   lsp_info = { rhs = cmd 'LspInfo', desc = 'Lsp Info' },
   lsp_log = { rhs = cmd 'LspLog', desc = 'Lsp Log' },
   lsp_start = { rhs = cmd 'LspStart', desc = 'Lsp Stop' },
