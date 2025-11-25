@@ -1,7 +1,7 @@
 -- local debug = my.log.debug
 -- local trace = my.log.trace
 
-local map_keys = require('lib.tools').map_keys
+local tools = require 'lib.tools'
 local maps = require 'plugins.lsp.maps'
 local au = require 'lib.au'
 
@@ -47,13 +47,13 @@ return {
     end,
 
     keys = {
-      map_keys(maps.lsp_info, [[<leader>Sl]]),
+      tools.map_keys([[<leader>Sl]], maps.lsp_info),
 
-      map_keys(maps.lsp_info, [[<leader>ali]]),
-      map_keys(maps.lsp_log, [[<leader>all]]),
-      map_keys(maps.lsp_start, [[<leader>als]]),
-      map_keys(maps.lsp_stop, [[<leader>alS]]),
-      map_keys(maps.lsp_restart, [[<leader>alr]]),
+      tools.map_keys([[<leader>ali]], maps.lsp_info),
+      tools.map_keys([[<leader>all]], maps.lsp_log),
+      tools.map_keys([[<leader>als]], maps.lsp_start),
+      tools.map_keys([[<leader>alS]], maps.lsp_stop),
+      tools.map_keys([[<leader>alr]], maps.lsp_restart),
     },
 
     opts = {

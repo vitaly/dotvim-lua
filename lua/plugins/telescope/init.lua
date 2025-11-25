@@ -1,4 +1,4 @@
-local map_keys = require('lib.tools').map_keys
+local tools = require 'lib.tools'
 local maps = require 'plugins.telescope.maps'
 return {
   -------------------------------------------------------------------------------
@@ -13,46 +13,46 @@ return {
     cmd = 'Telescope',
 
     init = function()
-      require('lib.tools').add_keys { [[<leader>s]], group = 'Search' }
+      require('lib.tools').add_keys { '<leader>s', group = 'Search' }
     end,
 
     keys = {
-      map_keys(maps.find_files, [[<localleader><localleader>]]),
-      map_keys(maps.find_files, [[<leader>ff]]),
+      tools.map_keys('<localleader><localleader>', maps.find_files),
+      tools.map_keys('<leader>ff', maps.find_files),
 
-      map_keys(maps.live_grep, [[<leader>/]]),
+      tools.map_keys('<leader>/', maps.live_grep),
 
-      map_keys(maps.commands, [[<leader><cr>]]),
+      tools.map_keys('<leader><cr>', maps.commands),
 
-      map_keys(maps.buffers, [[<leader>bb]]),
-      map_keys(maps.help_tags, [[<leader>h]]),
+      tools.map_keys('<leader>bb', maps.buffers),
+      tools.map_keys('<leader>h', maps.help_tags),
 
-      map_keys(maps.command_history, [[<leader>s:]]),
+      tools.map_keys('<leader>s:', maps.command_history),
 
-      map_keys(maps.telescope, [[<leader>sT]]),
-      map_keys(maps.colorschemes, [[<leader>sC]]),
-      map_keys(maps.highlights, [[<leader>sH]]),
+      tools.map_keys('<leader>sT', maps.telescope),
+      tools.map_keys('<leader>sC', maps.colorschemes),
+      tools.map_keys('<leader>sH', maps.highlights),
 
-      map_keys(maps.diagnostics, [[<leader>sD]]),
-      map_keys(maps.autocommands, [[<leader>sa]]),
-      map_keys(maps.buffers, [[<leader>sb]]),
-      map_keys(maps.commands, [[<leader>sc]]),
-      map_keys(maps.buf_diagnostics, [[<leader>sd]]),
-      map_keys(maps.grep_string, [[<leader>sg]]),
-      map_keys(maps.help_tags, [[<leader>sh]]),
-      map_keys(maps.keymaps, [[<leader>sk]]),
-      map_keys(maps.lines, [[<leader>sl]]),
-      map_keys(maps.man_pages, [[<leader>sm]]),
-      map_keys(maps.recent_fies, [[<leader>so]]),
-      map_keys(maps.symbols, [[<leader>sy]]),
-      map_keys(maps.tagstack, [[<leader>ss]]),
-      map_keys(maps.vim_options, [[<leader>sv]]),
+      tools.map_keys('<leader>sD', maps.diagnostics),
+      tools.map_keys('<leader>sa', maps.autocommands),
+      tools.map_keys('<leader>sb', maps.buffers),
+      tools.map_keys('<leader>sc', maps.commands),
+      tools.map_keys('<leader>sd', maps.buf_diagnostics),
+      tools.map_keys('<leader>sg', maps.grep_string),
+      tools.map_keys('<leader>sh', maps.help_tags),
+      tools.map_keys('<leader>sk', maps.keymaps),
+      tools.map_keys('<leader>sl', maps.lines),
+      tools.map_keys('<leader>sm', maps.man_pages),
+      tools.map_keys('<leader>so', maps.recent_fies),
+      tools.map_keys('<leader>sy', maps.symbols),
+      tools.map_keys('<leader>ss', maps.tagstack),
+      tools.map_keys('<leader>sv', maps.vim_options),
 
-      map_keys(maps.marks, [[<leader>s']]),
+      tools.map_keys("<leader>s'", maps.marks),
 
-      map_keys(maps.git_files, [[<leader>gf]]),
-      map_keys(maps.git_commits, [[<leader>gc]]),
-      map_keys(maps.git_status, [[<leader>gS]]),
+      tools.map_keys('<leader>gf', maps.git_files),
+      tools.map_keys('<leader>gc', maps.git_commits),
+      tools.map_keys('<leader>gS', maps.git_status),
     },
 
     -- local actions = require 'telescope.actions'

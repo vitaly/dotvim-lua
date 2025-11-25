@@ -81,28 +81,31 @@ TOOLS.highlight = setmetatable({}, {
 })
 
 ---@class KeyDef
----@field [1] string|nil lhs
----@field [2] string|fun() rhs
+---@field rhs string|fun() rhs
 ---@field desc? string
 ---@field mode? string|string[]
 ---@field noremap? boolean
 ---@field remap? boolean
 ---@field expr? boolean
----@field id string
----@field silent boolean
----@field has? string - server capability required
+---@field silent? boolean
+---@field has? string - server capability required, only used for on_attach mappings
 
 -- This function combines mapping keys with mapping definition and possible extra attributes
+---@param lhs string
 ---@param def KeyDef
----@param keys string | table<string, string | boolean | number> | nil
-function TOOLS.map_keys(def, keys)
-  if type(keys) ~= 'table' then
-    keys = { keys }
-  end
-  if not def then
-    error('missing definition for map_keys ' .. vim.inspect(keys))
-  end
-  return vim.tbl_extend('keep', keys, def)
+function TOOLS.map_keys(lhs, def)
+  return {
+    lhs,
+    def.rhs,
+    desc = def.desc,
+    mode = def.mode,
+    -- noremap is true by default, unless explicitly set to false or remap is true
+    noremap = def.noremap ~= false and (def.remap ~= true),
+    remap = def.remap,
+    expr = def.expr,
+    silent = def.silent,
+    -- ignore 'hash' key, it only used in on_attach to check capabilities
+  }
 end
 
 return TOOLS
