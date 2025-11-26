@@ -204,9 +204,6 @@ return {
         { [[<leader>wt]], [[<c-w>T]], desc = 'Move to new Tab' },
         { [[<leader>wo]], [[<c-w>o]], desc = 'Only' },
 
-        -- terminal
-        { [[<a-[>]], [[<c-\><c-n>]], mode = 't', desc = 'Switch To Normal Mode ' },
-
         -- misc
         { [[<tab>n]], [[<cmd>tabnew<cr>]], desc = 'New Tab' },
 
