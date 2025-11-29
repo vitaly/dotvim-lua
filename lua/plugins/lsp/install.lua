@@ -61,6 +61,10 @@ return {
     end, ensure_installed)
 
     -- trace { 'ensure_installed', ensure_installed }
-    require('mason-lspconfig').setup { ensure_installed = opts.ensure_installed, handlers = { setup_server } }
+    require('mason-lspconfig').setup {
+      ensure_installed = opts.ensure_installed,
+      automatic_enable = false,
+      handlers = { setup_server },
+    }
   end,
 }
