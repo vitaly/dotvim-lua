@@ -156,11 +156,9 @@ return {
         { [[<c-l>]], '<right>', mode = { 'i' } },
 
         -- messages
-        { [[<leader>m]], '<cmd>messages<cr>', desc = 'Messages' },
-        { [[<leader>M]], '<cmd>messages clear<cr>', desc = 'Clear Messages' },
-
-        { [[<leader>n]], '<cmd>cn<cr>', desc = 'Next' },
-        { [[<leader>p]], '<cmd>cp<cr>', desc = 'Prev' },
+        { [[<leader>m]], group = 'Messages' },
+        { [[<leader>mm]], '<cmd>messages<cr>', desc = '[m]essages' },
+        { [[<leader>mC]], '<cmd>messages clear<cr>', desc = '[m]essages Clear' },
 
         -- Buffer
         { [[<leader>b]], group = 'Buffer' },
@@ -206,6 +204,8 @@ return {
 
         -- misc
         { [[<tab>n]], [[<cmd>tabnew<cr>]], desc = 'New Tab' },
+        { [[<leader>n]], '<cmd>cn<cr>', desc = 'Next' },
+        { [[<leader>p]], '<cmd>cp<cr>', desc = 'Prev' },
 
         -- Vim
         { [[<leader>v]], group = 'Vim' },
@@ -225,12 +225,16 @@ return {
         { [[\s]], [[<cmd>setlocal spell!<cr>]], desc = 'Spell Check' },
         { [[\o]], [[<cmd>set ro!<cr>]], desc = 'Read Only' },
 
-        { [[\c]], util.toggle_clipboard, desc = 'clipboard' },
+        { [[\C]], util.toggle_clipboard, desc = 'Clipboard' },
 
         -- Conceal
         { [[\n]], group = 'Conceal' },
         { [[\nc]], util.toggle_concealcursor, desc = 'Cursor' },
         { [[\nn]], util.toggle_conceallevel, desc = 'Level' },
+
+        -- Cursor
+        { [[\cc]], [[<cmd>set invcursorcolumn<cr>]], desc = 'Cursor Column' },
+        { [[\cl]], [[<cmd>set invcursorline<cr>]], desc = 'Cursor Line' },
 
         -- Debug
         { [[\d]], group = 'Debug' },

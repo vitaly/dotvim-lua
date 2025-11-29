@@ -4,7 +4,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins', {
   checker = { enabled = true }, -- automatically check for plugin updates
-  change_detection = { notify = false },
+  change_detection = { enabled = true, notify = false },
   install = { colorscheme = { 'tokyonight', 'habamax' } },
   performance = {
     rtp = {
