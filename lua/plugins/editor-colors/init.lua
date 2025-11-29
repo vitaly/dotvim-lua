@@ -51,13 +51,13 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
 
     init = function()
-      require('lib.tools').add_keys { [[\C]], group = 'Colorizer' }
+      require('lib.tools').add_keys { [[\L]], group = 'coLorizer' }
     end,
 
     keys = {
-      { [[\Cc]], colorizer.toggle, desc = 'Toggle Colorizer' },
-      { [[\Cm]], colorizer.toggle_mode, desc = 'Toggle Colorizer Mode' },
-      { [[\Cr]], colorizer.reload, desc = 'Reload Colorizer' },
+      { [[\Lc]], colorizer.toggle, desc = 'Toggle Colorizer' },
+      { [[\Lm]], colorizer.toggle_mode, desc = 'Toggle Colorizer Mode' },
+      { [[\Lr]], colorizer.reload, desc = 'Reload Colorizer' },
     },
 
     opts = { user_default_options = { mode = 'virtualtext' } },
