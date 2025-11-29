@@ -191,4 +191,40 @@ return {
 
     config = true,
   },
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
+  --- VENN DIAGRAMS IN NEOVIM
+  {
+    'jbyuki/venn.nvim', -- https://github.com/jbyuki/venn.nvim
+    keys = {
+      { [[\V]], "<cmd>lua require('venn.toggle').toggle()<cr>", mode = { 'n', 'x' }, desc = 'Toggle Venn' },
+    },
+    config = function()
+      package.loaded['venn.toggle'] = {
+
+        toggle = function()
+          if vim.b.venn_enabled then
+            vim.b.venn_enabled = false
+            vim.keymap.del('n', 'J', { buffer = true })
+            vim.keymap.del('n', 'K', { buffer = true })
+            vim.keymap.del('n', 'H', { buffer = true })
+            vim.keymap.del('n', 'L', { buffer = true })
+            vim.keymap.del('n', 'f', { buffer = true })
+            print 'Venn disabled'
+            return
+          end
+
+          vim.b.venn_enabled = true
+
+          vim.keymap.set('n', 'J', '<c-v>j:VBox<cr>', { buffer = true })
+          vim.keymap.set('n', 'K', '<c-v>k:VBox<cr>', { buffer = true })
+          vim.keymap.set('n', 'H', '<c-v>h:VBox<cr>', { buffer = true })
+          vim.keymap.set('n', 'L', '<c-v>l:VBox<cr>', { buffer = true })
+
+          vim.keymap.set('v', 'f', '<cmd>VBox<cr>', { buffer = true })
+          print 'Venn enabled'
+        end,
+      }
+    end,
+  },
 }
