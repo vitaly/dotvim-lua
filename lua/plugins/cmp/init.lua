@@ -32,7 +32,6 @@ return {
 
   {
     'github/copilot.vim', -- https://github.com/github/copilot.vim
-    build = ':Copilot setup',
 
     event = 'InsertEnter',
     cmd = 'Copilot',
