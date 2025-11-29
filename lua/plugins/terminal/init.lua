@@ -45,7 +45,7 @@ return {
 
     keys = {
       { [[<c-\>]] },
-      { [[<a-\>]], [[<c-\><c-n>]], mode = 't', desc = 'Switch To Normal Mode ' },
+      { [[<a-[>]], [[<c-\><c-n>]], mode = 't', desc = 'Switch To Normal Mode ' },
       { [[<leader>gt]], tig, desc = 'TIG' },
     },
 
