@@ -158,7 +158,7 @@ return {
         -- messages
         { [[<leader>m]], group = 'Messages' },
         { [[<leader>mm]], '<cmd>messages<cr>', desc = '[m]essages' },
-        { [[<leader>mC]], '<cmd>messages clear<cr>', desc = '[m]essages Clear' },
+        { [[<leader>mM]], '<cmd>messages clear<cr>', desc = '[M]essages Clear' },
 
         -- Buffer
         { [[<leader>b]], group = 'Buffer' },
@@ -264,10 +264,5 @@ return {
     require('which-key').add(opts.keys)
 
     setup_diff_mode_maps()
-
-    if my.keymaps then
-      require('which-key').add { mode = 'nv', my.keymaps }
-    end
-    vim.g.my_keymaps_loaded = true
   end,
 }

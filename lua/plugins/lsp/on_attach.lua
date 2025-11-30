@@ -1,6 +1,7 @@
 -- local trace = my.log.trace
 -- local debug = my.log.debug
 local tools = require 'lib.tools'
+local which_key = require 'which-key'
 
 ---@param client any
 ---@param buf number
@@ -59,7 +60,7 @@ return {
       })
     end
 
-    tools.add_keys { [[<localleader>r]], group = 'Refactor', { buffer = 0 } }
+    which_key.add_keys { [[<localleader>r]], group = 'Refactor', { buffer = 0 } }
     lsp_map(client, buf, '<localleader>rr', lsp.rename)
     lsp_map(client, buf, '<localleader>c', lsp.code_action)
 
@@ -67,7 +68,7 @@ return {
     lsp_map(client, buf, '<localleader>n', lsp.next_diagnostic)
     lsp_map(client, buf, '<localleader>p', lsp.prev_diagnostic)
 
-    tools.add_keys { [[<localleader>g]], group = 'Goto', { buffer = 0 } }
+    which_key.add_keys { [[<localleader>g]], group = 'Goto', { buffer = 0 } }
     lsp_map(client, buf, '<localleader>gd', tele.lsp_definitions)
     lsp_map(client, buf, '<localleader>gD', lsp.declaration) -- conditional on has textDocument/declaration
     lsp_map(client, buf, '<localleader>gr', tele.lsp_references)
@@ -77,7 +78,7 @@ return {
     lsp_map(client, buf, '<localleader>gci', tele.lsp_incoming_calls)
     lsp_map(client, buf, '<localleader>gco', tele.lsp_outgoing_calls)
 
-    tools.add_keys { [[<localleader>s]], group = 'Search', { buffer = 0 } }
+    which_key.add_keys { [[<localleader>s]], group = 'Search', { buffer = 0 } }
     lsp_map(client, buf, '<localleader>sd', tele.lsp_document_symbols)
     lsp_map(client, buf, '<localleader>sw', tele.lsp_workspace_symbols)
     lsp_map(client, buf, '<localleader>sD', tele.lsp_dynamic_workspace_symbols)

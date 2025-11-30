@@ -2,7 +2,9 @@
 -- NOTE: The actual status column configuration is in lua/plugins/editor/init.lua
 return {
   'kevinhwang91/nvim-ufo', -- https://github.com/kevinhwang91/nvim-ufo#installation
+
   dependencies = { 'kevinhwang91/promise-async', 'nvim-treesitter/nvim-treesitter' },
+
   -- NOTE: If BufReadPre is used here, folding fails with an error
   event = { 'BufReadPost', 'BufNewFile' },
 

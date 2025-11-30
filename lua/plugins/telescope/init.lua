@@ -13,7 +13,7 @@ return {
     cmd = 'Telescope',
 
     init = function()
-      require('lib.tools').add_keys { '<leader>s', group = 'Search' }
+      require('which-key').add { '<leader>s', group = 'Search' }
     end,
 
     keys = {

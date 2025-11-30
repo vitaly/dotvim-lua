@@ -1,5 +1,5 @@
 local debug = my.log.debug
-local trace = my.log.trace
+-- local trace = my.log.trace
 -- clone repository into given directory if it doesn't exist
 local TOOLS = {}
 
@@ -34,25 +34,6 @@ function TOOLS.get_hi_attr(name, attr)
     return nil
   end
   return value
-end
-
---- stores the groups definitions in g:my_keymaps
---- if g:my_keymaps_loaded is set, which_ley.add is called
---- otherwise keys are stored in my.keymaps and will be used when which_key loads
----@param keys any[]
-function TOOLS.add_keys(keys)
-  -- trace { 'add_keys', keys }
-
-  if vim.g.my_keymaps_loaded then
-    -- trace { 'keymaps', keys }
-    require('which-key').add { mode = 'nv', keys }
-    return
-  end
-
-  -- trace('my.keymaps', my.keymaps)
-  my.keymaps = my.keymaps or {}
-  table.insert(my.keymaps, keys)
-  -- trace('my.keymaps', my.keymaps)
 end
 
 TOOLS.highlight = setmetatable({}, {

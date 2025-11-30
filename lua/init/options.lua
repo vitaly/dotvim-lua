@@ -22,7 +22,7 @@ end
 opt.autowriteall = true -- Automatically save before commands like :next and :make
 opt.clipboard = 'unnamedplus' -- Sync with system clipboard
 opt.completeopt = 'menu,menuone,noselect'
-opt.conceallevel = 3 -- Hide * markup for bold and italic
+opt.conceallevel = 1 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true
 opt.expandtab = true
@@ -89,3 +89,4 @@ opt.visualbell = true -- use visual bell instead of beeping
 opt.wildignore = '*.o,*.a,*.so,*.swp,.git,.hg,.svn,CVS,RCS,*~,*.pyc,*.zwc'
 opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.wrap = false
+opt.winborder = 'rounded'

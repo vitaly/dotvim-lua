@@ -51,7 +51,7 @@ return {
     event = { 'BufReadPost', 'BufNewFile' },
 
     init = function()
-      require('lib.tools').add_keys { [[\L]], group = 'coLorizer' }
+      require('which-key').add { [[\L]], group = 'coLorizer' }
     end,
 
     keys = {

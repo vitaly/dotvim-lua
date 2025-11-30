@@ -4,27 +4,29 @@ return {
     'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
 
     build = ':TSUpdate',
+
+    lazy = false,
+
     event = { 'BufReadPost', 'BufNewFile' },
 
     cmd = { 'TSUpdate', 'TSUpdateSync', 'TSToggle', 'TSBufToggle', 'TSModuleInfo' },
 
     keys = {
-      { '<c-space>', desc = 'Increment selection' },
-      { '<bs>', desc = 'Decrement selection', mode = 'x' },
+      -- { '<c-space>', desc = 'Increment selection' },
+      -- { '<bs>', desc = 'Decrement selection', mode = 'x' },
 
       { '<leader>ati', '<cmd>TSInstallInfo<cr>', desc = 'Install Info' },
       { '<leader>atm', '<cmd>TSModuleInfo<cr>', desc = 'Module Info' },
       { '<leader>atc', '<cmd>TSConfigInfo<cr>', desc = 'Config Info' },
       { '<leader>atu', '<cmd>TSUpdate<cr>', desc = 'Update' },
+      { '<leader>ath', '<cmd>checkhealth vim.treesitter<cr>', desc = 'vim.treesitter health' },
+      { '<leader>atH', '<cmd>checkhealth nvim-treesitter<cr>', desc = 'vim.treesitter health' },
 
-      { '<leader>Stm', '<cmd>TSModuleInfo<cr>', desc = 'Modules' },
-      { '<leader>Stc', '<cmd>TSConfigInfo<cr>', desc = 'Config' },
     },
 
     init = function()
-      require('lib.tools').add_keys {
+      require('which-key').add {
         { [[<leader>at]], group = 'Tree Sitter' },
-        { [[<leader>St]], group = 'Tree Sitter' },
       }
     end,
 
@@ -82,16 +84,9 @@ return {
     },
 
     config = function(_, opts)
-      -- make sure opts.ensure_installed is a unique table
-      ---@type table<string, boolean>
-      local ensure_installed = {}
-      for _, lang in ipairs(opts.ensure_installed) do
-        ensure_installed[lang] = true
-      end
-      opts.ensure_installed = ensure_installed
-
       require('nvim-treesitter.configs').setup(opts)
     end,
+
   },
   {
     'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs

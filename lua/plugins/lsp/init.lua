@@ -3,47 +3,27 @@
 
 local tools = require 'lib.tools'
 local maps = require 'plugins.lsp.maps'
-local au = require 'lib.au'
-
-local lib_plugins = (my.config.lua or {}).add_plugins_to_workspace or {}
-
-if true ~= lib_plugins then
-  table.insert(lib_plugins, 'nvim-dap-ui') -- TODO: configure this from within debugger layer
-end
-
+-- local au = require 'lib.au'
+--
 return {
+
   -------------------------------------------------------------------------------
   -- lspconfig
   -------------------------------------------------------------------------------
   {
     'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
-    dependencies = {
-      'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
-      {
-        'folke/neodev.nvim', -- https://github.com/folke/neodev.nvim
-        opts = {
-          -- control adding plugins in my.copnfig.lua
-          library = { plugins = lib_plugins },
-        },
-      },
-      -- `config=true` ensures it's setup before lspconfig
-      { 'folke/neoconf.nvim', cmd = 'Neoconf', config = true }, -- https://github.com/folke/neoconf.nvim
-      -- Simple progress widget for LSP
-      { 'j-hui/fidget.nvim', branch = 'legacy', opts = {} }, -- https://github.com/j-hui/fidget.nvim
 
-      'williamboman/mason.nvim', -- https://github.com/williamboman/mason.nvim
-      'williamboman/mason-lspconfig.nvim', -- https://github.com/williamboman/mason-lspconfig.nvim
-
-      'hrsh7th/cmp-nvim-lsp',
-
-      -- lightbulb in signcolumn whenever code action is available
-      'kosayoda/nvim-lightbulb', -- https://github.com/kosayoda/nvim-lightbulb
-    },
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = 'LazyFile',
     cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
 
+    dependencies = {
+      'mason-org/mason.nvim', -- https://github.com/mason-org/mason.nvim
+      'mason-org/mason-lspconfig.nvim', -- https://github.com/mason-org/mason-lspconfig.nvim
+      'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
+    },
+
     init = function()
-      require('lib.tools').add_keys { [[<leader>al]], group = 'Lspconfig' }
+      require('which-key').add { [[<leader>al]], group = 'LSP' }
     end,
 
     keys = {
@@ -58,98 +38,200 @@ return {
       tools.map_keys('<leader>alw', maps.list_workspace_folders),
     },
 
-    opts = {
-      -- default LSP capabilities
-      capabilities = {},
+    config = function()
+      -- config for lua_ls is merged from 3 soiurces:
+      -- lspconfig
+      -- ./lsp/lua_ls.lua
+      -- and config here
+      -- vim.lsp.config('lua_ls', {
+      --   settings = {
+      --     Lua = {
+      --       format = { enable = false },
+      --     },
+      --   },
+      -- })
 
-      -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
-      -- Be aware that you also will need to properly configure your LSP server to
-      -- provide the inlay hints.
-      inlay_hints = {
-        enabled = false,
-      },
+      vim.lsp.enable 'lua_ls'
+      vim.lsp.enable 'jsonls'
+      vim.lsp.enable 'yamlls'
 
-      ensure_installed = { 'ts_ls', 'pyright' },
 
-      -- Lspconfig Server Settings
-      ---@type table<string, lspconfig.options>
-      servers = {
-        -- e.g.
-        -- lua_ls = {
-        --  ...
-        -- }
-      },
-
-      ---@type table<string, fun(name:string, config: lspconfig.options)>
-      setup = {
-        -- -- example to setup with typescript.nvim
-        -- foobar = function(_, config)
-        --    ...
-        -- end,
-        -- -- default setup
-        -- ["*"] = function(name, config)
-        --   require('lspconfig').foobar.setup(config)
-        -- end,
-      },
-    },
-
-    config = function(_, opts)
-      -- for some reason lspconfig popups do not have a border
-      require('lspconfig.ui.windows').default_options.border = 'single'
-
-      -- configure diagsnostics icons
-      local icons = my.config.icons.diagnostics
-      for type, icon in pairs(icons) do
-        local hl = 'DiagnosticSign' .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
-
-      -- configure inlay hints
-      if opts.inlay_hints.enabled and vim.lsp.buf.inlay_hint then
-        au.lsp_on_attach('inlay_hints', function(client, buffer)
-          if client.server_capabilities.inlayHintProvider then
-            -- debug { 'inlay_hints', client.name }
-            vim.lsp.buf.inlay_hint(buffer, true)
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(ev)
+          local client = vim.lsp.get_client_by_id(ev.data.client_id)
+          if client and client:supports_method 'textDocument/completion' then
+            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
           end
-        end)
-      end
+        end,
+      })
 
-      -- configure lightbulb
-      require('nvim-lightbulb').setup {
-        float = { enabled = false },
-        autocmd = { enabled = true },
-        sign = { enabled = false },
-        virtual_text = {
-          enabled = true,
-          hl_mode = 'combine',
-        },
-      }
+      vim.cmd 'set completeopt+=noselect'
 
-      require('plugins.lsp.install').setup(opts)
-
-      au.lsp_on_attach('lsp.init', require('plugins.lsp.on_attach').on_attach)
+      vim.diagnostic.config { virtual_lines = { current_line = true } }
     end,
+  },
+
+  -------------------------------------------------------------------------------
+  -- mason
+  -------------------------------------------------------------------------------
+  {
+    'mason-org/mason.nvim', -- https://github.com/mason-org/mason.nvim
+
+    config = true,
   },
 
   {
-    'ray-x/lsp_signature.nvim', -- https://github.com/ray-x/lsp_signature.nvim
-    event = { 'BufReadPre', 'BufNewFile' },
+    'mason-org/mason-lspconfig.nvim', -- https://github.com/mason-org/mason-lspconfig.nvim
 
-    opts = {
-      bind = true,
-      floating_window = true,
-      floating_window_above_cur_line = false,
-      hint_enable = false,
-      -- hint_prefix = 'ℹ️',
-      handler_opts = {
-        border = 'rounded',
-      },
+    dependencies = {
+      { 'mason-org/mason.nvim', opts = {} },
+      'neovim/nvim-lspconfig',
     },
 
-    config = function()
-      au.lsp_on_attach('lsp_signature', function()
-        require('lsp_signature').on_attach()
-      end)
-    end,
+    opts = {
+      -- TBD: move to config
+      ensure_installed = { 'lua_ls', 'ts_ls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'ruby_lsp', 'stylua' },
+
+      automatic_enable = false,
+    },
   },
+
+  -------------------------------------------------------------------------------
+  -- misc lsp related plugins
+  -------------------------------------------------------------------------------
+  -- Simple progress widget for LSP
+  { 'j-hui/fidget.nvim', opts = {} }, -- https://github.com/j-hui/fidget.nvim
 }
+
+--
+-- -- local lib_plugins = (my.config.lua or {}).add_plugins_to_workspace or {}
+--
+-- -- if true ~= lib_plugins then
+-- --   table.insert(lib_plugins, 'nvim-dap-ui') -- TODO: configure this from within debugger layer
+-- -- end
+--
+-- return {
+--   -------------------------------------------------------------------------------
+--   -- lspconfig
+--   -------------------------------------------------------------------------------
+--   {
+--     'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
+--
+--     dependencies = {
+--
+--       -- -- lua dev extra setup
+--       -- {
+--       --   'folke/neodev.nvim', -- https://github.com/folke/neodev.nvim
+--       --   opts = {
+--       --     -- control adding plugins in my.copnfig.lua
+--       --     library = { plugins = lib_plugins },
+--       --   },
+--       -- },
+--
+--       -- `config=true` ensures it's setup before lspconfig
+--       { 'folke/neoconf.nvim', cmd = 'Neoconf', config = true }, -- https://github.com/folke/neoconf.nvim
+--
+--
+--
+--       'hrsh7th/cmp-nvim-lsp',
+--
+--       -- lightbulb in signcolumn whenever code action is available
+--       'kosayoda/nvim-lightbulb', -- https://github.com/kosayoda/nvim-lightbulb
+--     },
+--
+--
+--     opts = {
+--       -- default LSP capabilities
+--       capabilities = {},
+--
+--       -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
+--       -- Be aware that you also will need to properly configure your LSP server to
+--       -- provide the inlay hints.
+--       inlay_hints = {
+--         enabled = false,
+--       },
+--
+--       ensure_installed = { 'ts_ls', 'pyright' },
+--
+--       -- Lspconfig Server Settings
+--       ---@type table<string, lspconfig.options>
+--       servers = {
+--         -- e.g.
+--         -- lua_ls = {
+--         --  ...
+--         -- }
+--       },
+--
+--       ---@type table<string, fun(name:string, config: lspconfig.options)>
+--       setup = {
+--         -- -- example to setup with typescript.nvim
+--         -- foobar = function(_, config)
+--         --    ...
+--         -- end,
+--         -- -- default setup
+--         -- ["*"] = function(name, config)
+--         --   require('lspconfig').foobar.setup(config)
+--         -- end,
+--       },
+--     },
+--
+--     config = function(_, opts)
+--       -- for some reason lspconfig popups do not have a border
+--       require('lspconfig.ui.windows').default_options.border = 'single'
+--
+--       -- configure diagsnostics icons
+--       local icons = my.config.icons.diagnostics
+--       for type, icon in pairs(icons) do
+--         local hl = 'DiagnosticSign' .. type
+--         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+--       end
+--
+--       -- configure inlay hints
+--       if opts.inlay_hints.enabled and vim.lsp.buf.inlay_hint then
+--         au.lsp_on_attach('inlay_hints', function(client, buffer)
+--           if client.server_capabilities.inlayHintProvider then
+--             -- debug { 'inlay_hints', client.name }
+--             vim.lsp.buf.inlay_hint(buffer, true)
+--           end
+--         end)
+--       end
+--
+--       -- configure lightbulb
+--       require('nvim-lightbulb').setup {
+--         float = { enabled = false },
+--         autocmd = { enabled = true },
+--         sign = { enabled = false },
+--         virtual_text = {
+--           enabled = true,
+--           hl_mode = 'combine',
+--         },
+--       }
+--
+--       require('plugins.lsp.install').setup(opts)
+--
+--       au.lsp_on_attach('lsp.init', require('plugins.lsp.on_attach').on_attach)
+--     end,
+--   },
+--
+--   {
+--     'ray-x/lsp_signature.nvim', -- https://github.com/ray-x/lsp_signature.nvim
+--     event = { 'BufReadPre', 'BufNewFile' },
+--
+--     opts = {
+--       bind = true,
+--       floating_window = true,
+--       floating_window_above_cur_line = false,
+--       hint_enable = false,
+--       -- hint_prefix = 'ℹ️',
+--       handler_opts = {
+--         border = 'rounded',
+--       },
+--     },
+--
+--     config = function()
+--       au.lsp_on_attach('lsp_signature', function()
+--         require('lsp_signature').on_attach()
+--       end)
+--     end,
+--   },
+-- }

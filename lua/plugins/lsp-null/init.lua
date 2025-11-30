@@ -5,13 +5,17 @@
 return {
   -- 'jose-elias-alvarez/null-ls.nvim', -- https://github.com/jose-elias-alvarez/null-ls.nvim
   'nvimtools/none-ls.nvim', -- https://github.com/nvimtools/none-ls.nvim
+
+  event = "LazyFile",
+
+  enabled = true,
+
   dependencies = {
     'jayp0521/mason-null-ls.nvim', -- https://github.com/jayp0521/mason-null-ls.nvim
   },
-  event = { 'BufReadPre', 'BufNewFile' },
 
   init = function()
-    require('lib.tools').add_keys { [[<leader>an]], group = 'Null Ls' }
+    require('which-key').add { [[<leader>an]], group = 'Null Ls' }
   end,
 
   keys = {
@@ -39,7 +43,7 @@ return {
       },
 
       -- for mason-null-ls
-      ensure_installed = { 'stylua', 'jq', 'shfmt', 'shellcheck' },
+      ensure_installed = { 'stylua', 'jq', 'shfmt' },
     }
   end,
 

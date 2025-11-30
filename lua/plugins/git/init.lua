@@ -15,7 +15,7 @@ return {
       { [[\gw]], [[<cmd>Gitsigns toggle_word_diff<cr>]], desc = 'Toggle Word Diff' },
     },
     init = function()
-      require('lib.tools').add_keys {
+      require('which-key').add {
         { [[<leader>g]], group = 'Git' },
         { [[\g]], group = 'Git/Signs' },
       }

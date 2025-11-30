@@ -3,7 +3,7 @@ local au = require 'lib.au'
 local setup_autocommands = function()
   -- Highlight on yank
   au.command('highlight.on_yank', 'TextYankPost', function()
-    vim.highlight.on_yank { timeout = 200, on_visual = false }
+    vim.hl.on_yank { timeout = 200, on_visual = false }
   end)
 
   -- disable paste mode when leaving Insert Mode

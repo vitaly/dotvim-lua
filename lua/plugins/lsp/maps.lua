@@ -6,12 +6,12 @@ end
 
 --- @type KeyDef[]
 local maps = {
-  lsp_health = { rhs = cmd 'checkhealth lsp', desc = 'Lsp Health' },
-  lsp_info = { rhs = cmd 'LspInfo', desc = 'Lsp Info' },
-  lsp_log = { rhs = cmd 'LspLog', desc = 'Lsp Log' },
-  lsp_start = { rhs = cmd 'LspStart', desc = 'Lsp Stop' },
-  lsp_stop = { rhs = cmd 'LspStop', desc = 'Lsp Stop' },
-  lsp_restart = { rhs = cmd 'LspRestart', desc = 'Lsp Restart' },
+  lsp_health = { rhs = cmd 'checkhealth lsp', desc = 'LSP Health' },
+  lsp_info = { rhs = cmd 'LspInfo', desc = 'LSP Info' },
+  lsp_log = { rhs = cmd 'LspLog', desc = 'LSP Log' },
+  lsp_start = { rhs = cmd 'LspStart', desc = 'LSP Start' },
+  lsp_stop = { rhs = cmd 'LspStop', desc = 'LSP Stop' },
+  lsp_restart = { rhs = cmd 'LspRestart', desc = 'LSP Restart' },
 
   definition = { rhs = vim.lsp.buf.definition, desc = 'Definition', has = 'definition' },
   declaration = { rhs = vim.lsp.buf.declaration, desc = 'Declaration', has = 'declaration' },
@@ -37,7 +37,7 @@ local maps = {
     rhs = function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end,
-    desc = 'List Workspace Folders',
+    desc = 'LSP Workspace Folders',
   },
 
   hover = { rhs = vim.lsp.buf.hover, desc = 'Hover' },

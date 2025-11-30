@@ -139,7 +139,7 @@ return {
       vim.g.VM_leader = '<localleader>v'
       vim.g.VM_highlight_matches = 'red'
 
-      require('lib.tools').add_keys { [[<localleader>v]], group = 'Visual Multi' }
+      require('which-key').add { [[<localleader>v]], group = 'Visual Multi', mode = 'nv' }
     end,
   },
 
