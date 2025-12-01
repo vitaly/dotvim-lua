@@ -1,36 +1,23 @@
 local M = {}
 
-local utils = require 'plugins.statusline.utils'
+vim.api.nvim_set_hl(0, 'AutoformatEnabled', { fg = '#5FD7FF', bold = true })
+vim.api.nvim_set_hl(0, 'AutoformatDisabled', { fg = '#6c7086' })
+
+local icon = '󰅩'
+local disabled = '%#AutoformatDisabled#'
+local enabled = '%#AutoformatEnabled#'
 
 ---@param bufnr? number
 function M.status(bufnr)
   if not bufnr then
     bufnr = vim.api.nvim_get_current_buf()
   end
-  local lsp_format = require 'lsp-format'
 
-  if lsp_format.disabled then
-    return 'D'
+  if not my.config.formatting.enabled then
+    return disabled .. icon
   end
 
-  if lsp_format.disabled_filetypes[utils.filetype()] then
-    return 'd'
-  end
-
-  return 'A'
+  return enabled .. icon
 end
-
--- ---@param bufnr? number
--- function M.writing(bufnr)
---   if not bufnr then
---     bufnr = vim.api.nvim_get_current_buf()
---   end
---   local lsp_format = require 'lsp-format'
---   if lsp_format.saving_buffers[bufnr] then
---     return 'W'
---   end
---
---   return ''
--- end
 
 return M

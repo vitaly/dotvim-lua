@@ -1,4 +1,4 @@
-local debug = my.log.debug
+-- local debug = my.log.debug
 -- local trace = my.log.trace
 -- clone repository into given directory if it doesn't exist
 local TOOLS = {}

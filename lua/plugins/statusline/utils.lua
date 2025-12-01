@@ -7,10 +7,7 @@ end
 
 ---@param bufnr? number
 function UTILS.filetype(bufnr)
-  if not bufnr then
-    bufnr = vim.api.nvim_get_current_buf()
-  end
-  return vim.api.nvim_get_option_value('filetype', { buf = 0 })
+  return  vim.bo[bufnr or 0].filetype
 end
 
 -- buffer can have several lsp clients attached.

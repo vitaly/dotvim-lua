@@ -3,15 +3,11 @@
 ### maps
 
 - `<localleader>af` - Format
-- `<localleader>ae` - AutoFormat enable
-- `<localleader>aE` - AutoFormat enable all
-- `<localleader>ad` - AutoFormat disable
-- `<localleader>at` - AutoFormat toggle
-- `\a` - AutoFormat toggle
+- `<localleader>ai` - AutoFormat Info
+- `\a` - AutoFormat Toggle
 
 ### commands
 
 - `:Format`
-- `:FormatEnable [filetype]`
-- `:FormatDisable [filetype]`
-- `:FormatToggle [filetype]`
+- `:FormatToggle`
+- `:FormatInfo`
