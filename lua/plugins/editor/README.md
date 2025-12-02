@@ -4,6 +4,16 @@
 - `gcc` - Toggle Comments
 - `\;` - Toggle Comments
 
+## Indent Scope
+
+[mini-indentscope](https://github.com/nvim-mini/mini.indentscope)
+
+Shows a thin line at the start of the current indent scope.
+
+It is initially disabled, use the mapping to toggle it on/off
+
+- `\i` - Toggle Indent Scope
+
 ## Bookmarks
 
 [vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks)

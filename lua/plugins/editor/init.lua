@@ -78,6 +78,32 @@ return {
 
   ----------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------
+  -- INDENT SCOPE
+  {
+    'nvim-mini/mini.indentscope', -- https://github.com/nvim-mini/mini.indentscope/tree/main
+    version = '*',
+
+    keys = {
+      {
+        [[\i]],
+        function()
+          vim.g.miniindentscope_disable = not vim.g.miniindentscope_disable
+        end,
+        desc = 'Indent Scope',
+      },
+    },
+
+    init = function()
+      vim.g.miniindentscope_disable = true
+    end,
+
+    opts = {
+      symbol = '┊',
+    },
+  },
+
+  ----------------------------------------------------------------------------------------------
+  ----------------------------------------------------------------------------------------------
   -- SEARCH AND REPLACE
   {
     'vim-scripts/greplace.vim', -- https://github.com/vim-scripts/greplace.vim
@@ -139,7 +165,7 @@ return {
       vim.g.VM_leader = '<localleader>v'
       vim.g.VM_highlight_matches = 'red'
 
-      require('which-key').add { [[<localleader>v]], group = 'Visual Multi', mode = 'nv' }
+      require('which-key').add({ [[<localleader>v]], group = 'Visual Multi', mode = 'nv' })
     end,
   },
 
@@ -150,17 +176,17 @@ return {
   {
     'luukvbaal/statuscol.nvim', -- https://github.com/luukvbaal/statuscol.nvim
     config = function()
-      local builtin = require 'statuscol.builtin'
+      local builtin = require('statuscol.builtin')
 
       vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-      require('statuscol').setup {
+      require('statuscol').setup({
         relculright = true,
         segments = {
           { text = { '%s' }, click = 'v:lua.ScSa' },
           { text = { builtin.lnumfunc, ' ' } },
           { text = { builtin.foldfunc, '│' }, click = 'v:lua.ScFa' },
         },
-      }
+      })
     end,
   },
 
@@ -210,7 +236,7 @@ return {
             vim.keymap.del('n', 'H', { buffer = true })
             vim.keymap.del('n', 'L', { buffer = true })
             vim.keymap.del('n', 'f', { buffer = true })
-            print 'Venn disabled'
+            print('Venn disabled')
             return
           end
 
@@ -222,7 +248,7 @@ return {
           vim.keymap.set('n', 'L', '<c-v>l:VBox<cr>', { buffer = true })
 
           vim.keymap.set('v', 'f', '<cmd>VBox<cr>', { buffer = true })
-          print 'Venn enabled'
+          print('Venn enabled')
         end,
       }
     end,
