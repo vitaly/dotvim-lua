@@ -12,31 +12,6 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 
 `<leader>vc` - to call `LoadVimrcBackground`.
 
-<!-- lua/plugins/base-filer/README.md -->
-
-## File Tree
-
-[neotree](https://github.com/nvim-neo-tree/neo-tree.nvim)
-
-### Config
-
-- `my.config.neotree.position` - left (default), or right
-
-## Maps
-
-- `\\` - Quick File Popup
-- `\[` - Toggle File Tree
-- `\[` - Toggle File Tree / Reveal File
-
-inside File TRee:
-
-- `?` - show help
-- `a` - add file / dir
-- `r` - rename file / dir
-- `m` - move file / dir
-- `d` - delete file / dir
-- `q` - close File Tree
-
 <!-- lua/plugins/base-keymaps/README.md -->
 
 ## Basic Keymaps
@@ -81,7 +56,38 @@ inside File TRee:
 
 - `,d` - Show Diff Menu
 
-<!-- lua/plugins/cmp/README.md -->
+<!-- lua/plugins/base-tree/README.md -->
+
+## File Tree
+
+[neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
+OR
+[nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
+
+> Note: nvim-tree configuration is still in progress
+
+### Config
+
+- `my.config.tree.plugin` - set to 'nvimtree' or 'neotree' (default)
+
+- `my.config.tree.position` - left (default), or right
+
+## Maps
+
+- `\\` - Quick File Popup (not available for nvimtree)
+- `\[` - Toggle File Tree
+- `\[` - Reveal File
+
+inside File Tree (neotree, nvimtree TBD):
+
+- `?` - show help
+- `a` - add file / dir
+- `r` - rename file / dir
+- `m` - move file / dir
+- `d` - delete file / dir
+- `q` - close File Tree
+
+<!-- lua/plugins/code-completion/README.md -->
 
 ## Completion
 
@@ -139,15 +145,6 @@ in the text and displays the colors either as a virtual text, background, or for
 - `n` - when cursor is over a colored word, goes to the next occurence, otherwise next search result
 - `N` - when cursor is over a colored word, goes to the prev occurence, otherwise prev search result
 
-<!-- lua/plugins/editor-comments/README.md -->
-
-## Comments
-
-[mini.comment](https://github.com/echasnovski/mini.comment)
-
-- `gc` - Comments menu
-- `\;` - Toggle Comments
-
 <!-- lua/plugins/editor-format/README.md -->
 
 ## AutoFormat
@@ -155,24 +152,20 @@ in the text and displays the colors either as a virtual text, background, or for
 ### maps
 
 - `<localleader>af` - Format
-- `<localleader>ae` - AutoFormat enable
-- `<localleader>aE` - AutoFormat enable all
-- `<localleader>ad` - AutoFormat disable
-- `<localleader>at` - AutoFormat toggle
-- `\a` - AutoFormat toggle
+- `<localleader>ai` - AutoFormat Info
+- `\a` - AutoFormat Toggle
 
 ### commands
 
 - `:Format`
-- `:FormatEnable [filetype]`
-- `:FormatDisable [filetype]`
-- `:FormatToggle [filetype]`
+- `:FormatToggle`
+- `:FormatInfo`
 
 <!-- lua/plugins/editor-surround/README.md -->
 
 ## Surround
 
-We are using [mini.surround](https://github.com/echasnovski/mini.surround) for surround.
+We are using [mini.surround](https://github.com/nvim-mini/mini.surround) for surround.
 Default mappings are changed slightly to be more like those of tpope's [vim-surround](https://github.com/tpope/vim-surround)
 
 - `ys` - add
@@ -180,6 +173,22 @@ Default mappings are changed slightly to be more like those of tpope's [vim-surr
 - `cs` - change
 
 <!-- lua/plugins/editor/README.md -->
+
+## Comments
+
+- `gc` - Comments menu
+- `gcc` - Toggle Comments
+- `\;` - Toggle Comments
+
+## Indent Scope
+
+[mini-indentscope](https://github.com/nvim-mini/mini.indentscope)
+
+Shows a thin line at the start of the current indent scope.
+
+It is initially disabled, use the mapping to toggle it on/off
+
+- `\i` - Toggle Indent Scope
 
 ## Bookmarks
 
@@ -206,7 +215,7 @@ Default mappings are changed slightly to be more like those of tpope's [vim-surr
 
 ## Align
 
-- `gA` - start [mini.align](https://github.com/echasnovski/mini.align) in Preview mode
+- `gA` - start [mini.align](https://github.com/nvim-mini/mini.align) in Preview mode
 
 <!- TODO: expand help here -->
 
