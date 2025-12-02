@@ -1,6 +1,6 @@
-require 'init.config'
-require 'init.options'
-require 'init.log'
-require 'init.lazy'
-require 'init.autocommands'
-require 'init.commands'
+require('init.config')
+require('init.options')
+require('init.log')
+require('init.lazy')
+require('init.autocommands')
+require('init.commands')
