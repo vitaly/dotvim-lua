@@ -1,3 +1,9 @@
+## Comments
+
+- `gc` - Comments menu
+- `gcc` - Toggle Comments
+- `\;` - Toggle Comments
+
 ## Bookmarks
 
 [vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks)
@@ -23,7 +29,7 @@
 
 ## Align
 
-- `gA` - start [mini.align](https://github.com/echasnovski/mini.align) in Preview mode
+- `gA` - start [mini.align](https://github.com/nvim-mini/mini.align) in Preview mode
 
 <!- TODO: expand help here -->
 
