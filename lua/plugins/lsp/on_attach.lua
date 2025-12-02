@@ -1,23 +1,16 @@
 -- local trace = my.log.trace
 -- local debug = my.log.debug
-local tools = require('lib.tools')
+-- local tools = require('lib.tools')
 local which_key = require('which-key')
 
 ---@param client any
 ---@param buf number
----@param keys string|table
----@param def KeyDef|fun()
+---@param lhs string
+---@param def KeyDef
 local function lsp_map(client, buf, lhs, def)
-  if type(def) ~= 'table' then
-    def = { rhs = def }
-  end
   if def.has then
     -- if key requires capability check the client
     if not client.server_capabilities[def.has .. 'Provider'] then
-      -- if client.name ~= 'null-ls' then
-      --   trace { '!provider', client.name, keys.has, keys }
-      --   trace(client.server_capabilities)
-      -- end
       return
     end
   end
@@ -52,15 +45,14 @@ return {
 
     if vim.lsp.buf.inlay_hint then
       lsp_map('n', buf, '\\i', {
-        nil,
-        function()
+        rhs = function()
           vim.lsp.buf.inlay_hint(0, nil)
         end,
         desc = 'Toggle Inlay Hints',
       })
     end
 
-    which_key.add_keys({ [[<localleader>r]], group = 'Refactor', { buffer = 0 } })
+    which_key.add({ [[<localleader>r]], group = 'Refactor', { buffer = 0 } })
     lsp_map(client, buf, '<localleader>rr', lsp.rename)
     lsp_map(client, buf, '<localleader>c', lsp.code_action)
 
@@ -68,7 +60,7 @@ return {
     lsp_map(client, buf, '<localleader>n', lsp.next_diagnostic)
     lsp_map(client, buf, '<localleader>p', lsp.prev_diagnostic)
 
-    which_key.add_keys({ [[<localleader>g]], group = 'Goto', { buffer = 0 } })
+    which_key.add({ [[<localleader>g]], group = 'Goto', { buffer = 0 } })
     lsp_map(client, buf, '<localleader>gd', tele.lsp_definitions)
     lsp_map(client, buf, '<localleader>gD', lsp.declaration) -- conditional on has textDocument/declaration
     lsp_map(client, buf, '<localleader>gr', tele.lsp_references)
@@ -78,7 +70,7 @@ return {
     lsp_map(client, buf, '<localleader>gci', tele.lsp_incoming_calls)
     lsp_map(client, buf, '<localleader>gco', tele.lsp_outgoing_calls)
 
-    which_key.add_keys({ [[<localleader>s]], group = 'Search', { buffer = 0 } })
+    which_key.add({ [[<localleader>s]], group = 'Search', { buffer = 0 } })
     lsp_map(client, buf, '<localleader>sd', tele.lsp_document_symbols)
     lsp_map(client, buf, '<localleader>sw', tele.lsp_workspace_symbols)
     lsp_map(client, buf, '<localleader>sD', tele.lsp_dynamic_workspace_symbols)

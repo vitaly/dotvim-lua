@@ -4,14 +4,22 @@ local function cmd(command)
   return '<cmd>' .. command .. '<cr>'
 end
 
+local prev_diagnostic = function()
+  vim.diagnostic.jump({ count = 1 })
+end
+
+local next_diagnostic = function()
+  vim.diagnostic.jump({ count = -1 })
+end
+
 --- @type KeyDef[]
 local maps = {
-  lsp_health = { rhs = cmd 'checkhealth lsp', desc = 'LSP Health' },
-  lsp_info = { rhs = cmd 'LspInfo', desc = 'LSP Info' },
-  lsp_log = { rhs = cmd 'LspLog', desc = 'LSP Log' },
-  lsp_start = { rhs = cmd 'LspStart', desc = 'LSP Start' },
-  lsp_stop = { rhs = cmd 'LspStop', desc = 'LSP Stop' },
-  lsp_restart = { rhs = cmd 'LspRestart', desc = 'LSP Restart' },
+  lsp_health = { rhs = cmd('checkhealth lsp'), desc = 'LSP Health' },
+  lsp_info = { rhs = cmd('LspInfo'), desc = 'LSP Info' },
+  lsp_log = { rhs = cmd('LspLog'), desc = 'LSP Log' },
+  lsp_start = { rhs = cmd('LspStart'), desc = 'LSP Start' },
+  lsp_stop = { rhs = cmd('LspStop'), desc = 'LSP Stop' },
+  lsp_restart = { rhs = cmd('LspRestart'), desc = 'LSP Restart' },
 
   definition = { rhs = vim.lsp.buf.definition, desc = 'Definition', has = 'definition' },
   declaration = { rhs = vim.lsp.buf.declaration, desc = 'Declaration', has = 'declaration' },
@@ -45,8 +53,8 @@ local maps = {
   rename = { rhs = vim.lsp.buf.rename, desc = 'Rename' },
 
   first_diagnostic = { rhs = '<cmd>normal gg<cr><cmd>lua vim.diagnostic.goto_next()<cr>', desc = '' },
-  next_diagnostic = { rhs = vim.diagnostic.goto_next, desc = 'Next Diagnostic' },
-  prev_diagnostic = { rhs = vim.diagnostic.goto_prev, desc = 'Prev Diagnostic' },
+  next_diagnostic = { rhs = next_diagnostic, desc = 'Next Diagnostic' },
+  prev_diagnostic = { rhs = prev_diagnostic, desc = 'Prev Diagnostic' },
 }
 
 return maps

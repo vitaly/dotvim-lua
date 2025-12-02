@@ -1,4 +1,4 @@
-local util = require 'plugins.base-keymaps.utils'
+local util = require('plugins.base-keymaps.utils')
 -- local trace = my.log.trace
 
 ---------------------------------------------------------------------------------
@@ -70,7 +70,7 @@ return {
         {
           [[<leader>?]],
           function()
-            require('which-key').show { global = false }
+            require('which-key').show({ global = false })
           end,
           desc = 'Buffer Local Keymaps',
         },
@@ -181,7 +181,7 @@ return {
         edit_file_map([[<leader>fer]], my.root, '/README.md', 'VIM README'),
         edit_file_map([[<leader>fes]], my.root, '/scratch.lua', 'VIM Lua Scratch File'),
 
-        edit_file_map([[<leader>feL]], vim.fn.stdpath 'cache', '/lsp.log', 'LSP Log'),
+        edit_file_map([[<leader>feL]], vim.fn.stdpath('cache'), '/lsp.log', 'LSP Log'),
         edit_file_map([[<leader>feT]], '~', '/TODO.md', 'Global TODO'),
 
         -- Window
@@ -215,9 +215,21 @@ return {
 
         -- Yank
         { [[<leader>Y]], group = 'Yank' },
-        { [[<leader>Yp]], [[<cmd>let @*=expand("%")<cr>:echo "Copied file path to clipboard"<cr>]], desc = 'File Path' },
-        { [[<leader>Yn]], [[<cmd>let @*=expand("%:t")<cr>:echo "Copied file name to clipboard"<cr>]], desc = 'File Name' },
-        { [[<leader>Yd]], [[<cmd>let @*=expand("%:h")<cr>:echo "Copied file directory to clipboard"<cr>]], desc = 'File Directory' },
+        {
+          [[<leader>Yp]],
+          [[<cmd>let @*=expand("%")<cr>:echo "Copied file path to clipboard"<cr>]],
+          desc = 'File Path',
+        },
+        {
+          [[<leader>Yn]],
+          [[<cmd>let @*=expand("%:t")<cr>:echo "Copied file name to clipboard"<cr>]],
+          desc = 'File Name',
+        },
+        {
+          [[<leader>Yd]],
+          [[<cmd>let @*=expand("%:h")<cr>:echo "Copied file directory to clipboard"<cr>]],
+          desc = 'File Directory',
+        },
         { [[<leader>Y.]], [[<cmd>let @*=getcwd()<cr>:echo @*<cr>]], desc = 'Current Directory' },
 
         -- Toggle
