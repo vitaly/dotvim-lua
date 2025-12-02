@@ -131,6 +131,7 @@ return {
         }),
 
         sources = cmp.config.sources({
+          { name = 'lazydev' },
           { name = 'nvim_lsp' }, -- lsp
           { name = 'luasnip' }, -- snippets
           { name = 'nvim_lua' }, -- nvim lua api
