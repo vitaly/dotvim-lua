@@ -22,7 +22,7 @@ my.config = vim.tbl_deep_extend('force', {
     position = 'left',
   },
 
-  formatting = {
+  autoformat = {
     enabled = true,
     ft = {
       lua = { 'stylua' },
