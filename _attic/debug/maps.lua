@@ -1,10 +1,10 @@
-local dap = require 'dap'
+local dap = require('dap')
 
 local open_log = function()
-  vim.cmd('e ' .. vim.fn.stdpath 'cache' .. '/dap.log')
+  vim.cmd('e ' .. vim.fn.stdpath('cache') .. '/dap.log')
 end
 
-require('which-key').register {
+require('which-key').add({
   ['<F8>'] = { dap.continue, 'Continue' },
   ['<F10>'] = { dap.step_over, 'Step Over' },
   ['<F11>'] = { dap.step_into, 'Step Into' },
@@ -48,4 +48,4 @@ require('which-key').register {
       b = { '<cmd>Telescope dap list_breakpoints<cr>', 'Breakpoints' },
     },
   },
-}
+})
