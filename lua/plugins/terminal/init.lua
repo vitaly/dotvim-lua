@@ -2,6 +2,10 @@ local function tig()
   require('toggleterm.terminal').Terminal:new({ cmd = 'tig', direction = 'float' }):toggle()
 end
 
+local function lazygit()
+  require('toggleterm.terminal').Terminal:new({ cmd = 'lazygit', direction = 'float' }):toggle()
+end
+
 return {
   {
     -- NOTE: using my own version with mappings changed from C-* to M-*
@@ -47,6 +51,7 @@ return {
       { [[<c-\>]] },
       { [[<a-[>]], [[<c-\><c-n>]], mode = 't', desc = 'Switch To Normal Mode ' },
       { [[<leader>gt]], tig, desc = 'TIG' },
+      { [[<leader>gl]], lazygit, desc = 'LazyGit' },
     },
 
     cmd = { 'TermSelect', 'TermExec', 'ToggleTerm', 'ToggleTermToggleAll' },
@@ -65,7 +70,7 @@ return {
 
     init = function()
       -- FIXME: convert to lua
-      vim.cmd [[
+      vim.cmd([[
         highlight TermCursor ctermfg=red guifg=red
 
         augroup TerminalInsertHandling
@@ -76,7 +81,7 @@ return {
           " start in insert more
           au TermOpen,BufEnter,FocusGained term://*  startinsert
         augroup END
-      ]]
+      ]])
     end,
   },
 }

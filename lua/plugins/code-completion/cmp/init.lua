@@ -1,13 +1,14 @@
 return {
-
   {
     'L3MON4D3/LuaSnip', -- https://github.com/L3MON4D3/LuaSnip
+
+    version = 'v2.*',
 
     dependencies = {
       'rafamadriz/friendly-snippets', -- https://github.com/rafamadriz/friendly-snippets
       config = function()
         require('luasnip.loaders.from_vscode').lazy_load()
-        require('luasnip.loaders.from_vscode').lazy_load { paths = my.root .. '/snippets' }
+        require('luasnip.loaders.from_vscode').lazy_load({ paths = my.root .. '/snippets' })
       end,
     },
 
@@ -36,14 +37,17 @@ return {
     event = 'InsertEnter',
     cmd = 'Copilot',
 
-    keys = {
-      { [[<leader>Sg]], [[<cmd>Copilot status<cr>]], desc = 'GitHub Copilot Status' },
-    },
-
     init = function()
       vim.g.copilot_no_tab_map = 1
       vim.g.copilot_assume_mapped = 1
+
+      require('which-key').add({ [[<leader>ac]], group = 'Copilot' })
     end,
+
+    keys = {
+      { [[<leader>aci]], [[<cmd>Copilot status<cr>]], desc = 'Copilot Status' },
+      { [[<leader>acp]], [[<cmd>Copilot panel<cr>]], desc = 'Copilot Panel' },
+    },
   },
 
   {
@@ -72,21 +76,21 @@ return {
 
     config = function()
       vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
-      local cmp = require 'cmp'
-      local luasnip = require 'luasnip'
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
 
-      local select_next_item = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }
-      local select_prev_item = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }
+      local select_next_item = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })
+      local select_prev_item = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })
       local tab_completion = function(fallback)
         if luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         end
 
-        if cmp.confirm { select = true } then
+        if cmp.confirm({ select = true }) then
           return
         end
 
-        local copilot_result = vim.fn['copilot#Accept'] ''
+        local copilot_result = vim.fn['copilot#Accept']('')
         if copilot_result ~= '' then
           return vim.api.nvim_feedkeys(copilot_result, 'i', true)
         end
@@ -94,7 +98,7 @@ return {
         fallback()
       end
 
-      cmp.setup {
+      cmp.setup({
         -- * menu - use popup menu
         -- * menuone - user menu even if there's only one match
         -- * longest - only insert the longest common text of the matches
@@ -110,7 +114,7 @@ return {
           end,
         },
 
-        mapping = cmp.mapping.preset.insert {
+        mapping = cmp.mapping.preset.insert({
           ['<tab>'] = { i = tab_completion },
           ['<s-tab>'] = { i = cmp.mapping.abort() },
 
@@ -121,12 +125,12 @@ return {
           ['<c-f>'] = { i = cmp.mapping.scroll_docs(4) },
 
           -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ['<cr>'] = { i = cmp.mapping.confirm { select = false } },
+          ['<cr>'] = { i = cmp.mapping.confirm({ select = false }) },
           -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ['<s-cr>'] = { i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true } },
-        },
+          ['<s-cr>'] = { i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }) },
+        }),
 
-        sources = cmp.config.sources {
+        sources = cmp.config.sources({
           { name = 'nvim_lsp' }, -- lsp
           { name = 'luasnip' }, -- snippets
           { name = 'nvim_lua' }, -- nvim lua api
@@ -134,9 +138,9 @@ return {
           -- }, {
           { name = 'path' }, -- filesystem
           { name = 'buffer' }, -- buffer strings
-        },
+        }),
         formatting = {
-          format = require('lspkind').cmp_format {
+          format = require('lspkind').cmp_format({
             mode = 'symbol_text', -- show only symbol annotations
             maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
             ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
@@ -155,21 +159,21 @@ return {
             --   ...
             --   return vim_item
             -- end
-          },
+          }),
         },
         experimental = {
           -- native_menu = false,
           ghost_text = true,
           -- ghost_text = { hl_group = "CmpGhostText", },
         },
-      }
+      })
 
       -- `/` cmdline setup.
       cmp.setup.cmdline('/', {
-        mapping = cmp.mapping.preset.cmdline {
+        mapping = cmp.mapping.preset.cmdline({
           ['<C-j>'] = { c = select_next_item },
           ['<C-k>'] = { c = select_prev_item },
-        },
+        }),
         sources = {
           { name = 'buffer' },
         },
@@ -177,10 +181,10 @@ return {
 
       -- `:` cmdline setup.
       cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline {
+        mapping = cmp.mapping.preset.cmdline({
           ['<C-j>'] = { c = select_next_item },
           ['<C-k>'] = { c = select_prev_item },
-        },
+        }),
         sources = cmp.config.sources({
           { name = 'path' },
         }, {

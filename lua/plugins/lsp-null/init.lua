@@ -1,3 +1,6 @@
+-- NOTE: proobably not needed anymore
+-- keeping it for a bit
+
 ---------------------------------------------------------------------------------
 -- NULL_LS
 -- generic LSP server used for things like linting, formatting, etc
@@ -6,16 +9,16 @@ return {
   -- 'jose-elias-alvarez/null-ls.nvim', -- https://github.com/jose-elias-alvarez/null-ls.nvim
   'nvimtools/none-ls.nvim', -- https://github.com/nvimtools/none-ls.nvim
 
-  event = "LazyFile",
+  event = 'LazyFile',
 
-  enabled = true,
+  enabled = false,
 
   dependencies = {
     'jayp0521/mason-null-ls.nvim', -- https://github.com/jayp0521/mason-null-ls.nvim
   },
 
   init = function()
-    require('which-key').add { [[<leader>an]], group = 'Null Ls' }
+    require('which-key').add({ [[<leader>an]], group = 'Null Ls' })
   end,
 
   keys = {
@@ -25,17 +28,17 @@ return {
   },
 
   opts = function()
-    local nls = require 'null-ls'
+    local nls = require('null-ls')
     return {
       border = 'single',
       debug = false,
 
       -- root_dir = require('null-ls.utils').root_pattern('.null-ls-root', '.neoconf.json', 'Makefile', '.git'),
       sources = {
-        nls.builtins.formatting.prettier,
-        nls.builtins.formatting.stylua,
-        nls.builtins.formatting.rubocop,
-        nls.builtins.formatting.shfmt,
+        -- nls.builtins.formatting.prettier,
+        -- nls.builtins.formatting.stylua,
+        -- nls.builtins.formatting.rubocop,
+        -- nls.builtins.formatting.shfmt,
         nls.builtins.diagnostics.rubocop,
         nls.builtins.diagnostics.shellcheck,
         -- nls.builtins.completion.spell,
@@ -43,14 +46,14 @@ return {
       },
 
       -- for mason-null-ls
-      ensure_installed = { 'stylua', 'jq', 'shfmt' },
+      ensure_installed = { 'stylua', 'jq', 'shfmt', 'shellcheck' },
     }
   end,
 
   config = function(_, opts)
     require('null-ls').setup(opts)
-    require('mason-null-ls').setup {
+    require('mason-null-ls').setup({
       ensure_installed = opts.ensure_installed,
-    }
+    })
   end,
 }

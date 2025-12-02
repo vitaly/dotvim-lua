@@ -1,8 +1,8 @@
 -- local debug = my.log.debug
 -- local trace = my.log.trace
 
-local tools = require 'lib.tools'
-local maps = require 'plugins.lsp.maps'
+local maps = require('plugins.lsp.maps')
+local tools = require('lib.tools')
 -- local au = require 'lib.au'
 --
 return {
@@ -20,10 +20,12 @@ return {
       'mason-org/mason.nvim', -- https://github.com/mason-org/mason.nvim
       'mason-org/mason-lspconfig.nvim', -- https://github.com/mason-org/mason-lspconfig.nvim
       'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
+
+      -- 'saghen/blink.cmp',
     },
 
     init = function()
-      require('which-key').add { [[<leader>al]], group = 'LSP' }
+      require('which-key').add({ [[<leader>al]], group = 'LSP' })
     end,
 
     keys = {
@@ -39,35 +41,35 @@ return {
     },
 
     config = function()
-      -- config for lua_ls is merged from 3 soiurces:
-      -- lspconfig
-      -- ./lsp/lua_ls.lua
-      -- and config here
-      -- vim.lsp.config('lua_ls', {
-      --   settings = {
-      --     Lua = {
-      --       format = { enable = false },
-      --     },
-      --   },
+      -- TODO: move to config
+      ---@type { [string]: vim.lsp.Config }
+      local servers = {
+        lua_ls = {},
+        ts_ls = {},
+        jsonls = {},
+        yamlls = {},
+        bashls = {},
+        dockerls = {},
+        ruby_lsp = { cmd = { 'ruby-lsp' } },
+      }
+
+      for server, config in pairs(servers) do
+        -- config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
+      end
+
+      -- vim.api.nvim_create_autocmd('LspAttach', {
+      --   callback = function(ev)
+      --     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+      --     if client and client:supports_method('textDocument/completion') then
+      --       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+      --     end
+      --   end,
       -- })
+      -- vim.cmd('set completeopt+=noselect')
 
-      vim.lsp.enable 'lua_ls'
-      vim.lsp.enable 'jsonls'
-      vim.lsp.enable 'yamlls'
-
-
-      vim.api.nvim_create_autocmd('LspAttach', {
-        callback = function(ev)
-          local client = vim.lsp.get_client_by_id(ev.data.client_id)
-          if client and client:supports_method 'textDocument/completion' then
-            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-          end
-        end,
-      })
-
-      vim.cmd 'set completeopt+=noselect'
-
-      vim.diagnostic.config { virtual_lines = { current_line = true } }
+      vim.diagnostic.config({ virtual_lines = { current_line = true } })
     end,
   },
 
