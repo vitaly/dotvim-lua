@@ -1,5 +1,5 @@
-local tools = require 'lib.tools'
-local maps = require 'plugins.telescope.maps'
+local glue = require('glue').register('telescope')
+
 return {
   -------------------------------------------------------------------------------
   -- Telescope
@@ -12,47 +12,37 @@ return {
     },
     cmd = 'Telescope',
 
-    init = function()
-      require('which-key').add { '<leader>s', group = 'Search' }
-    end,
-
     keys = {
-      tools.map_keys('<localleader><localleader>', maps.find_files),
-      tools.map_keys('<leader>ff', maps.find_files),
+      { [[<leader>sd]], function() glue.emit('telescope.actions.buffer_diagnostics') end, desc = 'Buffer Diagnostics' },
+      { [[<leader>sa]], function() glue.emit('telescope.actions.autocommands') end, desc = 'Autocommands' },
+      { [[<leader>bb]], function() glue.emit('telescope.actions.buffers') end, desc = 'Find buffer' },
+      { [[<leader>sb]], function() glue.emit('telescope.actions.buffers') end, desc = 'Find buffer' },
+      { [[<leader>sC]], function() glue.emit('telescope.actions.colorscheme') end, desc = 'Find Colorscheme' },
+      { [[<leader>s:]], function() glue.emit('telescope.actions.command_history') end, desc = 'Command History' },
+      { [[<leader><cr>]], function() glue.emit('telescope.actions.commands') end, desc = 'Find Command' },
+      { [[<leader>sc]], function() glue.emit('telescope.actions.commands') end, desc = 'Find Command' },
+      { [[<leader>sD]], function() glue.emit('telescope.actions.diagnostics') end, desc = 'Diagnostics' },
+      { [[<leader>ff]], function() glue.emit('telescope.actions.find_files') end, desc = 'Find File' },
+      { [[<localleader><localleader>]], function() glue.emit('telescope.actions.find_files') end, desc = 'Find File' },
+      { [[<leader>gc]], function() glue.emit('telescope.actions.git_commits') end, desc = 'Find Git Commit' },
+      { [[<leader>gf]], function() glue.emit('telescope.actions.git_files') end, desc = 'Find Git File' },
+      { [[<leader>gS]], function() glue.emit('telescope.actions.git_status') end, desc = 'Find Git Status' },
+      { [[<leader>sg]], function() glue.emit('telescope.actions.grep_string') end, desc = 'Grep String' },
+      { [[<leader>sh]], function() glue.emit('telescope.actions.help_tags') end, desc = 'Help Tags' },
+      { [[<leader>h]], function() glue.emit('telescope.actions.help_tags') end, desc = 'Help Tags' },
+      { [[<leader>sH]], function() glue.emit('telescope.actions.highlights') end, desc = 'Highlights' },
+      { [[<leader>sk]], function() glue.emit('telescope.actions.keymaps') end, desc = 'Keymaps' },
 
-      tools.map_keys('<leader>/', maps.live_grep),
-
-      tools.map_keys('<leader><cr>', maps.commands),
-
-      tools.map_keys('<leader>bb', maps.buffers),
-      tools.map_keys('<leader>h', maps.help_tags),
-
-      tools.map_keys('<leader>s:', maps.command_history),
-
-      tools.map_keys('<leader>sT', maps.telescope),
-      tools.map_keys('<leader>sC', maps.colorschemes),
-      tools.map_keys('<leader>sH', maps.highlights),
-
-      tools.map_keys('<leader>sD', maps.diagnostics),
-      tools.map_keys('<leader>sa', maps.autocommands),
-      tools.map_keys('<leader>sb', maps.buffers),
-      tools.map_keys('<leader>sc', maps.commands),
-      tools.map_keys('<leader>sd', maps.buf_diagnostics),
-      tools.map_keys('<leader>sg', maps.grep_string),
-      tools.map_keys('<leader>sh', maps.help_tags),
-      tools.map_keys('<leader>sk', maps.keymaps),
-      tools.map_keys('<leader>sl', maps.lines),
-      tools.map_keys('<leader>sm', maps.man_pages),
-      tools.map_keys('<leader>so', maps.recent_fies),
-      tools.map_keys('<leader>sy', maps.symbols),
-      tools.map_keys('<leader>ss', maps.tagstack),
-      tools.map_keys('<leader>sv', maps.vim_options),
-
-      tools.map_keys("<leader>s'", maps.marks),
-
-      tools.map_keys('<leader>gf', maps.git_files),
-      tools.map_keys('<leader>gc', maps.git_commits),
-      tools.map_keys('<leader>gS', maps.git_status),
+      { [[<leader>sl]], function() glue.emit('telescope.actions.buffer_lines') end, desc = 'Buffer Lines' },
+      { [[<leader>/]], function() glue.emit('telescope.actions.live_grep') end, desc = 'Live Grep' },
+      { [[<leader>sm]], function() glue.emit('telescope.actions.man_pages') end, desc = 'Man Pages' },
+      { [[<leader>s']], function() glue.emit('telescope.actions.marks') end, desc = 'Marks' },
+      { [[<leader>so]], function() glue.emit('telescope.actions.recent_files') end, desc = 'Recent Files' },
+      { [[<leader>sy]], function() glue.emit('telescope.actions.symbols') end, desc = 'Character Symbols' },
+      { [[<leader>ss]], function() glue.emit('telescope.actions.tagstack') end, desc = 'Tag Stack' },
+      { [[<leader>sT]], function() glue.emit('telescope.actions.telescope') end, desc = 'Telescope ...' },
+      { [[<leader>T]], function() glue.emit('telescope.actions.telescope') end, desc = 'Telescope ...' },
+      { [[<leader>sv]], function() glue.emit('telescope.actions.vim_options') end, desc = 'Vim Options' },
     },
 
     -- local actions = require 'telescope.actions'
@@ -65,11 +55,9 @@ return {
         scroll_strategy = 'cycle',
         mappings = {
           i = {
-            -- stylua: ignore start
             ['<esc>'] = function(...) require('telescope.actions').close(...) end,
             ['<C-j>'] = function(...) require('telescope.actions').move_selection_next(...) end,
             ['<C-k>'] = function(...) require('telescope.actions').move_selection_previous(...) end,
-            -- stylua: ignore end
           },
         },
       },
@@ -98,13 +86,18 @@ return {
 
     config = function(_, opts)
       require('telescope').setup(opts)
-      require('lib.au').on_colorscheme_changed('telescope-border', function()
-        vim.cmd [[
+      require('lib.au').on_colorscheme_changed(
+        'telescope-border',
+        function()
+          vim.cmd([[
           hi! link TelescopeBorder FloatBorder
           hi! link TelescopePromptBorder FloatBorder
           hi! link TelescopeResultsTitle FloatBorder
-        ]]
-      end)
+        ]])
+        end
+      )
+
+      require('plugins.telescope.actions').start()
     end,
   },
 }

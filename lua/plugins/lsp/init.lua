@@ -1,77 +1,10 @@
 -- local debug = my.log.debug
 -- local trace = my.log.trace
 
-local maps = require('plugins.lsp.maps')
-local tools = require('lib.tools')
--- local au = require 'lib.au'
---
+local au = require('lib.au')
+local glue = require('glue').register('lsp')
+
 return {
-
-  -------------------------------------------------------------------------------
-  -- lspconfig
-  -------------------------------------------------------------------------------
-  {
-    'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
-
-    event = 'LazyFile',
-    cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
-
-    dependencies = {
-      'mason-org/mason.nvim', -- https://github.com/mason-org/mason.nvim
-      'mason-org/mason-lspconfig.nvim', -- https://github.com/mason-org/mason-lspconfig.nvim
-      'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
-
-      -- 'saghen/blink.cmp',
-    },
-
-    init = function()
-      require('which-key').add({ [[<leader>al]], group = 'LSP' })
-    end,
-
-    keys = {
-      tools.map_keys('<leader>Sl', maps.lsp_info),
-
-      tools.map_keys('<leader>alh', maps.lsp_health),
-      tools.map_keys('<leader>ali', maps.lsp_info),
-      tools.map_keys('<leader>all', maps.lsp_log),
-      tools.map_keys('<leader>als', maps.lsp_start),
-      tools.map_keys('<leader>alS', maps.lsp_stop),
-      tools.map_keys('<leader>alr', maps.lsp_restart),
-      tools.map_keys('<leader>alw', maps.list_workspace_folders),
-    },
-
-    config = function()
-      -- TODO: move to config
-      ---@type { [string]: vim.lsp.Config }
-      local servers = {
-        lua_ls = {},
-        ts_ls = {},
-        jsonls = {},
-        yamlls = {},
-        bashls = {},
-        dockerls = {},
-        ruby_lsp = { cmd = { 'ruby-lsp' } },
-      }
-
-      for server, config in pairs(servers) do
-        -- config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-        vim.lsp.config(server, config)
-        vim.lsp.enable(server)
-      end
-
-      -- vim.api.nvim_create_autocmd('LspAttach', {
-      --   callback = function(ev)
-      --     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-      --     if client and client:supports_method('textDocument/completion') then
-      --       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-      --     end
-      --   end,
-      -- })
-      -- vim.cmd('set completeopt+=noselect')
-
-      vim.diagnostic.config({ virtual_lines = { current_line = true } })
-    end,
-  },
 
   -------------------------------------------------------------------------------
   -- mason
@@ -81,9 +14,7 @@ return {
     lazy = true,
     build = ':MasonUpdate', -- :MasonUpdate updates registry contents
     cmd = { 'Mason', 'MasonLog', 'MasonUpdate', 'MasonInstall', 'MasonUninstall', 'MasonUninstallAll' },
-    init = function()
-      require('which-key').add({ [[<leader>am]], group = 'Mason' })
-    end,
+    init = function() require('which-key').add({ [[<leader>am]], group = 'Mason' }) end,
 
     keys = {
       { [[<leader>Sm]], vim.cmd.Mason, desc = 'Mason' }, -- Status
@@ -146,6 +77,112 @@ return {
   -------------------------------------------------------------------------------
   -- Simple progress widget for LSP
   { 'j-hui/fidget.nvim', opts = {} }, -- https://github.com/j-hui/fidget.nvim
+
+  -------------------------------------------------------------------------------
+  -- lspconfig
+  -------------------------------------------------------------------------------
+  {
+    'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
+
+    event = 'LazyFile',
+    cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
+
+    dependencies = {
+      'mason-org/mason.nvim', -- https://github.com/mason-org/mason.nvim
+      'mason-org/mason-lspconfig.nvim', -- https://github.com/mason-org/mason-lspconfig.nvim
+      'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
+      -- 'saghen/blink.cmp',
+    },
+
+    config = function()
+      require('which-key').add({
+        { [[<leader>al]], group = 'LSP' },
+
+        { [[<leader>ali]], function() glue.emit('lsp.actions.lsp_info') end, desc = 'Info' },
+        { [[<leader>all]], function() glue.emit('lsp.actions.lsp_log') end, desc = 'Log' },
+        { [[<leader>als]], function() glue.emit('lsp.actions.lsp_start') end, desc = 'Start' },
+        { [[<leader>alS]], function() glue.emit('lsp.actions.lsp_stop') end, desc = 'Stop' },
+        { [[<leader>alr]], function() glue.emit('lsp.actions.lsp_restart') end, desc = 'Restart' },
+        { [[<leader>alw]], function() glue.emit('lsp.actions.lsp_workspace_folders') end, desc = 'Workspace Folders' },
+      })
+
+      -- TODO: move to config
+      ---@type { [string]: vim.lsp.Config }
+      local servers = {
+        lua_ls = {},
+        ts_ls = {},
+        jsonls = {},
+        yamlls = {},
+        bashls = {},
+        dockerls = {},
+        ruby_lsp = { cmd = { 'ruby-lsp' } },
+      }
+
+      for server, config in pairs(servers) do
+        -- config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
+      end
+
+      -- vim.api.nvim_create_autocmd('LspAttach', {
+      --   callback = function(ev)
+      --     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+      --     if client and client:supports_method('textDocument/completion') then
+      --       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+      --     end
+      --   end,
+      -- })
+      -- vim.cmd('set completeopt+=noselect')
+
+      vim.diagnostic.config({ virtual_lines = { current_line = true } })
+
+      require('plugins.lsp.actions').start()
+
+      au.lsp_on_attach('lsp.init', function(_, buf)
+        require('which-key').add({
+          mode = 'n',
+          buffer = buf,
+
+          { 'gd', function() glue.emit('lsp.actions.definition') end, desc = 'Go to Definition' },
+          { 'gD', function() glue.emit('lsp.actions.declaration') end, desc = 'Go to Declaration' },
+          { 'gK', function() glue.emit('lsp.actions.signature_help') end, desc = 'Signature Help' },
+
+          { '<localleader>g', desc = 'Go to' },
+          { '<localleader>gd', function() glue.emit('telescope.lsp.actions.definition') end, desc = 'Go to Definition' },
+          { '<localleader>gr', function() glue.emit('telescope.lsp.actions.references') end, desc = 'Go to References' },
+          { '<localleader>gi', function() glue.emit('telescope.lsp.actions.implementation') end, desc = 'Go to Implementation' },
+          { '<localleader>gt', function() glue.emit('telescope.lsp.actions.type_definition') end, desc = 'Go to Type Definition' },
+
+          { '<localleader>s', desc = 'Search' },
+          { '<localleader>sd', function() glue.emit('telescope.lsp.actions.document_symbols') end, desc = 'Document Symbols' },
+          { '<localleader>sw', function() glue.emit('telescope.lsp.actions.workspace_symbols') end, desc = 'Document Symbols' },
+          { '<localleader>sW', function() glue.emit('telescope.lsp.actions.dynamic_workspace_symbols') end, desc = 'Document Symbols' },
+
+          --
+          -- { '', function() glue.emit('lsp.actions.buf.add_workspace_folder') end, desc = 'Add Workspace folder' },
+          -- { '', function() glue.emit('lsp.actions.buf.code_action') end, desc = 'Code Action' },
+          -- { '', function() glue.emit('lsp.actions.buf.document_symbol') end, desc = 'Document Symbol' },
+          -- { '', function() glue.emit('lsp.actions.buf.implementation') end, desc = 'Goto Implementation' },
+          -- { '', function() glue.emit('lsp.actions.buf.incoming_calls') end, desc = 'Show Incoming Calls' },
+          -- { '', function() glue.emit('lsp.actions.buf.outgoing_calls') end, desc = 'Show Outgoing Calls' },
+          -- { '', function() glue.emit('lsp.actions.buf.references') end, desc = 'Show References' },
+          -- { '', function() glue.emit('lsp.actions.buf.remove_workspace_folder') end, desc = 'Remove Workspace Folder' },
+          -- { '', function() glue.emit('lsp.actions.buf.signature_help') end, desc = 'Signature Help' },
+          -- { '', function() glue.emit('lsp.actions.buf.type_definition') end, desc = 'Type Definition' },
+          -- { '', function() glue.emit('lsp.actions.buf.workspace_symbol') end, desc = 'Workspace Symbol' },
+          --
+        })
+
+        if vim.lsp.buf.inlay_hint then
+          require('which-key').add({
+            mode = 'n',
+            buffer = buf,
+            { [[\i]], function() vim.lsp.buf.inlay_hint(0, nil) end, desc = 'Toggle Inlay Hints' },
+          })
+        end
+      end)
+    end,
+  },
 }
 
 --
