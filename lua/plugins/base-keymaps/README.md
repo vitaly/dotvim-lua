@@ -1,7 +1,7 @@
 ## Basic Keymaps
 
 - `<tab><tab>` - Last Tab
-- `<tab>n` - New Tab
+- `<tab><space>` - New Tab
 
 - `<SPACE>m` - show messages
 - `<SPACE>M` - clear messages
