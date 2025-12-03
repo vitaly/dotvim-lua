@@ -77,22 +77,65 @@ return {
   -- mason
   -------------------------------------------------------------------------------
   {
-    'mason-org/mason.nvim', -- https://github.com/mason-org/mason.nvim
+    'williamboman/mason.nvim', -- https://github.com/williamboman/mason.nvim
+    lazy = true,
+    build = ':MasonUpdate', -- :MasonUpdate updates registry contents
+    cmd = { 'Mason', 'MasonLog', 'MasonUpdate', 'MasonInstall', 'MasonUninstall', 'MasonUninstallAll' },
+    init = function()
+      require('which-key').add({ [[<leader>am]], group = 'Mason' })
+    end,
+
+    keys = {
+      { [[<leader>Sm]], vim.cmd.Mason, desc = 'Mason' }, -- Status
+
+      { [[<leader>amm]], vim.cmd.Mason, desc = 'Mason' },
+      { [[<leader>aml]], vim.cmd.MasonLog, desc = 'Mason Log' },
+      { [[<leader>amu]], vim.cmd.MasonUpdate, desc = 'Mason Update' },
+      { [[<leader>ami]], [[:<c-u>MasonInstall ]], desc = 'Mason Install...' },
+    },
 
     config = true,
   },
 
+  -------------------------------------------------------------------------------
+  -- mason tool installer
+  -------------------------------------------------------------------------------
+  {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    config = function()
+      require('mason-tool-installer').setup({
+        ensure_installed = {
+          'bash-language-server',
+          'tree-sitter-cli',
+        },
+        auto_update = false,
+        run_on_start = true,
+      })
+    end,
+  },
+
+  -------------------------------------------------------------------------------
+  -- mason lspconfig
+  -------------------------------------------------------------------------------
   {
     'mason-org/mason-lspconfig.nvim', -- https://github.com/mason-org/mason-lspconfig.nvim
 
     dependencies = {
-      { 'mason-org/mason.nvim', opts = {} },
+      'mason-org/mason.nvim',
       'neovim/nvim-lspconfig',
     },
 
     opts = {
-      -- TBD: move to config
-      ensure_installed = { 'lua_ls', 'ts_ls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'ruby_lsp', 'stylua' },
+      ensure_installed = {
+        'lua_ls',
+        'ts_ls',
+        'jsonls',
+        'yamlls',
+        'bashls',
+        'dockerls',
+        'ruby_lsp',
+        'stylua',
+      },
 
       automatic_enable = false,
     },

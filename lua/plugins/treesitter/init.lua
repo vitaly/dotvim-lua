@@ -3,6 +3,10 @@ return {
   {
     'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
 
+    dependencies = {
+      'mason-org/mason.nvim',
+    },
+
     build = ':TSUpdate',
 
     lazy = false,
@@ -21,13 +25,12 @@ return {
       { '<leader>atu', '<cmd>TSUpdate<cr>', desc = 'Update' },
       { '<leader>ath', '<cmd>checkhealth vim.treesitter<cr>', desc = 'vim.treesitter health' },
       { '<leader>atH', '<cmd>checkhealth nvim-treesitter<cr>', desc = 'vim.treesitter health' },
-
     },
 
     init = function()
-      require('which-key').add {
+      require('which-key').add({
         { [[<leader>at]], group = 'Tree Sitter' },
-      }
+      })
     end,
 
     opts = {
@@ -63,15 +66,16 @@ return {
         'javascript',
         'jsdoc',
         'json',
+        'latex',
         'lua',
         'make',
-        'markdown',
         'markdown_inline',
+        'markdown',
         'python',
         'query',
         'ruby',
-        -- 'rust',
-        -- 'scala',
+        'rust',
+        'scala',
         'scss',
         'toml',
         'typescript',
@@ -86,7 +90,6 @@ return {
     config = function(_, opts)
       require('nvim-treesitter.configs').setup(opts)
     end,
-
   },
   {
     'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs
@@ -102,13 +105,13 @@ return {
 
     -- TODO: map for cmp
     config = function(_, opts)
-      local autopairs = require 'nvim-autopairs'
+      local autopairs = require('nvim-autopairs')
 
       autopairs.setup(opts)
 
-      autopairs.add_rules(require 'nvim-autopairs.rules.endwise-elixir')
-      autopairs.add_rules(require 'nvim-autopairs.rules.endwise-ruby')
-      autopairs.add_rules(require 'nvim-autopairs.rules.endwise-lua')
+      autopairs.add_rules(require('nvim-autopairs.rules.endwise-elixir'))
+      autopairs.add_rules(require('nvim-autopairs.rules.endwise-ruby'))
+      autopairs.add_rules(require('nvim-autopairs.rules.endwise-lua'))
     end,
   },
   {
