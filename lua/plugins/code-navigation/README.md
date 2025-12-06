@@ -4,7 +4,7 @@
 
 ### Config
 
-- `my.config.tagbar.position` - `left` / `right` (default)
+- `config.tagbar.position` - `left` / `right` (default)
 
 ### Maps
 

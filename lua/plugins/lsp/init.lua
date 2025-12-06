@@ -161,7 +161,7 @@ return {
 }
 
 --
--- -- local lib_plugins = (my.config.lua or {}).add_plugins_to_workspace or {}
+-- -- local lib_plugins = require('onion.config').get('lua.add_plugins_to_workspace')
 --
 -- -- if true ~= lib_plugins then
 -- --   table.insert(lib_plugins, 'nvim-dap-ui') -- TODO: configure this from within debugger layer
@@ -213,7 +213,7 @@ return {
 --       require('lspconfig.ui.windows').default_options.border = 'single'
 --
 --       -- configure diagsnostics icons
---       local icons = my.config.icons.diagnostics
+--       local icons = require('onion.config').get('icons.diagnostics')
 --       for type, icon in pairs(icons) do
 --         local hl = 'DiagnosticSign' .. type
 --         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

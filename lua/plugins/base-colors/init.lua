@@ -1,23 +1,30 @@
+local config = require('onion.config')
+config.set_defaults('colorscheme', 'tokyonight-night')
+
 -- TODO: Add support for Base16 and shell integration
 
 local function define_load_vimrc_background_command()
-  vim.api.nvim_create_user_command('LoadVimrcBackground', function()
-    vim.cmd [[
+  vim.api.nvim_create_user_command(
+    'LoadVimrcBackground',
+    function()
+      vim.cmd([[
           if filereadable(expand("~/.vimrc_background"))
             try | source ~/.vimrc_background | catch | echo "colorscheme load error" | endtry
           endif
-        ]]
-  end, {
-    nargs = 0,
-  })
+        ]])
+    end,
+    {
+      nargs = 0,
+    }
+  )
 end
 
-local tools = require 'lib.tools'
+local tools = require('lib.tools')
 local hi = tools.highlight
 
 local function get_colors()
   if vim.g.colors_name and vim.startswith(vim.g.colors_name, 'base16-') then
-    local base16 = require 'base16-colorscheme'
+    local base16 = require('base16-colorscheme')
     local colors = base16.colors
     if colors then -- 'colors' only available when a base16 colorscheme is set in vim
       return {
@@ -71,9 +78,7 @@ end
 -- let's owerride some background to meke diffs
 -- more 'colorful'.
 local function setup_colors_override()
-  require('lib.au').on_colorscheme_changed('base.colors.override', function()
-    override_diff_colors(get_colors())
-  end)
+  require('lib.au').on_colorscheme_changed('base.colors.override', function() override_diff_colors(get_colors()) end)
 end
 
 return {
@@ -83,11 +88,11 @@ return {
     priority = 1000,
 
     config = function()
-      require('tokyonight').setup {
+      require('tokyonight').setup({
         on_colors = function(colors)
           colors.border = '#3a3a3a' -- lighter split separator
         end,
-      }
+      })
     end,
   }, -- https://github.com/folke/tokyonight.nvim
 
@@ -108,8 +113,9 @@ return {
 
       define_load_vimrc_background_command()
 
-      if my.config.colorscheme then
-        vim.cmd('colorscheme ' .. my.config.colorscheme)
+      local scheme = config.get('colorscheme')
+      if scheme then
+        vim.cmd('colorscheme ' .. scheme)
       else
         vim.cmd.LoadVimrcBackground()
       end

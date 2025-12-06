@@ -1,3 +1,8 @@
+local config = require('onion.config')
+config.set_defaults('tagbar', {
+  position = 'right',
+})
+
 return {
   -- NOTE: Aerial is used through a Telescope popup
   ------------------------------------------------------------------------------
@@ -19,7 +24,7 @@ return {
 
     opts = {
       layout = {
-        default_direction = my.config.tagbar.position or 'right',
+        default_direction = config.get('tagbar.position') or 'right',
       },
     },
 

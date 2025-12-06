@@ -259,14 +259,14 @@ return {
 
         -- Log
         { [[\l]], group = 'Log' },
-        { [[\lt]], [[<cmd>lua my.config.loglevel = 0<cr>]], desc = 'Loglevel 0 - TRACE' },
-        { [[\ld]], [[<cmd>lua my.config.loglevel = 1<cr>]], desc = 'Loglevel 1 - DEBUG' },
-        { [[\li]], [[<cmd>lua my.config.loglevel = 2<cr>]], desc = 'Loglevel 2 - INFO' },
-        { [[\lw]], [[<cmd>lua my.config.loglevel = 3<cr>]], desc = 'Loglevel 3 - WARN' },
-        { [[\le]], [[<cmd>lua my.config.loglevel = 4<cr>]], desc = 'Loglevel 4 - ERROR' },
-        { [[\lo]], [[<cmd>lua my.config.loglevel = 5<cr>]], desc = 'Loglevel 5 - OFF' },
+        { [[\lt]], [[<cmd>lua require('onion.config').set('log_level', 0)<cr>]], desc = 'Loglevel 0 - TRACE' },
+        { [[\ld]], [[<cmd>lua require('onion.config').set('log_level', 1)<cr>]], desc = 'Loglevel 1 - DEBUG' },
+        { [[\li]], [[<cmd>lua require('onion.config').set('log_level', 2)<cr>]], desc = 'Loglevel 2 - INFO' },
+        { [[\lw]], [[<cmd>lua require('onion.config').set('log_level', 3)<cr>]], desc = 'Loglevel 3 - WARN' },
+        { [[\le]], [[<cmd>lua require('onion.config').set('log_level', 4)<cr>]], desc = 'Loglevel 4 - ERROR' },
+        { [[\lo]], [[<cmd>lua require('onion.config').set('log_level', 5)<cr>]], desc = 'Loglevel 5 - OFF' },
 
-        { [[\ll]], [[<cmd>lua print(my.config.loglevel)<cr>)]], desc = 'Loglevel 5 - OFF' },
+        { [[\ll]], [[<cmd>lua print(require('onion.config').get('log_level'))<cr>)]], desc = 'print Loglevel' },
       },
     },
   },

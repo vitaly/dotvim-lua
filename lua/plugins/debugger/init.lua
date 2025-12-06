@@ -1,3 +1,15 @@
+local config = require('onion.config')
+
+config.set_defaults('icons', {
+  dap = {
+    Stopped = { '󰁕 ', 'DiagnosticWarn', 'DapStoppedLine' },
+    Breakpoint = { ' ' },
+    BreakpointCondition = { '' },
+    BreakpointRejected = { '', 'DiagnosticError' },
+    LogPoint = { '.>' },
+  },
+})
+
 return {
   {
     'mfussenegger/nvim-dap', -- https://github.com/mfussenegger/nvim-dap
@@ -25,7 +37,7 @@ return {
     config = function()
       vim.api.nvim_set_hl(0, 'DapStoppedLine', { default = true, link = 'Visual' })
 
-      for name, sign in pairs(my.config.icons.dap) do
+      for name, sign in pairs(config.get('icons.dap')) do
         vim.fn.sign_define('Dap' .. name, { text = sign[1], texthl = sign[2] or 'DiagnosticInfo', linehl = sign[3], numhl = sign[3] })
       end
     end,
@@ -35,7 +47,7 @@ return {
   {
     'rcarriga/nvim-dap-ui', -- http://github.com/rcarriga/nvim-dap-ui
 
-    dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
 
     -- stylua: ignore
     keys = {
@@ -44,79 +56,71 @@ return {
     },
 
     init = function()
-      require('which-key').add {
-        mode = { "n", "v" },
+      require('which-key').add({
+        mode = { 'n', 'v' },
         {
           { [[<leader>d]], group = 'Debug' },
           { [[<leader>da]], group = 'Adapters' },
-        }
-      }
-      end,
-
-      opts = {},
-      config = function(_, opts)
-        local dap = require 'dap'
-        local dapui = require 'dapui'
-        dapui.setup(opts)
-        dap.listeners.after.event_initialized['dapui_config'] = function()
-          dapui.open {}
-        end
-        dap.listeners.before.event_terminated['dapui_config'] = function()
-          dapui.close {}
-        end
-        dap.listeners.before.event_exited['dapui_config'] = function()
-          dapui.close {}
-        end
-      end,
-    },
-
-    -- virtual text for the debugger
-    {
-      'theHamsta/nvim-dap-virtual-text',
-      opts = {},
-    },
-
-    -- mason.nvim integration
-    {
-      'jay-babu/mason-nvim-dap.nvim', -- https://github.com/jay-babu/mason-nvim-dap.nvim
-      dependencies = 'mason.nvim',
-      cmd = { 'DapInstall', 'DapUninstall' },
-      opts = {
-        -- Makes a best effort to setup the various debuggers with
-        -- reasonable debug configurations
-        automatic_installation = true,
-
-        -- You can provide additional configuration to the handlers,
-        -- see mason-nvim-dap README for more information
-        handlers = {},
-
-        -- You'll need to check that you have the required things installed
-        -- online, please don't ask me how to install them :)
-        ensure_installed = {
-          -- Update this to ensure that you have the debuggers for the langs you want
         },
+      })
+    end,
+
+    opts = {},
+    config = function(_, opts)
+      local dap = require('dap')
+      local dapui = require('dapui')
+      dapui.setup(opts)
+      dap.listeners.after.event_initialized['dapui_config'] = function() dapui.open({}) end
+      dap.listeners.before.event_terminated['dapui_config'] = function() dapui.close({}) end
+      dap.listeners.before.event_exited['dapui_config'] = function() dapui.close({}) end
+    end,
+  },
+
+  -- virtual text for the debugger
+  {
+    'theHamsta/nvim-dap-virtual-text',
+    opts = {},
+  },
+
+  -- mason.nvim integration
+  {
+    'jay-babu/mason-nvim-dap.nvim', -- https://github.com/jay-babu/mason-nvim-dap.nvim
+    dependencies = 'mason.nvim',
+    cmd = { 'DapInstall', 'DapUninstall' },
+    opts = {
+      -- Makes a best effort to setup the various debuggers with
+      -- reasonable debug configurations
+      automatic_installation = true,
+
+      -- You can provide additional configuration to the handlers,
+      -- see mason-nvim-dap README for more information
+      handlers = {},
+
+      -- You'll need to check that you have the required things installed
+      -- online, please don't ask me how to install them :)
+      ensure_installed = {
+        -- Update this to ensure that you have the debuggers for the langs you want
       },
     },
+  },
 
-    {
-      'jbyuki/one-small-step-for-vimkind', -- https://github.com/jbyuki/one-small-step-for-vimkind
+  {
+    'jbyuki/one-small-step-for-vimkind', -- https://github.com/jbyuki/one-small-step-for-vimkind
       -- stylua: ignore
       keys = {
         { "<leader>daL", function() require("osv").launch({ port = 8086 }) end, desc = "Adapter Lua Server" },
         { "<leader>dal", function() require("osv").run_this() end, desc = "Adapter Lua" },
       },
-      config = function()
-        local dap = require 'dap'
-        dap.adapters.nlua = function(callback, config)
-          callback { type = 'server', host = config.host or '127.0.0.1', port = config.port or 8086 }
-        end
-        dap.configurations.lua = {
-          {
-            type = 'nlua',
-            request = 'attach',
-            name = 'Attach to running Neovim instance',
-          },
-        }
-      end,
-    },
-  }
+    config = function()
+      local dap = require('dap')
+      dap.adapters.nlua = function(callback, config) callback({ type = 'server', host = config.host or '127.0.0.1', port = config.port or 8086 }) end
+      dap.configurations.lua = {
+        {
+          type = 'nlua',
+          request = 'attach',
+          name = 'Attach to running Neovim instance',
+        },
+      }
+    end,
+  },
+}

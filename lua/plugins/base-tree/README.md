@@ -8,9 +8,8 @@ OR
 
 ### Config
 
-- `my.config.tree.plugin` - set to 'nvimtree' or 'neotree' (default)
-
-- `my.config.tree.position` - left (default), or right
+- `config.file-tree.plugin` - set to 'nvimtree' or 'neotree' (default)
+- `config.file-tree.position` - left (default), or right
 
 ## Maps
 

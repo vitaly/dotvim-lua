@@ -1,19 +1,10 @@
-local config = my.config.tree or {}
-local position = function()
-  return config.position or 'left'
-end
+local position = function() return require('onion.config').get('file-tree.position') or 'left' end
 
-local reveal = function()
-  vim.cmd([[Neotree filesystem ]] .. position() .. [[ reveal reveal_force_cwd]])
-end
-local popup = function()
-  vim.cmd [[Neotree filesystem float reveal reveal_force_cwd]]
-end
-local toggle = function()
-  vim.cmd([[Neotree filesystem ]] .. position() .. [[ focus toggle=true]])
-end
+local reveal = function() vim.cmd([[Neotree filesystem ]] .. position() .. [[ reveal reveal_force_cwd]]) end
+local popup = function() vim.cmd([[Neotree filesystem float reveal reveal_force_cwd]]) end
+local toggle = function() vim.cmd([[Neotree filesystem ]] .. position() .. [[ focus toggle=true]]) end
 local function toggle_or_reveal()
-  if vim.o.buflisted and '' ~= vim.fn.expand '%:p' then
+  if vim.o.buflisted and '' ~= vim.fn.expand('%:p') then
     reveal()
   else
     toggle()
@@ -34,9 +25,7 @@ return {
 
   cmd = 'Neotree',
 
-  deactivate = function()
-    vim.cmd [[Neotree close]]
-  end,
+  deactivate = function() vim.cmd([[Neotree close]]) end,
 
   keys = {
     { '\\\\', popup, desc = 'Quick File Popup' },
@@ -51,9 +40,7 @@ return {
     if vim.fn.argc() == 1 then
       ---@diagnostic disable-next-line: param-type-mismatch
       local stat = vim.uv.fs_stat(vim.fn.argv(0))
-      if stat and stat.type == 'directory' then
-        require 'neo-tree'
-      end
+      if stat and stat.type == 'directory' then require('neo-tree') end
     end
   end,
 
@@ -112,9 +99,7 @@ return {
     opts.window.position = position()
     require('neo-tree').setup(opts)
     require('lib.au').command('neotree.termclose', 'TermClose', function()
-      if package.loaded['neo-tree.sources.git_status'] then
-        require('neo-tree.sources.git_status').refresh()
-      end
+      if package.loaded['neo-tree.sources.git_status'] then require('neo-tree.sources.git_status').refresh() end
     end)
   end,
 }

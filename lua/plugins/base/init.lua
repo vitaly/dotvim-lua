@@ -16,6 +16,14 @@ return {
     opts = {
       save_path = vim.fn.stdpath('config') .. '/config.lua',
       auto_save = true,
+
+      defaults = {
+        log_level = vim.log.levels.WARN,
+
+        icons = {
+          diagnostics = { Error = ' ', Warn = ' ', Hint = '󰌶 ', Info = ' ' },
+        },
+      },
     },
   },
 }

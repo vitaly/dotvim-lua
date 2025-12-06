@@ -4,7 +4,7 @@
 
 > `lua/init/log.lua`
 
-`my.config.loglevel` - minimal log level to display
+`config.log_level` - minimal log level to display
 
 `vim.log.levels`:
 
