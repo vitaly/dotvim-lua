@@ -115,6 +115,7 @@ return {
     dependencies = {
       'mason-org/mason.nvim', -- https://github.com/mason-org/mason.nvim
       { 'mason-org/mason-lspconfig.nvim', opts = { ensure_installed = {}, automatic_enable = false } }, -- https://github.com/mason-org/mason-lspconfig.nvim
+      'jayp0521/mason-null-ls.nvim', -- https://github.com/jayp0521/mason-null-ls.nvim
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
       -- Simple progress widget for LSP
