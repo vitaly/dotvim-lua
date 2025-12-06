@@ -44,9 +44,7 @@ return {
       { [[\u]], '<cmd>UndotreeToggle<cr>', desc = 'Undo Tree' },
     },
 
-    init = function()
-      vim.g.undotree_SetFocusWhenToggle = 1
-    end,
+    init = function() vim.g.undotree_SetFocusWhenToggle = 1 end,
   },
 
   ----------------------------------------------------------------------------------------------
@@ -86,16 +84,12 @@ return {
     keys = {
       {
         [[\i]],
-        function()
-          vim.g.miniindentscope_disable = not vim.g.miniindentscope_disable
-        end,
+        function() vim.g.miniindentscope_disable = not vim.g.miniindentscope_disable end,
         desc = 'Indent Scope',
       },
     },
 
-    init = function()
-      vim.g.miniindentscope_disable = true
-    end,
+    init = function() vim.g.miniindentscope_disable = true end,
 
     opts = {
       symbol = '┊',

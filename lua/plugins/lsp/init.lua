@@ -57,16 +57,7 @@ return {
     },
 
     opts = {
-      ensure_installed = {
-        'lua_ls',
-        'ts_ls',
-        'jsonls',
-        'yamlls',
-        'bashls',
-        'dockerls',
-        'ruby_lsp',
-        'stylua',
-      },
+      ensure_installed = { 'lua_ls', 'ts_ls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'ruby_lsp', 'stylua' },
 
       automatic_enable = false,
     },
