@@ -104,6 +104,16 @@ return {
     cmd = { 'Gsearch', 'Gbuffersearch', 'Greplace' },
   },
 
+  {
+    'nvim-pack/nvim-spectre', -- https://github.com/nvim-pack/nvim-spectre
+    opts = {},
+    enabled = true,
+
+    keys = {
+      { '<leader>sr', '<cmd>lua require("spectre").open()<cr>', desc = 'Search and Replace' },
+    },
+  },
+
   ----------------------------------------------------------------------------------------------
   ----------------------------------------------------------------------------------------------
   ---ZEM MODE
