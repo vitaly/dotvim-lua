@@ -5,6 +5,26 @@ local au = require('lib.au')
 local glue = require('glue').register('lsp')
 local wk = require('which-key')
 
+local lsp_config = {
+  -- can use mason names, or lspconfig names, or null-ls names
+  ensure_installed = {
+    'jq',
+    'stylua',
+    'tree-sitter-cli',
+  },
+
+  ---@type table<string, vim.lsp.Config | { mason: boolean}>
+  servers = {
+    lua_ls = {},
+    ts_ls = {},
+    jsonls = {},
+    yamlls = {},
+    bashls = {},
+    dockerls = {},
+    ruby_lsp = { cmd = { 'ruby-lsp' } },
+  },
+}
+
 local function define_lsp_global_maps()
   require('plugins.lsp.actions').start()
   wk.add({
@@ -88,76 +108,33 @@ return {
   },
 
   -------------------------------------------------------------------------------
-  -- mason tool installer
-  -------------------------------------------------------------------------------
-  {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    config = function()
-      require('mason-tool-installer').setup({
-        ensure_installed = {
-          'bash-language-server',
-          'tree-sitter-cli',
-        },
-        auto_update = false,
-        run_on_start = true,
-      })
-    end,
-  },
-
-  -------------------------------------------------------------------------------
-  -- mason lspconfig
-  -------------------------------------------------------------------------------
-  {
-    'mason-org/mason-lspconfig.nvim', -- https://github.com/mason-org/mason-lspconfig.nvim
-
-    dependencies = {
-      'mason-org/mason.nvim',
-      'neovim/nvim-lspconfig',
-    },
-
-    opts = {
-      ensure_installed = { 'lua_ls', 'ts_ls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'ruby_lsp', 'stylua' },
-
-      automatic_enable = false,
-    },
-  },
-
-  -------------------------------------------------------------------------------
-  -- misc lsp related plugins
-  -------------------------------------------------------------------------------
-  -- Simple progress widget for LSP
-  { 'j-hui/fidget.nvim', opts = {} }, -- https://github.com/j-hui/fidget.nvim
-
-  -------------------------------------------------------------------------------
   -- lspconfig
   -------------------------------------------------------------------------------
   {
     'neovim/nvim-lspconfig', -- https://github.com/neovim/nvim-lspconfig
 
-    event = 'LazyFile',
-    cmd = { 'LspInfo', 'LspLog', 'LspStart', 'LspStop', 'LspRestart', 'LspInstall', 'LspUninstall' },
-
     dependencies = {
       'mason-org/mason.nvim', -- https://github.com/mason-org/mason.nvim
-      'mason-org/mason-lspconfig.nvim', -- https://github.com/mason-org/mason-lspconfig.nvim
+      { 'mason-org/mason-lspconfig.nvim', opts = { ensure_installed = {}, automatic_enable = false } }, -- https://github.com/mason-org/mason-lspconfig.nvim
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
       'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
+      -- Simple progress widget for LSP
+      { 'j-hui/fidget.nvim', opts = {} }, -- https://github.com/j-hui/fidget.nvim
       -- 'saghen/blink.cmp',
     },
 
     config = function()
-      -- TODO: move to config
-      ---@type { [string]: vim.lsp.Config }
-      local servers = {
-        lua_ls = {},
-        ts_ls = {},
-        jsonls = {},
-        yamlls = {},
-        bashls = {},
-        dockerls = {},
-        ruby_lsp = { cmd = { 'ruby-lsp' } },
-      }
+      local ensure_installed = vim.deepcopy(lsp_config.ensure_installed or {})
+      for server, config in pairs(lsp_config.servers) do
+        if config.mason ~= false then table.insert(ensure_installed, server) end
+      end
+      require('mason-tool-installer').setup({
+        ensure_installed = ensure_installed,
+        auto_update = false,
+        run_on_start = true,
+      })
 
-      for server, config in pairs(servers) do
+      for server, config in pairs(lsp_config.servers) do
         -- config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
         vim.lsp.config(server, config)
         vim.lsp.enable(server)
