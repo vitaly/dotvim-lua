@@ -119,9 +119,11 @@ return {
       'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
       -- Simple progress widget for LSP
       { 'j-hui/fidget.nvim', opts = {} }, -- https://github.com/j-hui/fidget.nvim
+      { 'kosayoda/nvim-lightbulb' }, -- https://github.com/kosayoda/nvim-lightbulb
     },
 
     config = function()
+      -- configure tools installer
       local ensure_installed = vim.deepcopy(lsp_config.ensure_installed or {})
       for server, config in pairs(lsp_config.servers) do
         if config.mason ~= false then table.insert(ensure_installed, server) end
@@ -132,6 +134,7 @@ return {
         run_on_start = true,
       })
 
+      -- configure servers
       for server, config in pairs(lsp_config.servers) do
         config.capabilities = require('cmp_nvim_lsp').default_capabilities(config.capabilities or {})
         vim.lsp.config(server, config)
@@ -139,6 +142,15 @@ return {
       end
 
       vim.diagnostic.config({ virtual_lines = { current_line = true } })
+
+      -- configure lightbulb
+      require('nvim-lightbulb').setup({
+        code_lenses = true,
+        float = { enabled = false },
+        autocmd = { enabled = true },
+        sign = { enabled = false },
+        virtual_text = { enabled = true },
+      })
 
       define_lsp_global_maps()
 
@@ -195,30 +207,6 @@ return {
 --         enabled = false,
 --       },
 --
---       ensure_installed = { 'ts_ls', 'pyright' },
---
---       -- Lspconfig Server Settings
---       ---@type table<string, lspconfig.options>
---       servers = {
---         -- e.g.
---         -- lua_ls = {
---         --  ...
---         -- }
---       },
---
---       ---@type table<string, fun(name:string, config: lspconfig.options)>
---       setup = {
---         -- -- example to setup with typescript.nvim
---         -- foobar = function(_, config)
---         --    ...
---         -- end,
---         -- -- default setup
---         -- ["*"] = function(name, config)
---         --   require('lspconfig').foobar.setup(config)
---         -- end,
---       },
---     },
---
 --     config = function(_, opts)
 --       -- for some reason lspconfig popups do not have a border
 --       require('lspconfig.ui.windows').default_options.border = 'single'
@@ -228,16 +216,6 @@ return {
 --       for type, icon in pairs(icons) do
 --         local hl = 'DiagnosticSign' .. type
 --         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
---       end
---
---       -- configure inlay hints
---       if opts.inlay_hints.enabled and vim.lsp.buf.inlay_hint then
---         au.lsp_on_attach('inlay_hints', function(client, buffer)
---           if client.server_capabilities.inlayHintProvider then
---             -- debug { 'inlay_hints', client.name }
---             vim.lsp.buf.inlay_hint(buffer, true)
---           end
---         end)
 --       end
 --
 --       -- configure lightbulb
