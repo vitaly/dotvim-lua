@@ -3,6 +3,7 @@
 
 local au = require('lib.au')
 local glue = require('glue').register('lsp')
+local wk = require('which-key')
 
 return {
 
@@ -14,7 +15,7 @@ return {
     lazy = true,
     build = ':MasonUpdate', -- :MasonUpdate updates registry contents
     cmd = { 'Mason', 'MasonLog', 'MasonUpdate', 'MasonInstall', 'MasonUninstall', 'MasonUninstallAll' },
-    init = function() require('which-key').add({ [[<leader>am]], group = 'Mason' }) end,
+    init = function() wk.add({ [[<leader>am]], group = 'Mason' }) end,
 
     keys = {
       { [[<leader>Sm]], vim.cmd.Mason, desc = 'Mason' }, -- Status
@@ -86,7 +87,7 @@ return {
     },
 
     config = function()
-      require('which-key').add({
+      wk.add({
         { [[<leader>al]], group = 'LSP' },
 
         { [[<leader>ali]], function() glue.emit('lsp.actions.lsp_info') end, desc = 'Info' },
@@ -130,7 +131,7 @@ return {
       require('plugins.lsp.actions').start()
 
       au.lsp_on_attach('lsp.init', function(_, buf)
-        require('which-key').add({
+        wk.add({
           mode = 'n',
           buffer = buf,
 
@@ -165,7 +166,7 @@ return {
         })
 
         if vim.lsp.buf.inlay_hint then
-          require('which-key').add({
+          wk.add({
             mode = 'n',
             buffer = buf,
             { [[\i]], function() vim.lsp.buf.inlay_hint(0, nil) end, desc = 'Toggle Inlay Hints' },
