@@ -17,9 +17,7 @@ return {
     'jayp0521/mason-null-ls.nvim', -- https://github.com/jayp0521/mason-null-ls.nvim
   },
 
-  init = function()
-    require('which-key').add({ [[<leader>an]], group = 'Null Ls' })
-  end,
+  init = function() require('which-key').add({ [[<leader>an]], group = 'Null Ls' }) end,
 
   keys = {
     { [[<leader>Sn]], vim.cmd.NullLsInfo, desc = 'Null LS Info' },
@@ -45,8 +43,7 @@ return {
         -- nls.builtins.formatting.trim_whitespace,
       },
 
-      -- for mason-null-ls
-      ensure_installed = { 'stylua', 'jq', 'shfmt', 'shellcheck' },
+      ensure_installed = {},
     }
   end,
 
