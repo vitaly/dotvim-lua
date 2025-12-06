@@ -1,84 +1,47 @@
-local outline = {
-  'simrat39/symbols-outline.nvim', -- https://github.com/simrat39/symbols-outline.nvim
-
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter',
-    'nvim-tree/nvim-web-devicons',
-  },
-
-  cmd = { 'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose' },
-
-  keys = {
-    { [[\t]], vim.cmd.SymbolsOutline, desc = 'SymbolsOutline' },
-  },
-
-  opts = {
-    position = (my.config.tagbar or {}).position or 'right',
-    autofold_depth = 2,
-    --     width = 40,
-    --     relative_width = false,
-    --     auto_preview = false,
-    winblend = 20,
-    keymaps = {
-      goto_location = { '<Cr>', '<2-LeftMouse>' },
-      close = { 'q' }, -- only 'q', <esc> should not close
-    },
-  },
-
-  config = function(_, opts)
-    require('symbols-outline').setup(opts)
-
-    vim.cmd [[
-      hi! clear FocusedSymbol
-      hi! FocusedSymbol gui=bold guifg=red
-    ]]
-
-    require('lib.au').command('outline_setup', 'FileType', function()
-      vim.opt.foldcolumn = '0'
-      vim.opt.signcolumn = 'auto'
-    end, { pattern = 'Outline' })
-  end,
-}
-
--- NOTE: Aerial is used through a Telescope popup
-local aerial = {
-  'stevearc/aerial.nvim', -- https://github.com/stevearc/aerial.nvim
-
-  requires = {
-    'nvim-telescope/telescope.nvim',
-  },
-
-  keys = {
-    { [[go]], '<cmd>Telescope aerial theme=cursor layout_config={height=20}<cr>', desc = 'Fuzzy Outline' },
-    -- { [[\t]], vim.cmd.AerialOpen, desc = 'SymbolsOutline' },
-  },
-
-  cmd = { 'AerialOpen', 'AerialOpenAll', 'AerialClose', 'AerialCloseAll', 'AerialInfo' },
-
-  opts = {
-    layout = {
-      default_direction = my.config.tagbar.position or 'right',
-    },
-  },
-
-  config = function(_, opts)
-    require('aerial').setup(opts)
-
-    -- FIXME: seems not to be needed on latest
-    -- my.au.on_lsp_attach('aerial', require('aerial').on_attach)
-    require('telescope').load_extension 'aerial'
-
-    -- require('which-key').register {
-    --   ['<leader>Sa'] = { '<cmd>AerialInfo<cr>', 'AerialInfo' },
-    --
-    --   -- ['\\t'] = { '<cmd>AerialOpen<cr>', 'Aerial Outline' },
-    --   go = {},
-    --   gO = { '<cmd>AerialOpen float<cr>', 'Outline' },
-    -- }
-  end,
-}
-
 return {
-  aerial,
-  outline,
+  -- NOTE: Aerial is used through a Telescope popup
+  ------------------------------------------------------------------------------
+  -- AERIAL
+  ------------------------------------------------------------------------------
+  ---NOTE: Aerial is only used for the `go` popup. remove once adequate alternative found
+  {
+    'stevearc/aerial.nvim', -- https://github.com/stevearc/aerial.nvim
+
+    requires = {
+      'nvim-telescope/telescope.nvim',
+    },
+
+    keys = {
+      { [[go]], '<cmd>Telescope aerial theme=cursor layout_config={height=20}<cr>', desc = 'Fuzzy Outline' },
+    },
+
+    cmd = { 'AerialOpen', 'AerialOpenAll', 'AerialClose', 'AerialCloseAll', 'AerialInfo' },
+
+    opts = {
+      layout = {
+        default_direction = my.config.tagbar.position or 'right',
+      },
+    },
+
+    config = function(_, opts)
+      require('aerial').setup(opts)
+      require('telescope').load_extension('aerial')
+    end,
+  },
+
+  ------------------------------------------------------------------------------
+  -- NEW SYMBOLS OUTLINE
+  ------------------------------------------------------------------------------
+  {
+    'hedyhli/outline.nvim', -- https://github.com/hedyhli/outline.nvim
+
+    enabled = false,
+    lazy = true,
+    cmd = { 'Outline', 'OutlineOpen' },
+    keys = {
+      { [[\t]], vim.cmd.Outline, desc = 'Symbols Outline' },
+    },
+
+    opts = {},
+  },
 }
