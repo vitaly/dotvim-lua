@@ -35,7 +35,7 @@ return {
   {
     'hedyhli/outline.nvim', -- https://github.com/hedyhli/outline.nvim
 
-    enabled = false,
+    enabled = true,
     lazy = true,
     cmd = { 'Outline', 'OutlineOpen' },
     keys = {
