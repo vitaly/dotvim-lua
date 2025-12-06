@@ -20,8 +20,7 @@ end
 
 -- generic logging function
 local notify = vim.schedule_wrap(function(level, ...)
-  local log_level = require('onion.config').get('log_level')
-  if level >= log_level then vim.notify(my.inspect(...), level) end
+  if level >= require('onion.config').get('log_level') then vim.notify(my.inspect(...), level) end
 end)
 
 my.log = {

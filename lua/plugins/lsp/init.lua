@@ -1,29 +1,20 @@
 -- local debug = my.log.debug
--- local trace = my.log.trace
+local trace = my.log.trace
+
+local config = require('onion.config')
+
+config.set_defaults('lsp', {
+  ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli' },
+  enable = { 'lua_ls', 'ts_ls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'ruby_lsp' },
+  ---@type table<string, vim.lsp.Config | { mason: boolean}>
+  servers = {
+    ruby_lsp = { cmd = { 'ruby-lsp' } },
+  },
+})
 
 local au = require('lib.au')
 local glue = require('glue').register('lsp')
 local wk = require('which-key')
-
-local lsp_config = {
-  -- can use mason names, or lspconfig names, or null-ls names
-  ensure_installed = {
-    'jq',
-    'stylua',
-    'tree-sitter-cli',
-  },
-
-  ---@type table<string, vim.lsp.Config | { mason: boolean}>
-  servers = {
-    lua_ls = {},
-    ts_ls = {},
-    jsonls = {},
-    yamlls = {},
-    bashls = {},
-    dockerls = {},
-    ruby_lsp = { cmd = { 'ruby-lsp' } },
-  },
-}
 
 local function define_lsp_global_maps()
   require('plugins.lsp.actions').start()
@@ -124,10 +115,12 @@ return {
     },
 
     config = function()
+      local ensure_installed = config.get('lsp.ensure_installed') or {}
+      ---@type table<string, vim.lsp.Config | { mason: boolean}>
+      local servers = config.get('lsp.servers') or {}
       -- configure tools installer
-      local ensure_installed = vim.deepcopy(lsp_config.ensure_installed or {})
-      for server, config in pairs(lsp_config.servers) do
-        if config.mason ~= false then table.insert(ensure_installed, server) end
+      for server, conf in pairs(servers) do
+        if conf.mason ~= false then table.insert(ensure_installed, server) end
       end
       require('mason-tool-installer').setup({
         ensure_installed = ensure_installed,
@@ -136,9 +129,12 @@ return {
       })
 
       -- configure servers
-      for server, config in pairs(lsp_config.servers) do
-        config.capabilities = require('cmp_nvim_lsp').default_capabilities(config.capabilities or {})
-        vim.lsp.config(server, config)
+      for _, server in ipairs(config.get('lsp.enable')) do
+        local conf = servers[server] or {}
+
+        conf.capabilities = require('cmp_nvim_lsp').default_capabilities(conf.capabilities or {})
+        trace('Configuring LSP server', server, conf)
+        vim.lsp.config(server, conf)
         vim.lsp.enable(server)
       end
 
