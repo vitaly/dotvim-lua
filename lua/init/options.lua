@@ -15,12 +15,14 @@ vim.g.maplocalleader = [[,]]
 --------------------------------------------------------------------------------
 
 local opt = vim.opt
-local has = function(x)
-  return vim.fn.has(x) == 1
-end
+local has = function(x) return vim.fn.has(x) == 1 end
 
 opt.autowriteall = true -- Automatically save before commands like :next and :make
-opt.clipboard = 'unnamedplus' -- Sync with system clipboard
+
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+
 opt.completeopt = 'menu,menuone,noselect'
 opt.conceallevel = 1 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
@@ -47,10 +49,8 @@ opt.laststatus = 3
 opt.lazyredraw = true
 opt.linebreak = true -- clean linebreaks (during wrap)
 opt.list = true -- Show invisible characters
-opt.listchars = 'tab:→⋅,trail:·,nbsp:+'
-if has 'mouse' then
-  opt.mouse = 'a'
-end
+opt.listchars = 'tab:→⋅,trail:·,nbsp:␣'
+if has('mouse') then opt.mouse = 'a' end
 opt.number = true -- Show line numbers
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Max items in a popup menu
