@@ -135,23 +135,16 @@ return {
       })
 
       for server, config in pairs(lsp_config.servers) do
-        -- config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+        config.capabilities = require('cmp_nvim_lsp').default_capabilities(config.capabilities or {})
         vim.lsp.config(server, config)
         vim.lsp.enable(server)
       end
-
-      -- vim.cmd('set completeopt+=noselect')
 
       vim.diagnostic.config({ virtual_lines = { current_line = true } })
 
       define_lsp_global_maps()
 
-      au.lsp_on_attach('lsp.init', function(client, buf)
-        --  if client and client:supports_method('textDocument/completion') then
-        --    vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-        --  end
-        define_lsp_buffer_maps(client, buf)
-      end)
+      au.lsp_on_attach('lsp.init', function(client, buf) define_lsp_buffer_maps(client, buf) end)
     end,
   },
 }
