@@ -96,8 +96,6 @@ return {
     init = function() wk.add({ [[<leader>am]], group = 'Mason' }) end,
 
     keys = {
-      { [[<leader>Sm]], vim.cmd.Mason, desc = 'Mason' }, -- Status
-
       { [[<leader>amm]], vim.cmd.Mason, desc = 'Mason' },
       { [[<leader>aml]], vim.cmd.MasonLog, desc = 'Mason Log' },
       { [[<leader>amu]], vim.cmd.MasonUpdate, desc = 'Mason Update' },
@@ -120,7 +118,6 @@ return {
       'b0o/schemastore.nvim', -- https://github.com/b0o/schemastore.nvim
       -- Simple progress widget for LSP
       { 'j-hui/fidget.nvim', opts = {} }, -- https://github.com/j-hui/fidget.nvim
-      -- 'saghen/blink.cmp',
     },
 
     config = function()
