@@ -22,16 +22,6 @@ my.config = vim.tbl_deep_extend('force', {
     position = 'left',
   },
 
-  autoformat = {
-    enabled = true,
-    ft = {
-      lua = { 'stylua' },
-      javascript = { 'prettier' },
-      json = { 'prettier' },
-    },
-    ignore_ft = { 'sql' },
-  },
-
   icons = {
     diagnostics = { Error = ' ', Warn = ' ', Hint = '󰌶 ', Info = ' ' },
     dap = {

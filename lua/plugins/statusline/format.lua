@@ -9,19 +9,15 @@ local icon = '󰅩'
 local disabled = '%#AutoformatDisabled#'
 local enabled = '%#AutoformatEnabled#'
 
----@param bufnr? number
-function M.status(bufnr)
-  if not bufnr then
-    bufnr = vim.api.nvim_get_current_buf()
-  end
-
+function M.status()
+  local bufnr = vim.api.nvim_get_current_buf()
   local status = glue.ask('autoformat.status', { bufnr = bufnr })
 
-  if not status.enabled then
-    return disabled .. icon
-  end
+  if status.enabled then return enabled .. icon end
 
-  return enabled .. icon
+  if not status.buffer then return disabled .. icon .. ' b' end
+  if not status.filetype then return disabled .. icon .. ' ft' end
+  return disabled .. icon
 end
 
 return M
