@@ -17,7 +17,7 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 ## Basic Keymaps
 
 - `<tab><tab>` - Last Tab
-- `<tab>n` - New Tab
+- `<tab><space>` - New Tab
 
 - `<SPACE>m` - show messages
 - `<SPACE>M` - clear messages
