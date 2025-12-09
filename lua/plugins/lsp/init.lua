@@ -51,6 +51,7 @@ local function define_lsp_buffer_maps(client, buf)
     { 'gd', _map('lsp.actions.definition'), desc = 'Go to Definition' },
     { 'gD', _map('lsp.actions.declaration'), desc = 'Go to Declaration' },
     { 'gK', _map('lsp.actions.signature_help'), desc = 'Signature Help' },
+    { 'gk', _map('lsp.actions.signature_help'), desc = 'Signature Help' },
 
     { '<localleader>g', desc = 'Go to' },
     { '<localleader>gd', _map('telescope.lsp.actions.definition'), desc = 'Go to Definition' },

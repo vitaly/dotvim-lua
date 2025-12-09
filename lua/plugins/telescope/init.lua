@@ -18,6 +18,8 @@ return {
     cmd = 'Telescope',
 
     keys = {
+      { [[<leader>ap]], _map('telescope.actions.telescope'), desc = 'telesco[P]e' },
+
       { [[<leader>sd]], _map('telescope.actions.buffer_diagnostics'), desc = 'Buffer Diagnostics' },
       { [[<leader>sa]], _map('telescope.actions.autocommands'), desc = 'Autocommands' },
       { [[<leader>bb]], _map('telescope.actions.buffers'), desc = 'Find buffer' },
