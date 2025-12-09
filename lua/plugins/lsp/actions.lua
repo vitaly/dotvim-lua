@@ -1,10 +1,4 @@
-local glue = require('glue').register('lsp.actions')
-
-local M = {}
-
-function M.stop() glue.clear('*') end
-
-M.actions = {
+return require('lib.actions').register('lsp.actions', {
   ['lsp.actions.lsp_info'] = function() vim.cmd.LspInfo() end,
   ['lsp.actions.lsp_log'] = function() vim.cmd.LspLog() end,
   ['lsp.actions.lsp_start'] = function() vim.cmd.LspStart() end,
@@ -29,16 +23,8 @@ M.actions = {
   ['lsp.actions.outgoing_calls'] = function() vim.lsp.buf.outgoing_calls() end,
   ['lsp.actions.references'] = function() vim.lsp.buf.references() end,
   ['lsp.actions.remove_workspace_folder'] = function() vim.lsp.buf.remove_workspace_folder() end,
+  ['lsp.actions.rename'] = function() vim.lsp.buf.rename() end,
   ['lsp.actions.signature_help'] = function() vim.lsp.buf.signature_help() end,
   ['lsp.actions.type_definition'] = function() vim.lsp.buf.type_definition() end,
   ['lsp.actions.workspace_symbol'] = function() vim.lsp.buf.workspace_symbol() end,
-}
-
-function M.start()
-  M.stop()
-  for name, action in pairs(M.actions) do
-    glue.listen(name, action)
-  end
-end
-
-return M
+})

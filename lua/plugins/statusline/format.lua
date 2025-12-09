@@ -11,7 +11,7 @@ local enabled = '%#AutoformatEnabled#'
 
 function M.status()
   local bufnr = vim.api.nvim_get_current_buf()
-  local status = glue.ask('autoformat.status', { bufnr = bufnr })
+  local status = glue.call('autoformat.status', { bufnr = bufnr })
 
   if status.enabled then return enabled .. icon end
 

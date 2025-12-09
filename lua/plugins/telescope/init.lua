@@ -1,5 +1,9 @@
 local glue = require('glue').register('telescope')
 
+local function _map(event)
+  return function() return glue.call(event) end
+end
+
 return {
   -------------------------------------------------------------------------------
   -- Telescope
@@ -14,36 +18,36 @@ return {
     cmd = 'Telescope',
 
     keys = {
-      { [[<leader>sd]], function() glue.emit('telescope.actions.buffer_diagnostics') end, desc = 'Buffer Diagnostics' },
-      { [[<leader>sa]], function() glue.emit('telescope.actions.autocommands') end, desc = 'Autocommands' },
-      { [[<leader>bb]], function() glue.emit('telescope.actions.buffers') end, desc = 'Find buffer' },
-      { [[<leader>sb]], function() glue.emit('telescope.actions.buffers') end, desc = 'Find buffer' },
-      { [[<leader>sC]], function() glue.emit('telescope.actions.colorscheme') end, desc = 'Find Colorscheme' },
-      { [[<leader>s:]], function() glue.emit('telescope.actions.command_history') end, desc = 'Command History' },
-      { [[<leader><cr>]], function() glue.emit('telescope.actions.commands') end, desc = 'Find Command' },
-      { [[<leader>sc]], function() glue.emit('telescope.actions.commands') end, desc = 'Find Command' },
-      { [[<leader>sD]], function() glue.emit('telescope.actions.diagnostics') end, desc = 'Diagnostics' },
-      { [[<leader>ff]], function() glue.emit('telescope.actions.find_files') end, desc = 'Find File' },
-      { [[<localleader><localleader>]], function() glue.emit('telescope.actions.find_files') end, desc = 'Find File' },
-      { [[<leader>gc]], function() glue.emit('telescope.actions.git_commits') end, desc = 'Find Git Commit' },
-      { [[<leader>gf]], function() glue.emit('telescope.actions.git_files') end, desc = 'Find Git File' },
-      { [[<leader>gS]], function() glue.emit('telescope.actions.git_status') end, desc = 'Find Git Status' },
-      { [[<leader>sg]], function() glue.emit('telescope.actions.grep_string') end, desc = 'Grep String' },
-      { [[<leader>sh]], function() glue.emit('telescope.actions.help_tags') end, desc = 'Help Tags' },
-      { [[<leader>h]], function() glue.emit('telescope.actions.help_tags') end, desc = 'Help Tags' },
-      { [[<leader>sH]], function() glue.emit('telescope.actions.highlights') end, desc = 'Highlights' },
-      { [[<leader>sk]], function() glue.emit('telescope.actions.keymaps') end, desc = 'Keymaps' },
+      { [[<leader>sd]], _map('telescope.actions.buffer_diagnostics'), desc = 'Buffer Diagnostics' },
+      { [[<leader>sa]], _map('telescope.actions.autocommands'), desc = 'Autocommands' },
+      { [[<leader>bb]], _map('telescope.actions.buffers'), desc = 'Find buffer' },
+      { [[<leader>sb]], _map('telescope.actions.buffers'), desc = 'Find buffer' },
+      { [[<leader>sC]], _map('telescope.actions.colorscheme'), desc = 'Find Colorscheme' },
+      { [[<leader>s:]], _map('telescope.actions.command_history'), desc = 'Command History' },
+      { [[<leader><cr>]], _map('telescope.actions.commands'), desc = 'Find Command' },
+      { [[<leader>sc]], _map('telescope.actions.commands'), desc = 'Find Command' },
+      { [[<leader>sD]], _map('telescope.actions.diagnostics'), desc = 'Diagnostics' },
+      { [[<leader>ff]], _map('telescope.actions.find_files'), desc = 'Find File' },
+      { [[<localleader><localleader>]], _map('telescope.actions.find_files'), desc = 'Find File' },
+      { [[<leader>gc]], _map('telescope.actions.git_commits'), desc = 'Find Git Commit' },
+      { [[<leader>gf]], _map('telescope.actions.git_files'), desc = 'Find Git File' },
+      { [[<leader>gS]], _map('telescope.actions.git_status'), desc = 'Find Git Status' },
+      { [[<leader>sg]], _map('telescope.actions.grep_string'), desc = 'Grep String' },
+      { [[<leader>sh]], _map('telescope.actions.help_tags'), desc = 'Help Tags' },
+      { [[<leader>h]], _map('telescope.actions.help_tags'), desc = 'Help Tags' },
+      { [[<leader>sH]], _map('telescope.actions.highlights'), desc = 'Highlights' },
+      { [[<leader>sk]], _map('telescope.actions.keymaps'), desc = 'Keymaps' },
 
-      { [[<leader>sl]], function() glue.emit('telescope.actions.buffer_lines') end, desc = 'Buffer Lines' },
-      { [[<leader>/]], function() glue.emit('telescope.actions.live_grep') end, desc = 'Live Grep' },
-      { [[<leader>sm]], function() glue.emit('telescope.actions.man_pages') end, desc = 'Man Pages' },
-      { [[<leader>s']], function() glue.emit('telescope.actions.marks') end, desc = 'Marks' },
-      { [[<leader>so]], function() glue.emit('telescope.actions.recent_files') end, desc = 'Recent Files' },
-      { [[<leader>sy]], function() glue.emit('telescope.actions.symbols') end, desc = 'Character Symbols' },
-      { [[<leader>ss]], function() glue.emit('telescope.actions.tagstack') end, desc = 'Tag Stack' },
-      { [[<leader>sT]], function() glue.emit('telescope.actions.telescope') end, desc = 'Telescope ...' },
-      { [[<leader>T]], function() glue.emit('telescope.actions.telescope') end, desc = 'Telescope ...' },
-      { [[<leader>sv]], function() glue.emit('telescope.actions.vim_options') end, desc = 'Vim Options' },
+      { [[<leader>sl]], _map('telescope.actions.buffer_lines'), desc = 'Buffer Lines' },
+      { [[<leader>/]], _map('telescope.actions.live_grep'), desc = 'Live Grep' },
+      { [[<leader>sm]], _map('telescope.actions.man_pages'), desc = 'Man Pages' },
+      { [[<leader>s']], _map('telescope.actions.marks'), desc = 'Marks' },
+      { [[<leader>so]], _map('telescope.actions.recent_files'), desc = 'Recent Files' },
+      { [[<leader>sy]], _map('telescope.actions.symbols'), desc = 'Character Symbols' },
+      { [[<leader>ss]], _map('telescope.actions.tagstack'), desc = 'Tag Stack' },
+      { [[<leader>sT]], _map('telescope.actions.telescope'), desc = 'Telescope ...' },
+      { [[<leader>T]], _map('telescope.actions.telescope'), desc = 'Telescope ...' },
+      { [[<leader>sv]], _map('telescope.actions.vim_options'), desc = 'Vim Options' },
     },
 
     -- local actions = require 'telescope.actions'

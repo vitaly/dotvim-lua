@@ -16,17 +16,21 @@ local au = require('lib.au')
 local glue = require('glue').register('lsp')
 local wk = require('which-key')
 
+local function _map(event)
+  return function() return glue.call(event) end
+end
+
 local function define_lsp_global_maps()
   require('plugins.lsp.actions').start()
   wk.add({
     { [[<leader>al]], group = 'LSP' },
 
-    { [[<leader>ali]], function() glue.emit('lsp.actions.lsp_info') end, desc = 'Info' },
-    { [[<leader>all]], function() glue.emit('lsp.actions.lsp_log') end, desc = 'Log' },
-    { [[<leader>als]], function() glue.emit('lsp.actions.lsp_start') end, desc = 'Start' },
-    { [[<leader>alS]], function() glue.emit('lsp.actions.lsp_stop') end, desc = 'Stop' },
-    { [[<leader>alr]], function() glue.emit('lsp.actions.lsp_restart') end, desc = 'Restart' },
-    { [[<leader>alw]], function() glue.emit('lsp.actions.lsp_workspace_folders') end, desc = 'Workspace Folders' },
+    { [[<leader>ali]], _map('lsp.actions.lsp_info'), desc = 'Info' },
+    { [[<leader>all]], _map('lsp.actions.lsp_log'), desc = 'Log' },
+    { [[<leader>als]], _map('lsp.actions.lsp_start'), desc = 'Start' },
+    { [[<leader>alS]], _map('lsp.actions.lsp_stop'), desc = 'Stop' },
+    { [[<leader>alr]], _map('lsp.actions.lsp_restart'), desc = 'Restart' },
+    { [[<leader>alw]], _map('lsp.actions.lsp_workspace_folders'), desc = 'Workspace Folders' },
   })
 end
 
@@ -44,33 +48,33 @@ local function define_lsp_buffer_maps(client, buf)
     mode = 'n',
     buffer = buf,
 
-    { 'gd', function() glue.emit('lsp.actions.definition') end, desc = 'Go to Definition' },
-    { 'gD', function() glue.emit('lsp.actions.declaration') end, desc = 'Go to Declaration' },
-    { 'gK', function() glue.emit('lsp.actions.signature_help') end, desc = 'Signature Help' },
+    { 'gd', _map('lsp.actions.definition'), desc = 'Go to Definition' },
+    { 'gD', _map('lsp.actions.declaration'), desc = 'Go to Declaration' },
+    { 'gK', _map('lsp.actions.signature_help'), desc = 'Signature Help' },
 
     { '<localleader>g', desc = 'Go to' },
-    { '<localleader>gd', function() glue.emit('telescope.lsp.actions.definition') end, desc = 'Go to Definition' },
-    { '<localleader>gr', function() glue.emit('telescope.lsp.actions.references') end, desc = 'Go to References' },
-    { '<localleader>gi', function() glue.emit('telescope.lsp.actions.implementation') end, desc = 'Go to Implementation' },
-    { '<localleader>gt', function() glue.emit('telescope.lsp.actions.type_definition') end, desc = 'Go to Type Definition' },
+    { '<localleader>gd', _map('telescope.lsp.actions.definition'), desc = 'Go to Definition' },
+    { '<localleader>gr', _map('telescope.lsp.actions.references'), desc = 'Go to References' },
+    { '<localleader>gi', _map('telescope.lsp.actions.implementation'), desc = 'Go to Implementation' },
+    { '<localleader>gt', _map('telescope.lsp.actions.type_definition'), desc = 'Go to Type Definition' },
 
     { '<localleader>s', desc = 'Search' },
-    { '<localleader>sd', function() glue.emit('telescope.lsp.actions.document_symbols') end, desc = 'Document Symbols' },
-    { '<localleader>sw', function() glue.emit('telescope.lsp.actions.workspace_symbols') end, desc = 'Document Symbols' },
-    { '<localleader>sW', function() glue.emit('telescope.lsp.actions.dynamic_workspace_symbols') end, desc = 'Document Symbols' },
+    { '<localleader>sd', _map('telescope.lsp.actions.document_symbols'), desc = 'Document Symbols' },
+    { '<localleader>sw', _map('telescope.lsp.actions.workspace_symbols'), desc = 'Document Symbols' },
+    { '<localleader>sW', _map('telescope.lsp.actions.dynamic_workspace_symbols'), desc = 'Document Symbols' },
 
     --
-    -- { '', function() glue.emit('lsp.actions.buf.add_workspace_folder') end, desc = 'Add Workspace folder' },
-    -- { '', function() glue.emit('lsp.actions.buf.code_action') end, desc = 'Code Action' },
-    -- { '', function() glue.emit('lsp.actions.buf.document_symbol') end, desc = 'Document Symbol' },
-    -- { '', function() glue.emit('lsp.actions.buf.implementation') end, desc = 'Goto Implementation' },
-    -- { '', function() glue.emit('lsp.actions.buf.incoming_calls') end, desc = 'Show Incoming Calls' },
-    -- { '', function() glue.emit('lsp.actions.buf.outgoing_calls') end, desc = 'Show Outgoing Calls' },
-    -- { '', function() glue.emit('lsp.actions.buf.references') end, desc = 'Show References' },
-    -- { '', function() glue.emit('lsp.actions.buf.remove_workspace_folder') end, desc = 'Remove Workspace Folder' },
-    -- { '', function() glue.emit('lsp.actions.buf.signature_help') end, desc = 'Signature Help' },
-    -- { '', function() glue.emit('lsp.actions.buf.type_definition') end, desc = 'Type Definition' },
-    -- { '', function() glue.emit('lsp.actions.buf.workspace_symbol') end, desc = 'Workspace Symbol' },
+    -- { '', _map('lsp.actions.buf.add_workspace_folder'), desc = 'Add Workspace folder' },
+    -- { '', _map('lsp.actions.buf.code_action'), desc = 'Code Action' },
+    -- { '', _map('lsp.actions.buf.document_symbol'), desc = 'Document Symbol' },
+    -- { '', _map('lsp.actions.buf.implementation'), desc = 'Goto Implementation' },
+    -- { '', _map('lsp.actions.buf.incoming_calls'), desc = 'Show Incoming Calls' },
+    -- { '', _map('lsp.actions.buf.outgoing_calls'), desc = 'Show Outgoing Calls' },
+    -- { '', _map('lsp.actions.buf.references'), desc = 'Show References' },
+    -- { '', _map('lsp.actions.buf.remove_workspace_folder'), desc = 'Remove Workspace Folder' },
+    -- { '', _map('lsp.actions.buf.signature_help'), desc = 'Signature Help' },
+    -- { '', _map('lsp.actions.buf.type_definition'), desc = 'Type Definition' },
+    -- { '', _map('lsp.actions.buf.workspace_symbol'), desc = 'Workspace Symbol' },
     --
   })
 end

@@ -57,7 +57,7 @@ local is_enabled = function(bufnr) return is_enabled_global() and is_enabled_for
 -- glue provider for autoformat status, and listener for toggle
 -------------------------------------------------------------------------------
 local glue = require('glue').register('plugins/editor-format')
-glue.answer('autoformat.status', function(opts)
+glue.handle('autoformat.status', function(opts)
   local bufnr = opts.bufnr or vim.api.nvim_get_current_buf()
   return {
     enabled = is_enabled(bufnr),
@@ -67,9 +67,9 @@ glue.answer('autoformat.status', function(opts)
   }
 end)
 
-glue.listen('autoformat.actions.toggle', toggle_autoformat)
-glue.listen('autoformat.actions.toggle.buffer', toggle_autoformat_for_buffer)
-glue.listen('autoformat.actions.toggle.filetype', toggle_autoformat_for_filetype)
+glue.handle('autoformat.actions.toggle', toggle_autoformat)
+glue.handle('autoformat.actions.toggle.buffer', toggle_autoformat_for_buffer)
+glue.handle('autoformat.actions.toggle.filetype', toggle_autoformat_for_filetype)
 
 local function create_commands()
   ------------------------------------------------------------------------------

@@ -1,25 +1,13 @@
-local glue = require('glue').register('telescope.actions')
-
--- return function that will execute the given telescope command
-local function telescope(cmd)
-  return function() vim.cmd.Telescope(cmd) end
-end
-
-local M = {}
-
-function M.stop() glue.clear('*') end
-
-M.actions = {
+return require('lib.actions').register('telescope.actions', {
   ['telescope.lsp.actions.definition'] = function() vim.cmd.Telescope('lsp_definitions') end,
-  ['telescope.lsp.actions.references'] = function() vim.cmd.Telescope('lsp_references') end,
-
-  ['telescope.lsp.actions.implementation'] = function() vim.cmd.Telescope('lsp_implementations') end,
-  ['telescope.lsp.actions.type_definition'] = function() vim.cmd.Telescope('lsp_type_definitions') end,
   ['telescope.lsp.actions.document_symbols'] = function() vim.cmd.Telescope('lsp_document_symbols') end,
-  ['telescope.lsp.actions.workspace_symbols'] = function() vim.cmd.Telescope('lsp_workspace_symbols') end,
   ['telescope.lsp.actions.dynamic_workspace_symbols'] = function() vim.cmd.Telescope('lsp_dynamic_workspace_symbols') end,
-  ['telescope.lsp.actions.outgoing_calls'] = function() vim.cmd.Telescope('lsp_outgoing_calls') end,
+  ['telescope.lsp.actions.implementation'] = function() vim.cmd.Telescope('lsp_implementations') end,
   ['telescope.lsp.actions.incoming_calls'] = function() vim.cmd.Telescope('lsp_incoming_calls') end,
+  ['telescope.lsp.actions.outgoing_calls'] = function() vim.cmd.Telescope('lsp_outgoing_calls') end,
+  ['telescope.lsp.actions.references'] = function() vim.cmd.Telescope('lsp_references') end,
+  ['telescope.lsp.actions.type_definition'] = function() vim.cmd.Telescope('lsp_type_definitions') end,
+  ['telescope.lsp.actions.workspace_symbols'] = function() vim.cmd.Telescope('lsp_workspace_symbols') end,
 
   ['telescope.actions.autocommands'] = function() vim.cmd.Telescope('autocommands') end,
   ['telescope.actions.buffer_diagnostics'] = function() vim.cmd.Telescope('diagnostics', 'buffnr=0') end,
@@ -46,13 +34,4 @@ M.actions = {
   ['telescope.actions.tagstack'] = function() vim.cmd.Telescope('tagstack') end,
   ['telescope.actions.telescope'] = function() vim.cmd.Telescope() end,
   ['telescope.actions.vim_options'] = function() vim.cmd.Telescope('vim_options') end,
-}
-
-function M.start()
-  M.stop()
-  for name, action in pairs(M.actions) do
-    glue.listen(name, action)
-  end
-end
-
-return M
+})
