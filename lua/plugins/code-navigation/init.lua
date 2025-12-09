@@ -12,7 +12,7 @@ return {
   {
     'stevearc/aerial.nvim', -- https://github.com/stevearc/aerial.nvim
 
-    requires = {
+    dependencies = {
       'nvim-telescope/telescope.nvim',
     },
 

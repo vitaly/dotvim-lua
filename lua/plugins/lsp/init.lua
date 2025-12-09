@@ -86,7 +86,7 @@ return {
   -- mason
   -------------------------------------------------------------------------------
   {
-    'williamboman/mason.nvim', -- https://github.com/williamboman/mason.nvim
+    'mason-org/mason.nvim', -- https://github.com/mason-org/mason.nvim
     lazy = true,
     build = ':MasonUpdate', -- :MasonUpdate updates registry contents
     cmd = { 'Mason', 'MasonLog', 'MasonUpdate', 'MasonInstall', 'MasonUninstall', 'MasonUninstallAll' },

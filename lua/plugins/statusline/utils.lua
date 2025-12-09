@@ -2,7 +2,7 @@ local UTILS = {}
 
 local function get_clients()
   ---@diagnostic disable-next-line: deprecated
-  return vim.lsp.get_clients() or vim.lsp.get_active_clients()
+  return vim.lsp.get_clients()
 end
 
 ---@param bufnr? number

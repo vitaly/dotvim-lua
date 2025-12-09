@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --- ENV VARS
 --------------------------------------------------------------------------------
-vim.env.CC = 'gcc-12'
+-- vim.env.CC = 'gcc-12'
 
 --------------------------------------------------------------------------------
 --- GLOBALS
@@ -67,7 +67,6 @@ opt.shortmess = opt.shortmess
   + 'W' -- don't give "written" or "[w]" when writing a file
   + 'c' -- don't give |ins-completion-menu| messages
   + 'C' -- don't give messages while scanning for ins-completion
-opt.shiftwidth = 2
 opt.showmatch = true -- Show matching brackets.
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8 -- Scroll lines of context

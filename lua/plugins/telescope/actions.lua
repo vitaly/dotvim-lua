@@ -10,7 +10,7 @@ return require('lib.actions').register('telescope.actions', {
   ['telescope.lsp.actions.workspace_symbols'] = function() vim.cmd.Telescope('lsp_workspace_symbols') end,
 
   ['telescope.actions.autocommands'] = function() vim.cmd.Telescope('autocommands') end,
-  ['telescope.actions.buffer_diagnostics'] = function() vim.cmd.Telescope('diagnostics', 'buffnr=0') end,
+  ['telescope.actions.buffer_diagnostics'] = function() vim.cmd.Telescope('diagnostics', 'bufnr=0') end,
   ['telescope.actions.diagnostics'] = function() vim.cmd.Telescope('diagnostics') end,
   ['telescope.actions.buffers'] = function() vim.cmd.Telescope('buffers') end,
   ['telescope.actions.colorscheme'] = function() vim.cmd.Telescope('colorscheme', 'enable_preview= true') end,

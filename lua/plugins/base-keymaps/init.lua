@@ -266,7 +266,7 @@ return {
         { [[\le]], [[<cmd>lua require('onion.config').set('log_level', 4)<cr>]], desc = 'Loglevel 4 - ERROR' },
         { [[\lo]], [[<cmd>lua require('onion.config').set('log_level', 5)<cr>]], desc = 'Loglevel 5 - OFF' },
 
-        { [[\ll]], [[<cmd>lua print(require('onion.config').get('log_level'))<cr>)]], desc = 'print Loglevel' },
+        { [[\ll]], [[<cmd>lua print(require('onion.config').get('log_level'))<cr>]], desc = 'Print Loglevel' },
       },
     },
   },

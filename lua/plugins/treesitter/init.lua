@@ -9,7 +9,7 @@ return {
 
     build = ':TSUpdate',
 
-    lazy = false,
+    -- lazy = false,
 
     event = { 'BufReadPost', 'BufNewFile' },
 
