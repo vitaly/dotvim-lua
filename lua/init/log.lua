@@ -7,6 +7,9 @@
 -- vim.lsp.set_log_level 'trace'
 -- require('vim.lsp.log').set_format_func(vim.inspect)
 
+-- Default log level before onion.config is loaded
+local DEFAULT_LOG_LEVEL = vim.log.levels.WARN
+
 -- 'inspect' all provided arguments using ',' as separator
 function my.inspect(...)
   local objects = {}
@@ -18,9 +21,19 @@ function my.inspect(...)
   return table.concat(objects, ', ')
 end
 
+--- Get the current log level, with fallback if onion.config is not loaded yet
+---@return integer
+local function get_log_level()
+  local ok, onion_config = pcall(require, 'onion.config')
+  if ok and onion_config then
+    return onion_config.get('log_level') or DEFAULT_LOG_LEVEL
+  end
+  return DEFAULT_LOG_LEVEL
+end
+
 -- generic logging function
 local notify = vim.schedule_wrap(function(level, ...)
-  if level >= require('onion.config').get('log_level') then vim.notify(my.inspect(...), level) end
+  if level >= get_log_level() then vim.notify(my.inspect(...), level) end
 end)
 
 my.log = {

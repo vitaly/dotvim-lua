@@ -7,12 +7,13 @@ local TOOLS = {}
 --- Note: if directory exists, no other checks are performed
 ---@param repo string
 ---@param path string
+---@return boolean success
 function TOOLS.git_clone(repo, path, ...)
-  if vim.uv.fs_stat(path) then return end
+  if vim.uv.fs_stat(path) then return true end
 
-  my.log.info('git clone ' .. repo .. ' into ' .. path)
+  vim.notify('git clone ' .. repo .. ' into ' .. path, vim.log.levels.INFO)
 
-  vim.fn.system({
+  local output = vim.fn.system({
     'git',
     'clone',
     '--filter=blob:none',
@@ -20,6 +21,13 @@ function TOOLS.git_clone(repo, path, ...)
     repo,
     path,
   })
+
+  if vim.v.shell_error ~= 0 then
+    vim.notify('Failed to clone ' .. repo .. ': ' .. output, vim.log.levels.ERROR)
+    return false
+  end
+
+  return true
 end
 
 --- get highlight attribute from a highlight group

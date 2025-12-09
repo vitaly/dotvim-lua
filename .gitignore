@@ -14,4 +14,4 @@
 
 test/
 _envrc
-.luarc.json
+config.lua

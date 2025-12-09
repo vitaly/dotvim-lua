@@ -69,19 +69,23 @@ return {
     },
 
     init = function()
-      -- FIXME: convert to lua
-      vim.cmd([[
-        highlight TermCursor ctermfg=red guifg=red
+      -- Set terminal cursor color
+      vim.api.nvim_set_hl(0, 'TermCursor', { ctermfg = 'red', fg = 'red' })
 
-        augroup TerminalInsertHandling
-          au!
-          " TODO: check that this is still relevant
-          " for some reason clicking in a terminal buffer exists insert mode
-          au TermOpen                 *  nnoremap <buffer><LeftRelease> <LeftRelease>i
-          " start in insert more
-          au TermOpen,BufEnter,FocusGained term://*  startinsert
-        augroup END
-      ]])
+      local au = require('lib.au')
+
+      -- For some reason clicking in a terminal buffer exits insert mode
+      -- This mapping re-enters insert mode after mouse click
+      au.command('terminal.mouse_click', 'TermOpen', function()
+        vim.keymap.set('n', '<LeftRelease>', '<LeftRelease>i', { buffer = true, silent = true })
+      end)
+
+      -- Start in insert mode when entering terminal buffers
+      au.command('terminal.insert_mode', { 'TermOpen', 'BufEnter', 'FocusGained' }, function()
+        if vim.bo.buftype == 'terminal' then
+          vim.cmd.startinsert()
+        end
+      end, { pattern = 'term://*' })
     end,
   },
 }

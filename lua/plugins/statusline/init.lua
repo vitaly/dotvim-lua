@@ -8,6 +8,16 @@ local toggle_statusline = require('lib.toggle').toggler(
   { silent = true }
 )
 
+-- Default icons in case onion.config doesn't provide them
+local default_icons = {
+  diagnostics = {
+    Error = 'E',
+    Warn = 'W',
+    Hint = '󰌶 ',
+    Info = 'I',
+  },
+}
+
 return {
   'nvim-lualine/lualine.nvim', -- https://github.com/nvim-lualine/lualine.nvim
   event = 'VeryLazy',
@@ -22,7 +32,7 @@ return {
 
   config = function(_, opts)
     local config = require('onion.config')
-    local icons = config.get('icons') or {}
+    local icons = vim.tbl_deep_extend('force', default_icons, config.get('icons') or {})
 
     require('lualine').setup({
       options = {
