@@ -201,6 +201,7 @@ return {
 
         -- misc
         { '<tab><space>', '<cmd>tabnew<cr>', desc = 'New Tab' },
+        { '<tab>n', '<cmd>tabnew<cr>', desc = 'New Tab' },
         { '<leader>n', '<cmd>cn<cr>', desc = 'Next' },
         { '<leader>p', '<cmd>cp<cr>', desc = 'Prev' },
         { [[\;]], 'gcc', mode = 'n', remap = true, desc = 'Toggle Comment Line' },
