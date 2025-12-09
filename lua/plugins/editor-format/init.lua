@@ -1,13 +1,45 @@
 local config = require('onion.config')
+
+-- generic autoformatting
 config.set_defaults('autoformat', {
   enabled = true,
   log_level = vim.log.levels.INFO,
-  ft = {
-    lua = { 'stylua' },
-    javascript = { 'prettier' },
-    json = { 'prettier' },
+
+  filetypes = {
+    lua = {
+      formatters = { 'stylua' },
+    },
+    javascript = {
+      formatters = { 'prettier' },
+    },
+    json = {
+      formatters = { 'prettier' },
+    },
+    bash = {
+      formatters = { 'shfmt', 'beautysh' },
+    },
+    sh = {
+      formatters = { 'shfmt', 'beautysh' },
+    },
+    sql = {
+      enabled = false,
+    },
   },
-  ignore_ft = { 'sql' },
+})
+
+-- conform specific
+config.set_defaults('conform', {
+  stop_after_first = true,
+
+  default_format_opts = {
+    lsp_format = 'fallback',
+  },
+
+  formatters = {
+    beautysh = {
+      args = { '--indent-size', '2', '--force-function-style', 'fnpar', '-' },
+    },
+  },
 })
 
 local toggle_autoformat = function() config.set('autoformat.enabled', not config.get('autoformat.enabled')) end
@@ -19,19 +51,11 @@ local toggle_autoformat_for_buffer = function(_, opts)
   vim.b[bufnr].disable_autoformat = not vim.b[bufnr].disable_autoformat
 end
 
-local toggle_autoformat_for_filetype = function(_, opts)
-  opts = opts or {}
-  local bufnr = opts.bufnr or vim.api.nvim_get_current_buf()
-  local ft = vim.bo[bufnr].filetype
+local ft_enabled_key = function(ft) return 'autoformat.filetypes.' .. ft .. '.enabled' end
 
-  local ignore_ft = config.get('autoformat.ignore_ft')
-  if vim.tbl_contains(ignore_ft, ft) then
-    -- remove from ignore list
-    ignore_ft = vim.tbl_filter(function(v) return v ~= ft end, ignore_ft)
-  else
-    table.insert(ignore_ft, ft)
-  end
-  config.set('autoformat.ignore_ft', ignore_ft)
+local toggle_autoformat_for_filetype = function(_, opts)
+  local key = ft_enabled_key(vim.bo[(opts or {}).bufnr or vim.api.nvim_get_current_buf()].filetype)
+  config.set(key, not config.get(key, true))
 end
 
 local is_enabled_global = function() return config.get('autoformat.enabled') end
@@ -43,13 +67,7 @@ local is_enabled_for_buffer = function(bufnr)
   return not vim.b[bufnr].disable_autoformat
 end
 
-local is_enabled_for_filetype = function(bufnr)
-  bufnr = bufnr or vim.api.nvim_get_current_buf()
-
-  local ft = vim.bo[bufnr].filetype
-
-  return not vim.tbl_contains(config.get('autoformat.ignore_ft'), ft)
-end
+local is_enabled_for_filetype = function(bufnr) return config.get(ft_enabled_key(vim.bo[bufnr or vim.api.nvim_get_current_buf()].filetype), true) end
 
 local is_enabled = function(bufnr) return is_enabled_global() and is_enabled_for_buffer(bufnr) and is_enabled_for_filetype(bufnr) end
 
@@ -85,7 +103,7 @@ local function create_commands()
         ['end'] = { args.line2, end_line:len() },
       }
     end
-    require('conform').format({ async = true, lsp_format = 'fallback', range = range })
+    require('conform').format({ async = true, range = range })
   end, { range = true })
 
   ------------------------------------------------------------------------------
@@ -101,7 +119,7 @@ end
 
 local on_save = function(bufnr)
   if not is_enabled(bufnr) then return end
-  return { timeout_ms = 500, lsp_format = 'fallback' }
+  return { timeout_ms = 500 }
 end
 
 return {
@@ -128,17 +146,22 @@ return {
   },
 
   config = function()
-    require('conform').setup({
-      log_level = config.get('autoformat.log_level'),
+    ---@type conform.setupOpts
+    local opts = config.get('conform') or {}
+    opts.log_level = config.get('autoformat.log_level')
 
-      formatters_by_ft = config.get('autoformat.ft'),
+    -- formatters_by_ft can come from conform config
+    -- or from autoformat config. but the one in autoformat is of a different shape
+    -- need to 'masssage' it into the shape conform expects and merge
+    opts.formatters_by_ft = {}
+    for ft, ft_config in pairs(config.get('autoformat.filetypes') or {}) do
+      if ft_config.enabled ~= false and ft_config.formatters then opts.formatters_by_ft[ft] = ft_config.formatters end
+    end
 
-      default_format_opts = {
-        lsp_format = 'fallback',
-      },
+    opts.format_on_save = on_save
 
-      format_on_save = on_save,
-    })
+    require('conform').setup(opts)
+
     create_commands()
   end,
 }
