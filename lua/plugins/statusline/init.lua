@@ -30,14 +30,14 @@ return {
     { [[\S]], toggle_statusline, desc = 'Toggle Status Line' },
   },
 
-  config = function(_, opts)
+  config = function()
     local config = require('onion.config')
     local icons = vim.tbl_deep_extend('force', default_icons, config.get('icons') or {})
 
     require('lualine').setup({
       options = {
         disabled_filetypes = { 'Outline' },
-        -- theme = theme.light,
+        always_show_tabline = false,
       },
 
       tabline = { lualine_b = { { 'tabs', mode = 1 } } },
