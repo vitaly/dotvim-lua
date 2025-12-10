@@ -10,7 +10,7 @@ function ACTIONS.register(name, actions)
 
   function M.stop() glue.clear('*') end
 
-  function M.start()
+  function M.setup()
     M.stop()
     for event, fn in pairs(actions or {}) do
       glue.handle(event, fn)

@@ -73,6 +73,7 @@ return {
         'markdown',
         'python',
         'query',
+        'regex',
         'ruby',
         'rust',
         'scala',
@@ -87,9 +88,7 @@ return {
       },
     },
 
-    config = function(_, opts)
-      require('nvim-treesitter.configs').setup(opts)
-    end,
+    config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end,
   },
   {
     'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs

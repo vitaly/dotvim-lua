@@ -19,7 +19,7 @@ return {
 
     config = function(_, opts)
       require('refactoring').setup(opts)
-      require('plugins.refactoring.actions').start()
+      require('plugins.refactoring.actions').setup()
       require('telescope').load_extension('refactoring')
 
       wk.add({

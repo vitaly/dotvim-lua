@@ -104,7 +104,7 @@ return {
         end
       )
 
-      require('plugins.telescope.actions').start()
+      require('plugins.telescope.actions').setup()
     end,
   },
 }

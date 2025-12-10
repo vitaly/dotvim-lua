@@ -57,4 +57,11 @@ TOOLS.highlight = setmetatable({}, {
   end,
 })
 
+TOOLS.modpath = function(module) return vim.fs.joinpath(vim.fn.stdpath('config'), 'lua', unpack(vim.split(module, '.', { plain = true }))) end
+
+TOOLS.vplug = function(spec)
+  spec.dir = spec.dir or TOOLS.modpath(spec[1])
+  return spec
+end
+
 return TOOLS

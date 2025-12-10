@@ -1,12 +1,15 @@
--- local debug = my.log.debug
-local trace = my.log.trace
+local debug = my.log.debug
+-- local trace = my.log.trace
 
 local config = require('onion.config')
+
+---@alias SERVER vim.lsp.Config | { mason?: boolean, debug?: boolean }
+---@alias SERVERS table<string, SERVER>
 
 config.set_defaults('lsp', {
   ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli' },
   enable = { 'lua_ls', 'ts_ls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'ruby_lsp' },
-  ---@type table<string, vim.lsp.Config | { mason: boolean}>
+  ---@type table<string, SERVER>
   servers = {
     ruby_lsp = { cmd = { 'ruby-lsp' } },
   },
@@ -21,7 +24,7 @@ local function _map(event)
 end
 
 local function define_lsp_global_maps()
-  require('plugins.lsp.actions').start()
+  require('plugins.lsp.actions').setup()
   wk.add({
     { [[<leader>al]], group = 'LSP' },
 
@@ -61,8 +64,8 @@ local function define_lsp_buffer_maps(client, buf)
 
     { '<localleader>s', desc = 'Search' },
     { '<localleader>sd', _map('telescope.lsp.actions.document_symbols'), desc = 'Document Symbols' },
-    { '<localleader>sw', _map('telescope.lsp.actions.workspace_symbols'), desc = 'Document Symbols' },
-    { '<localleader>sW', _map('telescope.lsp.actions.dynamic_workspace_symbols'), desc = 'Document Symbols' },
+    { '<localleader>sw', _map('telescope.lsp.actions.workspace_symbols'), desc = 'Workspace Symbols' },
+    { '<localleader>sW', _map('telescope.lsp.actions.dynamic_workspace_symbols'), desc = 'Dynamic Workspace Symbols' },
 
     --
     -- { '', _map('lsp.actions.buf.add_workspace_folder'), desc = 'Add Workspace folder' },
@@ -121,8 +124,13 @@ return {
 
     config = function()
       local ensure_installed = config.get('lsp.ensure_installed') or {}
-      ---@type table<string, vim.lsp.Config | { mason: boolean}>
+      ---@type SERVERS
       local servers = config.get('lsp.servers') or {}
+
+      for _, server in ipairs(config.get('lsp.enable')) do
+        servers[server] = servers[server] or {}
+      end
+
       -- configure tools installer
       for server, conf in pairs(servers) do
         if conf.mason ~= false then table.insert(ensure_installed, server) end
@@ -134,14 +142,12 @@ return {
       })
 
       -- configure servers
-      for _, server in ipairs(config.get('lsp.enable')) do
-        local conf = servers[server] or {}
-
+      for server, conf in pairs(servers) do
         -- completion provides extra capabilities
         local capabilities = require('glue').register('lsp.init').call('completion.capabilities', { capabilities = conf.capabilities or {} })
         if capabilities then conf.capabilities = capabilities end
 
-        trace('Configuring LSP server', server, conf)
+        if conf.debug == true then debug('LSP server config', server, conf) end
         vim.lsp.config(server, conf)
         vim.lsp.enable(server)
       end
