@@ -41,4 +41,11 @@ return {
       },
     },
   },
+  {
+    'vitaly/onion-ui.nvim',
+    enabled = true,
+    keys = {
+      { '<leader>aoo', function() require('onion-ui').start() end, desc = 'Onion UI' },
+    },
+  },
 }
