@@ -4,7 +4,6 @@ config.set_defaults('tagbar', {
 })
 
 return {
-  -- NOTE: Aerial is used through a Telescope popup
   ------------------------------------------------------------------------------
   -- AERIAL
   ------------------------------------------------------------------------------
@@ -47,6 +46,10 @@ return {
       { [[\t]], vim.cmd.Outline, desc = 'Symbols Outline' },
     },
 
-    opts = {},
+    opts = {
+      keymaps = {
+        goto_location = { '<cr>', '<2-leftmouse>' },
+      },
+    },
   },
 }
