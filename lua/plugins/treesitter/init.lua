@@ -103,7 +103,6 @@ return {
       enable_check_bracket_line = true,
     },
 
-    -- TODO: map for cmp
     config = function(_, opts)
       local autopairs = require('nvim-autopairs')
 
