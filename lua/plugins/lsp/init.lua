@@ -137,7 +137,10 @@ return {
       for _, server in ipairs(config.get('lsp.enable')) do
         local conf = servers[server] or {}
 
-        conf.capabilities = require('cmp_nvim_lsp').default_capabilities(conf.capabilities or {})
+        -- completion provides extra capabilities
+        local capabilities = require('glue').register('lsp.init').call('completion.capabilities', { capabilities = conf.capabilities or {} })
+        if capabilities then conf.capabilities = capabilities end
+
         trace('Configuring LSP server', server, conf)
         vim.lsp.config(server, conf)
         vim.lsp.enable(server)

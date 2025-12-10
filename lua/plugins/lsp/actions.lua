@@ -27,4 +27,7 @@ return require('lib.actions').register('lsp.actions', {
   ['lsp.actions.signature_help'] = function() vim.lsp.buf.signature_help() end,
   ['lsp.actions.type_definition'] = function() vim.lsp.buf.type_definition() end,
   ['lsp.actions.workspace_symbol'] = function() vim.lsp.buf.workspace_symbol() end,
+
+  -- hover
+  ['lsp.actions.hover'] = function() vim.lsp.buf.hover() end,
 })

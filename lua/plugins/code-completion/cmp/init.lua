@@ -79,21 +79,19 @@ return {
       local cmp = require('cmp')
       local luasnip = require('luasnip')
 
+      require('glue')
+        .register('nvim-cmp')
+        .handle('completion.capabilities', function(_, args) return require('cmp_nvim_lsp').default_capabilities((args or {}).capabilities or {}) end)
+
       local select_next_item = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })
       local select_prev_item = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })
       local tab_completion = function(fallback)
-        if luasnip.expand_or_jumpable() then
-          luasnip.expand_or_jump()
-        end
+        if luasnip.expand_or_jumpable() then luasnip.expand_or_jump() end
 
-        if cmp.confirm({ select = true }) then
-          return
-        end
+        if cmp.confirm({ select = true }) then return end
 
         local copilot_result = vim.fn['copilot#Accept']('')
-        if copilot_result ~= '' then
-          return vim.api.nvim_feedkeys(copilot_result, 'i', true)
-        end
+        if copilot_result ~= '' then return vim.api.nvim_feedkeys(copilot_result, 'i', true) end
 
         fallback()
       end
@@ -109,9 +107,7 @@ return {
         -- completion = { completeopt = 'menu,menuone,noinsert' },
         completion = { completeopt = 'menu,menuone,noselect,preview' },
         snippet = {
-          expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-          end,
+          expand = function(args) require('luasnip').lsp_expand(args.body) end,
         },
 
         mapping = cmp.mapping.preset.insert({
