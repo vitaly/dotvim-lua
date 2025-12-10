@@ -7,7 +7,7 @@ local config = require('onion.config')
 ---@alias SERVERS table<string, SERVER>
 
 config.set_defaults('lsp', {
-  ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli' },
+  ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli', 'copilot' },
   enable = { 'lua_ls', 'ts_ls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'ruby_lsp' },
   ---@type table<string, SERVER>
   servers = {
@@ -58,14 +58,14 @@ local function define_lsp_buffer_maps(client, buf)
 
     { '<localleader>g', desc = 'Go to' },
     { '<localleader>gd', _map('telescope.lsp.actions.definition'), desc = 'Go to Definition' },
-    { '<localleader>gr', _map('telescope.lsp.actions.references'), desc = 'Go to References' },
+    { '<localleader>gr', _map('telescope.lsp.actions.reference'), desc = 'Go to References' },
     { '<localleader>gi', _map('telescope.lsp.actions.implementation'), desc = 'Go to Implementation' },
-    { '<localleader>gt', _map('telescope.lsp.actions.type_definition'), desc = 'Go to Type Definition' },
+    { '<localleader>gt', _map('telescope.lsp.actions.type.definition'), desc = 'Go to Type Definition' },
 
     { '<localleader>s', desc = 'Search' },
-    { '<localleader>sd', _map('telescope.lsp.actions.document_symbols'), desc = 'Document Symbols' },
-    { '<localleader>sw', _map('telescope.lsp.actions.workspace_symbols'), desc = 'Workspace Symbols' },
-    { '<localleader>sW', _map('telescope.lsp.actions.dynamic_workspace_symbols'), desc = 'Dynamic Workspace Symbols' },
+    { '<localleader>sd', _map('telescope.lsp.actions.symbol.document'), desc = 'Document Symbols' },
+    { '<localleader>sw', _map('telescope.lsp.actions.symbol.workspace'), desc = 'Workspace Symbols' },
+    { '<localleader>sW', _map('telescope.lsp.actions.symbol.workspace.dynamic'), desc = 'Dynamic Workspace Symbols' },
 
     --
     -- { '', _map('lsp.actions.buf.add_workspace_folder'), desc = 'Add Workspace folder' },

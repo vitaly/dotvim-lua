@@ -14,19 +14,20 @@ return require('lib.actions').register('lsp.actions', {
 
   -- buf
   ['lsp.actions.add_workspace_folder'] = function() vim.lsp.buf.add_workspace_folder() end,
+  ['lsp.actions.remove_workspace_folder'] = function() vim.lsp.buf.remove_workspace_folder() end,
+  ['lsp.actions.rename'] = function() vim.lsp.buf.rename() end,
+
   ['lsp.actions.code_action'] = function() vim.lsp.buf.code_action() end,
   ['lsp.actions.declaration'] = function() vim.lsp.buf.declaration() end,
   ['lsp.actions.definition'] = function() vim.lsp.buf.definition() end,
-  ['lsp.actions.document_symbol'] = function() vim.lsp.buf.document_symbol() end,
+  ['lsp.actions.symbol.document'] = function() vim.lsp.buf.document_symbol() end,
+  ['lsp.actions.symbol.workspace'] = function() vim.lsp.buf.workspace_symbol() end,
   ['lsp.actions.implementation'] = function() vim.lsp.buf.implementation() end,
-  ['lsp.actions.incoming_calls'] = function() vim.lsp.buf.incoming_calls() end,
-  ['lsp.actions.outgoing_calls'] = function() vim.lsp.buf.outgoing_calls() end,
-  ['lsp.actions.references'] = function() vim.lsp.buf.references() end,
-  ['lsp.actions.remove_workspace_folder'] = function() vim.lsp.buf.remove_workspace_folder() end,
-  ['lsp.actions.rename'] = function() vim.lsp.buf.rename() end,
+  ['lsp.actions.call.incoming'] = function() vim.lsp.buf.incoming_calls() end,
+  ['lsp.actions.call.outgoing'] = function() vim.lsp.buf.outgoing_calls() end,
+  ['lsp.actions.reference'] = function() vim.lsp.buf.references() end,
   ['lsp.actions.signature_help'] = function() vim.lsp.buf.signature_help() end,
-  ['lsp.actions.type_definition'] = function() vim.lsp.buf.type_definition() end,
-  ['lsp.actions.workspace_symbol'] = function() vim.lsp.buf.workspace_symbol() end,
+  ['lsp.actions.type.definition'] = function() vim.lsp.buf.type_definition() end,
 
   -- hover
   ['lsp.actions.hover'] = function() vim.lsp.buf.hover() end,
