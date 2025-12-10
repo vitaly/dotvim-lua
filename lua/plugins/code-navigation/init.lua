@@ -43,7 +43,7 @@ return {
     lazy = true,
     cmd = { 'Outline', 'OutlineOpen' },
     keys = {
-      { [[\t]], vim.cmd.Outline, desc = 'Symbols Outline' },
+      { '\\]', vim.cmd.Outline, desc = 'Symbols Outline' },
     },
 
     opts = {

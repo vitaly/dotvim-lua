@@ -6,16 +6,14 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
 
-  keys = {
-    -- { '\\\\', popup, desc = 'Quick File Popup' },
-    { '\\[', '<cmd>NvimTreeToggle<cr>', desc = 'Toggle File Tree' },
-    { '\\]', '<cmd>NvimTreeFindFile<cr>', desc = 'Toggle / Reveal File' },
-  },
-
   config = function()
-    -- my.log.debug 'nvim-tree'
-    require('nvim-tree').setup {
+    local glue = require('glue').register('file-tree.nvimtree')
 
+    -- glue.handle('file-tree.actions.popup', function()  end)
+    glue.handle('file-tree.actions.toggle', function() vim.cmd('NvimTreeToggle') end)
+    glue.handle('file-tree.actions.reveal', function() vim.cmd('NvimTreeFindFile') end)
+
+    require('nvim-tree').setup({
       view = {
         float = {
           -- enable = true,
@@ -38,6 +36,6 @@ return {
         enable = true,
         show_on_dirs = true,
       },
-    }
+    })
   end,
 }

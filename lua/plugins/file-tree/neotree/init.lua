@@ -1,15 +1,12 @@
-local position = function() return require('onion.config').get('file-tree.position') or 'left' end
+local position = function() return require('onion.config').get('file-tree.position', 'left') end
 
-local reveal = function() vim.cmd([[Neotree filesystem ]] .. position() .. [[ reveal reveal_force_cwd]]) end
-local popup = function() vim.cmd([[Neotree filesystem float reveal reveal_force_cwd]]) end
-local toggle = function() vim.cmd([[Neotree filesystem ]] .. position() .. [[ focus toggle=true]]) end
-local function toggle_or_reveal()
-  if vim.o.buflisted and '' ~= vim.fn.expand('%:p') then
-    reveal()
-  else
-    toggle()
-  end
-end
+-- local function toggle_or_reveal()
+--   if vim.o.buflisted and '' ~= vim.fn.expand('%:p') then
+--     reveal()
+--   else
+--     toggle()
+--   end
+-- end
 
 return {
 
@@ -22,16 +19,6 @@ return {
   },
 
   lazy = false, -- so that opening a directory will work
-
-  cmd = 'Neotree',
-
-  deactivate = function() vim.cmd([[Neotree close]]) end,
-
-  keys = {
-    { '\\\\', popup, desc = 'Quick File Popup' },
-    { '\\[', toggle, desc = 'Toggle File Tree' },
-    { '\\]', toggle_or_reveal, desc = 'Toggle / Reveal File' },
-  },
 
   init = function()
     vim.g.neo_tree_remove_legacy_commands = 1
@@ -91,15 +78,20 @@ return {
         },
         position = '50%',
       },
+      position = position(),
     },
   },
 
   config = function(_, opts)
     -- my.log.debug 'neotree'
-    opts.window.position = position()
     require('neo-tree').setup(opts)
     require('lib.au').command('neotree.termclose', 'TermClose', function()
       if package.loaded['neo-tree.sources.git_status'] then require('neo-tree.sources.git_status').refresh() end
     end)
+
+    local glue = require('glue').register('file-tree.neotree')
+    glue.handle('file-tree.actions.popup', function() vim.cmd([[Neotree filesystem float reveal reveal_force_cwd]]) end)
+    glue.handle('file-tree.actions.toggle', function() vim.cmd([[Neotree filesystem ]] .. position() .. [[ focus toggle=true]]) end)
+    glue.handle('file-tree.actions.reveal', function() vim.cmd([[Neotree filesystem ]] .. position() .. [[ reveal reveal_force_cwd]]) end)
   end,
 }

@@ -56,36 +56,6 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 
 - `,d` - Show Diff Menu
 
-<!-- lua/plugins/base-tree/README.md -->
-
-## File Tree
-
-[neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
-OR
-[nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
-
-> Note: nvim-tree configuration is still in progress
-
-### Config
-
-- `config.file-tree.plugin` - set to 'nvimtree' or 'neotree' (default)
-- `config.file-tree.position` - left (default), or right
-
-## Maps
-
-- `\\` - Quick File Popup (not available for nvimtree)
-- `\[` - Toggle File Tree
-- `\[` - Reveal File
-
-inside File Tree (neotree, nvimtree TBD):
-
-- `?` - show help
-- `a` - add file / dir
-- `r` - rename file / dir
-- `m` - move file / dir
-- `d` - delete file / dir
-- `q` - close File Tree
-
 <!-- lua/plugins/code-completion/README.md -->
 
 ## Completion
@@ -263,6 +233,27 @@ after pasting:
 - `]y` - next paste
 
 - `<SPACE-Y-CR` - yank history picker
+
+<!-- lua/plugins/file-tree/README.md -->
+
+## File Tree
+
+[neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
+OR
+[nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
+
+> Note: nvim-tree configuration is still in progress
+
+### Config
+
+- `config.file-tree.plugin` - set to 'nvimtree', 'neotree', or 'snacks' (default)
+- `config.file-tree.position` - left (default), or right
+
+## Maps
+
+- `\\` - Quick File Popup (not available for nvimtree)
+- `\[` - Toggle File Tree
+- `\.` - Reveal File
 
 <!-- lua/plugins/git/README.md -->
 
