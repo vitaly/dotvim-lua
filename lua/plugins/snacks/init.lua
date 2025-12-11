@@ -8,6 +8,15 @@ return {
   'folke/snacks.nvim',
   dependencies = {
     'onion.nvim',
+    {
+      'folke/todo-comments.nvim', -- https://github.com/folke/todo-comments.nvim
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      opts = {
+        keywords = {
+          TODO = { icon = ' ', color = 'info', alt = { 'TBD' } },
+        },
+      },
+    },
   },
   priority = 1000,
   lazy = false,
