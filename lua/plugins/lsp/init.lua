@@ -28,14 +28,12 @@ config.set_defaults('lsp', {
   servers = {
     ruby_lsp = { cmd = { 'ruby-lsp' } },
   },
-
-  -------------------------------------------------------------------------------
-  --- diagnostic
-  -------------------------------------------------------------------------------
-
-  diagnostic = {
-    icons = { error = '󰅚 ', warn = '󰀪 ', hint = '󰌶 ', info = '󰋽 ' },
-  },
+})
+---------------------------------------------------------------------------------
+--- diagnostic icons
+---------------------------------------------------------------------------------
+config.set_defaults('icons', {
+  diagnostic = { error = '󰅚 ', warn = '󰀪 ', hint = '󰌶 ', info = '󰋽 ' },
 })
 
 local au = require('lib.au')
@@ -118,7 +116,7 @@ return {
         end
       end
 
-      local icons = config.get('lsp.diagnostic.icons')
+      local icons = config.get('icons.diagnostic', { error = 'E', warn = 'W', hint = 'H', info = 'I' })
 
       vim.diagnostic.config({
         severity_sort = true,
