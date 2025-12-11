@@ -81,6 +81,8 @@ return {
     'nvim-mini/mini.indentscope', -- https://github.com/nvim-mini/mini.indentscope/tree/main
     version = '*',
 
+    enabled = false, -- using snack's indent for now.
+
     keys = {
       {
         [[\i]],

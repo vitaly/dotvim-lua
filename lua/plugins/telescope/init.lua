@@ -10,6 +10,7 @@ return {
   -------------------------------------------------------------------------------
   {
     'nvim-telescope/telescope.nvim', -- https://github.com/nvim-telescope/telescope.nvim
+    lazy = true,
     dependencies = {
       'vitaly/glue.nvim',
       'nvim-lua/plenary.nvim',
@@ -17,39 +18,59 @@ return {
     },
     cmd = 'Telescope',
 
+    init = function()
+      require('which-key').add({
+        { [[<leader>at]], group = '[T]elescope' },
+        { [[<leader>at/]], group = 'Grep' },
+        { [[<leader>atG]], group = 'Git' },
+        { [[<leader>atl]], group = 'LSP' },
+      })
+    end,
+
     keys = {
-      { [[<leader>ap]], _map('telescope.actions.pick'), desc = 'telesco[P]e' },
+      { [[<leader>att]], _map('telescope.actions.pick'), desc = 'Telescope' },
 
-      { [[<leader>sd]], _map('telescope.actions.pick.diagnostic.buffer'), desc = 'Buffer Diagnostics' },
-      { [[<leader>sa]], _map('telescope.actions.pick.autocommand'), desc = 'Autocommands' },
-      { [[<leader>bb]], _map('telescope.actions.pick.buffer'), desc = 'Find buffer' },
-      { [[<leader>sb]], _map('telescope.actions.pick.buffer'), desc = 'Find buffer' },
-      { [[<leader>sC]], _map('telescope.actions.pick.colorscheme'), desc = 'Find Colorscheme' },
-      { [[<leader>s:]], _map('telescope.actions.pick.history.command'), desc = 'Command History' },
-      { [[<leader><cr>]], _map('telescope.actions.pick.command'), desc = 'Find Command' },
-      { [[<leader>sc]], _map('telescope.actions.pick.command'), desc = 'Find Command' },
-      { [[<leader>sD]], _map('telescope.actions.pick.diagnostic'), desc = 'Diagnostics' },
-      { [[<leader>ff]], _map('telescope.actions.pick.file'), desc = 'Find File' },
-      { [[<localleader><localleader>]], _map('telescope.actions.pick.file'), desc = 'Find File' },
-      { [[<leader>gc]], _map('telescope.actions.pick.git.log'), desc = 'Find Git Commit' },
-      { [[<leader>gf]], _map('telescope.actions.pick.file.git'), desc = 'Find Git File' },
-      { [[<leader>gS]], _map('telescope.actions.pick.git.status'), desc = 'Find Git Status' },
-      { [[<leader>sg]], _map('telescope.actions.grep.word'), desc = 'Grep String' },
-      { [[<leader>sh]], _map('telescope.actions.pick.help'), desc = 'Help Tags' },
-      { [[<leader>h]], _map('telescope.actions.pick.help'), desc = 'Help Tags' },
-      { [[<leader>sH]], _map('telescope.actions.pick.highlight'), desc = 'Highlights' },
-      { [[<leader>sk]], _map('telescope.actions.pick.keymap'), desc = 'Keymaps' },
+      { [[<leader>atf]], _map('telescope.actions.pick.file'), desc = 'File' },
+      { [[<leader>ato]], _map('telescope.actions.pick.file.recent'), desc = 'Recent Files' },
+      { [[<leader>atF]], _map('telescope.actions.pick.file.git'), desc = 'Git File' },
 
-      { [[<leader>sl]], _map('telescope.actions.pick.line.buffer'), desc = 'Buffer Lines' },
-      { [[<leader>/]], _map('telescope.actions.grep'), desc = 'Live Grep' },
-      { [[<leader>sm]], _map('telescope.actions.pick.man'), desc = 'Man Pages' },
-      { [[<leader>s']], _map('telescope.actions.pick.mark'), desc = 'Marks' },
-      { [[<leader>so]], _map('telescope.actions.pick.file.recent'), desc = 'Recent Files' },
-      { [[<leader>sy]], _map('telescope.actions.pick.icon'), desc = 'Character Symbols' },
-      { [[<leader>ss]], _map('telescope.actions.pick.tagstack'), desc = 'Tag Stack' },
-      { [[<leader>sT]], _map('telescope.actions.pick'), desc = 'Telescope ...' },
-      { [[<leader>T]], _map('telescope.actions.pick'), desc = 'Telescope ...' },
-      { [[<leader>sv]], _map('telescope.actions.pick.vim.option'), desc = 'Vim Options' },
+      { [[<leader>atb]], _map('telescope.actions.pick.buffer'), desc = 'Buffer' },
+
+      { [[<leader>at//]], _map('telescope.actions.grep'), desc = 'Grep' },
+      { [[<leader>at/w]], _map('telescope.actions.grep.word'), desc = 'Grep Word' },
+
+      { [[<leader>at:]], _map('telescope.actions.pick.history.command'), desc = 'Command History' },
+
+      { [[<leader>atc]], _map('telescope.actions.pick.command'), desc = 'Command' },
+      { [[<leader>atC]], _map('telescope.actions.pick.colorscheme'), desc = 'Colorscheme' },
+      { [[<leader>atL]], _map('telescope.actions.pick.line.buffer'), desc = 'Buffer Lines' },
+      { [[<leader>ata]], _map('telescope.actions.pick.autocommand'), desc = 'Autocommand' },
+
+      { [[<leader>atd]], _map('telescope.actions.pick.diagnostic.buffer'), desc = 'Buffer Diagnostics' },
+      { [[<leader>atD]], _map('telescope.actions.pick.diagnostic'), desc = 'Diagnostics' },
+
+      { [[<leader>ath]], _map('telescope.actions.pick.help'), desc = 'Help' },
+      { [[<leader>atH]], _map('telescope.actions.pick.highlight'), desc = 'Highlight' },
+      { [[<leader>ati]], _map('telescope.actions.pick.icon'), desc = 'Icon' },
+      { [[<leader>atk]], _map('telescope.actions.pick.keymap'), desc = 'Keymap' },
+      { [[<leader>atm]], _map('telescope.actions.pick.man'), desc = 'Man' },
+      { [[<leader>at']], _map('telescope.actions.pick.mark'), desc = 'Mark' },
+      { [[<leader>ats]], _map('telescope.actions.pick.tagstack'), desc = 'Tagstack' },
+      { [[<leader>atv]], _map('telescope.actions.pick.vim.option'), desc = 'Vim Option' },
+
+      { [[<leader>atGl]], _map('telescope.actions.pick.git.log'), desc = 'Git Log' },
+      { [[<leader>atGs]], _map('telescope.actions.pick.git.status'), desc = 'Git Status' },
+
+      { [[<leader>atld]], _map('telescope.lsp.actions.definition'), desc = 'Definition' },
+      { [[<leader>atlD]], _map('telescope.lsp.actions.declaration'), desc = 'Declaration' },
+      { [[<leader>atlr]], _map('telescope.lsp.actions.reference'), desc = 'References' },
+      { [[<leader>atli]], _map('telescope.lsp.actions.implementation'), desc = 'Implementation' },
+      { [[<leader>atlt]], _map('telescope.lsp.actions.type.definition'), desc = 'Type Definition' },
+      { [[<leader>atlI]], _map('telescope.lsp.actions.call.incoming'), desc = 'Incoming Calls' },
+      { [[<leader>atlO]], _map('telescope.lsp.actions.call.outgoing'), desc = 'Outgoing Calls' },
+      { [[<leader>atls]], _map('telescope.lsp.actions.symbol.document'), desc = 'Document Symbols' },
+      { [[<leader>atlw]], _map('telescope.lsp.actions.symbol.workspace'), desc = 'Workspace Symbols' },
+      { [[<leader>atlW]], _map('telescope.lsp.actions.symbol.workspace.dynamic'), desc = 'Dynamic Workspace Symbols' },
     },
 
     -- local actions = require 'telescope.actions'

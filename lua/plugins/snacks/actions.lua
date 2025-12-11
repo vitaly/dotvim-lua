@@ -1,3 +1,5 @@
+local config = require('onion.config')
+---@module 'snacks'
 return require('lib.actions').register('snacks.actions', {
   ['snacks.actions.pick'] = function() return Snacks.picker() end,
 
@@ -9,6 +11,7 @@ return require('lib.actions').register('snacks.actions', {
   ['snacks.actions.grep'] = function() return Snacks.picker.grep() end,
   ['snacks.actions.grep.word'] = function() return Snacks.picker.grep_word() end,
   ['snacks.actions.grep.buffers'] = function() return Snacks.picker.grep_buffers() end,
+  ['snacks.actions.grep.git'] = function() return Snacks.picker.git_grep() end,
   ['snacks.actions.pick.history.search'] = function() return Snacks.picker.search_history() end,
   ['snacks.actions.pick.history.command'] = function() return Snacks.picker.command_history() end,
   ['snacks.actions.pick.history.notification'] = function() return Snacks.picker.notifications() end,
@@ -38,6 +41,7 @@ return require('lib.actions').register('snacks.actions', {
   ['snacks.actions.pick.quickfix'] = function() return Snacks.picker.qflist() end,
   ['snacks.actions.pick.resume'] = function() return Snacks.picker.resume() end,
   ['snacks.actions.pick.undo'] = function() return Snacks.picker.undo() end,
+  ['snacks.actions.pick.project'] = function() return Snacks.picker.projects() end,
   ['snacks.actions.pick.todo'] = function() return Snacks.picker.todo_comments() end,
 
   ['snacks.lsp.actions.definition'] = function() return Snacks.picker.lsp_definitions() end,
@@ -58,5 +62,6 @@ return require('lib.actions').register('snacks.actions', {
     else
       Snacks.indent.enable()
     end
+    config.set('snacks.setup.indent.enabled', Snacks.indent.enabled)
   end,
 })

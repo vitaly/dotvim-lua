@@ -1,9 +1,5 @@
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-local clone_ok = require('lib.tools').git_clone(
-  'https://github.com/folke/lazy.nvim.git',
-  lazypath,
-  '--branch=stable'
-)
+local clone_ok = require('lib.tools').git_clone('https://github.com/folke/lazy.nvim.git', lazypath, '--branch=stable')
 
 if not clone_ok then
   vim.notify('Failed to clone lazy.nvim. Plugin management disabled.', vim.log.levels.ERROR)
@@ -12,8 +8,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy.core.handler.event').mappings.LazyFile =
-  { id = 'LazyFile', event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' } }
+require('lazy.core.handler.event').mappings.LazyFile = { id = 'LazyFile', event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' } }
 
 require('lazy').setup('plugins', {
   checker = { enabled = true, frequency = 3600 * 24 }, -- automatically check for plugin updates
@@ -28,7 +23,6 @@ require('lazy').setup('plugins', {
         'getscriptPlugin',
         'gzip',
         'logipat',
-        'man',
         'matchit',
         'netrw',
         'netrwFileHandlers',
