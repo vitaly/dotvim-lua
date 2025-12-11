@@ -1,5 +1,6 @@
 local util = require('plugins.base-keymaps.utils')
 -- local trace = my.log.trace
+local toggle = require('plugins.base-keymaps.toggles')
 
 ---------------------------------------------------------------------------------
 -- DIFF MODE MAPS
@@ -233,7 +234,7 @@ return {
         -- Toggle
         { [[\]], group = 'Toggle' },
         { [[\w]], [[<cmd>set nolist!<cr>]], desc = 'White Space' },
-        { [[\r]], [[<cmd>set relativenumber!<cr>]], desc = 'Relative Number' },
+        { [[\r]], function() toggle.relativenumber() end, desc = 'Relative Number' },
         { [[\s]], [[<cmd>setlocal spell!<cr>]], desc = 'Spell Check' },
         { [[\o]], [[<cmd>set ro!<cr>]], desc = 'Read Only' },
 
@@ -245,8 +246,8 @@ return {
         { [[\nn]], util.toggle_conceallevel, desc = 'Level' },
 
         -- Cursor
-        { [[\cc]], [[<cmd>set invcursorcolumn<cr>]], desc = 'Cursor Column' },
-        { [[\cl]], [[<cmd>set invcursorline<cr>]], desc = 'Cursor Line' },
+        { [[\cc]], function() toggle.cursorcolumn() end, desc = 'Cursor Column' },
+        { [[\cl]], function() toggle.cursorline() end, desc = 'Cursor Line' },
 
         -- Debug
         { [[\d]], group = 'Debug' },
@@ -274,6 +275,8 @@ return {
     vim.opt.timeoutlen = 500 -- 0.5s before keymap menu
     require('which-key').setup(opts.config)
     require('which-key').add(opts.keys)
+
+    toggle.setup()
 
     setup_diff_mode_maps()
   end,
