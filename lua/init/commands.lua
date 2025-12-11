@@ -1,6 +1,4 @@
-local function cmd(name, command, opts)
-  vim.api.nvim_create_user_command(name, command, opts or {})
-end
+local function cmd(name, command, opts) vim.api.nvim_create_user_command(name, command, opts or {}) end
 
 --- Print matching dictionary entries from a given scope
 ---@param scope string 'g' for vim.g, 'b' for vim.b, 'v' for vim.v
@@ -16,7 +14,7 @@ local function print_matching_dict_entries(scope, pattern)
   elseif scope == 'v' then
     dict_expr = 'v:'
   else
-    vim.api.nvim_err_writeln('Invalid scope: ' .. scope)
+    vim.notify('Invalid scope: ' .. scope, vim.log.levels.ERROR)
     return
   end
 
@@ -47,11 +45,9 @@ local function setup_commands()
     elseif 2 == #args.fargs then
       print_matching_dict_entries(args.fargs[1], args.fargs[2])
     else
-      error 'Usage: DumpVars [scope] pattern'
+      error('Usage: DumpVars [scope] pattern')
     end
   end, { nargs = '*' })
 end
 
-require('lib.au').command('setup.commands', 'User', function()
-  setup_commands()
-end, { pattern = 'VeryLazy' })
+require('lib.au').command('setup.commands', 'User', function() setup_commands() end, { pattern = 'VeryLazy' })

@@ -13,7 +13,7 @@ return require('lib.tools').vplug({
   },
 
   keys = {
-    { [[<localleader><localleader>]], _map('snacks.actions.pick.file.smart'), desc = 'Find File' },
+    { [[<localleader><localleader>]], _map('snacks.actions.pick.file'), desc = 'Find File' },
 
     { [[<leader>/]], _map('snacks.actions.grep'), desc = 'Grep in Files' },
     { [[<leader><cr>]], _map('snacks.actions.pick.command'), desc = 'Find Command' },

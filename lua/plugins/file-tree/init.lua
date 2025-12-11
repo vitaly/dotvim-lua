@@ -1,7 +1,7 @@
 local config = require('onion.config')
 local tools = require('lib.tools')
 
-config.set_defaults('file-tree', { plugin = 'snacks', position = 'left' })
+config.set_defaults('file-tree', { backend = 'plugins.file-tree.snacks', position = 'left' }) -- snacks, neotree, or nvimtree
 
 local glue = require('glue').register('file-tree')
 local function _map(event)
@@ -11,9 +11,7 @@ end
 return tools.vplug({
   'plugins.file-tree',
 
-  dependencies = {
-    require('plugins.file-tree.' .. config.get('file-tree.plugin')),
-  },
+  dependencies = { require(config.get('file-tree.backend')) },
 
   keys = {
     { '\\\\', _map('file-tree.actions.popup'), desc = 'File Tree Popup' },
