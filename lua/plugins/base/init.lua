@@ -30,10 +30,6 @@ return {
 
       defaults = {
         log_level = vim.log.levels.WARN,
-
-        icons = {
-          diagnostics = { Error = ' ', Warn = ' ', Hint = '󰌶 ', Info = ' ' },
-        },
       },
     },
   },
