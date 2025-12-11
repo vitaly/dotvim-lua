@@ -44,6 +44,8 @@ opt.grepformat = '%f:%l:%c:%m' -- rg includes column number
 opt.grepprg = 'rg --vimgrep'
 
 opt.exrc = true
+opt.secure = true -- Everything is allowed in 'exrc' files since they must be explicitly marked trusted.
+
 opt.ignorecase = true
 opt.laststatus = 3
 opt.lazyredraw = false
@@ -56,7 +58,6 @@ opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Max items in a popup menu
 opt.relativenumber = true
 opt.scrolloff = 4 -- Scroll context lines
-opt.secure = true -- Everything is allowed in 'exrc' files since they must be explicitly marked trusted.
 opt.sessionoptions = { 'buffers', 'curdir', 'tabpages', 'winsize' }
 opt.shiftround = true -- Round shift indent to shiftwidth multiples
 opt.shiftwidth = 2
