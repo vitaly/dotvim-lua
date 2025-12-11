@@ -42,7 +42,9 @@ return {
         additional_vim_regex_highlighting = { 'markdown' },
       },
 
-      -- indent = { enable = true },
+      indent = { enable = true },
+      textobjects = { enable = true },
+      matchup = { enable = true },
 
       incremental_selection = {
         enable = true,
