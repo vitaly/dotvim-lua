@@ -1,9 +1,11 @@
 return {
 
+  -- glue
   {
     'vitaly/glue.nvim', -- https://github.com/vitaly/glue.nvim
   },
 
+  -- onion.nvim
   {
     'vitaly/onion.nvim', -- https://github.com/vitaly/onion.nvim
 
@@ -33,6 +35,7 @@ return {
       },
     },
   },
+  -- onion-ui.nvim
   {
     'vitaly/onion-ui.nvim',
     enabled = true,
@@ -40,6 +43,7 @@ return {
       { '<leader>aoo', function() require('onion-ui').start() end, desc = 'Onion UI' },
     },
   },
+  -- noice.nvim
   {
     'folke/noice.nvim',
     event = 'VeryLazy',
@@ -68,6 +72,18 @@ return {
         inc_rename = false, -- enables an input dialog for inc-rename.nvim
         lsp_doc_border = true, -- add a border to hover docs and signature help
       }, -- add any options here
+    },
+  },
+  -- lazydev.nvim
+  {
+    'folke/lazydev.nvim', -- https://github.com/folke/lazydev.nvim
+    ft = 'lua',
+    opts = {
+      library = {
+        'nvim-dap-ui',
+        -- Load luvit types when the `vim.uv` word is found
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      },
     },
   },
 }

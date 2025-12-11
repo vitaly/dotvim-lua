@@ -36,7 +36,20 @@ return {
 
     require('lualine').setup({
       options = {
-        disabled_filetypes = { 'Outline' },
+        disabled_filetypes = {
+          'dap-repl',
+          'dapui_breakpoints',
+          'dapui_console',
+          'dapui_scopes',
+          'dapui_stacks',
+          'dapui_watches',
+
+          'Outline',
+
+          'snacks_picker_list',
+
+          'toggleterm',
+        },
         always_show_tabline = false,
       },
 
