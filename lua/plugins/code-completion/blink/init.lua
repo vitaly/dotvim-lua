@@ -1,4 +1,6 @@
 return {
+  -- make sure we load before lspconfig
+  { 'neovim/nvim-lspconfig', dependencies = { 'saghen/blink.cmp' } },
   {
     'saghen/blink.cmp', -- https://github.com/saghen/blink.cmp
 
@@ -25,11 +27,29 @@ return {
 
             dependencies = {
               {
-                'copilotlsp-nvim/copilot-lsp', -- https://github.com/zbirenbaum/copilot.lua
+                'copilotlsp-nvim/copilot-lsp', -- https://github.com/copilotlsp-nvim/copilot-lsp
 
-                cmd = 'Copilot',
+                config = function()
+                  require('onion.config').set_defaults('lsp.servers.copilot_ls', {
+                    -- nextEditSuggestions.enabled below isn't actully checked by the server
+                    -- so need to copletely disable this for now.
+                    -- otherwise the NES is a pain in the bottom to handle
+                    enabled = false,
+                    mason = 'copilot',
+                    settings = {
+                      nextEditSuggestions = {
+                        enabled = false,
+                      },
+                    },
+                  })
+                end,
               },
             },
+
+            cmd = 'Copilot',
+
+            event = 'InsertEnter',
+
             opts = {
               suggestion = {
                 enabled = true,
@@ -45,6 +65,7 @@ return {
                 },
               },
               panel = { enabled = true },
+              nes = { enabled = false },
             },
           },
         },
@@ -57,9 +78,15 @@ return {
     opts = {
       keymap = {
         preset = 'super-tab',
-        ['<C-k>'] = { 'select_prev', 'fallback' },
-        ['<C-j>'] = { 'select_next', 'fallback' },
+        ['<C-k>'] = { 'select_prev', 'fallback_to_mappings' },
+        ['<C-j>'] = { 'select_next', 'fallback_to_mappings' },
         -- Super-tab with copilot.lua fallback
+        -- ['<esc>'] = {
+        --   function()
+        --     if require('copilot-lsp.nes').clear() then return true end
+        --   end,
+        --   'fallback',
+        -- },
         ['<Tab>'] = {
           function(cmp)
             if cmp.snippet_active() then

@@ -50,6 +50,8 @@ return {
     },
   },
 
+  -- make sure we load before lspconfig
+  { 'neovim/nvim-lspconfig', dependencies = { 'hrsh7th/nvim-cmp' } },
   {
     'hrsh7th/nvim-cmp', -- https://github.com/hrsh7th/nvim-cmp
     version = false,

@@ -1,10 +1,10 @@
--- return require('plugins.code-completion.blink')
--- return require('plugins.code-completion.cmp')
+---@module 'onion.config'
+local config = require('onion.config')
+config.set_defaults('code-completion', {
+  backend = 'plugins.code-completion.blink', -- 'blink' or 'cmp'
+})
 
 return {
-  { import = 'plugins.code-completion.blink' },
-  -- { import = 'plugins.code-completion.cmp' },
-
   {
     'folke/lazydev.nvim', -- https://github.com/folke/lazydev.nvim
     ft = 'lua', -- only load on lua files
@@ -16,4 +16,6 @@ return {
       },
     },
   },
+
+  { import = config.get('code-completion.backend') },
 }

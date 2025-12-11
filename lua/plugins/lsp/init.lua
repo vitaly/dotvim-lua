@@ -3,11 +3,11 @@ local debug = my.log.debug
 
 local config = require('onion.config')
 
----@alias SERVER vim.lsp.Config | { mason?: boolean, debug?: boolean }
+---@alias SERVER vim.lsp.Config | { mason?: boolean | string, debug?: boolean, enabled?: boolean }
 ---@alias SERVERS table<string, SERVER>
 
 config.set_defaults('lsp', {
-  ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli', 'copilot' },
+  ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli' },
   enable = { 'lua_ls', 'ts_ls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'ruby_lsp' },
   ---@type table<string, SERVER>
   servers = {
@@ -124,7 +124,7 @@ return {
     },
 
     config = function()
-      local ensure_installed = config.get('lsp.ensure_installed') or {}
+      local ensure_installed = config.get('lsp.ensure_installed', {})
       ---@type SERVERS
       local servers = config.get('lsp.servers') or {}
 
@@ -134,7 +134,13 @@ return {
 
       -- configure tools installer
       for server, conf in pairs(servers) do
-        if conf.mason ~= false then table.insert(ensure_installed, server) end
+        if conf.mason ~= false and conf.enabled ~= false then
+          if type(conf.mason) == 'string' then
+            table.insert(ensure_installed, conf.mason)
+          else
+            table.insert(ensure_installed, server)
+          end
+        end
       end
       require('mason-tool-installer').setup({
         ensure_installed = ensure_installed,
@@ -149,8 +155,10 @@ return {
         if capabilities then conf.capabilities = capabilities end
 
         if conf.debug == true then debug('LSP server config', server, conf) end
-        vim.lsp.config(server, conf)
-        vim.lsp.enable(server)
+        if conf.enabled ~= false then
+          vim.lsp.config(server, conf)
+          vim.lsp.enable(server)
+        end
       end
 
       vim.diagnostic.config({ virtual_lines = { current_line = true } })

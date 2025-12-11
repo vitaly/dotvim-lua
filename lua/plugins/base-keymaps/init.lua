@@ -146,11 +146,11 @@ return {
 
         { '<esc>', '<cmd>silent noh<cr>', silent = true, desc = 'Clear search highlight' },
 
-        -- c-ghjk navigation
-        { '<c-k>', '<up>', mode = { 'i', 'c' } },
-        { '<c-j>', '<down>', mode = { 'i', 'c' } },
-        { '<c-h>', '<left>', mode = { 'i' } },
-        { '<c-l>', '<right>', mode = { 'i' } },
+        -- m-ghjk navigation in insert mode
+        { '<m-k>', '<up>', mode = { 'i', 'c' } },
+        { '<m-j>', '<down>', mode = { 'i', 'c' } },
+        { '<m-h>', '<left>', mode = { 'i', 'c' } },
+        { '<m-l>', '<right>', mode = { 'i', 'c' } },
 
         -- messages
         { '<leader>m', group = 'Messages' },
