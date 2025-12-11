@@ -42,7 +42,7 @@ config.set_defaults('conform', {
   },
 })
 
-local toggle_autoformat = function() config.set('autoformat.enabled', not config.get('autoformat.enabled')) end
+local toggle_autoformat = function() config.toggle('autoformat.enabled') end
 
 local toggle_autoformat_for_buffer = function(_, opts)
   opts = opts or {}
@@ -55,7 +55,7 @@ local ft_enabled_key = function(ft) return 'autoformat.filetypes.' .. ft .. '.en
 
 local toggle_autoformat_for_filetype = function(_, opts)
   local key = ft_enabled_key(vim.bo[(opts or {}).bufnr or vim.api.nvim_get_current_buf()].filetype)
-  config.set(key, not config.get(key, true))
+  config.toggle(key, true)
 end
 
 local is_enabled_global = function() return config.get('autoformat.enabled') end

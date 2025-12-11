@@ -39,9 +39,10 @@ end
 
 local function define_lsp_buffer_maps(client, buf)
   if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, buf) then
+    vim.lsp.inlay_hint.enable(config.get('lsp.inlay_hints', false))
     wk.add({
       [[\h]],
-      function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buf })) end,
+      function() vim.lsp.inlay_hint.enable(config.toggle('lsp.inlay_hints', false)) end,
       buffer = buf,
       desc = 'Toggle Inlay Hints',
     })
