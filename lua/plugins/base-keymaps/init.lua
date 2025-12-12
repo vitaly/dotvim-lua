@@ -1,6 +1,6 @@
-local util = require('plugins.base-keymaps.utils')
--- local trace = my.log.trace
 local toggle = require('plugins.base-keymaps.toggles')
+local util = require('plugins.base-keymaps.utils')
+local config_dir = vim.uv.fs_realpath(vim.fn.stdpath('config'))
 
 ---------------------------------------------------------------------------------
 -- DIFF MODE MAPS
@@ -164,13 +164,13 @@ return {
         { '<leader>fx', [[<cmd>!chmod +x %<cr>]], desc = 'Make Executable' },
 
         { '<leader>fe', group = 'File Edit' },
-        edit_file_map('<leader>fec', my.root, '/lua/init/config.lua', 'VIM Config'),
-        edit_file_map('<leader>fei', my.root, '/init.lua', 'VIM init.lua'),
-        edit_file_map('<leader>fek', my.root, '/lua/plugins/base-keymaps/init.lua', 'VIM Keymaps'),
-        edit_file_map('<leader>feo', my.root, '/lua/init/options.lua', 'VIM Options'),
-        edit_file_map('<leader>fep', my.root, '/lua/plugins', 'VIM Plugins'),
-        edit_file_map('<leader>fer', my.root, '/README.md', 'VIM README'),
-        edit_file_map('<leader>fes', my.root, '/scratch.lua', 'VIM Lua Scratch File'),
+        edit_file_map('<leader>fec', config_dir, '/lua/init/config.lua', 'VIM Config'),
+        edit_file_map('<leader>fei', config_dir, '/init.lua', 'VIM init.lua'),
+        edit_file_map('<leader>fek', config_dir, '/lua/plugins/base-keymaps/init.lua', 'VIM Keymaps'),
+        edit_file_map('<leader>feo', config_dir, '/lua/init/options.lua', 'VIM Options'),
+        edit_file_map('<leader>fep', config_dir, '/lua/plugins', 'VIM Plugins'),
+        edit_file_map('<leader>fer', config_dir, '/README.md', 'VIM README'),
+        edit_file_map('<leader>fes', config_dir, '/scratch.lua', 'VIM Lua Scratch File'),
 
         edit_file_map('<leader>feL', vim.fn.stdpath('cache'), '/lsp.log', 'LSP Log'),
         edit_file_map('<leader>feT', '~', '/TODO.md', 'Global TODO'),
