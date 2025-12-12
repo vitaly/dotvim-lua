@@ -1,19 +1,19 @@
 return {
 
+  ------------------------------------------------------------------------------
   -- glue
+  ------------------------------------------------------------------------------
   {
     'vitaly/glue.nvim', -- https://github.com/vitaly/glue.nvim
   },
 
+  ------------------------------------------------------------------------------
   -- onion.nvim
+  ------------------------------------------------------------------------------
   {
     'vitaly/onion.nvim', -- https://github.com/vitaly/onion.nvim
 
-    init = function()
-      require('which-key').add({
-        { '<leader>ao', group = 'Onion Config' },
-      })
-    end,
+    init = function() require('which-key').add({ { '<leader>ao', group = 'Onion Config' } }) end,
 
     keys = {
       { '<leader>aoe', '<cmd>Onion edit<cr>', desc = 'Edit Config' },
@@ -35,15 +35,20 @@ return {
       },
     },
   },
+
+  ------------------------------------------------------------------------------
   -- onion-ui.nvim
+  ------------------------------------------------------------------------------
   {
     'vitaly/onion-ui.nvim',
-    enabled = true,
     keys = {
       { '<leader>aoo', function() require('onion-ui').start() end, desc = 'Onion UI' },
     },
   },
+
+  ------------------------------------------------------------------------------
   -- lazydev.nvim
+  ------------------------------------------------------------------------------
   {
     'folke/lazydev.nvim', -- https://github.com/folke/lazydev.nvim
     ft = 'lua',
