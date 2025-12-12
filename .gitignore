@@ -16,3 +16,4 @@ test/
 _envrc
 /config.lua
 .claude
+/lua/plugins/_dev
