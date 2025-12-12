@@ -56,6 +56,15 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 
 - `,d` - Show Diff Menu
 
+<!-- lua/plugins/base-notifications/README.md -->
+
+## Notifications
+
+- `<space>m` - to see the menu to display and manage messages, errors, etc
+
+Currently using the [Noice](https://github.com/folke/noice.nvim) plugin.
+
+
 <!-- lua/plugins/code-completion/README.md -->
 
 ## Completion
@@ -129,17 +138,6 @@ in the text and displays the colors either as a virtual text, background, or for
 - `:Format`
 - `:FormatToggle`
 - `:FormatInfo`
-
-<!-- lua/plugins/editor-surround/README.md -->
-
-## Surround
-
-We are using [mini.surround](https://github.com/nvim-mini/mini.surround) for surround.
-Default mappings are changed slightly to be more like those of tpope's [vim-surround](https://github.com/tpope/vim-surround)
-
-- `ys` - add
-- `ds` - remove
-- `cs` - change
 
 <!-- lua/plugins/editor/README.md -->
 
@@ -233,6 +231,15 @@ after pasting:
 - `]y` - next paste
 
 - `<SPACE-Y-CR` - yank history picker
+
+## Surround
+
+We are using [mini.surround](https://github.com/nvim-mini/mini.surround) for surround.
+Default mappings are changed slightly to be more like those of tpope's [vim-surround](https://github.com/tpope/vim-surround)
+
+- `ys` - add
+- `ds` - remove
+- `cs` - change
 
 <!-- lua/plugins/file-tree/README.md -->
 

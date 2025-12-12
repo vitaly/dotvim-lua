@@ -113,8 +113,6 @@ return {
         { ']L', function() util.next_indent(false, true, true, true) end,   desc = 'Next Lower Indent', },
         -- stylua: ignore end
 
-        { '<leader><space>', ':' },
-
         { 'Q', 'gw', mode = { 'n', 'v', 'o' } },
 
         { '<tab><tab>', '<cmd>b#<cr>', desc = 'Switch to last buffer' },
@@ -152,11 +150,6 @@ return {
         { '<m-j>', '<down>', mode = { 'i', 'c' } },
         { '<m-h>', '<left>', mode = { 'i', 'c' } },
         { '<m-l>', '<right>', mode = { 'i', 'c' } },
-
-        -- messages
-        { '<leader>m', group = 'Messages' },
-        { '<leader>mm', '<cmd>messages<cr>', desc = '[m]essages' },
-        { '<leader>mM', '<cmd>messages clear<cr>', desc = '[M]essages Clear' },
 
         -- Buffer
         { '<leader>b', group = 'Buffer' },
