@@ -5,6 +5,7 @@ return {
 
     dependencies = {
       'mason-org/mason.nvim',
+      'RRethy/nvim-treesitter-endwise', -- https://github.com/RRethy/nvim-treesitter-endwise
     },
 
     build = ':TSUpdate',
@@ -45,6 +46,7 @@ return {
       indent = { enable = true },
       textobjects = { enable = true },
       matchup = { enable = true },
+      endwise = { enable = true },
 
       incremental_selection = {
         enable = true,
@@ -84,34 +86,7 @@ return {
         'typescript',
         'vim',
         'yaml',
-        -- -- brew install gcc
-        -- -- CC=gcc-11 vim -c "TSInstall norg"
-        -- 'norg', 'norg_metqa', 'norg_table',
       },
     },
-
-    config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end,
-  },
-  {
-    'windwp/nvim-autopairs', -- https://github.com/windwp/nvim-autopairs
-    event = 'InsertEnter',
-
-    opts = {
-      check_ts = true,
-      ts_config = {},
-      disable_filetype = { 'TelescopePrompt' },
-
-      enable_check_bracket_line = true,
-    },
-
-    config = function(_, opts)
-      local autopairs = require('nvim-autopairs')
-
-      autopairs.setup(opts)
-
-      autopairs.add_rules(require('nvim-autopairs.rules.endwise-elixir'))
-      autopairs.add_rules(require('nvim-autopairs.rules.endwise-ruby'))
-      autopairs.add_rules(require('nvim-autopairs.rules.endwise-lua'))
-    end,
   },
 }
