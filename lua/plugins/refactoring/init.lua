@@ -27,7 +27,7 @@ return {
 
         { '<localleader>rn', _map('lsp.actions.rename'), desc = 'Rename' },
 
-        { '<localleader>rr', _map('refactoring.actions.telescope'), desc = 'Select Refactor' },
+        { '<localleader>rr', _map('refactoring.actions.telescope'), mode = { 'n', 'x' }, desc = 'Select Refactor' },
 
         {
           mode = { 'n', 'x' },
