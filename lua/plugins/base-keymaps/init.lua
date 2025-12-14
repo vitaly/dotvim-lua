@@ -104,7 +104,7 @@ return {
         { '<leader>Q', group = 'Quit / Session' },
         { '<leader>QQ', '<cmd>qa!<cr>', mode = { 'n', 'x' }, desc = 'Quit All!' },
 
-        { '<localleader><leader>', '<cmd>w<cr>', desc = 'Save' },
+        { '<space><space>', '<cmd>w<cr>', desc = 'Save' },
 
         -- stylua: ignore start
         { '[l', function() util.next_indent(false, false, false, true) end, desc = 'Prev Indent', },

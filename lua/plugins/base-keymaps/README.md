@@ -3,27 +3,27 @@
 - `<tab><tab>` - Last Tab
 - `<tab><space>` - New Tab
 
-- `<SPACE>m` - show messages
-- `<SPACE>M` - clear messages
+- `<space>m` - show messages
+- `<space>M` - clear messages
 
-- `<SPACE>x` - quite window
-- `<SPACE>qq` - quite all
-- `<SPACE>qQ` - quite all!
-- `<SPACE>Q` - quite all!
+- `<space>x` - quite window
+- `<space>qq` - quite all
+- `<space>qQ` - quite all!
+- `<space>Q` - quite all!
 
-- `<SPACE>n` - Next
-- `<SPACE>p` - Prev
+- `<space>n` - Next
+- `<space>p` - Prev
 
-- `<SPACE>a` - Show Apps Menu
-- `<SPACE>b` - Show Buffer Menu
-- `<SPACE>f` - Show File Menu
-- `<SPACE>w` - Show Window Menu
-- `<SPACE>s` - Show Status Menu
-- `<SPACE>t` - Show Tab Menu
-- `<SPACE>v` - Show Vim Menu
-- `<SPACE>Y` - Show Yank Menu
+- `<space>a` - Show Apps Menu
+- `<space>b` - Show Buffer Menu
+- `<space>f` - Show File Menu
+- `<space>w` - Show Window Menu
+- `<space>s` - Show Status Menu
+- `<space>t` - Show Tab Menu
+- `<space>v` - Show Vim Menu
+- `<space>Y` - Show Yank Menu
 
-- `,<SPACE>` - Save
+- `<space><space>` - Save
 - `,e` - Show Eval Menu
 
 - `\` - Show Toggle Menu

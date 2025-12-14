@@ -30,7 +30,7 @@ return {
         { '<leader>m/', '<cmd>Noice pick<cr>', desc = 'Search Messages' },
         { '<leader>m?', '<cmd>Noice last<cr>', desc = 'Last Messages[?]' },
 
-        { '<leader><space>', '<cmd>Noice dismiss<cr>', desc = 'Dismiss Messages' },
+        { '<esc><esc>', '<cmd>Noice dismiss<cr>', desc = 'Dismiss Messages' },
 
         { '<leader>mD', '<cmd>Noice disable<cr>', desc = 'Disable Noice Messaging' },
         { '<leader>mE', '<cmd>Noice enable<cr>', desc = 'Enable Noice Messaging' },

@@ -50,6 +50,7 @@ return {
     keys = {
       { [[<c-\>]] },
       { [[<a-[>]], [[<c-\><c-n>]], mode = 't', desc = 'Switch To Normal Mode ' },
+      { [[<esc><esc>]], [[<c-\><c-n>]], mode = 't', desc = 'Switch To Normal Mode ' },
       { [[<leader>gt]], tig, desc = 'TIG' },
       { [[<leader>gl]], lazygit, desc = 'LazyGit' },
     },
