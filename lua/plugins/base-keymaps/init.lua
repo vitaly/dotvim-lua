@@ -105,6 +105,11 @@ return {
         { '<leader>QQ', '<cmd>qa!<cr>', mode = { 'n', 'x' }, desc = 'Quit All!' },
 
         { '<space><space>', '<cmd>w<cr>', desc = 'Save' },
+        {
+          '<localleader><space>',
+          function() require('plugins.base-keymaps.flash').flash('Wrong key — use <SPACE><SPACE>', { timeout = 140 }) end,
+          desc = 'NOT SAVE',
+        },
 
         -- stylua: ignore start
         { '[l', function() util.next_indent(false, false, false, true) end, desc = 'Prev Indent', },
