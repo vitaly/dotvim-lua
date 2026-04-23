@@ -37,7 +37,7 @@ config.set_defaults('conform', {
 
   formatters = {
     beautysh = {
-      args = { '--indent-size', '2', '--force-function-style', 'fnpar', '-' },
+      args = { '--indent-size', '2', '--force-function-style', 'paronly', '-' },
     },
   },
 })
