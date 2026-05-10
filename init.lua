@@ -1,3 +1,6 @@
+_G.__t = {}
+_G._t = function(m) __t[#__t + 1] = m end
+
 _G.my = _G.my or {}
 
 _G.R = function(mod)

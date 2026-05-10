@@ -39,6 +39,16 @@ return {
         { '<leader>mx', _clear, desc = 'Clear Message History' },
 
         {
+          '<leader>mt',
+          function()
+            for _, v in ipairs(__t) do
+              print(vim.inspect(v))
+            end
+          end,
+          desc = 'print trace',
+        },
+
+        {
           '<leader>mg',
           function()
             my.log.trace('A trace message')

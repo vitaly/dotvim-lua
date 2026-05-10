@@ -1,6 +1,6 @@
 ## Logging
 
-> `lua/init/log.lua`
+# lua/init/log.lua
 
 `config.log_level` - minimal log level to display
 
@@ -23,3 +23,10 @@
 
 Switch Log level via `<\\l>` map
 Display messages with `<SPACE>m`
+
+# trace
+
+Use `_t('message')` to add `message` to the trace log `_G.__t`
+
+Use `<space-m>t` to display trace log.
+
