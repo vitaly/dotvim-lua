@@ -1,11 +1,23 @@
-## Color Schemes
+# Base Colors
 
-Use `config.colorschemes` to define default colorscheme name.
+Color scheme management for Neovim.
 
-"base16" and "tokyonight" themes are pre-installed.
+## Plugins
 
-You can add another theme module in `lua/plugins/base/colors.lua`.
+- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) - Tokyo Night theme
+- [nvim-base16](https://github.com/RRethy/nvim-base16) - Base16 theme support
 
-`LoadVimrcBackground` command will source `~/.vimrc_background` file that is created by "base16" shell.
+## Keymaps
 
-`<leader>vc` - to call `LoadVimrcBackground`.
+- `<leader>vc` - Load colorscheme from `~/.vimrc_background`
+
+## Configuration
+
+- Default: tokyonight-night
+- Configurable via `colorscheme` option
+- Diff colors overridden for better visibility
+
+## Notes
+
+- `LoadVimrcBackground` command sources `~/.vimrc_background` for base16 themes
+- Custom diff highlighting: adds colored backgrounds to diff modes

@@ -1,50 +1,104 @@
 <!-- lua/plugins/base-colors/README.md -->
 
-## Color Schemes
+# Base Colors
 
-Use `config.colorschemes` to define default colorscheme name.
+Color scheme management for Neovim.
 
-"base16" and "tokyonight" themes are pre-installed.
+## Plugins
 
-You can add another theme module in `lua/plugins/base/colors.lua`.
+- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) - Tokyo Night theme
+- [nvim-base16](https://github.com/RRethy/nvim-base16) - Base16 theme support
 
-`LoadVimrcBackground` command will source `~/.vimrc_background` file that is created by "base16" shell.
+## Keymaps
 
-`<leader>vc` - to call `LoadVimrcBackground`.
+- `<leader>vc` - Load colorscheme from `~/.vimrc_background`
 
+## Configuration
+
+- Default: tokyonight-night
+- Configurable via `colorscheme` option
+- Diff colors overridden for better visibility
+
+## Notes
+
+- `LoadVimrcBackground` command sources `~/.vimrc_background` for base16 themes
+- Custom diff highlighting: adds colored backgrounds to diff modes
 <!-- lua/plugins/base-keymaps/README.md -->
 
 ## Basic Keymaps
 
-- `<tab><tab>` - Last Tab
+[which-key.nvim](https://github.com/folke/which-key.nvim)
+
+### Navigation
+
+- `<tab><tab>` - Switch to last buffer
 - `<tab><space>` - New Tab
+- `j` / `k` - Move down/up (visual line)
+- `n` / `N` - Search next/prev and center
+- `*` / `#` - Search word under cursor forward/back
+- `g*` / `g#` - Search word (no word boundary)
 
-- `<space>m` - show messages
-- `<space>M` - clear messages
+### Text Editing
 
-- `<space>x` - quite window
-- `<space>qq` - quite all
-- `<space>qQ` - quite all!
-- `<space>Q` - quite all!
+- `+` - Increment number
+- `-` - Decrement number
+- `<C-j>` / `<C-k>` - Move line down/up
+- `<` / `>` - Indent (in visual mode, keep selection)
+- `Q` - Format word (gq)
 
-- `<space>n` - Next
-- `<space>p` - Prev
-
-- `<space>a` - Show Apps Menu
-- `<space>b` - Show Buffer Menu
-- `<space>f` - Show File Menu
-- `<space>w` - Show Window Menu
-- `<space>s` - Show Status Menu
-- `<space>t` - Show Tab Menu
-- `<space>v` - Show Vim Menu
-- `<space>Y` - Show Yank Menu
+### Save & Quit
 
 - `<space><space>` - Save
-- `,e` - Show Eval Menu
+- `<leader>q` - Quit All
+- `<leader>x` - Close Window
+- `<leader>QQ` - Quit All!
 
-- `\` - Show Toggle Menu
+### Buffer
 
-- `\l` - Show Log Menu
+- `<leader>bn` - Next Buffer
+- `<leader>bp` - Prev Buffer
+- `<leader>bd` - Delete Buffer
+
+### File
+
+- `<leader>fs` - Save File
+- `<leader>fa` - Save All Files
+- `<leader>fx` - Make Executable
+- `<leader>fec` - Edit Config
+- `<leader>fei` - Edit init.lua
+
+### Window
+
+- `<leader>w-` - Split Horizontal
+- `<leader>w\` - Split Vertical
+- `<leader>wx` - Swap Windows
+- `<leader>wK` / `<leader>wJ` / `<leader>wH` / `<leader>wL` - Move window
+- `<leader>w=` - Rebalance
+- `<leader>wo` - Close Other Windows
+- `<leader>wt` - Move to New Tab
+
+### Comments
+
+- `\;` - Toggle Comment (normal/visual)
+
+### Toggle
+
+- `\w` - Toggle Whitespace
+- `\r` - Toggle Relative Number
+- `\s` - Toggle Spell Check
+- `\o` - Toggle Read Only
+- `\C` - Toggle Clipboard
+
+### Fold
+
+- `\fc` - Toggle Fold Column
+
+### Debug
+
+- `\dv` - Toggle Vim Verbose Log
+
+### Log Levels
+
 - `\lt` - Log TRACE
 - `\ld` - Log DEBUG
 - `\li` - Log INFO
@@ -52,10 +106,41 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 - `\le` - Log ERROR
 - `\lo` - Log OFF
 
-### in diff-mode
+### Diff Mode
 
-- `,d` - Show Diff Menu
+- `,dp` - Diff Put
+- `,dg` - Diff Get
+- `,dn` - Next Diff
+- `,dN` - Prev Diff
 
+### Menu Access
+
+- `<leader>?` - Buffer Local Keymaps
+- `<leader>a` - App Menu
+- `<leader>b` - Buffer Menu
+- `<leader>f` - File Menu
+- `<leader>w` - Window Menu
+- `<leader>v` - Vim Menu
+- `<leader>Y` - Yank Menu
+- `<leader>s` - Search Menu
+
+### Indent Navigation
+
+- `[l` / `]l` - Prev/Next indent
+- `[L` / `]L` - Prev/Next lower indent
+
+### Visual Mode
+
+- `<C-j>` / `<C-k>` - Move selected lines down/up
+<!-- lua/plugins/base-lazy/README.md -->
+
+# Base Lazy
+
+Plugin manager for Neovim.
+
+- [lazy.nvim](https://github.com/folke/lazy.nvim)
+
+Manages lazy loading of plugins and itself. Keys are defined in `base-keymaps`.
 <!-- lua/plugins/base-notifications/README.md -->
 
 ## Notifications
@@ -79,99 +164,258 @@ You can add another theme module in `lua/plugins/base/colors.lua`.
 - `<esc><esc>` - Dismiss All
 
 
+<!-- lua/plugins/base-utils/README.md -->
+
+# Base Utils
+
+Utility dependencies for other plugins.
+
+- [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - Common utilities
+- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - File icons
+- [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - UI components
+- [mini.icons](https://github.com/nvim-mini/mini.icons) - Minimal icons
+<!-- lua/plugins/base/README.md -->
+
+# Base
+
+Core plugins and configuration for Neovim.
+
+## Plugins
+
+- [glue.nvim](https://github.com/vitaly/glue.nvim) - Event/action system
+- [onion.nvim](https://github.com/vitaly/onion.nvim) - Configuration management
+- [onion-ui.nvim](https://github.com/vitaly/onion-ui.nvim) - UI for onion config
+- [lazydev.nvim](https://github.com/folke/lazydev.nvim) - Lua development support
+
+## Keymaps
+
+### Onion Config
+
+- `<leader>aoe` - Edit config
+- `<leader>aos` - Save config
+- `<leader>aoi` - Show config
+- `<leader>aol` - Load config
+- `<leader>aod` - Show default config
+- `<leader>aou` - Show user config
+
+### Other
+
+- `<leader>aoo` - Open Onion UI
+- `<leader>ao` - Onion group
+
+## Configuration
+
+- Auto-save enabled
+- Config path: `config.lua` in config directory
+- Default log level: WARN
 <!-- lua/plugins/code-completion/README.md -->
 
-## Completion
+## Code Completion
 
-`<SPACE>Sg` - [GitHub Copilot](https://github.com/github/copilot.vim) Status
+### Backend
 
-- `M-[` - Copilot Prev
-- `M-]` - Copilot Next
-- `M-\` - Copilot Suggest
+[blink.cmp](https://github.com/saghen/blink.cmp) (default) or nvim-cmp.
 
+- `config.code-completion.backend` - 'blink' (default) or 'cmp'
+
+### Blink.cmp (default)
+
+[blink.cmp](https://github.com/saghen/blink.cmp) with [copilot.lua](https://github.com/zbirenbaum/copilot.lua) and [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
+
+### Keymaps
+
+- `<Tab>` - Accept suggestion / snippet forward / copilot accept
+- `<M-w>` - Accept word
+- `<M-l>` - Accept line
+- `<M-]>` - Next suggestion
+- `<M-[>` - Prev suggestion
+- `<C-]>` - Dismiss
+- `<C-j>` / `<C-k>` - Select next/prev
+
+### Snippets
+
+[LuaSnip](https://github.com/L3MON4D3/LuaSnip) with [friendly-snippets](https://github.com/rafamadriz/friendly-snippets).
+
+- `<Tab>` (in insert mode) - Jump to next snippet placeholder
+- `<S-Tab>` - Jump to previous snippet placeholder
+
+### Copilot
+
+[copilot.lua](https://github.com/zbirenbaum/copilot.lua) with copilot-lsp.
+
+- `<leader>aci` - Copilot Status
+- `<leader>acp` - Copilot Panel
 <!-- lua/plugins/code-navigation/README.md -->
 
-## Symbols Outline
+## Code Navigation
 
-> [Symbols Outline](https://github.com/simrat39/symbols-outline.nvim)
+### Symbols Outline
 
-### Config
+[outline.nvim](https://github.com/hedyhli/outline.nvim)
 
-- `config.tagbar.position` - `left` / `right` (default)
+- `\]` - Toggle Symbols Outline
 
-### Maps
+### Aerial
 
-- `\t` - toggle Symbols Outline
+[aerial.nvim](https://github.com/stevearc/aerial.nvim)
 
-## Aerial
+Shows code structure via Telescope popup.
 
-> [Aerial](https://github.com/stevearc/aerial.nvim)
+- `go` - Fuzzy Outline (Telescope)
 
-> NOTE: Aerial is used through a Telescope popup
+### Configuration
 
-- `go` - show Fuzzy Outline
+- `config.tagbar.position` - 'left' or 'right' (default)
+<!-- lua/plugins/debugger/README.md -->
 
+# Debugger
+
+Debug adapter protocol (DAP) integration for Neovim.
+
+## Plugins
+
+- [nvim-dap](https://github.com/mfussenegger/nvim-dap) - Debug adapter protocol client
+- [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) - UI for nvim-dap
+- [nvim-dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text) - Virtual text support
+- [mason-nvim-dap.nvim](https://github.com/jay-babu/mason-nvim-dap.nvim) - DAP adapter installer
+- [one-small-step-for-vimkind](https://github.com/jbyuki/one-small-step-for-vimkind) - Lua adapter
+
+## Configuration
+
+### Debug Adapters
+
+Configured via `debugger.ensure_installed`:
+
+- `bash` - Bash debugger
+- `go` - Go debugger (Delve)
+- Other adapters available: chrome, delve, elixir, js, kotlin, node2, python
+
+## Keymaps
+
+### General
+
+- `<leader>db` - Toggle breakpoint
+- `\\b` - Toggle breakpoint
+- `<leader>dB` - Set conditional breakpoint
+- `<leader>dc` - Continue
+- `<leader>dC` - Run to cursor
+- `<leader>dg` - Go to line (no execute)
+- `<leader>di` - Step into
+- `<leader>do` - Step out
+- `<leader>dO` - Step over
+- `<leader>dl` - Run last
+- `<leader>dp` - Pause
+- `<leader>dj` - Go down (call stack)
+- `<leader>dk` - Go up (call stack)
+- `<leader>dr` - Toggle REPL
+- `<leader>ds` - Show session
+- `<leader>dt` - Terminate
+- `<leader>dw` - Show widgets (hover)
+
+### UI
+
+- `<leader>du` - Toggle Dap UI
+- `<leader>de` - Eval (visual mode)
+
+### Lua Adapter
+
+- `<leader>dal` - Launch Lua server adapter (port 8086)
 <!-- lua/plugins/development/README.md -->
 
-## Xterm Color Table
+## Development Tools
 
-- `<SPACE>SX` or `:XtermColorTable` to show the table
+### Xterm Color Table
 
+[xterm-color-table.vim](https://github.com/guns/xterm-color-table.vim)
+
+- `<leader>SX` - Show Xterm Color Table
+- `:XtermColorTable` - Show table
 <!-- lua/plugins/editor-colors/README.md -->
+
+## Editor Colors
 
 ### Colorizer
 
-[nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) plugin parses color values
-in the text and displays the colors either as a virtual text, background, or foreground color of the value.
+[nvim-colorizer.lua](https://github.com/NvChad/nvim-colorizer.lua)
 
-- `\Cc` - toggle colorizer
-- `\Cm` - toggle colorizer mode
-- `\Cr` - reload colorizer
+Highlights color codes in text.
+
+- `\Lc` - Toggle Colorizer
+- `\Lm` - Toggle Colorizer Mode
+- `\Lr` - Reload Colorizer
+
+Modes: virtualtext, foreground, background
 
 ### Interesting Words
 
-[vim-interestingwords](https://github.com/lfv89/vim-interestingwords) plugin colors words by request.
+[vim-interestingwords](https://github.com/lfv89/vim-interestingwords)
 
-- `SPACE-k` - toggle color for the word under cursor
-- `SPACE-K` - remove all word colors
-- `n` - when cursor is over a colored word, goes to the next occurence, otherwise next search result
-- `N` - when cursor is over a colored word, goes to the prev occurence, otherwise prev search result
+Colors words by request.
 
+- `<leader>k` - Toggle color for the word under cursor
+- `<leader>K` - Remove all word colors
+- `n` / `N` - Go to next/prev colored word or search result
+<!-- lua/plugins/editor-folding/README.md -->
+
+# Editor Folding
+
+Modern folding with UFO (Unified Folding Option).
+
+- [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)
+- [promise-async](https://github.com/kevinhwang91/promise-async)
+
+## Features
+
+- Treesitter-based folding
+- Modern arrow indicators
+- Fold column enabled
+
+## Keymaps
+
+- `zR` - Open all folds
+- `zM` - Close all folds
+
+## Configuration
+
+- Provider: treesitter + indent fallback
+- Fold level: 99
+- Fold column: 1
 <!-- lua/plugins/editor-format/README.md -->
 
 ## AutoFormat
 
-### maps
+[conform.nvim](https://github.com/stevearc/conform.nvim)
+
+### Keymaps
 
 - `<localleader>af` - Format
-- `<localleader>ai` - AutoFormat Info
-- `\a` - AutoFormat Toggle
+- `<localleader>ai` - Format Info
+- `\aa` - Toggle AutoFormat
+- `\ab` - Toggle Buffer AutoFormat
+- `\af` - Toggle Filetype AutoFormat
 
-### commands
+### Commands
 
-- `:Format`
-- `:FormatToggle`
-- `:FormatInfo`
+- `:Format` - Format current buffer
+- `:FormatToggle` - Toggle autoformat globally
+- `:FormatInfo` - Show formatting info
 
+### Supported Formatters
+
+- **Lua**: stylua
+- **JavaScript/JSON**: prettier
+- **Bash/Sh**: shfmt, beautysh
+
+### Configuration
+
+- `config.autoformat.enabled` - Enable/disable autoformat (default: true)
+- `config.autoformat.filetypes.<ft>.enabled` - Per-filetype toggle
+- `config.conform.stop_after_first` - Stop after first formatter (default: true)
 <!-- lua/plugins/editor/README.md -->
 
-## Comments
+## Editor Enhancements
 
-- `gc` - Comments menu
-- `gcc` - Toggle Comments
-- `\;` - Toggle Comments
-
-## Indent Scope
-
-[mini-indentscope](https://github.com/nvim-mini/mini.indentscope)
-
-Shows a thin line at the start of the current indent scope.
-
-It is initially disabled, use the mapping to toggle it on/off
-
-- `\i` - Toggle Indent Scope
-
-## Bookmarks
+### Bookmarks
 
 [vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks)
 
@@ -182,178 +426,575 @@ It is initially disabled, use the mapping to toggle it on/off
 - `mp` - Prev Bookmark
 - `ma` - Show All Bookmarks
 - `mi` - Add Bookmark Annotation
-- `mkk` - Move Bookmark Up
-- `mjj` - Move Bookmark Down
+- `mkk` / `mjj` - Move Bookmark Up/Down
 
-## Undo Tree
+### Undo Tree
 
-- `\u` To Toggle [undotree](http://github.com/mbbill/undotree)
-- `g=` - to go to later version
+[undotree](http://github.com/mbbill/undotree)
 
-## Switch
+- `\u` - Toggle Undo Tree
+- `g=` - Go to newer text state
 
-- `gs` - [switch.vim](https://github.com/AndrewRadev/switch.vim) to switch things. e.g. `true` <=> `false`, or `{ :a => a }` <=> `{ a: a }`
+### Switch
 
-## Align
+[switch.vim](https://github.com/AndrewRadev/switch.vim)
 
-- `gA` - start [mini.align](https://github.com/nvim-mini/mini.align) in Preview mode
+- `gs` - Switch (e.g., `true` <=> `false`)
 
-<!- TODO: expand help here -->
+### Align
 
-## Global Search and Replace
+[mini.align](https://github.com/nvim-mini/mini.align)
 
-- `:Gsearch` - to search and open results in a buffer for edit
-- `:Greplace` - apply edits from the buffer into original files matched
+- `gA` - Start Align in Preview Mode
 
-## Zoom
+### Surround
 
-- `\z` - toggle panel zoom
+[mini.surround](https://github.com/nvim-mini/mini.surround)
 
-## Zen mode
+- `ys` - Add Surrounding
+- `ds` - Delete Surrounding
+- `cs` - Change Surrounding
 
-- `\F` - Focus ([twilight.nvim](https://github.com/folke/twilight.nvim)). Dimm everything except area around the cursor line
-- `\<tab>` - [Zen Mode](https://github.com/folke/zen-mode.nvim). Focus, but also zoom and center the window
+### Pairs
 
-## Multiple Cursors
+[mini.pairs](https://github.com/nvim-mini/mini.pairs)
+
+Automatic pairing of brackets and quotes.
+
+### Zen Mode
+
+[twilight.nvim](https://github.com/folke/twilight.nvim) - Focus mode
+
+- `\F` - Focus (dimm everything except area around cursor)
+
+[zen-mode.nvim](https://github.com/folke/zen-mode.nvim) - Zen mode
+
+- `\<tab>` - Zen Mode (focus, zoom, and center)
+
+### Multiple Cursors
 
 [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 
-- `ctrl-n` - to select words
-- `n` - select next
-- `q` - skip
+- `<localleader>v` - Visual Multi Menu
+- `Ctrl-n` - Select words
+- `n` - Select next
+- `q` - Skip
+- `Ctrl-down` - Add vertical cursor
+- `Tab` - Toggle cursor and extend mode
 
-- `ctrl-down` - add vertical cursor
+### Illuminate
 
-- `tab` - toggle cursor and extend mode
+[vim-illuminate](https://github.com/RRethy/vim-illuminate)
 
-## Illuminate
+Highlights other uses of the word under cursor.
 
-[vim-illuminate](https://github.com/RRethy/vim-illuminate) is used to automatically
-highlight other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+- `<m-i>` - Textobject for reference under cursor
+- `<m-n>` - Go to next occurrence
+- `<m-p>` - Go to prev occurrence
 
-- `<m-i>` - textobject for the reference illuminated under the cursor
-- `<m-n>` - go to next occurance
-- `<m-p>` - go to prev occurance
+### Yank Ring
 
-## Yank Ring
+[yanky.nvim](https://github.com/gbprod/yanky.nvim)
 
-[yanky.nvim](https://github.com/gbprod/yanky.nvim) is used for 'yank ring' functionality
+- `p` / `P` - Paste after/before
+- `gp` / `gP` - Paste after/before (cursor stays)
+- `]y` / `[y` - Cycle through yanks
+- `<leader>Y<CR>` - Yank History
 
-after pasting:
+### Global Search and Replace
 
-- `[y` - previous paste
-- `]y` - next paste
+[grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim)
 
-- `<SPACE-Y-CR` - yank history picker
+- `<leader>sr` - Search and Replace
 
-## Surround
+### Status Column
 
-We are using [mini.surround](https://github.com/nvim-mini/mini.surround) for surround.
-Default mappings are changed slightly to be more like those of tpope's [vim-surround](https://github.com/tpope/vim-surround)
+[statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim)
 
-- `ys` - add
-- `ds` - remove
-- `cs` - change
+Shows line numbers, fold indicators, and signs.
 
+### Venn Diagrams
+
+[venn.nvim](https://github.com/jbyuki/venn.nvim)
+
+- `\V` - Toggle Venn Mode (draw boxes in visual mode)
+
+### Window Zoom
+
+[zoomwintab.vim](https://github.com/troydm/zoomwintab.vim)
+
+- `\z` - Toggle Window Zoom
 <!-- lua/plugins/file-tree/README.md -->
 
 ## File Tree
 
-[neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
-OR
 [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
+[neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
 
-> Note: nvim-tree configuration is still in progress
+Uses snacks file tree by default.
 
-### Config
+### Keymaps
 
-- `config.file-tree.plugin` - set to 'nvimtree', 'neotree', or 'snacks' (default)
-- `config.file-tree.position` - left (default), or right
-
-## Maps
-
-- `\\` - Quick File Popup (not available for nvimtree)
+- `\\` - Quick File Popup
 - `\[` - Toggle File Tree
-- `\.` - Reveal File
+- `\.` - Reveal Current File
 
+### Configuration
+
+- `config.file-tree.plugin` - Backend: 'snacks' (default), 'neotree', or 'nvimtree'
+- `config.file-tree.position` - 'left' (default) or 'right'
 <!-- lua/plugins/git/README.md -->
 
-## GIT
+## Git
 
-- `SPACE-gs` - show git status
-- `<SPACE-gp` - git push
-- `<SPACE-gd` - git diff
-- `<SPACE-gg` - git grep
-- `<SPACE-gw` - git grep word under cursor
-- `\gs` - toggle gitsigns
-- `\gs` - toggle virtual git blame for current line
+[gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+[vim-fugitive](https://github.com/tpope/vim-fugitive)
 
-## Git Status Mode
+### Gitsigns
 
-- `g?` - help
+- `\gs` - Toggle Signs
+- `\gv` - Toggle Virtual Line Blame
+- `\gl` - Toggle Line Highlight
+- `\gw` - Toggle Word Diff
 
-changes:
+### Fugitive
 
-- `-` - toggle stage / unstage of file or hunk
-- 'X' - discard file changes or hunk
-- `=` - toggle inline diff
+- `<leader>gs` - Git Status
+- `<leader>gd` - Git Diff (vertical)
+- `<leader>gp` - Git Push
+- `<leader>gg` - Git Grep...
+- `<leader>gw` - Git Grep Word
 
-commit:
+### Git Status Mode
 
-- 'cc' - commit
-- 'ca' - amend commit
-- 'cf' rt- commit `--fixup` for file under cursor
-- 'cF' - commit `--fixup` for file under cursor and immediately rebase it
+- `g?` - Help
 
-rebase:
+**Changes:**
+- `-` - Stage/unstage file or hunk
+- `X` - Discard changes
 
-- `ri` - interactive rebase from ancestore of commit under the cursor
-- `rr` - continue rebase
-- `rs` - skip the current commit and continue rebase
-- `ra` - abort rebase
-- `rw` - interactive rebase with the commit under the cursor set to `reword`.
-- `rm` - interactive rebase with the commit under the cursor set to `edit`.
-- `rd` - interactive rebase with the commit under the cursor set to `drop`.
+**Commit:**
+- `cc` - Commit
+- `ca` - Amend commit
+- `cf` - Fixup commit
+- `cF` - Fixup and rebase
 
+**Rebase:**
+- `ri` - Interactive rebase
+- `rr` - Continue
+- `rs` - Skip
+- `ra` - Abort
+- `rw` - Reword
+- `rm` - Edit
+- `rd` - Drop
+<!-- lua/plugins/lsp-null/README.md -->
+
+# LSP Null
+
+External LSP tools (linting, formatting).
+
+- [none-ls.nvim](https://github.com/nvimtools/none-ls.nvim)
+- [mason-null-ls.nvim](https://github.com/jayp0521/mason-null-ls.nvim)
+
+## Status
+
+**Currently disabled** (`enabled = false`).
+
+## Keymaps
+
+- `<leader>Sn` - Null LS info
+- `<leader>ani` - Null LS info
+- `<leader>anl` - Null LS log
+
+## Available Sources
+
+- rubocop (diagnostics)
+- shellcheck (diagnostics)
+
+## Configuration
+
+- Border: single
+- Group: `<leader>an`
 <!-- lua/plugins/lsp/README.md -->
 
 ## LSP
 
-- `SPACE-Sl` - LSP Info
-- `SPACE-ali` - LSP Info
-- `SPACE-all` - LSP Log
-- `SPACE-als` - LSP Start
-- `SPACE-alS` - LSP Stop
-- `SPACE-alr` - LSP Restart
+[mason.nvim](https://github.com/mason-org/mason.nvim)
+[nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 
-### Null LS
+### Mason (Package Manager)
 
-[null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
+- `<leader>amm` - Open Mason
+- `<leader>aml` - Mason Log
+- `<leader>amu` - Mason Update
+- `<leader>ami` - Mason Install...
 
-NullLS is a generic LSP server that can use external tools to provide LSP
-'formatting' and 'diagnostic' capabilities.
+### Default LSP Servers
 
-To show `null-ls` status: `<leader>Sn`
+- lua_ls, ts_ls, jsonls, yamlls, bashls, dockerls, ruby_lsp
 
+### Tools
+
+- [fidget.nvim](https://github.com/j-hui/fidget.nvim) - LSP progress
+- [nvim-lightbulb](https://github.com/kosayoda/nvim-lightbulb) - Code action indicator
+
+### Configuration
+
+- `config.lsp.ensure_installed` - Tools to install (jq, stylua, tree-sitter-cli)
+- `config.lsp.enable` - LSP servers to enable
+- `config.lsp.servers` - Server-specific config
+- `config.icons.diagnostic` - Diagnostic icons
+<!-- lua/plugins/obsidian/README.md -->
+
+# Obsidian
+
+Obsidian.md integration for Neovim.
+
+- [obsidian.nvim](https://github.com/obsidian-nvim/obsidian.nvim)
+- [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+
+## Configuration
+
+### Workspaces
+
+- `main` - ~/Obsidian/Main
+
+### Features
+
+- Markdown rendering with icons
+- Custom checkbox states: ` `, `x`, `*`, `~`, `!`, `>`
+- LSP completions enabled
+- Anti-conceal for code blocks, quotes
+
+### Checkbox Icons
+
+- Unchecked: ` `
+- Checked: ` `
+- Todo `[-]`: ` `
+- Exclamation `[!]`: `󱈸 `
+- Tilda `[~]`: `󰜥 `
+- Angle `[>]`: ` `
+- Star `[*]`: ` `
+<!-- lua/plugins/picker/README.md -->
+
+# Picker
+
+Unified picker keybindings using Snacks and Telescope.
+
+## Keymaps
+
+### Quick Access
+
+- `<localleader><localleader>` - Find file
+- `<leader>/` - Grep in files
+- `<leader><cr>` - Find command
+- `<leader>:` - Search command history
+
+### Help
+
+- `??` - Find help
+- `?k` - Find keymaps
+- `?m` - Man pages (Telescope)
+
+### Files & Buffers
+
+- `<leader>ff` - Find file
+- `<leader>bb` - Find buffer
+
+### Search & Diagnostics
+
+- `<leader>sd` - Buffer diagnostics
+- `<leader>sD` - All diagnostics
+- `<leader>sw` - Search word
+- `<leader>st` - Search TODOs
+- `<leader>sp` - Find project
+
+## Notes
+
+Combines Snacks picker (primary) with Telescope as fallback for some actions.
+<!-- lua/plugins/refactoring/README.md -->
+
+# Refactoring
+
+Code refactoring tools for Neovim.
+
+- [refactoring.nvim](https://github.com/ThePrimeagen/refactoring.nvim)
+
+## Keymaps
+
+All keymaps use `<localleader>r` prefix.
+
+### Rename
+
+- `<localleader>rn` - Rename
+
+### Select Refactor
+
+- `<localleader>rr` - Select refactor (normal & visual)
+
+### Extract
+
+- `<localleader>ref` - Extract function
+- `<localleader>reF` - Extract function to file
+- `<localleader>rev` - Extract variable
+- `<localleader>reb` - Extract block
+- `<localleader>reB` - Extract block to file
+
+### Inline
+
+- `<localleader>rif` - Inline function
+- `<localleader>riv` - Inline variable
 <!-- lua/plugins/session/README.md -->
 
 ## Sessions
 
-- `SPACE-q` - to access Sessions menu
+[persistence.nvim](https://github.com/folke/persistence.nvim)
 
+### Keymaps
+
+- `<leader>Qr` - Restore Session
+- `<leader>Ql` - Restore Last Session
+- `<leader>Qd` - Don't Save Current Session
+
+### Features
+
+- Automatically saves session on exit
+- Restores buffers, directory, tabs, and window size
+<!-- lua/plugins/snacks/README.md -->
+
+# Snacks
+
+Utility enhancements for Neovim.
+
+- [snacks.nvim](https://github.com/folke/snacks.nvim)
+- [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
+
+## Features
+
+- **dashboard** - Startup dashboard with projects
+- **explorer** - File explorer
+- **picker** - Unified picker UI
+- **notifier** - Notification UI
+- **quickfile** - Quick file access
+- **scope** - Scope highlighting
+- **bigfile** - Big file handling
+- **debug** - Debug utilities
+- **input** - Input enhancements
+- **scratch** - Scratch file support
+
+## Keymaps
+
+All keymaps use `<leader>as` prefix.
+
+### General
+
+- `<leader>ass` - Open Snacks picker
+- `<leader>asf` - Find file
+- `<leader>aso` - Recent files
+- `<leader>asO` - Smart files
+- `<leader>asF` - Git files
+- `<leader>asb` - Buffers
+
+### Search
+
+- `<leader>as//` - Grep
+- `<leader>as/w` - Grep word
+- `<leader>as/b` - Grep buffers
+- `<leader>as/g` - Grep git
+
+### History
+
+- `<leader>as:` - Command history
+- `<leader>as?` - Search history
+- `<leader>asn` - Notifications
+
+### Commands
+
+- `<leader>asc` - Commands
+- `<leader>asC` - Colorschemes
+- `<leader>asL` - Buffer lines
+- `<leader>asa` - Autocommands
+
+### Diagnostics
+
+- `<leader>asd` - Buffer diagnostics
+- `<leader>asD` - All diagnostics
+
+### Navigation
+
+- `<leader>ash` - Help
+- `<leader>asH` - Highlights
+- `<leader>asi` - Icons
+- `<leader>asj` - Jump
+- `<leader>ask` - Keymaps
+- `<leader>asz` - Lazy
+- `<leader>asm` - Man pages
+- `<leader>as'` - Marks
+- `<leader>asq` - Quickfix
+- `<leader>asQ` - Loclist
+- `<leader>asr` - Register
+- `<leader>asR` - Resume
+- `<leader>ast` - Todo
+- `<leader>asu` - Undo
+- `<leader>asp` - Project
+
+### Git
+
+- `<leader>asGb` - Branches
+- `<leader>asGl` - Log
+- `<leader>asGL` - Log line
+- `<leader>asGf` - Log file
+- `<leader>asGs` - Status
+- `<leader>asGS` - Stash
+- `<leader>asGd` - Diff
+
+### LSP
+
+- `<leader>asld` - Definition
+- `<leader>aslD` - Declaration
+- `<leader>aslr` - References
+- `<leader>asli` - Implementation
+- `<leader>aslt` - Type definition
+- `<leader>aslI` - Incoming calls
+- `<leader>aslO` - Outgoing calls
+- `<leader>asls` - Document symbols
+- `<leader>aslw` - Workspace symbols
+- `<leader>aslc` - LSP config
+
+### Scratch
+
+- `<leader>#` - New scratch file
+- `<leader>$` - Select scratch file
+
+### Other
+
+- `\i` - Toggle indent scope
+
+## Configuration
+
+Custom checkbox icons:
+- Unchecked: ` `
+- Checked: ` `
+- Todo: `[-]` → ` `
+- Exclamation: `[!]` → `󱈸 `
+- Tilda: `[~]` → `󰜥 `
+- Angle: `[>]` → ` `
+- Star: `[*]` → ` `
 <!-- lua/plugins/statusline/README.md -->
 
 ## Status Line
 
-- `\S` - toggle Status Line
+[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 
+### Keymaps
+
+- `\S` - Toggle Status Line
+
+### Features
+
+- Shows mode, branch, diff, diagnostics
+- Shows filename with path
+- Shows encoding, fileformat, filetype
+- Shows LSP client name
+- Tabline shows tabs
+- Winbar shows current file path
+
+### Disabled Filetypes
+
+- dap-repl, dapui_*
+- Outline
+- snacks_picker_list
+- toggleterm
+<!-- lua/plugins/telescope/README.md -->
+
+# Telescope
+
+Fuzzy finder and picker for Neovim.
+
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [telescope-symbols.nvim](https://github.com/nvim-telescope/telescope-symbols.nvim)
+
+## Keymaps
+
+All keymaps use `<leader>at` prefix.
+
+### General
+
+- `<leader>att` - Open Telescope
+- `<leader>atf` - Find file
+- `<leader>ato` - Recent files
+- `<leader>atF` - Git files
+- `<leader>atb` - Buffers
+- `<leader>at//` - Grep
+- `<leader>at/w` - Grep word
+- `<leader>at:` - Command history
+- `<leader>atc` - Commands
+- `<leader>atC` - Colorschemes
+- `<leader>atL` - Buffer lines
+- `<leader>ata` - Autocommands
+
+### Diagnostics
+
+- `<leader>atd` - Buffer diagnostics
+- `<leader>atD` - All diagnostics
+
+### Help & Navigation
+
+- `<leader>ath` - Help tags
+- `<leader>atH` - Highlights
+- `<leader>ati` - Icons
+- `<leader>atk` - Keymaps
+- `<leader>atm` - Man pages
+- `<leader>at'` - Marks
+- `<leader>ats` - Tagstack
+- `<leader>atv` - Vim options
+
+### Git
+
+- `<leader>atGl` - Git log
+- `<leader>atGs` - Git status
+
+### LSP
+
+- `<leader>atld` - Definition
+- `<leader>atlD` - Declaration
+- `<leader>atlr` - References
+- `<leader>atli` - Implementation
+- `<leader>atlt` - Type definition
+- `<leader>atlI` - Incoming calls
+- `<leader>atlO` - Outgoing calls
+- `<leader>atls` - Document symbols
+- `<leader>atlw` - Workspace symbols
+- `<leader>atlW` - Dynamic workspace symbols
+
+## Configuration
+
+- Theme: ivy (for most pickers)
+- Layout: flex
+- Mappings: `<esc>` to close, `<c-j>`/`<c-k>` to navigate
 <!-- lua/plugins/terminal/README.md -->
 
 ## Terminal
 
-- `<c-\>` - toggle terminal
-- `<esc><esc>` - while in terminal, switch into normal mode
+[toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
+[vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
 
+### Keymaps
+
+- `<c-\>` - Toggle Terminal
+- `<esc><esc>` - Exit Terminal to Normal Mode
+- `<leader>gt` - Toggle TIG
+- `<leader>gl` - Toggle LazyGit
+
+### Tmux Navigation
+
+- `<m-k>` / `<m-j>` / `<m-h>` / `<m-l>` - Navigate Up/Down/Left/Right
+- `<leader>wk` / `<leader>wj` / `<leader>wh` / `<leader>wl` - Navigate (in normal mode)
+
+### Features
+
+- Terminal opens in insert mode automatically
+- Mouse clicks re-enter insert mode
 <!-- lua/plugins/testing/README.md -->
 
 ## Testing
@@ -394,3 +1035,44 @@ To show `null-ls` status: `<leader>Sn`
 
 - `[t` - Prev Failed Test
 - `]t` - Next Failed Test
+<!-- lua/plugins/treesitter/README.md -->
+
+# Treesitter
+
+Syntax highlighting and parsing for Neovim.
+
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [nvim-treesitter-endwise](https://github.com/RRethy/nvim-treesitter-endwise)
+
+## Features
+
+- Syntax highlighting
+- Incremental selection
+- Text objects
+- Matchup highlighting
+- End-wise expansion
+
+## Keymaps
+
+- `<leader>ati` - Install info
+- `<leader>atm` - Module info
+- `<leader>atc` - Config info
+- `<leader>atu` - Update parsers
+- `<leader>ath` - vim.treesitter health
+- `<leader>atH` - nvim-treesitter health
+
+### Incremental Selection
+
+- `<c-space>` - Init/increment selection
+- `<bs>` - Decrement selection
+
+## Installed Parsers
+
+bash, c, comment, cpp, css, elixir, go, html, javascript, jsdoc, json, latex, lua, make, markdown_inline, markdown, python, query, regex, ruby, rust, scala, scss, toml, typescript, vim, yaml
+<!-- lua/plugins/ui/README.md -->
+
+# UI
+
+UI enhancements for Neovim.
+
+- [dressing.nvim](https://github.com/stevearc/dressing.nvim) - Improved UI for inputs and selections

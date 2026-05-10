@@ -1,20 +1,6 @@
-## Comments
+## Editor Enhancements
 
-- `gc` - Comments menu
-- `gcc` - Toggle Comments
-- `\;` - Toggle Comments
-
-## Indent Scope
-
-[mini-indentscope](https://github.com/nvim-mini/mini.indentscope)
-
-Shows a thin line at the start of the current indent scope.
-
-It is initially disabled, use the mapping to toggle it on/off
-
-- `\i` - Toggle Indent Scope
-
-## Bookmarks
+### Bookmarks
 
 [vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks)
 
@@ -25,75 +11,101 @@ It is initially disabled, use the mapping to toggle it on/off
 - `mp` - Prev Bookmark
 - `ma` - Show All Bookmarks
 - `mi` - Add Bookmark Annotation
-- `mkk` - Move Bookmark Up
-- `mjj` - Move Bookmark Down
+- `mkk` / `mjj` - Move Bookmark Up/Down
 
-## Undo Tree
+### Undo Tree
 
-- `\u` To Toggle [undotree](http://github.com/mbbill/undotree)
-- `g=` - to go to later version
+[undotree](http://github.com/mbbill/undotree)
 
-## Switch
+- `\u` - Toggle Undo Tree
+- `g=` - Go to newer text state
 
-- `gs` - [switch.vim](https://github.com/AndrewRadev/switch.vim) to switch things. e.g. `true` <=> `false`, or `{ :a => a }` <=> `{ a: a }`
+### Switch
 
-## Align
+[switch.vim](https://github.com/AndrewRadev/switch.vim)
 
-- `gA` - start [mini.align](https://github.com/nvim-mini/mini.align) in Preview mode
+- `gs` - Switch (e.g., `true` <=> `false`)
 
-<!- TODO: expand help here -->
+### Align
 
-## Global Search and Replace
+[mini.align](https://github.com/nvim-mini/mini.align)
 
-- `:Gsearch` - to search and open results in a buffer for edit
-- `:Greplace` - apply edits from the buffer into original files matched
+- `gA` - Start Align in Preview Mode
 
-## Zoom
+### Surround
 
-- `\z` - toggle panel zoom
+[mini.surround](https://github.com/nvim-mini/mini.surround)
 
-## Zen mode
+- `ys` - Add Surrounding
+- `ds` - Delete Surrounding
+- `cs` - Change Surrounding
 
-- `\F` - Focus ([twilight.nvim](https://github.com/folke/twilight.nvim)). Dimm everything except area around the cursor line
-- `\<tab>` - [Zen Mode](https://github.com/folke/zen-mode.nvim). Focus, but also zoom and center the window
+### Pairs
 
-## Multiple Cursors
+[mini.pairs](https://github.com/nvim-mini/mini.pairs)
+
+Automatic pairing of brackets and quotes.
+
+### Zen Mode
+
+[twilight.nvim](https://github.com/folke/twilight.nvim) - Focus mode
+
+- `\F` - Focus (dimm everything except area around cursor)
+
+[zen-mode.nvim](https://github.com/folke/zen-mode.nvim) - Zen mode
+
+- `\<tab>` - Zen Mode (focus, zoom, and center)
+
+### Multiple Cursors
 
 [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 
-- `ctrl-n` - to select words
-- `n` - select next
-- `q` - skip
+- `<localleader>v` - Visual Multi Menu
+- `Ctrl-n` - Select words
+- `n` - Select next
+- `q` - Skip
+- `Ctrl-down` - Add vertical cursor
+- `Tab` - Toggle cursor and extend mode
 
-- `ctrl-down` - add vertical cursor
+### Illuminate
 
-- `tab` - toggle cursor and extend mode
+[vim-illuminate](https://github.com/RRethy/vim-illuminate)
 
-## Illuminate
+Highlights other uses of the word under cursor.
 
-[vim-illuminate](https://github.com/RRethy/vim-illuminate) is used to automatically
-highlight other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+- `<m-i>` - Textobject for reference under cursor
+- `<m-n>` - Go to next occurrence
+- `<m-p>` - Go to prev occurrence
 
-- `<m-i>` - textobject for the reference illuminated under the cursor
-- `<m-n>` - go to next occurance
-- `<m-p>` - go to prev occurance
+### Yank Ring
 
-## Yank Ring
+[yanky.nvim](https://github.com/gbprod/yanky.nvim)
 
-[yanky.nvim](https://github.com/gbprod/yanky.nvim) is used for 'yank ring' functionality
+- `p` / `P` - Paste after/before
+- `gp` / `gP` - Paste after/before (cursor stays)
+- `]y` / `[y` - Cycle through yanks
+- `<leader>Y<CR>` - Yank History
 
-after pasting:
+### Global Search and Replace
 
-- `[y` - previous paste
-- `]y` - next paste
+[grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim)
 
-- `<SPACE-Y-CR` - yank history picker
+- `<leader>sr` - Search and Replace
 
-## Surround
+### Status Column
 
-We are using [mini.surround](https://github.com/nvim-mini/mini.surround) for surround.
-Default mappings are changed slightly to be more like those of tpope's [vim-surround](https://github.com/tpope/vim-surround)
+[statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim)
 
-- `ys` - add
-- `ds` - remove
-- `cs` - change
+Shows line numbers, fold indicators, and signs.
+
+### Venn Diagrams
+
+[venn.nvim](https://github.com/jbyuki/venn.nvim)
+
+- `\V` - Toggle Venn Mode (draw boxes in visual mode)
+
+### Window Zoom
+
+[zoomwintab.vim](https://github.com/troydm/zoomwintab.vim)
+
+- `\z` - Toggle Window Zoom

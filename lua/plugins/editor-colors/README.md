@@ -1,17 +1,23 @@
+## Editor Colors
+
 ### Colorizer
 
-[nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) plugin parses color values
-in the text and displays the colors either as a virtual text, background, or foreground color of the value.
+[nvim-colorizer.lua](https://github.com/NvChad/nvim-colorizer.lua)
 
-- `\Cc` - toggle colorizer
-- `\Cm` - toggle colorizer mode
-- `\Cr` - reload colorizer
+Highlights color codes in text.
+
+- `\Lc` - Toggle Colorizer
+- `\Lm` - Toggle Colorizer Mode
+- `\Lr` - Reload Colorizer
+
+Modes: virtualtext, foreground, background
 
 ### Interesting Words
 
-[vim-interestingwords](https://github.com/lfv89/vim-interestingwords) plugin colors words by request.
+[vim-interestingwords](https://github.com/lfv89/vim-interestingwords)
 
-- `SPACE-k` - toggle color for the word under cursor
-- `SPACE-K` - remove all word colors
-- `n` - when cursor is over a colored word, goes to the next occurence, otherwise next search result
-- `N` - when cursor is over a colored word, goes to the prev occurence, otherwise prev search result
+Colors words by request.
+
+- `<leader>k` - Toggle color for the word under cursor
+- `<leader>K` - Remove all word colors
+- `n` / `N` - Go to next/prev colored word or search result

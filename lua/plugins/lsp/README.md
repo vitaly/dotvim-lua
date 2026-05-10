@@ -1,17 +1,27 @@
 ## LSP
 
-- `SPACE-Sl` - LSP Info
-- `SPACE-ali` - LSP Info
-- `SPACE-all` - LSP Log
-- `SPACE-als` - LSP Start
-- `SPACE-alS` - LSP Stop
-- `SPACE-alr` - LSP Restart
+[mason.nvim](https://github.com/mason-org/mason.nvim)
+[nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 
-### Null LS
+### Mason (Package Manager)
 
-[null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
+- `<leader>amm` - Open Mason
+- `<leader>aml` - Mason Log
+- `<leader>amu` - Mason Update
+- `<leader>ami` - Mason Install...
 
-NullLS is a generic LSP server that can use external tools to provide LSP
-'formatting' and 'diagnostic' capabilities.
+### Default LSP Servers
 
-To show `null-ls` status: `<leader>Sn`
+- lua_ls, ts_ls, jsonls, yamlls, bashls, dockerls, ruby_lsp
+
+### Tools
+
+- [fidget.nvim](https://github.com/j-hui/fidget.nvim) - LSP progress
+- [nvim-lightbulb](https://github.com/kosayoda/nvim-lightbulb) - Code action indicator
+
+### Configuration
+
+- `config.lsp.ensure_installed` - Tools to install (jq, stylua, tree-sitter-cli)
+- `config.lsp.enable` - LSP servers to enable
+- `config.lsp.servers` - Server-specific config
+- `config.icons.diagnostic` - Diagnostic icons

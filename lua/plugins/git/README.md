@@ -1,36 +1,42 @@
-## GIT
+## Git
 
-- `SPACE-gs` - show git status
-- `<SPACE-gp` - git push
-- `<SPACE-gd` - git diff
-- `<SPACE-gg` - git grep
-- `<SPACE-gw` - git grep word under cursor
-- `\gs` - toggle gitsigns
-- `\gs` - toggle virtual git blame for current line
+[gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+[vim-fugitive](https://github.com/tpope/vim-fugitive)
 
-## Git Status Mode
+### Gitsigns
 
-- `g?` - help
+- `\gs` - Toggle Signs
+- `\gv` - Toggle Virtual Line Blame
+- `\gl` - Toggle Line Highlight
+- `\gw` - Toggle Word Diff
 
-changes:
+### Fugitive
 
-- `-` - toggle stage / unstage of file or hunk
-- 'X' - discard file changes or hunk
-- `=` - toggle inline diff
+- `<leader>gs` - Git Status
+- `<leader>gd` - Git Diff (vertical)
+- `<leader>gp` - Git Push
+- `<leader>gg` - Git Grep...
+- `<leader>gw` - Git Grep Word
 
-commit:
+### Git Status Mode
 
-- 'cc' - commit
-- 'ca' - amend commit
-- 'cf' rt- commit `--fixup` for file under cursor
-- 'cF' - commit `--fixup` for file under cursor and immediately rebase it
+- `g?` - Help
 
-rebase:
+**Changes:**
+- `-` - Stage/unstage file or hunk
+- `X` - Discard changes
 
-- `ri` - interactive rebase from ancestore of commit under the cursor
-- `rr` - continue rebase
-- `rs` - skip the current commit and continue rebase
-- `ra` - abort rebase
-- `rw` - interactive rebase with the commit under the cursor set to `reword`.
-- `rm` - interactive rebase with the commit under the cursor set to `edit`.
-- `rd` - interactive rebase with the commit under the cursor set to `drop`.
+**Commit:**
+- `cc` - Commit
+- `ca` - Amend commit
+- `cf` - Fixup commit
+- `cF` - Fixup and rebase
+
+**Rebase:**
+- `ri` - Interactive rebase
+- `rr` - Continue
+- `rs` - Skip
+- `ra` - Abort
+- `rw` - Reword
+- `rm` - Edit
+- `rd` - Drop

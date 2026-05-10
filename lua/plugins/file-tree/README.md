@@ -1,18 +1,17 @@
 ## File Tree
 
-[neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
-OR
 [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
+[neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
 
-> Note: nvim-tree configuration is still in progress
+Uses snacks file tree by default.
 
-### Config
+### Keymaps
 
-- `config.file-tree.plugin` - set to 'nvimtree', 'neotree', or 'snacks' (default)
-- `config.file-tree.position` - left (default), or right
-
-## Maps
-
-- `\\` - Quick File Popup (not available for nvimtree)
+- `\\` - Quick File Popup
 - `\[` - Toggle File Tree
-- `\.` - Reveal File
+- `\.` - Reveal Current File
+
+### Configuration
+
+- `config.file-tree.plugin` - Backend: 'snacks' (default), 'neotree', or 'nvimtree'
+- `config.file-tree.position` - 'left' (default) or 'right'

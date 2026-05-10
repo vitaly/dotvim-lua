@@ -23,14 +23,14 @@
 `debug` -> `my.log.debug`
 `trace` -> `my.log.trace`
 
-Switch Log level via `<\\l>` map
-Display messages with `<SPACE>m`
+Switch Log level via `\<l>` map
+Display messages with `<leader>m`
 
 # trace
 
 Use `_t('message')` to add `message` to the trace log `_G.__t`
 
-Use `<space-m>t` to display trace log.
+Use `<leader>mt` to display trace log.
 
 
 <!-- lua/plugins/statusline/DEV.md -->

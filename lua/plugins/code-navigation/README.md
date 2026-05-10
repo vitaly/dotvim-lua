@@ -1,19 +1,19 @@
-## Symbols Outline
+## Code Navigation
 
-> [Symbols Outline](https://github.com/simrat39/symbols-outline.nvim)
+### Symbols Outline
 
-### Config
+[outline.nvim](https://github.com/hedyhli/outline.nvim)
 
-- `config.tagbar.position` - `left` / `right` (default)
+- `\]` - Toggle Symbols Outline
 
-### Maps
+### Aerial
 
-- `\t` - toggle Symbols Outline
+[aerial.nvim](https://github.com/stevearc/aerial.nvim)
 
-## Aerial
+Shows code structure via Telescope popup.
 
-> [Aerial](https://github.com/stevearc/aerial.nvim)
+- `go` - Fuzzy Outline (Telescope)
 
-> NOTE: Aerial is used through a Telescope popup
+### Configuration
 
-- `go` - show Fuzzy Outline
+- `config.tagbar.position` - 'left' or 'right' (default)
