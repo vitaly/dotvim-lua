@@ -15,6 +15,10 @@ require('lazy').setup('plugins', {
   change_detection = { enabled = true, notify = false },
   install = { colorscheme = { 'tokyonight', 'habamax' } },
   performance = {
+    concurrency = 6,
+    git = {
+      timeout = 60,
+    },
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
