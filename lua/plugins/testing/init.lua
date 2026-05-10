@@ -49,19 +49,20 @@ return {
       { '<leader>tdf', function() require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' }) end, desc = 'Debug File' },
 
       -- output
-      { '<leader>too', function() require('neotest').output.open({ enter = true, auto_close = true }) end, desc = 'Output' },
-      { '<leader>tol', function() require('neotest').output.open({ enter = true, auto_close = true, last_run = true }) end, desc = 'Output (Last)' },
-      { '<leader>top', function() require('neotest').output_panel.toggle() end, desc = 'Output Panel' },
-      { '<leader>toc', function() require('neotest').output_panel.clear() end, desc = 'Clear Output Panel' },
+      { '<leader>tp', function() require('neotest').output_panel.toggle() end, desc = 'Output Panel' },
+      { '<leader>to', function() require('neotest').output.open({ enter = true, auto_close = true }) end, desc = 'Output' },
+      { '<leader>tL', function() require('neotest').output.open({ enter = true, auto_close = true, last_run = true }) end, desc = 'Output (Last)' },
+      { '<leader>tC', function() require('neotest').output_panel.clear() end, desc = 'Clear Output Panel' },
 
       -- summary panel
       { '<leader>tu', function() require('neotest').summary.toggle() end, desc = 'Toggle Summary' },
 
-      -- watch mode (LSP-based, requires symbol_queries for the language)
-      { '<leader>twf', function() require('neotest').watch.toggle(vim.fn.expand('%')) end, desc = 'Watch File (LSP)' },
-      { '<leader>twn', function() require('neotest').watch.toggle() end, desc = 'Watch Nearest (LSP)' },
       -- simple watch: re-run on any buffer save
-      { '<leader>tws', function() require('plugins.testing.watch').toggle() end, desc = 'Watch on Save (simple)' },
+      { '<leader>tw', function() require('plugins.testing.watch').toggle() end, desc = 'Watch on Save (simple)' },
+
+      -- watch mode (LSP-based, requires symbol_queries for the language)
+      { '<leader>tWf', function() require('neotest').watch.toggle(vim.fn.expand('%')) end, desc = 'Watch File (LSP)' },
+      { '<leader>tWn', function() require('neotest').watch.toggle() end, desc = 'Watch Nearest (LSP)' },
 
       -- navigation
       { '[t', function() require('neotest').jump.prev({ status = 'failed' }) end, desc = 'Prev Failed Test' },
