@@ -4,17 +4,15 @@
 
 ### Keymaps
 
-- `<leader>ma` - All Messages
 - `<leader>mm` - All Messages
 - `<leader>me` - Error Messages
-- `<leader>md` - Debug Messages
 - `<leader>m/` - Search Messages
 - `<leader>m?` - Last Messages
 - `<leader>mD` - Disable Noice
 - `<leader>mE` - Enable Noice
 - `<leader>mc` - Clear History
-- `<leader>mx` - Clear History
+- `<leader>mT` - Toggle Noice
+- `\\m` - Toggle Noice
 - `<leader>mt` - Print Trace Log
 - `<leader>mg` - Generate Test Messages
 - `<esc><esc>` - Dismiss All
-

@@ -146,20 +146,18 @@ Manages lazy loading of plugins and itself. Keys are defined in `base-keymaps`.
 
 ### Keymaps
 
-- `<leader>ma` - All Messages
 - `<leader>mm` - All Messages
 - `<leader>me` - Error Messages
-- `<leader>md` - Debug Messages
 - `<leader>m/` - Search Messages
 - `<leader>m?` - Last Messages
 - `<leader>mD` - Disable Noice
 - `<leader>mE` - Enable Noice
 - `<leader>mc` - Clear History
-- `<leader>mx` - Clear History
+- `<leader>mT` - Toggle Noice
+- `\\m` - Toggle Noice
 - `<leader>mt` - Print Trace Log
 - `<leader>mg` - Generate Test Messages
 - `<esc><esc>` - Dismiss All
-
 
 <!-- lua/plugins/base-utils/README.md -->
 # Base Utils
