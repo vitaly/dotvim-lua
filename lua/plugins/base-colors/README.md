@@ -13,9 +13,9 @@ Color scheme management for Neovim.
 
 ## Configuration
 
-- Default: tokyonight-night
-- Configurable via `colorscheme` option
-- Diff colors overridden for better visibility
+- Configurable via `colorscheme` option in Onion config
+- Default: tokyonight
+- when not set, LoadVimrcBackground will be called
 
 ## Notes
 

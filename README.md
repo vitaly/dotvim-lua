@@ -15,14 +15,15 @@ Color scheme management for Neovim.
 
 ## Configuration
 
-- Default: tokyonight-night
-- Configurable via `colorscheme` option
-- Diff colors overridden for better visibility
+- Configurable via `colorscheme` option in Onion config
+- Default: tokyonight
+- when not set, LoadVimrcBackground will be called
 
 ## Notes
 
 - `LoadVimrcBackground` command sources `~/.vimrc_background` for base16 themes
 - Custom diff highlighting: adds colored backgrounds to diff modes
+
 <!-- lua/plugins/base-keymaps/README.md -->
 
 ## Basic Keymaps
