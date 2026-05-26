@@ -21,8 +21,6 @@ All keymaps use `<localleader>r` prefix.
 - `<localleader>ref` - Extract function
 - `<localleader>reF` - Extract function to file
 - `<localleader>rev` - Extract variable
-- `<localleader>reb` - Extract block
-- `<localleader>reB` - Extract block to file
 
 ### Inline
 
