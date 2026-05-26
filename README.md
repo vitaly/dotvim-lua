@@ -362,25 +362,17 @@ Colors words by request.
 
 Modern folding with UFO (Unified Folding Option).
 
-- [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)
-- [promise-async](https://github.com/kevinhwang91/promise-async)
+- [nvim-origami](https://github.com/chrisgrieser/nvim-origami)
 
 ## Features
 
-- Treesitter-based folding
-- Modern arrow indicators
-- Fold column enabled
+- LSP based folding with follback to Treesitter and then to indent
 
 ## Keymaps
 
 - `zR` - Open all folds
 - `zM` - Close all folds
 
-## Configuration
-
-- Provider: treesitter + indent fallback
-- Fold level: 99
-- Fold column: 1
 <!-- lua/plugins/editor-format/README.md -->
 
 ## AutoFormat
@@ -738,13 +730,12 @@ All keymaps use `<localleader>r` prefix.
 - `<localleader>ref` - Extract function
 - `<localleader>reF` - Extract function to file
 - `<localleader>rev` - Extract variable
-- `<localleader>reb` - Extract block
-- `<localleader>reB` - Extract block to file
 
 ### Inline
 
 - `<localleader>rif` - Inline function
 - `<localleader>riv` - Inline variable
+
 <!-- lua/plugins/session/README.md -->
 
 ## Sessions
