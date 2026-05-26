@@ -3,6 +3,8 @@ return {
   {
     'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
 
+    branch = 'main',
+
     dependencies = {
       'mason-org/mason.nvim',
       'RRethy/nvim-treesitter-endwise', -- https://github.com/RRethy/nvim-treesitter-endwise
@@ -10,55 +12,42 @@ return {
 
     build = ':TSUpdate',
 
-    -- lazy = false,
+    lazy = false,
 
-    event = { 'BufReadPost', 'BufNewFile' },
-
-    cmd = { 'TSUpdate', 'TSUpdateSync', 'TSToggle', 'TSBufToggle', 'TSModuleInfo' },
+    cmd = { 'TSInstall', 'TSInstalFromGrammar', 'TSUpdate', 'TSUninstall', 'TSLog' },
 
     keys = {
-      -- { '<c-space>', desc = 'Increment selection' },
-      -- { '<bs>', desc = 'Decrement selection', mode = 'x' },
-
-      { '<leader>ati', '<cmd>TSInstallInfo<cr>', desc = 'Install Info' },
-      { '<leader>atm', '<cmd>TSModuleInfo<cr>', desc = 'Module Info' },
-      { '<leader>atc', '<cmd>TSConfigInfo<cr>', desc = 'Config Info' },
-      { '<leader>atu', '<cmd>TSUpdate<cr>', desc = 'Update' },
-      { '<leader>ath', '<cmd>checkhealth vim.treesitter<cr>', desc = 'vim.treesitter health' },
-      { '<leader>atH', '<cmd>checkhealth nvim-treesitter<cr>', desc = 'vim.treesitter health' },
+      { '<leader>aTu', '<cmd>TSUpdate<cr>', desc = 'Update' },
+      { '<leader>aTh', '<cmd>checkhealth vim.treesitter<cr>', desc = 'vim.treesitter health' },
+      { '<leader>aTH', '<cmd>checkhealth nvim-treesitter<cr>', desc = 'nvim-treesitter health' },
+      {
+        '<leader>aTt',
+        function()
+          local buf = vim.api.nvim_get_current_buf()
+          if vim.treesitter.highlighter.active[buf] then
+            vim.treesitter.stop(buf)
+            vim.notify('Treesitter: off', vim.log.levels.INFO)
+          else
+            local ok, err = pcall(vim.treesitter.start, buf)
+            if ok then
+              vim.notify('Treesitter: on', vim.log.levels.INFO)
+            else
+              vim.notify('Treesitter start failed: ' .. tostring(err), vim.log.levels.ERROR)
+            end
+          end
+        end,
+        desc = 'Toggle',
+      },
     },
 
     init = function()
       require('which-key').add({
-        { [[<leader>at]], group = 'Tree Sitter' },
+        { [[<leader>aT]], group = 'Tree Sitter' },
       })
     end,
 
-    opts = {
-
-      -- treesitter based syntax highlighting
-      highlight = {
-        enable = true,
-        disable = { 'vimdoc' },
-        additional_vim_regex_highlighting = { 'markdown' },
-      },
-
-      indent = { enable = true },
-      textobjects = { enable = true },
-      matchup = { enable = true },
-      endwise = { enable = true },
-
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '<C-space>',
-          node_incremental = '<C-space>',
-          scope_incremental = false,
-          node_decremental = '<bs>',
-        },
-      },
-
-      ensure_installed = {
+    config = function()
+      require('nvim-treesitter').install({
         'bash',
         'c',
         'comment',
@@ -86,7 +75,7 @@ return {
         'typescript',
         'vim',
         'yaml',
-      },
-    },
+      })
+    end,
   },
 }

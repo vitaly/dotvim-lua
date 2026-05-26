@@ -239,14 +239,8 @@ return {
   {
     'RRethy/vim-illuminate', -- https://github.com/RRethy/vim-illuminate
     event = { 'BufReadPost', 'BufNewFile' },
-    opts = {
-      filetype_overrides = {
-        ruby = {
-          providers = { 'lsp', 'regex' }, -- remove "treesitter", until recent treesitter is supported
-        },
-      },
-    },
-
+    main = 'illuminate',
+    opts = {},
     config = function(_, opts) require('illuminate').configure(opts) end,
   },
 
