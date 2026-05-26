@@ -1,5 +1,4 @@
 <!-- lua/plugins/base-colors/README.md -->
-
 # Base Colors
 
 Color scheme management for Neovim.
@@ -25,7 +24,6 @@ Color scheme management for Neovim.
 - Custom diff highlighting: adds colored backgrounds to diff modes
 
 <!-- lua/plugins/base-keymaps/README.md -->
-
 ## Basic Keymaps
 
 [which-key.nvim](https://github.com/folke/which-key.nvim)
@@ -134,7 +132,6 @@ Color scheme management for Neovim.
 
 - `<C-j>` / `<C-k>` - Move selected lines down/up
 <!-- lua/plugins/base-lazy/README.md -->
-
 # Base Lazy
 
 Plugin manager for Neovim.
@@ -143,7 +140,6 @@ Plugin manager for Neovim.
 
 Manages lazy loading of plugins and itself. Keys are defined in `base-keymaps`.
 <!-- lua/plugins/base-notifications/README.md -->
-
 ## Notifications
 
 [Noice](https://github.com/folke/noice.nvim) plugin.
@@ -166,7 +162,6 @@ Manages lazy loading of plugins and itself. Keys are defined in `base-keymaps`.
 
 
 <!-- lua/plugins/base-utils/README.md -->
-
 # Base Utils
 
 Utility dependencies for other plugins.
@@ -176,7 +171,6 @@ Utility dependencies for other plugins.
 - [nui.nvim](https://github.com/MunifTanjim/nui.nvim) - UI components
 - [mini.icons](https://github.com/nvim-mini/mini.icons) - Minimal icons
 <!-- lua/plugins/base/README.md -->
-
 # Base
 
 Core plugins and configuration for Neovim.
@@ -210,7 +204,6 @@ Core plugins and configuration for Neovim.
 - Config path: `config.lua` in config directory
 - Default log level: WARN
 <!-- lua/plugins/code-completion/README.md -->
-
 ## Code Completion
 
 ### Backend
@@ -247,7 +240,6 @@ Core plugins and configuration for Neovim.
 - `<leader>aci` - Copilot Status
 - `<leader>acp` - Copilot Panel
 <!-- lua/plugins/code-navigation/README.md -->
-
 ## Code Navigation
 
 ### Symbols Outline
@@ -268,7 +260,6 @@ Shows code structure via Telescope popup.
 
 - `config.tagbar.position` - 'left' or 'right' (default)
 <!-- lua/plugins/debugger/README.md -->
-
 # Debugger
 
 Debug adapter protocol (DAP) integration for Neovim.
@@ -322,7 +313,6 @@ Configured via `debugger.ensure_installed`:
 
 - `<leader>dal` - Launch Lua server adapter (port 8086)
 <!-- lua/plugins/development/README.md -->
-
 ## Development Tools
 
 ### Xterm Color Table
@@ -332,7 +322,6 @@ Configured via `debugger.ensure_installed`:
 - `<leader>SX` - Show Xterm Color Table
 - `:XtermColorTable` - Show table
 <!-- lua/plugins/editor-colors/README.md -->
-
 ## Editor Colors
 
 ### Colorizer
@@ -357,7 +346,6 @@ Colors words by request.
 - `<leader>K` - Remove all word colors
 - `n` / `N` - Go to next/prev colored word or search result
 <!-- lua/plugins/editor-folding/README.md -->
-
 # Editor Folding
 
 Modern folding with UFO (Unified Folding Option).
@@ -374,7 +362,6 @@ Modern folding with UFO (Unified Folding Option).
 - `zM` - Close all folds
 
 <!-- lua/plugins/editor-format/README.md -->
-
 ## AutoFormat
 
 [conform.nvim](https://github.com/stevearc/conform.nvim)
@@ -405,7 +392,6 @@ Modern folding with UFO (Unified Folding Option).
 - `config.autoformat.filetypes.<ft>.enabled` - Per-filetype toggle
 - `config.conform.stop_after_first` - Stop after first formatter (default: true)
 <!-- lua/plugins/editor/README.md -->
-
 ## Editor Enhancements
 
 ### Bookmarks
@@ -518,7 +504,6 @@ Shows line numbers, fold indicators, and signs.
 
 - `\z` - Toggle Window Zoom
 <!-- lua/plugins/file-tree/README.md -->
-
 ## File Tree
 
 [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
@@ -537,7 +522,6 @@ Uses snacks file tree by default.
 - `config.file-tree.plugin` - Backend: 'snacks' (default), 'neotree', or 'nvimtree'
 - `config.file-tree.position` - 'left' (default) or 'right'
 <!-- lua/plugins/git/README.md -->
-
 ## Git
 
 [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
@@ -581,7 +565,6 @@ Uses snacks file tree by default.
 - `rm` - Edit
 - `rd` - Drop
 <!-- lua/plugins/lsp-null/README.md -->
-
 # LSP Null
 
 External LSP tools (linting, formatting).
@@ -609,7 +592,6 @@ External LSP tools (linting, formatting).
 - Border: single
 - Group: `<leader>an`
 <!-- lua/plugins/lsp/README.md -->
-
 ## LSP
 
 [mason.nvim](https://github.com/mason-org/mason.nvim)
@@ -638,7 +620,6 @@ External LSP tools (linting, formatting).
 - `config.lsp.servers` - Server-specific config
 - `config.icons.diagnostic` - Diagnostic icons
 <!-- lua/plugins/obsidian/README.md -->
-
 # Obsidian
 
 Obsidian.md integration for Neovim.
@@ -669,7 +650,6 @@ Obsidian.md integration for Neovim.
 - Angle `[>]`: ` `
 - Star `[*]`: ` `
 <!-- lua/plugins/picker/README.md -->
-
 # Picker
 
 Unified picker keybindings using Snacks and Telescope.
@@ -706,7 +686,6 @@ Unified picker keybindings using Snacks and Telescope.
 
 Combines Snacks picker (primary) with Telescope as fallback for some actions.
 <!-- lua/plugins/refactoring/README.md -->
-
 # Refactoring
 
 Code refactoring tools for Neovim.
@@ -737,7 +716,6 @@ All keymaps use `<localleader>r` prefix.
 - `<localleader>riv` - Inline variable
 
 <!-- lua/plugins/session/README.md -->
-
 ## Sessions
 
 [persistence.nvim](https://github.com/folke/persistence.nvim)
@@ -753,7 +731,6 @@ All keymaps use `<localleader>r` prefix.
 - Automatically saves session on exit
 - Restores buffers, directory, tabs, and window size
 <!-- lua/plugins/snacks/README.md -->
-
 # Snacks
 
 Utility enhancements for Neovim.
@@ -873,7 +850,6 @@ Custom checkbox icons:
 - Angle: `[>]` → ` `
 - Star: `[*]` → ` `
 <!-- lua/plugins/statusline/README.md -->
-
 ## Status Line
 
 [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
@@ -898,7 +874,6 @@ Custom checkbox icons:
 - snacks_picker_list
 - toggleterm
 <!-- lua/plugins/telescope/README.md -->
-
 # Telescope
 
 Fuzzy finder and picker for Neovim.
@@ -965,7 +940,6 @@ All keymaps use `<leader>at` prefix.
 - Layout: flex
 - Mappings: `<esc>` to close, `<c-j>`/`<c-k>` to navigate
 <!-- lua/plugins/terminal/README.md -->
-
 ## Terminal
 
 [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
@@ -988,7 +962,6 @@ All keymaps use `<leader>at` prefix.
 - Terminal opens in insert mode automatically
 - Mouse clicks re-enter insert mode
 <!-- lua/plugins/testing/README.md -->
-
 ## Testing
 
 [neotest](https://github.com/nvim-neotest/neotest) with vim-test integration.
@@ -1028,7 +1001,6 @@ All keymaps use `<leader>at` prefix.
 - `[t` - Prev Failed Test
 - `]t` - Next Failed Test
 <!-- lua/plugins/treesitter/README.md -->
-
 # Treesitter
 
 Syntax highlighting and parsing for Neovim.
@@ -1062,7 +1034,6 @@ Syntax highlighting and parsing for Neovim.
 
 bash, c, comment, cpp, css, elixir, go, html, javascript, jsdoc, json, latex, lua, make, markdown_inline, markdown, python, query, regex, ruby, rust, scala, scss, toml, typescript, vim, yaml
 <!-- lua/plugins/ui/README.md -->
-
 # UI
 
 UI enhancements for Neovim.

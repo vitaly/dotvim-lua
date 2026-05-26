@@ -1,5 +1,4 @@
 <!-- lua/init/DEV.md -->
-
 ## Logging
 
 # lua/init/log.lua
@@ -34,7 +33,6 @@ Use `<leader>mt` to display trace log.
 
 
 <!-- lua/plugins/statusline/DEV.md -->
-
 ## Status Line
 
 > `lua/plugins/statusline/init.lua`
