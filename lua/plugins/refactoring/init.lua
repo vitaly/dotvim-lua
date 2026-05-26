@@ -8,16 +8,21 @@ end
 
 return {
   {
-    'ThePrimeagen/refactoring.nvim',
+    'ThePrimeagen/refactoring.nvim', -- https://github.com/ThePrimeagen/refactoring.nvim
 
     dependencies = {
+      'lewis6991/async.nvim',
+      'nvim-telescope/telescope.nvim',
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
 
+    lazy = false,
+
     opts = {},
 
     config = function(_, opts)
+      _t('refactoring.setup')
       require('refactoring').setup(opts)
       require('plugins.refactoring.actions').setup()
       require('telescope').load_extension('refactoring')

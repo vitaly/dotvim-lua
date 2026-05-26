@@ -63,6 +63,7 @@ return {
     },
 
     config = function(_, opts)
+      _t('telescope.setup')
       require('telescope').setup(opts)
       require('lib.au').on_colorscheme_changed(
         'telescope-border',
