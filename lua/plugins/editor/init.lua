@@ -130,16 +130,27 @@ return {
   {
     'vim-scripts/greplace.vim', -- https://github.com/vim-scripts/greplace.vim
     cmd = { 'Gsearch', 'Gbuffersearch', 'Greplace' },
+    enabled = false,
   },
 
   {
     'nvim-pack/nvim-spectre', -- https://github.com/nvim-pack/nvim-spectre
     opts = {},
-    enabled = true,
+    enabled = false,
 
     keys = {
       { '<leader>sr', '<cmd>lua require("spectre").open()<cr>', desc = 'Search and Replace' },
     },
+  },
+
+  {
+    'MagicDuck/grug-far.nvim', -- https://github.com/MagicDuck/grug-far.nvim
+
+    keys = {
+      { '<leader>sr', function() require('grug-far').open({ transient = true }) end, desc = 'Search and Replace' },
+    },
+
+    opts = {},
   },
 
   ----------------------------------------------------------------------------------------------
