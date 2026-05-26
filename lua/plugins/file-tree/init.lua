@@ -3,6 +3,8 @@ local tools = require('lib.tools')
 
 config.set_defaults('file-tree', { backend = 'plugins.file-tree.snacks', position = 'left' }) -- snacks, neotree, or nvimtree
 
+local backend = config.get('file-tree.backend')
+
 local glue = require('glue').register('file-tree')
 local function _map(event)
   return function() return glue.call(event) end
@@ -11,7 +13,7 @@ end
 return tools.vplug({
   'plugins.file-tree',
 
-  dependencies = { require(config.get('file-tree.backend')) },
+  dependencies = { require(backend) },
 
   keys = {
     { '\\\\', _map('file-tree.actions.popup'), desc = 'File Tree Popup' },
