@@ -346,18 +346,15 @@ Colors words by request.
 <!-- lua/plugins/editor-folding/README.md -->
 # Editor Folding
 
-Modern folding with UFO (Unified Folding Option).
+Modern looking folding with arrows.
 
 - [nvim-origami](https://github.com/chrisgrieser/nvim-origami)
 
 ## Features
 
-- LSP based folding with follback to Treesitter and then to indent
-
-## Keymaps
-
-- `zR` - Open all folds
-- `zM` - Close all folds
+- Arrow-based fold indicators in the sign column
+- Folds enabled by default with fold level 99
+- Uses Neovim's built-in folding (no external fold engine)
 
 <!-- lua/plugins/editor-format/README.md -->
 ## AutoFormat
