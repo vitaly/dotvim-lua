@@ -5,8 +5,6 @@ local au = require('lib.au')
 -- also prints indent and folding information
 local print_info = function()
   local filetype = vim.bo.filetype
-
-  local filetype = vim.bo.filetype
   local ok, parser = pcall(vim.treesitter.get_parser, 0)
   local lang
   if ok and parser then
