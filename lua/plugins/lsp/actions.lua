@@ -1,5 +1,5 @@
 return require('lib.actions').register('lsp.actions', {
-  ['lsp.actions.lsp_info'] = function() vim.cmd.LspInfo() end,
+  ['lsp.actions.lsp_info'] = function() vim.cmd.checkhealth('lsp') end,
   ['lsp.actions.lsp_log'] = function() vim.cmd.LspLog() end,
   ['lsp.actions.lsp_start'] = function() vim.cmd.LspStart() end,
   ['lsp.actions.lsp_stop'] = function() vim.cmd.LspStop() end,
