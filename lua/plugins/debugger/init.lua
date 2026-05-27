@@ -153,7 +153,6 @@ return {
       })
 
       dap.listeners.before.attach.dapui_open = dapui.open
-      dap.listeners.before.launch.dapui_oipen = dapui.open
       -- not sure, this was in kickstarter
       -- dap.listeners.after.event_initialized.dapui_open = dapui.open
 
