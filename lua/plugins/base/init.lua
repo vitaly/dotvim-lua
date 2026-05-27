@@ -15,6 +15,9 @@ return {
   {
     'vitaly/onion.nvim', -- https://github.com/vitaly/onion.nvim
 
+    lazy = false,
+    priority = 100,
+
     init = function() require('which-key').add({ { '<leader>ao', group = 'Onion Config' } }) end,
 
     keys = {
