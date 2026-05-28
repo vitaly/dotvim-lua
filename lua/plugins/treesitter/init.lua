@@ -48,7 +48,7 @@ return {
 
     lazy = false,
 
-    cmd = { 'TSInstall', 'TSInstalFromGrammar', 'TSUpdate', 'TSUninstall', 'TSLog' },
+    cmd = { 'TSInstall', 'TSInstallFromGrammar', 'TSUpdate', 'TSUninstall', 'TSLog' },
 
     keys = {
       { '<leader>aTu', '<cmd>TSUpdate<cr>', desc = 'Update' },

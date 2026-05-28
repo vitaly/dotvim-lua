@@ -66,7 +66,7 @@ return {
     'AndrewRadev/switch.vim', -- https://github.com/AndrewRadev/switch.vim
 
     keys = { 'gs' },
-    cmd = { 'Switch', 'SwitchExtend', 'SwitchRevers' },
+    cmd = { 'Switch', 'SwitchExtend', 'SwitchReverse' },
   },
 
   ----------------------------------------------------------------------------------------------
