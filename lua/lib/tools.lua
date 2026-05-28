@@ -11,20 +11,22 @@ local TOOLS = {}
 function TOOLS.git_clone(repo, path, ...)
   if vim.uv.fs_stat(path) then return true end
 
-  vim.notify('git clone ' .. repo .. ' into ' .. path, vim.log.levels.INFO)
+  local cmd = { 'git', 'clone', '--filter=blob:none' }
+  vim.list_extend(cmd, { ... })
+  vim.list_extend(cmd, { repo, path })
 
-  local output = vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    ...,
-    repo,
-    path,
-  })
+  vim.notify(vim.inspect(cmd), vim.log.levels.INFO)
+
+  local output = vim.fn.system(cmd)
 
   if vim.v.shell_error ~= 0 then
-    vim.notify('Failed to clone ' .. repo .. ': ' .. output, vim.log.levels.ERROR)
-    return false
+    vim.api.nvim_echo({
+      { 'Failed to clone ' .. repo .. ':\n', 'ErrorMsg' },
+      { output, 'WarningMsg' },
+      { '\nPress any key to exit...' },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
   end
 
   return true

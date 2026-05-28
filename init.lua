@@ -9,6 +9,7 @@ _G.R = function(mod)
 end
 
 require('init.options')
+require('init.config')
 require('init.log')
 require('init.lazy')
 require('init.autocommands')

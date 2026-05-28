@@ -28,17 +28,6 @@ return {
       { '<leader>aod', '<cmd>Onion show --defaults<cr>', desc = 'Show Default Config' },
       { '<leader>aou', '<cmd>Onion show --user<cr>', desc = 'Show User Config' },
     },
-
-    ---@module 'onion.config'
-    ---@type OnionSetupOpts
-    opts = {
-      save_path = vim.fn.stdpath('config') .. '/config.lua',
-      auto_save = true,
-
-      defaults = {
-        log_level = vim.log.levels.WARN,
-      },
-    },
   },
 
   ------------------------------------------------------------------------------
