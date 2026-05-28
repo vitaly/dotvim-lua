@@ -1,4 +1,4 @@
-local onion_path = vim.fn.stdpath('data') .. '/lazy/onion.nvim'
+local onion_path = _G._onion_nvim_path_ or vim.fn.stdpath('data') .. '/lazy/onion.nvim'
 local clone_ok = require('lib.tools').git_clone('https://github.com/vitaly/onion.nvim.git', onion_path, '--depth=1')
 
 if not clone_ok then

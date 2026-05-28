@@ -15,6 +15,8 @@ return {
   {
     'vitaly/onion.nvim', -- https://github.com/vitaly/onion.nvim
 
+    dir = _G._onion_nvim_path_ or nil,
+
     lazy = false,
     priority = 100,
 
