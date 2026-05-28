@@ -18,9 +18,14 @@ function my.inspect(...)
   return table.concat(objects, ', ')
 end
 
---- Get the current log level, with fallback
+local onion_config = require('onion.config')
+local DEFAULT_LOG_LEVEL = vim.log.levels.WARN
+
+--- Get the current log level
 ---@return integer
-local function get_log_level() return require('onion.config').get('log_level') or vim.log.levels.WARN end
+local function get_log_level()
+  return onion_config.get('log_level') or DEFAULT_LOG_LEVEL
+end
 
 -- generic logging function
 local notify = vim.schedule_wrap(function(level, ...)
