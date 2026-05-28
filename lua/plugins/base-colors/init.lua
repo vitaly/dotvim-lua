@@ -60,18 +60,18 @@ local function get_colors()
 end
 
 local function override_diff_colors(colors)
-  hi.DiffAdd = { guibg = colors.green, guifg = colors.bg, gui = nil, guisp = nil }
-  hi.DiffDelete = { guibg = colors.bg, guifg = colors.red, gui = nil, guisp = nil }
-  hi.DiffChange = { guibg = colors.yellow, guifg = colors.bg, gui = nil, guisp = nil }
-  hi.DiffText = { guibg = colors.green, guifg = colors.bg, gui = nil, guisp = nil }
+  hi('DiffAdd', { guibg = colors.green, guifg = colors.bg, gui = nil, guisp = nil })
+  hi('DiffDelete', { guibg = colors.bg, guifg = colors.red, gui = nil, guisp = nil })
+  hi('DiffChange', { guibg = colors.yellow, guifg = colors.bg, gui = nil, guisp = nil })
+  hi('DiffText', { guibg = colors.green, guifg = colors.bg, gui = nil, guisp = nil })
 
-  hi.GitGutterAdd = { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil }
-  hi.GitGutterDelete = { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil }
-  hi.GitGutterChange = { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil }
-  hi.GitGutterChangeDelete = { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil }
+  hi('GitGutterAdd', { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil })
+  hi('GitGutterDelete', { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil })
+  hi('GitGutterChange', { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil })
+  hi('GitGutterChangeDelete', { guibg = colors.bg, guifg = colors.yellow, gui = nil, guisp = nil })
 
-  hi.GitSignsAdd = 'GitGutterAdd'
-  hi.GitSignsChange = 'GitGutterChange'
+  hi('GitSignsAdd', 'GitGutterAdd')
+  hi('GitSignsChange', 'GitGutterChange')
 end
 
 -- I don't like the way base16 color schemes handle diff mode

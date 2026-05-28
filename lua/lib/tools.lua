@@ -40,22 +40,21 @@ function TOOLS.get_hi_attr(name, attr)
   return value
 end
 
-TOOLS.highlight = setmetatable({}, {
-  __newindex = function(_, hlgroup, args)
-    if 'string' == type(args) then
-      vim.cmd(('hi! link %s %s'):format(hlgroup, args))
-      return
-    end
-
-    local guifg, guibg, gui, guisp = args.guifg or nil, args.guibg or nil, args.gui or nil, args.guisp or nil
-    local cmd = { 'hi', hlgroup }
-    if guifg then table.insert(cmd, 'guifg=' .. guifg) end
-    if guibg then table.insert(cmd, 'guibg=' .. guibg) end
-    if gui then table.insert(cmd, 'gui=' .. gui) end
-    if guisp then table.insert(cmd, 'guisp=' .. guisp) end
-    vim.cmd(table.concat(cmd, ' '))
-  end,
-})
+--- Set or link a highlight group
+---@param name string
+---@param spec table|string  -- table of guifg/guibg/gui/guisp or string target for link
+function TOOLS.highlight(name, spec)
+  if type(spec) == 'string' then
+    vim.cmd(('hi! link %s %s'):format(name, spec))
+    return
+  end
+  local cmd = { 'hi', name }
+  if spec.guifg then table.insert(cmd, 'guifg=' .. spec.guifg) end
+  if spec.guibg then table.insert(cmd, 'guibg=' .. spec.guibg) end
+  if spec.gui then table.insert(cmd, 'gui=' .. spec.gui) end
+  if spec.guisp then table.insert(cmd, 'guisp=' .. spec.guisp) end
+  vim.cmd(table.concat(cmd, ' '))
+end
 
 TOOLS.modpath = function(module) return vim.fs.joinpath(vim.fn.stdpath('config'), 'lua', unpack(vim.split(module, '.', { plain = true }))) end
 
