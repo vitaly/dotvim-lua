@@ -1,5 +1,4 @@
-return {
-  require('plugins.file-tree.snacks'),
-  require('plugins.file-tree.neotree'),
-  require('plugins.file-tree.nvimtree'),
-}
+local config = require('onion.config')
+config.set_defaults('file-tree', { backend = 'snacks', position = 'left' })
+
+return require('plugins.file-tree.' .. config.get('file-tree.backend'))

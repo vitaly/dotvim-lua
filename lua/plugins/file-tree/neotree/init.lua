@@ -1,4 +1,6 @@
-local position = function() return require('onion.config').get('file-tree.position', 'left') end
+_t('file-tree/neotree')
+local config = require('onion.config')
+local position = function() return config.get('file-tree.position', 'left') end
 
 -- local function toggle_or_reveal()
 --   if vim.o.buflisted and '' ~= vim.fn.expand('%:p') then
@@ -9,7 +11,6 @@ local position = function() return require('onion.config').get('file-tree.positi
 -- end
 
 return {
-
   'nvim-neo-tree/neo-tree.nvim', -- https://github.com/nvim-neo-tree/neo-tree.nvim
 
   dependencies = {
@@ -20,13 +21,10 @@ return {
 
   lazy = false, -- so that opening a directory will work
 
-  enabled = function()
-    return require('onion.config').get('file-tree.backend') == 'plugins.file-tree.neotree'
-  end,
-
   keys = require('plugins.file-tree.keys'),
 
   init = function()
+    _t('file-tree/neotree: init')
     vim.g.neo_tree_remove_legacy_commands = 1
 
     -- hack to open tree when vim runs with single directory argument
@@ -50,7 +48,9 @@ return {
 
       filesystem = {
         group_empty_dirs = true,
-        follow_current_file = true,
+        follow_current_file = {
+          enabled = true,
+        },
         use_libuv_file_watcher = true,
       },
 
@@ -91,6 +91,7 @@ return {
   end,
 
   config = function(_, opts)
+    _t('file-tree/neotree: config')
     -- my.log.debug 'neotree'
     require('neo-tree').setup(opts)
     require('lib.au').command('neotree.termclose', 'TermClose', function()

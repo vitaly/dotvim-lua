@@ -1,5 +1,6 @@
 _t('file-tree/snacks')
 
+local config = require('onion.config')
 local tools = require('lib.tools')
 
 ---@module 'snacks'
@@ -7,11 +8,9 @@ local tools = require('lib.tools')
 return tools.vplug({
   'plugins.file-tree.snacks',
 
-  enabled = function()
-    local c = require('onion.config')
-    c.set_defaults('file-tree', { backend = 'plugins.file-tree.snacks', position = 'left' })
-    return c.get('file-tree.backend') == 'plugins.file-tree.snacks'
-  end,
+  dependencies = {
+    'vitaly/onion.nvim',
+  },
 
   keys = require('plugins.file-tree.keys'),
 

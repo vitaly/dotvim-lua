@@ -1,3 +1,5 @@
+_t('file-tree/nvimtree')
+local config = require('onion.config')
 return {
   'nvim-tree/nvim-tree.lua',
   version = '*',
@@ -6,13 +8,11 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
 
-  enabled = function()
-    return require('onion.config').get('file-tree.backend') == 'plugins.file-tree.nvimtree'
-  end,
-
   keys = require('plugins.file-tree.keys'),
 
   config = function()
+    _t('file-tree/nvimtree: config')
+
     local glue = require('glue').register('file-tree.nvimtree')
 
     -- glue.handle('file-tree.actions.popup', function()  end)
