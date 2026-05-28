@@ -73,8 +73,6 @@ return {
       },
     }, conf.get('snacks.setup'))
 
-    -- print('opts.notifier', vim.inspect(opts.notifier))
-
     require('snacks').setup(opts)
     require('plugins.snacks.actions').setup()
   end,
