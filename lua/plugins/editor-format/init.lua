@@ -71,23 +71,22 @@ local is_enabled_for_filetype = function(bufnr) return config.get(ft_enabled_key
 
 local is_enabled = function(bufnr) return is_enabled_global() and is_enabled_for_buffer(bufnr) and is_enabled_for_filetype(bufnr) end
 
--------------------------------------------------------------------------------
--- glue provider for autoformat status, and listener for toggle
--------------------------------------------------------------------------------
-local glue = require('glue').register('plugins/editor-format')
-glue.handle('autoformat.status', function(opts)
-  local bufnr = opts.bufnr or vim.api.nvim_get_current_buf()
-  return {
-    enabled = is_enabled(bufnr),
-    global = is_enabled_global(),
-    buffer = is_enabled_for_buffer(bufnr),
-    filetype = is_enabled_for_filetype(bufnr),
-  }
-end)
+local register_glue = function()
+  local glue = require('glue').register('plugins/editor-format')
+  glue.handle('autoformat.status', function(opts)
+    local bufnr = opts.bufnr or vim.api.nvim_get_current_buf()
+    return {
+      enabled = is_enabled(bufnr),
+      global = is_enabled_global(),
+      buffer = is_enabled_for_buffer(bufnr),
+      filetype = is_enabled_for_filetype(bufnr),
+    }
+  end)
 
-glue.handle('autoformat.actions.toggle', toggle_autoformat)
-glue.handle('autoformat.actions.toggle.buffer', toggle_autoformat_for_buffer)
-glue.handle('autoformat.actions.toggle.filetype', toggle_autoformat_for_filetype)
+  glue.handle('autoformat.actions.toggle', toggle_autoformat)
+  glue.handle('autoformat.actions.toggle.buffer', toggle_autoformat_for_buffer)
+  glue.handle('autoformat.actions.toggle.filetype', toggle_autoformat_for_filetype)
+end
 
 local function create_commands()
   ------------------------------------------------------------------------------
@@ -129,6 +128,7 @@ return {
   cmd = { 'FormatInfo', 'Format' },
 
   init = function()
+    register_glue()
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     require('which-key').add({
       { [[<localleader>a]], group = 'Autoformat' },
