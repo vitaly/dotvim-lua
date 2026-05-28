@@ -8,6 +8,8 @@ return {
   {
     'nvim-neotest/neotest', -- https://github.com/nvim-neotest/neotest
 
+    enabled = false,
+
     dependencies = {
       'nvim-neotest/nvim-nio',
       'nvim-lua/plenary.nvim',
@@ -83,7 +85,8 @@ return {
       require('neotest').setup({
         adapters = {
           -- don't use vim-test for languages that have dedicated neotest adapters
-          neotest_vim_test({ ignore_file_types = { 'python', 'lua', 'go', 'rust', 'javascript', 'typescript' } }),
+          -- neotest_vim_test({ ignore_filetypes = { 'lua', 'python', 'go', 'rust', 'javascript', 'typescript' } }),
+          neotest_vim_test({ ignore_filetypes = {} }), -- use with all languages
         },
       })
     end,
@@ -94,8 +97,11 @@ return {
   ------------------------------------------------------------------------------
   {
     'vim-test/vim-test', -- https://github.com/vim-test/vim-test
+    enabled = true,
 
     init = function()
+      vim.g['test#strategy'] = 'neovim'
+
       -- default bats configuration (can be overridden per-project in .nvim.lua)
       vim.g['test#shell#bats#executable'] = 'bats'
       vim.g['test#shell#bats#options'] = '--tap'
@@ -104,5 +110,13 @@ return {
       -- see :help test-custom-runners
       vim.g['test#custom_runners'] = vim.g['test#custom_runners'] or {}
     end,
+
+    keys = {
+      { '<leader>tn', '<cmd>TestNearest<cr>', desc = 'Test Nearest' },
+      { '<leader>tf', '<cmd>TestFile<cr>', desc = 'Test File' },
+      { '<leader>ta', '<cmd>TestSuite<cr>', desc = 'Test All' },
+      { '<leader>tl', '<cmd>TestLast<cr>', desc = 'Test Last' },
+      { '<leader>tv', '<cmd>TestVisit<cr>', desc = 'Visit Test File' },
+    },
   },
 }
