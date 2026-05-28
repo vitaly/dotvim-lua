@@ -20,6 +20,12 @@ return {
 
   lazy = false, -- so that opening a directory will work
 
+  enabled = function()
+    return require('onion.config').get('file-tree.backend') == 'plugins.file-tree.neotree'
+  end,
+
+  keys = require('plugins.file-tree.keys'),
+
   init = function()
     vim.g.neo_tree_remove_legacy_commands = 1
 
@@ -31,56 +37,58 @@ return {
     end
   end,
 
-  opts = {
-    source_selector = { winbar = true },
-    sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols' },
+  opts = function()
+    return {
+      source_selector = { winbar = true },
+      sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols' },
 
-    use_popups_for_input = false, -- If false, inputs will use vim.ui.input() instead of custom floats.
-    close_if_last_window = true,
-    sort_case_insensitive = true,
+      use_popups_for_input = false, -- If false, inputs will use vim.ui.input() instead of custom floats.
+      close_if_last_window = true,
+      sort_case_insensitive = true,
 
-    enable_refresh_on_write = false, -- requires use_libuv_file_watcher = true
+      enable_refresh_on_write = false, -- requires use_libuv_file_watcher = true
 
-    filesystem = {
-      group_empty_dirs = true,
-      follow_current_file = true,
-      use_libuv_file_watcher = true,
-    },
-
-    open_files_do_not_replace_types = { 'terminal', 'Trouble', 'qf', 'Outline' },
-
-    default_component_configs = {
-      icon = {
-        default = '',
-        folder_empty = '',
+      filesystem = {
+        group_empty_dirs = true,
+        follow_current_file = true,
+        use_libuv_file_watcher = true,
       },
-      git_status = {
-        symbols = {
-          deleted = '',
-          modified = '',
-          renamed = '󰁕',
-          staged = '✓',
-          unstaged = '✗',
-          untracked = '?',
+
+      open_files_do_not_replace_types = { 'terminal', 'Trouble', 'qf', 'Outline' },
+
+      default_component_configs = {
+        icon = {
+          default = '',
+          folder_empty = '',
         },
-      },
-    }, -- default_component_configs
-
-    window = {
-      mappings = {
-        ['r'] = { 'move', config = { show_path = 'relative' } }, -- no need not to allow to move for rename ;)
-        ['m'] = { 'move', config = { show_path = 'relative' } },
-        ['<esc>'] = 'close_window',
-      },
-      popup = {
-        size = {
-          width = '40',
+        git_status = {
+          symbols = {
+            deleted = '',
+            modified = '',
+            renamed = '󰁕',
+            staged = '✓',
+            unstaged = '✗',
+            untracked = '?',
+          },
         },
-        position = '50%',
+      }, -- default_component_configs
+
+      window = {
+        mappings = {
+          ['r'] = { 'move', config = { show_path = 'relative' } }, -- no need not to allow to move for rename ;)
+          ['m'] = { 'move', config = { show_path = 'relative' } },
+          ['<esc>'] = 'close_window',
+        },
+        popup = {
+          size = {
+            width = '40',
+          },
+          position = '50%',
+        },
+        position = position(),
       },
-      position = position(),
-    },
-  },
+    }
+  end,
 
   config = function(_, opts)
     -- my.log.debug 'neotree'

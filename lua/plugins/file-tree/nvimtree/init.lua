@@ -6,6 +6,12 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
 
+  enabled = function()
+    return require('onion.config').get('file-tree.backend') == 'plugins.file-tree.nvimtree'
+  end,
+
+  keys = require('plugins.file-tree.keys'),
+
   config = function()
     local glue = require('glue').register('file-tree.nvimtree')
 
