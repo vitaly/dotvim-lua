@@ -2,6 +2,8 @@
 --- Simple watch mode: re-run last test on BufWritePost
 --- This is useful for languages where neotest's LSP-based watch doesn't work
 --------------------------------------------------------------------------------
+local au = require('lib.au')
+
 local M = {}
 
 local simple_watch_augroup = nil
@@ -17,15 +19,13 @@ end
 function M.start()
   if simple_watch_augroup then return end
 
-  simple_watch_augroup = vim.api.nvim_create_augroup('neotest_simple_watch', { clear = true })
-  vim.api.nvim_create_autocmd('BufWritePost', {
-    group = simple_watch_augroup,
-    pattern = '*',
-    callback = function()
-      require('neotest').run.run_last()
-    end,
-    desc = 'Re-run last test on save',
-  })
+  simple_watch_augroup = au.group('neotest_simple_watch')
+  au.command(
+    simple_watch_augroup,
+    'BufWritePost',
+    function() require('neotest').run.run_last() end,
+    { pattern = '*', desc = 'Re-run last test on save' }
+  )
 
   vim.notify('Simple watch started: re-running last test on save', vim.log.levels.INFO)
 end
@@ -38,8 +38,6 @@ function M.stop()
   end
 end
 
-function M.is_watching()
-  return simple_watch_augroup ~= nil
-end
+function M.is_watching() return simple_watch_augroup ~= nil end
 
 return M
