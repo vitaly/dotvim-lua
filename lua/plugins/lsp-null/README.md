@@ -11,9 +11,11 @@ External LSP tools (linting, formatting).
 
 ## Keymaps
 
-- `<leader>Sn` - Null LS info
-- `<leader>ani` - Null LS info
-- `<leader>anl` - Null LS log
+| Key | Description |
+|-----|-------------|
+| `<leader>Sn` | Null LS info |
+| `<leader>ani` | Null LS info |
+| `<leader>anl` | Null LS log |
 
 ## Available Sources
 

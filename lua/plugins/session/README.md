@@ -4,9 +4,11 @@
 
 ### Keymaps
 
-- `<leader>Qr` - Restore Session
-- `<leader>Ql` - Restore Last Session
-- `<leader>Qd` - Don't Save Current Session
+| Key | Description |
+|-----|-------------|
+| `<leader>Qr` | Restore Session |
+| `<leader>Ql` | Restore Last Session |
+| `<leader>Qd` | Don't Save Current Session |
 
 ### Features
 

@@ -4,7 +4,9 @@
 
 ### Keymaps
 
-- `\S` - Toggle Status Line
+| Key | Description |
+|-----|-------------|
+| `\S` | Toggle Status Line |
 
 ### Features
 

@@ -24,29 +24,35 @@ Configured via `debugger.ensure_installed`:
 
 ### General
 
-- `<leader>db` - Toggle breakpoint
-- `\\b` - Toggle breakpoint
-- `<leader>dB` - Set conditional breakpoint
-- `<leader>dc` - Continue
-- `<leader>dC` - Run to cursor
-- `<leader>dg` - Go to line (no execute)
-- `<leader>di` - Step into
-- `<leader>do` - Step out
-- `<leader>dO` - Step over
-- `<leader>dl` - Run last
-- `<leader>dp` - Pause
-- `<leader>dj` - Go down (call stack)
-- `<leader>dk` - Go up (call stack)
-- `<leader>dr` - Toggle REPL
-- `<leader>ds` - Show session
-- `<leader>dt` - Terminate
-- `<leader>dw` - Show widgets (hover)
+| Key | Description |
+|-----|-------------|
+| `<leader>db` | Toggle breakpoint |
+| `\\b` | Toggle breakpoint |
+| `<leader>dB` | Set conditional breakpoint |
+| `<leader>dc` | Continue |
+| `<leader>dC` | Run to cursor |
+| `<leader>dg` | Go to line (no execute) |
+| `<leader>di` | Step into |
+| `<leader>do` | Step out |
+| `<leader>dO` | Step over |
+| `<leader>dl` | Run last |
+| `<leader>dp` | Pause |
+| `<leader>dj` | Go down (call stack) |
+| `<leader>dk` | Go up (call stack) |
+| `<leader>dr` | Toggle REPL |
+| `<leader>ds` | Show session |
+| `<leader>dt` | Terminate |
+| `<leader>dw` | Show widgets (hover) |
 
 ### UI
 
-- `<leader>du` - Toggle Dap UI
-- `<leader>de` - Eval (visual mode)
+| Key | Description |
+|-----|-------------|
+| `<leader>du` | Toggle Dap UI |
+| `<leader>de` | Eval (visual mode) |
 
 ### Lua Adapter
 
-- `<leader>dal` - Launch Lua server adapter (port 8086)
+| Key | Description |
+|-----|-------------|
+| `<leader>dal` | Launch Lua server adapter (port 8086) |

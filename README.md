@@ -10,7 +10,9 @@ Color scheme management for Neovim.
 
 ## Keymaps
 
-- `<leader>vc` - Load colorscheme from `~/.vimrc_background`
+| Key | Description |
+|-----|-------------|
+| `<leader>vc` | Load colorscheme from `~/.vimrc_background` |
 
 ## Configuration
 
@@ -30,107 +32,137 @@ Color scheme management for Neovim.
 
 ### Navigation
 
-- `<tab><tab>` - Switch to last buffer
-- `<tab><space>` - New Tab
-- `j` / `k` - Move down/up (visual line)
-- `n` / `N` - Search next/prev and center
-- `*` / `#` - Search word under cursor forward/back
-- `g*` / `g#` - Search word (no word boundary)
+| Key | Description |
+|-----|-------------|
+| `<tab><tab>` | Switch to last buffer |
+| `<tab><space>` | New Tab |
+| `j` / `k` | Move down/up (visual line) |
+| `n` / `N` | Search next/prev and center |
+| `*` / `#` | Search word under cursor forward/back |
+| `g*` / `g#` | Search word (no word boundary) |
 
 ### Text Editing
 
-- `+` - Increment number
-- `-` - Decrement number
-- `<C-j>` / `<C-k>` - Move line down/up
-- `<` / `>` - Indent (in visual mode, keep selection)
-- `Q` - Format word (gq)
+| Key | Description |
+|-----|-------------|
+| `+` | Increment number |
+| `-` | Decrement number |
+| `<C-j>` / `<C-k>` | Move line down/up |
+| `<` / `>` | Indent (in visual mode, keep selection) |
+| `Q` | Format word (gq) |
 
 ### Save & Quit
 
-- `<space><space>` - Save
-- `<leader>q` - Quit All
-- `<leader>x` - Close Window
-- `<leader>QQ` - Quit All!
+| Key | Description |
+|-----|-------------|
+| `<space><space>` | Save |
+| `<leader>q` | Quit All |
+| `<leader>x` | Close Window |
+| `<leader>QQ` | Quit All! |
 
 ### Buffer
 
-- `<leader>bn` - Next Buffer
-- `<leader>bp` - Prev Buffer
-- `<leader>bd` - Delete Buffer
+| Key | Description |
+|-----|-------------|
+| `<leader>bn` | Next Buffer |
+| `<leader>bp` | Prev Buffer |
+| `<leader>bd` | Delete Buffer |
 
 ### File
 
-- `<leader>fs` - Save File
-- `<leader>fa` - Save All Files
-- `<leader>fx` - Make Executable
-- `<leader>fec` - Edit Config
-- `<leader>fei` - Edit init.lua
+| Key | Description |
+|-----|-------------|
+| `<leader>fs` | Save File |
+| `<leader>fa` | Save All Files |
+| `<leader>fx` | Make Executable |
+| `<leader>fec` | Edit Config |
+| `<leader>fei` | Edit init.lua |
 
 ### Window
 
-- `<leader>w-` - Split Horizontal
-- `<leader>w\` - Split Vertical
-- `<leader>wx` - Swap Windows
-- `<leader>wK` / `<leader>wJ` / `<leader>wH` / `<leader>wL` - Move window
-- `<leader>w=` - Rebalance
-- `<leader>wo` - Close Other Windows
-- `<leader>wt` - Move to New Tab
+| Key | Description |
+|-----|-------------|
+| `<leader>w-` | Split Horizontal |
+| `<leader>w\` | Split Vertical |
+| `<leader>wx` | Swap Windows |
+| `<leader>wK` / `<leader>wJ` / `<leader>wH` / `<leader>wL` | Move window |
+| `<leader>w=` | Rebalance |
+| `<leader>wo` | Close Other Windows |
+| `<leader>wt` | Move to New Tab |
 
 ### Comments
 
-- `\;` - Toggle Comment (normal/visual)
+| Key | Description |
+|-----|-------------|
+| `\;` | Toggle Comment (normal/visual) |
 
 ### Toggle
 
-- `\w` - Toggle Whitespace
-- `\r` - Toggle Relative Number
-- `\s` - Toggle Spell Check
-- `\o` - Toggle Read Only
-- `\C` - Toggle Clipboard
+| Key | Description |
+|-----|-------------|
+| `\w` | Toggle Whitespace |
+| `\r` | Toggle Relative Number |
+| `\s` | Toggle Spell Check |
+| `\o` | Toggle Read Only |
+| `\C` | Toggle Clipboard |
 
 ### Fold
 
-- `\fc` - Toggle Fold Column
+| Key | Description |
+|-----|-------------|
+| `\fc` | Toggle Fold Column |
 
 ### Debug
 
-- `\dv` - Toggle Vim Verbose Log
+| Key | Description |
+|-----|-------------|
+| `\dv` | Toggle Vim Verbose Log |
 
 ### Log Levels
 
-- `\lt` - Log TRACE
-- `\ld` - Log DEBUG
-- `\li` - Log INFO
-- `\lw` - Log WARN
-- `\le` - Log ERROR
-- `\lo` - Log OFF
+| Key | Description |
+|-----|-------------|
+| `\lt` | Log TRACE |
+| `\ld` | Log DEBUG |
+| `\li` | Log INFO |
+| `\lw` | Log WARN |
+| `\le` | Log ERROR |
+| `\lo` | Log OFF |
 
 ### Diff Mode
 
-- `,dp` - Diff Put
-- `,dg` - Diff Get
-- `,dn` - Next Diff
-- `,dN` - Prev Diff
+| Key | Description |
+|-----|-------------|
+| `,dp` | Diff Put |
+| `,dg` | Diff Get |
+| `,dn` | Next Diff |
+| `,dN` | Prev Diff |
 
 ### Menu Access
 
-- `<leader>?` - Buffer Local Keymaps
-- `<leader>a` - App Menu
-- `<leader>b` - Buffer Menu
-- `<leader>f` - File Menu
-- `<leader>w` - Window Menu
-- `<leader>v` - Vim Menu
-- `<leader>Y` - Yank Menu
-- `<leader>s` - Search Menu
+| Key | Description |
+|-----|-------------|
+| `<leader>?` | Buffer Local Keymaps |
+| `<leader>a` | App Menu |
+| `<leader>b` | Buffer Menu |
+| `<leader>f` | File Menu |
+| `<leader>w` | Window Menu |
+| `<leader>v` | Vim Menu |
+| `<leader>Y` | Yank Menu |
+| `<leader>s` | Search Menu |
 
 ### Indent Navigation
 
-- `[l` / `]l` - Prev/Next indent
-- `[L` / `]L` - Prev/Next lower indent
+| Key | Description |
+|-----|-------------|
+| `[l` / `]l` | Prev/Next indent |
+| `[L` / `]L` | Prev/Next lower indent |
 
 ### Visual Mode
 
-- `<C-j>` / `<C-k>` - Move selected lines down/up
+| Key | Description |
+|-----|-------------|
+| `<C-j>` / `<C-k>` | Move selected lines down/up |
 <!-- lua/plugins/base-lazy/README.md -->
 # Base Lazy
 
@@ -146,18 +178,20 @@ Manages lazy loading of plugins and itself. Keys are defined in `base-keymaps`.
 
 ### Keymaps
 
-- `<leader>mm` - All Messages
-- `<leader>me` - Error Messages
-- `<leader>m/` - Search Messages
-- `<leader>m?` - Last Messages
-- `<leader>mD` - Disable Noice
-- `<leader>mE` - Enable Noice
-- `<leader>mc` - Clear History
-- `<leader>mT` - Toggle Noice
-- `\\m` - Toggle Noice
-- `<leader>mt` - Print Trace Log
-- `<leader>mg` - Generate Test Messages
-- `<esc><esc>` - Dismiss All
+| Key | Description |
+|-----|-------------|
+| `<leader>mm` | All Messages |
+| `<leader>me` | Error Messages |
+| `<leader>m/` | Search Messages |
+| `<leader>m?` | Last Messages |
+| `<leader>mD` | Disable Noice |
+| `<leader>mE` | Enable Noice |
+| `<leader>mc` | Clear History |
+| `<leader>mT` | Toggle Noice |
+| `\\m` | Toggle Noice |
+| `<leader>mt` | Print Trace Log |
+| `<leader>mg` | Generate Test Messages |
+| `<esc><esc>` | Dismiss All |
 
 <!-- lua/plugins/base-utils/README.md -->
 # Base Utils
@@ -184,17 +218,21 @@ Core plugins and configuration for Neovim.
 
 ### Onion Config
 
-- `<leader>aoe` - Edit config
-- `<leader>aos` - Save config
-- `<leader>aoi` - Show config
-- `<leader>aol` - Load config
-- `<leader>aod` - Show default config
-- `<leader>aou` - Show user config
+| Key | Description |
+|-----|-------------|
+| `<leader>aoe` | Edit config |
+| `<leader>aos` | Save config |
+| `<leader>aoi` | Show config |
+| `<leader>aol` | Load config |
+| `<leader>aod` | Show default config |
+| `<leader>aou` | Show user config |
 
 ### Other
 
-- `<leader>aoo` - Open Onion UI
-- `<leader>ao` - Onion group
+| Key | Description |
+|-----|-------------|
+| `<leader>aoo` | Open Onion UI |
+| `<leader>ao` | Onion group |
 
 ## Configuration
 
@@ -216,27 +254,29 @@ Core plugins and configuration for Neovim.
 
 ### Keymaps
 
-- `<Tab>` - Accept suggestion / snippet forward / copilot accept
-- `<M-w>` - Accept word
-- `<M-l>` - Accept line
-- `<M-]>` - Next suggestion
-- `<M-[>` - Prev suggestion
-- `<C-]>` - Dismiss
-- `<C-j>` / `<C-k>` - Select next/prev
+| Key | Description |
+|-----|-------------|
+| `<Tab>` | Accept suggestion / snippet forward / copilot accept |
+| `<M-w>` | Accept word |
+| `<M-l>` | Accept line |
+| `<M-]>` | Next suggestion |
+| `<M-[>` | Prev suggestion |
+| `<C-]>` | Dismiss |
+| `<C-j>` / `<C-k>` | Select next/prev |
 
 ### Snippets
 
-[LuaSnip](https://github.com/L3MON4D3/LuaSnip) with [friendly-snippets](https://github.com/rafamadriz/friendly-snippets).
-
-- `<Tab>` (in insert mode) - Jump to next snippet placeholder
-- `<S-Tab>` - Jump to previous snippet placeholder
+| Key | Description |
+|-----|-------------|
+| `<Tab>` (in insert mode) | Jump to next snippet placeholder |
+| `<S-Tab>` | Jump to previous snippet placeholder |
 
 ### Copilot
 
-[copilot.lua](https://github.com/zbirenbaum/copilot.lua) with copilot-lsp.
-
-- `<leader>aci` - Copilot Status
-- `<leader>acp` - Copilot Panel
+| Key | Description |
+|-----|-------------|
+| `<leader>aci` | Copilot Status |
+| `<leader>acp` | Copilot Panel |
 <!-- lua/plugins/code-navigation/README.md -->
 ## Code Navigation
 
@@ -244,15 +284,15 @@ Core plugins and configuration for Neovim.
 
 [outline.nvim](https://github.com/hedyhli/outline.nvim)
 
-- `\]` - Toggle Symbols Outline
+| Key | Description |
+|-----|-------------|
+| `\]` | Toggle Symbols Outline |
 
 ### Aerial
 
-[aerial.nvim](https://github.com/stevearc/aerial.nvim)
-
-Shows code structure via Telescope popup.
-
-- `go` - Fuzzy Outline (Telescope)
+| Key | Description |
+|-----|-------------|
+| `go` | Fuzzy Outline (Telescope) |
 
 ### Configuration
 
@@ -284,32 +324,38 @@ Configured via `debugger.ensure_installed`:
 
 ### General
 
-- `<leader>db` - Toggle breakpoint
-- `\\b` - Toggle breakpoint
-- `<leader>dB` - Set conditional breakpoint
-- `<leader>dc` - Continue
-- `<leader>dC` - Run to cursor
-- `<leader>dg` - Go to line (no execute)
-- `<leader>di` - Step into
-- `<leader>do` - Step out
-- `<leader>dO` - Step over
-- `<leader>dl` - Run last
-- `<leader>dp` - Pause
-- `<leader>dj` - Go down (call stack)
-- `<leader>dk` - Go up (call stack)
-- `<leader>dr` - Toggle REPL
-- `<leader>ds` - Show session
-- `<leader>dt` - Terminate
-- `<leader>dw` - Show widgets (hover)
+| Key | Description |
+|-----|-------------|
+| `<leader>db` | Toggle breakpoint |
+| `\\b` | Toggle breakpoint |
+| `<leader>dB` | Set conditional breakpoint |
+| `<leader>dc` | Continue |
+| `<leader>dC` | Run to cursor |
+| `<leader>dg` | Go to line (no execute) |
+| `<leader>di` | Step into |
+| `<leader>do` | Step out |
+| `<leader>dO` | Step over |
+| `<leader>dl` | Run last |
+| `<leader>dp` | Pause |
+| `<leader>dj` | Go down (call stack) |
+| `<leader>dk` | Go up (call stack) |
+| `<leader>dr` | Toggle REPL |
+| `<leader>ds` | Show session |
+| `<leader>dt` | Terminate |
+| `<leader>dw` | Show widgets (hover) |
 
 ### UI
 
-- `<leader>du` - Toggle Dap UI
-- `<leader>de` - Eval (visual mode)
+| Key | Description |
+|-----|-------------|
+| `<leader>du` | Toggle Dap UI |
+| `<leader>de` | Eval (visual mode) |
 
 ### Lua Adapter
 
-- `<leader>dal` - Launch Lua server adapter (port 8086)
+| Key | Description |
+|-----|-------------|
+| `<leader>dal` | Launch Lua server adapter (port 8086) |
 <!-- lua/plugins/development/README.md -->
 ## Development Tools
 
@@ -317,8 +363,10 @@ Configured via `debugger.ensure_installed`:
 
 [xterm-color-table.vim](https://github.com/guns/xterm-color-table.vim)
 
-- `<leader>SX` - Show Xterm Color Table
-- `:XtermColorTable` - Show table
+| Key | Description |
+|-----|-------------|
+| `<leader>SX` | Show Xterm Color Table |
+| `:XtermColorTable` | Show table |
 <!-- lua/plugins/editor-colors/README.md -->
 ## Editor Colors
 
@@ -328,9 +376,11 @@ Configured via `debugger.ensure_installed`:
 
 Highlights color codes in text.
 
-- `\Lc` - Toggle Colorizer
-- `\Lm` - Toggle Colorizer Mode
-- `\Lr` - Reload Colorizer
+| Key | Description |
+|-----|-------------|
+| `\Lc` | Toggle Colorizer |
+| `\Lm` | Toggle Colorizer Mode |
+| `\Lr` | Reload Colorizer |
 
 Modes: virtualtext, foreground, background
 
@@ -340,9 +390,11 @@ Modes: virtualtext, foreground, background
 
 Colors words by request.
 
-- `<leader>k` - Toggle color for the word under cursor
-- `<leader>K` - Remove all word colors
-- `n` / `N` - Go to next/prev colored word or search result
+| Key | Description |
+|-----|-------------|
+| `<leader>k` | Toggle color for the word under cursor |
+| `<leader>K` | Remove all word colors |
+| `n` / `N` | Go to next/prev colored word or search result |
 <!-- lua/plugins/editor-folding/README.md -->
 # Editor Folding
 
@@ -360,10 +412,12 @@ Modern looking folding with arrows.
 
 [nvim-origami](https://github.com/chrisgrieser/nvim-origami) overloads `h`, `l`, `^`, and `$` for folding, letting you use them instead of `zc`/`zo`/`zC`/`zO`:
 
-- `h` - Folds the current line when used on the first non-blank character; otherwise behaves as normal `h`
-- `l` - Unfolds the cursorline when used on a folded line; otherwise behaves as normal `l`
-- `^` - Same as `h` but folds **recursively** (like `zC`)
-- `$` - Same as `l` but unfolds **recursively** (like `zO`)
+| Key | Description |
+|-----|-------------|
+| `h` | Folds the current line when used on the first non-blank character; otherwise behaves as normal `h` |
+| `l` | Unfolds the cursorline when used on a folded line; otherwise behaves as normal `l` |
+| `^` | Same as `h` but folds **recursively** (like `zC`) |
+| `$` | Same as `l` but unfolds **recursively** (like `zO`) |
 
 <!-- lua/plugins/editor-format/README.md -->
 ## AutoFormat
@@ -372,11 +426,13 @@ Modern looking folding with arrows.
 
 ### Keymaps
 
-- `<localleader>af` - Format
-- `<localleader>ai` - Format Info
-- `\aa` - Toggle AutoFormat
-- `\ab` - Toggle Buffer AutoFormat
-- `\af` - Toggle Filetype AutoFormat
+| Key | Description |
+|-----|-------------|
+| `<localleader>af` | Format |
+| `<localleader>ai` | Format Info |
+| `\aa` | Toggle AutoFormat |
+| `\ab` | Toggle Buffer AutoFormat |
+| `\af` | Toggle Filetype AutoFormat |
 
 ### Commands
 
@@ -402,41 +458,43 @@ Modern looking folding with arrows.
 
 [vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks)
 
-- `mm` - Toggle Bookmark
-- `mc` - Clear Bookmarks in Buffer
-- `mx` - Clear Bookmark in All Buffers
-- `mn` - Next Bookmark
-- `mp` - Prev Bookmark
-- `ma` - Show All Bookmarks
-- `mi` - Add Bookmark Annotation
-- `mkk` / `mjj` - Move Bookmark Up/Down
+| Key | Description |
+|-----|-------------|
+| `mm` | Toggle Bookmark |
+| `mc` | Clear Bookmarks in Buffer |
+| `mx` | Clear Bookmark in All Buffers |
+| `mn` | Next Bookmark |
+| `mp` | Prev Bookmark |
+| `ma` | Show All Bookmarks |
+| `mi` | Add Bookmark Annotation |
+| `mkk` / `mjj` | Move Bookmark Up/Down |
 
 ### Undo Tree
 
-[undotree](http://github.com/mbbill/undotree)
-
-- `\u` - Toggle Undo Tree
-- `g=` - Go to newer text state
+| Key | Description |
+|-----|-------------|
+| `\u` | Toggle Undo Tree |
+| `g=` | Go to newer text state |
 
 ### Switch
 
-[switch.vim](https://github.com/AndrewRadev/switch.vim)
-
-- `gs` - Switch (e.g., `true` <=> `false`)
+| Key | Description |
+|-----|-------------|
+| `gs` | Switch (e.g., `true` <=> `false`) |
 
 ### Align
 
-[mini.align](https://github.com/nvim-mini/mini.align)
-
-- `gA` - Start Align in Preview Mode
+| Key | Description |
+|-----|-------------|
+| `gA` | Start Align in Preview Mode |
 
 ### Surround
 
-[mini.surround](https://github.com/nvim-mini/mini.surround)
-
-- `ys` - Add Surrounding
-- `ds` - Delete Surrounding
-- `cs` - Change Surrounding
+| Key | Description |
+|-----|-------------|
+| `ys` | Add Surrounding |
+| `ds` | Delete Surrounding |
+| `cs` | Change Surrounding |
 
 ### Pairs
 
@@ -448,22 +506,28 @@ Automatic pairing of brackets and quotes.
 
 [twilight.nvim](https://github.com/folke/twilight.nvim) - Focus mode
 
-- `\F` - Focus (dimm everything except area around cursor)
+| Key | Description |
+|-----|-------------|
+| `\F` | Focus (dimm everything except area around cursor) |
 
 [zen-mode.nvim](https://github.com/folke/zen-mode.nvim) - Zen mode
 
-- `\<tab>` - Zen Mode (focus, zoom, and center)
+| Key | Description |
+|-----|-------------|
+| `\<tab>` | Zen Mode (focus, zoom, and center) |
 
 ### Multiple Cursors
 
 [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 
-- `<localleader>v` - Visual Multi Menu
-- `Ctrl-n` - Select words
-- `n` - Select next
-- `q` - Skip
-- `Ctrl-down` - Add vertical cursor
-- `Tab` - Toggle cursor and extend mode
+| Key | Description |
+|-----|-------------|
+| `<localleader>v` | Visual Multi Menu |
+| `Ctrl-n` | Select words |
+| `n` | Select next |
+| `q` | Skip |
+| `Ctrl-down` | Add vertical cursor |
+| `Tab` | Toggle cursor and extend mode |
 
 ### Illuminate
 
@@ -471,24 +535,30 @@ Automatic pairing of brackets and quotes.
 
 Highlights other uses of the word under cursor.
 
-- `<m-i>` - Textobject for reference under cursor
-- `<m-n>` - Go to next occurrence
-- `<m-p>` - Go to prev occurrence
+| Key | Description |
+|-----|-------------|
+| `<m-i>` | Textobject for reference under cursor |
+| `<m-n>` | Go to next occurrence |
+| `<m-p>` | Go to prev occurrence |
 
 ### Yank Ring
 
 [yanky.nvim](https://github.com/gbprod/yanky.nvim)
 
-- `p` / `P` - Paste after/before
-- `gp` / `gP` - Paste after/before (cursor stays)
-- `]y` / `[y` - Cycle through yanks
-- `<leader>Y<CR>` - Yank History
+| Key | Description |
+|-----|-------------|
+| `p` / `P` | Paste after/before |
+| `gp` / `gP` | Paste after/before (cursor stays) |
+| `]y` / `[y` | Cycle through yanks |
+| `<leader>Y<CR>` | Yank History |
 
 ### Global Search and Replace
 
 [grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim)
 
-- `<leader>sr` - Search and Replace
+| Key | Description |
+|-----|-------------|
+| `<leader>sr` | Search and Replace |
 
 ### Status Column
 
@@ -500,13 +570,17 @@ Shows line numbers, fold indicators, and signs.
 
 [venn.nvim](https://github.com/jbyuki/venn.nvim)
 
-- `\V` - Toggle Venn Mode (draw boxes in visual mode)
+| Key | Description |
+|-----|-------------|
+| `\V` | Toggle Venn Mode (draw boxes in visual mode) |
 
 ### Window Zoom
 
 [zoomwintab.vim](https://github.com/troydm/zoomwintab.vim)
 
-- `\z` - Toggle Window Zoom
+| Key | Description |
+|-----|-------------|
+| `\z` | Toggle Window Zoom |
 <!-- lua/plugins/file-tree/README.md -->
 ## File Tree
 
@@ -517,9 +591,11 @@ Uses snacks file tree by default.
 
 ### Keymaps
 
-- `\\` - Quick File Popup
-- `\[` - Toggle File Tree
-- `\.` - Reveal Current File
+| Key | Description |
+|-----|-------------|
+| `\\` | Quick File Popup |
+| `\[` | Toggle File Tree |
+| `\.` | Reveal Current File |
 
 ### Configuration
 
@@ -533,41 +609,56 @@ Uses snacks file tree by default.
 
 ### Gitsigns
 
-- `\gs` - Toggle Signs
-- `\gv` - Toggle Virtual Line Blame
-- `\gl` - Toggle Line Highlight
-- `\gw` - Toggle Word Diff
+| Key | Description |
+|-----|-------------|
+| `\gs` | Toggle Signs |
+| `\gv` | Toggle Virtual Line Blame |
+| `\gl` | Toggle Line Highlight |
+| `\gw` | Toggle Word Diff |
 
 ### Fugitive
 
-- `<leader>gs` - Git Status
-- `<leader>gd` - Git Diff (vertical)
-- `<leader>gp` - Git Push
-- `<leader>gg` - Git Grep...
-- `<leader>gw` - Git Grep Word
+| Key | Description |
+|-----|-------------|
+| `<leader>gs` | Git Status |
+| `<leader>gd` | Git Diff (vertical) |
+| `<leader>gp` | Git Push |
+| `<leader>gg` | Git Grep... |
+| `<leader>gw` | Git Grep Word |
 
 ### Git Status Mode
 
-- `g?` - Help
+| Key | Description |
+|-----|-------------|
+| `g?` | Help |
 
 **Changes:**
-- `-` - Stage/unstage file or hunk
-- `X` - Discard changes
+
+| Key | Description |
+|-----|-------------|
+| `-` | Stage/unstage file or hunk |
+| `X` | Discard changes |
 
 **Commit:**
-- `cc` - Commit
-- `ca` - Amend commit
-- `cf` - Fixup commit
-- `cF` - Fixup and rebase
+
+| Key | Description |
+|-----|-------------|
+| `cc` | Commit |
+| `ca` | Amend commit |
+| `cf` | Fixup commit |
+| `cF` | Fixup and rebase |
 
 **Rebase:**
-- `ri` - Interactive rebase
-- `rr` - Continue
-- `rs` - Skip
-- `ra` - Abort
-- `rw` - Reword
-- `rm` - Edit
-- `rd` - Drop
+
+| Key | Description |
+|-----|-------------|
+| `ri` | Interactive rebase |
+| `rr` | Continue |
+| `rs` | Skip |
+| `ra` | Abort |
+| `rw` | Reword |
+| `rm` | Edit |
+| `rd` | Drop |
 <!-- lua/plugins/lsp-null/README.md -->
 # LSP Null
 
@@ -582,9 +673,11 @@ External LSP tools (linting, formatting).
 
 ## Keymaps
 
-- `<leader>Sn` - Null LS info
-- `<leader>ani` - Null LS info
-- `<leader>anl` - Null LS log
+| Key | Description |
+|-----|-------------|
+| `<leader>Sn` | Null LS info |
+| `<leader>ani` | Null LS info |
+| `<leader>anl` | Null LS log |
 
 ## Available Sources
 
@@ -603,10 +696,12 @@ External LSP tools (linting, formatting).
 
 ### Mason (Package Manager)
 
-- `<leader>amm` - Open Mason
-- `<leader>aml` - Mason Log
-- `<leader>amu` - Mason Update
-- `<leader>ami` - Mason Install...
+| Key | Description |
+|-----|-------------|
+| `<leader>amm` | Open Mason |
+| `<leader>aml` | Mason Log |
+| `<leader>amu` | Mason Update |
+| `<leader>ami` | Mason Install... |
 
 ### Default LSP Servers
 
@@ -662,29 +757,37 @@ Unified picker keybindings using Snacks and Telescope.
 
 ### Quick Access
 
-- `<localleader><localleader>` - Find file
-- `<leader>/` - Grep in files
-- `<leader><cr>` - Find command
-- `<leader>:` - Search command history
+| Key | Description |
+|-----|-------------|
+| `<localleader><localleader>` | Find file |
+| `<leader>/` | Grep in files |
+| `<leader><cr>` | Find command |
+| `<leader>:` | Search command history |
 
 ### Help
 
-- `??` - Find help
-- `?k` - Find keymaps
-- `?m` - Man pages (Telescope)
+| Key | Description |
+|-----|-------------|
+| `??` | Find help |
+| `?k` | Find keymaps |
+| `?m` | Man pages (Telescope) |
 
 ### Files & Buffers
 
-- `<leader>ff` - Find file
-- `<leader>bb` - Find buffer
+| Key | Description |
+|-----|-------------|
+| `<leader>ff` | Find file |
+| `<leader>bb` | Find buffer |
 
 ### Search & Diagnostics
 
-- `<leader>sd` - Buffer diagnostics
-- `<leader>sD` - All diagnostics
-- `<leader>sw` - Search word
-- `<leader>st` - Search TODOs
-- `<leader>sp` - Find project
+| Key | Description |
+|-----|-------------|
+| `<leader>sd` | Buffer diagnostics |
+| `<leader>sD` | All diagnostics |
+| `<leader>sw` | Search word |
+| `<leader>st` | Search TODOs |
+| `<leader>sp` | Find project |
 
 ## Notes
 
@@ -702,22 +805,30 @@ All keymaps use `<localleader>r` prefix.
 
 ### Rename
 
-- `<localleader>rn` - Rename
+| Key | Description |
+|-----|-------------|
+| `<localleader>rn` | Rename |
 
 ### Select Refactor
 
-- `<localleader>rr` - Select refactor (normal & visual)
+| Key | Description |
+|-----|-------------|
+| `<localleader>rr` | Select refactor (normal & visual) |
 
 ### Extract
 
-- `<localleader>ref` - Extract function
-- `<localleader>reF` - Extract function to file
-- `<localleader>rev` - Extract variable
+| Key | Description |
+|-----|-------------|
+| `<localleader>ref` | Extract function |
+| `<localleader>reF` | Extract function to file |
+| `<localleader>rev` | Extract variable |
 
 ### Inline
 
-- `<localleader>rif` - Inline function
-- `<localleader>riv` - Inline variable
+| Key | Description |
+|-----|-------------|
+| `<localleader>rif` | Inline function |
+| `<localleader>riv` | Inline variable |
 
 <!-- lua/plugins/session/README.md -->
 ## Sessions
@@ -726,9 +837,11 @@ All keymaps use `<localleader>r` prefix.
 
 ### Keymaps
 
-- `<leader>Qr` - Restore Session
-- `<leader>Ql` - Restore Last Session
-- `<leader>Qd` - Don't Save Current Session
+| Key | Description |
+|-----|-------------|
+| `<leader>Qr` | Restore Session |
+| `<leader>Ql` | Restore Last Session |
+| `<leader>Qd` | Don't Save Current Session |
 
 ### Features
 
@@ -761,87 +874,107 @@ All keymaps use `<leader>as` prefix.
 
 ### General
 
-- `<leader>ass` - Open Snacks picker
-- `<leader>asf` - Find file
-- `<leader>aso` - Recent files
-- `<leader>asO` - Smart files
-- `<leader>asF` - Git files
-- `<leader>asb` - Buffers
+| Key | Description |
+|-----|-------------|
+| `<leader>ass` | Open Snacks picker |
+| `<leader>asf` | Find file |
+| `<leader>aso` | Recent files |
+| `<leader>asO` | Smart files |
+| `<leader>asF` | Git files |
+| `<leader>asb` | Buffers |
 
 ### Search
 
-- `<leader>as//` - Grep
-- `<leader>as/w` - Grep word
-- `<leader>as/b` - Grep buffers
-- `<leader>as/g` - Grep git
+| Key | Description |
+|-----|-------------|
+| `<leader>as//` | Grep |
+| `<leader>as/w` | Grep word |
+| `<leader>as/b` | Grep buffers |
+| `<leader>as/g` | Grep git |
 
 ### History
 
-- `<leader>as:` - Command history
-- `<leader>as?` - Search history
-- `<leader>asn` - Notifications
+| Key | Description |
+|-----|-------------|
+| `<leader>as:` | Command history |
+| `<leader>as?` | Search history |
+| `<leader>asn` | Notifications |
 
 ### Commands
 
-- `<leader>asc` - Commands
-- `<leader>asC` - Colorschemes
-- `<leader>asL` - Buffer lines
-- `<leader>asa` - Autocommands
+| Key | Description |
+|-----|-------------|
+| `<leader>asc` | Commands |
+| `<leader>asC` | Colorschemes |
+| `<leader>asL` | Buffer lines |
+| `<leader>asa` | Autocommands |
 
 ### Diagnostics
 
-- `<leader>asd` - Buffer diagnostics
-- `<leader>asD` - All diagnostics
+| Key | Description |
+|-----|-------------|
+| `<leader>asd` | Buffer diagnostics |
+| `<leader>asD` | All diagnostics |
 
 ### Navigation
 
-- `<leader>ash` - Help
-- `<leader>asH` - Highlights
-- `<leader>asi` - Icons
-- `<leader>asj` - Jump
-- `<leader>ask` - Keymaps
-- `<leader>asz` - Lazy
-- `<leader>asm` - Man pages
-- `<leader>as'` - Marks
-- `<leader>asq` - Quickfix
-- `<leader>asQ` - Loclist
-- `<leader>asr` - Register
-- `<leader>asR` - Resume
-- `<leader>ast` - Todo
-- `<leader>asu` - Undo
-- `<leader>asp` - Project
+| Key | Description |
+|-----|-------------|
+| `<leader>ash` | Help |
+| `<leader>asH` | Highlights |
+| `<leader>asi` | Icons |
+| `<leader>asj` | Jump |
+| `<leader>ask` | Keymaps |
+| `<leader>asz` | Lazy |
+| `<leader>asm` | Man pages |
+| `<leader>as'` | Marks |
+| `<leader>asq` | Quickfix |
+| `<leader>asQ` | Loclist |
+| `<leader>asr` | Register |
+| `<leader>asR` | Resume |
+| `<leader>ast` | Todo |
+| `<leader>asu` | Undo |
+| `<leader>asp` | Project |
 
 ### Git
 
-- `<leader>asGb` - Branches
-- `<leader>asGl` - Log
-- `<leader>asGL` - Log line
-- `<leader>asGf` - Log file
-- `<leader>asGs` - Status
-- `<leader>asGS` - Stash
-- `<leader>asGd` - Diff
+| Key | Description |
+|-----|-------------|
+| `<leader>asGb` | Branches |
+| `<leader>asGl` | Log |
+| `<leader>asGL` | Log line |
+| `<leader>asGf` | Log file |
+| `<leader>asGs` | Status |
+| `<leader>asGS` | Stash |
+| `<leader>asGd` | Diff |
 
 ### LSP
 
-- `<leader>asld` - Definition
-- `<leader>aslD` - Declaration
-- `<leader>aslr` - References
-- `<leader>asli` - Implementation
-- `<leader>aslt` - Type definition
-- `<leader>aslI` - Incoming calls
-- `<leader>aslO` - Outgoing calls
-- `<leader>asls` - Document symbols
-- `<leader>aslw` - Workspace symbols
-- `<leader>aslc` - LSP config
+| Key | Description |
+|-----|-------------|
+| `<leader>asld` | Definition |
+| `<leader>aslD` | Declaration |
+| `<leader>aslr` | References |
+| `<leader>asli` | Implementation |
+| `<leader>aslt` | Type definition |
+| `<leader>aslI` | Incoming calls |
+| `<leader>aslO` | Outgoing calls |
+| `<leader>asls` | Document symbols |
+| `<leader>aslw` | Workspace symbols |
+| `<leader>aslc` | LSP config |
 
 ### Scratch
 
-- `<leader>#` - New scratch file
-- `<leader>$` - Select scratch file
+| Key | Description |
+|-----|-------------|
+| `<leader>#` | New scratch file |
+| `<leader>$` | Select scratch file |
 
 ### Other
 
-- `\i` - Toggle indent scope
+| Key | Description |
+|-----|-------------|
+| `\i` | Toggle indent scope |
 
 ## Configuration
 
@@ -860,7 +993,9 @@ Custom checkbox icons:
 
 ### Keymaps
 
-- `\S` - Toggle Status Line
+| Key | Description |
+|-----|-------------|
+| `\S` | Toggle Status Line |
 
 ### Features
 
@@ -891,52 +1026,62 @@ All keymaps use `<leader>at` prefix.
 
 ### General
 
-- `<leader>att` - Open Telescope
-- `<leader>atf` - Find file
-- `<leader>ato` - Recent files
-- `<leader>atF` - Git files
-- `<leader>atb` - Buffers
-- `<leader>at//` - Grep
-- `<leader>at/w` - Grep word
-- `<leader>at:` - Command history
-- `<leader>atc` - Commands
-- `<leader>atC` - Colorschemes
-- `<leader>atL` - Buffer lines
-- `<leader>ata` - Autocommands
+| Key | Description |
+|-----|-------------|
+| `<leader>att` | Open Telescope |
+| `<leader>atf` | Find file |
+| `<leader>ato` | Recent files |
+| `<leader>atF` | Git files |
+| `<leader>atb` | Buffers |
+| `<leader>at//` | Grep |
+| `<leader>at/w` | Grep word |
+| `<leader>at:` | Command history |
+| `<leader>atc` | Commands |
+| `<leader>atC` | Colorschemes |
+| `<leader>atL` | Buffer lines |
+| `<leader>ata` | Autocommands |
 
 ### Diagnostics
 
-- `<leader>atd` - Buffer diagnostics
-- `<leader>atD` - All diagnostics
+| Key | Description |
+|-----|-------------|
+| `<leader>atd` | Buffer diagnostics |
+| `<leader>atD` | All diagnostics |
 
 ### Help & Navigation
 
-- `<leader>ath` - Help tags
-- `<leader>atH` - Highlights
-- `<leader>ati` - Icons
-- `<leader>atk` - Keymaps
-- `<leader>atm` - Man pages
-- `<leader>at'` - Marks
-- `<leader>ats` - Tagstack
-- `<leader>atv` - Vim options
+| Key | Description |
+|-----|-------------|
+| `<leader>ath` | Help tags |
+| `<leader>atH` | Highlights |
+| `<leader>ati` | Icons |
+| `<leader>atk` | Keymaps |
+| `<leader>atm` | Man pages |
+| `<leader>at'` | Marks |
+| `<leader>ats` | Tagstack |
+| `<leader>atv` | Vim options |
 
 ### Git
 
-- `<leader>atGl` - Git log
-- `<leader>atGs` - Git status
+| Key | Description |
+|-----|-------------|
+| `<leader>atGl` | Git log |
+| `<leader>atGs` | Git status |
 
 ### LSP
 
-- `<leader>atld` - Definition
-- `<leader>atlD` - Declaration
-- `<leader>atlr` - References
-- `<leader>atli` - Implementation
-- `<leader>atlt` - Type definition
-- `<leader>atlI` - Incoming calls
-- `<leader>atlO` - Outgoing calls
-- `<leader>atls` - Document symbols
-- `<leader>atlw` - Workspace symbols
-- `<leader>atlW` - Dynamic workspace symbols
+| Key | Description |
+|-----|-------------|
+| `<leader>atld` | Definition |
+| `<leader>atlD` | Declaration |
+| `<leader>atlr` | References |
+| `<leader>atli` | Implementation |
+| `<leader>atlt` | Type definition |
+| `<leader>atlI` | Incoming calls |
+| `<leader>atlO` | Outgoing calls |
+| `<leader>atls` | Document symbols |
+| `<leader>atlw` | Workspace symbols |
+| `<leader>atlW` | Dynamic workspace symbols |
 
 ## Configuration
 
@@ -951,15 +1096,19 @@ All keymaps use `<leader>at` prefix.
 
 ### Keymaps
 
-- `<c-\>` - Toggle Terminal
-- `<esc><esc>` - Exit Terminal to Normal Mode
-- `<leader>gt` - Toggle TIG
-- `<leader>gl` - Toggle LazyGit
+| Key | Description |
+|-----|-------------|
+| `<c-\>` | Toggle Terminal |
+| `<esc><esc>` | Exit Terminal to Normal Mode |
+| `<leader>gt` | Toggle TIG |
+| `<leader>gl` | Toggle LazyGit |
 
 ### Tmux Navigation
 
-- `<m-k>` / `<m-j>` / `<m-h>` / `<m-l>` - Navigate Up/Down/Left/Right
-- `<leader>wk` / `<leader>wj` / `<leader>wh` / `<leader>wl` - Navigate (in normal mode)
+| Key | Description |
+|-----|-------------|
+| `<m-k>` / `<m-j>` / `<m-h>` / `<m-l>` | Navigate Up/Down/Left/Right |
+| `<leader>wk` / `<leader>wj` / `<leader>wh` / `<leader>wl` | Navigate (in normal mode) |
 
 ### Features
 
@@ -972,38 +1121,50 @@ All keymaps use `<leader>at` prefix.
 
 ### Keymaps
 
-- `<leader>tn` - Test Nearest
-- `<leader>tf` - Test File
-- `<leader>ta` - Test All
-- `<leader>tl` - Test Last
-- `<leader>ts` - Stop
+| Key | Description |
+|-----|-------------|
+| `<leader>tn` | Test Nearest |
+| `<leader>tf` | Test File |
+| `<leader>ta` | Test All |
+| `<leader>tl` | Test Last |
+| `<leader>ts` | Stop |
 
 ### Debug
 
-- `<leader>tdn` - Debug Nearest
-- `<leader>tdf` - Debug File
+| Key | Description |
+|-----|-------------|
+| `<leader>tdn` | Debug Nearest |
+| `<leader>tdf` | Debug File |
 
 ### Output
 
-- `<leader>tp` - Toggle Output Panel
-- `<leader>to` - Output
-- `<leader>tL` - Output (Last)
-- `<leader>tC` - Clear Output Panel
+| Key | Description |
+|-----|-------------|
+| `<leader>tp` | Toggle Output Panel |
+| `<leader>to` | Output |
+| `<leader>tL` | Output (Last) |
+| `<leader>tC` | Clear Output Panel |
 
 ### Summary
 
-- `<leader>tu` - Toggle Summary
+| Key | Description |
+|-----|-------------|
+| `<leader>tu` | Toggle Summary |
 
 ### Watch
 
-- `<leader>tw` - Watch on Save (simple)
-- `<leader>tWf` - Watch File (LSP)
-- `<leader>tWn` - Watch Nearest (LSP)
+| Key | Description |
+|-----|-------------|
+| `<leader>tw` | Watch on Save (simple) |
+| `<leader>tWf` | Watch File (LSP) |
+| `<leader>tWn` | Watch Nearest (LSP) |
 
 ### Navigation
 
-- `[t` - Prev Failed Test
-- `]t` - Next Failed Test
+| Key | Description |
+|-----|-------------|
+| `[t` | Prev Failed Test |
+| `]t` | Next Failed Test |
 <!-- lua/plugins/treesitter/README.md -->
 # Treesitter
 
@@ -1022,17 +1183,21 @@ Syntax highlighting and parsing for Neovim.
 
 ## Keymaps
 
-- `<leader>ati` - Install info
-- `<leader>atm` - Module info
-- `<leader>atc` - Config info
-- `<leader>atu` - Update parsers
-- `<leader>ath` - vim.treesitter health
-- `<leader>atH` - nvim-treesitter health
+| Key | Description |
+|-----|-------------|
+| `<leader>ati` | Install info |
+| `<leader>atm` | Module info |
+| `<leader>atc` | Config info |
+| `<leader>atu` | Update parsers |
+| `<leader>ath` | vim.treesitter health |
+| `<leader>atH` | nvim-treesitter health |
 
 ### Incremental Selection
 
-- `<c-space>` - Init/increment selection
-- `<bs>` - Decrement selection
+| Key | Description |
+|-----|-------------|
+| `<c-space>` | Init/increment selection |
+| `<bs>` | Decrement selection |
 
 ## Installed Parsers
 

@@ -13,17 +13,21 @@ Core plugins and configuration for Neovim.
 
 ### Onion Config
 
-- `<leader>aoe` - Edit config
-- `<leader>aos` - Save config
-- `<leader>aoi` - Show config
-- `<leader>aol` - Load config
-- `<leader>aod` - Show default config
-- `<leader>aou` - Show user config
+| Key | Description |
+|-----|-------------|
+| `<leader>aoe` | Edit config |
+| `<leader>aos` | Save config |
+| `<leader>aoi` | Show config |
+| `<leader>aol` | Load config |
+| `<leader>aod` | Show default config |
+| `<leader>aou` | Show user config |
 
 ### Other
 
-- `<leader>aoo` - Open Onion UI
-- `<leader>ao` - Onion group
+| Key | Description |
+|-----|-------------|
+| `<leader>aoo` | Open Onion UI |
+| `<leader>ao` | Onion group |
 
 ## Configuration
 

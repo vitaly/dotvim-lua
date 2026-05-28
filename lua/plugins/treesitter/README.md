@@ -15,17 +15,21 @@ Syntax highlighting and parsing for Neovim.
 
 ## Keymaps
 
-- `<leader>ati` - Install info
-- `<leader>atm` - Module info
-- `<leader>atc` - Config info
-- `<leader>atu` - Update parsers
-- `<leader>ath` - vim.treesitter health
-- `<leader>atH` - nvim-treesitter health
+| Key | Description |
+|-----|-------------|
+| `<leader>ati` | Install info |
+| `<leader>atm` | Module info |
+| `<leader>atc` | Config info |
+| `<leader>atu` | Update parsers |
+| `<leader>ath` | vim.treesitter health |
+| `<leader>atH` | nvim-treesitter health |
 
 ### Incremental Selection
 
-- `<c-space>` - Init/increment selection
-- `<bs>` - Decrement selection
+| Key | Description |
+|-----|-------------|
+| `<c-space>` | Init/increment selection |
+| `<bs>` | Decrement selection |
 
 ## Installed Parsers
 

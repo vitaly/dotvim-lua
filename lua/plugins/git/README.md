@@ -5,38 +5,53 @@
 
 ### Gitsigns
 
-- `\gs` - Toggle Signs
-- `\gv` - Toggle Virtual Line Blame
-- `\gl` - Toggle Line Highlight
-- `\gw` - Toggle Word Diff
+| Key | Description |
+|-----|-------------|
+| `\gs` | Toggle Signs |
+| `\gv` | Toggle Virtual Line Blame |
+| `\gl` | Toggle Line Highlight |
+| `\gw` | Toggle Word Diff |
 
 ### Fugitive
 
-- `<leader>gs` - Git Status
-- `<leader>gd` - Git Diff (vertical)
-- `<leader>gp` - Git Push
-- `<leader>gg` - Git Grep...
-- `<leader>gw` - Git Grep Word
+| Key | Description |
+|-----|-------------|
+| `<leader>gs` | Git Status |
+| `<leader>gd` | Git Diff (vertical) |
+| `<leader>gp` | Git Push |
+| `<leader>gg` | Git Grep... |
+| `<leader>gw` | Git Grep Word |
 
 ### Git Status Mode
 
-- `g?` - Help
+| Key | Description |
+|-----|-------------|
+| `g?` | Help |
 
 **Changes:**
-- `-` - Stage/unstage file or hunk
-- `X` - Discard changes
+
+| Key | Description |
+|-----|-------------|
+| `-` | Stage/unstage file or hunk |
+| `X` | Discard changes |
 
 **Commit:**
-- `cc` - Commit
-- `ca` - Amend commit
-- `cf` - Fixup commit
-- `cF` - Fixup and rebase
+
+| Key | Description |
+|-----|-------------|
+| `cc` | Commit |
+| `ca` | Amend commit |
+| `cf` | Fixup commit |
+| `cF` | Fixup and rebase |
 
 **Rebase:**
-- `ri` - Interactive rebase
-- `rr` - Continue
-- `rs` - Skip
-- `ra` - Abort
-- `rw` - Reword
-- `rm` - Edit
-- `rd` - Drop
+
+| Key | Description |
+|-----|-------------|
+| `ri` | Interactive rebase |
+| `rr` | Continue |
+| `rs` | Skip |
+| `ra` | Abort |
+| `rw` | Reword |
+| `rm` | Edit |
+| `rd` | Drop |

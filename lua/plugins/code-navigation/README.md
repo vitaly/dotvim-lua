@@ -4,15 +4,15 @@
 
 [outline.nvim](https://github.com/hedyhli/outline.nvim)
 
-- `\]` - Toggle Symbols Outline
+| Key | Description |
+|-----|-------------|
+| `\]` | Toggle Symbols Outline |
 
 ### Aerial
 
-[aerial.nvim](https://github.com/stevearc/aerial.nvim)
-
-Shows code structure via Telescope popup.
-
-- `go` - Fuzzy Outline (Telescope)
+| Key | Description |
+|-----|-------------|
+| `go` | Fuzzy Outline (Telescope) |
 
 ### Configuration
 

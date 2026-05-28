@@ -10,19 +10,27 @@ All keymaps use `<localleader>r` prefix.
 
 ### Rename
 
-- `<localleader>rn` - Rename
+| Key | Description |
+|-----|-------------|
+| `<localleader>rn` | Rename |
 
 ### Select Refactor
 
-- `<localleader>rr` - Select refactor (normal & visual)
+| Key | Description |
+|-----|-------------|
+| `<localleader>rr` | Select refactor (normal & visual) |
 
 ### Extract
 
-- `<localleader>ref` - Extract function
-- `<localleader>reF` - Extract function to file
-- `<localleader>rev` - Extract variable
+| Key | Description |
+|-----|-------------|
+| `<localleader>ref` | Extract function |
+| `<localleader>reF` | Extract function to file |
+| `<localleader>rev` | Extract variable |
 
 ### Inline
 
-- `<localleader>rif` - Inline function
-- `<localleader>riv` - Inline variable
+| Key | Description |
+|-----|-------------|
+| `<localleader>rif` | Inline function |
+| `<localleader>riv` | Inline variable |

@@ -7,9 +7,11 @@ Uses snacks file tree by default.
 
 ### Keymaps
 
-- `\\` - Quick File Popup
-- `\[` - Toggle File Tree
-- `\.` - Reveal Current File
+| Key | Description |
+|-----|-------------|
+| `\\` | Quick File Popup |
+| `\[` | Toggle File Tree |
+| `\.` | Reveal Current File |
 
 ### Configuration
 

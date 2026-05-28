@@ -6,9 +6,11 @@
 
 Highlights color codes in text.
 
-- `\Lc` - Toggle Colorizer
-- `\Lm` - Toggle Colorizer Mode
-- `\Lr` - Reload Colorizer
+| Key | Description |
+|-----|-------------|
+| `\Lc` | Toggle Colorizer |
+| `\Lm` | Toggle Colorizer Mode |
+| `\Lr` | Reload Colorizer |
 
 Modes: virtualtext, foreground, background
 
@@ -18,6 +20,8 @@ Modes: virtualtext, foreground, background
 
 Colors words by request.
 
-- `<leader>k` - Toggle color for the word under cursor
-- `<leader>K` - Remove all word colors
-- `n` / `N` - Go to next/prev colored word or search result
+| Key | Description |
+|-----|-------------|
+| `<leader>k` | Toggle color for the word under cursor |
+| `<leader>K` | Remove all word colors |
+| `n` / `N` | Go to next/prev colored word or search result |

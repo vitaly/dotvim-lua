@@ -4,11 +4,13 @@
 
 ### Keymaps
 
-- `<localleader>af` - Format
-- `<localleader>ai` - Format Info
-- `\aa` - Toggle AutoFormat
-- `\ab` - Toggle Buffer AutoFormat
-- `\af` - Toggle Filetype AutoFormat
+| Key | Description |
+|-----|-------------|
+| `<localleader>af` | Format |
+| `<localleader>ai` | Format Info |
+| `\aa` | Toggle AutoFormat |
+| `\ab` | Toggle Buffer AutoFormat |
+| `\af` | Toggle Filetype AutoFormat |
 
 ### Commands
 

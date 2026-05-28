@@ -9,7 +9,9 @@ Color scheme management for Neovim.
 
 ## Keymaps
 
-- `<leader>vc` - Load colorscheme from `~/.vimrc_background`
+| Key | Description |
+|-----|-------------|
+| `<leader>vc` | Load colorscheme from `~/.vimrc_background` |
 
 ## Configuration
 

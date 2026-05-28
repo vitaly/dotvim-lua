@@ -5,10 +5,12 @@
 
 ### Mason (Package Manager)
 
-- `<leader>amm` - Open Mason
-- `<leader>aml` - Mason Log
-- `<leader>amu` - Mason Update
-- `<leader>ami` - Mason Install...
+| Key | Description |
+|-----|-------------|
+| `<leader>amm` | Open Mason |
+| `<leader>aml` | Mason Log |
+| `<leader>amu` | Mason Update |
+| `<leader>ami` | Mason Install... |
 
 ### Default LSP Servers
 
