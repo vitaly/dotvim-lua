@@ -5,10 +5,7 @@ config.set_defaults('file-tree', { backend = 'plugins.file-tree.snacks', positio
 
 local backend = config.get('file-tree.backend')
 
-local glue = require('glue').register('file-tree')
-local function _map(event)
-  return function() return glue.call(event) end
-end
+local glue_map = require('lib.glue').map
 
 return tools.vplug({
   'plugins.file-tree',
@@ -16,8 +13,8 @@ return tools.vplug({
   dependencies = { require(backend) },
 
   keys = {
-    { '\\\\', _map('file-tree.actions.popup'), desc = 'File Tree Popup' },
-    { '\\[', _map('file-tree.actions.toggle'), desc = 'File Tree Toggle' },
-    { '\\.', _map('file-tree.actions.reveal'), desc = 'File Tree Reveal' },
+    { '\\\\', glue_map('file-tree', 'file-tree.actions.popup'), desc = 'File Tree Popup' },
+    { '\\[', glue_map('file-tree', 'file-tree.actions.toggle'), desc = 'File Tree Toggle' },
+    { '\\.', glue_map('file-tree', 'file-tree.actions.reveal'), desc = 'File Tree Reveal' },
   },
 })

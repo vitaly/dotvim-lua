@@ -1,51 +1,47 @@
-local glue = require('glue').register('telescope')
-
-local function _map(event)
-  return function() return glue.call(event) end
-end
+local glue_map = require('lib.glue').map
 
 return {
-  { [[<leader>att]], _map('telescope.actions.pick'), desc = 'Telescope' },
+  { [[<leader>att]], glue_map('telescope', 'telescope.actions.pick'), desc = 'Telescope' },
 
-  { [[<leader>atf]], _map('telescope.actions.pick.file'), desc = 'File' },
-  { [[<leader>ato]], _map('telescope.actions.pick.file.recent'), desc = 'Recent Files' },
-  { [[<leader>atF]], _map('telescope.actions.pick.file.git'), desc = 'Git File' },
+  { [[<leader>atf]], glue_map('telescope', 'telescope.actions.pick.file'), desc = 'File' },
+  { [[<leader>ato]], glue_map('telescope', 'telescope.actions.pick.file.recent'), desc = 'Recent Files' },
+  { [[<leader>atF]], glue_map('telescope', 'telescope.actions.pick.file.git'), desc = 'Git File' },
 
-  { [[<leader>atb]], _map('telescope.actions.pick.buffer'), desc = 'Buffer' },
+  { [[<leader>atb]], glue_map('telescope', 'telescope.actions.pick.buffer'), desc = 'Buffer' },
 
-  { [[<leader>at//]], _map('telescope.actions.grep'), desc = 'Grep' },
-  { [[<leader>at/w]], _map('telescope.actions.grep.word'), desc = 'Grep Word' },
+  { [[<leader>at//]], glue_map('telescope', 'telescope.actions.grep'), desc = 'Grep' },
+  { [[<leader>at/w]], glue_map('telescope', 'telescope.actions.grep.word'), desc = 'Grep Word' },
 
-  { [[<leader>at:]], _map('telescope.actions.pick.history.command'), desc = 'Command History' },
+  { [[<leader>at:]], glue_map('telescope', 'telescope.actions.pick.history.command'), desc = 'Command History' },
 
-  { [[<leader>atc]], _map('telescope.actions.pick.command'), desc = 'Command' },
-  { [[<leader>atC]], _map('telescope.actions.pick.colorscheme'), desc = 'Colorscheme' },
-  { [[<leader>atL]], _map('telescope.actions.pick.line.buffer'), desc = 'Buffer Lines' },
-  { [[<leader>ata]], _map('telescope.actions.pick.autocommand'), desc = 'Autocommand' },
+  { [[<leader>atc]], glue_map('telescope', 'telescope.actions.pick.command'), desc = 'Command' },
+  { [[<leader>atC]], glue_map('telescope', 'telescope.actions.pick.colorscheme'), desc = 'Colorscheme' },
+  { [[<leader>atL]], glue_map('telescope', 'telescope.actions.pick.line.buffer'), desc = 'Buffer Lines' },
+  { [[<leader>ata]], glue_map('telescope', 'telescope.actions.pick.autocommand'), desc = 'Autocommand' },
 
-  { [[<leader>atd]], _map('telescope.actions.pick.diagnostic.buffer'), desc = 'Buffer Diagnostics' },
-  { [[<leader>atD]], _map('telescope.actions.pick.diagnostic'), desc = 'Diagnostics' },
+  { [[<leader>atd]], glue_map('telescope', 'telescope.actions.pick.diagnostic.buffer'), desc = 'Buffer Diagnostics' },
+  { [[<leader>atD]], glue_map('telescope', 'telescope.actions.pick.diagnostic'), desc = 'Diagnostics' },
 
-  { [[<leader>ath]], _map('telescope.actions.pick.help'), desc = 'Help' },
-  { [[<leader>atH]], _map('telescope.actions.pick.highlight'), desc = 'Highlight' },
-  { [[<leader>ati]], _map('telescope.actions.pick.icon'), desc = 'Icon' },
-  { [[<leader>atk]], _map('telescope.actions.pick.keymap'), desc = 'Keymap' },
-  { [[<leader>atm]], _map('telescope.actions.pick.man'), desc = 'Man' },
-  { [[<leader>at']], _map('telescope.actions.pick.mark'), desc = 'Mark' },
-  { [[<leader>ats]], _map('telescope.actions.pick.tagstack'), desc = 'Tagstack' },
-  { [[<leader>atv]], _map('telescope.actions.pick.vim.option'), desc = 'Vim Option' },
+  { [[<leader>ath]], glue_map('telescope', 'telescope.actions.pick.help'), desc = 'Help' },
+  { [[<leader>atH]], glue_map('telescope', 'telescope.actions.pick.highlight'), desc = 'Highlight' },
+  { [[<leader>ati]], glue_map('telescope', 'telescope.actions.pick.icon'), desc = 'Icon' },
+  { [[<leader>atk]], glue_map('telescope', 'telescope.actions.pick.keymap'), desc = 'Keymap' },
+  { [[<leader>atm]], glue_map('telescope', 'telescope.actions.pick.man'), desc = 'Man' },
+  { [[<leader>at']], glue_map('telescope', 'telescope.actions.pick.mark'), desc = 'Mark' },
+  { [[<leader>ats]], glue_map('telescope', 'telescope.actions.pick.tagstack'), desc = 'Tagstack' },
+  { [[<leader>atv]], glue_map('telescope', 'telescope.actions.pick.vim.option'), desc = 'Vim Option' },
 
-  { [[<leader>atGl]], _map('telescope.actions.pick.git.log'), desc = 'Git Log' },
-  { [[<leader>atGs]], _map('telescope.actions.pick.git.status'), desc = 'Git Status' },
+  { [[<leader>atGl]], glue_map('telescope', 'telescope.actions.pick.git.log'), desc = 'Git Log' },
+  { [[<leader>atGs]], glue_map('telescope', 'telescope.actions.pick.git.status'), desc = 'Git Status' },
 
-  { [[<leader>atld]], _map('telescope.lsp.actions.definition'), desc = 'Definition' },
-  { [[<leader>atlD]], _map('telescope.lsp.actions.declaration'), desc = 'Declaration' },
-  { [[<leader>atlr]], _map('telescope.lsp.actions.reference'), desc = 'References' },
-  { [[<leader>atli]], _map('telescope.lsp.actions.implementation'), desc = 'Implementation' },
-  { [[<leader>atlt]], _map('telescope.lsp.actions.type.definition'), desc = 'Type Definition' },
-  { [[<leader>atlI]], _map('telescope.lsp.actions.call.incoming'), desc = 'Incoming Calls' },
-  { [[<leader>atlO]], _map('telescope.lsp.actions.call.outgoing'), desc = 'Outgoing Calls' },
-  { [[<leader>atls]], _map('telescope.lsp.actions.symbol.document'), desc = 'Document Symbols' },
-  { [[<leader>atlw]], _map('telescope.lsp.actions.symbol.workspace'), desc = 'Workspace Symbols' },
-  { [[<leader>atlW]], _map('telescope.lsp.actions.symbol.workspace.dynamic'), desc = 'Dynamic Workspace Symbols' },
+  { [[<leader>atld]], glue_map('telescope', 'telescope.lsp.actions.definition'), desc = 'Definition' },
+  { [[<leader>atlD]], glue_map('telescope', 'telescope.lsp.actions.declaration'), desc = 'Declaration' },
+  { [[<leader>atlr]], glue_map('telescope', 'telescope.lsp.actions.reference'), desc = 'References' },
+  { [[<leader>atli]], glue_map('telescope', 'telescope.lsp.actions.implementation'), desc = 'Implementation' },
+  { [[<leader>atlt]], glue_map('telescope', 'telescope.lsp.actions.type.definition'), desc = 'Type Definition' },
+  { [[<leader>atlI]], glue_map('telescope', 'telescope.lsp.actions.call.incoming'), desc = 'Incoming Calls' },
+  { [[<leader>atlO]], glue_map('telescope', 'telescope.lsp.actions.call.outgoing'), desc = 'Outgoing Calls' },
+  { [[<leader>atls]], glue_map('telescope', 'telescope.lsp.actions.symbol.document'), desc = 'Document Symbols' },
+  { [[<leader>atlw]], glue_map('telescope', 'telescope.lsp.actions.symbol.workspace'), desc = 'Workspace Symbols' },
+  { [[<leader>atlW]], glue_map('telescope', 'telescope.lsp.actions.symbol.workspace.dynamic'), desc = 'Dynamic Workspace Symbols' },
 }

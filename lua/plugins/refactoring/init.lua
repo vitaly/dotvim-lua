@@ -1,10 +1,5 @@
-local glue = require('glue').register('refactoring')
+local glue_map = require('lib.glue').map
 local wk = require('which-key')
-
-local function _map(event)
-  -- we map as expr=true, and we need to actually return whatever the refactoring action returns
-  return function() return glue.call(event) end
-end
 
 return {
   {
@@ -25,23 +20,23 @@ return {
       wk.add({
         { '<localleader>r', group = 'Refactor' },
 
-        { '<localleader>rn', _map('lsp.actions.rename'), desc = 'Rename' },
+        { '<localleader>rn', glue_map('refactoring', 'lsp.actions.rename'), desc = 'Rename' },
 
-        { '<localleader>rr', _map('refactoring.actions.select'), mode = { 'n', 'x' }, desc = 'Select Refactor' },
+        { '<localleader>rr', glue_map('refactoring', 'refactoring.actions.select'), mode = { 'n', 'x' }, desc = 'Select Refactor' },
 
         {
           mode = { 'n', 'x' },
           expr = true,
 
           { '<localleader>re', group = 'Extract' },
-          { '<localleader>ref', _map('refactoring.actions.extract.function'), desc = 'Extract Function' },
-          { '<localleader>reF', _map('refactoring.actions.extract.function.to_file'), desc = 'Extract Function To File' },
-          { '<localleader>rev', _map('refactoring.actions.extract.variable'), desc = 'Extract Variable' },
+          { '<localleader>ref', glue_map('refactoring', 'refactoring.actions.extract.function'), desc = 'Extract Function' },
+          { '<localleader>reF', glue_map('refactoring', 'refactoring.actions.extract.function.to_file'), desc = 'Extract Function To File' },
+          { '<localleader>rev', glue_map('refactoring', 'refactoring.actions.extract.variable'), desc = 'Extract Variable' },
 
           { '<localleader>ri', group = 'Inline' },
-          { '<localleader>rif', _map('refactoring.actions.inline.function'), desc = 'Inline Function' },
+          { '<localleader>rif', glue_map('refactoring', 'refactoring.actions.inline.function'), desc = 'Inline Function' },
 
-          { '<localleader>riv', _map('refactoring.actions.inline.variable'), desc = 'Inline Variable' },
+          { '<localleader>riv', glue_map('refactoring', 'refactoring.actions.inline.variable'), desc = 'Inline Variable' },
         },
       })
     end,
