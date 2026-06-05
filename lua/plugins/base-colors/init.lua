@@ -114,7 +114,7 @@ return {
       define_load_vimrc_background_command()
 
       local scheme = config.get('colorscheme')
-      if scheme then
+      if scheme and scheme ~= '' then
         vim.cmd('colorscheme ' .. scheme)
       else
         vim.cmd.LoadVimrcBackground()
