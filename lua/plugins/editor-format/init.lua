@@ -27,6 +27,9 @@ config.set_defaults('autoformat', {
     css = {
       formatters = { 'prettier' },
     },
+    ruby = {
+      formatters = { 'rufo' },
+    },
   },
 })
 
@@ -121,7 +124,7 @@ end
 
 local on_save = function(bufnr)
   if not is_enabled(bufnr) then return end
-  return { timeout_ms = 500 }
+  return { timeout_ms = 1000 }
 end
 
 return {
