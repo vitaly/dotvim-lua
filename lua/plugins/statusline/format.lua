@@ -1,7 +1,9 @@
 local M = {}
 
-vim.api.nvim_set_hl(0, 'AutoformatEnabled', { fg = '#5FD7FF', bold = true })
-vim.api.nvim_set_hl(0, 'AutoformatDisabled', { fg = '#6c7086' })
+require('lib.au').on_colorscheme_changed('statusline.format', function()
+  vim.api.nvim_set_hl(0, 'AutoformatEnabled', { fg = '#5FD7FF', bold = true })
+  vim.api.nvim_set_hl(0, 'AutoformatDisabled', { fg = '#6c7086' })
+end)
 
 local glue = require('glue').register('plugins/statusline')
 
