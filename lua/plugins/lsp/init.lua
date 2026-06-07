@@ -12,7 +12,7 @@ config.set_defaults('lsp', {
   -------------------------------------------------------------------------------
   --- install those through mason-tool-installer
   -------------------------------------------------------------------------------
-  ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli' },
+  ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli', 'prettier' },
 
   -------------------------------------------------------------------------------
   --- enable those LSP servers.

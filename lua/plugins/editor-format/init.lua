@@ -24,6 +24,9 @@ config.set_defaults('autoformat', {
     sql = {
       enabled = false,
     },
+    css = {
+      formatters = { 'prettier' },
+    },
   },
 })
 
