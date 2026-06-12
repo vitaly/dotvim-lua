@@ -30,6 +30,9 @@ config.set_defaults('autoformat', {
     ruby = {
       formatters = { 'rufo' },
     },
+    html = {
+      formatters = { 'prettier' },
+    },
   },
 })
 
