@@ -3,13 +3,16 @@ local config = require('onion.config')
 -- generic autoformatting
 config.set_defaults('autoformat', {
   enabled = true,
-  log_level = vim.log.levels.INFO,
+  log_level = vim.log.levels.DEBUG,
 
   filetypes = {
     lua = {
       formatters = { 'stylua' },
     },
     javascript = {
+      formatters = { 'prettier' },
+    },
+    typescript = {
       formatters = { 'prettier' },
     },
     json = {
