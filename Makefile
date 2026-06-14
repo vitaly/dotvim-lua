@@ -22,6 +22,10 @@ help:: ## print help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n\n  make ${cyan}<target>${none}\n"}  /^[a-zA-Z_\/%$${}.-]+:.*?##/ { printf "\n  ${cyan}%-15s${none}%s\n", $$1, $$2 } /^## / { printf "  %-15s%s\n", "", substr($$0, 3) } /^##@/ { printf "\n${white}%s${none}\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 .PHONY: help
 
+install: ## install dependencies
+	npm install
+.PHONY: install
+
 README_FILES := $(shell find lua -name README.md)
 DEV_FILES := $(shell find lua -name DEV.md)
 readme: ## re-generate README.md

@@ -10,10 +10,10 @@ end
 -- Setup autocommand
 -- If the group is a string, then it will be created (and it's commands cleared)
 ---@param group string|any
----@param event string
+---@param events string|string[]
 ---@param callback fun(any)
 ---@param opts? table
-function AU.command(group, event, callback, opts)
+function AU.command(group, events, callback, opts)
   group = group or error('au.command requires a group', 2)
   callback = callback or error('au.command requires a callback', 2)
 
@@ -21,7 +21,10 @@ function AU.command(group, event, callback, opts)
   opts.group = 'string' == type(group) and AU.group(group) or group
   opts.callback = callback
 
-  return vim.api.nvim_create_autocmd(event, opts)
+  if 'string' == type(events) then events = { events } end
+  for _, event in ipairs(events) do
+    vim.api.nvim_create_autocmd(event, opts)
+  end
 end
 
 -- Setup callback for LspAttach event

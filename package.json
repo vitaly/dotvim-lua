@@ -1,0 +1,26 @@
+{
+  "name": "dotvim-lua",
+  "version": "1.0.0",
+  "description": "Neovim config from Vitaly",
+  "main": "eslint.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitaly/dotvim-lua.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/vitaly/dotvim-lua/issues"
+  },
+  "homepage": "https://github.com/vitaly/dotvim-lua#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.5.0",
+    "globals": "^17.6.0"
+  }
+}

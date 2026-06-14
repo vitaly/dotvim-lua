@@ -14,3 +14,4 @@ _envrc
 .claude
 /lua/plugins/_dev
 /plan/
+node_modules/
