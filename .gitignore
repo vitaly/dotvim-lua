@@ -8,10 +8,6 @@
 /log
 /parser/
 /scratch.*
-/foo.*
-/bar.*
-/qwe.*
-
 test/
 _envrc
 /config.lua
