@@ -50,6 +50,16 @@ return {
 
             event = 'InsertEnter',
 
+            init = function() require('which-key').add({ [[<leader>ap]], group = 'co[p]ilot' }) end,
+
+            keys = {
+              { [[<leader>api]], [[<cmd>Copilot status<cr>]], desc = 'Copilot Info' },
+              { [[<leader>apt]], [[<cmd>Copilot toggle<cr>]], desc = 'Copilot Toggle' },
+              { [[<leader>apD]], [[<cmd>Copilot disable<cr>]], desc = 'Copilot Disable' },
+              { [[<leader>apE]], [[<cmd>Copilot enable<cr>]], desc = 'Copilot Enable' },
+              { [[\p]], [[<cmd>Copilot toggle<cr>]], desc = 'Toggle Copilot' },
+            },
+
             opts = {
               suggestion = {
                 enabled = true,

@@ -244,6 +244,7 @@ return {
         { [[\nn]], util.toggle_conceallevel, desc = 'Level' },
 
         -- Cursor
+        { [[\c]], group = 'Cursor' },
         { [[\cc]], function() toggle.cursorcolumn() end, desc = 'Cursor Column' },
         { [[\cl]], function() toggle.cursorline() end, desc = 'Cursor Line' },
 
