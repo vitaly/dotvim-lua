@@ -44,7 +44,7 @@ return {
       words = { enabled = false },
     })
 
-    local eval = require('plugins.snacks.snacks_scratch_eval')
+    local eval = require('lib.eval')
 
     ---@type snacks.Config
     local opts = vim.tbl_deep_extend('force', {
@@ -74,16 +74,16 @@ return {
         win_by_ft = {
           ruby = {
             keys = {
-              source = {
-                '<cr>',
-                function(self) eval.run_scratch(self, { 'ruby', '-' }) end,
-                desc = 'Run Ruby scratch',
-                mode = { 'n', 'x' },
-              },
               line_eval = {
-                '<m-cr>',
+                '<cr>',
                 eval.ruby,
                 desc = 'Eval Ruby line by line',
+                mode = { 'n', 'x' },
+              },
+              source = {
+                '<m-cr>',
+                function(self) eval.run_scratch(self, { 'ruby', '-' }) end,
+                desc = 'Run Ruby scratch',
                 mode = { 'n', 'x' },
               },
             },
@@ -91,16 +91,16 @@ return {
 
           javascript = {
             keys = {
-              source = {
-                '<cr>',
-                function(self) eval.run_scratch(self, { 'node', '-' }) end,
-                desc = 'Run JavaScript scratch',
-                mode = { 'n', 'x' },
-              },
               line_eval = {
-                '<m-cr>',
+                '<cr>',
                 eval.bun_js,
                 desc = 'Eval JavaScript line by line with Bun',
+                mode = { 'n', 'x' },
+              },
+              source = {
+                '<m-cr>',
+                function(self) eval.run_scratch(self, { 'node', '-' }) end,
+                desc = 'Run JavaScript scratch',
                 mode = { 'n', 'x' },
               },
             },
@@ -108,16 +108,16 @@ return {
 
           typescript = {
             keys = {
-              source = {
-                '<cr>',
-                function(self) eval.run_scratch(self, { 'bun', 'run', '-' }) end,
-                desc = 'Run TypeScript scratch',
-                mode = { 'n', 'x' },
-              },
               line_eval = {
-                '<m-cr>',
+                '<cr>',
                 eval.bun_ts,
                 desc = 'Eval TypeScript line by line with Bun',
+                mode = { 'n', 'x' },
+              },
+              source = {
+                '<m-cr>',
+                function(self) eval.run_scratch(self, { 'bun', 'run', '-' }) end,
+                desc = 'Run TypeScript scratch',
                 mode = { 'n', 'x' },
               },
             },
