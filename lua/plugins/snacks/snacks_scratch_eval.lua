@@ -2,44 +2,22 @@ local M = {}
 
 local ns = vim.api.nvim_create_namespace('snacks_scratch_eval')
 
-local function get_code(buf)
+-- Returns (lines, start_line, end_line), all 0-indexed.
+-- start_line = first line of selection (or 0 for whole buffer)
+-- end_line   = last line of selection (or last line of buffer)
+-- Restores the visual selection afterward via gv.
+local function get_selection(buf)
   local mode = vim.fn.mode()
-
   if mode:find('[vV]') then
-    if mode == 'v' then
-      vim.cmd('normal! v')
-    elseif mode == 'V' then
-      vim.cmd('normal! V')
-    end
-
+    if mode == 'v' then vim.cmd('normal! v') else vim.cmd('normal! V') end
     local from = vim.api.nvim_buf_get_mark(buf, '<')
     local to = vim.api.nvim_buf_get_mark(buf, '>')
-
     vim.fn.feedkeys('gv', 'nx')
-
-    return vim.api.nvim_buf_get_lines(buf, from[1] - 1, to[1], false), to[1] - 1
+    local lines = vim.api.nvim_buf_get_lines(buf, from[1] - 1, to[1], false)
+    return lines, from[1] - 1, to[1] - 1
   end
-
   local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-  return lines, math.max(#lines - 1, 0)
-end
-
-local function get_range(buf)
-  local mode = vim.fn.mode()
-
-  if mode:find('[vV]') then
-    local from = vim.api.nvim_buf_get_mark(buf, '<')
-    local to = vim.api.nvim_buf_get_mark(buf, '>')
-
-    local start_line = from[1] - 1
-    local end_line = to[1]
-
-    local lines = vim.api.nvim_buf_get_lines(buf, start_line, end_line, false)
-    return lines, start_line
-  end
-
-  local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-  return lines, 0
+  return lines, 0, math.max(#lines - 1, 0)
 end
 
 local function clear(buf)
@@ -56,23 +34,14 @@ local function render(buf, items)
 
     local chunks = {}
     for _, line in ipairs(vim.split(item.text, '\n', { plain = true })) do
-      if line ~= '' then table.insert(chunks, {
-        { ' │ ' .. line, hl },
-      }) end
+      if line ~= '' then table.insert(chunks, { { ' │ ' .. line, hl } }) end
     end
 
-    if #chunks > 0 then vim.api.nvim_buf_set_extmark(buf, ns, lnum, 0, {
-      virt_lines = chunks,
-    }) end
+    if #chunks > 0 then vim.api.nvim_buf_set_extmark(buf, ns, lnum, 0, { virt_lines = chunks }) end
 
     if item.kind == 'error' then
       vim.diagnostic.set(ns, buf, {
-        {
-          lnum = lnum,
-          col = 0,
-          severity = vim.diagnostic.severity.ERROR,
-          message = item.text,
-        },
+        { lnum = lnum, col = 0, severity = vim.diagnostic.severity.ERROR, message = item.text },
       })
     end
   end
@@ -80,27 +49,30 @@ end
 
 local function parse_json_lines(stdout)
   local items = {}
-
   for line in stdout:gmatch('[^\r\n]+') do
     local ok, decoded = pcall(vim.json.decode, line)
     if ok and decoded and decoded.line and decoded.text then table.insert(items, decoded) end
   end
-
   return items
 end
 
-function M.ruby(self)
+local function line_eval(self, setup)
   local buf = self.buf
-  local lines, offset = get_range(buf)
-
+  local lines, offset = get_selection(buf)
   clear(buf)
 
-  local payload = vim.json.encode({
-    lines = lines,
-    offset = offset,
-  })
+  local payload = vim.json.encode({ lines = lines, offset = offset })
 
-  local ruby = [[
+  vim.system(setup.cmd, { stdin = payload, text = true }, function(res)
+    vim.schedule(function()
+      if setup.cleanup then setup.cleanup() end
+      render(buf, parse_json_lines(res.stdout or ''))
+      if res.stderr and res.stderr ~= '' then render(buf, { { line = 1, kind = 'error', text = res.stderr } }) end
+    end)
+  end)
+end
+
+local ruby_script = [[
 require "json"
 require "stringio"
 
@@ -140,40 +112,9 @@ lines.each_with_index do |code, i|
 end
 ]]
 
-  vim.system({ 'ruby', '-e', ruby }, {
-    stdin = payload,
-    text = true,
-  }, function(res)
-    vim.schedule(function()
-      render(buf, parse_json_lines(res.stdout or ''))
+function M.ruby(self) line_eval(self, { cmd = { 'ruby', '-e', ruby_script } }) end
 
-      if res.stderr and res.stderr ~= '' then
-        render(buf, {
-          {
-            line = 1,
-            kind = 'error',
-            text = res.stderr,
-          },
-        })
-      end
-    end)
-  end)
-end
-
-function M.bun_js(self)
-  local buf = self.buf
-  local lines, offset = get_range(buf)
-
-  clear(buf)
-
-  local payload = vim.json.encode({
-    lines = lines,
-    offset = offset,
-  })
-
-  local tmp = vim.fn.tempname() .. '.mjs'
-
-  local js = [[
+local bun_eval_script = [[
 import vm from "node:vm"
 import { inspect } from "node:util"
 
@@ -232,44 +173,26 @@ for (let i = 0; i < lines.length; i++) {
 }
 ]]
 
-  vim.fn.writefile(vim.split(js, '\n', { plain = true }), tmp)
-
-  vim.system({ 'bun', 'run', tmp }, {
-    stdin = payload,
-    text = true,
-  }, function(res)
-    vim.schedule(function()
-      pcall(vim.fn.delete, tmp)
-
-      render(buf, parse_json_lines(res.stdout or ''))
-
-      if res.stderr and res.stderr ~= '' then
-        render(buf, {
-          {
-            line = 1,
-            kind = 'error',
-            text = res.stderr,
-          },
-        })
-      end
-    end)
-  end)
+local function make_bun_setup(ext)
+  local tmp = vim.fn.tempname() .. ext
+  vim.fn.writefile(vim.split(bun_eval_script, '\n', { plain = true }), tmp)
+  return {
+    cmd = { 'bun', 'run', tmp },
+    cleanup = function() pcall(vim.fn.delete, tmp) end,
+  }
 end
 
+function M.bun_js(self) line_eval(self, make_bun_setup('.mjs')) end
+function M.bun_ts(self) line_eval(self, make_bun_setup('.ts')) end
+
 function M.run_scratch(self, cmd)
-  my.log.debug('Running scratch with command:', cmd)
   local buf = self.buf
+  clear(buf)
 
-  vim.diagnostic.reset(ns, buf)
-  vim.api.nvim_buf_clear_namespace(buf, ns, 0, -1)
-
-  local lines, output_line = get_code(buf)
+  local lines, _, output_line = get_selection(buf)
   local code = table.concat(lines, '\n')
 
-  vim.system(cmd, {
-    stdin = code,
-    text = true,
-  }, function(res)
+  vim.system(cmd, { stdin = code, text = true }, function(res)
     vim.schedule(function()
       local out = vim.trim((res.stdout or '') .. '\n' .. (res.stderr or ''))
 
@@ -283,18 +206,11 @@ function M.run_scratch(self, cmd)
         })
       end
 
-      vim.api.nvim_buf_set_extmark(buf, ns, output_line, 0, {
-        virt_lines = virt_lines,
-      })
+      vim.api.nvim_buf_set_extmark(buf, ns, output_line, 0, { virt_lines = virt_lines })
 
       if res.code ~= 0 then
         vim.diagnostic.set(ns, buf, {
-          {
-            lnum = output_line,
-            col = 0,
-            severity = vim.diagnostic.severity.ERROR,
-            message = out,
-          },
+          { lnum = output_line, col = 0, severity = vim.diagnostic.severity.ERROR, message = out },
         })
       end
     end)

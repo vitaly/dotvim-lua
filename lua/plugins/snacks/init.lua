@@ -110,8 +110,14 @@ return {
             keys = {
               source = {
                 '<cr>',
-                function(self) run_scratch(self, { 'bun', 'run', '-' }) end,
+                function(self) eval.run_scratch(self, { 'bun', 'run', '-' }) end,
                 desc = 'Run TypeScript scratch',
+                mode = { 'n', 'x' },
+              },
+              line_eval = {
+                '<m-cr>',
+                eval.bun_ts,
+                desc = 'Eval TypeScript line by line with Bun',
                 mode = { 'n', 'x' },
               },
             },
