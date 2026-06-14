@@ -1,5 +1,5 @@
 return {
-  'folke/snacks.nvim',
+  'folke/snacks.nvim', -- https://github.com/folke/snacks.nvim
   dependencies = {
     'onion.nvim',
     {

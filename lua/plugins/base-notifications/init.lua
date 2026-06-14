@@ -43,7 +43,7 @@ return {
   ------------------------------------------------------------------------------
   'rcarriga/nvim-notify',
   {
-    'folke/noice.nvim',
+    'folke/noice.nvim', -- https://github.com/folke/noice.nvim
 
     event = 'VeryLazy',
     -- enabled = false,
