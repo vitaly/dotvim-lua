@@ -36,6 +36,9 @@ config.set_defaults('autoformat', {
     html = {
       formatters = { 'prettier' },
     },
+    eruby = {
+      formatters = { 'erb_format' },
+    },
   },
 })
 

@@ -12,7 +12,7 @@ config.set_defaults('lsp', {
   -------------------------------------------------------------------------------
   --- install those through mason-tool-installer
   -------------------------------------------------------------------------------
-  ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli', 'prettier', 'rufo', 'eslint_d' },
+  ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli', 'prettier', 'rufo', 'eslint_d', 'erb-formatter' },
 
   -------------------------------------------------------------------------------
   --- enable those LSP servers.
