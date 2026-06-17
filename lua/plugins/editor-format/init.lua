@@ -39,6 +39,9 @@ config.set_defaults('autoformat', {
     eruby = {
       formatters = { 'erb_format' },
     },
+    go = {
+      formatters = { 'goimports' },
+    },
   },
 })
 

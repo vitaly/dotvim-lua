@@ -12,14 +12,14 @@ config.set_defaults('lsp', {
   -------------------------------------------------------------------------------
   --- install those through mason-tool-installer
   -------------------------------------------------------------------------------
-  ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli', 'prettier', 'rufo', 'eslint_d', 'erb-formatter' },
+  ensure_installed = { 'jq', 'stylua', 'tree-sitter-cli', 'prettier', 'rufo', 'eslint_d', 'erb-formatter', 'goimports' },
 
   -------------------------------------------------------------------------------
   --- enable those LSP servers.
   --- the configs come from lspconfig defaults, unless there's a corresponding
   --- file in 'lsp' folder at the root of nvim configuration directory
   -------------------------------------------------------------------------------
-  enable = { 'lua_ls', 'ts_ls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'ruby_lsp' },
+  enable = { 'lua_ls', 'ts_ls', 'jsonls', 'yamlls', 'bashls', 'dockerls', 'ruby_lsp', 'gopls' },
 
   -------------------------------------------------------------------------------
   --- custom LSP server config tweaks
