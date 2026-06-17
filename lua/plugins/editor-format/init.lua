@@ -54,6 +54,9 @@ config.set_defaults('conform', {
     beautysh = {
       args = { '--indent-size', '2', '--force-function-style', 'paronly', '-' },
     },
+    erb_format = {
+      prepend_args = { '--print-width', '200' },
+    },
   },
 })
 
