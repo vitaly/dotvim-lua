@@ -1,3 +1,6 @@
+local config = require('onion.config')
+config.set_defaults('copilot', { enabled = true })
+
 return {
   -- make sure we load before lspconfig
   { 'neovim/nvim-lspconfig', dependencies = { 'saghen/blink.cmp' } },
@@ -50,14 +53,45 @@ return {
 
             event = 'InsertEnter',
 
-            init = function() require('which-key').add({ [[<leader>ap]], group = 'co[p]ilot' }) end,
+            init = function()
+              require('onion.config').set_defaults('copilot.enabled', true)
+              require('which-key').add({ [[<leader>ap]], group = 'co[p]ilot' })
+            end,
 
             keys = {
               { [[<leader>api]], [[<cmd>Copilot status<cr>]], desc = 'Copilot Info' },
-              { [[<leader>apt]], [[<cmd>Copilot toggle<cr>]], desc = 'Copilot Toggle' },
-              { [[<leader>apD]], [[<cmd>Copilot disable<cr>]], desc = 'Copilot Disable' },
-              { [[<leader>apE]], [[<cmd>Copilot enable<cr>]], desc = 'Copilot Enable' },
-              { [[\p]], [[<cmd>Copilot toggle<cr>]], desc = 'Toggle Copilot' },
+              {
+                [[<leader>apt]],
+                function()
+                  local enabled = config.toggle('copilot.enabled', true)
+                  vim.cmd('Copilot ' .. (enabled and 'enable' or 'disable'))
+                end,
+                desc = 'Copilot Toggle',
+              },
+              {
+                [[<leader>apD]],
+                function()
+                  config.set('copilot.enabled', false)
+                  vim.cmd('Copilot disable')
+                end,
+                desc = 'Copilot Disable',
+              },
+              {
+                [[<leader>apE]],
+                function()
+                  config.set('copilot.enabled', true)
+                  vim.cmd('Copilot enable')
+                end,
+                desc = 'Copilot Enable',
+              },
+              {
+                [[\p]],
+                function()
+                  local enabled = config.toggle('copilot.enabled', true)
+                  vim.cmd('Copilot ' .. (enabled and 'enable' or 'disable'))
+                end,
+                desc = 'Toggle Copilot',
+              },
             },
 
             opts = {
@@ -77,6 +111,11 @@ return {
               panel = { enabled = true },
               nes = { enabled = false },
             },
+
+            config = function(_, opts)
+              require('copilot').setup(opts)
+              if not config.get('copilot.enabled', true) then vim.cmd('Copilot disable') end
+            end,
           },
         },
       },
