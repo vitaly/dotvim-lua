@@ -32,15 +32,15 @@ opt.cursorline = true
 opt.expandtab = true
 opt.foldcolumn = 'auto'
 opt.foldlevel = 2
-opt.formatoptions = opt.formatoptions
-  + 't' -- Auto-wrap text using 'textwidth'
-  + 'c' -- Auto-wrap comments using 'textwidth', inserting the current comment leader automatically.
-  + 'q' -- Allow formatting of comments with "gq".
-  + 'j' -- Where it makes sense, remove a comment leader when joining lines.
-  + 'r' -- Automatically insert the current comment leader after hitting <Enter> in Insert mode.
-  + 'o' -- Automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
-  + 'l' -- Long lines are not broken in insert mode
-  + 'n' -- When formatting text, recognize numbered lists
+
+opt.formatoptions:append('t') -- Auto-wrap text using 'textwidth'
+opt.formatoptions:append('c') -- Auto-wrap comments using 'textwidth', inserting the current comment leader automatically.
+opt.formatoptions:append('q') -- Allow formatting of comments with "gq".
+opt.formatoptions:append('j') -- Where it makes sense, remove a comment leader when joining lines.
+opt.formatoptions:append('r') -- Automatically insert the current comment leader after hitting <Enter> in Insert mode.
+opt.formatoptions:append('o') -- Automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
+opt.formatoptions:append('l') -- Long lines are not broken in Insert mode.
+opt.formatoptions:append('n') -- When formatting text, recognize numbered lists.
 
 opt.grepformat = '%f:%l:%c:%m' -- rg includes column number
 opt.grepprg = 'rg --vimgrep'
@@ -63,13 +63,14 @@ opt.scrolloff = 4 -- Scroll context lines
 opt.sessionoptions = { 'buffers', 'curdir', 'tabpages', 'winsize' }
 opt.shiftround = true -- Round shift indent to shiftwidth multiples
 opt.shiftwidth = 2
-opt.shortmess = opt.shortmess
-  + 's' -- don't give "search hit BOTTOM, continuing at TOP" etc.
-  + 'F' -- no info messages when loading file
-  + 'I' -- no intro message
-  + 'W' -- don't give "written" or "[w]" when writing a file
-  + 'c' -- don't give |ins-completion-menu| messages
-  + 'C' -- don't give messages while scanning for ins-completion
+
+opt.shortmess:append('s') -- don't give "search hit BOTTOM, continuing at TOP" etc.
+opt.shortmess:append('F') -- no info messages when loading file
+opt.shortmess:append('I') -- no intro message
+opt.shortmess:append('W') -- don't give "written" or "[w]" when writing a file
+opt.shortmess:append('c') -- don't give |ins-completion-menu| messages
+opt.shortmess:append('C') -- don't give messages while scanning for ins-completion
+
 opt.showmatch = true -- Show matching brackets.
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8 -- Scroll lines of context
